@@ -1,98 +1,130 @@
 ---
-title: "Intro to Probability: Count What You Want"
-summary: Probability is counting twice. Count the outcomes you want, count all the outcomes, and divide. Then avoid the traps that fool most people.
-minutes: 9
+title: "Count What You Want"
+summary: Probability is counting twice. Count the outcomes you want, count all of the outcomes, and divide.
+minutes: 8
 ---
 
-Is it harder to roll a total of 12 on two dice, or a total of 7? If you've played a board game, you may already have a feeling about this. In this lesson, you'll be able to work out exactly how much harder.
+You have a bag with 3 red marbles and 7 blue ones. Without looking, you pull out one marble. Everyone agrees that blue is more likely. But how much more likely? Probability is the math that puts an exact number on it, and the good news is that you already know most of what you need, because it's built on counting.
 
-> **The big idea:** When all the outcomes are equally likely, the probability is the number of outcomes you want divided by the total number of outcomes.
+> **The big idea:** When all of the outcomes are equally likely, the probability of something is the number of outcomes you want, divided by the total number of outcomes.
 
 $$\text{Probability} = \frac{\text{outcomes you want}}{\text{total outcomes}}$$
+
+## Why dividing makes sense
+
+Imagine pulling a marble from that bag and putting it back, again and again, 1,000 times. Since every marble is equally likely, each one gets pulled about the same number of times. So about 3 out of every 10 pulls will be red. That's what a probability of $\frac{3}{10}$ means: it's the share of the time you'd expect it to happen, in the long run.
+
+A probability is always between 0 and 1:
+
+| Probability | What it means | Example with a 6-sided die |
+|---|---|---|
+| 0 | It can't happen | Rolling a 7 |
+| $\frac{1}{6}$ | It happens 1 time in 6, on average | Rolling a 3 |
+| $\frac{1}{2}$ | It's as likely as not | Rolling an even number |
+| 1 | It must happen | Rolling a number under 7 |
+
+If you ever get a probability greater than 1, something has gone wrong.
 
 ## Example 1: One die
 
 You roll a 6-sided die. What's the probability of rolling a number greater than 2?
 
-There are 6 equally likely outcomes. The ones you want are 3, 4, 5, and 6, which makes 4 outcomes. So the probability is $\frac{4}{6}$, which simplifies to $\frac{2}{3}$.
+**What are all the outcomes?** 1, 2, 3, 4, 5, and 6. That's 6 equally likely outcomes.
 
-A probability is always between 0 and 1. A probability of 0 means it can't happen, and a probability of 1 means it must happen.
+**Which do we want?** 3, 4, 5, and 6. That's 4 outcomes.
 
-## Example 2: Using the opposite
+The probability is $\frac{4}{6}$, which simplifies to $\frac{2}{3}$.
 
-If the chance of rain is $\frac{3}{10}$, then the chance of no rain is $\frac{7}{10}$. Something either happens or it doesn't, so those two probabilities add up to 1:
+Now you try. A spinner has 10 equal sections, numbered 1 to 10. What's the probability of landing on a multiple of 4?
 
-$$\text{Probability it happens} = 1 - \text{Probability it doesn't happen}$$
+<details class="check"><summary>Show the answer</summary>
 
-This becomes very useful in Example 6.
+The multiples of 4 from 1 to 10 are 4 and 8. That's 2 outcomes out of 10, so the probability is $\frac{2}{10}$, or $\frac{1}{5}$.
 
-## Example 3: Two coins, and a famous trap
+</details>
 
-You flip two coins. What's the probability that you get one head and one tail?
+## Example 2: A bag with different amounts
 
-Lots of people say $\frac{1}{3}$, since there seem to be three results: two heads, two tails, or one of each. But those three results **aren't equally likely**. Imagine one coin is a penny and the other is a dime, and list everything that can happen:
+A jar has 5 red, 3 green, and 2 yellow candies. You pick one without looking. What's the probability that it's green?
 
-| Penny | Dime |
-|---|---|
-| Heads | Heads |
-| Heads | Tails |
-| Tails | Heads |
-| Tails | Tails |
+**What are all the outcomes?** Here's the key step. The outcomes aren't "red, green, or yellow." Those three aren't equally likely! Each **candy** is an outcome, and there are $5 + 3 + 2 = 10$ candies.
 
-There are 4 equally likely outcomes, and 2 of them have one of each. So the probability is $\frac{2}{4}$, or $\frac{1}{2}$.
+**Which do we want?** The 3 green ones. So the probability is $\frac{3}{10}$.
 
-> **Watch out:** The formula only works when every outcome is equally likely. When you aren't sure, give the objects names or colors, and list everything.
+## Example 3: The chance it doesn't happen
 
-## Example 4: Two dice
+If the probability of rain is $\frac{3}{10}$, what's the probability that it doesn't rain?
 
-Here's the answer to the opening question. Think of one red die and one blue die. Each of the 6 numbers on the red die can pair with each of the 6 on the blue die, so there are $6 \times 6 = 36$ outcomes. Here's every total:
+Something either happens or it doesn't, and those two probabilities add up to 1, so:
 
-| Red \\ Blue | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
-| **1** | 2 | 3 | 4 | 5 | 6 | 7 |
-| **2** | 3 | 4 | 5 | 6 | 7 | 8 |
-| **3** | 4 | 5 | 6 | 7 | 8 | 9 |
-| **4** | 5 | 6 | 7 | 8 | 9 | 10 |
-| **5** | 6 | 7 | 8 | 9 | 10 | 11 |
-| **6** | 7 | 8 | 9 | 10 | 11 | 12 |
+$$1 - \frac{3}{10} = \frac{7}{10}$$
 
-Count the 7s: there are 6 of them, so the probability of a total of 7 is $\frac{6}{36}$, or $\frac{1}{6}$. There's only one 12, so its probability is $\frac{1}{36}$. Rolling a 7 is 6 times as likely as rolling a 12. The totals aren't equally likely, even though each total looks like just one result.
+In terms of the jar, 3 out of 10 candies are green, so 7 out of 10 aren't.
 
-## Example 5: Coins don't have a memory
+## Example 4: Using more counting
 
-A fair coin lands on heads 5 times in a row. What's the probability that the next flip is heads?
+Cards numbered 1 to 30 are in a hat, and you draw one. What's the probability that the number is a perfect square?
 
-It feels like tails must be "due," but the coin has no memory. It's still $\frac{1}{2}$. Earlier flips can't change the next one. When one result doesn't affect another, we call the two events **independent**.
+**What are all the outcomes?** There are 30 cards.
 
-For independent events, you can multiply the probabilities, just as you multiplied choices in the Counting unit. The probability of getting heads and then rolling a 6 is:
+**Which do we want?** The perfect squares up to 30 are 1, 4, 9, 16, and 25. That's 5 cards.
 
-$$\frac{1}{2} \times \frac{1}{6} = \frac{1}{12}$$
+The probability is $\frac{5}{30}$, or $\frac{1}{6}$.
 
-But if the first event **does** change the second, you have to account for that. A bag has 3 red and 2 blue marbles. You take out 2 marbles without putting the first one back. What's the probability that both are red?
+## Example 5: A contest-style question
 
-- The first marble is red with probability $\frac{3}{5}$.
-- Now 4 marbles are left, and 2 of them are red. So the second is red with probability $\frac{2}{4}$.
+Each letter of the word PROBABILITY is written on its own card, and the cards go in a box. You draw one. What's the probability that it's a vowel? (In this word, the vowels are O, A, and the two Is, and we won't count Y.)
 
-$$\frac{3}{5} \times \frac{2}{4} = \frac{6}{20} = \frac{3}{10}$$
+**What are all the outcomes?** The word has 11 letters, so there are 11 cards. Repeated letters count as separate cards, because each card is its own outcome.
 
-## Example 6: "At least one" is a clue
+**Which do we want?** The vowels are O, A, I, and I. That's 4 cards.
 
-You flip 3 coins. What's the probability of getting at least one head?
+The probability is $\frac{4}{11}$.
 
-"At least one head" includes a lot of cases: one head, two heads, or three heads. The opposite is much shorter: **no heads at all**, which means all tails.
+**What if you changed the question?** If it asked for the probability of drawing a B, then you'd need to notice that B appears twice. That's $\frac{2}{11}$, and counting only one of them is a common error.
 
-- The probability of all tails is $\frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1}{8}$.
-- So the probability of at least one head is $1 - \frac{1}{8} = \frac{7}{8}$.
+<section data-box="traps">
 
-> **Tip:** When you see the words "at least one," try finding the probability of "none" and subtracting from 1.
+## Common traps
 
-## Your turn
+**Using categories as the outcomes.** For the jar in Example 2, saying "there are 3 colors, so green has a probability of $\frac{1}{3}$" is wrong. The colors aren't equally likely, because the jar has different amounts of each. Count candies, not colors.
 
-Before you start the practice problems, try these two:
+**Forgetting to include what you want in the total.** With 3 red and 7 blue marbles, the probability of red is $\frac{3}{10}$, not $\frac{3}{7}$. The bottom number is **all** of the outcomes, including the ones you want.
 
-1. A bag holds 2 red, 3 green, and 5 blue marbles. What's the probability of picking a green one?
-2. Using the table of dice totals, what's the probability of rolling a total of 4?
+**Not simplifying when the choices are simplified.** If you get $\frac{4}{6}$ and don't see it in the choices, look for $\frac{2}{3}$. It's the same number.
 
-**Answers:** For the first, there are 10 marbles and 3 are green, so it's $\frac{3}{10}$. For the second, the table has three 4s, so it's $\frac{3}{36}$, or $\frac{1}{12}$.
+</section>
 
-If you got those, you're ready. If not, reread Examples 1 and 4, then go on.
+<section data-box="strategy">
+
+## Contest strategy
+
+**How to spot it:** Look for "probability," "chance," "at random," or "without looking."
+
+**Check the bottom first:** Before counting what you want, find the total. Sometimes the answer choices all have different bottom numbers, and you can eliminate some right away.
+
+**Test for sense:** Will it happen more or less than half the time? If it's rare, then cross out choices above $\frac{1}{2}$.
+
+**Time:** Under a minute for direct problems like these.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Probability is built on [Counting](/pathway/counting/). Next, you'll see how to [list the real outcomes](/pathway/intro-probability/02-list-the-real-outcomes/), since that's where the traps hide.
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- Probability = what you want ÷ total, if outcomes are equally likely.
+- It's always between 0 and 1.
+- Count each object, not each category.
+- The total includes what you want.
+- Probability of "not" = 1 minus the probability.
+
+</section>

@@ -1,92 +1,123 @@
 ---
-title: "Fractions & Ratios: Think in Groups"
-summary: Learn the one idea behind fraction, ratio, and percent problems. Find the size of one equal group, then scale up.
-minutes: 8
+title: "Fractions as Equal Groups"
+summary: See what a fraction really means. Then find a fraction of a number, compare fractions, and add them without the most common mistakes.
+minutes: 10
 ---
 
-A pitcher of punch uses 2 cups of juice for every 3 cups of water. You want to make 20 cups. How much juice do you need?
+Which is more pizza: $\frac{3}{8}$ of a pizza, or $\frac{1}{3}$ of a pizza? The number 8 is bigger than 3, and the number 3 on top is bigger than 1, so does that settle it? Fractions fool lots of people, because the top and bottom numbers don't work like two separate numbers. They work together.
 
-You don't need a special formula for this. Fractions, ratios, and percents are all different ways of talking about **equal groups**.
+> **The big idea:** A fraction describes **equal groups**. The bottom number says how many equal groups to make, and the top number says how many of those groups you're taking.
 
-> **The big idea:** Find out how much is in **one equal group**. Then multiply to get as many groups as you need.
+## Why it works
+
+Picture a chocolate bar with 8 equal squares. The fraction $\frac{3}{8}$ means 3 of those squares. If the bar has 40 squares in total, then $\frac{3}{8}$ of it means this: make 8 equal groups, which gives 5 squares each, and take 3 of those groups.
+
+So a fraction of a number is always a two-step process. Divide by the bottom, and multiply by the top. It also explains the size of the pieces: if you cut something into **more** groups, each piece gets **smaller**. That's why $\frac{1}{8}$ is less than $\frac{1}{3}$, even though 8 is greater than 3.
 
 ## Example 1: A fraction of a number
 
-What is $\frac{2}{5}$ of 30?
+Tara has 45 marbles, and $\frac{2}{5}$ of them are blue. How many are blue?
 
-The bottom number tells you how many equal groups to make, and the top number tells you how many of those groups to take.
+**What do we know?** The bottom number says to make 5 equal groups: $45 \div 5 = 9$.
 
-- Split 30 into 5 equal groups: $30 \div 5 = 6$. Each group has 6.
-- Take 2 of those groups: $2 \times 6 = 12$.
+**How many groups do we want?** The top number says 2: $2 \times 9 = 18$.
 
-So $\frac{2}{5}$ of 30 is 12.
+So 18 marbles are blue, and that means the other $\frac{3}{5}$, or 27 marbles, aren't.
 
-## Example 2: Adding and comparing fractions
+Try one. What's $\frac{5}{6}$ of 42?
 
-Here's a mistake that many students make:
+<details class="check"><summary>Show the answer</summary>
 
-$$\frac{2}{3} + \frac{1}{4} = \frac{3}{7} \quad \text{(wrong!)}$$
+Make 6 equal groups: $42 \div 6 = 7$. Then take 5 of them: $5 \times 7 = 35$.
 
-How can you tell it's wrong? The fraction $\frac{3}{7}$ is less than $\frac{1}{2}$, but we started with $\frac{2}{3}$, which is more than $\frac{1}{2}$, and then added more. The answer can't be smaller than what we started with.
+</details>
 
-The problem is that thirds and fourths are different-sized pieces, so we can't count them together yet. First, cut both into pieces of the same size. Since 12 is a multiple of both 3 and 4, we'll use twelfths:
+## Example 2: Comparing fractions
 
-$$\frac{2}{3} = \frac{8}{12} \qquad \frac{1}{4} = \frac{3}{12}$$
+Which is bigger, $\frac{3}{4}$ or $\frac{5}{7}$? When the pieces are different sizes, we can't compare them directly. So cut both fractions into pieces of the same size. We need a number that 4 and 7 both divide into, and 28 works.
 
-Now the pieces match, so we can add them: 8 twelfths plus 3 twelfths is $\frac{11}{12}$.
+$$\frac{3}{4} = \frac{21}{28} \qquad \frac{5}{7} = \frac{20}{28}$$
 
-The same trick compares fractions. Which is bigger, $\frac{3}{4}$ or $\frac{5}{7}$? Use 28 as the bottom number. Since $\frac{3}{4}$ is $\frac{21}{28}$ and $\frac{5}{7}$ is $\frac{20}{28}$, the fraction $\frac{3}{4}$ is a little bigger.
+Why doesn't this change the value? Multiplying the top and bottom by the same number makes more pieces that are each smaller, but the same amount in total. Now the pieces match, so $\frac{3}{4}$ is a little bigger.
 
-## Example 3: A ratio means groups
+There's often a quicker way too. **Compare to one half.** For example, $\frac{5}{9}$ is more than half (half of 9 is 4.5), and $\frac{3}{7}$ is less than half (half of 7 is 3.5). So $\frac{5}{9}$ is bigger, and you barely did any work.
 
-Back to the punch. A ratio of 2 to 3 means that for every 2 cups of juice, there are 3 cups of water. Draw 2 boxes for juice and 3 boxes for water, with the same amount in every box:
+And the opening question? Since $\frac{3}{8}$ is $\frac{9}{24}$ and $\frac{1}{3}$ is $\frac{8}{24}$, the fraction $\frac{3}{8}$ is slightly more pizza.
 
-![Five equal boxes. Two boxes of juice hold 4 cups each, making 8 cups. Three boxes of water hold 4 cups each, making 12 cups.](/images/fractions-ratio-boxes.svg)
+## Example 3: Adding fractions
 
-There are 5 boxes and 20 cups, so each box holds $20 \div 5 = 4$ cups. That means there are $2 \times 4 = 8$ cups of juice and $3 \times 4 = 12$ cups of water.
+What's $\frac{1}{2} + \frac{1}{3}$? We can't add halves and thirds yet, since they're different-sized pieces. It's like trying to add 2 feet and 3 inches without converting first. Sixths work for both:
 
-Check it: $8 + 12 = 20$. It works!
+$$\frac{1}{2} + \frac{1}{3} = \frac{3}{6} + \frac{2}{6} = \frac{5}{6}$$
 
-> **Watch out:** The ratio of juice to water is 2 to 3, but juice is **not** $\frac{2}{3}$ of the punch. It's 2 boxes out of 5, so juice is $\frac{2}{5}$ of the punch. Always ask, "A fraction of what?"
+Subtraction works the same way. And multiplying fractions is, surprisingly, even easier. What's half of a third? Cut a third into 2 pieces, and each piece is a sixth of the whole. So $\frac{1}{2} \times \frac{1}{3} = \frac{1}{6}$. You multiply the tops and multiply the bottoms, and you don't need matching pieces.
 
-## Example 4: Multiply, don't add
+## Example 4: A fraction of a fraction
 
-A photo is 4 inches by 6 inches. You enlarge it so the short side is 8 inches, and you don't want it to look stretched. How long is the long side?
+Dev spends $\frac{1}{3}$ of his money on a book, and then $\frac{1}{4}$ of **what's left** on lunch. What fraction of his money does he still have?
 
-Many people reason like this: "The short side grew by 4, so the long side grows by 4 too, which makes 10." That's the most common mistake with ratios.
+**What's the question really asking?** The word "left" tells us that the $\frac{1}{4}$ isn't a fraction of the original money.
 
-When something scales, every length gets **multiplied** by the same number. The short side went from 4 to 8, which is 2 times as long. So the long side is $6 \times 2 = 12$ inches.
+- After the book, he has $\frac{2}{3}$ of his money.
+- He spends $\frac{1}{4}$ of that, so he keeps $\frac{3}{4}$ of it.
+- Now find $\frac{3}{4}$ of $\frac{2}{3}$:
 
-## Example 5: Finding one first
+$$\frac{3}{4} \times \frac{2}{3} = \frac{6}{12} = \frac{1}{2}$$
 
-Three notebooks cost \$4.50. How much do 7 notebooks cost?
+He has half of his money left.
 
-Find the cost of one group, which here is one notebook: $4.50 \div 3 = 1.50$. Then 7 notebooks cost $7 \times 1.50 = 10.50$, or \$10.50.
+## Example 5: A contest-style question
 
-## Example 6: Percent means "out of 100"
+A water tank is $\frac{3}{5}$ full. After 12 liters are poured out, it's $\frac{1}{3}$ full. How many liters does the tank hold when full?
 
-The word *percent* means "out of 100," so 15% is the fraction $\frac{15}{100}$. You can often find a percent in your head by building it from easy pieces.
+**What do we know?** Those 12 liters are the **difference** between the two fractions. So first find that difference, using fifteenths:
 
-What is 15% of 60?
+$$\frac{3}{5} - \frac{1}{3} = \frac{9}{15} - \frac{5}{15} = \frac{4}{15}$$
 
-- 10% of 60 is 6, because $60 \div 10 = 6$.
-- 5% is half of that, which is 3.
-- So 15% is $6 + 3 = 9$.
+**What does it mean?** $\frac{4}{15}$ of the tank is 12 liters. So one group, $\frac{1}{15}$ of the tank, is $12 \div 4 = 3$ liters. All 15 groups make $15 \times 3 = 45$ liters.
 
-Now try this surprise. A \$40 game goes up by 50%. Later, it goes down by 50%. Is it back to \$40?
+**Check:** $\frac{3}{5}$ of 45 is 27, and $\frac{1}{3}$ of 45 is 15. The difference is 12. It works.
 
-- Up 50%: half of 40 is 20, so the price becomes \$60.
-- Down 50%: half of **60** is 30, so the price becomes \$30.
+<section data-box="traps">
 
-It's not back to \$40! The second percent is a percent of a different number. Whenever you see a percent, ask, "A percent of what?"
+## Common traps
 
-## Your turn
+**Adding tops and bottoms.** For $\frac{1}{2} + \frac{1}{3}$, the answer $\frac{2}{5}$ is wrong. Here's how you can tell: $\frac{2}{5}$ is less than $\frac{1}{2}$, but we started with $\frac{1}{2}$ and added more. Always check that the size makes sense.
 
-Before you start the practice problems, try these two:
+**Bigger bottom means bigger fraction.** It's the opposite: if the top numbers match, a bigger bottom means smaller pieces, so $\frac{1}{8}$ is less than $\frac{1}{3}$.
 
-1. What is $\frac{3}{8}$ of 40?
-2. A bag has blue and green marbles in a ratio of 1 to 4, and there are 30 marbles. How many are green?
+**Losing track of the whole.** In Example 4, some students add $\frac{1}{3} + \frac{1}{4}$ to find what he spent, which gives $\frac{7}{12}$. But the $\frac{1}{4}$ was a fraction of what was **left**, not a fraction of all of his money. Always ask, "A fraction of what?"
 
-**Answers:** For the first, $40 \div 8 = 5$, and $3 \times 5 = 15$. For the second, there are 5 boxes, so each box holds 6 marbles, and $4 \times 6 = 24$ are green.
+</section>
 
-If you got those, you're ready. If not, reread Examples 1 and 3, then go on. The practice problems have hints whenever you need them.
+<section data-box="strategy">
+
+## Contest strategy
+
+**How to spot it:** The word "of" after a fraction usually means multiply. The words "remaining" and "left" tell you the whole has changed.
+
+**Pick a friendly number:** If a problem never tells you the total, make one up. In Example 4, say that Dev has 12 dollars, since 3 and 4 both divide 12. He spends 4, leaving 8. Then he spends 2, leaving 6. That's half of 12, which gives the answer without any fraction work.
+
+**Time:** One to two minutes. Compare to $\frac{1}{2}$ to eliminate answer choices that are the wrong size.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Next, you'll use [equal groups for ratios](/pathway/fractions-ratios/02-ratios-as-boxes/). Fractions are also the language of [probability](/pathway/intro-probability/).
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- Fraction of a number: divide by the bottom, then multiply by the top.
+- To add or compare, make the pieces match first.
+- To multiply, multiply tops and multiply bottoms.
+- Always ask, "A fraction of what?"
+- No total given? Choose a friendly number.
+
+</section>

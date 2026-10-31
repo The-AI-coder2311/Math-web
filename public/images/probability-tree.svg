@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>A tree diagram for drawing 2 marbles from a bag of 3 red and 2 blue. The first draw is red with probability 3 fifths or blue with probability 2 fifths. After red, the second draw is red 2 fourths or blue 2 fourths. After blue, it is red 3 fourths or blue 1 fourth. The four paths have probabilities 6, 6, 6 and 2 twentieths.</title>
+  <g stroke="#b4461a" stroke-width="2.5" fill="none">
+    <line x1="24" y1="120" x2="130" y2="66" />
+    <line x1="24" y1="120" x2="130" y2="174" />
+    <line x1="180" y1="66" x2="286" y2="30" />
+    <line x1="180" y1="66" x2="286" y2="94" />
+    <line x1="180" y1="174" x2="286" y2="146" />
+    <line x1="180" y1="174" x2="286" y2="210" />
+  </g>
+  <g font-weight="700">
+    <text x="136" y="72">Red</text>
+    <text x="136" y="180">Blue</text>
+    <text x="292" y="36">Red</text>
+    <text x="292" y="100">Blue</text>
+    <text x="292" y="152">Red</text>
+    <text x="292" y="216">Blue</text>
+  </g>
+  <g font-size="14">
+    <text x="48" y="78">3/5</text>
+    <text x="48" y="178">2/5</text>
+    <text x="214" y="36">2/4</text>
+    <text x="214" y="100">2/4</text>
+    <text x="214" y="146">3/4</text>
+    <text x="214" y="212">1/4</text>
+  </g>
+  <g font-size="15">
+    <text x="346" y="36">6/20</text>
+    <text x="346" y="100">6/20</text>
+    <text x="346" y="152">6/20</text>
+    <text x="346" y="216">2/20</text>
+  </g>
+</svg>

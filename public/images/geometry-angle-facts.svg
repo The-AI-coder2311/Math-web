@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>Three angle facts. Angles on a straight line, 130 and 50 degrees, add up to 180. Angles around a point, 120, 150 and 90 degrees, add up to 360. The angles of a triangle, 50, 60 and 70 degrees, add up to 180.</title>
+  <g stroke="#b4461a" stroke-width="3" fill="none">
+    <line x1="14" y1="90" x2="146" y2="90" />
+    <line x1="80" y1="90" x2="122" y2="40" />
+    <line x1="240" y1="70" x2="240" y2="20" />
+    <line x1="240" y1="70" x2="283" y2="95" />
+    <line x1="240" y1="70" x2="190" y2="70" />
+    <polygon points="360,100 460,100 397,28" fill="#fbeee6" />
+  </g>
+  <g font-weight="700" font-size="14">
+    <text x="42" y="80">130°</text>
+    <text x="112" y="82">50°</text>
+    <text x="258" y="56">120°</text>
+    <text x="212" y="98">150°</text>
+    <text x="200" y="58">90°</text>
+    <text x="372" y="94">60°</text>
+    <text x="428" y="94">50°</text>
+    <text x="386" y="60">70°</text>
+  </g>
+  <text x="80" y="135" text-anchor="middle" font-weight="700">Straight line: 180°</text>
+  <text x="238" y="135" text-anchor="middle" font-weight="700">Around a point: 360°</text>
+  <text x="405" y="135" text-anchor="middle" font-weight="700">Triangle: 180°</text>
+</svg>

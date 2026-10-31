@@ -1,102 +1,128 @@
 ---
-title: "Logic & Patterns: Try Small, Then Reason"
-summary: When a problem looks huge, try a smaller version and look for a pattern. Then learn to work backwards and to test every possibility.
-minutes: 8
+title: "Repeating and Growing Patterns"
+summary: Use remainders to jump ahead in a repeating pattern, and learn how to reach the 100th term of a growing one without off-by-one mistakes.
+minutes: 9
 ---
 
-Imagine that 10 people at a party all shake hands with each other once. How many handshakes is that? You could try to picture it all at once, but there's a better way: **start with a smaller party**.
+Today is Wednesday. What day of the week will it be 1,000 days from now? You could count on a calendar, but that would take a long time. It turns out that you can answer this with a single division, because the days of the week follow a pattern, and patterns let you skip ahead.
 
-> **The big idea:** When a problem looks too big, try tiny versions of it and look for a pattern. Then ask **why** the pattern happens.
+> **The big idea:** In a **repeating** pattern, whole cycles can be skipped, so only the remainder matters. In a **growing** pattern that adds the same amount each time, count the **steps** you take, and multiply.
 
-## Example 1: Patterns that repeat
+## Why remainders work
+
+The days of the week repeat every 7 days. Every 7 days later, it's Wednesday again, no matter how many times you do it. So any number of full weeks changes nothing. Only the leftover days matter.
+
+Let's test this on a small case. What day is it 10 days from Wednesday? Counting on your fingers gets you to Saturday. Using division, $10 \div 7$ is 1 with a remainder of 3, and 3 days after Wednesday is Saturday. It matches.
+
+For 1,000 days, we have $1000 = 7 \times 142 + 6$. So the remainder is 6, and 6 days after Wednesday is **Tuesday**.
+
+## Example 1: A repeating pattern
 
 Beads on a string repeat in the order red, blue, green, and then start over. What color is the 50th bead?
 
-The pattern repeats every 3 beads, so you can skip whole groups of 3. Divide: $50 \div 3$ is 16 with a remainder of 2. That means 16 full groups take you to bead 48, and then you go 2 more beads: red, then blue. The 50th bead is **blue**.
+**What do we know?** The cycle has 3 beads.
 
-The remainder tells you where you land inside the pattern. This same idea works for days of the week, since they repeat every 7 days.
+**What's the plan?** $50 = 3 \times 16 + 2$. So the first 48 beads make 16 full cycles, ending on green. Then we go 2 more beads: red, then blue. The 50th bead is **blue**.
 
-## Example 2: Patterns that grow by the same amount
+**A helpful way to check:** Which beads are blue? They're numbers 2, 5, 8, 11, and so on, and each has a remainder of 2 when divided by 3. The number 50 also has a remainder of 2, so it fits.
+
+> **Watch out:** When the remainder is 0, you land on the **last** item in the cycle, not the first. The 48th bead is green.
+
+Try this one before moving on. The letters S, T, A, R repeat in order. What's the 42nd letter?
+
+<details class="check"><summary>Show the answer</summary>
+
+The cycle has 4 letters, and $42 = 4 \times 10 + 2$. The remainder is 2, so it's the 2nd letter, which is T.
+
+</details>
+
+## Example 2: A growing pattern
 
 What's the 30th number in the list 5, 8, 11, 14, ...?
 
-Each step adds 3. To get from the 1st number to the 30th, how many steps do you take? It's tempting to say 30, but look at a small case: getting from the 1st number to the 2nd takes **1** step, and getting to the 3rd takes **2** steps. So getting to the 30th takes 29 steps:
+**What do we know?** It starts at 5, and each step adds 3.
+
+**How many steps are there?** It's tempting to say 30. But test a small case: going from the 1st number to the 2nd takes **1** step, and going to the 3rd takes **2** steps. So going to the 30th takes 29 steps.
 
 $$5 + 29 \times 3 = 92$$
 
-> **Watch out:** Off-by-one mistakes are very common. A fence with 4 posts has only 3 gaps. Test a small case whenever you aren't sure.
+So the rule is: the $n$th number equals the first number, plus $(n - 1)$ steps.
 
-## Example 3: Try small cases
+## Example 3: How many numbers are in a list?
 
-Now for the handshakes. Let's make a table:
+How many numbers are in the list 7, 11, 15, ..., 95?
 
-| People | Handshakes | How it grew |
-|---|---|---|
-| 2 | 1 | |
-| 3 | 3 | added 2 |
-| 4 | 6 | added 3 |
-| 5 | 10 | added 4 |
+**What do we know?** Each step adds 4, and the list goes from 7 to 95.
 
-Why does it grow this way? When a new person walks in, they shake hands with everyone already there. The 5th person shakes 4 hands. So for 10 people, the total is:
+**What's the plan?** The total climb is $95 - 7 = 88$. Each step climbs 4, so there are $88 \div 4 = 22$ steps.
 
-$$1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45$$
+**Now the tricky part:** 22 steps connect **23** numbers. Think of a fence: 22 gaps need 23 posts. Test it on a small list. The list 7, 11, 15 has 2 steps and 3 numbers.
 
-There's another way to see it. Each of the 10 people shakes 9 hands, and $10 \times 9 = 90$. But that counts every handshake twice, once for each person in it. So there are $90 \div 2 = 45$ handshakes. Two different methods gave the same answer, which is a great sign.
+## Example 4: Patterns in pictures
 
-## Example 4: Adding a long list quickly
+Toothpicks form a row of triangles that share sides. One triangle uses 3 toothpicks, two use 5, and three use 7. How many toothpicks do 25 triangles use?
 
-What is $1 + 3 + 5 + 7$? Look at what happens when you arrange dots in a square:
+**What's the pattern?** The counts are 3, 5, 7, so each new triangle adds 2 toothpicks. **Why?** A new triangle shares one side with its neighbor, so it needs only 2 new ones.
 
-![Squares of dots growing by an L shape. One dot, then adding 3 dots makes 4, adding 5 dots makes 9, and adding 7 dots makes 16.](/images/logic-odd-squares.svg)
+**How many steps are there?** From 1 triangle to 25 is 24 steps.
 
-Each new L shape of dots adds the next odd number and makes a bigger square. So the sum of the first 4 odd numbers is $4 \times 4 = 16$. This picture shows **why** the pattern works, so you can trust it for any length.
+$$3 + 24 \times 2 = 51$$
 
-## Example 5: A pattern is only a clue
+Knowing **why** the pattern works means that you can trust it for 25 triangles, without building them.
 
-Patterns can fool you. Put dots on a circle, connect every pair with a straight line, and count the regions inside the circle (with the dots placed so that no three lines cross at one point). Here's what you get:
+## Example 5: A contest-style question
 
-| Dots | 1 | 2 | 3 | 4 | 5 | 6 |
-|---|---|---|---|---|---|---|
-| Regions | 1 | 2 | 4 | 8 | 16 | 31 |
+The digits 1, 4, 2, 8, 5, 7 repeat forever to make the decimal 0.142857142857... What's the sum of the first 100 digits after the decimal point?
 
-It looks like the number doubles each time, but the next number is 31, not 32! That's why you should always ask why a pattern works. On a timed multiple-choice contest, a strong pattern is still a good reason to choose an answer. You should just know it's a clue, not a proof.
+**What do we know?** The cycle has 6 digits, and they add up to $1 + 4 + 2 + 8 + 5 + 7 = 27$.
 
-## Example 6: Work backwards
+**How many full cycles are there?** $100 = 6 \times 16 + 4$. So there are 16 full cycles and 4 extra digits.
 
-Leo spends half of his money on lunch. Then he spends \$3 on a snack. He has \$5 left. How much did he start with?
+- The full cycles add up to $16 \times 27 = 432$.
+- The 4 extra digits are 1, 4, 2, and 8, which add up to 15.
 
-When a problem tells you how something **ended**, start at the end and undo each step in reverse:
+$$432 + 15 = 447$$
 
-- He ended with \$5. Before the snack, he had $5 + 3 = 8$ dollars.
-- He had \$8 after spending half. So before lunch, he had $8 \times 2 = 16$ dollars.
+<section data-box="traps">
 
-**Check it forward:** Half of \$16 is \$8, and $8 - 3 = 5$.
+## Common traps
 
-## Example 7: Test every possibility
+**Off by one.** For the 30th number in the list, using $30 \times 3$ instead of $29 \times 3$ gives 95, which is wrong. Getting to the $n$th number takes $n - 1$ steps. If you're ever unsure, test with the 2nd or 3rd number.
 
-One of three students broke a window. Exactly one of these statements is true:
+**Counting the gaps and not the numbers.** In Example 3, the answer 22 is the number of steps. There are 23 numbers. Fences, lists, and page numbers all have this issue. For example, pages 5 through 9 are 5 pages, not 4.
 
-- Ana says, "Ben did it."
-- Ben says, "I didn't do it."
-- Cy says, "Ana didn't do it."
+**Remainder 0 confusion.** Some students think that a remainder of 0 means the first item in the cycle. It actually means that you finished a full cycle, so you're on the last item.
 
-Who did it? There are only 3 possibilities, so test each one and count the true statements.
+</section>
 
-| If the student is... | Ana's statement | Ben's statement | Cy's statement | True statements |
-|---|---|---|---|---|
-| Ana | false | true | false | 1 |
-| Ben | true | false | true | 2 |
-| Cy | false | true | true | 2 |
+<section data-box="strategy">
 
-Only the first row has exactly 1 true statement, so Ana did it. The method is the important part: **make a table, test each case, and don't guess.**
+## Contest strategy
 
-## Your turn
+**How to spot it:** Look for a huge position, like "the 100th" or "the 2,000th," or words like "continues in this pattern" or "repeats."
 
-Before you start the practice problems, try these two:
+**Write out the start:** Write the first several terms to find the cycle. It costs 20 seconds and shows you the pattern. If you find the cycle, you're nearly done.
 
-1. What's the 12th number in the list 4, 9, 14, 19, ...?
-2. I double a number and then add 3, and I get 17. What was my number?
+**Time:** About a minute. If you're making a long list, stop and find what's repeating.
 
-**Answers:** For the first, there are 11 steps of 5, so the number is $4 + 11 \times 5 = 59$. For the second, undo each step: $17 - 3 = 14$, and $14 \div 2 = 7$.
+</section>
 
-If you got those, you're ready. If not, reread Examples 2 and 6, then go on.
+<section data-box="connections">
+
+## Connections
+
+Remainders come from [Number Sense](/pathway/number-sense/). They come back as [units-digit patterns](/pathway/primes-remainders/) in Level 2. Sequences & Series in Level 3 builds on growing patterns.
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- Repeating pattern: divide by the cycle length, and use the remainder.
+- Remainder 0 means the last item in the cycle.
+- Growing pattern: $n$th number = first + $(n - 1)$ steps.
+- Steps connect numbers: 22 steps means 23 numbers.
+- Test a small case whenever you aren't sure.
+
+</section>
