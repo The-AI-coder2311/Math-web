@@ -1,79 +1,113 @@
 ---
-title: "Triangles: Chase Angles, Scale Sides"
-summary: Find unknown angles one step at a time, see why the Pythagorean Theorem is true, and use similar triangles to find lengths you can't measure.
-minutes: 11
+title: "Angle Chasing"
+summary: Find unknown angles one step at a time using outside angles, parallel lines, and the angle sum of any polygon.
+minutes: 10
 ---
 
-Triangles show up everywhere in contest geometry, often hidden inside other shapes. In this lesson, you'll build on what you learned in Level 1 with three strong tools: **angle chasing**, the **Pythagorean Theorem**, and **similar triangles**.
+You've learned that a triangle's angles add up to 180°. But contest diagrams usually contain several triangles and lines, with a question mark on one angle and only a couple of numbers given. It might feel like there's not enough information. There almost always is. You don't need to see the path right away: you only have to find one more angle, and then one more.
 
-> **The big idea:** Don't look for the answer straight away. Find anything you **can** find, write it on your picture, and see what that unlocks.
+> **The big idea:** Don't look for the answer straight away. Find **anything you can**, write it on your picture, and see what that unlocks. This is called **angle chasing**.
 
-## Tool 1: Angle chasing
+## Why the extra facts are true
 
-Angle chasing means filling in a diagram one angle at a time. You already know that a straight line is 180° and that a triangle's angles add up to 180°. Here are three more facts.
+You already know about straight lines, points, and triangles. Here are three more facts, each with a reason.
 
-**The outside angle.** Extend one side of a triangle, and you get an angle outside it. That outside angle equals the sum of the two inside angles that aren't next to it. If the two far angles are 50° and 60°, the third inside angle is 70°, so the outside angle is $180 - 70 = 110$ degrees. That's the same as $50 + 60 = 110$.
+**The outside angle.** Extend one side of a triangle, and you get an angle outside it. That outside angle equals the sum of the two inside angles that are farthest from it. Why? The outside angle and the third inside angle make a straight line, so they add up to 180°. All three inside angles also add up to 180°. So the outside angle must equal the other two inside angles together.
 
-**Parallel lines.** When a line crosses two parallel lines, it makes the same angles at both crossings:
+**Parallel lines.** Two lines are **parallel** if they never meet, like railroad tracks. When a line crosses two parallel lines, it crosses both at the same tilt, so it makes the same angles at each crossing.
 
 ![Two parallel lines crossed by a slanted line. At each crossing, the matching corner measures 70 degrees, and the angle beside it measures 110 degrees.](/images/triangles-parallel-lines.svg)
 
 Any two of these angles are either **equal** or **add up to 180°**. There are no other possibilities.
 
-**Polygons.** Any polygon can be cut into triangles from one corner. A shape with $n$ sides becomes $n - 2$ triangles, so its angles add up to $(n - 2) \times 180$ degrees. A pentagon has 5 sides, which makes 3 triangles, so its angles add up to $3 \times 180 = 540$ degrees. In a **regular** pentagon, all the angles are equal, so each is $540 \div 5 = 108$ degrees.
+**Polygons.** Any polygon can be cut into triangles from one corner. A shape with $n$ sides becomes $n - 2$ triangles, so its angles add up to $(n - 2) \times 180$ degrees. A pentagon has 5 sides, which makes 3 triangles, so its angles add up to $3 \times 180 = 540$ degrees.
 
-## Tool 2: Why the Pythagorean Theorem is true
+Let's test this with a shape we know. A square has 4 sides, which gives 2 triangles and 360°. And four 90° corners do add up to 360°. It works.
 
-You've used $a^2 + b^2 = c^2$, but why does it work? Here's a picture that shows it, using a right triangle with legs 3 and 4 and hypotenuse 5.
+## Example 1: Regular polygons
 
-Start with two identical squares, each with sides of 7, since $3 + 4 = 7$. Place the same 4 triangles inside each one, in two different ways:
+A **regular** polygon has all of its sides and angles equal. What's each angle of a regular hexagon?
 
-![Two squares with sides of 7 that each hold four identical right triangles with legs 3 and 4. In the first square, the leftover space is one tilted square of area 25. In the second, the leftover space is two squares, of area 9 and area 16.](/images/triangles-pythagoras-squares.svg)
+**What's the plan?** A hexagon has 6 sides, so the total is $(6 - 2) \times 180 = 720$ degrees. Share that among 6 equal angles: $720 \div 6 = 120$ degrees.
 
-Both big squares are the same size, and both contain the same 4 triangles. So the leftover space must be the same too. On the left, it's one square built on the hypotenuse. On the right, it's two squares built on the legs. So:
+Try it yourself. What's each angle of a regular octagon, which has 8 sides?
 
-$$3^2 + 4^2 = 5^2$$
+<details class="check"><summary>Show the answer</summary>
 
-The same rearrangement works for any right triangle, which is why the theorem is always true.
+The total is $(8 - 2) \times 180 = 1080$ degrees. Each of the 8 equal angles is $1080 \div 8 = 135$ degrees.
 
-**Two special right triangles.** These appear often, because they come from cutting familiar shapes in half.
+</details>
 
-- **The 45-45-90 triangle** is half of a square. If the legs are 1, the hypotenuse $c$ has $c^2 = 1^2 + 1^2 = 2$, so $c = \sqrt{2}$. The diagonal of any square is its side times $\sqrt{2}$.
-- **The 30-60-90 triangle** is half of an equilateral triangle. If the short leg is 1, the hypotenuse is 2, and the long leg is $\sqrt{3}$.
+## Example 2: Outside angles of a polygon
 
-## Tool 3: Similar triangles
+Walk around a regular pentagon, turning at each corner. By the time you return to where you started, you've turned all the way around once. So all of the **outside** angles of any polygon add up to 360°. For a regular pentagon, each is $360 \div 5 = 72$ degrees, and the inside angle is $180 - 72 = 108$ degrees.
 
-Two triangles are **similar** if they have the same shape but maybe a different size. If two angles of one triangle match two angles of another, then the triangles are similar, because the third angles must match too.
+This is often the quickest way to find the angle of a regular polygon.
 
-In similar triangles, all corresponding sides are multiplied by the same **scale factor**.
+## Example 3: A chase through parallel lines
 
-A 2-meter pole casts a 3-meter shadow. At the same moment, a building casts a 30-meter shadow. How tall is the building?
+Lines $m$ and $n$ are parallel. A triangle has its top corner on line $m$ and its bottom side on line $n$. The two bottom angles are 50° and 70°. The top corner makes three angles along line $m$: one on the left, the triangle's top angle, and one on the right. What's the angle on the left?
 
-The sun makes the same angle with both, so the two triangles are similar. The shadow is 10 times as long, since $30 \div 3 = 10$. So the building is 10 times as tall: $2 \times 10 = 20$ meters.
+**What can we find?** The top angle of the triangle is $180 - 50 - 70 = 60$ degrees.
 
-> **Watch out:** If the side lengths are multiplied by 3, the area is multiplied by $3 \times 3 = 9$, not by 3. Area scales by the scale factor **squared**, because both the base and the height get bigger.
+**What about the parallel lines?** The left side of the triangle crosses both lines. Its angle with line $m$, on the left of the top corner, equals its angle with line $n$, inside the triangle, because a line crosses two parallel lines at the same tilt. So the left angle is 50°.
 
-## Example: Using them together
+**Check:** Similarly, the right one is 70°. On line $m$, $50 + 60 + 70 = 180$. This is also another proof that a triangle's angles add up to 180°!
 
-A triangle has sides of 13, 13, and 10. What's its area?
+## Example 4: A contest-style question
 
-- **Draw it.** An isosceles triangle splits into two matching right triangles when you draw the height from the top to the base of 10. That height cuts the base into 5 and 5.
-- **Use Pythagoras.** One right triangle has a leg of 5 and a hypotenuse of 13. Using the height $h$, we get $h^2 = 13^2 - 5^2 = 169 - 25 = 144$, so $h = 12$.
-- **Find the area.** The area is $\frac{1}{2} \times 10 \times 12 = 60$.
+In triangle $ABC$, sides $AB$ and $AC$ are equal, and angle $A$ is 36°. A line from $B$ cuts angle $B$ exactly in half, and meets side $AC$ at $D$. What's angle $BDC$?
 
-Notice that the problem never mentioned a right angle. **Drawing a height** to create a right triangle is one of the most useful moves in geometry.
+**Draw it.** Fill in what you can.
 
-## One more check: Can the triangle exist?
+- **Angles $B$ and $C$:** Since $AB = AC$, they're equal. They share $180 - 36 = 144$ degrees, so each is 72°.
+- **Half of $B$:** Each half of angle $B$ is $72 \div 2 = 36$ degrees.
+- **Triangle $BDC$:** We now know angle $DBC$ is 36° and angle $C$ is 72°. So angle $BDC$ is $180 - 36 - 72 = 72$ degrees.
 
-Could a triangle have sides of 2, 3, and 6? Try to picture it. The sides of 2 and 3 can't stretch far enough to connect across a side of 6. The **triangle inequality** says that any two sides must add up to **more than** the third side.
+Notice something neat: triangles $ABD$ and $BDC$ are both isosceles. Finding angles often reveals equal sides too.
 
-## Your turn
+<section data-box="traps">
 
-Before you start the practice problems, try these two:
+## Common traps
 
-1. What do the angles of an octagon, which has 8 sides, add up to?
-2. Two similar triangles have a scale factor of 2. The small one has an area of 5. What's the area of the big one?
+**Assuming lines are parallel.** The equal-angle facts only work for parallel lines. Don't use them unless the problem says so, or shows arrow marks on the lines.
 
-**Answers:** For the first, $(8 - 2) \times 180 = 1080$ degrees. For the second, the area is multiplied by $2 \times 2 = 4$, so it's $5 \times 4 = 20$.
+**Using $n$ instead of $n - 2$.** A hexagon doesn't have $6 \times 180$ degrees. You can test this with a triangle: 3 sides, but only 1 triangle, not 3.
 
-If you got those, you're ready. Draw every problem, and write on your drawing as you learn things.
+**Assuming that a polygon is regular.** You can only divide the total by the number of sides if every angle is equal. The problem has to say "regular" or show matching marks.
+
+</section>
+
+<section data-box="strategy">
+
+## Contest strategy
+
+**How to spot it:** Any diagram with degree marks, and a question mark on an angle.
+
+**Write on the figure.** Even if you aren't sure how it helps, each angle you find is progress.
+
+**Look for hidden isosceles triangles.** Equal sides mean equal angles, and equal angles mean equal sides. Radii of a circle often create them.
+
+**Time:** Two minutes. If you're stuck after that, put a letter $x$ on an angle you don't know, and chase using that.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+This builds on [the three angle facts](/pathway/basic-geometry/03-angle-facts/). Angle chasing is the first step toward [similar triangles](/pathway/triangles/04-similar-triangles/), and it's key to circle geometry in Level 3.
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- Find anything you can, and write it on the figure.
+- Outside angle = the sum of the two far inside angles.
+- Parallel lines: angles are equal or add up to 180°.
+- Polygon angles add up to $(n - 2) \times 180$ degrees.
+- Outside angles of a polygon add up to 360°.
+
+</section>

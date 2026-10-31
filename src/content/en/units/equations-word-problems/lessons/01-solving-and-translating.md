@@ -1,112 +1,134 @@
 ---
-title: "Equations: Turn Words Into Math"
-summary: Use a letter for the number you don't know, translate the story into an equation, and solve it. Then use the same steps for ages, speeds, and work.
+title: "Solving and Translating"
+summary: Use a letter for the number you don't know, solve equations by keeping them balanced, and turn English sentences into math.
 minutes: 10
 ---
 
-In Level 1, you solved many problems with boxes and by working backwards. Those methods are great, but some stories get too tangled for them. Algebra is the tool that handles the tangled ones.
+In Level 1, you solved problems with boxes and by working backwards. Those methods are great, but some stories get too tangled for them. Try this one: "Three consecutive whole numbers add up to 54. What are they?" You could guess and check. In this lesson, you'll learn a way that works every time, and it's the same way that handles problems far too tangled for guessing.
 
-> **The big idea:** Give the unknown number a name, usually a letter. Write down what the story says about it. Now the story is an equation, and you can solve equations step by step.
+> **The big idea:** Give the unknown number a name, usually a letter. Write down what the story says about it. Then the story is an **equation**, and you can solve it by doing the same thing to both sides.
 
-## Example 1: Solving an equation
+## Why doing the same thing to both sides works
 
-A letter just stands for a number we don't know yet. Solve $3x + 5 = 20$.
+A letter stands for a number we don't know yet. An equation says that two things are equal, like a balanced scale. If you add a 5-pound weight to one side only, the scale tips. If you add 5 pounds to both sides, it stays balanced. So anything you do to both sides keeps the equation true.
 
-Think of the equals sign as a balance. If you do the same thing to both sides, it stays balanced. So undo each operation:
+To solve $3x + 5 = 20$, we want $x$ alone on one side. So we undo what's been done to it, in reverse order, the same way as working backwards:
 
-- Subtract 5 from both sides: $3x = 15$.
+| Step | What you do | Result |
+|---|---|---|
+| Start | | $3x + 5 = 20$ |
+| Undo adding 5 | Subtract 5 from both sides | $3x = 15$ |
+| Undo multiplying by 3 | Divide both sides by 3 | $x = 5$ |
+
+**Check it** by putting 5 back in: $3 \times 5 + 5 = 20$. It works. Always check, because it only takes a few seconds.
+
+## Example 1: Letters on both sides
+
+Solve $5x - 3 = 2x + 12$.
+
+**What's the plan?** Get all of the letters on one side, and all of the numbers on the other.
+
+- Subtract $2x$ from both sides: $3x - 3 = 12$.
+- Add 3 to both sides: $3x = 15$.
 - Divide both sides by 3: $x = 5$.
 
-**Check it** by putting 5 back in: $3 \times 5 + 5 = 20$. It works.
+**Check:** The left side is $5 \times 5 - 3 = 22$, and the right side is $2 \times 5 + 12 = 22$.
 
-## Example 2: Translating words
+Try one yourself. Solve $4x + 7 = 2x + 19$.
 
-Contest problems are written in words, so you need to turn the words into symbols.
+<details class="check"><summary>Show the answer</summary>
+
+Subtract $2x$ from both sides to get $2x + 7 = 19$. Subtract 7 to get $2x = 12$, so $x = 6$. Check: both sides equal 31.
+
+</details>
+
+## Example 2: Multiplying out parentheses
+
+Solve $3(x + 4) = 27$.
+
+Parentheses mean that the 3 multiplies **everything** inside. Picture 3 bags, and each bag holds $x$ marbles and 4 more. In total, there are $3x$ marbles and 12 more:
+
+$$3x + 12 = 27$$
+
+So $3x = 15$, and $x = 5$. You could also divide both sides by 3 first, which gives $x + 4 = 9$ and the same answer. Either path works, so choose the one that looks easier.
+
+## Example 3: Translating words
+
+Contest problems are in words, so you need to turn the words into symbols.
 
 | The words | The math |
 |---|---|
 | 5 more than a number | $n + 5$ |
 | 5 less than a number | $n - 5$ |
 | Twice a number | $2n$ |
+| A number divided by 4 | $\frac{n}{4}$ |
 | Three consecutive whole numbers | $n, \ n + 1, \ n + 2$ |
-| A number decreased by 20% | $0.8n$ |
+| Three consecutive even numbers | $n, \ n + 2, \ n + 4$ |
 
-> **Watch out:** "5 less than a number" is $n - 5$, not $5 - n$. The words come in the opposite order from the math. Test it with a real number: 5 less than 12 is 7, which is $12 - 5$.
-
-Now try this one: three consecutive whole numbers add up to 54. What are they? Write:
+Now try the opening problem. Let $n$ be the smallest of the three numbers:
 
 $$n + (n + 1) + (n + 2) = 54$$
 
 That simplifies to $3n + 3 = 54$. Subtract 3 to get $3n = 51$, and divide by 3 to get $n = 17$. The numbers are 17, 18, and 19.
 
-## Example 3: Age problems
+**Check:** $17 + 18 + 19 = 54$.
 
-Dana is 4 times as old as Eli. In 5 years, Dana will be 3 times as old as Eli. How old is Eli now?
+## Example 4: A contest-style question
 
-A table keeps this organized. Let $e$ be Eli's age now.
+When 12 is added to a certain number, the result is 3 times the number decreased by 2. What's the number?
 
-| | Now | In 5 years |
-|---|---|---|
-| Eli | $e$ | $e + 5$ |
-| Dana | $4e$ | $4e + 5$ |
+**What do we know?** Let's call the number $n$. The story describes one amount in two ways.
 
-The story says that in 5 years, Dana's age will be 3 times Eli's age:
+**How do we translate it?** "12 is added to a number" is $n + 12$. "3 times the number decreased by 2" is $3n - 2$. These are equal:
 
-$$4e + 5 = 3(e + 5)$$
+$$n + 12 = 3n - 2$$
 
-Multiplying out gives $4e + 5 = 3e + 15$. Subtract $3e$ from both sides to get $e + 5 = 15$, so $e = 10$. Eli is 10 and Dana is 40.
+Subtract $n$ from both sides to get $12 = 2n - 2$. Add 2 to get $14 = 2n$. So $n = 7$.
 
-**Check:** In 5 years, they'll be 15 and 45, and 45 is 3 times 15.
+**Check:** $7 + 12 = 19$, and $3 \times 7 - 2 = 19$.
 
-## Example 4: Distance, speed, and time
+<section data-box="traps">
 
-These three quantities are connected by one formula:
+## Common traps
 
-$$\text{distance} = \text{speed} \times \text{time}$$
+**Reversing "less than."** "5 less than a number" is $n - 5$, not $5 - n$. The words come in the opposite order from the math. Test it with a real number: 5 less than 12 is 7, which is $12 - 5$.
 
-If you ride at 12 miles per hour for 3 hours, you go $12 \times 3 = 36$ miles. Now here's the most famous trap in this topic.
+**Only multiplying part of the parentheses.** Writing $3(x + 4)$ as $3x + 4$ is a common mistake. The 3 has to multiply both parts. Test it with $x = 1$: $3(1 + 4) = 15$, but $3 \times 1 + 4 = 7$. They aren't equal, so the second can't be right.
 
-You drive 60 miles to a city at 60 miles per hour, and you drive back at 30 miles per hour. What's your average speed for the whole trip?
+**Doing something to one side only.** Going from $3x + 5 = 20$ to $3x = 20$ removes the 5 from one side but doesn't change the other. Whatever you do, do it to both sides.
 
-It's tempting to average 60 and 30 and say 45. But average speed is always **total distance divided by total time**:
+</section>
 
-- The trip there takes $60 \div 60 = 1$ hour.
-- The trip back takes $60 \div 30 = 2$ hours.
-- That's 120 miles in 3 hours, and $120 \div 3 = 40$ miles per hour.
+<section data-box="strategy">
 
-You spend more time going slowly, so the average is pulled closer to the slower speed.
+## Contest strategy
 
-## Example 5: Two things at once
+**How to spot it:** Look for "a number," "consecutive," or a sentence comparing two amounts.
 
-Tickets cost \$6 for adults and \$4 for students. A show sold 50 tickets for a total of \$230. How many adult tickets were sold?
+**Define your letter in words.** Write "$n$ = the smallest number" on your paper. It stops you from answering the wrong question.
 
-Let $a$ be the number of adult tickets. The rest are student tickets, so there are $50 - a$ of those. Adding up the money gives:
+**Test the choices:** On a multiple-choice contest, you can often plug in answer choices instead of solving. Start with the middle choice. This is especially useful when an equation looks messy.
 
-$$6a + 4(50 - a) = 230$$
+**Time:** A minute or less. Always check your answer against the story, not only the equation.
 
-Multiplying out gives $6a + 200 - 4a = 230$, which simplifies to $2a + 200 = 230$. So $2a = 30$ and $a = 15$.
+</section>
 
-**Check:** 15 adult tickets bring in \$90. The other 35 are student tickets, which bring in \$140. Together, that's \$230.
+<section data-box="connections">
 
-## Example 6: Working together
+## Connections
 
-Mia can paint a fence in 3 hours, and Jo can paint it in 6 hours. How long does it take if they work together?
+Solving is [working backwards](/pathway/logic-patterns/03-working-backwards/) in a new form. The next lesson uses equations for [ages and number stories](/pathway/equations-word-problems/02-age-and-number-stories/), and the [Algebra Toolkit](/pathway/algebra-toolkit/) takes it further.
 
-Don't add the times! Working together has to be faster than either one alone. Instead, ask how much each person gets done in **one hour**:
+</section>
 
-- Mia paints $\frac{1}{3}$ of the fence per hour.
-- Jo paints $\frac{1}{6}$ of the fence per hour.
-- Together, they paint $\frac{1}{3} + \frac{1}{6} = \frac{1}{2}$ of the fence per hour.
+<section data-box="summary">
 
-If they paint half of the fence each hour, the whole fence takes 2 hours.
+## Remember this
 
-## Your turn
+- Whatever you do to one side, do to the other.
+- Undo steps in reverse order.
+- A number outside parentheses multiplies everything inside.
+- "5 less than $n$" means $n - 5$.
+- Check your answer in the original story.
 
-Before you start the practice problems, try these two:
-
-1. Solve $5x - 4 = 31$.
-2. A runner goes 18 miles at 6 miles per hour. How many hours does that take?
-
-**Answers:** For the first, add 4 to get $5x = 35$, and divide by 5 to get $x = 7$. For the second, $18 \div 6 = 3$ hours.
-
-If you got those, you're ready. Some of these practice problems are marked **Hard**. They're meant to take a while, so use the hints when you need them.
+</section>

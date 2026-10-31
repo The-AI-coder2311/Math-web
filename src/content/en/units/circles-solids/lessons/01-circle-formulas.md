@@ -1,94 +1,125 @@
 ---
-title: "Circles & Solids: Shapes With Curves and Depth"
-summary: Understand what pi means, find shaded areas by subtracting, work with parts of circles, and picture shapes in three dimensions.
-minutes: 10
+title: "Circle Formulas and Scaling"
+summary: Understand what pi really is, and why the circumference and area formulas work. Then see what happens when a circle grows.
+minutes: 9
 ---
 
-So far, every shape you've measured has had straight sides. Now we'll add circles, where a special number called pi appears, and then move into three dimensions.
+A 12-inch pizza costs \$10, and a 6-inch pizza costs \$5. The large one costs twice as much and is twice as wide, so is it a fair price? Before you answer, picture cutting up the large pizza. How many small pizzas' worth of pizza does it hold? The answer surprises nearly everyone, and it depends on how circles grow.
 
-> **The big idea:** Hard shapes are usually easy shapes in disguise. A shaded region is often one shape minus another, and a slice of a circle is just a fraction of the whole circle.
+> **The big idea:** Two formulas do almost everything: the **circumference** (the distance around) is $2 \pi r$, and the **area** is $\pi r^2$. Both use the **radius**, $r$, the distance from the center to the edge.
 
-## Example 1: What pi means
+## What pi really is
 
-If you wrap a string around any circle and compare it with the distance across, the string is always a little more than 3 times as long. That number, about 3.14, is called **pi** and is written $\pi$. It's the same for every circle.
+Wrap a string around any circle, and compare it with the distance straight across the circle, which is called the **diameter**. It doesn't matter how big the circle is: the string is always a little over 3 times as long. That number, about 3.14, is called **pi** and written $\pi$. All circles are the same shape, so they're all scaled copies of each other, and that's why the ratio never changes.
 
-The **radius** $r$ goes from the center to the edge. The **diameter** goes all the way across, so it's 2 radii. Two formulas give you almost everything you need:
+So the circumference is $\pi$ times the diameter. Since the diameter is two radii, that's $2 \pi r$.
 
-$$\text{Circumference (distance around)} = 2 \pi r$$
+## Why the area is $\pi r^2$
 
-$$\text{Area} = \pi r^2$$
+Cut a circle into many thin pizza slices, and arrange them in a row, pointing up and down in turn. The result looks almost like a rectangle. Its height is the radius $r$. Its long side is half of the outer crust, since half the slices point each way, so that side is half of $2 \pi r$, which is $\pi r$. A rectangle's area is width times height, so the circle's area is:
 
-For a circle with a radius of 3, the circumference is $6\pi$ and the area is $9\pi$.
+$$\pi r \times r = \pi r^2$$
 
-Contest answers are usually left "in terms of $\pi$," which means you write $9\pi$ rather than turning it into a decimal.
+Contest answers are usually left "in terms of $\pi$," which means you write $9\pi$, and not a decimal.
 
-> **Watch out:** Problems often give the **diameter**, but the area formula uses the **radius**. For a circle with a diameter of 10, the radius is 5 and the area is $25\pi$, not $100\pi$.
+## Example 1: Using the formulas
 
-## Example 2: Scaling a circle
+A circle has a radius of 3. What are its circumference and its area?
 
-If you double a circle's radius, what happens to its area? It goes from $\pi r^2$ to $\pi (2r)^2$, which is $4 \pi r^2$. The area is **4 times** as big. This matches what you learned about similar triangles: area scales by the scale factor squared. A pizza that's twice as wide has 4 times as much pizza!
+- The circumference is $2 \times 3 \times \pi$, which is $6\pi$.
+- The area is $\pi \times 3^2$, which is $9\pi$.
 
-## Example 3: Shaded regions
+Those use different formulas and different units. A circumference is a length, while an area is in square units.
 
-A circle fits perfectly inside a square with sides of 10. What's the area of the shaded corners?
+Now you try. A circle has a diameter of 8. What's its area?
 
-![A circle of radius 5 inside a square with sides of 10. The circle touches all four sides, and the four corners outside the circle are shaded.](/images/circles-in-square.svg)
+<details class="check"><summary>Show the answer</summary>
 
-You don't need to find the area of a curved corner directly. Just subtract:
+The radius is half of the diameter, which is 4. So the area is $\pi \times 4^2$, or $16\pi$.
 
-- The square has an area of $10 \times 10 = 100$.
-- The circle has a diameter of 10, so its radius is 5 and its area is $25\pi$.
-- The shaded area is $100 - 25\pi$.
+</details>
 
-The same subtraction works for a **ring** between two circles. With radii of 5 and 3, the ring's area is $25\pi - 9\pi = 16\pi$.
+## Example 2: Going backwards
 
-## Example 4: Slices of a circle
+A circle has an area of $49\pi$. What's its circumference?
 
-A slice of a circle, like a slice of pizza, is called a **sector**. Its share of the circle depends on its angle, out of 360°.
+**What do we know?** The area formula gives $\pi r^2 = 49\pi$, so $r^2 = 49$ and $r = 7$.
 
-A sector with an angle of 90° is $\frac{90}{360} = \frac{1}{4}$ of the circle. If the radius is 6, the whole circle's area is $36\pi$, so the sector's area is $9\pi$. The curved edge, called an **arc**, is also $\frac{1}{4}$ of the whole circumference. The circumference is $12\pi$, so the arc is $3\pi$.
+**What's the question asking?** The circumference is $2 \times 7 \times \pi$, which is $14\pi$.
 
-## Example 5: Probability with areas
+You'll use this path often: if you have one of area, circumference, radius, or diameter, you can find the others. The radius is the best middle step.
 
-If you throw a dart at random and it lands somewhere on the square in Example 3, what's the probability that it lands inside the circle?
+## Example 3: Scaling a circle
 
-When outcomes are spread over a region, you can use areas instead of counting:
+Back to the pizzas. The 12-inch pizza has a radius of 6, so its area is $36\pi$. The 6-inch pizza has a radius of 3, so its area is $9\pi$.
 
-$$\text{Probability} = \frac{\text{area you want}}{\text{total area}} = \frac{25\pi}{100} = \frac{\pi}{4}$$
+$$36 \div 9 = 4$$
 
-That's about 0.785, so the dart lands in the circle about 78.5% of the time.
+The large pizza has **4 times** as much pizza, for only 2 times the price. That's a much better deal! Doubling a circle's radius multiplies its area by 4. You saw this with [similar triangles](/pathway/triangles/04-similar-triangles/): area scales by the scale factor squared. The circumference is a length, so it only doubles.
 
-## Example 6: Boxes
+## Example 4: How far does a wheel roll?
 
-A rectangular box measures 2 by 3 by 4.
+A bicycle wheel has a diameter of 26 inches. It rolls forward, turning exactly 10 times. How far does the bike travel?
 
-- **Volume** is how much fits inside. Picture layers of small cubes: each layer has $2 \times 3 = 6$ cubes, and there are 4 layers. So the volume is $2 \times 3 \times 4 = 24$.
-- **Surface area** is the total area of the outside, like wrapping paper. A box has 3 pairs of matching faces, so the surface area is $2 \times (2 \times 3 + 2 \times 4 + 3 \times 4) = 52$.
+**What's the question really asking?** Each full turn lays out the whole circumference along the ground, so it moves forward by one circumference.
 
-A **cylinder**, like a can, works the same way as a stack of layers. Its volume is the area of the circle on the bottom times the height, which is $\pi r^2 h$.
+- One turn: $\pi \times 26$, or $26\pi$ inches.
+- Ten turns: $260\pi$ inches.
 
-## Example 7: Picturing it in 3D
+Using 3.14 for $\pi$, that's about 816 inches, or 68 feet.
 
-A cube with sides of 3 is painted on the outside and then cut into 27 small cubes. How many small cubes have paint on exactly one face?
+## Example 5: A contest-style question
 
-You can picture where each kind of small cube is:
+A circular garden has a radius of 10 feet. A path that's 2 feet wide runs all around the outside of it. What's the area of the path?
 
-- **Corners** have 3 painted faces. There are always 8 corners.
-- **Edges** (not including corners) have 2 painted faces. A cube has 12 edges, with 1 such cube on each.
-- **Face centers** have 1 painted face. There are 6 faces, with 1 center on each, so that's **6** small cubes.
-- **The very middle** has no paint. There's just 1 of these.
+**What's the plan?** The path is a ring, so subtract. The outer circle has a radius of $10 + 2 = 12$.
 
-Check: $8 + 12 + 6 + 1 = 27$. That's every small cube, so we didn't miss any.
+$$\pi \times 12^2 - \pi \times 10^2 = 144\pi - 100\pi = 44\pi$$
 
-When a problem is hard to picture, try to sketch it, or fold it out of paper.
+So the area is $44\pi$ square feet. Notice that squaring the 2 and getting $4\pi$ doesn't work: a ring's area depends on how big it is around, as well as how wide it is.
 
-## Your turn
+<section data-box="traps">
 
-Before you start the practice problems, try these two:
+## Common traps
 
-1. What's the area of a circle with a diameter of 8?
-2. What's the volume of a box that's 5 by 2 by 3?
+**Using the diameter in the area formula.** For a circle with a diameter of 10, the area isn't $100\pi$. The radius is 5, so the area is $25\pi$. Always find the radius first.
 
-**Answers:** For the first, the radius is 4, so the area is $16\pi$. For the second, $5 \times 2 \times 3 = 30$.
+**Mixing up the two formulas.** A tip: area has square units, so its formula has the squared $r$. Circumference is a plain length, so its formula has a plain $r$.
 
-If you got those, you're ready for the problems.
+**Thinking that double the width means double the area.** Doubling the radius multiplies the area by 4. Tripling multiplies it by 9.
+
+</section>
+
+<section data-box="strategy">
+
+## Contest strategy
+
+**How to spot it:** Look for "radius," "diameter," "circular," wheels, and pizzas.
+
+**Write the radius on your diagram first.** That one step prevents the most common mistake.
+
+**Estimating:** Use $\pi \approx 3$ to eliminate answer choices. A circle fits inside a square with the same width, so its area has to be less than that square's area, and it's about $\frac{3}{4}$ of it.
+
+**Time:** About a minute.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Circles extend [perimeter and area](/pathway/basic-geometry/01-perimeter-and-area/) from Level 1. Next, you'll combine circles with other shapes in [shaded regions](/pathway/circles-solids/02-shaded-regions/).
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- Circumference: $2 \pi r$. Area: $\pi r^2$.
+- Find the radius first. It's half of the diameter.
+- Leave answers in terms of $\pi$.
+- Doubling the radius makes the area 4 times as big.
+- One wheel turn moves it one circumference.
+
+</section>

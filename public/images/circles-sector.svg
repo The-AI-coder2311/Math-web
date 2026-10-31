@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>A circle of radius 6 with a 90 degree slice shaded. The slice is one quarter of the circle. Its area is 9 pi, and its curved edge, the arc, has length 3 pi.</title>
+  <circle cx="130" cy="110" r="90" fill="#ffffff" stroke="#b4461a" stroke-width="3" />
+  <path d="M130,110 L220,110 A90,90 0 0,0 130,20 Z" fill="#e9a988" stroke="#b4461a" stroke-width="3" />
+  <circle cx="130" cy="110" r="3" fill="#2b2622" />
+  <polyline points="130,96 144,96 144,110" fill="none" stroke="#2b2622" stroke-width="2" />
+  <text x="165" y="128" font-weight="700">radius 6</text>
+  <g font-weight="700">
+    <text x="250" y="70">Slice: 90° of 360°</text>
+    <text x="250" y="100">That's 1/4 of the circle</text>
+  </g>
+  <text x="250" y="132">Area: 1/4 of 36π = 9π</text>
+  <text x="250" y="160">Arc: 1/4 of 12π = 3π</text>
+</svg>

@@ -1,100 +1,133 @@
 ---
-title: "Primes & Remainders: The Building Blocks"
-summary: Every whole number is built from primes. Use that to count factors, find GCF and LCM, and see the patterns in remainders and last digits.
+title: "Prime Factorization"
+summary: Every whole number is built from primes in exactly one way. Learn to find a number's prime factors, and use them to answer questions quickly.
 minutes: 10
 ---
 
-In Level 1, you found factors by listing pairs. That works for small numbers, but how many factors does 720 have? Listing would take a while. This lesson shows you a much faster way, using one fact about primes.
+What's the smallest whole number you can multiply 12 by to get a perfect square? You could try: $12 \times 2 = 24$, no. $12 \times 3 = 36$, yes! But why did 3 work? And what would you do for 180, or 2,000? There's a way to look inside a number and see the answer immediately, and it uses the numbers that everything else is built from: the primes.
 
-> **The big idea:** Every whole number greater than 1 can be built by multiplying primes, and there's only one way to do it. Those primes are like the number's DNA. Once you have them, many questions become quick.
+> **The big idea:** Every whole number greater than 1 can be written as a product of primes in **exactly one way**. That list of primes is the number's **prime factorization**, and it tells you nearly everything about the number.
 
-## Example 1: Prime factorization
+## Why primes are the building blocks
 
-To break a number into primes, split it into any factor pair and keep going until only primes are left. For 72:
+In Level 1, you learned that a prime has exactly 2 factors: 1 and itself. Any other number, called a **composite** number, can be split into smaller factors. If you keep splitting, you can't go on forever, since the numbers keep getting smaller. So you must end up with only primes.
 
-- $72 = 8 \times 9$
-- $8 = 2 \times 2 \times 2$, and $9 = 3 \times 3$
+The surprising part is that it doesn't matter how you start. Take 72:
 
-So $72 = 2 \times 2 \times 2 \times 3 \times 3$. We can write this in shorter form using exponents, as $72 = 2^3 \times 3^2$.
+- Starting with $8 \times 9$: $2 \times 2 \times 2 \times 3 \times 3$.
+- Starting with $6 \times 12$: $(2 \times 3) \times (2 \times 2 \times 3)$, which is the same primes.
 
-You could have started with $72 = 6 \times 12$ instead, and you'd end up with the same primes. That's always true.
+Either way, you get three 2s and two 3s. We write this using exponents, so $72 = 2^3 \times 3^2$. An exponent tells you how many copies to multiply: $2^3 = 2 \times 2 \times 2 = 8$.
 
-## Example 2: Counting factors quickly
+## Example 1: Finding a factorization
 
-Any factor of 72 is built from the same primes, using up to three 2s and up to two 3s.
+Find the prime factorization of 360.
 
-- For the 2s, you can use 0, 1, 2, or 3 of them, which is 4 options.
-- For the 3s, you can use 0, 1, or 2 of them, which is 3 options.
+**What's the plan?** Split off an easy factor, and then keep going. A factor tree can help you organize it.
 
-This is the multiply trick again: $4 \times 3 = 12$ factors.
+- $360 = 10 \times 36$
+- $10 = 2 \times 5$
+- $36 = 4 \times 9 = 2 \times 2 \times 3 \times 3$
 
-> **The rule:** Add 1 to each exponent, and then multiply. For $720 = 2^4 \times 3^2 \times 5^1$, there are $5 \times 3 \times 2 = 30$ factors.
+Gather them up: three 2s, two 3s, and one 5. So $360 = 2^3 \times 3^2 \times 5$.
 
-## Example 3: GCF and LCM
+**Check:** $8 \times 9 \times 5 = 360$. The [divisibility rules](/pathway/number-sense/03-divisibility-rules/) from Level 1 help you find small factors quickly.
 
-The **greatest common factor (GCF)** of two numbers is the biggest number that divides both. The **least common multiple (LCM)** is the smallest number that both divide into.
+Try one. What's the prime factorization of 84?
 
-Take 24 and 36. Write them as primes:
+<details class="check"><summary>Show the answer</summary>
 
-$$24 = 2^3 \times 3^1 \qquad 36 = 2^2 \times 3^2$$
+$84 = 4 \times 21 = 2 \times 2 \times 3 \times 7$, so $84 = 2^2 \times 3 \times 7$.
 
-- For the GCF, use the **smaller** power of each prime: $2^2 \times 3^1 = 12$.
-- For the LCM, use the **larger** power of each prime: $2^3 \times 3^2 = 72$.
+</details>
 
-How do you know which to use in a word problem?
+## Example 2: How to spot a perfect square
 
-- **GCF** problems are about splitting things into the **largest equal groups**. You have 24 apples and 36 pears, and you want identical fruit bags with nothing left over. The most bags you can make is 12.
-- **LCM** problems are about things that **line up again**. One bus comes every 24 minutes and another comes every 36. If they arrive together now, they'll next arrive together in 72 minutes.
+Back to the opening puzzle. What do perfect squares look like inside?
 
-There's also a neat connection: GCF times LCM equals the product of the two numbers. Here, $12 \times 72 = 24 \times 36$.
+$$36 = 6 \times 6 = (2 \times 3) \times (2 \times 3) = 2^2 \times 3^2$$
 
-## Example 4: Divisibility shortcuts
+A perfect square is a number multiplied by itself, so its primes come in matching pairs. That means **every exponent in a perfect square is even**.
 
-These rules let you test big numbers without dividing:
+Now $12 = 2^2 \times 3$. The 2s are fine, but the 3 has no partner. So multiply by one more 3 to get $2^2 \times 3^2 = 36$. That's why 3 was the answer!
 
-| Divisible by | Test | Example |
-|---|---|---|
-| 2 | The last digit is even | 538 |
-| 3 | The digits add up to a multiple of 3 | 411, since $4 + 1 + 1 = 6$ |
-| 4 | The last two digits are a multiple of 4 | 1,732, since 32 works |
-| 5 | The last digit is 0 or 5 | 945 |
-| 9 | The digits add up to a multiple of 9 | 2,916, since $2 + 9 + 1 + 6 = 18$ |
+What about 180? We have $180 = 2^2 \times 3^2 \times 5$. Only the 5 has an odd exponent, so the smallest multiplier is 5, which gives $900 = 30 \times 30$.
 
-For 6, a number must pass the tests for both 2 and 3.
+## Example 3: Perfect cubes
 
-## Example 5: Remainders you can do math with
+What's the smallest whole number you can multiply 180 by to get a perfect **cube**?
 
-Suppose a number leaves a remainder of 3 when divided by 7, and another leaves a remainder of 5. What remainder does their **sum** leave?
+**What's different?** A perfect cube is a number multiplied by itself 3 times, so its exponents must all be multiples of 3.
 
-Pick examples: 10 and 12 work. Their sum is 22, and $22 = 3 \times 7 + 1$, so the remainder is 1. Now look at just the remainders: $3 + 5 = 8$, and 8 leaves a remainder of 1 when divided by 7. It matches.
+**What do we need?** $180 = 2^2 \times 3^2 \times 5^1$. To reach exponents of 3, we need one more 2, one more 3, and two more 5s:
 
-> **The rule:** To find the remainder of a sum or a product, you can use just the remainders. This makes huge numbers much easier to handle.
+$$2 \times 3 \times 5 \times 5 = 150$$
 
-## Example 6: Last digits repeat
+**Check:** $180 \times 150 = 27000$, and $30 \times 30 \times 30 = 27000$.
 
-What's the last digit of $3^{50}$? The number is enormous, but only last digits matter when multiplying. Let's try small powers:
+## Example 4: Does one number divide another?
 
-| Power | $3^1$ | $3^2$ | $3^3$ | $3^4$ | $3^5$ | $3^6$ |
-|---|---|---|---|---|---|---|
-| Last digit | 3 | 9 | 7 | 1 | 3 | 9 |
+Is $2^4 \times 3^2 \times 5$ divisible by 36? Is it divisible by 27?
 
-The last digits repeat every 4 powers: 3, 9, 7, 1. And $50 \div 4$ is 12 with a remainder of 2. So $3^{50}$ lands on the 2nd spot in the pattern, and its last digit is **9**.
+**What's the plan?** Compare the factorizations. A number can only divide another if the other number contains all of its primes.
 
-## Example 7: Zeros at the end
+- $36 = 2^2 \times 3^2$. Our number has at least two 2s and two 3s, so **yes**.
+- $27 = 3^3$. Our number has only two 3s, so **no**.
 
-How many zeros does $15!$ end with? (Remember that $15! = 15 \times 14 \times \cdots \times 1$.)
+You didn't have to multiply anything or do any long division. This is like checking whether your kitchen has all of the ingredients for a recipe.
 
-Each zero at the end comes from a factor of 10, and $10 = 2 \times 5$. There are plenty of 2s, so count the 5s. The multiples of 5 up to 15 are 5, 10, and 15, and each one contributes one 5. So $15!$ ends in **3** zeros.
+## Example 5: A contest-style question
 
-> **Watch out:** Some numbers contribute more than one 5. For example, $25 = 5 \times 5$ contributes two.
+The product of three different whole numbers, each greater than 1, is 30. What's their sum?
 
-## Your turn
+**What do we know?** The prime factorization of 30 is $2 \times 3 \times 5$. There are exactly 3 primes to share among 3 numbers. Each number has to be greater than 1, so each needs at least one prime, and each gets exactly one.
 
-Before you start the practice problems, try these two:
+So the numbers are 2, 3, and 5, and the sum is $2 + 3 + 5 = 10$.
 
-1. How many factors does $200 = 2^3 \times 5^2$ have?
-2. What's the LCM of 6 and 10?
+Notice how the factorization forced the answer. If the product were 60, there would be several options, like 3, 4, and 5, or 2, 5, and 6, which is why contests choose their numbers carefully.
 
-**Answers:** For the first, $4 \times 3 = 12$ factors. For the second, $6 = 2 \times 3$ and $10 = 2 \times 5$, so the LCM is $2 \times 3 \times 5 = 30$.
+<section data-box="traps">
 
-If you got those, you're ready for the problems.
+## Common traps
+
+**Stopping too soon.** Writing $72 = 8 \times 9$ isn't a prime factorization, since 8 and 9 aren't prime. Keep going until every factor is prime.
+
+**Calling 1 a prime, or leaving it in.** A factorization never includes 1. It doesn't change anything, and it's not a prime. This is actually why 1 isn't considered prime: if it were, then factorizations wouldn't be unique, since you could add as many 1s as you wanted.
+
+**Mixing up exponents and multiplication.** $2^3$ is $2 \times 2 \times 2 = 8$, not $2 \times 3 = 6$. This is the most common slip with exponents.
+
+</section>
+
+<section data-box="strategy">
+
+## Contest strategy
+
+**How to spot it:** Look for "perfect square," "perfect cube," "smallest number," "product of," or anything involving a big number's factors.
+
+**Make it automatic:** Practice until you can factor numbers below 200 quickly. Divide out 2s first, then 3s, then 5s, then 7s.
+
+**Using the answer choices:** If an answer must be a perfect square, check that each exponent is even, or look at the last digit: perfect squares never end in 2, 3, 7, or 8.
+
+**Time:** About a minute.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+This builds on [factors and primes](/pathway/number-sense/04-factors-primes-leftovers/) from Level 1. Next, you'll use factorizations to [count divisors](/pathway/primes-remainders/02-counting-divisors/) and find [GCF and LCM](/pathway/primes-remainders/03-gcf-and-lcm/).
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- Every number has exactly one prime factorization.
+- Split until every factor is prime.
+- Perfect square: all of the exponents are even.
+- Perfect cube: all of the exponents are multiples of 3.
+- To divide evenly, a number needs all of the other's primes.
+
+</section>

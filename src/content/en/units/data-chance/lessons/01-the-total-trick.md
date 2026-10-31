@@ -1,33 +1,46 @@
 ---
-title: "Averages, Data & Chance: Think in Totals"
-summary: Solve average problems by thinking about totals, read tables carefully, and work through probability with several steps.
-minutes: 9
+title: "The Total Trick"
+summary: An average hides a total. Multiply to find it, and most average problems become one or two lines.
+minutes: 8
 ---
 
-Contests often ask you to work with averages and to read tables and graphs. Happily, one idea handles most of these questions. After that, we'll take probability further than Level 1 did.
+The mean of 4 test scores is 80. What score on a 5th test would raise the mean to 82? It seems as if you need to know the four scores. But you don't. There's a hidden number inside every average, and once you find it, these problems take about 20 seconds.
 
-> **The big idea:** An average hides a **total**. Whenever you see an average, multiply to find the total, and work with that.
+> **The big idea:** An average hides a **total**. Whenever you see an average, **multiply** to find the total, and work with the total.
 
-## Example 1: Mean, median, mode, and range
+## Why totals are the key
 
-Look at these 5 quiz scores: 4, 7, 7, 9, 13.
+The **mean**, or average, is the total divided by how many numbers there are. So the formula can be turned around:
 
-- The **mean**, or average, is the total divided by how many numbers there are. The total is 40, so the mean is $40 \div 5 = 8$.
-- The **median** is the middle number when they're in order, which is 7. With an even number of values, it's the average of the two middle ones.
-- The **mode** is the most common value, which is 7.
-- The **range** is the biggest minus the smallest: $13 - 4 = 9$.
+$$\text{total} = \text{mean} \times \text{count}$$
 
-> **Watch out:** You have to put the numbers in order before finding the median. In the list 9, 2, 5, the median is 5, not 2.
+Here's a good way to picture the mean: it's what everyone would have if they pooled everything and shared it equally. If 3 friends have 2, 4, and 9 stickers, the pool holds 15. Shared equally, each gets $15 \div 3 = 5$. Notice that nobody actually had 5 stickers. The mean doesn't have to be one of the numbers.
 
-## Example 2: The total trick
+## Example 1: A missing score
 
-The mean of 4 test scores is 80. What score on a 5th test would raise the mean to 82?
+Back to the opening. The total now is $4 \times 80 = 320$. The total needed for a mean of 82 across 5 tests is $5 \times 82 = 410$. So the 5th score must be:
 
-You don't need to know the individual scores. Think in totals:
+$$410 - 320 = 90$$
 
-- The total now is $4 \times 80 = 320$.
-- The total needed is $5 \times 82 = 410$.
-- So the 5th score must be $410 - 320 = 90$.
+**A second way to think about it:** Each of the 4 old scores is 2 below the new mean, a shortage of 8 in total. The new score has to cover that and be at the mean itself, so it's $82 + 8 = 90$.
+
+Try one. The mean of 3 numbers is 10. Two of them are 8 and 9. What's the third?
+
+<details class="check"><summary>Show the answer</summary>
+
+The total is $3 \times 10 = 30$. The third number is $30 - 8 - 9 = 13$.
+
+</details>
+
+## Example 2: Removing a number
+
+The mean of 6 scores is 80. The lowest score, 70, is dropped. What's the new mean?
+
+**What do we know?** The total is $6 \times 80 = 480$. Removing 70 leaves 410, with 5 scores.
+
+$$410 \div 5 = 82$$
+
+Removing a below-average score raises the mean, so the answer should be more than 80. It is.
 
 ## Example 3: The average of averages trap
 
@@ -37,51 +50,70 @@ It's tempting to say 80, which is halfway between. But the larger class should c
 
 $$\frac{10 \times 90 + 30 \times 70}{40} = \frac{3000}{40} = 75$$
 
-The answer is closer to 70, since more students have that mean.
+This is called a **weighted average**. The answer is closer to 70, since more students have that mean. You can picture it as a balance. The class sizes are in a ratio of 1 to 3, so the 20-point gap between 70 and 90 splits into 4 parts of 5 points each. The balance point sits 1 part from 70, where the bigger class is, and 3 parts from 90. That gives 75.
 
-## Example 4: Reading a table
+This is the same as the [average speed](/pathway/equations-word-problems/03-distance-rate-time/) trap: you can't average averages unless they're equally weighted.
 
-A class surveyed students about their pets:
+## Example 4: Consecutive numbers
 
-| Number of pets | 0 | 1 | 2 | 3 |
-|---|---|---|---|---|
-| Number of students | 4 | 10 | 5 | 1 |
+What's the mean of the whole numbers from 1 to 99?
 
-What's the mean number of pets? Read the table carefully. The 5 under "2" means that 5 students have 2 pets each, so they have 10 pets among them.
+**What's the shortcut?** In an evenly spaced list, the mean is the middle number, and it's also the average of the first and last. Pair the outer numbers: 1 and 99 average to 50, 2 and 98 average to 50, and so on. So the mean is **50**.
 
-- Students: $4 + 10 + 5 + 1 = 20$.
-- Pets: $0 \times 4 + 1 \times 10 + 2 \times 5 + 3 \times 1 = 23$.
-- Mean: $23 \div 20 = 1.15$.
+This works in reverse as well. Five consecutive numbers add up to 100. What are they? The mean is $100 \div 5 = 20$, which is the middle one. So they're 18, 19, 20, 21, and 22. You didn't need an equation.
 
-What about the median? There are 20 students, so imagine them lined up by number of pets, and look at the 10th and 11th. The first 4 students have 0 pets, and the next 10 have 1 pet. So the 10th and 11th both have 1 pet, and the median is 1.
+## Example 5: A contest-style question
 
-Before answering any question about a table or graph, read its title and labels, and ask what each number really counts.
+A class of 25 students has a mean test score of 72. When one student's score of 45 is corrected to 95, what's the new mean?
 
-## Example 5: Probability in steps
+**What do we know?** You could find the old total and go from there. But notice what changes: the total increases by $95 - 45 = 50$.
 
-A coin flip decides which bag you pick from. On heads, you use Bag A, with 3 red and 1 blue marble. On tails, you use Bag B, with 1 red and 1 blue marble. What's the probability you draw red?
+**What's the shortcut?** That 50 extra points gets shared among all 25 students, so the mean rises by $50 \div 25 = 2$.
 
-Draw a tree, and follow each path. Multiply **along** a path, and **add** the paths that you want:
+The new mean is $72 + 2 = 74$.
 
-- Heads and then red: $\frac{1}{2} \times \frac{3}{4} = \frac{3}{8}$.
-- Tails and then red: $\frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$.
-- In total: $\frac{3}{8} + \frac{2}{8} = \frac{5}{8}$.
+<section data-box="traps">
 
-## Example 6: Expected value
+## Common traps
 
-A game costs nothing to play. You spin a spinner with 4 equal sections, and you win \$0, \$0, \$1, or \$7. On average, how much do you win per spin?
+**Averaging the means.** For two classes of different sizes, the halfway number is wrong. You can only do this if the groups are the same size. Use totals.
 
-Imagine spinning 4 times and getting each section once. You'd win $0 + 0 + 1 + 7 = 8$ dollars in 4 spins, which is $8 \div 4 = 2$ dollars per spin. We say the **expected value** is \$2.
+**Forgetting to change the count.** In Example 2, if you divide 410 by 6, you get the wrong answer, since one score is gone. When you add or remove a number, update the count.
 
-Notice that you can never actually win \$2 on one spin. It's what you average over many spins, which is why it's the mean all over again.
+**Averaging the two scores given.** To get a mean of 82, some students think that the next test only needs to be 82, or the average of 80 and 82. A new score of 82 wouldn't raise the mean to 82, since the first 4 scores are below it.
 
-## Your turn
+</section>
 
-Before you start the practice problems, try these two:
+<section data-box="strategy">
 
-1. Find the median of 8, 3, 5, 12.
-2. The mean of 3 numbers is 10. Two of them are 8 and 9. What's the third?
+## Contest strategy
 
-**Answers:** For the first, in order the list is 3, 5, 8, 12, and the two middle numbers average to $(5 + 8) \div 2 = 6.5$. For the second, the total is $3 \times 10 = 30$, so the third number is $30 - 8 - 9 = 13$.
+**How to spot it:** Look for "mean," "average," or "arithmetic mean." These are the same thing on contests.
 
-If you got those, you're ready for the problems.
+**Multiply first.** It should almost be a reflex. Write the total before you do anything else.
+
+**Eliminate:** A mean must be between the smallest and largest numbers. A weighted mean is closer to the bigger group's mean.
+
+**Time:** Under a minute. These are some of the quickest points on a contest.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+The middle of an evenly spaced list comes back in Sequences & Series in Level 3. Next, you'll look at [median, mode, and tables](/pathway/data-chance/02-median-tables-graphs/).
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- Total = mean × count.
+- Work with totals, then divide.
+- Don't average averages unless the groups are equal.
+- Evenly spaced list: the mean is the middle number.
+- A change to one number changes the mean by the change ÷ count.
+
+</section>

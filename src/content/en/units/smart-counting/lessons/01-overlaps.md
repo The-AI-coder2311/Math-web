@@ -1,93 +1,131 @@
 ---
-title: "Smart Counting: Five Power Moves"
-summary: Go beyond the multiply trick with five moves for harder problems. Choose groups, split into cases, count the opposite, fix overlaps, and handle repeats.
+title: "Overlaps and Venn Diagrams"
+summary: Count groups that overlap without double counting, using Venn diagrams filled in from the middle out.
 minutes: 10
 ---
 
-In Level 1, you learned to multiply when you make one choice after another. That idea still does most of the work, but harder problems need more tools. Here are five moves that strong problem solvers use.
+In a class of 30 students, 18 play soccer, 15 are in band, and 8 do both. How many do neither? You might notice right away that $18 + 15 = 33$, which is more than the whole class. That's your clue that someone's been counted twice. This lesson gives you a way to keep everyone straight, even with three groups.
 
-> **The big idea:** Before you count, decide **how** to count. Does order matter? Would splitting into cases help? Is the opposite easier? Picking the right move is often the whole problem.
+> **The big idea:** When groups overlap, adding them counts the overlap twice. So **add the groups, then subtract the overlap**. A Venn diagram lets you see every part.
 
-## Move 1: Divide when order doesn't matter
+## Why subtracting the overlap works
 
-You need to pick 2 of 5 friends to help you carry something. How many pairs can you pick?
-
-Start with the multiply trick: 5 choices for the first friend and 4 for the second, which makes $5 \times 4 = 20$. But that counts Ana-then-Ben and Ben-then-Ana as different. It's the same pair, so every pair was counted twice:
-
-$$\frac{5 \times 4}{2} = 10$$
-
-Now pick 3 of 7 for a committee. Multiplying gives $7 \times 6 \times 5 = 210$. How many times was each group counted? The same 3 people can be ordered in $3 \times 2 \times 1 = 6$ ways, so we divide by 6:
-
-$$\frac{7 \times 6 \times 5}{3 \times 2 \times 1} = 35$$
-
-This is called a **combination**, and it's often written $\binom{7}{3}$ and read "7 choose 3."
-
-> **Ask yourself:** If I swap two of the things I picked, is it a different result? A president and a vice president are different jobs, so order matters and you don't divide. A two-person committee is the same either way, so you divide.
-
-## Move 2: Split into cases
-
-When one rule makes the problem awkward, split it into separate cases and then **add**.
-
-How many ways can you make 20 cents using nickels, pennies, and at most 1 dime?
-
-- **Case 1: no dimes.** You need 20 cents from nickels and pennies. You can use 0, 1, 2, 3, or 4 nickels, and the pennies fill in the rest. That's 5 ways.
-- **Case 2: one dime.** You need 10 more cents. You can use 0, 1, or 2 nickels. That's 3 ways.
-
-The total is $5 + 3 = 8$ ways.
-
-> **Watch out:** Your cases must not overlap, and together they must cover everything. Choosing the number of dimes guarantees both.
-
-So when do you add and when do you multiply? **Multiply** when you do one thing **and then** another. **Add** when you do one thing **or** another.
-
-## Move 3: Count the opposite
-
-How many 3-digit numbers have at least one digit that's a 5?
-
-Counting these directly means many cases. It's much easier to count the numbers with **no** 5s at all, and then subtract:
-
-- There are 900 three-digit numbers in all, from 100 to 999.
-- With no 5s, the first digit has 8 choices (not 0 or 5), and the other two digits have 9 choices each. That makes $8 \times 9 \times 9 = 648$ numbers.
-- So $900 - 648 = 252$ numbers have at least one 5.
-
-This move is called **complementary counting**. The words "at least one" are your clue, as they were in probability.
-
-## Move 4: Fix the overlap
-
-In a class of 30 students, 18 play soccer, 15 are in band, and 8 do both. How many do neither?
-
-If you add 18 and 15, the 8 students who do both get counted twice. So subtract them once:
+When you add 18 and 15, each student who does only soccer is counted once, and each one who does only band is counted once. But each of the 8 students who do both is counted **twice**. Subtracting 8 fixes that, so each student is counted exactly once:
 
 $$18 + 15 - 8 = 25$$
 
-That means 25 students do at least one activity, and $30 - 25 = 5$ do neither. A Venn diagram shows why:
+So 25 students do at least one activity, and $30 - 25 = 5$ students do neither. Here's what that looks like:
 
 ![Two overlapping circles in a box of 30 students. Ten students are in soccer only, 8 are in both, and 7 are in band only. Five students are in neither.](/images/smart-counting-venn.svg)
 
-Fill in a Venn diagram from the middle out. Start with the 8 in both. Then soccer-only is $18 - 8 = 10$, and band-only is $15 - 8 = 7$.
+Fill in a Venn diagram **from the middle out**. Start with the 8 in both. Then soccer-only is $18 - 8 = 10$, and band-only is $15 - 8 = 7$. Finally, neither is what's left: $30 - 10 - 8 - 7 = 5$.
 
-## Move 5: Divide out the repeats
+## Example 1: Finding the overlap
 
-How many ways can you arrange the letters in the word LEVEL?
+A club has 40 members. There are 25 who like pizza and 22 who like tacos, and everyone likes at least one of them. How many like both?
 
-If all 5 letters were different, there would be $5 \times 4 \times 3 \times 2 \times 1 = 120$ ways. We write that product as $5!$, which is read "5 factorial."
+**What do we know?** We have the groups and the total. The overlap is the unknown.
 
-But swapping the two Ls doesn't make a new word, and neither does swapping the two Es. Each word was counted $2 \times 2 = 4$ times, so divide:
+**What's the question really asking?** Since $25 + 22 = 47$ is 7 more than 40, those 7 extra counts must come from people counted twice. So 7 people like both.
 
-$$\frac{120}{4} = 30$$
+Try one. Out of 50 students, 32 take art, 28 take music, and 5 take neither. How many take both?
 
-## Bonus: Paths on a grid
+<details class="check"><summary>Show the answer</summary>
 
-You walk from one corner of a street grid to the opposite corner, going 2 blocks east and 3 blocks north in any order. How many routes are there?
+There are $50 - 5 = 45$ students taking at least one. Since $32 + 28 = 60$, the overlap is $60 - 45 = 15$.
 
-Every route is a list of 5 moves, such as E N N E N. That's the same as asking which 2 of the 5 moves are east, so the answer is "5 choose 2," which is $\frac{5 \times 4}{2} = 10$. Turning a new problem into one you already know is the most powerful move of all.
+</details>
 
-## Your turn
+## Example 2: Counting multiples
 
-Before you start the practice problems, try these two:
+How many whole numbers from 1 to 100 are divisible by 2 or by 5?
 
-1. How many ways can you choose 2 toppings from 8?
-2. How many 2-digit numbers don't contain the digit 3? Use the opposite if you like.
+**What are the groups?** Multiples of 2 and multiples of 5.
 
-**Answers:** For the first, $\frac{8 \times 7}{2} = 28$. For the second, the first digit has 8 choices (not 0 or 3) and the second has 9 (not 3), so $8 \times 9 = 72$.
+- Multiples of 2: there are 50.
+- Multiples of 5: there are 20.
 
-If you got those, you're ready. Remember that the hard problems are supposed to feel hard.
+**What's the overlap?** A number divisible by both 2 and 5 is a multiple of 10. There are 10 of those.
+
+$$50 + 20 - 10 = 60$$
+
+So how many are divisible by **neither**? That's $100 - 60 = 40$.
+
+Counting multiples quickly is a useful skill. How many multiples of 7 are there from 1 to 100? Divide $100 \div 7$, which gives 14 with some left over, so there are 14.
+
+## Example 3: Three groups
+
+Now there are three overlapping circles. How many numbers from 1 to 30 are divisible by 2, 3, or 5?
+
+**Counting each group:** There are 15 multiples of 2, 10 multiples of 3, and 6 multiples of 5. Adding them gives 31.
+
+**Subtracting the overlaps:**
+- Multiples of 6 (both 2 and 3): 5.
+- Multiples of 10 (both 2 and 5): 3.
+- Multiples of 15 (both 3 and 5): 2.
+
+That brings us to $31 - 5 - 3 - 2 = 21$.
+
+**Adding back the center:** Look at 30, which is divisible by all three. We added it 3 times, and then subtracted it 3 times, so now it isn't counted at all! So we need to add back the numbers that are in all three groups. Only 30 fits that here.
+
+$$21 + 1 = 22$$
+
+**The pattern for three groups:** add the groups, subtract the pairs, and add back the triple. This is called **inclusion-exclusion**.
+
+## Example 4: A contest-style question
+
+In a survey of 60 students, 30 like math, 28 like science, and 26 like art. Also, 12 like both math and science, 10 like both math and art, and 9 like both science and art. Exactly 4 like all three. How many like none of the three?
+
+**What's the plan?** Use the pattern to count those who like at least one.
+
+$$30 + 28 + 26 - 12 - 10 - 9 + 4 = 57$$
+
+So $60 - 57 = 3$ students like none of the three.
+
+**A check, from the middle out:** Those who like math and science but not art are $12 - 4 = 8$. The others are $10 - 4 = 6$ and $9 - 4 = 5$. Those who like only math are $30 - 8 - 6 - 4 = 12$, only science is $28 - 8 - 5 - 4 = 11$, and only art is $26 - 6 - 5 - 4 = 11$. Adding all seven regions gives $4 + 8 + 6 + 5 + 12 + 11 + 11 = 57$. It matches.
+
+<section data-box="traps">
+
+## Common traps
+
+**Treating "both" as separate.** In the opening example, some students say that 18 students play only soccer. But the 18 includes the 8 who also do band. Only soccer is $18 - 8 = 10$.
+
+**Forgetting to add back the center.** With three groups, the answer 21 in Example 3 is one too small, since the middle got subtracted out completely. Check with a number in all three groups, and count how many times it's included.
+
+**Answering "at least one" when asked for "neither."** In the opening example, 25 is the number who do something. The question asks for 5. Reread the question once you have your number.
+
+</section>
+
+<section data-box="strategy">
+
+## Contest strategy
+
+**How to spot it:** Look for "both," "neither," "at least one," or "or," along with a few groups that overlap.
+
+**Draw the circles:** A quick diagram catches most mistakes. Start in the middle.
+
+**Finding the most overlap possible:** If 25 of 40 like pizza and 22 of 40 like tacos, the overlap is at least 7. It could be as high as 22, but no higher, since that's the size of the smaller group. Bounds like that help you eliminate answer choices.
+
+**Time:** One minute for two groups, and up to three minutes for three groups.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+This sharpens [counting the opposite](/pathway/counting/04-count-the-opposite/) from Level 1. [Probability](/pathway/intro-probability/04-one-minus/) problems use the same overlap fix, and it returns in Advanced Counting in Level 3.
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- Two groups: add them, then subtract the overlap.
+- Three groups: add the groups, subtract the pairs, add back the triple.
+- Fill in a Venn diagram from the middle out.
+- Multiples of both $a$ and $b$ are multiples of their LCM.
+- Neither = total minus at least one.
+
+</section>

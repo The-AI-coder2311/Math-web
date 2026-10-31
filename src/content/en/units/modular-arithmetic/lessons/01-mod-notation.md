@@ -1,91 +1,133 @@
 ---
-title: "Remainder Math: Modular Arithmetic & Bases"
-summary: Do arithmetic with remainders alone, tame giant powers, solve remainder puzzles, and write numbers in other bases.
-minutes: 11
+title: "Mod Notation and the Rules"
+summary: Learn the language of remainders, and find out which operations you can do with remainders alone, and which one you can't.
+minutes: 10
 ---
 
-In Level 2, you saw that you can add and multiply using just the remainders. Mathematicians have a whole system for this, called **modular arithmetic**. It's the same math as a clock: 5 hours after 9 o'clock, it's 2 o'clock, even though $9 + 5 = 14$.
+It's 9 o'clock. What time will it be in 5 hours? You say 2 o'clock, without blinking, even though $9 + 5 = 14$. You've been doing a kind of math called **modular arithmetic** ever since you learned to read a clock. In Level 2, you saw that you can add and multiply using only remainders. In this lesson, we'll give that idea a proper language, and that's what makes much harder problems possible.
 
-> **The big idea:** If you only care about the remainder, you can replace any number with a smaller one that has the same remainder. Huge problems shrink to tiny ones.
+> **The big idea:** If you only care about the remainder, then any number can be replaced by a **smaller number with the same remainder**. We write $17 \equiv 2 \pmod{5}$, which means that 17 and 2 leave the same remainder when divided by 5.
 
-## Tool 1: The notation
+## The notation
 
-We write $17 \equiv 2 \pmod{5}$, and we say "17 is congruent to 2, mod 5." It means that 17 and 2 leave the same remainder when divided by 5. Another way to say it is that their difference, 15, is a multiple of 5.
+We say "17 is congruent to 2, mod 5." Here are three ways of saying the same thing:
 
-So, mod 5, the numbers 2, 7, 12, 17, and 22 all act the same.
+- 17 and 2 leave the same remainder when divided by 5.
+- $17 - 2$ is a multiple of 5.
+- 17 can be written as 2 plus some multiple of 5.
 
-## Tool 2: Add, subtract, and multiply freely
+So mod 5, the numbers 2, 7, 12, 17, and 22 are all interchangeable, as are the numbers $-3$ and $-8$. The number after "mod" is called the **modulus**. On a clock, the modulus is 12. For days of the week, it's 7.
 
-Within mod arithmetic, you can swap any number for a smaller one with the same remainder, at any time.
+## Why the rules work
 
-What's the remainder when $1{,}003 \times 2{,}006$ is divided by 10? Those numbers have remainders of 3 and 6, so:
+If $a \equiv b$ and $c \equiv d$ with the same modulus, then:
 
-$$3 \times 6 = 18$$
+- $a + c \equiv b + d$
+- $a - c \equiv b - d$
+- $a \times c \equiv b \times d$
 
-And 18 has a remainder of 8 when divided by 10. So the answer is 8.
+Here's why it works for multiplication. Say $a = b + 5m$ and $c = d + 5n$. Multiply these: every part of the product other than $b \times d$ contains a factor of 5. So those parts don't affect the remainder.
 
-> **Watch out:** Division doesn't work so freely. Since $20 \equiv 8 \pmod{12}$, you might think you can divide both by 4 and get $5 \equiv 2 \pmod{12}$. But that's false. Stick to adding, subtracting, and multiplying.
+**Test:** Mod 5, $17 \equiv 2$ and $13 \equiv 3$. Then $17 \times 13 = 221$, which has a remainder of 1. And $2 \times 3 = 6$, which also has a remainder of 1. It works.
 
-## Tool 3: Giant powers
+## Example 1: Shrinking a big product
 
-What's the remainder when $2^{100}$ is divided by 7? Try small powers, and take remainders as you go:
+What's the remainder when $1003 \times 2006$ is divided by 10?
 
-| Power | $2^1$ | $2^2$ | $2^3$ | $2^4$ | $2^5$ | $2^6$ |
-|---|---|---|---|---|---|---|
-| Remainder mod 7 | 2 | 4 | 1 | 2 | 4 | 1 |
+**What's the plan?** Mod 10 keeps only the last digit, so replace the numbers with 3 and 6.
 
-The pattern repeats every 3 steps, and $2^3 \equiv 1 \pmod{7}$. Since $99 = 3 \times 33$, the power $2^{99}$ also has a remainder of 1. One more factor of 2 gives $2^{100} \equiv 2 \pmod{7}$.
+$$1003 \times 2006 \equiv 3 \times 6 = 18 \equiv 8 \pmod{10}$$
 
-## Tool 4: Negative remainders are allowed
+So the remainder is 8.
 
-What's the remainder when $13^{51}$ is divided by 7? Since 13 is 1 less than 14, we can write $13 \equiv -1 \pmod{7}$. And $-1$ raised to an odd power is just $-1$:
+Try one. What's the remainder when $24 \times 25$ is divided by 7?
 
-$$13^{51} \equiv (-1)^{51} = -1 \pmod{7}$$
+<details class="check"><summary>Show the answer</summary>
 
-A remainder of $-1$ means "1 short of a multiple of 7," which is the same as a remainder of 6. So the answer is 6. When a number is just below a multiple, this trick saves a lot of work.
+$24 \equiv 3$ and $25 \equiv 4$, mod 7. So the product is $3 \times 4 = 12 \equiv 5$. The remainder is 5.
 
-## Tool 5: Why the divisibility rules work
+</details>
 
-Here's a surprise: you can now explain the digit-sum rule for 9. Since $10 \equiv 1 \pmod{9}$, every power of 10 also has a remainder of 1. So:
+## Example 2: Negative numbers are allowed
+
+What's the remainder when $27 \times 34$ is divided by 7?
+
+**What's the trick?** We can use negatives if they're simpler. Since 27 is 1 less than 28, it's $27 \equiv -1$. And since 34 is 1 less than 35, $34 \equiv -1$.
+
+$$27 \times 34 \equiv (-1) \times (-1) = 1 \pmod{7}$$
+
+So the remainder is 1. **Check:** $27 \times 34 = 918$, and $918 = 7 \times 131 + 1$.
+
+## Example 3: What division can't do
+
+Since $20 \equiv 8 \pmod{12}$, can we divide both sides by 4, to get $5 \equiv 2 \pmod{12}$? No! The difference between 5 and 2 is 3, which isn't a multiple of 12. So division doesn't work freely.
+
+This is why we use the rules for adding, subtracting, and multiplying, and we're careful about dividing. There are correct ways to divide, but they require more care, and you can solve most contest problems without them.
+
+## Example 4: Explaining the divisibility rules
+
+Why does the digit-sum test for 9 work? Since $10 \equiv 1 \pmod{9}$, multiplying gives $100 \equiv 1$, $1000 \equiv 1$, and so on.
 
 $$352 = 3 \times 100 + 5 \times 10 + 2 \equiv 3 + 5 + 2 \pmod{9}$$
 
-A number and the sum of its digits always have the same remainder mod 9. That's why the rule works.
+So a number and the sum of its digits always have the same remainder mod 9. It's a one-line proof of a rule that you've used since Level 1. Similarly, the test for 11 uses $10 \equiv -1 \pmod{11}$, which leads to an alternating digit sum: a number is divisible by 11 if the digits, added and subtracted in turn, give a multiple of 11.
 
-## Tool 6: Several conditions at once
+**Example:** For 2,728, $8 - 2 + 7 - 2 = 11$, so it's divisible by 11.
 
-Find the smallest positive number with a remainder of 2 when divided by 3 and a remainder of 3 when divided by 4.
+## Example 5: A contest-style question
 
-The simplest approach is a **sieve**. List the numbers that fit the second rule, and test them against the first:
+Today is Tuesday. What day of the week will it be $5 \times 13 \times 22 \times 37$ days from now?
 
-- Remainder of 3 when divided by 4: 3, 7, 11, 15, ...
-- Now check them against 3: 3 has remainder 0, 7 has remainder 1, and 11 has remainder 2. It works!
+**What's the modulus?** Days of the week repeat every 7, so we work mod 7.
 
-So the answer is 11. And since $3 \times 4 = 12$, the next solutions are 23, 35, and so on, going up by 12.
+**Replace each number:** $5 \equiv 5$, $13 \equiv -1$, $22 \equiv 1$, and $37 \equiv 2$.
 
-## Tool 7: Other bases
+$$5 \times (-1) \times 1 \times 2 = -10 \equiv 4 \pmod{7}$$
 
-We write numbers in **base 10**: in 352, the places are worth 100, 10, and 1. Other bases work the same way, using a different place value. In **base 2**, also called binary, the places are worth 1, 2, 4, 8, 16, and so on, and the only digits are 0 and 1.
+To get from $-10$ to a remainder from 0 to 6, add 14. So we move 4 days forward from Tuesday, and that's **Saturday**.
 
-**From another base to base 10:** multiply each digit by its place value. A small number after the digits tells you the base:
+<section data-box="traps">
 
-$$1011_2 = 1 \times 8 + 0 \times 4 + 1 \times 2 + 1 \times 1 = 11$$
+## Common traps
 
-**From base 10 to another base:** take out the biggest place value that fits, again and again. Let's write 23 in base 3, where the places are worth 27, 9, 3, and 1:
+**Thinking that $\equiv$ means equals.** The number 17 doesn't equal 2. They're congruent, which means they leave the same remainder. You also have to keep track of the modulus, and only combine numbers with the same one.
 
-- 27 is too big, so we start at 9. There are 2 nines in 23, which leaves 5.
-- There is 1 three in 5, which leaves 2.
-- There are 2 ones in 2, which leaves 0.
+**Leaving a negative remainder.** An answer of $-3$ mod 7 isn't a remainder yet. Add 7 to get 4. Contests want a remainder from 0 up to one less than the modulus.
 
-So $23 = 212_3$. **Check:** $2 \times 9 + 1 \times 3 + 2 = 23$.
+**Dividing both sides.** As you saw in Example 3, that can give false statements. Avoid it until you've learned how.
 
-## Your turn
+</section>
 
-Before you start the practice problems, try these two:
+<section data-box="strategy">
 
-1. What's the remainder when $24 \times 25$ is divided by 7?
-2. What is $110_2$ in base 10?
+## Contest strategy
 
-**Answers:** For the first, 24 has remainder 3 and 25 has remainder 4. Since $3 \times 4 = 12$, the remainder is 5. For the second, $4 + 2 = 6$.
+**How to spot it:** Look for "remainder," "divisible," "last digit" (which is mod 10), "last two digits" (mod 100), or days of the week.
 
-If you got those, you're ready. These are some of the toughest problems on the site so far, so take your time.
+**Reduce early and often:** Replace numbers with small ones after every step. Use negatives when they're smaller.
+
+**Eliminate:** Testing an answer mod 3 or mod 9 is fast, because of the digit sum, and it can rule out many choices.
+
+**Time:** About a minute.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+This is the next step after [remainder arithmetic](/pathway/primes-remainders/04-units-digits-and-remainders/) in Level 2. It explains [divisibility rules](/pathway/number-sense/03-divisibility-rules/) from Level 1. Next, it takes on [giant powers](/pathway/modular-arithmetic/02-giant-powers/).
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- $a \equiv b \pmod{n}$ means that $a - b$ is a multiple of $n$.
+- You can add, subtract, and multiply by replacing numbers.
+- Don't divide freely.
+- Negative replacements are fine, but finish with a real remainder.
+- Reduce early, to keep the numbers small.
+
+</section>

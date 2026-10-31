@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 200" font-family="system-ui, sans-serif" font-size="17" fill="#2b2622">
+  <title>Two similar triangles. The small one has base 3 and height 2. The large one has base 6 and height 4, so every length is doubled. The small triangle has area 3 and the large one has area 12, which is 4 times as much.</title>
+  <!-- 30 px per unit on both, so the two really are the same shape. -->
+  <polygon points="30,160 120,160 30,100" fill="#fbeee6" stroke="#b4461a" stroke-width="3" />
+  <polygon points="220,160 400,160 220,40" fill="#fbeee6" stroke="#b4461a" stroke-width="3" />
+  <g font-weight="700">
+    <text x="62" y="182">3</text>
+    <text x="12" y="136">2</text>
+    <text x="298" y="182">6</text>
+    <text x="202" y="106">4</text>
+  </g>
+  <text x="130" y="130">Area 3</text>
+  <text x="330" y="90">Area 12</text>
+</svg>
