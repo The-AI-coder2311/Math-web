@@ -44,7 +44,7 @@ src/
   content/en/
     pathway.yaml          The levels, and the ordered units in each one
     units/counting/
-      lesson.md           The lesson
+      lessons/*.md        The unit's lessons, in order (3 to 5 of them)
       problems/*.md       One file per practice problem
     problem-sets/*.yaml   Printable sets for teachers
     pages/*.md            About, teacher guide, and club plan
@@ -65,10 +65,14 @@ The progress bar's total updates by itself. Once a problem is live, don't rename
 ## Add a new unit
 
 1. Find the unit's `slug` in `src/content/en/pathway.yaml`, such as `number-sense`.
-2. Copy `templates/lesson-template.md` to `src/content/en/units/number-sense/lesson.md`, and fill it in.
-3. Add problems to `src/content/en/units/number-sense/problems/`.
+2. Copy `templates/lesson-template.md` to `src/content/en/units/number-sense/lessons/01-short-name.md`, and fill it in. Repeat for each lesson. The number at the start of the file name sets the order.
+3. Add problems to `src/content/en/units/number-sense/problems/`. A problem with `lesson: 01-short-name` in its settings can appear in that lesson's "Try it now" section, which shows the unit's first 3 tagged problems.
 
-The unit stops saying "Coming soon" and becomes clickable as soon as `lesson.md` exists, so make sure it has at least one problem. To add or reorder units or levels, edit `pathway.yaml`.
+The unit stops saying "Coming soon" and becomes clickable as soon as it has a lesson, so make sure it has problems too. To add or reorder units or levels, edit `pathway.yaml`.
+
+## Add a lesson
+
+Copy `templates/lesson-template.md` into the unit's `lessons/` folder and follow the notes in it. Number the file so it lands in the right place. Run `npm run verify`, which checks that the lesson has its required parts: a big idea, 3 to 5 worked examples, a check-yourself question, common traps, a contest strategy box, connections, and a summary card, in 900 to 1,500 words.
 
 ### The levels
 

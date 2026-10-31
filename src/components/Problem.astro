@@ -10,17 +10,21 @@ interface Props {
     difficulty: 'easy' | 'medium' | 'hard';
     choices: string[];
     answer: string;
+    mistakes?: Partial<Record<string, string>>;
     question: string;
     hint: string;
+    hint2: string;
     solution: string;
+    another: string;
   };
 }
 
 const { lang, number, problem } = Astro.props;
 const text = t(lang).practice;
 const letters = 'ABCDEF';
+const mistakes = Object.entries(problem.mistakes ?? {});
 ---
-<article class="card problem" id={`problem-${number}`} data-problem data-slug={problem.slug} data-answer={problem.answer}>
+<article class="card problem" id={`p-${problem.slug}`} data-problem data-slug={problem.slug} data-answer={problem.answer}>
   <div class="problem-head">
     <h2>{text.problem} {number}</h2>
     <span class="pill">{text.difficulty[problem.difficulty]}</span>
@@ -39,16 +43,35 @@ const letters = 'ABCDEF';
       ))}
     </fieldset>
     <button class="btn btn-primary needs-js" type="submit">{text.check}</button>
-    <p class="feedback needs-js" data-feedback role="status"></p>
+    <div class="needs-js" role="status">
+      <p class="feedback" data-feedback></p>
+      {mistakes.map(([letter, note]) => (
+        <p class="mistake" data-mistake={letter} hidden set:html={renderInline(note as string)} />
+      ))}
+    </div>
   </form>
   <div class="reveals">
-    <details class="reveal">
+    <details class="reveal" data-reveal="hint">
       <summary><span class="when-closed">{text.showHint}</span><span class="when-open">{text.hideHint}</span></summary>
       <div class="reveal-body prose" set:html={problem.hint} />
+      {problem.hint2 && (
+        <details class="reveal" data-reveal="hint2">
+          <summary><span class="when-closed">{text.showHint2}</span><span class="when-open">{text.hideHint2}</span></summary>
+          <div class="reveal-body prose" set:html={problem.hint2} />
+        </details>
+      )}
     </details>
-    <details class="reveal">
+    <details class="reveal" data-reveal="solution">
       <summary><span class="when-closed">{text.showSolution}</span><span class="when-open">{text.hideSolution}</span></summary>
-      <div class="reveal-body prose" set:html={problem.solution} />
+      <div class="reveal-body prose">
+        <Fragment set:html={problem.solution} />
+        {problem.another && (
+          <>
+            <h3>{text.anotherWay}</h3>
+            <Fragment set:html={problem.another} />
+          </>
+        )}
+      </div>
     </details>
   </div>
 </article>

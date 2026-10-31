@@ -5,14 +5,23 @@
 // It also checks the arithmetic in every math formula, and that each problem is
 // complete. Any error stops the build so a wrong key can't be published.
 //
+// A unit is held to the full writing standard once it has grown up: lessons from
+// 3 lessons on, problems from 20 problems on. Before that, gaps are counted but
+// don't stop the build. Set REQUIRE_FULL_STANDARD to make every unit meet it.
+// Add --standards to the command to list every gap.
+//
 // To check a different folder (such as a test copy): node scripts/verify-answers.mjs <folder>
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { parse } from 'yaml';
 
-const root = process.argv[2] || 'src/content';
+const args = process.argv.slice(2);
+const listGaps = args.includes('--standards');
+const root = args.find((arg) => !arg.startsWith('--')) || 'src/content';
+const REQUIRE_FULL_STANDARD = false;
 const errors = [];
 const warnings = [];
+const gaps = [];
 const counts = { checked: 0, unchecked: 0, arithmetic: 0 };
 
 // ---- Helpers available inside `verify:` code ----
@@ -120,40 +129,123 @@ function checkVerify(code, expected, where) {
   }
 }
 
+// ---- The writing standard ----
+const BANNED_WORDS = /\b(obviously|clearly|simply|just)\b/gi;
+const PLACEHOLDER = /\b(placeholder|todo|fixme|lorem ipsum)\b/i;
+
+/** Text a reader sees, without settings, math, tags or picture addresses. */
+const readableText = (source) =>
+  source
+    .replace(/^---\n[\s\S]*?\n---\n/, '')
+    .replace(/\$\$[\s\S]+?\$\$/g, ' ')
+    .replace(/\\\$/g, 'USD')
+    .replace(/\$[^$\n]+\$/g, ' x ')
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')
+    .replace(/<[^>]+>/g, ' ');
+
+function checkAllWriting(source, where) {
+  if (PLACEHOLDER.test(source)) errors.push(where + ': contains unfinished placeholder text');
+  return [...readableText(source).matchAll(BANNED_WORDS)].map((match) => where + ': avoid the word "' + match[0] + '"');
+}
+
+const sectionsOf = (body) => {
+  const parts = body.split(/^## (Hint 2|Hint|Solution|Another way)\s*$/m);
+  const sections = { question: parts[0] };
+  for (let i = 1; i < parts.length; i += 2) sections[parts[i]] = parts[i + 1];
+  return sections;
+};
+
+// ---- Lessons (one Markdown file each) ----
+const lessonsSeen = {};
+
+function checkLesson(file, unitPath) {
+  const where = relative('.', file);
+  const source = readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  const data = source.match(/^---\n([\s\S]*?)\n---\n/);
+  if (!data) return errors.push(where + ': missing the --- settings block at the top');
+  const settings = parse(data[1]);
+  for (const field of ['title', 'summary', 'minutes']) {
+    if (!settings[field]) errors.push(where + ': missing ' + field);
+  }
+  checkArithmetic(source, where);
+  (lessonsSeen[unitPath] ??= []).push(file.replace(/\\/g, '/').split('/').pop().replace(/\.md$/, ''));
+
+  const found = checkAllWriting(source, where);
+  const words = readableText(source).split(/\s+/).filter(Boolean).length;
+  if (words < 900 || words > 1500) found.push(where + ': has ' + words + ' words, and a lesson should have 900 to 1,500');
+  if (!/\*\*The big idea/.test(source)) found.push(where + ': needs a "**The big idea" statement');
+  const examples = (source.match(/^##+ Example/gm) || []).length;
+  if (examples < 3 || examples > 5) found.push(where + ': has ' + examples + ' worked examples, and a lesson should have 3 to 5');
+  if (!/<details class="check">/.test(source)) found.push(where + ': needs a check-yourself question');
+  for (const box of ['traps', 'strategy', 'connections', 'summary']) {
+    if (!source.includes('<section data-box="' + box + '">')) found.push(where + ': needs a <section data-box="' + box + '">');
+  }
+  for (const picture of source.matchAll(/!\[([^\]]*)\]\(([^)]*)\)/g)) {
+    if (picture[1].length < 40) found.push(where + ': picture ' + picture[2] + ' needs a fuller description');
+  }
+  return found;
+}
+
 // ---- Interactive problems (one Markdown file each) ----
 function checkProblem(file) {
   const where = relative('.', file);
   const source = readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
   const match = source.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
-  if (!match) return errors.push(`${where}: missing the --- settings block at the top`);
+  if (!match) {
+    errors.push(where + ': missing the --- settings block at the top');
+    return {};
+  }
 
   const data = parse(match[1]);
   const body = match[2];
-  const [question, hint, solution] = body.split(/^## (?:Hint|Solution)\s*$/m);
+  const sections = sectionsOf(body);
+  const { question, Hint: hint, Solution: solution } = sections;
+  const gaps = checkAllWriting(source, where);
 
-  if (!/^## Hint\s*$/m.test(body) || !/^## Solution\s*$/m.test(body) || solution === undefined) {
-    return errors.push(`${where}: needs "## Hint" and "## Solution" sections, in that order`);
+  if (hint === undefined || solution === undefined) {
+    errors.push(where + ': needs "## Hint" and "## Solution" sections, in that order');
+    return { data, gaps };
   }
-  if (!question.trim()) errors.push(`${where}: the question is empty`);
-  if (!hint.trim()) errors.push(`${where}: the hint is empty`);
+  if (!question.trim()) errors.push(where + ': the question is empty');
+  if (!hint.trim()) errors.push(where + ': the hint is empty');
 
   const choices = (data.choices || []).map(normalize);
   const letters = 'ABCDEF';
   const correct = choices[letters.indexOf(data.answer)];
-  if (correct === undefined) return errors.push(`${where}: answer "${data.answer}" doesn't match any choice`);
-  if (new Set(choices).size !== choices.length) errors.push(`${where}: two answer choices are the same`);
+  if (correct === undefined) {
+    errors.push(where + ': answer "' + data.answer + '" doesn\'t match any choice');
+    return { data, gaps };
+  }
+  if (new Set(choices).size !== choices.length) errors.push(where + ': two answer choices are the same');
 
   checkVerify(data.verify, correct, where);
   checkArithmetic(body, where);
+  Object.values(data.mistakes || {}).forEach((note) => checkArithmetic(note, where));
 
   const stated = solution.match(/\*\*Answer: \(([A-F])\) ([^*]+)\*\*/);
   if (!stated) {
-    errors.push(`${where}: the solution must end with a line like **Answer: (C) 12**`);
+    errors.push(where + ': the solution must end with a line like **Answer: (C) 12**');
   } else if (stated[1] !== data.answer || normalize(stated[2]) !== correct) {
-    errors.push(`${where}: the solution says (${stated[1]}) ${stated[2]} but the answer key says (${data.answer}) ${correct}`);
+    errors.push(where + ': the solution says (' + stated[1] + ') ' + stated[2] + ' but the answer key says (' + data.answer + ') ' + correct);
   }
-  if (hint.includes(`(${data.answer}) ${correct}`)) errors.push(`${where}: the hint gives away the answer`);
-  return data;
+  for (const text of [hint, sections['Hint 2'] ?? '']) {
+    if (text.includes('(' + data.answer + ') ' + correct)) errors.push(where + ': a hint gives away the answer');
+  }
+
+  const wrongLetters = letters.slice(0, choices.length).split('').filter((letter) => letter !== data.answer);
+  const notes = data.mistakes || {};
+  if (notes[data.answer]) errors.push(where + ': has a mistake note for the correct answer');
+  for (const letter of Object.keys(notes)) {
+    if (!wrongLetters.includes(letter)) errors.push(where + ': has a mistake note for ' + letter + ', which isn\'t a choice');
+  }
+
+  if (!sections['Hint 2']?.trim()) gaps.push(where + ': needs a "## Hint 2" section');
+  if (!data.verify) gaps.push(where + ': needs verify code');
+  if (!data.lesson) gaps.push(where + ': needs a lesson: tag');
+  for (const letter of wrongLetters) {
+    if (!notes[letter]?.trim()) gaps.push(where + ': needs a mistakes note for choice ' + letter);
+  }
+  return { data, gaps };
 }
 
 // ---- Printable problem sets (one YAML file each) ----
@@ -178,28 +270,66 @@ const walk = (dir) =>
     return statSync(path).isDirectory() ? walk(path) : [path];
   });
 
-const unitsSeen = {};
+const units = {};
+const unitOf = (name) => (units[name] ??= { lessonGaps: [], lessonCount: 0, problemGaps: [], problems: [] });
+
 for (const file of walk(root)) {
   const path = file.replace(/\\/g, '/');
-  if (/\/units\/[^/]+\/problems\/[^/]+\.md$/.test(path)) {
-    const data = checkProblem(file);
-    if (data?.order !== undefined) {
-      const unit = path.replace(/\/problems\/.*$/, '');
-      unitsSeen[unit] ??= new Set();
-      if (unitsSeen[unit].has(data.order)) errors.push(`${relative('.', file)}: another problem already uses order ${data.order}`);
-      unitsSeen[unit].add(data.order);
-    }
+  const inUnit = path.match(/^(.*\/units\/[^/]+)\/(lessons|problems)\/[^/]+\.md$/);
+  if (inUnit && inUnit[2] === 'lessons') {
+    const unit = unitOf(inUnit[1]);
+    unit.lessonCount++;
+    unit.lessonGaps.push(...(checkLesson(file, inUnit[1]) || []));
+  } else if (inUnit) {
+    const unit = unitOf(inUnit[1]);
+    const { data, gaps: found = [] } = checkProblem(file);
+    unit.problemGaps.push(...found);
+    if (data) unit.problems.push({ ...data, where: relative('.', file) });
   } else if (/\/problem-sets\/[^/]+\.ya?ml$/.test(path)) {
     checkProblemSet(file);
   } else if (/\.md$/.test(path)) {
-    checkArithmetic(readFileSync(file, 'utf8'), relative('.', file));
+    const source = readFileSync(file, 'utf8');
+    checkArithmetic(source, relative('.', file));
+    gaps.push(...checkAllWriting(source, relative('.', file)));
   }
 }
 
+for (const [name, unit] of Object.entries(units)) {
+  const seen = new Set();
+  for (const problem of unit.problems) {
+    if (seen.has(problem.order)) errors.push(problem.where + ': another problem already uses order ' + problem.order);
+    seen.add(problem.order);
+    if (problem.lesson && !(lessonsSeen[name] || []).includes(problem.lesson)) {
+      errors.push(problem.where + ': lesson "' + problem.lesson + '" doesn\'t match a file in lessons/');
+    }
+  }
+  const short = name.split('/').pop();
+  const isReview = !unit.lessonCount;
+  const lessonsDone = unit.lessonCount >= 3;
+  const problemsDone = unit.problems.length >= 20;
+  const count = (level) => unit.problems.filter((problem) => problem.difficulty === level).length;
+  const share = (level) => count(level) / (unit.problems.length || 1);
+
+  if (!isReview && !lessonsDone) unit.lessonGaps.push(short + ': has ' + unit.lessonCount + ' lessons, and a unit should have 3 to 5');
+  if (unit.lessonCount > 5) unit.lessonGaps.push(short + ': has ' + unit.lessonCount + ' lessons, and a unit should have 3 to 5');
+  if (!problemsDone) unit.problemGaps.push(short + ': has ' + unit.problems.length + ' problems, and a unit should have at least 20');
+  if (share('easy') < 0.2 || share('easy') > 0.4) unit.problemGaps.push(short + ': ' + count('easy') + ' easy problems is outside the 30% target');
+  if (share('medium') < 0.35 || share('medium') > 0.55) unit.problemGaps.push(short + ': ' + count('medium') + ' medium problems is outside the 45% target');
+  if (share('hard') < 0.15 || share('hard') > 0.35) unit.problemGaps.push(short + ': ' + count('hard') + ' hard problems is outside the 25% target');
+  for (const lesson of lessonsSeen[name] || []) {
+    const tagged = unit.problems.filter((problem) => problem.lesson === lesson).length;
+    if (tagged < 2) unit.problemGaps.push(short + '/' + lesson + ': has ' + tagged + ' "try it now" problems, and needs at least 2');
+  }
+  (lessonsDone || REQUIRE_FULL_STANDARD ? errors : gaps).push(...unit.lessonGaps);
+  (problemsDone || REQUIRE_FULL_STANDARD ? errors : gaps).push(...unit.problemGaps);
+}
+
 warnings.forEach((warning) => console.warn(`WARNING  ${warning}`));
+if (listGaps) gaps.forEach((gap) => console.log(`GAP      ${gap}`));
 errors.forEach((error) => console.error(`ERROR    ${error}`));
 console.log(
   `\nAnswer check: ${counts.checked} answers confirmed by code, ${counts.unchecked} without verify code, ` +
-    `${counts.arithmetic} formulas checked, ${errors.length} errors.`,
+    `${counts.arithmetic} formulas checked, ${errors.length} errors, ` +
+    `${gaps.length} gaps in units still being upgraded.`,
 );
 if (errors.length) process.exit(1);

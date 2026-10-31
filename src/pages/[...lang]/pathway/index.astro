@@ -36,7 +36,7 @@ const levels = await Promise.all(
               {unit.available ? (
                 <>
                   <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={unit.problems} />
-                  <a class="btn btn-primary" href={href(lang, `pathway/${unit.slug}/`)}>
+                  <a class="btn btn-primary" href={href(lang, unit.review ? `pathway/${unit.slug}/practice/` : `pathway/${unit.slug}/`)}>
                     {text.start}<span class="sr-only">: {unit.title}</span>
                   </a>
                 </>

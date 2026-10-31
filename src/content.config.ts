@@ -15,14 +15,22 @@ const pathway = defineCollection({
         title: z.string(),
         blurb: z.string(),
         contest: z.enum(['AMC 8', 'AMC 10', 'AMC 12']),
-        units: z.array(z.object({ slug: z.string(), title: z.string(), blurb: z.string() })),
+        units: z.array(
+          z.object({
+            slug: z.string(),
+            title: z.string(),
+            blurb: z.string(),
+            // A review unit has practice problems but no lessons.
+            review: z.boolean().optional(),
+          }),
+        ),
       }),
     ),
   }),
 });
 
 const lessons = defineCollection({
-  loader: glob({ pattern: '*/units/*/lesson.md', base }),
+  loader: glob({ pattern: '*/units/*/lessons/*.md', base }),
   schema: z.object({ title: z.string(), summary: z.string(), minutes: z.number() }),
 });
 
@@ -34,6 +42,10 @@ const problems = defineCollection({
     choices: z.array(text).min(2).max(6),
     answer: z.enum(['A', 'B', 'C', 'D', 'E', 'F']),
     verify: z.string().optional(),
+    // The lesson file this problem practices, such as 02-when-order-matters.
+    lesson: z.string().optional(),
+    // For each wrong choice, what a student who picked it probably did.
+    mistakes: z.record(z.enum(['A', 'B', 'C', 'D', 'E', 'F']), z.string()).optional(),
   }),
 });
 

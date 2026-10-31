@@ -1,15 +1,14 @@
 ---
-import 'katex/dist/katex.min.css';
 import Base from '../../../../layouts/Base.astro';
 import ProgressBar from '../../../../components/ProgressBar.astro';
-import { getLesson, getProblems, getUnits } from '../../../../lib/content';
+import { getLessons, getProblems, getUnits } from '../../../../lib/content';
 import { href, langParam, locales, t } from '../../../../i18n/config';
 
 export async function getStaticPaths() {
   const paths = await Promise.all(
     locales.map(async (lang) =>
       (await getUnits(lang))
-        .filter((unit) => unit.available)
+        .filter((unit) => unit.available && !unit.review)
         .map((unit) => ({ params: { lang: langParam(lang), unit: unit.slug }, props: { lang, unit } })),
     ),
   );
@@ -17,17 +16,33 @@ export async function getStaticPaths() {
 }
 
 const { lang, unit } = Astro.props;
-const text = t(lang).lesson;
-const lesson = await getLesson(lang, unit.slug);
+const text = t(lang).unit;
+const lessons = await getLessons(lang, unit.slug);
 const problems = await getProblems(lang, unit.slug);
 ---
-<Base title={lesson.data.title} description={lesson.data.summary} lang={lang} current="learn">
-  <p class="eyebrow">{text.eyebrow} &middot; {text.readTime(lesson.data.minutes)}</p>
-  <h1>{lesson.data.title}</h1>
-  <div class="prose" set:html={lesson.rendered?.html} />
+<Base title={unit.title} description={unit.blurb} lang={lang} current="learn">
+  <h1>{unit.title}</h1>
+  <p>{unit.blurb}</p>
+  <h2>{text.lessons}</h2>
+  <ol class="lesson-list" data-lesson-list data-unit={unit.slug}>
+    {lessons.map((lesson) => (
+      <li class="card">
+        <h3><a href={href(lang, `pathway/${unit.slug}/${lesson.slug}/`)}>{lesson.title}</a></h3>
+        <p>{lesson.summary}</p>
+        <p class="lesson-meta">
+          <span class="muted">{text.minutes(lesson.minutes)}</span>
+          <span class="solved-badge" data-lesson-check={lesson.slug} hidden>&#10003; {text.read}</span>
+        </p>
+      </li>
+    ))}
+  </ol>
+  <h2>{text.practice}</h2>
   <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={problems.map((problem) => problem.slug)} />
   <div class="btn-row">
     <a class="btn btn-primary" href={href(lang, `pathway/${unit.slug}/practice/`)}>{text.toPractice}</a>
-    <a class="btn" href={href(lang, 'pathway/')}>{text.back}</a>
+    <a class="btn" href={href(lang, 'pathway/')}>{t(lang).lesson.back}</a>
   </div>
 </Base>
+<script>
+  import '../../../../scripts/lessons';
+</script>

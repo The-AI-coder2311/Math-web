@@ -4,6 +4,7 @@ import Base from '../../../../layouts/Base.astro';
 import Problem from '../../../../components/Problem.astro';
 import ProgressBar from '../../../../components/ProgressBar.astro';
 import { getProblems, getUnits } from '../../../../lib/content';
+import { practiceData } from '../../../../lib/practice-data';
 import { href, langParam, locales, t } from '../../../../i18n/config';
 import { links } from '../../../../site.config';
 
@@ -25,20 +26,12 @@ const units = await getUnits(lang);
 const nextUnit = units[units.findIndex((other) => other.slug === unit.slug) + 1];
 ---
 <Base title={text.title(unit.title)} description={text.description(unit.title)} lang={lang} current="learn">
-  <div
-    data-practice
-    data-unit={unit.slug}
-    data-pick-first={text.pickFirst}
-    data-correct={text.correct}
-    data-wrong={text.wrong('{letter}')}
-    data-already-solved={text.alreadySolved}
-    data-reset-confirm={text.resetConfirm}
-  >
+  <div {...practiceData(lang, unit.slug)}>
     <h1>{text.title(unit.title)}</h1>
     <p>{text.intro}</p>
     <noscript><p class="card">{text.noScript}</p></noscript>
     <p class="card" data-storage-note hidden>{text.storageBlocked}</p>
-    <p><a href={href(lang, `pathway/${unit.slug}/`)}>{text.backToLesson}</a></p>
+    {!unit.review && <p><a href={href(lang, `pathway/${unit.slug}/`)}>{text.backToLesson}</a></p>}
 
     <div class="sticky-progress needs-js">
       <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={problems.map((problem) => problem.slug)} />

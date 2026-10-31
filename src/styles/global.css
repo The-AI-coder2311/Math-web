@@ -463,6 +463,70 @@ main.wrap {
   border-radius: var(--radius);
 }
 
+/* Parts of a lesson */
+.prose section[data-box] {
+  margin: 1.5rem 0;
+  padding: 0.25rem 1.1rem 0.5rem;
+  border: 1px solid var(--border);
+  border-left: 5px solid var(--accent);
+  border-radius: 8px;
+}
+
+.prose section[data-box] > h2:first-child {
+  margin-top: 0.75rem;
+  font-size: 1.2rem;
+}
+
+.prose section[data-box='summary'] {
+  background: var(--accent-soft);
+  border: 2px solid var(--accent);
+}
+
+.prose details.check {
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.prose details.check summary {
+  min-height: 2rem;
+  color: var(--accent);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.lesson-list {
+  display: grid;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 1rem 0;
+  list-style: none;
+}
+
+.lesson-list h3 {
+  margin: 0 0 0.25rem;
+}
+
+.lesson-list p {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+}
+
+.lesson-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.mistake {
+  margin: 0.4rem 0 0;
+  padding: 0.5rem 0.75rem;
+  background: var(--accent-soft);
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;

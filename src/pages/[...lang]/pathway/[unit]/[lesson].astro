@@ -1,0 +1,63 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../../layouts/Base.astro';
+import Problem from '../../../../components/Problem.astro';
+import { getLessons, getProblems, getUnits } from '../../../../lib/content';
+import { practiceData } from '../../../../lib/practice-data';
+import { href, langParam, locales, t } from '../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) => {
+      const units = (await getUnits(lang)).filter((unit) => unit.available && !unit.review);
+      const perUnit = await Promise.all(
+        units.map(async (unit) => {
+          const lessons = await getLessons(lang, unit.slug);
+          return lessons.map((lesson, index) => ({
+            params: { lang: langParam(lang), unit: unit.slug, lesson: lesson.slug },
+            props: { lang, unit, lesson, index, lessons },
+          }));
+        }),
+      );
+      return perUnit.flat();
+    }),
+  );
+  return paths.flat();
+}
+
+const { lang, unit, lesson, index, lessons } = Astro.props;
+const text = t(lang).lesson;
+const previous = lessons[index - 1];
+const next = lessons[index + 1];
+const tryIt = (await getProblems(lang, unit.slug)).filter((problem) => problem.lesson === lesson.slug).slice(0, 3);
+---
+<Base title={`${lesson.title}: ${unit.title}`} description={lesson.summary} lang={lang} current="learn">
+  <p class="eyebrow">
+    <a href={href(lang, `pathway/${unit.slug}/`)}>{unit.title}</a>
+    &middot; {text.position(index + 1, lessons.length)} &middot; {text.readTime(lesson.minutes)}
+  </p>
+  <h1>{lesson.title}</h1>
+  <div class="prose" set:html={lesson.html} />
+  <div data-lesson-end data-unit={unit.slug} data-lesson={lesson.slug}></div>
+
+  {tryIt.length > 0 && (
+    <section {...practiceData(lang, unit.slug)}>
+      <h2>{text.tryItTitle}</h2>
+      <p>{text.tryItIntro}</p>
+      {tryIt.map((problem, i) => <Problem lang={lang} number={i + 1} problem={problem} />)}
+    </section>
+  )}
+
+  <nav class="btn-row" aria-label={text.navLabel}>
+    {previous && <a class="btn" href={href(lang, `pathway/${unit.slug}/${previous.slug}/`)}>{text.previous}<span class="sr-only">: {previous.title}</span></a>}
+    {next ? (
+      <a class="btn btn-primary" href={href(lang, `pathway/${unit.slug}/${next.slug}/`)}>{text.next}<span class="sr-only">: {next.title}</span></a>
+    ) : (
+      <a class="btn btn-primary" href={href(lang, `pathway/${unit.slug}/practice/`)}>{text.toPractice}</a>
+    )}
+  </nav>
+</Base>
+<script>
+  import '../../../../scripts/lessons';
+  import '../../../../scripts/practice';
+</script>
