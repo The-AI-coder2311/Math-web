@@ -1,0 +1,61 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../../layouts/Base.astro';
+import { getProblemSets } from '../../../../lib/content';
+import { renderInline, renderMarkdown } from '../../../../lib/markdown';
+import { href, langParam, locales, t } from '../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) =>
+      (await getProblemSets(lang)).map((set) => ({
+        params: { lang: langParam(lang), set: set.slug },
+        props: { lang, set },
+      })),
+    ),
+  );
+  return paths.flat();
+}
+
+const { lang, set } = Astro.props;
+const text = t(lang).sets;
+const heading = `${text.week(set.week)}: ${set.title}`;
+---
+<Base title={heading} description={set.summary} lang={lang} current="teachers">
+  <p class="no-print"><a href={href(lang, 'teachers/problem-sets/')}>{text.allSets}</a></p>
+  <div class="print-only name-line">
+    <span>{text.name}:</span>
+    <span>{text.date}:</span>
+  </div>
+  <h1>{heading}</h1>
+  <p class="no-print muted">{text.onScreenNote}</p>
+  <div class="btn-row no-print needs-js">
+    <button class="btn btn-primary" type="button" data-print="student">{text.printStudent}</button>
+    <button class="btn" type="button" data-print="key">{text.printKey}</button>
+  </div>
+  <ol class="problem-sheet">
+    {set.problems.map((problem) => <li set:html={renderMarkdown(problem.question)} />)}
+  </ol>
+  <section class="answer-key">
+    <h2>{text.keyTitle}: {heading}</h2>
+    <p><strong>{text.teacherNote}:</strong> <span set:html={renderInline(set.teacherNote)} /></p>
+    <ol class="answer-list">
+      {set.problems.map((problem) => (
+        <li>
+          <strong>{text.answer}: <span set:html={renderInline(problem.answer)} /></strong>
+          <Fragment set:html={renderMarkdown(problem.explanation)} />
+        </li>
+      ))}
+    </ol>
+  </section>
+</Base>
+<script>
+  const root = document.documentElement;
+  document.querySelectorAll<HTMLButtonElement>('[data-print]').forEach((button) => {
+    button.addEventListener('click', () => {
+      root.classList.toggle('print-student', button.dataset.print === 'student');
+      window.print();
+    });
+  });
+  window.addEventListener('afterprint', () => root.classList.remove('print-student'));
+</script>

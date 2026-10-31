@@ -1,0 +1,93 @@
+---
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { site } from '../site.config';
+import { href, t, type Locale } from '../i18n/config';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: Locale;
+  current?: 'learn' | 'teachers' | 'about';
+}
+
+const { title, description, lang, current } = Astro.props;
+const text = t(lang);
+const navItems = [
+  { key: 'learn', label: text.nav.learn, url: href(lang, 'pathway/') },
+  { key: 'teachers', label: text.nav.teachers, url: href(lang, 'teachers/') },
+  { key: 'about', label: text.nav.about, url: href(lang, 'about/') },
+];
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{`${title} | ${site.name}`}</title>
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} />
+    <script is:inline>
+      try {
+        var savedTheme = localStorage.getItem('count-me-in-theme');
+        if (savedTheme) document.documentElement.dataset.theme = savedTheme;
+      } catch (e) {}
+    </script>
+    <noscript><style>.needs-js { display: none !important; }</style></noscript>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{text.skipLink}</a>
+    <header class="site-header no-print">
+      <div class="wrap site-header-inner">
+        <a class="logo-link" href={href(lang)}><Logo /></a>
+        <nav aria-label={text.nav.label}>
+          <ul>
+            {navItems.map((item) => (
+              <li><a href={item.url} aria-current={item.key === current ? 'page' : undefined}>{item.label}</a></li>
+            ))}
+          </ul>
+        </nav>
+        <button
+          class="theme-toggle needs-js"
+          type="button"
+          data-theme-toggle
+          data-to-dark={text.theme.toDark}
+          data-to-light={text.theme.toLight}
+        >
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <main id="main" class="wrap" tabindex="-1"><slot /></main>
+    <footer class="site-footer no-print">
+      <div class="wrap">
+        <p>{text.footer.free}</p>
+        <p class="muted">{text.footer.disclaimer}</p>
+      </div>
+    </footer>
+    <script>
+      const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+      const root = document.documentElement;
+      const isDark = () =>
+        root.dataset.theme
+          ? root.dataset.theme === 'dark'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const label = () => {
+        if (toggle) toggle.setAttribute('aria-label', isDark() ? toggle.dataset.toLight! : toggle.dataset.toDark!);
+      };
+      label();
+      toggle?.addEventListener('click', () => {
+        root.dataset.theme = isDark() ? 'light' : 'dark';
+        try {
+          localStorage.setItem('count-me-in-theme', root.dataset.theme);
+        } catch {
+          // Blocked storage: the theme still applies until the page changes.
+        }
+        label();
+      });
+    </script>
+  </body>
+</html>

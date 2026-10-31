@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-90 0 480 245" font-family="system-ui, sans-serif" font-size="17" fill="#2b2622">
+  <title>A circle of radius 5 fits exactly inside a square with sides of 10, touching all four sides. The four corners outside the circle are shaded.</title>
+  <rect x="50" y="20" width="200" height="200" fill="#e9a988" stroke="#b4461a" stroke-width="3" />
+  <circle cx="150" cy="120" r="100" fill="#ffffff" stroke="#b4461a" stroke-width="3" />
+  <line x1="150" y1="120" x2="250" y2="120" stroke="#2b2622" stroke-width="2" />
+  <circle cx="150" cy="120" r="4" fill="#2b2622" />
+  <text x="172" y="110" font-weight="700">radius 5</text>
+  <text x="150" y="238" text-anchor="middle" font-weight="700">side 10</text>
+</svg>

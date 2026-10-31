@@ -1,0 +1,23 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPage } from '../../../lib/content';
+import { href, localePaths, t } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const text = t(lang).teachers;
+const page = await getPage(lang, 'teachers');
+---
+<Base title={page.title} description={page.description} lang={lang} current="teachers">
+  <h1>{page.title}</h1>
+  <div class="btn-row">
+    <a class="btn btn-primary" href={href(lang, 'teachers/club-plan/')}>{text.planCta}</a>
+    <a class="btn" href={href(lang, 'teachers/problem-sets/')}>{text.setsCta}</a>
+  </div>
+  <div class="prose" set:html={page.html} />
+  <div class="btn-row">
+    <a class="btn btn-primary" href={href(lang, 'teachers/club-plan/')}>{text.planCta}</a>
+    <a class="btn" href={href(lang, 'teachers/problem-sets/')}>{text.setsCta}</a>
+  </div>
+</Base>

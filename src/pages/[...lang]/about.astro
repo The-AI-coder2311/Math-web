@@ -1,0 +1,21 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getPage } from '../../lib/content';
+import { localePaths, t } from '../../i18n/config';
+import { site } from '../../site.config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const text = t(lang).about;
+const page = await getPage(lang, 'about');
+---
+<Base title={page.title} description={page.description} lang={lang} current="about">
+  <h1>{page.title}</h1>
+  <div class="prose" set:html={page.html} />
+  <section class="card">
+    <h2>{text.contactTitle}</h2>
+    <p>{text.contactText}</p>
+    <a class="btn btn-primary" href={`mailto:${site.contactEmail}`}>{text.contactCta}</a>
+  </section>
+</Base>

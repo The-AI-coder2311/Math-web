@@ -1,0 +1,26 @@
+---
+import { t, type Locale } from '../i18n/config';
+
+interface Props {
+  lang: Locale;
+  unit: string;
+  unitTitle: string;
+  problems: string[];
+}
+
+const { lang, unit, unitTitle, problems } = Astro.props;
+const text = t(lang).progress;
+const statusId = `progress-status-${unit}`;
+---
+<div class="progress needs-js" data-progress-unit={unit} data-problems={problems.join(',')}>
+  <progress max={problems.length} value="0" aria-label={text.label(unitTitle)} aria-describedby={statusId}></progress>
+  <p
+    id={statusId}
+    data-progress-status
+    data-template={text.status('{solved}', problems.length)}
+  >{text.status(0, problems.length)}</p>
+</div>
+<script>
+  import { updateBars } from '../scripts/progress';
+  updateBars();
+</script>

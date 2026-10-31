@@ -1,0 +1,29 @@
+---
+import { site } from '../site.config';
+
+// The mark is a hand-counting tally: four strokes and a crossing fifth.
+// The wordmark's width follows the site name, so renaming the site just works.
+const textWidth = site.name.length * 11.5;
+---
+<svg
+  class="logo"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={`0 0 ${46 + textWidth} 40`}
+  height="36"
+  role="img"
+  aria-label={site.name}
+>
+  <g fill="none" stroke-linecap="round" stroke-width="3.5">
+    <path stroke="currentColor" d="M9 8v24M16 8v24M23 8v24M30 8v24" />
+    <path stroke="var(--accent)" d="M4 29 35 11" />
+  </g>
+  <text
+    x="44"
+    y="27"
+    fill="currentColor"
+    font-size="20"
+    font-weight="700"
+    textLength={textWidth}
+    lengthAdjust="spacingAndGlyphs"
+  >{site.name}</text>
+</svg>

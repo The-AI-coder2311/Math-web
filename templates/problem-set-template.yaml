@@ -1,0 +1,18 @@
+# Copy this file to src/content/en/problem-sets/ and name it like week-9.yaml
+# Tip: if a line contains a colon or starts with a special character, put it in double quotes.
+
+week: 9
+title: Your Topic
+summary: One sentence describing the set.
+teacherNote: >-
+  Tell a teacher with no competition background what this set is about and where students may get
+  stuck.
+problems:
+  - question: How many different pairs of socks and shoes can you make from 3 pairs of socks and 2 pairs of shoes?
+    answer: 6
+    verify: "product(range(1, 3), range(1, 2)).length"
+    explanation: There are two choices, so multiply. $3 \times 2 = 6$
+  - question: Fractions need single quotes around the answer, as shown below. What is one half of one half?
+    answer: '$\frac{1}{4}$'
+    verify: "fraction(1, 4)"
+    explanation: Half of a half is $\frac{1}{2} \times \frac{1}{2} = \frac{1}{4}$.

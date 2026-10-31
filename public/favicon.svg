@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <style>
+    .strokes { stroke: #2b2622; }
+    @media (prefers-color-scheme: dark) { .strokes { stroke: #f4efe8; } }
+  </style>
+  <g fill="none" stroke-linecap="round" stroke-width="4">
+    <path class="strokes" d="M9 8v24M16 8v24M23 8v24M30 8v24" />
+    <path stroke="#d9601f" d="M4 29 35 11" />
+  </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 290" font-family="system-ui, sans-serif" font-size="17" fill="#2b2622">
+  <title>Two squares with side 7 holding the same four right triangles with legs 3 and 4. In the first, the leftover space is one tilted square of area 25. In the second, the leftover space is two squares of area 9 and 16.</title>
+  <!-- Each square is 7 units wide at 30 pixels per unit, so the triangles really are the same size. -->
+  <g transform="translate(14 24)" stroke="#b4461a" stroke-width="2">
+    <rect width="210" height="210" fill="#ffffff" />
+    <g fill="#fbeee6">
+      <polygon points="0,0 90,0 0,120" />
+      <polygon points="90,0 210,0 210,90" />
+      <polygon points="210,90 210,210 120,210" />
+      <polygon points="120,210 0,210 0,120" />
+    </g>
+    <text x="108" y="112" text-anchor="middle" font-weight="700" stroke="none" fill="#2b2622">25</text>
+  </g>
+  <g transform="translate(256 24)" stroke="#b4461a" stroke-width="2">
+    <rect width="210" height="210" fill="#ffffff" />
+    <g fill="#fbeee6">
+      <polygon points="90,0 210,0 90,90" />
+      <polygon points="210,0 210,90 90,90" />
+      <polygon points="0,90 90,90 0,210" />
+      <polygon points="90,90 90,210 0,210" />
+    </g>
+    <text x="45" y="52" text-anchor="middle" font-weight="700" stroke="none" fill="#2b2622">9</text>
+    <text x="150" y="157" text-anchor="middle" font-weight="700" stroke="none" fill="#2b2622">16</text>
+  </g>
+  <text x="119" y="262" text-anchor="middle">Leftover space: 25</text>
+  <text x="361" y="262" text-anchor="middle">Leftover space: 9 + 16</text>
+</svg>

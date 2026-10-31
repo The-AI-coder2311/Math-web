@@ -1,0 +1,26 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import { getProblemSets } from '../../../../lib/content';
+import { href, localePaths, t } from '../../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const all = t(lang);
+const text = all.sets;
+const sets = await getProblemSets(lang);
+---
+<Base title={text.title} description={text.description} lang={lang} current="teachers">
+  <p><a href={href(lang, 'teachers/')}>{all.plan.back}</a></p>
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <ul class="set-list">
+    {sets.map((set) => (
+      <li class="card">
+        <h2><a href={href(lang, `teachers/problem-sets/${set.slug}/`)}>{text.week(set.week)}: {set.title}</a></h2>
+        <p>{set.summary}</p>
+        <p class="muted">{text.problems(set.problems.length)}</p>
+      </li>
+    ))}
+  </ul>
+</Base>

@@ -1,0 +1,32 @@
+week: 3
+title: Fractions & Ratios
+summary: Solve problems about parts, ratios, and percents using "groups" and pictures.
+teacherNote: >-
+  Drawing boxes helps with every ratio problem. A ratio of 2 to 5 means 2 boxes of one thing and 5
+  boxes of the other, all holding the same amount. Problems 5 and 6 are stretches, so let students
+  try guessing and checking before you show a shortcut.
+problems:
+  - question: At a school, $\frac{3}{4}$ of the 48 students in a class walk to school. How many of these students walk?
+    answer: 36
+    verify: "48 * 3 / 4"
+    explanation: One fourth of 48 is $48 \div 4 = 12$. Three fourths is three times that. $3 \times 12 = 36$
+  - question: A bag holds red and blue marbles in a ratio of 2 to 5. There are 35 marbles in all. How many are red?
+    answer: 10
+    verify: "range(1, 35).find((red) => red * 5 === (35 - red) * 2)"
+    explanation: Each group of $2 + 5 = 7$ marbles has 2 red ones. There are $35 \div 7 = 5$ groups, so there are $5 \times 2 = 10$ red marbles.
+  - question: A recipe uses 3 cups of flour to make 24 cookies. How many cups of flour are needed to make 40 cookies?
+    answer: 5
+    verify: "3 * 40 / 24"
+    explanation: Each cup makes $24 \div 3 = 8$ cookies. To make 40 cookies, you need $40 \div 8 = 5$ cups.
+  - question: A \$40 backpack is on sale for 25% off. What is the sale price, in dollars?
+    answer: 30
+    verify: "40 - 40 * 25 / 100"
+    explanation: 25% is one fourth, and one fourth of 40 is $40 \div 4 = 10$. Subtract the discount from the price. $40 - 10 = 30$
+  - question: A water tank is $\frac{1}{3}$ full. After 12 more liters are added, the tank is $\frac{5}{6}$ full. How many liters does the full tank hold?
+    answer: 24
+    verify: "range(1, 200).find((tank) => 2 * tank + 72 === 5 * tank)"
+    explanation: The tank went up by $\frac{5}{6} - \frac{1}{3} = \frac{1}{2}$ of its size. So 12 liters is half the tank, and the full tank holds $2 \times 12 = 24$ liters.
+  - question: A club has 3 boys for every 4 girls. After 2 more boys join, the club has the same number of boys and girls. How many students were in the club before the 2 boys joined?
+    answer: 14
+    verify: "range(1, 100).filter((n) => n % 7 === 0).find((n) => (n * 3) / 7 + 2 === (n * 4) / 7)"
+    explanation: Each group has 3 boys and 4 girls, so there's 1 more girl than boys per group. The difference of 2 means there are 2 groups, or 6 boys and 8 girls. $6 + 8 = 14$

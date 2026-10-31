@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 320" font-family="system-ui, sans-serif" font-size="17" fill="#2b2622">
+  <title>Tree diagram of 6 outfits made from 2 shirts and 3 pairs of pants</title>
+  <g font-weight="700" fill="#5f564e" font-size="15">
+    <text x="20" y="24">Pick a shirt</text>
+    <text x="190" y="24">Pick pants</text>
+    <text x="370" y="24">Your outfit</text>
+  </g>
+  <g fill="none" stroke="#b4461a" stroke-width="2">
+    <path d="M85 100 190 55M85 100 190 100M85 100 190 145" />
+    <path d="M85 235 190 190M85 235 190 235M85 235 190 280" />
+    <path stroke="#8a8077" stroke-dasharray="4 4" d="M265 55H370M265 100H370M265 145H370M265 190H370M265 235H370M265 280H370" />
+  </g>
+  <g font-weight="700">
+    <text x="20" y="106">Red</text>
+    <text x="20" y="241">Blue</text>
+  </g>
+  <g>
+    <text x="196" y="61">Jeans</text>
+    <text x="196" y="106">Shorts</text>
+    <text x="196" y="151">Khakis</text>
+    <text x="196" y="196">Jeans</text>
+    <text x="196" y="241">Shorts</text>
+    <text x="196" y="286">Khakis</text>
+  </g>
+  <g>
+    <text x="376" y="61">1. Red, jeans</text>
+    <text x="376" y="106">2. Red, shorts</text>
+    <text x="376" y="151">3. Red, khakis</text>
+    <text x="376" y="196">4. Blue, jeans</text>
+    <text x="376" y="241">5. Blue, shorts</text>
+    <text x="376" y="286">6. Blue, khakis</text>
+  </g>
+</svg>

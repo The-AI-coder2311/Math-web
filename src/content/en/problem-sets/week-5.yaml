@@ -1,0 +1,32 @@
+week: 5
+title: Logic & Patterns
+summary: Find patterns, work backwards, and reason through puzzles.
+teacherNote: >-
+  Encourage students to try small cases first. Guess-and-check is a real strategy, especially on
+  Problem 5, so praise it, then ask whether anyone found a faster way. Problem 2 is a good moment to
+  show the pairing trick at the board.
+problems:
+  - question: The pattern 3, 7, 11, 15, ... adds 4 each time. What is the 20th number in the pattern?
+    answer: 79
+    verify: "Array.from({ length: 20 }, (_, i) => 3 + 4 * i)[19]"
+    explanation: To get from the 1st number to the 20th, you add 4 a total of 19 times. $3 + 19 \times 4 = 79$
+  - question: What is the sum $1 + 2 + 3 + \cdots + 50$?
+    answer: 1275
+    verify: "sum(range(1, 50))"
+    explanation: Pair the first and last numbers, then the second and second-to-last, and so on. Each pair adds up to 51, and there are 25 pairs. $25 \times 51 = 1275$
+  - question: Mia thinks of a number. She doubles it, subtracts 5, and divides the result by 3. Her final answer is 7. What number did she start with?
+    answer: 13
+    verify: "range(1, 100).find((n) => (2 * n - 5) / 3 === 7)"
+    explanation: Work backwards by undoing each step. $7 \times 3 = 21$, then $21 + 5 = 26$, then $26 \div 2 = 13$.
+  - question: The letters M, A, T, H repeat in order to make the pattern MATHMATHMATH... What is the 100th letter?
+    answer: H
+    verify: "'MATH'[(100 - 1) % 4]"
+    explanation: The pattern repeats every 4 letters, and every 4th letter is H. Since 100 is a multiple of 4, the 100th letter is H.
+  - question: A farm has only chickens and cows. There are 20 animals and 56 legs in all. How many cows are there?
+    answer: 8
+    verify: "range(0, 20).find((cows) => 4 * cows + 2 * (20 - cows) === 56)"
+    explanation: If all 20 animals were chickens, there would be $20 \times 2 = 40$ legs. That's $56 - 40 = 16$ legs short, and each cow adds 2 extra legs. $16 \div 2 = 8$
+  - question: Suppose you write out all the whole numbers from 1 to 100. How many times do you write the digit 1?
+    answer: 21
+    verify: "sum(range(1, 100).map((n) => digits(n).filter((d) => d === 1).length))"
+    explanation: The digit 1 appears 10 times in the ones place (1, 11, ..., 91), 10 times in the tens place (10 to 19), and once in 100. $10 + 10 + 1 = 21$

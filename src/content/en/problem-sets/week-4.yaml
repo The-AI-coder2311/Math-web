@@ -1,0 +1,32 @@
+week: 4
+title: Basic Geometry
+summary: Find perimeters, areas, and angles, starting by drawing a picture.
+teacherNote: >-
+  Insist on a labeled drawing for every problem, even a simple one. Students need three facts this
+  week. Perimeter is the distance around, a triangle's angles add up to 180 degrees, and a right
+  triangle's sides follow the Pythagorean Theorem.
+problems:
+  - question: A square has a perimeter of 28 centimeters. What is its area, in square centimeters?
+    answer: 49
+    verify: "(28 / 4) ** 2"
+    explanation: A square has 4 equal sides, so each side is $28 \div 4 = 7$. The area is $7 \times 7 = 49$.
+  - question: Two angles of a triangle measure 47 degrees and 68 degrees. What is the measure of the third angle, in degrees?
+    answer: 65
+    verify: "180 - 47 - 68"
+    explanation: The angles of a triangle add up to 180 degrees. $180 - 47 - 68 = 65$
+  - question: A triangle has a base of 6 inches and a height of 8 inches. What is its area, in square inches?
+    answer: 24
+    verify: "(6 * 8) / 2"
+    explanation: A triangle's area is half of base times height. $\frac{6 \times 8}{2} = 24$
+  - question: A rectangle has a perimeter of 30 meters and a length of 9 meters. What is its area, in square meters?
+    answer: 54
+    verify: "range(1, 30).find((width) => 2 * (9 + width) === 30) * 9"
+    explanation: Length plus width is half the perimeter, which is $30 \div 2 = 15$. So the width is $15 - 9 = 6$, and the area is $9 \times 6 = 54$.
+  - question: A right triangle has legs of length 5 and 12. What is its perimeter?
+    answer: 30
+    verify: "range(1, 30).find((c) => 5 * 5 + 12 * 12 === c * c) + 5 + 12"
+    explanation: By the Pythagorean Theorem, the longest side squared is $5^2 + 12^2 = 169$. Since $13^2 = 169$, the longest side is 13. Add the three sides. $5 + 12 + 13 = 30$
+  - question: A rectangular garden measures 10 meters by 6 meters. A path 1 meter wide runs around the entire outside of the garden. What is the area of the path, in square meters?
+    answer: 36
+    verify: "product(range(1, 12), range(1, 8)).filter(([x, y]) => x === 1 || x === 12 || y === 1 || y === 8).length"
+    explanation: The garden plus the path forms a rectangle that's 2 meters longer in each direction, or 12 by 8. Subtract the garden from the whole rectangle. $12 \times 8 - 10 \times 6 = 36$

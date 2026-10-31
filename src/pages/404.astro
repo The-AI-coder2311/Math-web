@@ -1,0 +1,12 @@
+---
+import Base from '../layouts/Base.astro';
+import { defaultLocale, href, t } from '../i18n/config';
+
+const lang = defaultLocale;
+const text = t(lang).notFound;
+---
+<Base title={text.title} description={text.text} lang={lang}>
+  <h1>{text.title}</h1>
+  <p>{text.text}</p>
+  <a class="btn btn-primary" href={href(lang)}>{text.home}</a>
+</Base>

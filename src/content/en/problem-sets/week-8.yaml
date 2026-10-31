@@ -1,0 +1,32 @@
+week: 8
+title: Team Round
+summary: Six tougher problems for small teams to solve together.
+teacherNote: >-
+  Give each team one copy and let them decide how to split the work. These problems are harder on
+  purpose. Listing, drawing, and testing small cases all work well here. Ask teams to explain one
+  solution to the group, and celebrate good thinking even when the answer isn't right.
+problems:
+  - question: Five friends meet, and each one shakes hands exactly once with each of the others. How many handshakes happen in all?
+    answer: 10
+    verify: "combos(range(1, 5), 2).length"
+    explanation: Each of the 5 friends shakes 4 hands, but this counts every handshake twice. $\frac{5 \times 4}{2} = 10$
+  - question: A rectangle is divided into a grid of small squares that is 2 squares tall and 3 squares wide. How many rectangles of any size can be found in the grid? (Squares count as rectangles, and so does the whole grid.)
+    answer: 18
+    verify: "combos(range(0, 3), 2).length * combos(range(0, 2), 2).length"
+    explanation: A rectangle is set by choosing 2 of the 4 vertical lines (6 ways) and 2 of the 3 horizontal lines (3 ways). $6 \times 3 = 18$
+  - question: What is the smallest whole number greater than 1 that leaves a remainder of 1 when divided by 2, by 3, by 4, and by 5?
+    answer: 61
+    verify: "range(2, 200).find((n) => [2, 3, 4, 5].every((d) => n % d === 1))"
+    explanation: One less than the number must be divisible by 2, 3, 4, and 5. The smallest such number is 60, so the answer is $60 + 1 = 61$.
+  - question: How many different ways can you make 25 cents using only pennies, nickels, and dimes? (The order of the coins doesn't matter.)
+    answer: 12
+    verify: "product(range(0, 25), range(0, 5), range(0, 2)).filter(([p, n, d]) => p + 5 * n + 10 * d === 25).length"
+    explanation: Organize by dimes. With 0 dimes, you can use 0 to 5 nickels, which is 6 ways. With 1 dime, you can use 0 to 3 nickels, which is 4 ways. With 2 dimes, you can use 0 or 1 nickel, which is 2 ways. Pennies fill in the rest. $6 + 4 + 2 = 12$
+  - question: A city has a square grid of streets. Sam walks from one corner to the opposite corner, going 3 blocks east and 3 blocks north in any order. How many different routes are possible?
+    answer: 20
+    verify: "product([0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1]).filter((route) => sum(route) === 3).length"
+    explanation: Every route has 6 blocks, and we just choose which 3 of them go east. Choosing in order gives $6 \times 5 \times 4$, but each group of 3 was counted $3 \times 2 \times 1$ times. $\frac{6 \times 5 \times 4}{3 \times 2 \times 1} = 20$
+  - question: How many whole numbers from 1 to 100 have digits that add up to 9?
+    answer: 10
+    verify: "range(1, 100).filter((n) => sum(digits(n)) === 9).length"
+    explanation: "They are 9, 18, 27, 36, 45, 54, 63, 72, 81, and 90. Notice that each one is a multiple of 9."

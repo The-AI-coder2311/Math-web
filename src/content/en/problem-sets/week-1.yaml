@@ -1,0 +1,32 @@
+week: 1
+title: Counting
+summary: Use the multiply trick to count possibilities without listing them.
+teacherNote: >-
+  The whole set uses one idea: when choices happen one after another, multiply. If a group gets
+  stuck, have them make a short list or tree diagram. Problem 6 is a stretch, because students need
+  to count carefully rather than multiply.
+problems:
+  - question: A snack table has 4 kinds of fruit and 5 kinds of crackers. You take one fruit and one kind of cracker. How many different snacks can you make?
+    answer: 20
+    verify: "product(range(1, 4), range(1, 5)).length"
+    explanation: There are two choices, so multiply. $4 \times 5 = 20$
+  - question: How many two-digit numbers can be made using only the digits 2, 4, 6, and 8, if digits may repeat?
+    answer: 16
+    verify: "product([2, 4, 6, 8], [2, 4, 6, 8]).length"
+    explanation: Each of the two places has 4 options. $4 \times 4 = 16$
+  - question: A soccer team has 9 players. The coach chooses a captain and a different player as co-captain. How many ways can this be done?
+    answer: 72
+    verify: "product(range(1, 9), range(1, 9)).filter(([a, b]) => a !== b).length"
+    explanation: There are 9 options for captain, which leaves 8 for co-captain. $9 \times 8 = 72$
+  - question: How many different arrangements of the letters M, A, T, H are there if each letter is used exactly once? (They don't need to spell real words.)
+    answer: 24
+    verify: "perms(['M', 'A', 'T', 'H']).length"
+    explanation: Fill the spots one at a time, with one fewer letter each time. $4 \times 3 \times 2 \times 1 = 24$
+  - question: How many three-digit numbers have only even digits? (Remember that 0 is even.)
+    answer: 100
+    verify: "range(100, 999).filter((n) => digits(n).every((d) => d % 2 === 0)).length"
+    explanation: The hundreds digit can be 2, 4, 6, or 8, since it can't be 0. The other two digits can each be 0, 2, 4, 6, or 8. $4 \times 5 \times 5 = 100$
+  - question: How many whole numbers from 1 to 100 contain the digit 5 at least once?
+    answer: 19
+    verify: "range(1, 100).filter((n) => digits(n).includes(5)).length"
+    explanation: Ten numbers end in 5 (5, 15, ..., 95), and ten numbers are in the fifties (50 to 59). The number 55 is in both lists, so don't count it twice. $10 + 10 - 1 = 19$

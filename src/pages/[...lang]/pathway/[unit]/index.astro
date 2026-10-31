@@ -1,0 +1,33 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../../layouts/Base.astro';
+import ProgressBar from '../../../../components/ProgressBar.astro';
+import { getLesson, getProblems, getUnits } from '../../../../lib/content';
+import { href, langParam, locales, t } from '../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) =>
+      (await getUnits(lang))
+        .filter((unit) => unit.available)
+        .map((unit) => ({ params: { lang: langParam(lang), unit: unit.slug }, props: { lang, unit } })),
+    ),
+  );
+  return paths.flat();
+}
+
+const { lang, unit } = Astro.props;
+const text = t(lang).lesson;
+const lesson = await getLesson(lang, unit.slug);
+const problems = await getProblems(lang, unit.slug);
+---
+<Base title={lesson.data.title} description={lesson.data.summary} lang={lang} current="learn">
+  <p class="eyebrow">{text.eyebrow} &middot; {text.readTime(lesson.data.minutes)}</p>
+  <h1>{lesson.data.title}</h1>
+  <div class="prose" set:html={lesson.rendered?.html} />
+  <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={problems.map((problem) => problem.slug)} />
+  <div class="btn-row">
+    <a class="btn btn-primary" href={href(lang, `pathway/${unit.slug}/practice/`)}>{text.toPractice}</a>
+    <a class="btn" href={href(lang, 'pathway/')}>{text.back}</a>
+  </div>
+</Base>

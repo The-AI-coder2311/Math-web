@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 190" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>Three rectangles that each have perimeter 12: 1 by 5 with area 5, 2 by 4 with area 8, and 3 by 3 with area 9</title>
+  <g fill="#fbeee6" stroke="#b4461a" stroke-width="2">
+    <rect x="16" y="66" width="150" height="30" />
+    <rect x="196" y="36" width="120" height="60" />
+    <rect x="346" y="6" width="90" height="90" />
+  </g>
+  <g font-weight="700">
+    <text x="16" y="124">1 by 5</text>
+    <text x="196" y="124">2 by 4</text>
+    <text x="346" y="124">3 by 3</text>
+  </g>
+  <text x="16" y="148">Perimeter 12</text>
+  <text x="196" y="148">Perimeter 12</text>
+  <text x="346" y="148">Perimeter 12</text>
+  <text x="16" y="172">Area 5</text>
+  <text x="196" y="172">Area 8</text>
+  <text x="346" y="172">Area 9</text>
+</svg>

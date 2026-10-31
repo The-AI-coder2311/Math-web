@@ -1,0 +1,23 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../layouts/Base.astro';
+import { getPage } from '../../../lib/content';
+import { href, localePaths, t } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const text = t(lang).plan;
+const page = await getPage(lang, 'club-plan');
+---
+<Base title={page.title} description={page.description} lang={lang} current="teachers">
+  <p class="no-print"><a href={href(lang, 'teachers/')}>{text.back}</a></p>
+  <h1>{page.title}</h1>
+  <div class="btn-row no-print needs-js">
+    <button class="btn" type="button" data-print>{text.print}</button>
+  </div>
+  <div class="prose" set:html={page.html} />
+</Base>
+<script>
+  document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+</script>

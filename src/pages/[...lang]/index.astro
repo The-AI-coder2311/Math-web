@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { href, localePaths, t } from '../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const text = t(lang);
+---
+<Base title={text.home.title} description={text.home.description} lang={lang}>
+  <section class="hero">
+    <h1 class="mission">{text.home.mission}</h1>
+    <p class="muted">{text.home.reassure}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={href(lang, 'pathway/')}>{text.nav.learn}</a>
+      <a class="btn" href={href(lang, 'teachers/')}>{text.nav.teachers}</a>
+      <a class="btn" href={href(lang, 'about/')}>{text.nav.about}</a>
+    </div>
+  </section>
+  <ul class="card-grid">
+    {text.home.cards.map((card) => (
+      <li class="card">
+        <h2>{card.title}</h2>
+        <p>{card.text}</p>
+      </li>
+    ))}
+  </ul>
+</Base>

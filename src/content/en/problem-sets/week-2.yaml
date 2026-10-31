@@ -1,0 +1,32 @@
+week: 2
+title: Number Sense
+summary: Practice with remainders, factors, primes, and multiples.
+teacherNote: >-
+  Encourage organized lists, such as factor pairs. A common surprise is that 1 is not prime and 2
+  is the only even prime. For Problem 6, have students compute the first few powers of 7 and look
+  at the last digit. They don't need to find the whole number.
+problems:
+  - question: What is the remainder when 100 is divided by 7?
+    answer: 2
+    verify: "100 % 7"
+    explanation: The closest multiple of 7 below 100 is $7 \times 14 = 98$. Then $100 - 98 = 2$.
+  - question: How many positive whole numbers are factors of 36?
+    answer: 9
+    verify: "factors(36).length"
+    explanation: "The factor pairs are 1 and 36, 2 and 18, 3 and 12, 4 and 9, and 6 and 6. Since 6 pairs with itself, it only counts once, giving 1, 2, 3, 4, 6, 9, 12, 18, and 36."
+  - question: What is the sum of all the prime numbers less than 20?
+    answer: 77
+    verify: "sum(range(1, 19).filter(isPrime))"
+    explanation: The primes are 2, 3, 5, 7, 11, 13, 17, and 19. $2 + 3 + 5 + 7 + 11 + 13 + 17 + 19 = 77$
+  - question: What is the smallest positive whole number that is divisible by 4, by 6, and by 10?
+    answer: 60
+    verify: "lcm(lcm(4, 6), 10)"
+    explanation: "List the multiples of 10 and test each one: 10, 20, 30, 40, 50, and 60. The first that is divisible by both 4 and 6 is 60."
+  - question: How many whole numbers from 1 to 100 are divisible by 3 or by 5 (or both)?
+    answer: 47
+    verify: "range(1, 100).filter((n) => n % 3 === 0 || n % 5 === 0).length"
+    explanation: There are 33 multiples of 3 and 20 multiples of 5. The 6 multiples of 15 were counted twice, so subtract them. $33 + 20 - 6 = 47$
+  - question: What is the ones digit of $7^{20}$?
+    answer: 1
+    verify: "Number(7n ** 20n % 10n)"
+    explanation: The ones digits of the powers of 7 repeat in a cycle of four, which is 7, 9, 3, 1. Since 20 is a multiple of 4, $7^{20}$ lands at the end of a cycle, so its ones digit is 1.

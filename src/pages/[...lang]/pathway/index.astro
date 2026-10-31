@@ -1,0 +1,52 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ProgressBar from '../../../components/ProgressBar.astro';
+import { getLevels, getProblems } from '../../../lib/content';
+import { href, localePaths, t } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const text = t(lang).pathway;
+const levels = await Promise.all(
+  (await getLevels(lang)).map(async (level) => ({
+    ...level,
+    units: await Promise.all(
+      level.units.map(async (unit) => ({
+        ...unit,
+        problems: unit.available ? (await getProblems(lang, unit.slug)).map((problem) => problem.slug) : [],
+      })),
+    ),
+  })),
+);
+---
+<Base title={text.title} description={text.description} lang={lang} current="learn">
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  {levels.map((level) => (
+    <section class="level">
+      <h2>{level.title}</h2>
+      <p>{level.blurb}</p>
+      <ol class="unit-list" aria-label={text.listLabel(level.title)}>
+        {level.units.map((unit) => (
+          <li class={unit.available ? '' : 'is-soon'}>
+            <div class="card">
+              <h3>{unit.title}</h3>
+              <p>{unit.blurb}</p>
+              {unit.available ? (
+                <>
+                  <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={unit.problems} />
+                  <a class="btn btn-primary" href={href(lang, `pathway/${unit.slug}/`)}>
+                    {text.start}<span class="sr-only">: {unit.title}</span>
+                  </a>
+                </>
+              ) : (
+                <span class="pill">{text.comingSoon}</span>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</Base>

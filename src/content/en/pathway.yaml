@@ -1,0 +1,89 @@
+# The Learning Pathway, easiest level first. A unit becomes clickable as soon as
+# src/content/en/units/<slug>/lesson.md exists. Until then it says "Coming soon".
+# `contest` picks which past problems a finished unit links to: AMC 8, AMC 10 or AMC 12.
+levels:
+  - title: "Level 1: First Steps"
+    blurb: No experience needed. These six units get you ready for the early questions on your first contest.
+    contest: AMC 8
+    units:
+      - slug: counting
+        title: Counting
+        blurb: Count hundreds of possibilities without listing them all.
+      - slug: number-sense
+        title: Number Sense
+        blurb: Factors, primes, remainders, and shortcuts for working with numbers.
+      - slug: fractions-ratios
+        title: Fractions & Ratios
+        blurb: Compare, share, and scale amounts with confidence.
+      - slug: basic-geometry
+        title: Basic Geometry
+        blurb: Angles, perimeter, and area, one picture at a time.
+      - slug: logic-patterns
+        title: Logic & Patterns
+        blurb: Spot what comes next and reason your way through puzzles.
+      - slug: intro-probability
+        title: Intro to Probability
+        blurb: Use counting to figure out how likely something is.
+  - title: "Level 2: Contest Ready"
+    blurb: For after Level 1. These units go deeper, toward the middle and later questions on the AMC 8 and MATHCOUNTS.
+    contest: AMC 8
+    units:
+      - slug: equations-word-problems
+        title: Equations & Word Problems
+        blurb: Turn stories about ages, speeds, and prices into math you can solve.
+      - slug: smart-counting
+        title: Smart Counting
+        blurb: Choosing groups, breaking problems into cases, and counting what you don't want.
+      - slug: primes-remainders
+        title: Primes & Remainders
+        blurb: Prime factorizations, GCF and LCM, and the patterns hiding in remainders.
+      - slug: triangles
+        title: Triangles
+        blurb: Chase angles, use the Pythagorean Theorem, and scale shapes up and down.
+      - slug: circles-solids
+        title: Circles & Solids
+        blurb: Circles, shaded regions, boxes, and picturing shapes in 3D.
+      - slug: data-chance
+        title: Averages, Data & Chance
+        blurb: Mean and median shortcuts, reading tables, and probability with several steps.
+  - title: "Level 3: Road to the AMC 10"
+    blurb: A real step up. Finish Level 2 first, and expect to get stuck more often. That's how these get easier.
+    contest: AMC 10
+    units:
+      - slug: algebra-toolkit
+        title: Algebra Toolkit
+        blurb: Factoring tricks that turn huge calculations into quick ones.
+      - slug: modular-arithmetic
+        title: Remainder Math & Bases
+        blurb: Modular arithmetic, giant powers, and numbers written in other bases.
+      - slug: sequences-series
+        title: Sequences & Series
+        blurb: Arithmetic and geometric patterns, and how to add them up fast.
+      - slug: advanced-counting
+        title: Advanced Counting
+        blurb: Stars and bars, counting step by step, and harder probability.
+      - slug: similar-shapes-circles
+        title: Similar Shapes & Circle Theorems
+        blurb: Scale factors, chords, tangents, and angles inside circles.
+      - slug: coordinate-geometry
+        title: Coordinate Geometry
+        blurb: Use lines, slopes, and points on a grid to solve geometry with algebra.
+  - title: "Level 4: Toward the AMC 12"
+    blurb: High school math used in contest style. These units are planned for later.
+    contest: AMC 12
+    units:
+      - slug: expected-value
+        title: Expected Value & Probability States
+        blurb: What happens on average, even in games that could go on forever.
+      - slug: polynomials
+        title: Polynomials
+        blurb: Learn what a polynomial's roots and coefficients reveal about each other.
+      - slug: logarithms
+        title: Logarithms
+        blurb: The tool for asking what power turns one number into another.
+      - slug: trigonometry
+        title: Trigonometry
+        blurb: Connect the angles and side lengths of any triangle.
+      - slug: complex-numbers
+        title: Complex Numbers
+        blurb: A new kind of number that solves equations and describes rotations.

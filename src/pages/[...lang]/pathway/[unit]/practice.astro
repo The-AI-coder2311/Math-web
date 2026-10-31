@@ -1,0 +1,63 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../../layouts/Base.astro';
+import Problem from '../../../../components/Problem.astro';
+import ProgressBar from '../../../../components/ProgressBar.astro';
+import { getProblems, getUnits } from '../../../../lib/content';
+import { href, langParam, locales, t } from '../../../../i18n/config';
+import { links } from '../../../../site.config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) =>
+      (await getUnits(lang))
+        .filter((unit) => unit.available)
+        .map((unit) => ({ params: { lang: langParam(lang), unit: unit.slug }, props: { lang, unit } })),
+    ),
+  );
+  return paths.flat();
+}
+
+const { lang, unit } = Astro.props;
+const text = t(lang).practice;
+const problems = await getProblems(lang, unit.slug);
+const units = await getUnits(lang);
+const nextUnit = units[units.findIndex((other) => other.slug === unit.slug) + 1];
+---
+<Base title={text.title(unit.title)} description={text.description(unit.title)} lang={lang} current="learn">
+  <div
+    data-practice
+    data-unit={unit.slug}
+    data-pick-first={text.pickFirst}
+    data-correct={text.correct}
+    data-wrong={text.wrong('{letter}')}
+    data-already-solved={text.alreadySolved}
+    data-reset-confirm={text.resetConfirm}
+  >
+    <h1>{text.title(unit.title)}</h1>
+    <p>{text.intro}</p>
+    <noscript><p class="card">{text.noScript}</p></noscript>
+    <p class="card" data-storage-note hidden>{text.storageBlocked}</p>
+    <p><a href={href(lang, `pathway/${unit.slug}/`)}>{text.backToLesson}</a></p>
+
+    <div class="sticky-progress needs-js">
+      <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={problems.map((problem) => problem.slug)} />
+    </div>
+
+    {problems.map((problem, i) => <Problem lang={lang} number={i + 1} problem={problem} />)}
+
+    <section class="card finished" data-finished hidden>
+      <h2>{text.finishedTitle}</h2>
+      <p>{text.finishedText}</p>
+      <p><a href={links.pastProblems[unit.contest]}>{text.finishedLink(unit.contest)}</a></p>
+      {nextUnit?.available && (
+        <a class="btn btn-primary" href={href(lang, `pathway/${nextUnit.slug}/`)}>{text.nextUnit(nextUnit.title)}</a>
+      )}
+    </section>
+
+    <button class="btn needs-js" type="button" data-reset>{text.reset}</button>
+  </div>
+</Base>
+<script>
+  import '../../../../scripts/practice';
+</script>

@@ -1,0 +1,23 @@
+---
+order: 2
+difficulty: easy
+choices: [8, 10, 15, 30, 60]
+answer: D
+verify: "product(range(1, 5), range(1, 3), range(1, 2)).length"
+---
+
+Andre is packing for a trip. He brings 5 shirts, 3 pairs of pants, and 2 pairs of shoes. An outfit is one shirt, one pair of pants, and one pair of shoes. How many different outfits can he make?
+
+## Hint
+
+There are three choices this time. The multiply trick still works, so multiply all three numbers.
+
+## Solution
+
+**Step 1.** Andre makes three choices: a shirt (5 options), pants (3 options), and shoes (2 options).
+
+**Step 2.** Multiply the number of options for each choice:
+
+$$5 \times 3 \times 2 = 30$$
+
+**Answer: (D) 30**
