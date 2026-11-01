@@ -6,8 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "verify": "node scripts/verify-answers.mjs",
-    "build": "npm run verify && astro build",
-    "preview": "astro preview"
+    "build": "npm run verify && astro build && node scripts/generate-sitemap.mjs",
+    "preview": "astro preview",
+    "a11y": "node scripts/check-accessibility.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.5",
@@ -23,5 +24,9 @@
   },
   "engines": {
     "node": ">=22.23.4"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "playwright-core": "^1.64.1"
   }
 }

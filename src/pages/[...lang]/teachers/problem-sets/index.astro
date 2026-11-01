@@ -11,7 +11,7 @@ const text = all.sets;
 const sets = await getProblemSets(lang);
 ---
 <Base title={text.title} description={text.description} lang={lang} current="teachers">
-  <p><a href={href(lang, 'teachers/')}>{all.plan.back}</a></p>
+  <p><a class="tap-link" href={href(lang, 'teachers/')}>{all.plan.back}</a></p>
   <h1>{text.title}</h1>
   <p>{text.intro}</p>
   <ul class="set-list">

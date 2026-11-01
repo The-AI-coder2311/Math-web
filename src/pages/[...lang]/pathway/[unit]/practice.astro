@@ -31,7 +31,7 @@ const nextUnit = units[units.findIndex((other) => other.slug === unit.slug) + 1]
     <p>{text.intro}</p>
     <noscript><p class="card">{text.noScript}</p></noscript>
     <p class="card" data-storage-note hidden>{text.storageBlocked}</p>
-    {!unit.review && <p><a href={href(lang, `pathway/${unit.slug}/`)}>{text.backToLesson}</a></p>}
+    {!unit.review && <p class="no-print"><a class="tap-link" href={href(lang, `pathway/${unit.slug}/`)}>{text.backToLesson}</a></p>}
 
     <div class="sticky-progress needs-js">
       <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={problems.map((problem) => problem.slug)} />

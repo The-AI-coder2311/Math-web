@@ -1,10 +1,13 @@
 # The Learning Pathway, easiest level first. A unit becomes clickable as soon as
 # src/content/en/units/<slug>/lesson.md exists. Until then it says "Coming soon".
 # `contest` picks which past problems a finished unit links to: AMC 8, AMC 10 or AMC 12.
+# `difficulty` and `competitions` label each lesson in the level on the teacher lesson index.
 levels:
   - title: "Level 1: First Steps"
     blurb: No experience needed. These six units get you ready for the early questions on your first contest.
     contest: AMC 8
+    difficulty: Beginner
+    competitions: [AMC 8]
     units:
       - slug: counting
         title: Counting
@@ -31,6 +34,8 @@ levels:
   - title: "Level 2: Contest Ready"
     blurb: For after Level 1. These units go deeper, toward the middle and later questions on the AMC 8 and MATHCOUNTS.
     contest: AMC 8
+    difficulty: Intermediate
+    competitions: [AMC 8, MATHCOUNTS]
     units:
       - slug: equations-word-problems
         title: Equations & Word Problems
@@ -57,6 +62,8 @@ levels:
   - title: "Level 3: Road to the AMC 10"
     blurb: A real step up. Finish Level 2 first, and expect to get stuck more often. That's how these get easier.
     contest: AMC 10
+    difficulty: Advanced
+    competitions: [AMC 10]
     units:
       - slug: algebra-toolkit
         title: Algebra Toolkit
@@ -83,6 +90,8 @@ levels:
   - title: "Level 4: Toward the AMC 12"
     blurb: High school math used in contest style. These units are planned for later.
     contest: AMC 12
+    difficulty: Expert
+    competitions: [AMC 12]
     units:
       - slug: expected-value
         title: Expected Value & Probability States

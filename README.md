@@ -8,6 +8,7 @@ It's a static [Astro](https://astro.build) site. Lessons and problems are plain 
 
 - [ ] Choose a final name and set it in `src/site.config.ts`. "Count Me In" is a placeholder, so check that the name and web address are available.
 - [ ] Replace the placeholder email in `src/site.config.ts`.
+- [ ] Set your real web address in `astro.config.mjs` (the `site` line), or in `SITE_URL` in the deploy workflow. It's `https://example.org` until then, and `sitemap.xml`, `robots.txt`, and canonical links all use it.
 - [ ] Read `src/content/en/pages/about.md` and make it true for your team. Add names if you'd like.
 - [ ] Have a second person solve every problem. The answer check catches wrong answers, but not confusing wording.
 - [ ] Open every outside link on the teacher pages once a year, because the official sites can change.
@@ -30,8 +31,9 @@ Then open <http://localhost:4321>. The page updates as you save files.
 |---|---|
 | `npm run dev` | Runs the site locally while you edit |
 | `npm run verify` | Checks every answer key |
-| `npm run build` | Checks answers, then builds the final site into `dist/` |
+| `npm run build` | Checks answers, builds the final site into `dist/`, checks every page's title, description, and heading, and writes `sitemap.xml` and `robots.txt` |
 | `npm run preview` | Shows the built site, after you run `npm run build` |
+| `npm run a11y` | Checks every built page for accessibility problems, after you run `npm run build`. It needs Chrome or Edge installed |
 
 **Tip:** if this folder is in OneDrive or Dropbox, installs and builds can be slow or fail with "file busy" errors. Moving the project to a folder that doesn't sync will fix it.
 
@@ -43,16 +45,37 @@ src/
   i18n/en.ts              Button labels and short interface text
   content/en/
     pathway.yaml          The levels, and the ordered units in each one
+    teacher-plans.yaml    The six-week plans on the teacher pages
     units/counting/
       lessons/*.md        The unit's lessons, in order (3 to 5 of them)
       problems/*.md       One file per practice problem
     problem-sets/*.yaml   Printable sets for teachers
-    pages/*.md            About, teacher guide, and club plan
+    pages/*.md            About, Accessibility, teacher pages, and club plan
+  data/lessons.json       Every lesson's details, written by a script (don't edit it)
   components/, layouts/, pages/, scripts/, styles/    The code
 templates/                Files to copy when adding content
-scripts/verify-answers.mjs    The answer checker
+scripts/verify-answers.mjs        The answer checker
+scripts/build-lesson-data.mjs     Writes src/data/lessons.json
+scripts/generate-sitemap.mjs      Writes sitemap.xml and robots.txt, and checks every page
+scripts/check-accessibility.mjs   The accessibility checker
 public/images/            Pictures and diagrams
 ```
+
+## How the teacher pages stay up to date
+
+`src/data/lessons.json` lists every lesson with its topic, difficulty, time, and competition. A script rebuilds it each time the site runs or builds, using the lesson files and `pathway.yaml`, so you never edit it by hand. A new lesson shows up on the lesson index, the six-week plans, and the Sitemap page by itself.
+
+- **To change a level's difficulty or competitions,** edit `difficulty` and `competitions` for that level in `pathway.yaml`.
+- **To change a plan,** edit `src/content/en/teacher-plans.yaml`. Each week names one unit, and its lessons fill in by themselves.
+- **Worksheets and answer keys** are built for every unit with problems and every practice contest.
+
+Answer keys stay behind a toggle so students won't see them by accident. It isn't a lock, because this is a public site with no logins.
+
+## The sitemap
+
+`npm run build` writes `sitemap.xml` and `robots.txt` into `dist/` from the pages it really built, so you never edit them by hand. A page's date comes from when its source files last changed in git. The build stops if two pages share a title or description, if a page doesn't have exactly one `<h1>`, or if a page isn't linked from the Sitemap page. To list a new kind of page, add it to `src/pages/[...lang]/sitemap.astro`.
+
+On GitHub Pages, a site at `https://YOUR-USERNAME.github.io/YOUR-REPO/` can't control the `robots.txt` at the top of that address, so search engines only read it once you use your own domain. On Vercel, its shallow git history can make older pages show newer dates.
 
 ## Add a practice problem
 

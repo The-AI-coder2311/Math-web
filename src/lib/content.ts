@@ -1,6 +1,10 @@
 import { getCollection } from 'astro:content';
 import { site } from '../site.config';
+import lessonData from '../data/lessons.json';
 import type { Locale } from '../i18n/config';
+
+/** Every lesson and unit with its teacher details. scripts/build-lesson-data.mjs writes this file. */
+export const getLessonData = (lang: Locale) => lessonData[lang];
 
 const inLang = (lang: Locale) => (entry: { id: string }) => entry.id.startsWith(`${lang}/`);
 const lastPart = (id: string) => id.split('/').pop() as string;
@@ -101,8 +105,59 @@ export async function getPage(lang: Locale, name: string) {
   const page = pages.find((entry) => entry.id === `${lang}/pages/${name}`)!;
   return {
     ...page.data,
+    description: page.data.description.replaceAll('{{siteName}}', site.name),
     html: (page.rendered?.html ?? '').replaceAll('{{siteName}}', site.name),
   };
+}
+
+/** The teacher plans, with each week's unit and lessons filled in from the lesson data. */
+export async function getPlans(lang: Locale) {
+  const { units, lessons } = getLessonData(lang);
+  const unitNamed = (slug: string, where: string) => {
+    const unit = units.find((other) => other.slug === slug);
+    if (!unit) throw new Error(`teacher-plans.yaml: ${where} names "${slug}", which isn't in pathway.yaml`);
+    return unit;
+  };
+  const contests = await getContests(lang);
+  const [file] = (await getCollection('teacherPlans')).filter(inLang(lang));
+  return file.data.plans.map((plan) => {
+    const contest = contests.find((other) => other.slug === plan.finish.contest);
+    if (!contest) throw new Error(`teacher-plans.yaml: ${plan.slug} names contest "${plan.finish.contest}", which doesn't exist`);
+    return {
+      ...plan,
+      weeks: plan.weeks.map((week) => {
+        const unit = unitNamed(week.unit, plan.slug);
+        const unitLessons = lessons.filter((lesson) => lesson.unit === week.unit);
+        return { ...week, unit, lessons: unitLessons, minutes: unitLessons.reduce((total, lesson) => total + lesson.minutes, 0) };
+      }),
+      review: unitNamed(plan.finish.review, plan.slug),
+      contest,
+    };
+  });
+}
+
+/** Every worksheet with an answer key: one per unit with problems, and one per contest. */
+export async function getAnswerKeys(lang: Locale) {
+  const units = getLessonData(lang).units.filter((unit) => unit.problems > 0);
+  const contests = await getContests(lang);
+  return [
+    ...units.map((unit) => ({
+      slug: unit.slug,
+      title: unit.title,
+      group: unit.levelTitle,
+      kind: 'unit' as const,
+      questions: unit.problems,
+    })),
+    ...(await Promise.all(
+      contests.map(async (contest) => ({
+        slug: contest.slug,
+        title: contest.title,
+        group: '',
+        kind: 'contest' as const,
+        questions: (await getContestProblems(lang, contest.slug)).length,
+      })),
+    )),
+  ];
 }
 
 export async function getProblemSets(lang: Locale) {

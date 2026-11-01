@@ -47,7 +47,7 @@ if (page) {
 
   const clearMarks = () => {
     cards.forEach((card) => {
-      card.classList.remove('is-solved', 'is-wrong');
+      card.classList.remove('is-solved', 'is-wrong', 'is-blank');
       (card.querySelector('[data-verdict]') as HTMLElement).hidden = true;
       (card.querySelector('[data-solution]') as HTMLElement).hidden = true;
       card.querySelectorAll<HTMLInputElement>('input').forEach((input) => {
@@ -63,6 +63,7 @@ if (page) {
     results.hidden = true;
     form.hidden = false;
     if (useTimer.checked) startTimer();
+    window.dispatchEvent(new Event('resize'));
     (cards[0].querySelector('h2') as HTMLElement).scrollIntoView();
     (cards[0].querySelector('input') as HTMLInputElement).focus();
   });
@@ -88,7 +89,8 @@ if (page) {
       tally[kind]++;
       score += points[kind];
       card.classList.toggle('is-solved', kind === 'correct');
-      card.classList.toggle('is-wrong', kind !== 'correct');
+      card.classList.toggle('is-wrong', kind === 'wrong');
+      card.classList.toggle('is-blank', kind === 'blank');
       verdict.textContent =
         kind === 'correct'
           ? text.correctLabel
@@ -137,6 +139,7 @@ if (page) {
     finish.hidden = true;
     results.hidden = false;
     form.after(results);
+    window.dispatchEvent(new Event('resize'));
     results.scrollIntoView();
     results.focus();
   });

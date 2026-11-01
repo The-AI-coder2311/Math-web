@@ -4,12 +4,14 @@ import remarkMath from 'remark-math';
 import remarkRehype from 'remark-rehype';
 import rehypeKatex from 'rehype-katex';
 import rehypeStringify from 'rehype-stringify';
+import { rehypeTables } from './rehype-tables.mjs';
 
 const processor = unified()
   .use(remarkParse)
   .use(remarkMath)
   .use(remarkRehype)
   .use(rehypeKatex)
+  .use(rehypeTables)
   .use(rehypeStringify);
 
 /** Renders Markdown and math stored in YAML fields, such as answer choices. */

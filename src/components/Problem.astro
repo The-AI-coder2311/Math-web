@@ -5,6 +5,8 @@ import { href, t, type Locale } from '../i18n/config';
 interface Props {
   lang: Locale;
   number: number;
+  /** 3 when the problems sit under their own heading, such as "Try it now" in a lesson. */
+  headingLevel?: 2 | 3;
   problem: {
     slug: string;
     difficulty: 'easy' | 'medium' | 'hard';
@@ -20,14 +22,16 @@ interface Props {
   };
 }
 
-const { lang, number, problem } = Astro.props;
+const { lang, number, problem, headingLevel = 2 } = Astro.props;
+const Heading = `h${headingLevel}`;
+const SubHeading = `h${headingLevel + 1}`;
 const text = t(lang).practice;
 const letters = 'ABCDEF';
 const mistakes = Object.entries(problem.mistakes ?? {});
 ---
 <article class="card problem" id={`p-${problem.slug}`} data-problem data-slug={problem.slug} data-answer={problem.answer}>
   <div class="problem-head">
-    <h2>{text.problem} {number}</h2>
+    <Heading>{text.problem} {number}</Heading>
     <span class="pill">{text.difficulty[problem.difficulty]}</span>
     <span class="solved-badge" data-solved-badge hidden>&#10003; {text.solved}</span>
   </div>
@@ -68,7 +72,7 @@ const mistakes = Object.entries(problem.mistakes ?? {});
         <Fragment set:html={problem.solution} />
         {problem.another && (
           <>
-            <h3>{text.anotherWay}</h3>
+            <SubHeading>{text.anotherWay}</SubHeading>
             <Fragment set:html={problem.another} />
           </>
         )}

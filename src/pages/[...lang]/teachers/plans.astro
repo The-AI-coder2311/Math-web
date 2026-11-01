@@ -1,0 +1,71 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPlans } from '../../../lib/content';
+import { href, localePaths, t } from '../../../i18n/config';
+import { links } from '../../../site.config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const all = t(lang);
+const text = all.plans;
+const plans = await getPlans(lang);
+// Only the AMC contests have a past-problems page. MATHCOUNTS plans point to the AMC 8 one.
+const pastFor = (competition: string) => (competition in links.pastProblems ? competition : 'AMC 8') as keyof typeof links.pastProblems;
+---
+<Base title={text.title} description={text.description} lang={lang} current="teachers">
+  <p class="no-print"><a class="tap-link" href={href(lang, 'teachers/')}>{all.plan.back}</a></p>
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <div class="btn-row no-print needs-js">
+    <button class="btn" type="button" data-print>{text.print}</button>
+  </div>
+
+  {plans.map((plan) => (
+    <section class="plan" id={plan.slug}>
+      <h2>{plan.title}</h2>
+      <p>{plan.summary} {text.totalTime(plan.weeks.reduce((total, week) => total + week.minutes, 0))}</p>
+      <div class="table-scroll">
+        <table class="data-table">
+          <caption class="sr-only">{text.caption(plan.title)}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{text.week}</th>
+              <th scope="col">{text.topic}</th>
+              <th scope="col">{text.lessons}</th>
+              <th scope="col">{text.practice}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {plan.weeks.map((week, i) => (
+              <tr>
+                <th scope="row">{i + 1}</th>
+                <td>
+                  <a href={href(lang, `pathway/${week.unit.slug}/`)}>{week.unit.title}</a>
+                  <p class="plan-tip"><strong>{text.tipLabel}</strong> {week.tip}</p>
+                </td>
+                <td>
+                  <ol class="plan-lessons">
+                    {week.lessons.map((lesson) => <li><a href={href(lang, lesson.path)}>{lesson.title}</a></li>)}
+                  </ol>
+                  <p class="muted plan-time">{text.time}: {text.minutes(week.minutes)}</p>
+                </td>
+                <td>
+                  <a href={href(lang, `pathway/${week.unit.slug}/practice/`)}>{text.problems(week.unit.problems)}</a>
+                  <br />
+                  <a href={href(lang, `teachers/answer-keys/${week.unit.slug}/`)}>{text.keyLink}<span class="sr-only">: {week.unit.title}</span></a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <h3>{text.finishTitle}</h3>
+      <ul>
+        <li><a href={href(lang, `pathway/${plan.review.slug}/practice/`)}>{text.finishReview(plan.review.title)}</a></li>
+        <li><a href={href(lang, `contests/${plan.contest.slug}/`)}>{text.finishContest(plan.contest.title)}</a></li>
+        <li><a href={links.pastProblems[pastFor(plan.competition)]}>{text.finishPast(pastFor(plan.competition))}</a></li>
+      </ul>
+    </section>
+  ))}
+</Base>

@@ -1,0 +1,65 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getLessonData } from '../../../lib/content';
+import { href, localePaths, t } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const all = t(lang);
+const text = all.lessonIndex;
+const { lessons } = getLessonData(lang);
+const competitions = [...new Set(lessons.flatMap((lesson) => lesson.competitions))];
+---
+<Base title={text.title} description={text.description} lang={lang} current="teachers">
+  <p class="no-print"><a class="tap-link" href={href(lang, 'teachers/')}>{all.plan.back}</a></p>
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <div class="index-tools no-print needs-js">
+    <label for="competition-filter">{text.filterLabel}</label>
+    <select id="competition-filter" data-filter>
+      <option value="">{text.all}</option>
+      {competitions.map((competition) => <option value={competition}>{competition}</option>)}
+    </select>
+    <button class="btn" type="button" data-print>{text.print}</button>
+  </div>
+  <p role="status" data-filter-status data-template={text.status('{shown}', lessons.length)}>{text.status(lessons.length, lessons.length)}</p>
+  <div class="table-scroll">
+    <table class="data-table">
+      <caption class="sr-only">{text.caption}</caption>
+      <thead>
+        <tr>
+          <th scope="col">{text.lesson}</th>
+          <th scope="col">{text.topic}</th>
+          <th scope="col">{text.level}</th>
+          <th scope="col">{text.time}</th>
+          <th scope="col">{text.competition}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {lessons.map((lesson) => (
+          <tr data-competitions={lesson.competitions.join('|')}>
+            <th scope="row"><a href={href(lang, lesson.path)}>{lesson.title}</a></th>
+            <td>{lesson.topic}</td>
+            <td>{text.levelValue(lesson.level, lesson.difficulty)}</td>
+            <td>{text.minutes(lesson.minutes)}</td>
+            <td>{lesson.competitions.join(', ')}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</Base>
+<script>
+  const filter = document.querySelector('[data-filter]') as HTMLSelectElement;
+  const status = document.querySelector('[data-filter-status]') as HTMLElement;
+  const rows = [...document.querySelectorAll<HTMLElement>('[data-competitions]')];
+  filter.addEventListener('change', () => {
+    let shown = 0;
+    rows.forEach((row) => {
+      row.hidden = Boolean(filter.value) && !(row.dataset.competitions as string).split('|').includes(filter.value);
+      if (!row.hidden) shown++;
+    });
+    status.textContent = (status.dataset.template as string).replace('{shown}', String(shown));
+  });
+</script>

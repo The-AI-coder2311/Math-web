@@ -9,10 +9,13 @@ interface Props {
   description: string;
   lang: Locale;
   current?: 'learn' | 'contests' | 'teachers' | 'about';
+  /** For a page that shouldn't be in search results or the sitemap, such as the 404 page. */
+  noindex?: boolean;
 }
 
-const { title, description, lang, current } = Astro.props;
+const { title, description, lang, current, noindex } = Astro.props;
 const text = t(lang);
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const navItems = [
   { key: 'learn', label: text.nav.learn, url: href(lang, 'pathway/') },
   { key: 'contests', label: text.nav.contests, url: href(lang, 'contests/') },
@@ -27,6 +30,7 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{`${title} | ${site.name}`}</title>
     <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} />
     <script is:inline>
@@ -37,8 +41,8 @@ const navItems = [
     </script>
     <noscript><style>.needs-js { display: none !important; } .no-js-show { display: block !important; }</style></noscript>
   </head>
-  <body>
-    <a class="skip-link" href="#main">{text.skipLink}</a>
+  <body data-scroll-label={text.scrollLabel}>
+    <a class="skip-link no-print" href="#main">{text.skipLink}</a>
     <header class="site-header no-print">
       <div class="wrap site-header-inner">
         <a class="logo-link" href={href(lang)}><Logo /></a>
@@ -52,6 +56,7 @@ const navItems = [
         <button
           class="theme-toggle needs-js"
           type="button"
+          aria-label={text.theme.toDark}
           data-theme-toggle
           data-to-dark={text.theme.toDark}
           data-to-light={text.theme.toLight}
@@ -67,9 +72,17 @@ const navItems = [
       <div class="wrap">
         <p>{text.footer.free}</p>
         <p class="muted">{text.footer.disclaimer}</p>
+        <nav aria-label={text.footer.navLabel}>
+          <ul class="footer-links">
+            <li><a href={href(lang, 'accessibility/')}>{text.footer.accessibility}</a></li>
+            <li><a href={href(lang, 'sitemap/')}>{text.footer.sitemap}</a></li>
+          </ul>
+        </nav>
       </div>
     </footer>
     <script>
+      import '../scripts/site';
+
       const toggle = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
       const root = document.documentElement;
       const isDark = () =>

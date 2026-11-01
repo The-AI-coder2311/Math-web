@@ -1,23 +1,48 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { getPage } from '../../../lib/content';
+import { getPage, getPlans } from '../../../lib/content';
 import { href, localePaths, t } from '../../../i18n/config';
+import { site } from '../../../site.config';
 
 export const getStaticPaths = () => localePaths();
 
 const { lang } = Astro.props;
 const text = t(lang).teachers;
-const page = await getPage(lang, 'teachers');
+const page = await getPage(lang, 'for-teachers');
+const tips = await getPage(lang, 'club-tips');
+const plans = await getPlans(lang);
 ---
 <Base title={page.title} description={page.description} lang={lang} current="teachers">
   <h1>{page.title}</h1>
-  <div class="btn-row">
-    <a class="btn btn-primary" href={href(lang, 'teachers/club-plan/')}>{text.planCta}</a>
-    <a class="btn" href={href(lang, 'teachers/problem-sets/')}>{text.setsCta}</a>
-  </div>
   <div class="prose" set:html={page.html} />
-  <div class="btn-row">
-    <a class="btn btn-primary" href={href(lang, 'teachers/club-plan/')}>{text.planCta}</a>
-    <a class="btn" href={href(lang, 'teachers/problem-sets/')}>{text.setsCta}</a>
-  </div>
+
+  <h2>{text.plansTitle}</h2>
+  <p>{text.plansIntro}</p>
+  <ul class="set-list">
+    {plans.map((plan) => (
+      <li class="card">
+        <h3><a href={href(lang, `teachers/plans/#${plan.slug}`)}>{plan.title}</a></h3>
+        <p>{plan.summary}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2>{text.toolsTitle}</h2>
+  <ul class="set-list">
+    {text.tools.map((tool) => (
+      <li class="card">
+        <h3><a href={href(lang, tool.path)}>{tool.title}</a></h3>
+        <p>{tool.text}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2>{tips.title}</h2>
+  <div class="prose" set:html={tips.html} />
+
+  <section class="card contact-card">
+    <h2>{text.contactTitle}</h2>
+    <p>{text.contactText}</p>
+    <a class="btn btn-primary" href={`mailto:${site.contactEmail}?subject=${encodeURIComponent(text.contactSubject)}`}>{text.contactCta}</a>
+  </section>
 </Base>

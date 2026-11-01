@@ -1,0 +1,40 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import { getAnswerKeys } from '../../../../lib/content';
+import { href, localePaths, t } from '../../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const all = t(lang);
+const text = all.keys;
+const keys = await getAnswerKeys(lang);
+const unitKeys = keys.filter((key) => key.kind === 'unit');
+const groups = [...new Set(unitKeys.map((key) => key.group))];
+const contestKeys = keys.filter((key) => key.kind === 'contest');
+---
+<Base title={text.title} description={text.description} lang={lang} current="teachers">
+  <p class="no-print"><a class="tap-link" href={href(lang, 'teachers/')}>{all.plan.back}</a></p>
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <p class="muted">{text.note}</p>
+  <p><a class="tap-link" href={href(lang, 'teachers/problem-sets/')}>{all.sets.title}</a></p>
+  {groups.map((group) => (
+    <section>
+      <h2>{group}</h2>
+      <ul class="key-list">
+        {unitKeys.filter((key) => key.group === group).map((key) => (
+          <li><a href={href(lang, `teachers/answer-keys/${key.slug}/`)}>{key.title}</a> <span class="muted">({text.questions(key.questions)})</span></li>
+        ))}
+      </ul>
+    </section>
+  ))}
+  <section>
+    <h2>{text.contestsTitle}</h2>
+    <ul class="key-list">
+      {contestKeys.map((key) => (
+        <li><a href={href(lang, `teachers/answer-keys/${key.slug}/`)}>{key.title}</a> <span class="muted">({text.questions(key.questions)})</span></li>
+      ))}
+    </ul>
+  </section>
+</Base>

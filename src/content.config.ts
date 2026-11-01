@@ -15,6 +15,8 @@ const pathway = defineCollection({
         title: z.string(),
         blurb: z.string(),
         contest: z.enum(['AMC 8', 'AMC 10', 'AMC 12']),
+        difficulty: z.string(),
+        competitions: z.array(z.enum(['MATHCOUNTS', 'AMC 8', 'AMC 10', 'AMC 12'])),
         units: z.array(
           z.object({
             slug: z.string(),
@@ -97,4 +99,20 @@ const contestProblems = defineCollection({
   }),
 });
 
-export const collections = { pathway, lessons, problems, pages, problemSets, contests, contestProblems };
+const teacherPlans = defineCollection({
+  loader: glob({ pattern: '*/teacher-plans.yaml', base }),
+  schema: z.object({
+    plans: z.array(
+      z.object({
+        slug: z.string(),
+        title: z.string(),
+        competition: z.string(),
+        summary: z.string(),
+        weeks: z.array(z.object({ unit: z.string(), tip: z.string() })),
+        finish: z.object({ review: z.string(), contest: z.string() }),
+      }),
+    ),
+  }),
+});
+
+export const collections = { pathway, lessons, problems, pages, problemSets, contests, contestProblems, teacherPlans };

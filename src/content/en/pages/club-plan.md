@@ -116,7 +116,7 @@ Keep scores private. Students could also retake the contest later to see their i
 
 **Share out:** Save the final 10 minutes to celebrate. Recognize effort with fun awards, like "Best Wrong Answer" or "Most Stubborn Problem Solver," and talk about what comes next:
 
-- Sign up for the [AMC 8 or MATHCOUNTS](/teachers/).
+- Sign up for the [AMC 8 or MATHCOUNTS](/teachers/start-a-team/).
 - Try some [past AMC 8 problems on the AoPS wiki](https://artofproblemsolving.com/wiki/index.php/AMC_8_Problems_and_Solutions), starting with the early questions.
 - Move on to [Level 2 of the Learning Pathway](/pathway/), which goes deeper into the same topics. Level 3 gets students started on AMC 10 ideas.
 - Keep the club going, and let returning students help lead it.

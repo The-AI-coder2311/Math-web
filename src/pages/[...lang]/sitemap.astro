@@ -1,0 +1,92 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getAnswerKeys, getContests, getLessonData, getProblemSets } from '../../lib/content';
+import { href, localePaths, t } from '../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const all = t(lang);
+const text = all.sitemap;
+const { units, lessons } = getLessonData(lang);
+const competitions = [...new Set(lessons.flatMap((lesson) => lesson.competitions))].sort();
+const practiceUnits = units.filter((unit) => unit.problems > 0);
+const contests = await getContests(lang);
+const sets = await getProblemSets(lang);
+const keys = await getAnswerKeys(lang);
+const topicsFor = (competition: string) =>
+  units
+    .filter((unit) => unit.lessons > 0 && unit.competitions.includes(competition))
+    .map((unit) => ({ unit, lessons: lessons.filter((lesson) => lesson.unit === unit.slug) }));
+---
+<Base title={text.title} description={text.description} lang={lang}>
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <div class="sitemap">
+    <p><a href={href(lang)}>{text.home}</a></p>
+
+    <section>
+      <h2>{text.lessons}</h2>
+      <p><a href={href(lang, 'pathway/')}>{text.pathway}</a></p>
+      {competitions.map((competition) => (
+        <section>
+          <h3>{text.competition(competition)}</h3>
+          {topicsFor(competition).map(({ unit, lessons: unitLessons }) => (
+            <section>
+              <h4><a href={href(lang, `pathway/${unit.slug}/`)}>{unit.title}</a></h4>
+              <ul>
+                {unitLessons.map((lesson) => <li><a href={href(lang, lesson.path)}>{lesson.title}</a></li>)}
+              </ul>
+            </section>
+          ))}
+        </section>
+      ))}
+    </section>
+
+    <section>
+      <h2>{text.practice}</h2>
+      <h3>{text.unitPractice}</h3>
+      <ul>
+        {practiceUnits.map((unit) => <li><a href={href(lang, `pathway/${unit.slug}/practice/`)}>{all.practice.title(unit.title)}</a></li>)}
+      </ul>
+      <h3><a href={href(lang, 'contests/')}>{text.contests}</a></h3>
+      <ul>
+        {contests.map((contest) => <li><a href={href(lang, `contests/${contest.slug}/`)}>{contest.title}</a></li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2>{text.teachers}</h2>
+      <ul>
+        <li><a href={href(lang, 'teachers/')}>{text.teachersHome}</a></li>
+        <li><a href={href(lang, 'teachers/plans/')}>{text.plans}</a></li>
+        <li><a href={href(lang, 'teachers/lessons/')}>{text.lessonIndex}</a></li>
+        <li><a href={href(lang, 'teachers/club-plan/')}>{text.clubPlan}</a></li>
+        <li><a href={href(lang, 'teachers/start-a-team/')}>{text.startTeam}</a></li>
+      </ul>
+      <h3><a href={href(lang, 'teachers/problem-sets/')}>{text.problemSets}</a></h3>
+      <ul>
+        {sets.map((set) => <li><a href={href(lang, `teachers/problem-sets/${set.slug}/`)}>{all.sets.week(set.week)}: {set.title}</a></li>)}
+      </ul>
+      <h3><a href={href(lang, 'teachers/answer-keys/')}>{text.answerKeys}</a></h3>
+      <ul>
+        {keys.map((key) => <li><a href={href(lang, `teachers/answer-keys/${key.slug}/`)}>{key.title}</a></li>)}
+      </ul>
+    </section>
+
+    <section>
+      <h2>{text.about}</h2>
+      <ul>
+        <li><a href={href(lang, 'about/')}>{all.nav.about}</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>{text.accessibility}</h2>
+      <ul>
+        <li><a href={href(lang, 'accessibility/')}>{text.accessibility}</a></li>
+        <li><a href={href(lang, 'sitemap/')}>{text.title}</a></li>
+      </ul>
+    </section>
+  </div>
+</Base>

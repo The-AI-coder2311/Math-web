@@ -1,0 +1,77 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../../layouts/Base.astro';
+import { getAnswerKeys, getContestProblems, getProblems } from '../../../../lib/content';
+import { renderInline } from '../../../../lib/markdown';
+import { href, langParam, locales, t } from '../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) =>
+      (await getAnswerKeys(lang)).map((key) => ({
+        params: { lang: langParam(lang), set: key.slug },
+        props: { lang, key },
+      })),
+    ),
+  );
+  return paths.flat();
+}
+
+const { lang, key } = Astro.props;
+const all = t(lang);
+const text = all.keys;
+const sets = all.sets;
+const heading = text.pageTitle(key.title);
+const problems: { question: string; choices: string[]; answer: string; solution: string; another?: string }[] =
+  key.kind === 'unit' ? await getProblems(lang, key.slug) : await getContestProblems(lang, key.slug);
+const studentPath = key.kind === 'unit' ? `pathway/${key.slug}/practice/` : `contests/${key.slug}/`;
+---
+<Base title={heading} description={text.pageDescription(key.title)} lang={lang} current="teachers">
+  <p class="no-print"><a class="tap-link" href={href(lang, 'teachers/answer-keys/')}>{text.all}</a></p>
+  <div class="print-only name-line">
+    <span>{sets.name}:</span>
+    <span>{sets.date}:</span>
+  </div>
+  <h1>{key.title}: {text.worksheet}<span class="no-print"> {text.andKey}</span></h1>
+  <p class="no-print muted">{sets.onScreenNote}</p>
+  <div class="btn-row no-print">
+    <button class="btn btn-primary needs-js" type="button" data-print="student">{sets.printStudent}</button>
+    <button class="btn needs-js" type="button" data-print="key">{sets.printKey}</button>
+    <a class="btn" href={href(lang, studentPath)}>{text.studentPractice}</a>
+  </div>
+  <ol class="problem-sheet">
+    {problems.map((problem) => (
+      <li>
+        <div class="prose" set:html={problem.question} />
+        <ol class="sheet-choices" type="A">
+          {problem.choices.map((choice) => <li set:html={renderInline(choice)} />)}
+        </ol>
+      </li>
+    ))}
+  </ol>
+  <details class="reveal answer-key" data-answer-key>
+    <summary><span class="when-closed">{sets.showKey}</span><span class="when-open">{sets.hideKey}</span></summary>
+    <div class="reveal-body">
+      <h2>{sets.keyTitle}: {key.title}</h2>
+      <h3>{text.quick}</h3>
+      <ol class="quick-key">
+        {problems.map((problem) => <li>{problem.answer}</li>)}
+      </ol>
+      <h3>{text.solutions}</h3>
+      <ol class="answer-list">
+        {problems.map((problem, i) => (
+          <li>
+            <strong>{text.answer(i + 1, problem.answer)}</strong>
+            <div class="prose" set:html={problem.solution} />
+            {problem.another && (
+              <>
+                <h4>{text.anotherWay}</h4>
+                <div class="prose" set:html={problem.another} />
+              </>
+            )}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </details>
+</Base>

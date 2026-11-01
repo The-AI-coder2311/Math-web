@@ -101,6 +101,35 @@ main:focus {
   outline: none;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Links that stand alone, outside a sentence, get a full-size tap area. */
+.tap-link,
+.eyebrow a,
+.logo-link,
+.site-header nav a,
+.site-footer nav a,
+.lesson-list h3 a,
+.set-list h2 a,
+.set-list h3 a,
+.key-list a,
+.plan ul a,
+.sitemap a,
+.data-table a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
 .wrap {
   width: 100%;
   max-width: 44rem;
@@ -162,7 +191,6 @@ main.wrap {
 }
 
 .logo-link {
-  display: flex;
   color: var(--text);
   margin-right: auto;
 }
@@ -186,8 +214,6 @@ main.wrap {
 }
 
 .site-header nav a {
-  display: inline-block;
-  padding: 0.35rem 0;
   color: var(--text);
   font-size: 1rem;
   text-decoration: none;
@@ -231,6 +257,15 @@ main.wrap {
 
 .site-footer p {
   margin: 0.25rem 0;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 /* Buttons */
@@ -420,24 +455,46 @@ main.wrap {
 }
 
 /* Long-form writing */
-.prose table {
-  display: block;
-  width: 100%;
+/* Positioned so that screen-reader-only text inside scrolls with the table. */
+.table-scroll {
+  position: relative;
   overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.prose table,
+.data-table {
   border-collapse: collapse;
   font-size: 1rem;
 }
 
 .prose th,
-.prose td {
+.prose td,
+.data-table th,
+.data-table td {
   padding: 0.5rem 0.65rem;
   border: 1px solid var(--border);
   text-align: left;
   vertical-align: top;
 }
 
-.prose th {
+.prose thead th,
+.data-table thead th {
   background: var(--accent-soft);
+}
+
+.prose tbody th,
+.data-table tbody th {
+  font-weight: 600;
+}
+
+/* A long formula on a small or zoomed screen scrolls instead of widening the page. */
+@media (max-width: 40rem) {
+  p:has(.katex),
+  .choice span:has(.katex) {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
 }
 
 .prose blockquote {
@@ -490,7 +547,9 @@ main.wrap {
 }
 
 .prose details.check summary {
-  min-height: 2rem;
+  display: flex;
+  align-items: center;
+  min-height: 2.75rem;
   color: var(--accent);
   font-weight: 700;
   cursor: pointer;
@@ -569,6 +628,14 @@ main.wrap {
   font-weight: 700;
 }
 
+.is-solved [data-verdict]::before {
+  content: '\2713\00a0';
+}
+
+.is-wrong [data-verdict]::before {
+  content: '\2717\00a0';
+}
+
 .katex-display {
   overflow-x: auto;
   overflow-y: hidden;
@@ -590,6 +657,13 @@ main.wrap {
   margin: 0;
 }
 
+/* When zoomed in, the screen is too short to give up any of it to a sticky bar. */
+@media (max-height: 30rem) {
+  .sticky-progress {
+    position: static;
+  }
+}
+
 .problem {
   margin: 1.25rem 0;
   scroll-margin-top: 5rem;
@@ -602,7 +676,8 @@ main.wrap {
   gap: 0.5rem;
 }
 
-.problem-head h2 {
+.problem-head h2,
+.problem-head h3 {
   margin: 0;
   font-size: 1.15rem;
 }
@@ -666,6 +741,10 @@ main.wrap {
   content: '\2713\00a0';
 }
 
+.is-wrong .feedback::before {
+  content: '\2717\00a0';
+}
+
 .reveal {
   margin-top: 0.6rem;
 }
@@ -723,7 +802,8 @@ main.wrap {
   list-style: none;
 }
 
-.set-list h2 {
+.set-list h2,
+.set-list h3 {
   margin: 0;
   font-size: 1.15rem;
 }
@@ -753,6 +833,97 @@ main.wrap {
   margin: 0;
 }
 
+.sheet-choices {
+  margin: 0.5rem 0 0;
+  padding-left: 1.5rem;
+  list-style-type: upper-alpha;
+}
+
+.problem-sheet .sheet-choices li {
+  margin-bottom: 0.15rem;
+}
+
+.quick-key {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+  gap: 0.25rem 1rem;
+  padding-left: 0;
+  list-style-position: inside;
+  font-weight: 700;
+}
+
+.answer-key {
+  margin-top: 2rem;
+}
+
+.contact-card {
+  margin-top: 2rem;
+}
+
+/* Teacher pages */
+.data-table {
+  min-width: 34rem;
+}
+
+.plan {
+  scroll-margin-top: 1rem;
+  margin-top: 2.5rem;
+}
+
+.plan td:last-child a {
+  white-space: nowrap;
+}
+
+.plan-tip,
+.plan-time {
+  margin: 0.25rem 0 0;
+  font-size: 0.95rem;
+}
+
+.plan-lessons {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.index-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin: 1rem 0;
+}
+
+.index-tools label {
+  font-weight: 600;
+}
+
+select {
+  min-height: 2.75rem;
+  padding: 0.4rem 0.6rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.key-list {
+  padding-left: 1.25rem;
+}
+
+.sitemap ul {
+  padding-left: 1.25rem;
+}
+
+.sitemap h3,
+.sitemap h4 {
+  margin: 1rem 0 0.25rem;
+}
+
+.sitemap h4 {
+  font-size: 1.05rem;
+}
+
 .print-only {
   display: none;
 }
@@ -768,11 +939,14 @@ main.wrap {
     --border: #888888;
     --accent: #000000;
     --accent-soft: #ffffff;
+    --on-accent: #ffffff;
     --good: #000000;
     color-scheme: light;
   }
 
   body {
+    background: #ffffff;
+    color: #000000;
     font-size: 11.5pt;
   }
 
@@ -785,7 +959,13 @@ main.wrap {
     padding: 0;
   }
 
-  .no-print {
+  .no-print,
+  nav,
+  button,
+  .btn,
+  .progress,
+  .sticky-progress,
+  summary {
     display: none !important;
   }
 
@@ -798,24 +978,67 @@ main.wrap {
     margin-top: 0;
   }
 
-  .problem-sheet li {
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  .problem-sheet > li {
     min-height: 3.6em;
     margin-bottom: 2.6em;
     break-inside: avoid;
   }
 
+  /* A closed answer key takes up no room, not even a blank page. */
+  .answer-key:not([open]) {
+    display: none;
+  }
+
   .answer-key {
     break-before: page;
+    margin: 0;
+  }
+
+  .reveal-body {
+    padding: 0;
   }
 
   .answer-list li,
+  .card,
   .prose section,
-  .prose table {
+  .prose table,
+  .prose img,
+  .data-table tr {
     break-inside: avoid;
   }
 
-  .print-student .answer-key {
-    display: none;
+  .table-scroll,
+  .katex-display,
+  p:has(.katex) {
+    overflow: visible;
+  }
+
+  .data-table {
+    width: 100%;
+    min-width: 0;
+    font-size: 10pt;
+  }
+
+  .data-table a,
+  .eyebrow a {
+    display: inline;
+    min-height: 0;
+  }
+
+  .prose img {
+    max-width: 70%;
+    padding: 0;
+  }
+
+  .choice {
+    min-height: 0;
+    padding: 0.1rem 0.5rem;
   }
 
   .name-line {

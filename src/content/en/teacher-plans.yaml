@@ -1,0 +1,64 @@
+# Six-week plans on the teacher page. Each week names a unit from pathway.yaml. Its
+# lessons, time, and practice count fill in by themselves, including lessons added later.
+# `finish` names a review unit and a practice contest for after the six weeks.
+plans:
+  - slug: amc-8
+    title: 6-Week AMC 8 Plan
+    competition: AMC 8
+    summary: For beginners. It covers all of Level 1, the ideas behind the early questions on the AMC 8.
+    weeks:
+      - unit: counting
+        tip: Have students act out a small case before they multiply, so the rule has a picture behind it.
+      - unit: number-sense
+        tip: Let groups list factor pairs on the board, then ask how they knew when to stop.
+      - unit: fractions-ratios
+        tip: Draw the boxes for every ratio problem this week, including the easy ones.
+      - unit: basic-geometry
+        tip: Ask for a labeled picture before any calculating.
+      - unit: logic-patterns
+        tip: When a problem looks huge, ask for the smallest version of it first.
+      - unit: intro-probability
+        tip: Connect this back to week 1, since probability is built on counting.
+    finish:
+      review: level-1-review
+      contest: starter-contest
+  - slug: mathcounts
+    title: 6-Week MATHCOUNTS Plan
+    competition: MATHCOUNTS
+    summary: For students who finished Level 1. It covers all of Level 2, which also fits the later AMC 8 questions.
+    weeks:
+      - unit: equations-word-problems
+        tip: Ask students to say in words what a variable stands for before they write an equation.
+      - unit: smart-counting
+        tip: Have students check an answer a second way, by counting what they don't want.
+      - unit: primes-remainders
+        tip: Start problems this week by writing out the prime factorization.
+      - unit: triangles
+        tip: Ask students to mark every angle and length they know before they choose a formula.
+      - unit: circles-solids
+        tip: Bring in a real box or can, and let students measure it and predict its surface area.
+      - unit: data-chance
+        tip: Practice like the Team round, with groups of 4 sharing one set of problems.
+    finish:
+      review: level-2-review
+      contest: practice-contest-a
+  - slug: amc-10
+    title: 6-Week AMC 10 Plan
+    competition: AMC 10
+    summary: A real step up, for students who finished Level 2. It covers all of Level 3.
+    weeks:
+      - unit: algebra-toolkit
+        tip: Before anyone calculates, ask whether the expression can be factored.
+      - unit: modular-arithmetic
+        tip: Have students write out the first few powers and look for the repeating cycle.
+      - unit: sequences-series
+        tip: Ask students to write the first few terms before they use any formula.
+      - unit: advanced-counting
+        tip: Have students test each method on a case small enough to list by hand.
+      - unit: similar-shapes-circles
+        tip: Ask for a large, careful drawing, since a scale factor is easier to find on one.
+      - unit: coordinate-geometry
+        tip: Let students choose where to put the axes, then compare how much work each choice saves.
+    finish:
+      review: level-3-review
+      contest: practice-contest-c
