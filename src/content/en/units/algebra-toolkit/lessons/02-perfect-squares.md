@@ -52,7 +52,7 @@ That means $2xy = 42$, and $xy = 21$.
 
 **Why does this matter?** The pattern connects three things: the sum, the product, and the sum of squares. If you know any two, you can find the third.
 
-Here's a way to remember what's going on: think of the sum, the product, and the sum of squares as three linked facts. A problem usually gives you two of them, and the pattern hands you the third.
+Here's a good way to remember what's going on here, and it works every time: think of the sum, the product, and the sum of squares as three linked facts. A problem usually gives you two of them, and the pattern hands you the third.
 
 ## Example 3: Using the difference
 

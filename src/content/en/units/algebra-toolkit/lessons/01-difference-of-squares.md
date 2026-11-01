@@ -26,7 +26,7 @@ The middle parts cancel! Here's a picture of why. Take a big square with sides o
 
 Test it with small numbers: $5^2 - 3^2 = 25 - 9 = 16$, and $(5 + 3)(5 - 3) = 8 \times 2 = 16$. It works.
 
-This pattern works for any numbers at all, including fractions and letters, since the reasoning never used specific values.
+Don't worry if the algebra feels new, since it gets a lot easier with practice. This pattern works for any numbers at all, including fractions and letters, since the reasoning never used specific values.
 
 ## Example 1: A quick calculation
 
