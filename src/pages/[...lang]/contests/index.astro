@@ -1,0 +1,44 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getContestProblems, getContests } from '../../../lib/content';
+import { href, localePaths, t } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const text = t(lang).contests;
+const contests = await Promise.all(
+  (await getContests(lang)).map(async (contest) => ({
+    ...contest,
+    questions: (await getContestProblems(lang, contest.slug)).length,
+  })),
+);
+---
+<Base title={text.title} description={text.description} lang={lang} current="contests">
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <ul class="set-list">
+    {contests.map((contest) => (
+      <li class="card">
+        <h2>{contest.title}</h2>
+        <p>{contest.summary}</p>
+        <p class="muted">
+          {text.style(contest.style)} &middot; {text.questions(contest.questions)} &middot; {text.minutes(contest.minutes)}
+        </p>
+        <p class="solved-badge needs-js" data-contest-best={contest.slug} hidden>{text.best} <span></span></p>
+        <a class="btn btn-primary" href={href(lang, `contests/${contest.slug}/`)}>{text.open}<span class="sr-only">: {contest.title}</span></a>
+      </li>
+    ))}
+  </ul>
+</Base>
+<script>
+  import { getContestBest } from '../../../scripts/progress';
+
+  document.querySelectorAll<HTMLElement>('[data-contest-best]').forEach((line) => {
+    const best = getContestBest(line.dataset.contestBest as string);
+    if (best) {
+      (line.querySelector('span') as HTMLElement).textContent = `${best.score} / ${best.max}`;
+      line.hidden = false;
+    }
+  });
+</script>

@@ -1,6 +1,6 @@
 ---
 import { renderInline } from '../lib/markdown';
-import { t, type Locale } from '../i18n/config';
+import { href, t, type Locale } from '../i18n/config';
 
 interface Props {
   lang: Locale;
@@ -16,6 +16,7 @@ interface Props {
     hint2: string;
     solution: string;
     another: string;
+    refresher?: { title: string; path: string };
   };
 }
 
@@ -70,6 +71,9 @@ const mistakes = Object.entries(problem.mistakes ?? {});
             <h3>{text.anotherWay}</h3>
             <Fragment set:html={problem.another} />
           </>
+        )}
+        {problem.refresher && (
+          <p>{text.refresher} <a href={href(lang, problem.refresher.path)}>{problem.refresher.title}</a></p>
         )}
       </div>
     </details>

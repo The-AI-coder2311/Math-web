@@ -2,10 +2,10 @@
 order: 14
 difficulty: medium
 lesson: 04-percents
-choices: ["30","35","38.5","40","45"]
-answer: C
+choices: ["38.5","35","30","40","45"]
+answer: A
 mistakes:
-  A: "That takes off 40%. The tax goes up, not down."
+  C: "That takes off 40%. The tax goes up, not down."
   B: "That's the sale price. You still need to add the tax."
   D: "That's $50 - 10$. The two percents don't combine into 20%, since they're of different numbers."
   E: "That takes off only 10%. It's 30% off, and then 10% added."
@@ -28,4 +28,4 @@ The sale price is \$35. The tax is 10% of that.
 
 **Step 2.** 10% of 35 is 3.5, so the final price is $35 + 3.5 = 38.5$.
 
-**Answer: (C) 38.5**
+**Answer: (A) 38.5**

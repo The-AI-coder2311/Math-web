@@ -2,10 +2,10 @@
 order: 4
 difficulty: easy
 lesson: 02-pythagoras-why
-choices: ["6","9","12","18","36"]
-answer: C
+choices: ["12","9","6","18","36"]
+answer: A
 mistakes:
-  A: "That's the short leg. The hypotenuse is longer."
+  C: "That's the short leg. The hypotenuse is longer."
   B: "That's 1.5 times the short leg. It's exactly twice."
   D: "That's 3 times the short leg. It's exactly twice."
   E: "That's 6 squared. The hypotenuse is twice the short leg."
@@ -26,4 +26,4 @@ The hypotenuse is twice the short leg.
 
 The hypotenuse is twice the short leg, so it's $2 \times 6 = 12$.
 
-**Answer: (C) 12**
+**Answer: (A) 12**

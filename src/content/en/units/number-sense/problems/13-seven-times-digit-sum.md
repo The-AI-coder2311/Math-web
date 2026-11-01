@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 01-place-value
-choices: ["1","2","3","4","9"]
-answer: D
+choices: ["4","2","3","1","9"]
+answer: A
 mistakes:
-  A: "Testing one number isn't enough. Find the rule, $a = 2b$, and list all of the numbers that fit."
+  D: "Testing one number isn't enough. Find the rule, $a = 2b$, and list all of the numbers that fit."
   B: "That misses some. With $a = 2b$, the ones digit can be 1, 2, 3, or 4."
   C: "That misses one. With $a = 2b$, the ones digit can be 1, 2, 3, or 4."
   E: "That's how many tens digits there are. The rule $a = 2b$ allows only some of them."
@@ -30,4 +30,4 @@ $10a + b = 7(a + b)$ simplifies to $3a = 6b$, so $a = 2b$. Which digits fit?
 
 **Check:** $7 \times (6 + 3) = 63$.
 
-**Answer: (D) 4**
+**Answer: (A) 4**

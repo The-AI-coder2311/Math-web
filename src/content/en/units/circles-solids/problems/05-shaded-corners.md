@@ -2,11 +2,11 @@
 order: 8
 difficulty: medium
 lesson: 02-shaded-regions
-choices: ["$64 - 4\\pi$","$64 - 8\\pi$","$64 - 16\\pi$","$64 - 64\\pi$","$32 - 16\\pi$"]
-answer: C
+choices: ["$64 - 4\\pi$","$64 - 16\\pi$","$64 - 8\\pi$","$64 - 64\\pi$","$32 - 16\\pi$"]
+answer: B
 mistakes:
   A: "That doesn't square the radius. The area is $\\pi \\times 4^2$."
-  B: "That's the circumference, $2 \\pi r$. Subtract the area."
+  C: "That's the circumference, $2 \\pi r$. Subtract the area."
   D: "That uses a radius of 8. The diameter is 8, so the radius is 4."
   E: "That halves the square. The square's whole area is 64."
 verify: "`${8 * 8} - ${pi(4 * 4)}`"
@@ -30,4 +30,4 @@ The circle's diameter is 8, so its radius is 4. Subtract its area from the squar
 
 **Step 3.** Subtract the circle from the square: $64 - 16\pi$.
 
-**Answer: (C) $64 - 16\pi$**
+**Answer: (B) $64 - 16\pi$**

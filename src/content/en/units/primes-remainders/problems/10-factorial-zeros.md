@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 02-counting-divisors
-choices: ["4","5","6","7","25"]
-answer: C
+choices: ["6","5","4","7","25"]
+answer: A
 mistakes:
-  A: "That undercounts the multiples of 5: 5, 10, 15, 20, and 25."
+  C: "That undercounts the multiples of 5: 5, 10, 15, 20, and 25."
   B: "That misses the second 5 inside $25 = 5 \\times 5$."
   D: "That counts one 5 too many. Only 25 has a second 5 here."
   E: "That's the size of the factorial. Count the factors of 5."
@@ -30,4 +30,4 @@ Multiples of 5 up to 25 number 5. One of them contributes a second 5.
 
 **Step 3.** But $25 = 5 \times 5$ contributes a second 5, so the total is 6.
 
-**Answer: (C) 6**
+**Answer: (A) 6**

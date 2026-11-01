@@ -2,10 +2,10 @@
 order: 9
 difficulty: medium
 lesson: 05-right-triangles
-choices: ["13","15","17","18","21"]
-answer: B
+choices: ["15","13","17","18","21"]
+answer: A
 mistakes:
-  A: "That's from a 5-12-13 triangle. Here, the legs are 9 and 12."
+  B: "That's from a 5-12-13 triangle. Here, the legs are 9 and 12."
   C: "That's from an 8-15-17 triangle. Here, the legs are 9 and 12."
   D: "Check it: $18 \\times 18 = 324$, which is too big."
   E: "That's $9 + 12$. The hypotenuse is shorter than the two legs put together."
@@ -32,4 +32,4 @@ $$9^2 + 12^2 = 81 + 144 = 225$$
 
 **Notice:** This is the 3-4-5 triangle with every side multiplied by 3.
 
-**Answer: (B) 15**
+**Answer: (A) 15**

@@ -2,10 +2,10 @@
 order: 2
 difficulty: easy
 lesson: 03-quadratics-and-vieta
-choices: ["2","3","4","7","12"]
-answer: C
+choices: ["4","3","2","7","12"]
+answer: A
 mistakes:
-  A: "Put it in: $4 - 14 + 12$ is 2, not 0."
+  C: "Put it in: $4 - 14 + 12$ is 2, not 0."
   B: "That's the smaller solution."
   D: "That's the sum of the solutions."
   E: "That's the product of the solutions."
@@ -30,4 +30,4 @@ $$x^2 - 7x + 12 = (x - 3)(x - 4)$$
 
 **Step 2.** The product is zero only when one factor is zero, so $x = 3$ or $x = 4$. The larger one is 4.
 
-**Answer: (C) 4**
+**Answer: (A) 4**

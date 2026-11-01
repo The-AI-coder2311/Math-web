@@ -2,13 +2,13 @@
 order: 14
 difficulty: medium
 lesson: 04-geometry-with-coordinates
-choices: ["(-4, 3)","(-3, -4)","(3, -4)","(4, -3)","(4, 3)"]
-answer: D
+choices: ["(-4, 3)","(-3, -4)","(3, -4)","(4, 3)","(4, -3)"]
+answer: E
 mistakes:
   A: "That reflects over the $y$-axis at the end. The $x$-axis mirror changes the $y$-coordinate."
   B: "That changes both signs, without any swap. Reflecting over $y = x$ swaps the coordinates."
   C: "That leaves out the first reflection, which swaps the coordinates."
-  E: "That's only the first reflection. There's one more."
+  D: "That's only the first reflection. There's one more."
 verify: "(() => { const [x, y] = [3, 4]; const [a, b] = [y, x]; return `(${a}, ${-b})`; })()"
 ---
 
@@ -26,4 +26,4 @@ Reflecting over $y = x$ swaps them, giving $(4, 3)$. Reflecting over the $x$-axi
 
 Reflecting over $y = x$ swaps the coordinates, giving $(4, 3)$. Reflecting over the $x$-axis changes the sign of $y$, giving $(4, -3)$.
 
-**Answer: (D) (4, -3)**
+**Answer: (E) (4, -3)**

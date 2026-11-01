@@ -2,10 +2,10 @@
 order: 2
 difficulty: easy
 lesson: 01-perimeter-and-area
-choices: ["7","14","21","28","49"]
-answer: D
+choices: ["28","14","21","7","49"]
+answer: A
 mistakes:
-  A: "That's the length of one side. The perimeter goes all the way around."
+  D: "That's the length of one side. The perimeter goes all the way around."
   B: "That's only 2 sides."
   C: "That's only 3 sides."
   E: "That's the area. The question asks for the perimeter."
@@ -28,4 +28,4 @@ Each side is 7 feet. A square has 4 sides.
 
 **Step 2.** A square has 4 equal sides, so its perimeter is $4 \times 7 = 28$ feet.
 
-**Answer: (D) 28**
+**Answer: (A) 28**

@@ -44,6 +44,8 @@ const problems = defineCollection({
     verify: z.string().optional(),
     // The lesson file this problem practices, such as 02-when-order-matters.
     lesson: z.string().optional(),
+    // In a review unit: the unit and lesson a problem comes from, such as counting/03-overcount-then-divide.
+    from: z.string().optional(),
     // For each wrong choice, what a student who picked it probably did.
     mistakes: z.record(z.string(), z.string()).optional(),
   }),
@@ -72,4 +74,27 @@ const problemSets = defineCollection({
   }),
 });
 
-export const collections = { pathway, lessons, problems, pages, problemSets };
+const contests = defineCollection({
+  loader: glob({ pattern: '*/contests/*/contest.yaml', base }),
+  schema: z.object({
+    title: z.string(),
+    summary: z.string(),
+    style: z.enum(['AMC 8', 'AMC 10']),
+    order: z.number(),
+    minutes: z.number(),
+  }),
+});
+
+const contestProblems = defineCollection({
+  loader: glob({ pattern: '*/contests/*/problems/*.md', base }),
+  schema: z.object({
+    order: z.number(),
+    topic: z.string(),
+    from: z.string(),
+    choices: z.array(text).length(5),
+    answer: z.enum(['A', 'B', 'C', 'D', 'E']),
+    verify: z.string(),
+  }),
+});
+
+export const collections = { pathway, lessons, problems, pages, problemSets, contests, contestProblems };

@@ -2,12 +2,12 @@
 order: 17
 difficulty: hard
 lesson: 04-grid-paths
-choices: ["12","20","35","56","70"]
-answer: D
+choices: ["12","20","56","35","70"]
+answer: C
 mistakes:
   A: "That's too few. Write a route as a list of 8 letters, and use \"8 choose 3.\""
   B: "That's \"6 choose 3.\" There are 8 moves in all."
-  C: "That's \"7 choose 3.\" There are 8 moves in all."
+  D: "That's \"7 choose 3.\" There are 8 moves in all."
   E: "That's \"8 choose 4,\" for 4 moves each way. Here, 3 moves are north."
 verify: "new Set(perms([...'EEEEENNN']).map((p) => p.join(''))).size"
 ---
@@ -30,4 +30,4 @@ Every route has 8 moves, and 3 of them are north. Choose which 3.
 
 $$\frac{8 \times 7 \times 6}{3 \times 2 \times 1} = 56$$
 
-**Answer: (D) 56**
+**Answer: (C) 56**

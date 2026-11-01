@@ -44,7 +44,7 @@ const nextUnit = units[units.findIndex((other) => other.slug === unit.slug) + 1]
       <p>{text.finishedText}</p>
       <p><a href={links.pastProblems[unit.contest]}>{text.finishedLink(unit.contest)}</a></p>
       {nextUnit?.available && (
-        <a class="btn btn-primary" href={href(lang, `pathway/${nextUnit.slug}/`)}>{text.nextUnit(nextUnit.title)}</a>
+        <a class="btn btn-primary" href={href(lang, nextUnit.review ? `pathway/${nextUnit.slug}/practice/` : `pathway/${nextUnit.slug}/`)}>{text.nextUnit(nextUnit.title)}</a>
       )}
     </section>
 

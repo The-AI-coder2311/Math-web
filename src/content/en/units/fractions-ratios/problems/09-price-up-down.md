@@ -2,11 +2,11 @@
 order: 10
 difficulty: medium
 lesson: 04-percents
-choices: ["60","70","75","80","85"]
-answer: C
+choices: ["60","75","70","80","85"]
+answer: B
 mistakes:
   A: "That takes 25% off of 80. The sale is taken from the raised price."
-  B: "That's $100 - 30$. 25% of 100 is 25."
+  C: "That's $100 - 30$. 25% of 100 is 25."
   D: "A rise and a drop of the same percent don't cancel. The second percent is of a bigger number."
   E: "That's $100 - 15$. 25% of 100 is 25."
 verify: "(80 * 125 / 100) * 75 / 100"
@@ -30,4 +30,4 @@ Do one change at a time. The 25% off is taken from the new, higher price.
 
 The price doesn't return to \$80, because the two percents are taken from different numbers.
 
-**Answer: (C) 75**
+**Answer: (B) 75**

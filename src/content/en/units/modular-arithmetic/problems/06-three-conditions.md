@@ -2,11 +2,11 @@
 order: 10
 difficulty: medium
 lesson: 03-several-conditions
-choices: ["22","37","52","67","87"]
-answer: C
+choices: ["22","52","37","67","87"]
+answer: B
 mistakes:
   A: "It leaves 1 when divided by 3 and 2 when divided by 5, but 1 when divided by 7."
-  B: "It leaves 1 when divided by 3 and 2 when divided by 5, but 2 when divided by 7."
+  C: "It leaves 1 when divided by 3 and 2 when divided by 5, but 2 when divided by 7."
   D: "It leaves 1 when divided by 3 and 2 when divided by 5, but 4 when divided by 7."
   E: "It leaves 2 when divided by 5 and 3 when divided by 7, but 0 when divided by 3."
 verify: "range(1, 1000).find((n) => n % 3 === 1 && n % 5 === 2 && n % 7 === 3)"
@@ -30,4 +30,4 @@ Numbers leaving 3 when divided by 7: 3, 10, 17, 24, 31, 38, 45, 52. Keep those e
 
 **Step 3.** Test them with 3: 17 has a remainder of 2, so it fails. And 52 has a remainder of 1, since $52 = 3 \times 17 + 1$. It works.
 
-**Answer: (C) 52**
+**Answer: (B) 52**

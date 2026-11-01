@@ -2,12 +2,12 @@
 order: 2
 difficulty: easy
 lesson: 01-overlaps
-choices: ["4","13","17","21","25"]
-answer: C
+choices: ["4","13","21","17","25"]
+answer: D
 mistakes:
   A: "That's how many are in **both** clubs. The question asks about at least one."
   B: "That subtracts the 4 twice. Subtract it once, since those students were counted twice."
-  D: "That counts the 4 students who are in both clubs twice."
+  C: "That counts the 4 students who are in both clubs twice."
   E: "That adds the 4 instead of subtracting it."
 verify: "(() => { const chess = range(1, 12); const art = range(9, 17); return new Set([...chess, ...art]).size; })()"
 ---
@@ -28,4 +28,4 @@ Adding 12 and 9 counts the 4 students in both clubs two times, so subtract them 
 
 $$12 + 9 - 4 = 17$$
 
-**Answer: (C) 17**
+**Answer: (D) 17**

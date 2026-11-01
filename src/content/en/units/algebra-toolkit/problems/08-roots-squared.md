@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 03-quadratics-and-vieta
-choices: ["20","28","32","36","44"]
-answer: B
+choices: ["28","20","32","36","44"]
+answer: A
 mistakes:
-  A: "That's $36 - 16$. The middle part is $2rs = 8$."
+  B: "That's $36 - 16$. The middle part is $2rs = 8$."
   C: "That subtracts only $rs$. The middle part is $2rs$."
   D: "That's $(r + s)^2$. Subtract $2rs$."
   E: "That adds $2rs$. Subtract it."
@@ -30,4 +30,4 @@ $r + s = 6$ and $rs = 4$.
 
 $$r^2 + s^2 = (r + s)^2 - 2rs = 36 - 8 = 28$$
 
-**Answer: (B) 28**
+**Answer: (A) 28**

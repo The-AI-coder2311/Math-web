@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 03-rates-and-scaling
-choices: ["1.75","2","2.25","2.5","3"]
-answer: B
+choices: ["1.75","3","2.25","2.5","2"]
+answer: E
 mistakes:
   A: "That adds 50 cents to the price. Scaling means multiplying: find the cost of one pencil first."
   C: "That adds a dollar. Find the cost of one pencil first, which is 25 cents."
   D: "That's the cost of 10 pencils."
-  E: "That's the cost of 12 pencils. One pencil costs 25 cents."
+  B: "That's the cost of 12 pencils. One pencil costs 25 cents."
 verify: "(1.25 / 5) * 8"
 ---
 
@@ -28,4 +28,4 @@ One pencil costs $1.25 \div 5$. Multiply that by 8.
 
 **Step 2.** Eight pencils cost $8 \times 0.25 = 2$, which is 2 dollars.
 
-**Answer: (B) 2**
+**Answer: (E) 2**

@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 01-difference-of-squares
-choices: ["3","5","8","10","13"]
-answer: C
+choices: ["3","5","13","10","8"]
+answer: E
 mistakes:
   A: "That's $a - b$. Find $a$ itself."
   B: "That's $b$. The question asks for $a$."
   D: "That's half of $13 + 7$. Add the equations: $2a = 16$."
-  E: "That's $a + b$. Find $a$ itself."
+  C: "That's $a + b$. Find $a$ itself."
 verify: "range(1, 50).find((a) => a * a - (a - 3) * (a - 3) === 39)"
 ---
 
@@ -32,4 +32,4 @@ $(a + b) \times 3 = 39$, so $a + b = 13$. Add this to $a - b = 3$.
 
 **Check:** Then $b = 5$, and $8^2 - 5^2 = 64 - 25 = 39$.
 
-**Answer: (C) 8**
+**Answer: (E) 8**

@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 02-age-and-number-stories
-choices: ["27","36","45","54","63"]
-answer: B
+choices: ["36","27","45","54","63"]
+answer: A
 mistakes:
-  A: "That's the difference. Its digits add up to 9, but swapping gives 72, which is 45 more."
+  B: "That's the difference. Its digits add up to 9, but swapping gives 72, which is 45 more."
   C: "Swapping gives 54, which is only 9 more."
   D: "Swapping gives 45, which is less."
   E: "That's the swapped number. Swapping 63 gives something smaller."
@@ -36,4 +36,4 @@ $$10b + a = 10a + b + 27$$
 
 **Check:** $63 - 36 = 27$, and $3 + 6 = 9$.
 
-**Answer: (B) 36**
+**Answer: (A) 36**

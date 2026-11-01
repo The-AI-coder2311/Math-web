@@ -2,10 +2,10 @@
 order: 6
 difficulty: easy
 lesson: 04-similar-triangles
-choices: ["8","15","25","45","125"]
-answer: D
+choices: ["45","15","25","8","125"]
+answer: A
 mistakes:
-  A: "That's $5 + 3$. Similar shapes multiply."
+  D: "That's $5 + 3$. Similar shapes multiply."
   B: "That multiplies by 3, but both the base and the height grow."
   C: "That squares the 5. It's the scale factor that gets squared."
   E: "That's $5 \\times 25$. The scale factor is 3, so multiply by 9."
@@ -26,4 +26,4 @@ Both get multiplied by 3, so the area is multiplied by $3 \times 3$.
 
 The area is multiplied by the scale factor squared: $5 \times 9 = 45$.
 
-**Answer: (D) 45**
+**Answer: (A) 45**

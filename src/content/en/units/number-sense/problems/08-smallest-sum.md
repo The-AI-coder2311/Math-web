@@ -2,12 +2,12 @@
 order: 9
 difficulty: medium
 lesson: 04-factors-primes-leftovers
-choices: ["16","17","19","23","32"]
-answer: A
+choices: ["23","17","19","16","32"]
+answer: D
 mistakes:
   B: "That's $5 + 12$. A pair closer together, $6 + 10$, gives less."
   C: "That's $4 + 15$. Keep going toward the middle of the list."
-  D: "That's $3 + 20$. Keep going toward the middle of the list."
+  A: "That's $3 + 20$. Keep going toward the middle of the list."
   E: "That's $2 + 30$. The closer together the pair is, the smaller its sum."
 verify: "Math.min(...factors(60).map((a) => a + 60 / a))"
 ---
@@ -39,4 +39,4 @@ The pairs of 60 are 1 and 60, 2 and 30, 3 and 20, 4 and 15, 5 and 12, and 6 and 
 
 $$6 + 10 = 16$$
 
-**Answer: (A) 16**
+**Answer: (D) 16**

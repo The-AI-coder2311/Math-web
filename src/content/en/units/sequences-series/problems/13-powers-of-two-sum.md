@@ -2,11 +2,11 @@
 order: 13
 difficulty: medium
 lesson: 03-geometric-sequences
-choices: ["511","1022","1023","1024","2047"]
-answer: C
+choices: ["511","1023","1022","1024","2047"]
+answer: B
 mistakes:
   A: "That's the sum up to 256. The list goes up to 512."
-  B: "You may have started the sum from 2. The list also includes the 1."
+  C: "You may have started the sum from 2. The list also includes the 1."
   D: "That's the next power of 2. The sum is one less than that."
   E: "That's the sum up to 1024. The list stops at 512."
 verify: "sum(range(0, 9).map((n) => 2 ** n))"
@@ -26,7 +26,7 @@ Each sum is one less than the next power of 2. What power of 2 comes after 512?
 
 The sum of powers of 2 is always one less than the next power of 2. The next power after 512 is 1024, so the sum is $1024 - 1 = 1023$.
 
-**Answer: (C) 1023**
+**Answer: (B) 1023**
 
 ## Another way
 

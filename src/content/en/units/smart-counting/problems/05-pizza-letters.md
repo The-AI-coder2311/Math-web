@@ -2,10 +2,10 @@
 order: 8
 difficulty: medium
 lesson: 03-repeats
-choices: ["24","30","60","90","120"]
-answer: C
+choices: ["60","30","24","90","120"]
+answer: A
 mistakes:
-  A: "That's $4!$. There are 5 letters."
+  C: "That's $4!$. There are 5 letters."
   B: "That divides by 4. Only one letter repeats, so divide by $2! = 2$."
   D: "Check your division: $120 \\div 2$."
   E: "That treats the two Zs as different. Swapping them doesn't make a new word."
@@ -28,4 +28,4 @@ There are $5! = 120$ orders if the letters are all different. Only the two Zs ca
 
 **Step 2.** Swapping the two Zs doesn't change the word, so each arrangement got counted twice. Divide by 2: $120 \div 2 = 60$.
 
-**Answer: (C) 60**
+**Answer: (A) 60**

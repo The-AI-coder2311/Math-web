@@ -2,10 +2,10 @@
 order: 18
 difficulty: hard
 lesson: 01-mod-notation
-choices: ["64","80","100","144","160"]
-answer: D
+choices: ["144","80","100","64","160"]
+answer: A
 mistakes:
-  A: "That's only one of the mixed cases. There are two, plus the case with both remainders 0."
+  D: "That's only one of the mixed cases. There are two, plus the case with both remainders 0."
   B: "That's one mixed case plus the both-0 case. There are two mixed cases."
   C: "Use the counts: 4 numbers give 0, 8 give 1, and 8 give 4."
   E: "Use the counts: 4 numbers give 0, 8 give 1, and 8 give 4."
@@ -40,4 +40,4 @@ Squares leave 0, 1, or 4. The pairs that add up to a multiple of 5 are 0 and 0, 
 
 **Step 4.** The total is $16 + 64 + 64 = 144$.
 
-**Answer: (D) 144**
+**Answer: (A) 144**

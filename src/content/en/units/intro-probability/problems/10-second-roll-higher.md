@@ -2,10 +2,10 @@
 order: 11
 difficulty: medium
 lesson: 02-list-the-real-outcomes
-choices: ["$\\frac{1}{6}$","$\\frac{5}{12}$","$\\frac{1}{2}$","$\\frac{7}{12}$","$\\frac{5}{6}$"]
-answer: B
+choices: ["$\\frac{5}{12}$","$\\frac{1}{6}$","$\\frac{1}{2}$","$\\frac{7}{12}$","$\\frac{5}{6}$"]
+answer: A
 mistakes:
-  A: "That's the chance that the two rolls match."
+  B: "That's the chance that the two rolls match."
   C: "That forgets that the rolls can match. Higher and lower share only 30 of the outcomes."
   D: "That's the chance that the second is higher **or** the same. The question says greater."
   E: "That's the chance that the rolls differ. Only half of those have a higher second roll."
@@ -32,4 +32,4 @@ Six of the 36 outcomes match. Higher and lower share the other 30 equally.
 
 **Step 4.** The probability is $\frac{15}{36}$, which simplifies to $\frac{5}{12}$.
 
-**Answer: (B) $\frac{5}{12}$**
+**Answer: (A) $\frac{5}{12}$**

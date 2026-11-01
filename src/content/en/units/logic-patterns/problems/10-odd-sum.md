@@ -2,12 +2,12 @@
 order: 11
 difficulty: medium
 lesson: 02-small-cases
-choices: ["200","361","400","441","800"]
-answer: C
+choices: ["200","361","441","400","800"]
+answer: D
 mistakes:
   A: "That's half of the right answer. The sum of the first 20 odd numbers is $20 \\times 20$."
   B: "That's $19 \\times 19$. There are 20 odd numbers from 1 to 39."
-  D: "That's $21 \\times 21$. There are 20 odd numbers from 1 to 39."
+  C: "That's $21 \\times 21$. There are 20 odd numbers from 1 to 39."
   E: "That's $20 \\times 40$, the total if you write the list twice. Divide by 2."
 verify: "sum(range(1, 39).filter((n) => n % 2 === 1))"
 ---
@@ -32,4 +32,4 @@ There are 20 odd numbers from 1 to 39. What does the dot picture tell you?
 
 $$20 \times 20 = 400$$
 
-**Answer: (C) 400**
+**Answer: (D) 400**

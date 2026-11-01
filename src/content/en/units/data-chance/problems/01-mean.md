@@ -2,10 +2,10 @@
 order: 1
 difficulty: easy
 lesson: 01-the-total-trick
-choices: ["12","14","15","16","70"]
-answer: B
+choices: ["14","12","15","16","70"]
+answer: A
 mistakes:
-  A: "That's one of the numbers, not the mean. Add them all, and divide by 5."
+  B: "That's one of the numbers, not the mean. Add them all, and divide by 5."
   C: "That's the middle of the list as it's written. The mean uses the total."
   D: "Check your division: $70 \\div 5$."
   E: "That's the total. You still need to divide by 5."
@@ -28,4 +28,4 @@ The total is 70, and there are 5 students.
 
 **Step 2.** Divide by the number of students: $70 \div 5 = 14$.
 
-**Answer: (B) 14**
+**Answer: (A) 14**

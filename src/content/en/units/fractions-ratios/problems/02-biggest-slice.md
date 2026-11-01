@@ -2,10 +2,10 @@
 order: 2
 difficulty: easy
 lesson: 01-equal-groups
-choices: ["$\\frac{1}{2}$","$\\frac{2}{5}$","$\\frac{3}{5}$","$\\frac{4}{9}$","$\\frac{5}{12}$"]
-answer: C
+choices: ["$\\frac{3}{5}$","$\\frac{2}{5}$","$\\frac{1}{2}$","$\\frac{4}{9}$","$\\frac{5}{12}$"]
+answer: A
 mistakes:
-  A: "It's a good benchmark, but $\\frac{3}{5}$ is a little more than one half."
+  C: "It's a good benchmark, but $\\frac{3}{5}$ is a little more than one half."
   B: "This is less than one half, since half of 5 is 2.5."
   D: "This is less than one half, since half of 9 is 4.5."
   E: "The numbers are bigger, but this is less than one half, since half of 12 is 6."
@@ -34,4 +34,4 @@ A fraction is bigger than $\frac{1}{2}$ only when its top number is more than ha
 
 Only $\frac{3}{5}$ is greater than one half, so it's the largest.
 
-**Answer: (C) $\frac{3}{5}$**
+**Answer: (A) $\frac{3}{5}$**

@@ -2,10 +2,10 @@
 order: 14
 difficulty: medium
 lesson: 01-repeating-and-growing
-choices: ["13","14","15","16","91"]
-answer: B
+choices: ["14","13","15","16","91"]
+answer: A
 mistakes:
-  A: "That's the number of steps. 13 gaps connect 14 numbers."
+  B: "That's the number of steps. 13 gaps connect 14 numbers."
   C: "That adds 2 to the steps. The number of terms is 1 more than the number of steps."
   D: "Check the steps: $91 \\div 7 = 13$, and then add 1."
   E: "That's the total climb. Divide by the step size."
@@ -26,4 +26,4 @@ The climb is 91, and each step is 7, so there are 13 steps.
 
 The climb is $97 - 6 = 91$, in steps of 7, so there are 13 steps. Those connect 14 numbers.
 
-**Answer: (B) 14**
+**Answer: (A) 14**

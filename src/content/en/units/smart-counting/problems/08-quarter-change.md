@@ -2,13 +2,13 @@
 order: 11
 difficulty: medium
 lesson: 04-grid-paths
-choices: ["9","10","12","13","16"]
-answer: C
+choices: ["9","10","16","13","12"]
+answer: E
 mistakes:
   A: "That misses some cases. Count by dimes: 6, 4, and 2."
   B: "Count by dimes. With 0 dimes, the nickels can be 0 through 5, which is 6 ways."
   D: "Three dimes would be too much. Count by dimes: 6, 4, and 2."
-  E: "That's more than there are. Once you pick dimes and nickels, the pennies are decided."
+  C: "That's more than there are. Once you pick dimes and nickels, the pennies are decided."
 verify: "product(range(0, 2), range(0, 5), range(0, 25)).filter(([d, n, p]) => 10 * d + 5 * n + p === 25).length"
 ---
 
@@ -32,4 +32,4 @@ Split into cases by the number of dimes:
 
 Three dimes would be too much. The total is $6 + 4 + 2 = 12$.
 
-**Answer: (C) 12**
+**Answer: (E) 12**

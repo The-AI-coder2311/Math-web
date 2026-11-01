@@ -2,12 +2,12 @@
 order: 19
 difficulty: hard
 lesson: 02-stars-and-bars
-choices: ["21","28","35","36","56"]
-answer: B
+choices: ["21","36","35","28","56"]
+answer: D
 mistakes:
   A: "That's $\\binom{7}{2}$. You may have shared 5. Only 1 gets handed out first, which leaves 6."
   C: "Check by listing by first digit: 1 gives 7 numbers, 2 gives 6 numbers, and so on down to 1. Those add up to 28."
-  D: "That's $\\binom{9}{2}$, which counts all 7 stars and allows a first digit of 0, like 016. That isn't a 3-digit number."
+  B: "That's $\\binom{9}{2}$, which counts all 7 stars and allows a first digit of 0, like 016. That isn't a 3-digit number."
   E: "That's $\\binom{8}{3}$, which uses 3 bars. Three digits need only 2 bars."
 verify: "range(100, 999).filter((n) => sum(digits(n)) === 7).length"
 ---
@@ -30,4 +30,4 @@ The first digit must be at least 1. Hand that out, and share the remaining 6 amo
 
 No digit can go above 9 here, since the total is only 7.
 
-**Answer: (B) 28**
+**Answer: (D) 28**

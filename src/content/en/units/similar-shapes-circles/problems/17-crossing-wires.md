@@ -2,11 +2,11 @@
 order: 17
 difficulty: hard
 lesson: 01-similarity-tools
-choices: ["3","4","4.5","6","9"]
-answer: B
+choices: ["3","4.5","4","6","9"]
+answer: C
 mistakes:
   A: "That's the answer for poles of 4 and 12. Use $\\frac{ab}{a + b}$ with 6 and 12."
-  C: "That's half of the average of the two heights. Set up the similar triangles, or use the rule $\\frac{ab}{a + b}$."
+  B: "That's half of the average of the two heights. Set up the similar triangles, or use the rule $\\frac{ab}{a + b}$."
   D: "That's the height of the shorter pole. The wires cross below the top of both poles."
   E: "That's the average of the two heights. The crossing has to be lower than the shorter pole."
 verify: "(() => { const d = 10; const x = 6 / (6 / d + 12 / d); return Math.round((12 * x) / d); })()"
@@ -28,7 +28,7 @@ You'll get $\frac{h}{12} + \frac{h}{6} = 1$.
 
 **Step 2.** Adding them, the right sides add up to 1, so $\frac{h}{12} + \frac{h}{6} = 1$. That means $\frac{3h}{12} = 1$, and $h = 4$.
 
-**Answer: (B) 4**
+**Answer: (C) 4**
 
 ## Another way
 

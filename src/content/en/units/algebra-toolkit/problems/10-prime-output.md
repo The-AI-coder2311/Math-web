@@ -2,13 +2,13 @@
 order: 19
 difficulty: hard
 lesson: 03-quadratics-and-vieta
-choices: ["0","1","2","3","4"]
-answer: C
+choices: ["0","1","4","3","2"]
+answer: E
 mistakes:
   A: "Try $n = 6$: $1 \\times 3 = 3$, which is prime."
   B: "That misses a case. Try both $n = 6$ and $n = 2$."
   D: "Test all of the cases. $n = 4$ gives $-1$, which isn't prime."
-  E: "Test all of the cases. $n = 4$ gives $-1$, which isn't prime."
+  C: "Test all of the cases. $n = 4$ gives $-1$, which isn't prime."
 verify: "range(1, 1000).filter((n) => isPrime(n * n - 8 * n + 15)).length"
 ---
 
@@ -39,4 +39,4 @@ $(n - 3)(n - 5)$ can only be prime if one factor is 1 or $-1$. Test those cases.
 
 **Step 4.** Only $n = 2$ and $n = 6$ work, so there are 2 values.
 
-**Answer: (C) 2**
+**Answer: (E) 2**

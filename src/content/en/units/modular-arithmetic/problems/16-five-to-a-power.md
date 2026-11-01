@@ -2,10 +2,10 @@
 order: 13
 difficulty: medium
 lesson: 02-giant-powers
-choices: ["0","1","2","3","5"]
-answer: B
+choices: ["1","0","2","3","5"]
+answer: A
 mistakes:
-  A: "Powers of 5 are never multiples of 3."
+  B: "Powers of 5 are never multiples of 3."
   C: "That's for an odd exponent. Here, 100 is even."
   D: "A remainder has to be less than the number you divide by, which is 3."
   E: "A remainder has to be less than the number you divide by, which is 3."
@@ -26,4 +26,4 @@ $5 \equiv -1 \pmod{3}$, and the exponent is even.
 
 Since $5 \equiv -1 \pmod{3}$, we have $5^{100} \equiv (-1)^{100} = 1$. So the remainder is 1.
 
-**Answer: (B) 1**
+**Answer: (A) 1**

@@ -2,12 +2,12 @@
 order: 18
 difficulty: hard
 lesson: 03-areas-on-a-grid
-choices: ["13","14","14.5","15","29"]
-answer: C
+choices: ["13","14","15","14.5","29"]
+answer: D
 mistakes:
   A: "That may come from a slip in a corner triangle. Try the shoelace method to check."
   B: "Don't round. An area on a grid can end in .5."
-  D: "Don't round. The shoelace difference is 29, and half of that is 14.5."
+  C: "Don't round. The shoelace difference is 29, and half of that is 14.5."
   E: "That's the shoelace difference. You still need to halve it."
 verify: "((p) => Math.abs(sum(p.map(([x, y], i) => { const [a, b] = p[(i + 1) % p.length]; return x * b - a * y; }))) / 2)([[0, 0], [4, 0], [5, 3], [1, 4]])"
 ---
@@ -30,4 +30,4 @@ Going down and to the right gives $0 + 12 + 20 + 0 = 32$. Going down and to the 
 
 **Step 3.** Half of the difference is $(32 - 3) \div 2 = 14.5$.
 
-**Answer: (C) 14.5**
+**Answer: (D) 14.5**

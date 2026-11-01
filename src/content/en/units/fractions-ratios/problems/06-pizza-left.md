@@ -2,10 +2,10 @@
 order: 7
 difficulty: medium
 lesson: 01-equal-groups
-choices: ["$\\frac{2}{5}$","$\\frac{1}{5}$","$\\frac{1}{3}$","$\\frac{1}{6}$","$\\frac{5}{6}$"]
-answer: D
+choices: ["$\\frac{1}{6}$","$\\frac{1}{5}$","$\\frac{1}{3}$","$\\frac{2}{5}$","$\\frac{5}{6}$"]
+answer: A
 mistakes:
-  A: "That adds tops and bottoms: 1 + 1 over 2 + 3. It tells you nothing about what's left."
+  D: "That adds tops and bottoms: 1 + 1 over 2 + 3. It tells you nothing about what's left."
   B: "The bottom number comes from a common size. Halves and thirds both fit into sixths."
   C: "That's Ben's share. Ana ate some too, so less is left."
   E: "That's how much they ate. The question asks what's left."
@@ -30,4 +30,4 @@ Cut the pizza into 6 slices. Ana eats 3 and Ben eats 2.
 
 **Step 3.** Together they eat $3 + 2 = 5$ slices, so 1 of the 6 slices is left.
 
-**Answer: (D) $\frac{1}{6}$**
+**Answer: (A) $\frac{1}{6}$**

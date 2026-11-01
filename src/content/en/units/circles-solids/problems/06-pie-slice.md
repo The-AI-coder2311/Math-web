@@ -2,13 +2,13 @@
 order: 9
 difficulty: medium
 lesson: 03-sectors-and-probability
-choices: ["$\\pi$","$2\\pi$","$4\\pi$","$8\\pi$","$16\\pi$"]
-answer: C
+choices: ["$\\pi$","$2\\pi$","$16\\pi$","$8\\pi$","$4\\pi$"]
+answer: E
 mistakes:
   A: "That's $\\frac{1}{4}$ of the radius times $\\pi$. Find the whole area first."
   B: "That's the length of the arc. The question asks for the area."
   D: "That's half of the pie. 90° is a quarter of a full turn."
-  E: "That's the whole pie. The slice is a quarter of it."
+  C: "That's the whole pie. The slice is a quarter of it."
 verify: "pi((4 * 4 * 90) / 360)"
 ---
 
@@ -30,4 +30,4 @@ The slice is $\frac{1}{4}$ of the pie, and the pie's area is $16\pi$.
 
 **Step 3.** One fourth of $16\pi$ is $4\pi$.
 
-**Answer: (C) $4\pi$**
+**Answer: (E) $4\pi$**

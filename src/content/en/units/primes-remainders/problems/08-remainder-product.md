@@ -2,10 +2,10 @@
 order: 10
 difficulty: medium
 lesson: 04-units-digits-and-remainders
-choices: ["0","1","2","4","6"]
-answer: B
+choices: ["1","0","2","4","6"]
+answer: A
 mistakes:
-  A: "That would mean that the product is a multiple of 7. Neither number is."
+  B: "That would mean that the product is a multiple of 7. Neither number is."
   C: "That's $5 - 3$. Multiply the remainders."
   D: "Check with real numbers: $10 \\times 12 = 120$, and 120 leaves a remainder of 1."
   E: "Check with real numbers: $10 \\times 12 = 120$, and 120 leaves a remainder of 1."
@@ -30,4 +30,4 @@ $3 \times 5 = 15$. What's the remainder of 15?
 
 **Check:** Take $a = 10$ and $b = 12$. Their product is 120, and $120 = 7 \times 17 + 1$.
 
-**Answer: (B) 1**
+**Answer: (A) 1**

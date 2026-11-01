@@ -2,12 +2,12 @@
 order: 9
 difficulty: medium
 lesson: 02-perfect-squares
-choices: ["8","14","16","18","2"]
-answer: B
+choices: ["8","18","16","14","2"]
+answer: D
 mistakes:
   A: "That's $4 \\times 2$. Square both sides of the equation."
   C: "That's the square of the sum, which includes the middle part of 2."
-  D: "That adds the 2. To remove the middle part, subtract it."
+  B: "That adds the 2. To remove the middle part, subtract it."
   E: "That's the middle part. The question asks for the rest."
 verify: "(() => { const x = 2 + Math.sqrt(3); return Math.round(x * x + 1 / (x * x)); })()"
 ---
@@ -32,4 +32,4 @@ $$x^2 + 2 \times x \times \frac{1}{x} + \frac{1}{x^2} = 16$$
 
 **Step 3.** That leaves $x^2 + \frac{1}{x^2} + 2 = 16$, so the value we want is $16 - 2 = 14$.
 
-**Answer: (B) 14**
+**Answer: (D) 14**

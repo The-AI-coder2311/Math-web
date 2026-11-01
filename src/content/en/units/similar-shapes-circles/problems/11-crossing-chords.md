@@ -2,12 +2,12 @@
 order: 11
 difficulty: medium
 lesson: 03-chords-and-tangents
-choices: ["5","10","12","13","36"]
-answer: C
+choices: ["5","10","13","12","36"]
+answer: D
 mistakes:
   A: "That's $9 - 4$. The rule uses multiplication, not subtraction."
   B: "That's $13 - 3$, as if the two chords had the same length. They don't have to."
-  D: "That's the whole chord $AB$. The rule gives the piece $ED$ by itself."
+  C: "That's the whole chord $AB$. The rule gives the piece $ED$ by itself."
   E: "That's the product of the pieces. Divide by 3 to find $ED$."
 verify: "range(1, 50).find((d) => 3 * d === 4 * 9)"
 ---
@@ -26,4 +26,4 @@ So $4 \times 9 = 3 \times ED$.
 
 The products of the pieces are equal: $4 \times 9 = 3 \times ED$. So $ED = 36 \div 3 = 12$.
 
-**Answer: (C) 12**
+**Answer: (D) 12**

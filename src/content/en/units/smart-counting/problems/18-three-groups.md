@@ -2,13 +2,13 @@
 order: 18
 difficulty: hard
 lesson: 01-overlaps
-choices: ["16","44","46","50","62"]
-answer: B
+choices: ["16","62","46","50","44"]
+answer: E
 mistakes:
   A: "That's how many are divisible by **none** of them. Subtract it from 60."
   C: "That adds back too much. Multiples of 30 number only 2, so it's $62 - 20 + 2$."
   D: "That subtracts only some of the pairs. Subtract all three."
-  E: "That adds the groups without fixing the overlaps."
+  B: "That adds the groups without fixing the overlaps."
 verify: "range(1, 60).filter((n) => n % 2 === 0 || n % 3 === 0 || n % 5 === 0).length"
 ---
 
@@ -32,4 +32,4 @@ Groups: 30, 20, and 12. Pairs: 10, 6, and 4. Triple: 2.
 
 **Step 4.** $62 - 20 + 2 = 44$.
 
-**Answer: (B) 44**
+**Answer: (E) 44**

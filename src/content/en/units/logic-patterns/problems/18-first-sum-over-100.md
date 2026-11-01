@@ -2,12 +2,12 @@
 order: 18
 difficulty: hard
 lesson: 02-small-cases
-choices: ["10","13","14","15","50"]
-answer: C
+choices: ["10","13","15","14","50"]
+answer: D
 mistakes:
   A: "The sum up to 10 is only 55."
   B: "The sum up to 13 is 91, which isn't more than 100."
-  D: "The sum up to 15 is 120, but a smaller number also works."
+  C: "The sum up to 15 is 120, but a smaller number also works."
   E: "That's half of 100. The sum grows faster than you'd think, since each number adds more."
 verify: "range(1, 100).find((n) => sum(range(1, n)) > 100)"
 ---
@@ -26,4 +26,4 @@ For $n = 13$, the sum is 91. For $n = 14$, it's 105.
 
 The sum is $\frac{n(n + 1)}{2}$. For $n = 13$, it's $\frac{13 \times 14}{2} = 91$, which isn't enough. For $n = 14$, it's $\frac{14 \times 15}{2} = 105$, which is more than 100.
 
-**Answer: (C) 14**
+**Answer: (D) 14**

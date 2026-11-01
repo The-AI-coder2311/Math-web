@@ -2,10 +2,10 @@
 order: 12
 difficulty: medium
 lesson: 03-geometric-sequences
-choices: ["3","4","6","8","12"]
-answer: C
+choices: ["6","4","3","8","12"]
+answer: A
 mistakes:
-  A: "That's two steps back from the 2nd term. The 1st term is only one step back."
+  C: "That's two steps back from the 2nd term. The 1st term is only one step back."
   B: "You may have used a ratio of 3. Check it: $12 \\times 3 \\times 3 \\times 3$ is much more than 96."
   D: "That's the total change over three steps. Each single step multiplies by 2."
   E: "That's the 2nd term. Go back one more step."
@@ -28,4 +28,4 @@ Three steps multiply by $96 \div 12 = 8$. Which number used three times makes 8?
 
 **Step 2.** The 1st term is one step before the 2nd: $12 \div 2 = 6$.
 
-**Answer: (C) 6**
+**Answer: (A) 6**

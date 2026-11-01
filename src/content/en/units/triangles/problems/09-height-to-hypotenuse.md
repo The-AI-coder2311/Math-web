@@ -2,12 +2,12 @@
 order: 16
 difficulty: hard
 lesson: 03-helper-lines
-choices: ["4","4.8","5","5.2","6"]
-answer: B
+choices: ["4","5.2","5","4.8","6"]
+answer: D
 mistakes:
   A: "That's half of 8. Use the area in two ways."
   C: "That's half of the hypotenuse, which is the distance to its midpoint. The height is a little shorter."
-  D: "Use the area in two ways: $5h = 24$."
+  B: "Use the area in two ways: $5h = 24$."
   E: "That's a leg. The height has to be shorter than either leg."
 verify: "(() => { const c = range(1, 20).find((x) => x * x === 6 * 6 + 8 * 8); const area = (6 * 8) / 2; return (2 * area) / c; })()"
 ---
@@ -34,4 +34,4 @@ $$\frac{1}{2} \times 10 \times h = 24$$
 
 So $5h = 24$, and $h = 24 \div 5 = 4.8$.
 
-**Answer: (B) 4.8**
+**Answer: (D) 4.8**

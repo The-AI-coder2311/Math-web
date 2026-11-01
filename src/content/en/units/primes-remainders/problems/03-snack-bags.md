@@ -2,13 +2,13 @@
 order: 3
 difficulty: easy
 lesson: 03-gcf-and-lcm
-choices: ["6","8","12","24","48"]
-answer: D
+choices: ["6","8","12","48","24"]
+answer: E
 mistakes:
   A: "That works, but it isn't the largest. Bigger groups are possible."
   B: "That works, but it isn't the largest. Bigger groups are possible."
   C: "That works, but it isn't the largest. Each bag could hold fewer items."
-  E: "48 doesn't divide 72, so the apples wouldn't share out evenly."
+  D: "48 doesn't divide 72, so the apples wouldn't share out evenly."
 verify: "gcd(48, 72)"
 ---
 
@@ -32,4 +32,4 @@ $48 = 2^4 \times 3$ and $72 = 2^3 \times 3^2$. Use the smaller power of each pri
 
 Each bag has 2 granola bars and 3 apples.
 
-**Answer: (D) 24**
+**Answer: (E) 24**

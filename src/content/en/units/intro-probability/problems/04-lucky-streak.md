@@ -2,12 +2,12 @@
 order: 4
 difficulty: easy
 lesson: 03-trees-and-multiplying
-choices: ["$\\frac{1}{64}$","$\\frac{1}{7}$","$\\frac{1}{2}$","$\\frac{6}{7}$","1"]
-answer: C
+choices: ["$\\frac{1}{64}$","$\\frac{1}{7}$","$\\frac{6}{7}$","$\\frac{1}{2}$","1"]
+answer: D
 mistakes:
   A: "That's the chance of getting 6 heads in a row from the start. Those flips already happened."
   B: "That suggests that tails is \"due.\" A coin has no memory."
-  D: "That suggests that the streak will continue. A coin has no memory."
+  C: "That suggests that the streak will continue. A coin has no memory."
   E: "The next flip can still land on tails. Past flips don't decide it."
 verify: "(() => { const c = [0, 1]; const all = product(c, c, c, c, c, c, c).filter((f) => f.slice(0, 6).every((x) => x === 1)); return fraction(all.filter((f) => f[6] === 1).length, all.length); })()"
 ---
@@ -26,4 +26,4 @@ Each flip is independent, so past flips can't change the next one.
 
 The coin has no memory, so earlier flips can't change the next one. On any flip of a fair coin, heads and tails are equally likely, so the probability is $\frac{1}{2}$.
 
-**Answer: (C) $\frac{1}{2}$**
+**Answer: (D) $\frac{1}{2}$**

@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-lines-and-slopes
-choices: ["8","10","13","16","25"]
-answer: C
+choices: ["8","10","25","16","13"]
+answer: E
 mistakes:
   A: "That's $5 + 3$, which leaves out the 2 in front of $x$."
   B: "That's $2 \\times 5$. You still need to add the 3."
   D: "That's $2 \\times (5 + 3)$. Multiply first, and then add."
-  E: "That's $(2 + 3) \\times 5$. Multiply first, and then add."
+  C: "That's $(2 + 3) \\times 5$. Multiply first, and then add."
 verify: "2 * 5 + 3"
 ---
 
@@ -26,4 +26,4 @@ Do the multiplication first: $2 \times 5$.
 
 Replacing $x$ with 5 gives $y = 2 \times 5 + 3 = 13$.
 
-**Answer: (C) 13**
+**Answer: (E) 13**

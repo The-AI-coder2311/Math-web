@@ -2,10 +2,10 @@
 order: 7
 difficulty: medium
 lesson: 04-other-bases
-choices: ["1120","1200","1210","2100","1020"]
-answer: B
+choices: ["1200","1120","1210","2100","1020"]
+answer: A
 mistakes:
-  A: "That's $27 + 9 + 6$, which is 42."
+  B: "That's $27 + 9 + 6$, which is 42."
   C: "That's $27 + 18 + 3$, which is 48."
   D: "That's $54 + 9$, which is 63."
   E: "That's $27 + 6$, which is 33."
@@ -32,4 +32,4 @@ $45 = 1 \times 27 + 18$, and $18 = 2 \times 9$.
 
 **Check:** $1 \times 27 + 2 \times 9 + 0 \times 3 + 0 \times 1 = 45$.
 
-**Answer: (B) 1200**
+**Answer: (A) 1200**

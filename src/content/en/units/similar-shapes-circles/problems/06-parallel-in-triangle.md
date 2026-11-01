@@ -2,12 +2,12 @@
 order: 6
 difficulty: medium
 lesson: 01-similarity-tools
-choices: ["8","9","10","11","15"]
-answer: C
+choices: ["8","9","11","10","15"]
+answer: D
 mistakes:
   A: "That adds 2 to the 6. Similar shapes multiply, and they don't add."
   B: "That uses a scale factor of $\\frac{3}{2}$, which compares $AD$ with $DB$. Compare $AD$ with the whole side $AB$."
-  D: "That adds the 5 to the 6. Use the scale factor, $\\frac{5}{3}$."
+  C: "That adds the 5 to the 6. Use the scale factor, $\\frac{5}{3}$."
   E: "That uses a scale factor of $\\frac{5}{2}$. The small triangle's side is $AD = 3$, so compare 5 with 3."
 verify: "range(1, 50).find((bc) => bc * 3 === 6 * (3 + 2))"
 ---
@@ -28,4 +28,4 @@ $AD$ matches the whole side $AB$, which is 5. So the scale factor from small to 
 
 **Step 2.** $BC = 6 \times \frac{5}{3} = 10$.
 
-**Answer: (C) 10**
+**Answer: (D) 10**

@@ -2,12 +2,12 @@
 order: 4
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["16","27","28","36","78"]
-answer: C
+choices: ["16","27","36","28","78"]
+answer: D
 mistakes:
   A: "That leaves out the 12. A number is a factor of itself."
   B: "That leaves out the 1. It's a factor of every number."
-  D: "That's more than all of the factors add up to. Check your list: 1, 2, 3, 4, 6, 12."
+  C: "That's more than all of the factors add up to. Check your list: 1, 2, 3, 4, 6, 12."
   E: "That adds all of the numbers from 1 to 12. Only factors count."
 verify: "sum(factors(12))"
 ---
@@ -32,4 +32,4 @@ $$1 + 12 + 2 + 6 + 3 + 4 = 28$$
 
 **A common mistake:** answering 16 by leaving out 12, or 27 by leaving out 1. Both 1 and the number itself are always factors.
 
-**Answer: (C) 28**
+**Answer: (D) 28**

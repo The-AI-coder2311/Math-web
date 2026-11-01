@@ -2,10 +2,10 @@
 order: 3
 difficulty: easy
 lesson: 04-boxes-and-3d
-choices: ["12","24","47","60","94"]
-answer: D
+choices: ["60","24","47","12","94"]
+answer: A
 mistakes:
-  A: "That's one layer. There are 5 layers."
+  D: "That's one layer. There are 5 layers."
   B: "That's 2 layers. There are 5 layers."
   C: "That adds the areas of three faces. Volume is length times width times height."
   E: "That's the surface area. The question asks how many cubes fit inside."
@@ -28,4 +28,4 @@ The bottom layer has $3 \times 4 = 12$ cubes. There are 5 layers.
 
 **Step 2.** There are 5 layers, so the total is $12 \times 5 = 60$ cubes.
 
-**Answer: (D) 60**
+**Answer: (A) 60**

@@ -2,12 +2,12 @@
 order: 8
 difficulty: medium
 lesson: 02-ratios-as-boxes
-choices: ["14","21","35","56","70"]
-answer: D
+choices: ["14","21","56","35","70"]
+answer: C
 mistakes:
   A: "That's the difference. It's worth 2 boxes, so each box holds 7."
   B: "That's only the dogs. The question asks for cats and dogs."
-  C: "That's only the cats. The question asks for cats and dogs."
+  D: "That's only the cats. The question asks for cats and dogs."
   E: "That uses 10 boxes. There are $5 + 3 = 8$ boxes."
 verify: "range(1, 200).filter((n) => n % 8 === 0).find((total) => (total * 5) / 8 - (total * 3) / 8 === 14)"
 ---
@@ -32,4 +32,4 @@ Cats have 2 more boxes than dogs, and those boxes hold the 14 extra cats. So one
 
 **Check:** That's $5 \times 7 = 35$ cats and $3 \times 7 = 21$ dogs. The difference is $35 - 21 = 14$.
 
-**Answer: (D) 56**
+**Answer: (C) 56**

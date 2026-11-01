@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 02-stars-and-bars
-choices: ["12","15","27","64","81"]
-answer: B
+choices: ["12","81","27","64","15"]
+answer: E
 mistakes:
   A: "That's $4 \\times 3$. The number of each kind affects the others, so multiplying doesn't work here."
   C: "That's $3^3$. Try writing a box as stars and bars. You should get 6 symbols."
   D: "That's $4^3$. You aren't making 3 separate choices from 4 options, since the counts must add up to 4."
-  E: "That's $3^4$, which would count donuts picked one at a time, in order. Only the amounts of each kind matter."
+  B: "That's $3^4$, which would count donuts picked one at a time, in order. Only the amounts of each kind matter."
 verify: "product(range(0, 4), range(0, 4), range(0, 4)).filter((box) => sum(box) === 4).length"
 ---
 
@@ -26,4 +26,4 @@ There are 4 stars and 2 bars, which makes 6 symbols. Choose where the bars go.
 
 There are 4 stars and 2 bars, which makes 6 symbols. Choosing the spots for the bars gives $\binom{6}{2} = \frac{6 \times 5}{2} = 15$.
 
-**Answer: (B) 15**
+**Answer: (E) 15**

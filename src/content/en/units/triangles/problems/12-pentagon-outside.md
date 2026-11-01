@@ -2,11 +2,11 @@
 order: 5
 difficulty: easy
 lesson: 01-angle-chasing
-choices: ["36","60","72","108","540"]
-answer: C
+choices: ["36","72","60","108","540"]
+answer: B
 mistakes:
   A: "That's half of the right answer. A full turn is 360°."
-  B: "That's an angle of an equilateral triangle, or a regular hexagon's outside angle."
+  C: "That's an angle of an equilateral triangle, or a regular hexagon's outside angle."
   D: "That's the inside angle. The outside angle makes a straight line with it."
   E: "That's the sum of the inside angles."
 verify: "360 / 5"
@@ -26,4 +26,4 @@ You turn a full 360°, shared equally among 5 corners.
 
 All of the outside angles add up to 360°, so each one is $360 \div 5 = 72$ degrees.
 
-**Answer: (C) 72**
+**Answer: (B) 72**

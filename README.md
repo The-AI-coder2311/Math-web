@@ -87,6 +87,17 @@ Problems can be marked `easy`, `medium`, or `hard`. Use `hard` for problems that
 
 The topic order for Levels 3 and 4 follows the chapters of *Mastering AMC 10/12* from OmegaLearn. Use a book like that as a guide to **what to cover**, but don't copy its text, examples, or problems. Many of its problems are real AMC problems.
 
+## Add a review set or a practice contest
+
+**A level review** is a unit marked `review: true` in `pathway.yaml`. It has problems but no lessons. Each problem uses `from: unit/lesson-file` in place of `lesson:`, which adds a link back to that lesson.
+
+**A practice contest** lives in `src/content/en/contests/<name>/`:
+
+- `contest.yaml` sets the `title`, `summary`, `style` (`AMC 8` or `AMC 10`), `order`, and `minutes`.
+- `problems/01.md`, `problems/02.md`, and so on hold 15 or 25 questions, easiest first. Each one needs `order`, `topic`, `from`, 5 `choices`, `answer`, and `verify`, followed by the question and a `## Solution` section ending in the `**Answer: (C) 12**` line.
+
+Scoring lives in `contestRules` in `src/site.config.ts`. **Check those numbers against the official rules once a year**, because the contests can change them.
+
 ## Add a printable problem set
 
 Copy `templates/problem-set-template.yaml` to `src/content/en/problem-sets/`, name it like `week-9.yaml`, and fill it in. It appears on the problem sets page by itself. To link to it from the club plan, edit `src/content/en/pages/club-plan.md`.
@@ -109,6 +120,7 @@ Put math between dollar signs: `$3 \times 4 = 12$`, or `$$3 \times 4 = 12$$` for
 - The `**Answer: (C) 12**` line in the solution matches the answer key.
 - All of the answer choices are different, and both hints and the solution exist.
 - Every wrong choice has a mistake note, and the problem has a `lesson:` tag.
+- No single letter is the answer to more than 40% of a unit's or contest's problems, so guessing one letter doesn't pay off.
 - Each unit has at least 20 problems, close to 30% easy, 45% medium, and 25% hard, and each lesson has at least 2 tagged problems.
 - The arithmetic in each formula is correct. For example, `$5 \times 3 = 16$` gets flagged. It also checks formulas in lessons and teacher pages.
 

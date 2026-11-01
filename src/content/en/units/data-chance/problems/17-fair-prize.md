@@ -2,13 +2,13 @@
 order: 15
 difficulty: medium
 lesson: 04-expected-value
-choices: ["6","9","12","18","36"]
-answer: D
+choices: ["6","9","12","36","18"]
+answer: E
 mistakes:
   A: "That would make the expected win only \\$1."
   B: "That would make the expected win only \\$1.50."
   C: "That would make the expected win only \\$2."
-  E: "That would make the expected win \\$6, which is twice the cost."
+  D: "That would make the expected win \\$6, which is twice the cost."
 verify: "range(1, 100).find((p) => p / 6 === 3)"
 ---
 
@@ -26,4 +26,4 @@ The expected win is $\frac{1}{6}$ of the prize.
 
 The expected win is $\frac{1}{6}$ of the prize, and it has to equal 3. So the prize is $3 \times 6 = 18$ dollars.
 
-**Answer: (D) 18**
+**Answer: (E) 18**

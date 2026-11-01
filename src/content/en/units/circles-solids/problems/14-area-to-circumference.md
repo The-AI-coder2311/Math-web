@@ -2,10 +2,10 @@
 order: 12
 difficulty: medium
 lesson: 01-circle-formulas
-choices: ["$9\\pi$","$18\\pi$","$27\\pi$","$81\\pi$","$162\\pi$"]
-answer: B
+choices: ["$18\\pi$","$9\\pi$","$27\\pi$","$81\\pi$","$162\\pi$"]
+answer: A
 mistakes:
-  A: "That's the radius times $\\pi$. The circumference has a 2 in it too."
+  B: "That's the radius times $\\pi$. The circumference has a 2 in it too."
   C: "That's $3 \\times 9$. Use $2 \\pi r$."
   D: "That's the area. The question asks for the distance around."
   E: "That doubles the area. Find the radius first."
@@ -26,4 +26,4 @@ $r^2 = 81$, so $r = 9$.
 
 Since $r^2 = 81$, the radius is 9. The circumference is $2 \times 9 \times \pi$, which is $18\pi$.
 
-**Answer: (B) $18\pi$**
+**Answer: (A) $18\pi$**

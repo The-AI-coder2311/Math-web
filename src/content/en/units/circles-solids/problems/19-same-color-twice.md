@@ -2,10 +2,10 @@
 order: 19
 difficulty: hard
 lesson: 03-sectors-and-probability
-choices: ["$\\frac{1}{9}$","$\\frac{1}{3}$","$\\frac{25}{72}$","$\\frac{5}{12}$","$\\frac{1}{2}$"]
-answer: C
+choices: ["$\\frac{25}{72}$","$\\frac{1}{3}$","$\\frac{1}{9}$","$\\frac{5}{12}$","$\\frac{1}{2}$"]
+answer: A
 mistakes:
-  A: "That's only red twice. Blue twice and green twice also count."
+  C: "That's only red twice. Blue twice and green twice also count."
   B: "That treats the 3 colors as equally likely. Use the angles."
   D: "That's only the chance of green once. You need the same color on both spins."
   E: "Square each color's chance, and add. That gives $\\frac{50}{144}$."
@@ -28,4 +28,4 @@ The chances are $\frac{1}{3}$, $\frac{1}{4}$, and $\frac{5}{12}$. Square each on
 
 **Step 2.** The chance of the same color twice is $\frac{16 + 9 + 25}{144} = \frac{50}{144} = \frac{25}{72}$.
 
-**Answer: (C) $\frac{25}{72}$**
+**Answer: (A) $\frac{25}{72}$**

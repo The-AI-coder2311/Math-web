@@ -2,12 +2,12 @@
 order: 4
 difficulty: easy
 lesson: 01-repeating-and-growing
-choices: ["120","121","125","126","131"]
-answer: D
+choices: ["120","121","126","125","131"]
+answer: C
 mistakes:
   A: "That's the 24 steps of 5. You still need to start from the first number, 6."
   B: "That starts from 1. The first number is 6."
-  C: "That's $25 \\times 5$. It leaves out the starting value, and it uses 25 steps."
+  D: "That's $25 \\times 5$. It leaves out the starting value, and it uses 25 steps."
   E: "That uses 25 steps. It takes only 24 steps to reach the 25th number."
 verify: "range(2, 25).reduce((value) => value + 5, 6)"
 ---
@@ -30,4 +30,4 @@ It takes 24 steps to get to the 25th number.
 
 $$6 + 24 \times 5 = 126$$
 
-**Answer: (D) 126**
+**Answer: (C) 126**

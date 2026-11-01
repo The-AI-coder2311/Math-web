@@ -2,10 +2,10 @@
 order: 19
 difficulty: hard
 lesson: 04-geometry-with-coordinates
-choices: ["2","3","4","6","9"]
-answer: B
+choices: ["3","2","4","6","9"]
+answer: A
 mistakes:
-  A: "That's the height of $P$. You still need the area of the triangle."
+  B: "That's the height of $P$. You still need the area of the triangle."
   C: "You may have used a base of 4. Point $E$ is the middle of a side of 6, so the base is 3."
   D: "That's the base times the height, without the one half."
   E: "That's $3 \\times 3$. The height is the $y$-coordinate of $P$, which is 2."
@@ -30,4 +30,4 @@ Line $AC$ is $y = x$, and line $DE$ is $y = 6 - 2x$. They cross at $(2, 2)$.
 
 **Step 3.** Triangle $AEP$ has a level base of 3 and a height of 2, so its area is $\frac{1}{2} \times 3 \times 2 = 3$.
 
-**Answer: (B) 3**
+**Answer: (A) 3**

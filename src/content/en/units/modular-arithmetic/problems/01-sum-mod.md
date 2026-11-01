@@ -2,11 +2,11 @@
 order: 1
 difficulty: easy
 lesson: 01-mod-notation
-choices: ["0","1","2","3","4"]
-answer: D
+choices: ["0","3","2","1","4"]
+answer: B
 mistakes:
   A: "That would mean that the sum is a multiple of 6. Add the remainders: 15 leaves 3."
-  B: "Add the remainders: $5 + 5 + 5 = 15$, and 15 leaves 3."
+  D: "Add the remainders: $5 + 5 + 5 = 15$, and 15 leaves 3."
   C: "Add the remainders: $5 + 5 + 5 = 15$, and 15 leaves 3."
   E: "Add the remainders: $5 + 5 + 5 = 15$, and 15 leaves 3."
 verify: "(1007 + 2003 + 4001) % 6"
@@ -30,4 +30,4 @@ Each of the three numbers leaves a remainder of 5. What does $5 + 5 + 5$ leave?
 
 **Step 3.** Since $15 = 2 \times 6 + 3$, that gives a remainder of 3.
 
-**Answer: (D) 3**
+**Answer: (B) 3**

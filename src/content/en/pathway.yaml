@@ -24,6 +24,10 @@ levels:
       - slug: intro-probability
         title: Intro to Probability
         blurb: Use counting to figure out how likely something is.
+      - slug: level-1-review
+        title: Level 1 Mixed Review
+        blurb: Problems from all of Level 1, shuffled together. Real contests don't tell you the topic, so you have to work it out.
+        review: true
   - title: "Level 2: Contest Ready"
     blurb: For after Level 1. These units go deeper, toward the middle and later questions on the AMC 8 and MATHCOUNTS.
     contest: AMC 8
@@ -46,6 +50,10 @@ levels:
       - slug: data-chance
         title: Averages, Data & Chance
         blurb: Mean and median shortcuts, reading tables, and probability with several steps.
+      - slug: level-2-review
+        title: Level 2 Mixed Review
+        blurb: Problems from all of Level 2, shuffled together. Real contests don't tell you the topic, so you have to work it out.
+        review: true
   - title: "Level 3: Road to the AMC 10"
     blurb: A real step up. Finish Level 2 first, and expect to get stuck more often. That's how these get easier.
     contest: AMC 10
@@ -68,6 +76,10 @@ levels:
       - slug: coordinate-geometry
         title: Coordinate Geometry
         blurb: Use lines, slopes, and points on a grid to solve geometry with algebra.
+      - slug: level-3-review
+        title: Level 3 Mixed Review
+        blurb: Problems from all of Level 3, shuffled together. Real contests don't tell you the topic, so you have to work it out.
+        review: true
   - title: "Level 4: Toward the AMC 12"
     blurb: High school math used in contest style. These units are planned for later.
     contest: AMC 12

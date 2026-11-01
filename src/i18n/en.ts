@@ -1,7 +1,7 @@
 // All button labels and short interface text. Longer writing lives in src/content/en/.
 export const en = {
   skipLink: 'Skip to main content',
-  nav: { learn: 'Start learning', teachers: 'For teachers', about: 'About us', label: 'Main' },
+  nav: { learn: 'Start learning', contests: 'Practice contests', teachers: 'For teachers', about: 'About us', label: 'Main' },
   theme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
   footer: {
     free: 'Free to use. No login, no ads, no tracking.',
@@ -71,6 +71,7 @@ export const en = {
     showHint2: 'Show a bigger hint',
     hideHint2: 'Hide the bigger hint',
     anotherWay: 'Another way to solve it',
+    refresher: 'Need a refresher? Go back to this lesson:',
     showSolution: 'Show solution',
     hideSolution: 'Hide solution',
     solved: 'Solved',
@@ -92,6 +93,50 @@ export const en = {
   progress: {
     label: (unit: string) => `Progress in ${unit}`,
     status: (solved: number | string, total: number) => `${solved} of ${total} problems solved`,
+  },
+  contests: {
+    title: 'Practice Contests',
+    description: 'Free, original practice contests in the style of the AMC 8 and AMC 10, with an optional timer, real scoring, and links back to lessons.',
+    intro:
+      'These contests mix topics, as real ones do, and they get harder as you go. They are original practice, not official contests. Everything stays on your device.',
+    questions: (n: number) => `${n} questions`,
+    minutes: (n: number) => `${n} minutes`,
+    style: (style: string) => `${style} style`,
+    best: 'Your best score:',
+    open: 'Open this contest',
+    scoring: (style: string, correct: number, blank: number, wrong: number) =>
+      `This contest follows ${style} scoring: ${correct} ${correct === 1 ? 'point' : 'points'} for each correct answer, ${blank} for each one left blank, and ${wrong} for each wrong answer.`,
+    tip: (blank: number) =>
+      blank === 0
+        ? 'A blank earns nothing and a wrong answer costs nothing, so answer every question, even with a guess.'
+        : 'A blank earns more than a wrong answer, so guess only when you can rule out a choice or two.',
+    timing: (official: number, questions: number, minutes: number) =>
+      `The real contest allows ${official} minutes for ${questions} questions. This one allows ${minutes}. Most first-timers don't finish, and that's normal.`,
+    rules: 'Read the official rules',
+    useTimer: 'Use a timer',
+    start: 'Start the contest',
+    timeLeft: 'Time left',
+    turnOff: 'Turn off the timer',
+    fiveLeft: 'Five minutes left.',
+    timeUp: "Time is up. On the real contest, you'd stop here. You can still finish this one.",
+    questionLabel: (n: number) => `Question ${n}`,
+    chooseAnswer: (n: number) => `Choose an answer for question ${n}`,
+    leaveBlank: 'Leave blank',
+    finish: 'Finish and see my score',
+    finishConfirm: 'Finish the contest? You still have blank questions.',
+    resultsTitle: 'Your results',
+    score: (score: string, max: number) => `You scored ${score} out of ${max}.`,
+    counts: (correct: number, wrong: number, blank: number) => `${correct} correct, ${wrong} wrong, and ${blank} blank.`,
+    review: 'Look at these lessons next',
+    allRight: 'You got every question right. That is a great result, so try a harder contest next.',
+    again: 'Try this contest again',
+    allContests: 'All practice contests',
+    correctLabel: 'Correct.',
+    wrongLabel: (yours: string, right: string) => `You answered ${yours}. The answer is ${right}.`,
+    blankLabel: (right: string) => `You left this blank. The answer is ${right}.`,
+    solution: 'Solution',
+    fromLesson: 'From this lesson:',
+    noScript: 'Scoring and the timer need JavaScript, but you can still read every question. Solutions appear under each one.',
   },
   sets: {
     title: 'Printable Problem Sets',

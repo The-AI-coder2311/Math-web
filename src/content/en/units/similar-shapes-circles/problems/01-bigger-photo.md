@@ -2,10 +2,10 @@
 order: 1
 difficulty: easy
 lesson: 01-similarity-tools
-choices: ["12","14","15","16","24"]
-answer: C
+choices: ["15","14","12","16","24"]
+answer: A
 mistakes:
-  A: "The short side grew by 6, and you added 6 to the long side too. Similar shapes multiply, and they don't add."
+  C: "The short side grew by 6, and you added 6 to the long side too. Similar shapes multiply, and they don't add."
   B: "That's $10 + 4$. The long side comes from multiplying 6 by the scale factor."
   D: "That's $10 + 6$, adding the two sides together. Multiply the long side, 6, by the scale factor."
   E: "That's $6 \\times 4$. The scale factor is $10 \\div 4$, not 4."
@@ -26,4 +26,4 @@ The scale factor is $10 \div 4 = 2.5$. Every length gets multiplied by it.
 
 The scale factor is $10 \div 4 = 2.5$. So the long side is $6 \times 2.5 = 15$.
 
-**Answer: (C) 15**
+**Answer: (A) 15**

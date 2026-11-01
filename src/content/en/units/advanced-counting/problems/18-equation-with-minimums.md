@@ -2,13 +2,13 @@
 order: 18
 difficulty: hard
 lesson: 02-stars-and-bars
-choices: ["45","55","66","78","91"]
-answer: B
+choices: ["45","91","66","78","55"]
+answer: E
 mistakes:
   A: "That's $\\binom{10}{2}$, which treats $z$ as needing at least 1 too. $z$ is allowed to be 0."
   C: "That's $\\binom{12}{2}$, which hands out only 2 of the minimums. The minimums add up to 3."
   D: "That's $\\binom{13}{2}$, which hands out only 1. The minimums add up to 3."
-  E: "That's $\\binom{14}{2}$, which ignores the minimums altogether."
+  B: "That's $\\binom{14}{2}$, which ignores the minimums altogether."
 verify: "product(range(2, 12), range(1, 12), range(0, 12)).filter((s) => sum(s) === 12).length"
 ---
 
@@ -28,4 +28,4 @@ After giving 2 to $x$ and 1 to $y$, there are 9 left to share among 3 letters.
 
 **Step 2.** Share the 9 freely among the 3 letters, with 9 stars and 2 bars: $\binom{11}{2} = 55$.
 
-**Answer: (B) 55**
+**Answer: (E) 55**

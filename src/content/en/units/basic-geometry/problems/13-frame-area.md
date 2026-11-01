@@ -2,11 +2,11 @@
 order: 13
 difficulty: medium
 lesson: 04-split-or-subtract
-choices: ["12","24","28","35","63"]
-answer: C
+choices: ["12","28","24","35","63"]
+answer: B
 mistakes:
   A: "That's $5 + 7$. Find the area of the outside, and subtract the photo."
-  B: "That's the photo's perimeter. It leaves out the 4 corners of the frame."
+  C: "That's the photo's perimeter. It leaves out the 4 corners of the frame."
   D: "That's the photo. The frame is what's left around it."
   E: "That's the whole outside, including the photo. Subtract the photo."
 verify: "(5 + 2) * (7 + 2) - 5 * 7"
@@ -26,4 +26,4 @@ The frame adds 1 inch on both sides, so the outside is 7 by 9. Subtract the phot
 
 The outside is $7 \times 9 = 63$. The photo is $5 \times 7 = 35$. So the frame is $63 - 35 = 28$.
 
-**Answer: (C) 28**
+**Answer: (B) 28**

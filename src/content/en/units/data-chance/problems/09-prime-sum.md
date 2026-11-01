@@ -2,11 +2,11 @@
 order: 11
 difficulty: medium
 lesson: 03-multi-step-chance
-choices: ["$\\frac{5}{12}$","$\\frac{1}{3}$","$\\frac{1}{2}$","$\\frac{5}{36}$","$\\frac{7}{18}$"]
-answer: A
+choices: ["$\\frac{1}{2}$","$\\frac{1}{3}$","$\\frac{5}{12}$","$\\frac{5}{36}$","$\\frac{7}{18}$"]
+answer: C
 mistakes:
   B: "That's 12 out of 36. Check your counts: 1, 2, 4, 6, and 2."
-  C: "That's 18 out of 36. Check your counts: 1, 2, 4, 6, and 2."
+  A: "That's 18 out of 36. Check your counts: 1, 2, 4, 6, and 2."
   D: "That counts 5 primes as 5 outcomes. Each prime can occur in several ways."
   E: "That's 14 out of 36. Check your counts: 1, 2, 4, 6, and 2."
 verify: "fraction(product(range(1, 6), range(1, 6)).filter(([a, b]) => isPrime(a + b)).length, 36)"
@@ -34,4 +34,4 @@ The primes from 2 to 12 are 2, 3, 5, 7, and 11. They occur 1, 2, 4, 6, and 2 tim
 
 **Step 3.** That's $1 + 2 + 4 + 6 + 2 = 15$ ways out of 36. The probability is $\frac{15}{36}$, which simplifies to $\frac{5}{12}$.
 
-**Answer: (A) $\frac{5}{12}$**
+**Answer: (C) $\frac{5}{12}$**

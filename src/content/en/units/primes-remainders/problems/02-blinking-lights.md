@@ -2,10 +2,10 @@
 order: 2
 difficulty: easy
 lesson: 03-gcf-and-lcm
-choices: ["14","16","24","32","48"]
-answer: C
+choices: ["24","16","14","32","48"]
+answer: A
 mistakes:
-  A: "That's $6 + 8$. They line up at a common multiple."
+  C: "That's $6 + 8$. They line up at a common multiple."
   B: "That's a multiple of 8, but the first light blinks at 12 and 18, so it isn't lit then."
   D: "That's a multiple of 8 but not of 6."
   E: "That's $6 \\times 8$, which is a common multiple, but not the first one."
@@ -26,4 +26,4 @@ List the multiples of 8: 8, 16, 24. Which is the first that 6 also divides?
 
 The lights line up again at the LCM of 6 and 8. List the multiples of 8 until you reach a multiple of 6: 8, 16, 24. Since $6 \times 4 = 24$, the answer is 24 seconds.
 
-**Answer: (C) 24**
+**Answer: (A) 24**

@@ -2,13 +2,13 @@
 order: 7
 difficulty: medium
 lesson: 01-overlaps
-choices: ["171","225","252","270","648"]
-answer: C
+choices: ["171","225","648","270","252"]
+answer: E
 mistakes:
   A: "That counts by cases but misses some. Use the opposite: $900 - 648$."
   B: "That's $900 - 675$. Numbers with no 7s number $8 \\times 9 \\times 9 = 648$."
   D: "That's $3 \\times 90$, which counts a 7 in each spot. Numbers with two 7s get counted twice, and the first digit has fewer options."
-  E: "That's the count with **no** 7s. Subtract it from 900."
+  C: "That's the count with **no** 7s. Subtract it from 900."
 verify: "range(100, 999).filter((n) => digits(n).includes(7)).length"
 ---
 
@@ -32,4 +32,4 @@ $$8 \times 9 \times 9 = 648$$
 
 **Step 3.** Subtract: $900 - 648 = 252$.
 
-**Answer: (C) 252**
+**Answer: (E) 252**

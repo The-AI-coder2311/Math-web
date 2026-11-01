@@ -2,12 +2,12 @@
 order: 4
 difficulty: easy
 lesson: 01-prime-factorization
-choices: ["1234","4527","6002","7115","8130"]
-answer: B
+choices: ["1234","7115","6002","4527","8130"]
+answer: D
 mistakes:
   A: "Its digits add up to 10, which isn't a multiple of 9."
   C: "Its digits add up to 8, which isn't a multiple of 9."
-  D: "Its digits add up to 14, which isn't a multiple of 9."
+  B: "Its digits add up to 14, which isn't a multiple of 9."
   E: "Its digits add up to 12. That's a multiple of 3, but not of 9."
 verify: "[1234, 4527, 6002, 7115, 8130].find((n) => n % 9 === 0)"
 ---
@@ -34,4 +34,4 @@ Add the digits of each number:
 
 Only 18 is a multiple of 9, so 4527 is divisible by 9.
 
-**Answer: (B) 4527**
+**Answer: (D) 4527**

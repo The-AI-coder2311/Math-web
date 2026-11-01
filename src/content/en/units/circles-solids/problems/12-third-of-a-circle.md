@@ -2,13 +2,13 @@
 order: 5
 difficulty: easy
 lesson: 03-sectors-and-probability
-choices: ["$\\pi$","$3\\pi$","$6\\pi$","$9\\pi$","$12\\pi$"]
-answer: B
+choices: ["$\\pi$","$12\\pi$","$6\\pi$","$9\\pi$","$3\\pi$"]
+answer: E
 mistakes:
   A: "That uses a radius of 1 or the wrong fraction. Find the whole area first: $9\\pi$."
   C: "That's the whole circumference. The question asks for an area."
   D: "That's the whole circle."
-  E: "That's more than the whole circle. Use $\\frac{1}{3}$ of $9\\pi$."
+  B: "That's more than the whole circle. Use $\\frac{1}{3}$ of $9\\pi$."
 verify: "pi((3 * 3 * 120) / 360)"
 ---
 
@@ -26,4 +26,4 @@ It's $\frac{1}{3}$ of the circle, and the whole area is $9\pi$.
 
 The slice is $\frac{120}{360} = \frac{1}{3}$ of the circle. The whole area is $9\pi$, so the slice has an area of $3\pi$.
 
-**Answer: (B) $3\pi$**
+**Answer: (E) $3\pi$**

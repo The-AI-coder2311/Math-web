@@ -2,6 +2,7 @@
 // Every storage call is guarded, so the site still works when storage is blocked.
 const PROBLEMS_KEY = 'count-me-in-progress-v1';
 const LESSONS_KEY = 'count-me-in-lessons-v1';
+const CONTESTS_KEY = 'count-me-in-contests-v1';
 
 type Progress = Record<string, string[]>;
 
@@ -56,6 +57,30 @@ export const getSolved = (unit: string) => getList(PROBLEMS_KEY, unit);
 export const markSolved = (unit: string, problem: string) => addToList(PROBLEMS_KEY, unit, problem);
 export const getRead = (unit: string) => getList(LESSONS_KEY, unit);
 export const markRead = (unit: string, lesson: string) => addToList(LESSONS_KEY, unit, lesson);
+
+type ContestScore = { score: number; max: number };
+
+/** The best score for a contest on this device, or nothing if there isn't one. */
+export function getContestBest(contest: string): ContestScore | undefined {
+  try {
+    const saved = JSON.parse(window.localStorage.getItem(CONTESTS_KEY) ?? '{}');
+    const best = saved?.[contest];
+    return typeof best?.score === 'number' && typeof best?.max === 'number' ? best : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+export function saveContestScore(contest: string, score: number, max: number) {
+  const best = getContestBest(contest);
+  if (best && best.score >= score) return;
+  try {
+    const saved = JSON.parse(window.localStorage.getItem(CONTESTS_KEY) ?? '{}');
+    window.localStorage.setItem(CONTESTS_KEY, JSON.stringify({ ...saved, [contest]: { score, max } }));
+  } catch {
+    // Blocked storage or damaged data: the score still shows on the page.
+  }
+}
 
 export function resetUnit(unit: string) {
   const progress = { ...load(PROBLEMS_KEY) };

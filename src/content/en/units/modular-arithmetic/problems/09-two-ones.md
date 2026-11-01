@@ -2,13 +2,13 @@
 order: 17
 difficulty: hard
 lesson: 04-other-bases
-choices: ["15","21","28","35","42"]
-answer: B
+choices: ["15","42","28","35","21"]
+answer: E
 mistakes:
   A: "That's \"6 choose 2,\" which leaves out one power of 2. There are 7 up to 100."
   C: "That's \"8 choose 2,\" which includes 128. That's over 100."
   D: "That's \"7 choose 3,\" for three 1s. The question asks for two."
-  E: "That's $7 \\times 6$, which counts each pair twice."
+  B: "That's $7 \\times 6$, which counts each pair twice."
 verify: "range(1, 100).filter((n) => n.toString(2).split('').filter((d) => d === '1').length === 2).length"
 ---
 
@@ -34,4 +34,4 @@ $$\frac{7 \times 6}{2} = 21$$
 
 **Step 4.** Make sure they all fit. The largest sum is $64 + 32 = 96$, which is under 100.
 
-**Answer: (B) 21**
+**Answer: (E) 21**

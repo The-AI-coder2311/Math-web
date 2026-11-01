@@ -2,10 +2,10 @@
 order: 2
 difficulty: easy
 lesson: 01-multiply-choices
-choices: ["8","10","15","30","60"]
-answer: D
+choices: ["30","10","15","8","60"]
+answer: A
 mistakes:
-  A: "That's $5 + 3$, leaving out the shoes. Choices made one after another multiply."
+  D: "That's $5 + 3$, leaving out the shoes. Choices made one after another multiply."
   B: "That's $5 + 3 + 2$. Adding counts the items, not the outfits."
   C: "That's $5 \\times 3$, which leaves out the shoes."
   E: "That's twice the right answer. Multiply $5 \\times 3 \\times 2$ once more and check."
@@ -30,4 +30,4 @@ Multiply the numbers of shirts, pants, and shoes.
 
 $$5 \times 3 \times 2 = 30$$
 
-**Answer: (D) 30**
+**Answer: (A) 30**

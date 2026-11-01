@@ -37,10 +37,42 @@ export async function getUnits(lang: Locale) {
   return (await getLevels(lang)).flatMap((level) => level.units);
 }
 
+/** The title and path of a lesson named like counting/03-overcount-then-divide. */
+async function lessonRef(lang: Locale, from: string | undefined) {
+  if (!from) return undefined;
+  const [unit, slug] = from.split('/');
+  const lessons = await getCollection('lessons');
+  const lesson = lessons.find((entry) => entry.id === `${lang}/units/${unit}/lessons/${slug}`);
+  return lesson && { title: lesson.data.title, path: `pathway/${unit}/${slug}/` };
+}
+
+/** Practice contests in order. */
+export async function getContests(lang: Locale) {
+  const contests = (await getCollection('contests')).filter(inLang(lang));
+  return contests
+    .sort((a, b) => a.data.order - b.data.order)
+    .map((entry) => ({ ...entry.data, slug: entry.id.split('/')[2] }));
+}
+
+/** A contest's questions in order, each with its solution and the lesson it comes from. */
+export async function getContestProblems(lang: Locale, contest: string) {
+  const prefix = `${lang}/contests/${contest}/problems/`;
+  const entries = (await getCollection('contestProblems')).filter((entry) => entry.id.startsWith(prefix));
+  const sorted = entries.sort((a, b) => a.data.order - b.data.order);
+  return Promise.all(
+    sorted.map(async (entry) => {
+      const [question, solution] = (entry.rendered?.html ?? '').split(/<h2[^>]*>\s*Solution\s*<\/h2>/i);
+      return { ...entry.data, slug: lastPart(entry.id), question, solution, lesson: await lessonRef(lang, entry.data.from) };
+    }),
+  );
+}
+
 /** A unit's problems in order, with the question, hints and solutions separated. */
 export async function getProblems(lang: Locale, unit: string) {
   const prefix = `${lang}/units/${unit}/problems/`;
   const entries = (await getCollection('problems')).filter((entry) => entry.id.startsWith(prefix));
+  const refs = await Promise.all(entries.map((entry) => lessonRef(lang, entry.data.from)));
+  const refFor = new Map(entries.map((entry, i) => [entry.id, refs[i]]));
   return entries
     .sort((a, b) => a.data.order - b.data.order)
     .map((entry) => {
@@ -59,6 +91,7 @@ export async function getProblems(lang: Locale, unit: string) {
         hint2: section('hint 2'),
         solution: section('solution'),
         another: section('another way'),
+        refresher: refFor.get(entry.id),
       };
     });
 }

@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 02-small-cases
-choices: ["16","28","32","56","64"]
-answer: B
+choices: ["16","64","32","56","28"]
+answer: E
 mistakes:
   A: "That's $8 \\times 2$. Each player plays 7 others."
   C: "That's $8 \\times 4$. Each player plays 7 games, and each game has 2 players."
   D: "That counts each game twice. A game has 2 players, so divide by 2."
-  E: "That's $8 \\times 8$, which has players playing themselves."
+  B: "That's $8 \\times 8$, which has players playing themselves."
 verify: "combos(range(1, 8), 2).length"
 ---
 
@@ -28,4 +28,4 @@ $8 \times 7$ counts each game twice, once for each player in it.
 
 **Step 2.** But each game has 2 players, so every game was counted twice. Divide by 2: $56 \div 2 = 28$.
 
-**Answer: (B) 28**
+**Answer: (E) 28**

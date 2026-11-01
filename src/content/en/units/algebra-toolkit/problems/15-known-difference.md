@@ -2,11 +2,11 @@
 order: 11
 difficulty: medium
 lesson: 01-difference-of-squares
-choices: ["4","6","8","10","12"]
-answer: C
+choices: ["4","8","6","10","12"]
+answer: B
 mistakes:
   A: "That's $x - y$, and also $y$. The question asks for $x$."
-  B: "That's half of 12. It would need $x$ and $y$ to be equal, but they differ by 4."
+  C: "That's half of 12. It would need $x$ and $y$ to be equal, but they differ by 4."
   D: "Check it: then $y = 6$, and $100 - 36$ is 64."
   E: "That's $x + y$. Find $x$ itself."
 verify: "range(1, 50).find((x) => x * x - (x - 4) * (x - 4) === 48)"
@@ -26,4 +26,4 @@ $(x + y) \times 4 = 48$, so $x + y = 12$.
 
 Factoring gives $(x + y) \times 4 = 48$, so $x + y = 12$. Adding $x - y = 4$ gives $2x = 16$, so $x = 8$.
 
-**Answer: (C) 8**
+**Answer: (B) 8**

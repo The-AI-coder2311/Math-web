@@ -2,10 +2,10 @@
 order: 6
 difficulty: easy
 lesson: 04-add-one-and-telescoping
-choices: ["1","4","7","8","9"]
-answer: D
+choices: ["8","4","7","1","9"]
+answer: A
 mistakes:
-  A: "Not everything cancels. The last top number stays."
+  D: "Not everything cancels. The last top number stays."
   B: "That's half of the right answer. The bottom number that survives is 1."
   C: "That's the last bottom number, which cancels with the 7 on top."
   E: "The last top number is 8."
@@ -26,4 +26,4 @@ Only the first bottom number and the last top number remain.
 
 Each top cancels with the next bottom. Only the 8 on top and the 1 on the bottom remain, so the value is $\frac{8}{1} = 8$.
 
-**Answer: (D) 8**
+**Answer: (A) 8**

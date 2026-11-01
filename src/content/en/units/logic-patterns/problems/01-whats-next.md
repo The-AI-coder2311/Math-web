@@ -2,11 +2,11 @@
 order: 1
 difficulty: easy
 lesson: 01-repeating-and-growing
-choices: ["31","35","37","39","41"]
-answer: C
+choices: ["31","37","35","39","41"]
+answer: B
 mistakes:
   A: "That adds 5 to 26. The jumps keep growing: 3, 5, 7, 9, and then 11."
-  B: "That adds 9 again. Each jump is 2 more than the one before it."
+  C: "That adds 9 again. Each jump is 2 more than the one before it."
   D: "That adds 13. The next jump after 9 is 11."
   E: "That adds 15. The next jump after 9 is 11."
 verify: "6 * 6 + 1"
@@ -32,4 +32,4 @@ The jumps are 3, 5, 7, and 9. What's the next jump?
 
 **Step 3.** The next number is $26 + 11 = 37$.
 
-**Answer: (C) 37**
+**Answer: (B) 37**

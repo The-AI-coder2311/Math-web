@@ -1,0 +1,115 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../layouts/Base.astro';
+import { getContestProblems, getContests } from '../../../lib/content';
+import { renderInline } from '../../../lib/markdown';
+import { contestRules } from '../../../site.config';
+import { href, langParam, locales, t } from '../../../i18n/config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) =>
+      (await getContests(lang)).map((contest) => ({
+        params: { lang: langParam(lang), contest: contest.slug },
+        props: { lang, contest },
+      })),
+    ),
+  );
+  return paths.flat();
+}
+
+const { lang, contest } = Astro.props;
+const text = t(lang).contests;
+const problems = await getContestProblems(lang, contest.slug);
+const rules = contestRules[contest.style];
+const letters = 'ABCDE';
+---
+<Base title={contest.title} description={contest.summary} lang={lang} current="contests">
+  <div
+    data-contest={contest.slug}
+    data-minutes={contest.minutes}
+    data-correct={rules.correct}
+    data-blank={rules.blank}
+    data-wrong={rules.wrong}
+    data-max={rules.correct * problems.length}
+    data-confirm={text.finishConfirm}
+    data-five-left={text.fiveLeft}
+    data-time-up={text.timeUp}
+    data-score={text.score('{score}', rules.correct * problems.length)}
+    data-counts={text.counts(0, 0, 0).replace('0 correct', '{correct} correct').replace('0 wrong', '{wrong} wrong').replace('0 blank', '{blank} blank')}
+    data-correct-label={text.correctLabel}
+    data-wrong-label={text.wrongLabel('{yours}', '{right}')}
+    data-blank-label={text.blankLabel('{right}')}
+  >
+    <p class="eyebrow"><a href={href(lang, 'contests/')}>{text.allContests}</a> &middot; {text.style(contest.style)}</p>
+    <h1>{contest.title}</h1>
+    <p>{contest.summary}</p>
+    <noscript><p class="card">{text.noScript}</p></noscript>
+
+    <section class="card" data-contest-intro>
+      <p>{text.scoring(contest.style, rules.correct, rules.blank, rules.wrong)} {text.tip(rules.blank)}</p>
+      <p>{text.timing(rules.minutes, rules.questions, contest.minutes)} <a href={rules.rulesUrl}>{text.rules}</a></p>
+      <div class="needs-js">
+        <label class="timer-choice"><input type="checkbox" data-use-timer checked /> {text.useTimer} ({text.minutes(contest.minutes)})</label>
+        <button class="btn btn-primary" type="button" data-start>{text.start}</button>
+      </div>
+    </section>
+
+    <div class="sticky-progress contest-clock needs-js" data-clock-bar hidden>
+      <span>{text.timeLeft}: <strong role="timer" data-clock></strong></span>
+      <button class="btn" type="button" data-timer-off>{text.turnOff}</button>
+    </div>
+    <p class="sr-only" role="status" data-timer-status></p>
+
+    <form class="no-js-show" data-contest-form hidden>
+      {problems.map((problem, i) => (
+        <article
+          class="card problem"
+          id={`q-${i + 1}`}
+          data-question
+          data-answer={problem.answer}
+          data-topic={problem.topic}
+          data-lesson-title={problem.lesson?.title}
+          data-lesson-href={problem.lesson && href(lang, problem.lesson.path)}
+        >
+          <div class="problem-head"><h2>{text.questionLabel(i + 1)}</h2></div>
+          <div class="prose" set:html={problem.question} />
+          <fieldset>
+            <legend class="sr-only">{text.chooseAnswer(i + 1)}</legend>
+            {problem.choices.map((choice, c) => (
+              <label class="choice">
+                <input type="radio" name={`q${i + 1}`} value={letters[c]} />
+                <span class="choice-letter">{letters[c]}.</span>
+                <span set:html={renderInline(choice)} />
+              </label>
+            ))}
+            <label class="choice choice-blank">
+              <input type="radio" name={`q${i + 1}`} value="" checked />
+              <span>{text.leaveBlank}</span>
+            </label>
+          </fieldset>
+          <p class="mistake" data-verdict hidden></p>
+          <div class="reveal-body no-js-show" data-solution hidden>
+            <h3>{text.solution}</h3>
+            <div class="prose" set:html={problem.solution} />
+            {problem.lesson && <p>{text.fromLesson} <a href={href(lang, problem.lesson.path)}>{problem.lesson.title}</a></p>}
+          </div>
+        </article>
+      ))}
+      <button class="btn btn-primary needs-js" type="submit" data-finish>{text.finish}</button>
+    </form>
+
+    <section class="card finished" data-results tabindex="-1" hidden>
+      <h2>{text.resultsTitle}</h2>
+      <p class="contest-score" data-result-score></p>
+      <p data-result-counts></p>
+      <h3 data-review-title>{text.review}</h3>
+      <ul data-review-list></ul>
+      <p data-all-right-note hidden>{text.allRight}</p>
+      <button class="btn" type="button" data-again>{text.again}</button>
+    </section>
+  </div>
+</Base>
+<script>
+  import '../../../scripts/contest';
+</script>

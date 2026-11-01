@@ -66,7 +66,7 @@ The point $(7, k)$ lies on a circle with center $(1, 2)$ and a radius of 10, and
 
 ## Example 5: A contest-style question
 
-How many grid points, with whole-number coordinates, lie on the circle $x^2 + y^2 = 50$?
+How many grid points, with both coordinates being integers (whole numbers or their negatives), lie on the circle $x^2 + y^2 = 50$?
 
 **What's the question really asking?** Which pairs of perfect squares add up to 50?
 

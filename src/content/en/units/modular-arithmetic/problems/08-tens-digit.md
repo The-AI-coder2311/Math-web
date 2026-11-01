@@ -2,11 +2,11 @@
 order: 16
 difficulty: hard
 lesson: 02-giant-powers
-choices: ["0","2","4","6","9"]
-answer: C
+choices: ["0","4","2","6","9"]
+answer: B
 mistakes:
   A: "That's the tens digit of $7^{100}$, which ends in 01. There are 2 more powers."
-  B: "Check the last two digits of $7^2$: they're 49."
+  C: "Check the last two digits of $7^2$: they're 49."
   D: "Check the last two digits of $7^2$: they're 49."
   E: "That's the ones digit. The last two digits are 49, so the tens digit is 4."
 verify: "Math.floor(range(1, 102).reduce((r) => (r * 7) % 100, 1) / 10)"
@@ -32,4 +32,4 @@ $7^4 = 2401$, so the last two digits repeat every 4 powers. $102 = 4 \times 25 +
 
 **Step 4.** The tens digit is 4.
 
-**Answer: (C) 4**
+**Answer: (B) 4**

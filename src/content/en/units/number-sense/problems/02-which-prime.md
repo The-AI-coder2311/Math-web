@@ -2,12 +2,12 @@
 order: 2
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["15","21","27","31","33"]
-answer: D
+choices: ["15","21","31","27","33"]
+answer: C
 mistakes:
   A: "That's $3 \\times 5$, so it isn't prime."
   B: "That's $3 \\times 7$, so it isn't prime."
-  C: "That's $3 \\times 9$, so it isn't prime."
+  D: "That's $3 \\times 9$, so it isn't prime."
   E: "That's $3 \\times 11$, so it isn't prime."
 verify: "[15, 21, 27, 31, 33].filter(isPrime).join()"
 ---
@@ -35,4 +35,4 @@ So none of these four numbers are prime.
 
 **Step 2.** Now try 31. It isn't divisible by 2, 3, or 5. We can stop there because $6 \times 6 = 36$ is already more than 31, so any factor pair would have to include a number smaller than 6. That means its only pair is 1 and 31.
 
-**Answer: (D) 31**
+**Answer: (C) 31**

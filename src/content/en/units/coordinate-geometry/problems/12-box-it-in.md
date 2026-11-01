@@ -2,10 +2,10 @@
 order: 12
 difficulty: medium
 lesson: 03-areas-on-a-grid
-choices: ["11","12","13","14","30"]
-answer: C
+choices: ["13","12","11","14","30"]
+answer: A
 mistakes:
-  A: "Check your corner triangles. They should have areas of 6, 6, and 5, which add up to 17."
+  C: "Check your corner triangles. They should have areas of 6, 6, and 5, which add up to 17."
   B: "You may have subtracted 18 for the corners. They add up to 17."
   D: "You may have subtracted 16 for the corners. They add up to 17."
   E: "That's the box. You still need to subtract the three corner triangles."
@@ -30,7 +30,7 @@ The box is 6 by 5, so its area is 30. Now subtract the three corner triangles, w
 
 **Step 3.** The area is $30 - 6 - 6 - 5 = 13$.
 
-**Answer: (C) 13**
+**Answer: (A) 13**
 
 ## Another way
 

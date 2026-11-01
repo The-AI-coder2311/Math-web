@@ -2,13 +2,13 @@
 order: 15
 difficulty: medium
 lesson: 04-other-bases
-choices: ["32","57","102","112","122"]
-answer: D
+choices: ["32","57","102","122","112"]
+answer: E
 mistakes:
   A: "That's the sum in base 10. The question asks for it in base 5."
   B: "That adds as in base 10. Also, 7 isn't a digit in base 5."
   C: "That forgets to add the carry in the fives place."
-  E: "Check the fives place: $3 + 2 + 1 = 6$, which is 1 with a carry."
+  D: "Check the fives place: $3 + 2 + 1 = 6$, which is 1 with a carry."
 verify: "(parseInt('34', 5) + parseInt('23', 5)).toString(5)"
 ---
 
@@ -32,4 +32,4 @@ So the digits are 112.
 
 **Check:** $19 + 13 = 32$, and $112_5 = 25 + 5 + 2 = 32$.
 
-**Answer: (D) 112**
+**Answer: (E) 112**

@@ -2,13 +2,13 @@
 order: 16
 difficulty: medium
 lesson: 04-recursive-and-special
-choices: ["$\\frac{1}{20}$","$\\frac{1}{2}$","$\\frac{19}{20}$","$\\frac{20}{21}$","1"]
-answer: C
+choices: ["$\\frac{1}{20}$","$\\frac{1}{2}$","1","$\\frac{20}{21}$","$\\frac{19}{20}$"]
+answer: E
 mistakes:
   A: "That's the piece being subtracted at the end. You still need to subtract it from 1."
   B: "That's only the first term. Adding more terms makes the sum grow."
   D: "That would be the sum with one more term. The last piece here is $\\frac{1}{20}$."
-  E: "The sum gets close to 1 but doesn't reach it, since $\\frac{1}{20}$ remains to be subtracted."
+  C: "The sum gets close to 1 but doesn't reach it, since $\\frac{1}{20}$ remains to be subtracted."
 verify: "(() => { const s = sum(range(1, 19).map((n) => 1 / (n * (n + 1)))); return fraction(Math.round(s * 20), 20); })()"
 ---
 
@@ -30,4 +30,4 @@ Each term splits: $\frac{1}{2 \times 3} = \frac{1}{2} - \frac{1}{3}$. Write the 
 
 **Step 3.** What's left is $1 - \frac{1}{20} = \frac{19}{20}$.
 
-**Answer: (C) $\frac{19}{20}$**
+**Answer: (E) $\frac{19}{20}$**

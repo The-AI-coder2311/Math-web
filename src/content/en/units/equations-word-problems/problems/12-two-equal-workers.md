@@ -2,10 +2,10 @@
 order: 6
 difficulty: easy
 lesson: 05-work-rates
-choices: ["1","2","4","8","16"]
-answer: B
+choices: ["2","1","4","8","16"]
+answer: A
 mistakes:
-  A: "That would take 4 equal workers. There are only 2."
+  B: "That would take 4 equal workers. There are only 2."
   C: "That's the time for one worker. With a helper, it has to be faster."
   D: "That adds the times. A helper makes the job faster, so add the rates."
   E: "That multiplies the times. Find how much gets done per hour."
@@ -26,4 +26,4 @@ Each paints $\frac{1}{4}$ per hour, so together they paint $\frac{1}{2}$ per hou
 
 Together, they paint $\frac{1}{4} + \frac{1}{4} = \frac{1}{2}$ of the wall per hour, so the job takes 2 hours.
 
-**Answer: (B) 2**
+**Answer: (A) 2**

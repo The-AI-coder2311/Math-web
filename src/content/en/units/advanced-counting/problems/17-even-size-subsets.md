@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 01-pascal-and-binomials
-choices: ["256","511","512","1023","1024"]
-answer: C
+choices: ["512","511","256","1023","1024"]
+answer: A
 mistakes:
-  A: "That's $2^8$. You may have halved twice. Exactly half of the 1,024 subsets have an even size."
+  C: "That's $2^8$. You may have halved twice. Exactly half of the 1,024 subsets have an even size."
   B: "That leaves out the empty subset, which the problem says counts as even."
   D: "That's every subset except the empty one, whatever its size. Only half have an even size."
   E: "That counts all of the subsets, both even and odd sizes."
@@ -30,4 +30,4 @@ Set one thing aside, and choose any subset of the other 9. Is the last thing the
 
 **Step 3.** So there are $2^9 = 512$ even-sized subsets.
 
-**Answer: (C) 512**
+**Answer: (A) 512**

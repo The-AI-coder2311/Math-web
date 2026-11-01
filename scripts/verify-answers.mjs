@@ -10,7 +10,7 @@
 // REQUIRE_FULL_STANDARD to false while drafting. Add --standards to list every gap.
 //
 // To check a different folder (such as a test copy): node scripts/verify-answers.mjs <folder>
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { parse } from 'yaml';
 
@@ -185,6 +185,46 @@ function checkLesson(file, unitPath) {
   return found;
 }
 
+// A "from" names a lesson, such as counting/03-overcount-then-divide. It has to exist.
+function checkFrom(from, file, where) {
+  const language = file.replace(/\\/g, '/').match(/^(.*?\/[^/]+)\/(?:units|contests)\//)?.[1];
+  const [unit, lesson] = String(from).split('/');
+  if (!language || !existsSync(language + '/units/' + unit + '/lessons/' + lesson + '.md')) {
+    errors.push(where + ': from "' + from + '" doesn\'t match a lesson');
+  }
+}
+
+// ---- Practice contest questions (one Markdown file each) ----
+const contestsSeen = {};
+
+function checkContestProblem(file, contest) {
+  const where = relative('.', file);
+  const source = readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  const match = source.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  if (!match) return errors.push(where + ': missing the --- settings block at the top');
+  const data = parse(match[1]);
+  const [question, solution] = match[2].split(/^## Solution\s*$/m);
+  errors.push(...checkAllWriting(source, where));
+  if (!question?.trim() || solution === undefined) return errors.push(where + ': needs a question and a "## Solution" section');
+  const choices = (data.choices || []).map(normalize);
+  if (choices.length !== 5) errors.push(where + ': a contest question needs exactly 5 choices');
+  if (new Set(choices).size !== choices.length) errors.push(where + ': two answer choices are the same');
+  const correct = choices['ABCDE'.indexOf(data.answer)];
+  if (correct === undefined) return errors.push(where + ': answer "' + data.answer + '" doesn\'t match any choice');
+  checkVerify(data.verify, correct, where);
+  if (!data.verify) errors.push(where + ': needs verify code');
+  if (!data.topic) errors.push(where + ': needs a topic');
+  checkFrom(data.from, file, where);
+  checkArithmetic(match[2], where);
+  const stated = solution.match(/\*\*Answer: \(([A-E])\) ([^*]+)\*\*/);
+  if (!stated || stated[1] !== data.answer || normalize(stated[2]) !== correct) {
+    errors.push(where + ': the solution must end with the answer line for (' + data.answer + ') ' + correct);
+  }
+  const orders = (contestsSeen[contest] ??= []);
+  if (orders.some((seen) => seen.order === data.order)) errors.push(where + ': another question already uses order ' + data.order);
+  orders.push(data);
+}
+
 // ---- Interactive problems (one Markdown file each) ----
 function checkProblem(file) {
   const where = relative('.', file);
@@ -240,7 +280,8 @@ function checkProblem(file) {
 
   if (!sections['Hint 2']?.trim()) gaps.push(where + ': needs a "## Hint 2" section');
   if (!data.verify) gaps.push(where + ': needs verify code');
-  if (!data.lesson) gaps.push(where + ': needs a lesson: tag');
+  if (!data.lesson && !data.from) gaps.push(where + ': needs a lesson: tag, or from: in a review unit');
+  if (data.from) checkFrom(data.from, file, where);
   for (const letter of wrongLetters) {
     if (!notes[letter]?.trim()) gaps.push(where + ': needs a mistakes note for choice ' + letter);
   }
@@ -269,13 +310,24 @@ const walk = (dir) =>
     return statSync(path).isDirectory() ? walk(path) : [path];
   });
 
+// Guessing one letter shouldn't pay off, so correct answers need to be spread out.
+function checkAnswerSpread(name, problems) {
+  for (const letter of 'ABCDE') {
+    const share = problems.filter((problem) => problem.answer === letter).length / (problems.length || 1);
+    if (share > 0.4) errors.push(name + ': ' + Math.round(share * 100) + '% of the answers are ' + letter + ', so guessing that letter would pay off');
+  }
+}
+
 const units = {};
 const unitOf = (name) => (units[name] ??= { lessonGaps: [], lessonCount: 0, problemGaps: [], problems: [] });
 
 for (const file of walk(root)) {
   const path = file.replace(/\\/g, '/');
   const inUnit = path.match(/^(.*\/units\/[^/]+)\/(lessons|problems)\/[^/]+\.md$/);
-  if (inUnit && inUnit[2] === 'lessons') {
+  const inContest = path.match(/\/contests\/([^/]+)\/problems\/[^/]+\.md$/);
+  if (inContest) {
+    checkContestProblem(file, inContest[1]);
+  } else if (inUnit && inUnit[2] === 'lessons') {
     const unit = unitOf(inUnit[1]);
     unit.lessonCount++;
     unit.lessonGaps.push(...(checkLesson(file, inUnit[1]) || []));
@@ -293,6 +345,11 @@ for (const file of walk(root)) {
   }
 }
 
+for (const [name, orders] of Object.entries(contestsSeen)) {
+  if (orders.length !== 15 && orders.length !== 25) errors.push('contest ' + name + ': has ' + orders.length + ' questions, and a contest should have 15 or 25');
+  checkAnswerSpread('contest ' + name, orders);
+}
+
 for (const [name, unit] of Object.entries(units)) {
   const seen = new Set();
   for (const problem of unit.problems) {
@@ -303,6 +360,7 @@ for (const [name, unit] of Object.entries(units)) {
     }
   }
   const short = name.split('/').pop();
+  checkAnswerSpread(short, unit.problems);
   const isReview = !unit.lessonCount;
   const lessonsDone = unit.lessonCount >= 3;
   const problemsDone = unit.problems.length >= 20;

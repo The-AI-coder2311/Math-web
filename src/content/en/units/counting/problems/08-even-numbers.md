@@ -2,12 +2,12 @@
 order: 9
 difficulty: medium
 lesson: 01-multiply-choices
-choices: ["24","50","75","100","125"]
-answer: B
+choices: ["24","100","75","50","125"]
+answer: D
 mistakes:
   A: "That's $4 \\times 3 \\times 2$, which doesn't allow repeats. This problem does allow them."
   C: "That's $3 \\times 5 \\times 5$, which uses the odd digits for the last spot. Only 2 and 4 are even."
-  D: "That's half of $200$. Only 2 of the 5 digits are even, not half of them."
+  B: "That's half of $200$. Only 2 of the 5 digits are even, not half of them."
   E: "That counts all of the numbers. The last digit has to be even."
 verify: "product(range(1, 5), range(1, 5), range(1, 5)).filter(([a, b, c]) => c % 2 === 0).length"
 ---
@@ -32,4 +32,4 @@ The last digit must be 2 or 4. The other two digits have 5 options each.
 
 $$5 \times 5 \times 2 = 50$$
 
-**Answer: (B) 50**
+**Answer: (D) 50**

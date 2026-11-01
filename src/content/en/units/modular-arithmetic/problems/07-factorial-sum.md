@@ -2,12 +2,12 @@
 order: 11
 difficulty: medium
 lesson: 01-mod-notation
-choices: ["1","3","5","7","9"]
-answer: B
+choices: ["1","7","5","3","9"]
+answer: D
 mistakes:
   A: "Add the first four factorials: they total 33."
   C: "Add the first four factorials: they total 33."
-  D: "Add the first four factorials: they total 33."
+  B: "Add the first four factorials: they total 33."
   E: "Add the first four factorials: they total 33."
 verify: "sum(range(1, 50).map((n) => Number(range(1, n).reduce((p, k) => p * BigInt(k), 1n) % 10n))) % 10"
 ---
@@ -30,4 +30,4 @@ From $5!$ on, every factorial ends in 0. So add $1 + 2 + 6 + 24$.
 
 **Step 3.** The last digit of 33 is 3.
 
-**Answer: (B) 3**
+**Answer: (D) 3**
