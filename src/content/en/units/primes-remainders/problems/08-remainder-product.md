@@ -10,7 +10,7 @@ When $a$ is divided by 7, the remainder is 3. When $b$ is divided by 7, the rema
 
 ## Hint
 
-To find the remainder of a product, you can multiply just the remainders. You could also test it with real numbers, like 10 and 12.
+To find the remainder of a product, you can multiply the remainders alone. You could also test it with real numbers, like 10 and 12.
 
 ## Solution
 

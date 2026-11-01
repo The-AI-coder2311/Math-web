@@ -1,8 +1,14 @@
 ---
-order: 9
+order: 10
 difficulty: medium
-choices: [60, 70, 75, 80, 85]
+lesson: 04-percents
+choices: ["60","70","75","80","85"]
 answer: C
+mistakes:
+  A: "That takes 25% off of 80. The sale is taken from the raised price."
+  B: "That's $100 - 30$. 25% of 100 is 25."
+  D: "A rise and a drop of the same percent don't cancel. The second percent is of a bigger number."
+  E: "That's $100 - 15$. 25% of 100 is 25."
 verify: "(80 * 125 / 100) * 75 / 100"
 ---
 
@@ -11,6 +17,10 @@ A jacket costs \$80. The store raises the price by 25%. Later, the store puts th
 ## Hint
 
 Do one change at a time. The 25% off is taken from the new, higher price.
+
+## Hint 2
+
+25% of 80 is 20, so the new price is 100. Now take 25% off of 100.
 
 ## Solution
 

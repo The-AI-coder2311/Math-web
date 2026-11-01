@@ -1,8 +1,14 @@
 ---
 order: 2
 difficulty: easy
-choices: [7, 14, 21, 28, 49]
+lesson: 01-perimeter-and-area
+choices: ["7","14","21","28","49"]
 answer: D
+mistakes:
+  A: "That's the length of one side. The perimeter goes all the way around."
+  B: "That's only 2 sides."
+  C: "That's only 3 sides."
+  E: "That's the area. The question asks for the perimeter."
 verify: "4 * range(1, 49).find((side) => side * side === 49)"
 ---
 
@@ -11,6 +17,10 @@ A square patio has an area of 49 square feet. What is its perimeter, in feet?
 ## Hint
 
 Which number times itself gives 49? That's the length of one side.
+
+## Hint 2
+
+Each side is 7 feet. A square has 4 sides.
 
 ## Solution
 

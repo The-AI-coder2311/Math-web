@@ -10,7 +10,7 @@ A class of 12 students has a mean score of 90 on a quiz. Another class of 36 stu
 
 ## Hint
 
-The classes aren't the same size, so you can't just take the number halfway between. Find the total points.
+The classes aren't the same size, so you can't take the number halfway between. Find the total points.
 
 ## Solution
 

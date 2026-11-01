@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 11
 difficulty: medium
-choices: [40, 60, 80, 90, 100]
+lesson: 03-angle-facts
+choices: ["40","60","80","90","100"]
 answer: C
+mistakes:
+  A: "That's the smallest angle, which has 2 boxes."
+  B: "That's the middle angle, which has 3 boxes."
+  D: "That assumes a right triangle. The ratio gives you the angles directly."
+  E: "That's 5 boxes. The largest angle has 4 boxes."
 verify: "(() => { const unit = range(1, 60).find((u) => 2 * u + 3 * u + 4 * u === 180); return 4 * unit; })()"
 ---
 
@@ -11,6 +17,10 @@ The three angles of a triangle are in the ratio 2 to 3 to 4. How many degrees do
 ## Hint
 
 This uses the idea from the ratios unit. Draw 2 boxes, 3 boxes, and 4 boxes. How many degrees are there to share?
+
+## Hint 2
+
+There are 9 boxes in all, sharing 180 degrees. So each box holds 20 degrees.
 
 ## Solution
 

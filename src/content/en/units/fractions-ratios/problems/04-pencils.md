@@ -1,8 +1,14 @@
 ---
 order: 4
 difficulty: easy
-choices: [1.75, 2, 2.25, 2.5, 3]
+lesson: 03-rates-and-scaling
+choices: ["1.75","2","2.25","2.5","3"]
 answer: B
+mistakes:
+  A: "That adds 50 cents to the price. Scaling means multiplying: find the cost of one pencil first."
+  C: "That adds a dollar. Find the cost of one pencil first, which is 25 cents."
+  D: "That's the cost of 10 pencils."
+  E: "That's the cost of 12 pencils. One pencil costs 25 cents."
 verify: "(1.25 / 5) * 8"
 ---
 
@@ -11,6 +17,10 @@ Five pencils cost \$1.25 in all. Each pencil costs the same amount. How many dol
 ## Hint
 
 Start by finding the cost of one pencil.
+
+## Hint 2
+
+One pencil costs $1.25 \div 5$. Multiply that by 8.
 
 ## Solution
 

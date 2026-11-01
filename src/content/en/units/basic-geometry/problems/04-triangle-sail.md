@@ -1,8 +1,14 @@
 ---
 order: 4
 difficulty: easy
-choices: [17, 34, 35, 70, 140]
+lesson: 02-triangle-area
+choices: ["17","34","35","70","140"]
 answer: C
+mistakes:
+  A: "That's $10 + 7$. Area multiplies the base and height."
+  B: "That's twice $10 + 7$, which is the perimeter of a rectangle. Multiply the base and height, and then halve."
+  D: "That's the rectangle around the sail. The triangle is half of it."
+  E: "That doubles the rectangle. A triangle is half of the rectangle."
 verify: "(10 * 7) / 2"
 ---
 
@@ -11,6 +17,10 @@ A triangular sail has a base of 10 feet and a height of 7 feet. What is its area
 ## Hint
 
 A triangle fills half of the rectangle drawn around it. What's the area of that rectangle?
+
+## Hint 2
+
+The rectangle has an area of $10 \times 7 = 70$. The triangle is half of it.
 
 ## Solution
 

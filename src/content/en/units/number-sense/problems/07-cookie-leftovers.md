@@ -1,8 +1,14 @@
 ---
-order: 7
+order: 8
 difficulty: medium
-choices: [4, 7, 8, 9, 12]
+lesson: 04-factors-primes-leftovers
+choices: ["4","7","8","9","12"]
 answer: B
+mistakes:
+  A: "That's only part of the list. Factors of 36 above 2 are 3, 4, 6, 9, 12, 18, and 36."
+  C: "List the factors of 36: there are 9. Only 1 and 2 are too small."
+  D: "That counts all of the factors of 36. With 1 or 2 friends, the 2 extra cookies could still be shared."
+  E: "That's one possible number of friends, not how many possibilities there are."
 verify: "range(1, 38).filter((friends) => 38 % friends === 2).length"
 ---
 
@@ -11,6 +17,10 @@ Nadia shares 38 cookies equally among some friends, giving out as many as possib
 ## Hint
 
 Set aside the 2 leftover cookies first. How many cookies were shared evenly? Then remember: if there were only 2 friends, could 2 cookies really be left over?
+
+## Hint 2
+
+The friends shared 36 cookies evenly. So the number of friends is a factor of 36, and it must be more than 2.
 
 ## Solution
 

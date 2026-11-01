@@ -23,4 +23,4 @@ There are great resources for students who already compete, but most of them ass
 
 ## Volunteer with us
 
-We need people to write lessons, check problems, and translate the site. You don't need to be a math star, just someone who enjoys explaining things kindly.
+We need people to write lessons, check problems, and translate the site. You don't need to be a math star. You only need to enjoy explaining things kindly.

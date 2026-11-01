@@ -1,8 +1,14 @@
 ---
 order: 3
 difficulty: easy
-choices: [35, 55, 65, 125, 235]
+lesson: 03-angle-facts
+choices: ["35","55","65","125","235"]
 answer: B
+mistakes:
+  A: "That's $160 - 125$. A straight line is 180°."
+  C: "Check your subtraction: $180 - 125$."
+  D: "That's the angle you were given. The two angles aren't equal."
+  E: "That's $360 - 125$. A full turn is 360°, but a straight line is half of that."
 verify: "range(1, 179).find((x) => x + 125 === 180)"
 ---
 
@@ -11,6 +17,10 @@ Two angles sit side by side and make a straight line. One of them measures 125°
 ## Hint
 
 How many degrees are in a straight line?
+
+## Hint 2
+
+A straight line is 180°. Subtract 125 from that.
 
 ## Solution
 

@@ -1,8 +1,14 @@
 ---
 order: 2
 difficulty: easy
-choices: ['$\frac{1}{2}$', '$\frac{2}{5}$', '$\frac{3}{5}$', '$\frac{4}{9}$', '$\frac{5}{12}$']
+lesson: 01-equal-groups
+choices: ["$\\frac{1}{2}$","$\\frac{2}{5}$","$\\frac{3}{5}$","$\\frac{4}{9}$","$\\frac{5}{12}$"]
 answer: C
+mistakes:
+  A: "It's a good benchmark, but $\\frac{3}{5}$ is a little more than one half."
+  B: "This is less than one half, since half of 5 is 2.5."
+  D: "This is less than one half, since half of 9 is 4.5."
+  E: "The numbers are bigger, but this is less than one half, since half of 12 is 6."
 verify: "[[1, 2], [2, 5], [3, 5], [4, 9], [5, 12]].sort((a, b) => b[0] * a[1] - a[0] * b[1]).map(([n, d]) => fraction(n, d))[0]"
 ---
 
@@ -11,6 +17,10 @@ Which fraction is the largest?
 ## Hint
 
 Compare each fraction to $\frac{1}{2}$. Is the top number more than half of the bottom number?
+
+## Hint 2
+
+Only one of these fractions is more than $\frac{1}{2}$.
 
 ## Solution
 

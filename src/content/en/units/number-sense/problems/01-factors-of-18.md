@@ -1,8 +1,14 @@
 ---
 order: 1
 difficulty: easy
-choices: [4, 6, 8, 9, 18]
+lesson: 04-factors-primes-leftovers
+choices: ["4","6","8","9","18"]
 answer: B
+mistakes:
+  A: "That leaves out 1 and 18, which are factors too."
+  C: "List the pairs again. There are 3 pairs, which makes 6 factors."
+  D: "That's half of 18. Factors have to divide 18 evenly, so count them using pairs."
+  E: "That's the number itself. Not every number up to 18 is a factor."
 verify: "factors(18).length"
 ---
 
@@ -11,6 +17,10 @@ How many positive whole numbers are factors of 18?
 ## Hint
 
 Look for factor pairs, starting with 1 and 18. What pairs with 2? Keep going until a number repeats.
+
+## Hint 2
+
+The pairs are 1 and 18, 2 and 9, and 3 and 6. Count every number in those pairs.
 
 ## Solution
 

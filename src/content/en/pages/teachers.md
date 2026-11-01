@@ -78,6 +78,6 @@ Our problem sets are all original. When your students are ready for the real thi
 
 **"My students will be discouraged by low scores."** Tell them ahead of time that these contests are much harder than class tests, and that even strong students miss many questions. Measure success by improvement and effort, not by rank.
 
-**"Only a few students are interested."** That's enough. Three students and a whiteboard make a math team. Ask students to bring a friend, and invite students who like puzzles, not just those with top grades.
+**"Only a few students are interested."** That's enough. Three students and a whiteboard make a math team. Ask students to bring a friend, and invite students who like puzzles, not only those with top grades.
 
 **"We can't afford the fees."** Start with the free club plan, then talk with your administration or parent group about costs. You can also ask the competition organizers directly whether any support is available.

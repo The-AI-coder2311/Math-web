@@ -1,8 +1,14 @@
 ---
-order: 8
+order: 9
 difficulty: medium
-choices: [13, 15, 17, 18, 21]
+lesson: 05-right-triangles
+choices: ["13","15","17","18","21"]
 answer: B
+mistakes:
+  A: "That's from a 5-12-13 triangle. Here, the legs are 9 and 12."
+  C: "That's from an 8-15-17 triangle. Here, the legs are 9 and 12."
+  D: "Check it: $18 \\times 18 = 324$, which is too big."
+  E: "That's $9 + 12$. The hypotenuse is shorter than the two legs put together."
 verify: "range(1, 50).find((c) => c * c === 9 * 9 + 12 * 12)"
 ---
 
@@ -11,6 +17,10 @@ A right triangle has legs of length 9 and 12. How long is its hypotenuse?
 ## Hint
 
 Use $a^2 + b^2 = c^2$. Then ask which number, times itself, gives your total.
+
+## Hint 2
+
+$9^2 + 12^2 = 225$. Which number times itself is 225?
 
 ## Solution
 

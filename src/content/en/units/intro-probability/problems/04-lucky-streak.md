@@ -1,16 +1,26 @@
 ---
 order: 4
 difficulty: easy
-choices: ['$\frac{1}{64}$', '$\frac{1}{7}$', '$\frac{1}{2}$', '$\frac{6}{7}$', '1']
+lesson: 03-trees-and-multiplying
+choices: ["$\\frac{1}{64}$","$\\frac{1}{7}$","$\\frac{1}{2}$","$\\frac{6}{7}$","1"]
 answer: C
+mistakes:
+  A: "That's the chance of getting 6 heads in a row from the start. Those flips already happened."
+  B: "That suggests that tails is \"due.\" A coin has no memory."
+  D: "That suggests that the streak will continue. A coin has no memory."
+  E: "The next flip can still land on tails. Past flips don't decide it."
 verify: "(() => { const c = [0, 1]; const all = product(c, c, c, c, c, c, c).filter((f) => f.slice(0, 6).every((x) => x === 1)); return fraction(all.filter((f) => f[6] === 1).length, all.length); })()"
 ---
 
-A fair coin has just landed on heads 6 times in a row. What is the probability that it lands on heads on the next flip?
+A fair coin lands on heads 6 times in a row. What is the probability that it lands on heads on the next flip?
 
 ## Hint
 
 Does the coin know what it did before?
+
+## Hint 2
+
+Each flip is independent, so past flips can't change the next one.
 
 ## Solution
 

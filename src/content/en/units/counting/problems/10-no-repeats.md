@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 11
 difficulty: medium
-choices: [504, 576, 648, 720, 900]
+lesson: 02-when-order-matters
+choices: ["504","576","648","720","900"]
 answer: C
+mistakes:
+  A: "That's $9 \\times 8 \\times 7$. The second digit has 9 options, since 0 is allowed there."
+  B: "That's $9 \\times 8 \\times 8$. Count again: 9, then 9, then 8."
+  D: "That's $10 \\times 9 \\times 8$, which allows a first digit of 0. That isn't a 3-digit number."
+  E: "That counts all of the 3-digit numbers, including those with repeats."
 verify: "range(100, 999).filter((n) => new Set(digits(n)).size === 3).length"
 ---
 
@@ -11,6 +17,10 @@ How many three-digit numbers have three different digits? (For example, 305 coun
 ## Hint
 
 Start with the pickiest digit: the hundreds digit can't be 0. Then ask yourself whether the tens digit can be 0.
+
+## Hint 2
+
+The hundreds digit has 9 options. The tens digit also has 9, since 0 is now allowed. How many does the ones digit have?
 
 ## Solution
 

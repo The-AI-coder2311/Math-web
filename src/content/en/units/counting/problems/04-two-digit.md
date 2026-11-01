@@ -1,8 +1,14 @@
 ---
 order: 4
 difficulty: easy
-choices: [6, 12, 14, 16, 24]
+lesson: 02-when-order-matters
+choices: ["6","12","14","16","24"]
 answer: B
+mistakes:
+  A: "That's \"4 choose 2,\" which treats 35 and 53 as the same. They're different numbers, so order matters."
+  C: "That's $7 \\times 2$. Build it digit by digit: 4 options, and then 3."
+  D: "That's $4 \\times 4$, which lets a digit repeat. The problem doesn't allow that."
+  E: "That's $4 \\times 3 \\times 2$, which makes 3-digit numbers."
 verify: "product([3, 5, 7, 9], [3, 5, 7, 9]).filter(([a, b]) => a !== b).length"
 ---
 
@@ -11,6 +17,10 @@ How many different two-digit numbers can be made using the digits 3, 5, 7, and 9
 ## Hint
 
 Build the number one digit at a time. Once you've used a digit for the tens place, how many are left for the ones place?
+
+## Hint 2
+
+There are 4 options for the first digit. How many are left for the second?
 
 ## Solution
 

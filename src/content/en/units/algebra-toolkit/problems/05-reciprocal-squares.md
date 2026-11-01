@@ -18,7 +18,7 @@ Square both sides of the equation. What happens to the middle part when you mult
 
 $$x^2 + 2 \times x \times \frac{1}{x} + \frac{1}{x^2} = 16$$
 
-**Step 2.** The middle part simplifies, since $x \times \frac{1}{x}$ is 1. So the middle part is just 2.
+**Step 2.** The middle part simplifies, since $x \times \frac{1}{x}$ is 1. So the middle part is 2.
 
 **Step 3.** That leaves $x^2 + \frac{1}{x^2} + 2 = 16$, so the value we want is $16 - 2 = 14$.
 

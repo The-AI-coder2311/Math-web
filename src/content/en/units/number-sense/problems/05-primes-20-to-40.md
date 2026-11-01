@@ -1,8 +1,14 @@
 ---
 order: 5
 difficulty: easy
-choices: [3, 4, 5, 6, 7]
+lesson: 04-factors-primes-leftovers
+choices: ["3","4","5","6","7"]
 answer: B
+mistakes:
+  A: "That misses one. The primes are 23, 29, 31, and 37."
+  C: "One of your numbers isn't prime. Check 27, 33, and 39 using the digit-sum test for 3."
+  D: "Two of your numbers aren't prime. Numbers like 21 and 39 divide by 3."
+  E: "Several of your numbers aren't prime. Test each with 3 and with 5."
 verify: "range(20, 40).filter(isPrime).length"
 ---
 
@@ -11,6 +17,10 @@ How many prime numbers are there between 20 and 40?
 ## Hint
 
 Cross out all the even numbers first, since they can't be prime here. Then test what's left by dividing by 3 and 5.
+
+## Hint 2
+
+The odd numbers left are 21, 23, 25, 27, 29, 31, 33, 35, 37, and 39. Which ones divide by 3 or 5?
 
 ## Solution
 

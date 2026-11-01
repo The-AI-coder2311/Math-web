@@ -1,8 +1,14 @@
 ---
 order: 5
 difficulty: easy
-choices: [3, 5, 9, 13, 23]
+lesson: 03-working-backwards
+choices: ["3","5","9","13","23"]
 answer: B
+mistakes:
+  A: "That's $9 \\div 3$. Undo each step once: divide by 3, and then subtract 4."
+  C: "That's only the first step backward. You still need to undo \"add 4.\""
+  D: "That adds 4 when going back. To undo adding 4, subtract 4."
+  E: "That undoes the steps in the wrong order. The last step gets undone first."
 verify: "range(0, 50).find((n) => (n + 4) * 3 === 27)"
 ---
 
@@ -11,6 +17,10 @@ Ty thinks of a number. Ty adds 4 to it and then multiplies the result by 3. The 
 ## Hint
 
 Start at 27 and undo each step in reverse order. What's the opposite of multiplying by 3?
+
+## Hint 2
+
+Undo "multiply by 3" first: $27 \div 3 = 9$. Then undo "add 4."
 
 ## Solution
 

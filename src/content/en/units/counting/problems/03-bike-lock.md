@@ -1,8 +1,14 @@
 ---
 order: 3
 difficulty: easy
-choices: [30, 100, 729, 999, 1000]
+lesson: 01-multiply-choices
+choices: ["30","100","729","999","1000"]
 answer: E
+mistakes:
+  A: "That's $10 + 10 + 10$. Each dial is another choice, so multiply."
+  B: "That's only 2 dials. A third dial multiplies by 10 again."
+  C: "That's $9 \\times 9 \\times 9$. The digits 0 through 9 make 10 digits, not 9."
+  D: "That leaves out the code 000. Codes run from 000 to 999."
 verify: "product(range(0, 9), range(0, 9), range(0, 9)).length"
 ---
 
@@ -11,6 +17,10 @@ A bike lock has 3 dials. Each dial can be set to any digit from 0 through 9, and
 ## Hint
 
 First, count the digits from 0 through 9. Be careful: it's more than 9! Then think of each dial as a separate choice.
+
+## Hint 2
+
+There are 10 digits for each of the 3 dials. Digits can repeat, so the options don't shrink.
 
 ## Solution
 

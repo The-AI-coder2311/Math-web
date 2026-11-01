@@ -1,8 +1,14 @@
 ---
 order: 2
 difficulty: easy
-choices: [15, 21, 27, 31, 33]
+lesson: 04-factors-primes-leftovers
+choices: ["15","21","27","31","33"]
 answer: D
+mistakes:
+  A: "That's $3 \\times 5$, so it isn't prime."
+  B: "That's $3 \\times 7$, so it isn't prime."
+  C: "That's $3 \\times 9$, so it isn't prime."
+  E: "That's $3 \\times 11$, so it isn't prime."
 verify: "[15, 21, 27, 31, 33].filter(isPrime).join()"
 ---
 
@@ -11,6 +17,10 @@ Which of these numbers is prime?
 ## Hint
 
 A prime number has only one factor pair: 1 and itself. Try dividing each choice by small numbers like 3 and 5.
+
+## Hint 2
+
+Test each one by dividing by 3 and by 5. Use the digit-sum test for 3.
 
 ## Solution
 

@@ -1,8 +1,14 @@
 ---
-order: 6
+order: 7
 difficulty: medium
-choices: [14, 21, 42, 49, 56]
+lesson: 02-when-order-matters
+choices: ["14","21","42","49","56"]
 answer: C
+mistakes:
+  A: "That's $7 \\times 2$. Choose the people one job at a time: 7 options, and then 6."
+  B: "That's \"7 choose 2,\" which treats the jobs as the same. Ana as president is different from Ben as president, so don't divide."
+  D: "That's $7 \\times 7$, which lets one person hold both jobs."
+  E: "That's $8 \\times 7$. The club has 7 members."
 verify: "product(range(1, 7), range(1, 7)).filter(([president, vice]) => president !== vice).length"
 ---
 
@@ -11,6 +17,10 @@ A chess club has 7 members. The club elects a president and a vice president, an
 ## Hint
 
 Choose the president first. How many people could then be vice president?
+
+## Hint 2
+
+There are 7 options for president, and then 6 for vice president. Do the two jobs differ?
 
 ## Solution
 

@@ -1,8 +1,14 @@
 ---
-order: 7
+order: 8
 difficulty: medium
-choices: [28, 30, 32, 36, 56]
+lesson: 04-split-or-subtract
+choices: ["28","30","32","36","56"]
 answer: C
+mistakes:
+  A: "That subtracts the cut part from the perimeter. The notch also adds 2 new sides."
+  B: "That subtracts 2. The cut removes 4 inches and adds 4 inches back."
+  D: "That adds the 2 new sides without taking anything away from the old ones."
+  E: "That's the area of the new shape. The question asks for the perimeter."
 verify: "(() => { const p = [[0, 0], [10, 0], [10, 4], [8, 4], [8, 6], [0, 6]]; return sum(p.map(([x, y], i) => { const [a, b] = p[(i + 1) % 6]; return Math.abs(a - x) + Math.abs(b - y); })); })()"
 ---
 
@@ -11,6 +17,10 @@ A rectangular piece of cardboard measures 10 inches by 6 inches. A square with 2
 ## Hint
 
 Draw it and label every side, including the two new sides made by the cut. There will be 6 sides in all.
+
+## Hint 2
+
+Slide the two sides of the notch outward. They fill the gaps, so the perimeter matches the whole rectangle.
 
 ## Solution
 

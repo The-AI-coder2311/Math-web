@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 11
 difficulty: medium
-choices: ['$\frac{1}{6}$', '$\frac{5}{12}$', '$\frac{1}{2}$', '$\frac{7}{12}$', '$\frac{5}{6}$']
+lesson: 02-list-the-real-outcomes
+choices: ["$\\frac{1}{6}$","$\\frac{5}{12}$","$\\frac{1}{2}$","$\\frac{7}{12}$","$\\frac{5}{6}$"]
 answer: B
+mistakes:
+  A: "That's the chance that the two rolls match."
+  C: "That forgets that the rolls can match. Higher and lower share only 30 of the outcomes."
+  D: "That's the chance that the second is higher **or** the same. The question says greater."
+  E: "That's the chance that the rolls differ. Only half of those have a higher second roll."
 verify: "fraction(product(range(1, 6), range(1, 6)).filter(([a, b]) => b > a).length, 36)"
 ---
 
@@ -11,6 +17,10 @@ You roll a die two times. What is the probability that the second number is grea
 ## Hint
 
 The second roll is either higher, lower, or the same as the first. How likely is "the same"? How do "higher" and "lower" compare?
+
+## Hint 2
+
+Six of the 36 outcomes match. Higher and lower share the other 30 equally.
 
 ## Solution
 

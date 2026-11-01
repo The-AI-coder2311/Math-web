@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 11
 difficulty: medium
-choices: ['2:5', '3:4', '6:10', '8:15', '10:12']
+lesson: 02-ratios-as-boxes
+choices: ["2:5","3:4","6:10","8:15","10:12"]
 answer: D
+mistakes:
+  A: "That uses the first and last numbers given, but the geese amounts don't match yet. Make them match first."
+  B: "Those are the geese amounts in the two ratios. Use a common number of geese."
+  C: "Check that with 12 geese: there would be 8 ducks and 15 swans."
+  E: "That adds in place of scaling. To keep a ratio, multiply both parts by the same number."
 verify: "(() => { const best = product(range(1, 60), range(1, 60), range(1, 60)).find(([a, b, c]) => a * 3 === b * 2 && b * 5 === c * 4); return `${best[0]}:${best[2]}`; })()"
 ---
 
@@ -11,6 +17,10 @@ On a farm, the ratio of ducks to geese is 2:3. The ratio of geese to swans is 4:
 ## Hint
 
 The geese are in both ratios, but they appear as 3 in one and 4 in the other. Can you pick a number of geese that works for both?
+
+## Hint 2
+
+Use 12 geese. Then 2:3 becomes 8:12, and 4:5 becomes 12:15.
 
 ## Solution
 

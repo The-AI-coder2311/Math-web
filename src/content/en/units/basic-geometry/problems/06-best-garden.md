@@ -1,8 +1,14 @@
 ---
-order: 6
+order: 7
 difficulty: medium
-choices: [9, 16, 21, 24, 25]
+lesson: 01-perimeter-and-area
+choices: ["9","16","21","24","25"]
 answer: E
+mistakes:
+  A: "That's the area of a 1 by 9 garden. Other shapes hold more."
+  B: "That's the area of a 2 by 8 garden. Other shapes hold more."
+  C: "That's the area of a 3 by 7 garden. Other shapes hold more."
+  D: "That's the area of a 4 by 6 garden. A square holds slightly more."
 verify: "Math.max(...range(1, 9).map((length) => length * (10 - length)))"
 ---
 
@@ -11,6 +17,10 @@ Sam has 20 meters of fence to go around a rectangular garden. The side lengths m
 ## Hint
 
 The length plus the width must be half of the perimeter. Make a list of the possibilities.
+
+## Hint 2
+
+List the pairs that add up to 10, and multiply each pair.
 
 ## Solution
 

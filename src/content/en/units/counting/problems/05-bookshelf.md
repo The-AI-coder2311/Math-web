@@ -1,8 +1,14 @@
 ---
 order: 5
 difficulty: easy
-choices: [4, 10, 16, 24, 256]
+lesson: 02-when-order-matters
+choices: ["4","10","16","24","256"]
 answer: D
+mistakes:
+  A: "That's how many books there are. Each book can go in several positions."
+  B: "That's $4 + 3 + 2 + 1$. You make one choice and then another, so multiply."
+  C: "That's $4 \\times 4$. Once a book is placed, fewer are left."
+  E: "That's $4 \\times 4 \\times 4 \\times 4$, which reuses books. Each book can only go in one spot."
 verify: "perms(['a', 'b', 'c', 'd']).length"
 ---
 
@@ -11,6 +17,10 @@ Lin has 4 different books to put on a shelf. In how many different orders can th
 ## Hint
 
 Fill the shelf one spot at a time. How many books could go in the first spot? After that, how many are left for the second spot?
+
+## Hint 2
+
+The first spot has 4 options, the next has 3, and so on. That's $4!$.
 
 ## Solution
 

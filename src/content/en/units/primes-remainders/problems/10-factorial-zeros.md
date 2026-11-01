@@ -14,7 +14,7 @@ Each zero comes from a factor of 10, which needs a 2 and a 5. Count the 5s. One 
 
 ## Solution
 
-**Step 1.** Each zero at the end comes from a pair of a 2 and a 5. There are many more 2s than 5s, so we just count the 5s.
+**Step 1.** Each zero at the end comes from a pair of a 2 and a 5. There are many more 2s than 5s, so we only need to count the 5s.
 
 **Step 2.** The multiples of 5 up to 25 are 5, 10, 15, 20, and 25, so there are 5 of them.
 

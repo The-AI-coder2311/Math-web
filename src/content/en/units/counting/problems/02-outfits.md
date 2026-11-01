@@ -1,8 +1,14 @@
 ---
 order: 2
 difficulty: easy
-choices: [8, 10, 15, 30, 60]
+lesson: 01-multiply-choices
+choices: ["8","10","15","30","60"]
 answer: D
+mistakes:
+  A: "That's $5 + 3$, leaving out the shoes. Choices made one after another multiply."
+  B: "That's $5 + 3 + 2$. Adding counts the items, not the outfits."
+  C: "That's $5 \\times 3$, which leaves out the shoes."
+  E: "That's twice the right answer. Multiply $5 \\times 3 \\times 2$ once more and check."
 verify: "product(range(1, 5), range(1, 3), range(1, 2)).length"
 ---
 
@@ -11,6 +17,10 @@ Andre is packing for a trip. He brings 5 shirts, 3 pairs of pants, and 2 pairs o
 ## Hint
 
 There are three choices this time. The multiply trick still works, so multiply all three numbers.
+
+## Hint 2
+
+Multiply the numbers of shirts, pants, and shoes.
 
 ## Solution
 

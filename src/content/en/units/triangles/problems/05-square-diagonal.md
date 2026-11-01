@@ -10,7 +10,7 @@ A square has a diagonal of length 6. What is the area of the square?
 
 ## Hint
 
-The diagonal is the hypotenuse of a right triangle with two equal legs. You don't need to find the side length itself. You just need to know the side times itself.
+The diagonal is the hypotenuse of a right triangle with two equal legs. You don't need to find the side length itself. You only need the side times itself.
 
 ## Solution
 

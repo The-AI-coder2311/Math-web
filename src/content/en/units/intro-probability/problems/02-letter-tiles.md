@@ -1,8 +1,14 @@
 ---
 order: 2
 difficulty: easy
-choices: ['$\frac{1}{11}$', '$\frac{2}{11}$', '$\frac{1}{8}$', '$\frac{1}{4}$', '$\frac{2}{9}$']
+lesson: 01-count-what-you-want
+choices: ["$\\frac{1}{11}$","$\\frac{2}{11}$","$\\frac{1}{8}$","$\\frac{1}{4}$","$\\frac{2}{9}$"]
 answer: B
+mistakes:
+  A: "That counts only one M. The word has 2."
+  C: "That counts different letters, of which there are 8. Each tile is an outcome, and there are 11 tiles."
+  D: "Count the tiles and the Ms: 2 Ms out of 11 tiles."
+  E: "The word has 11 letters, not 9. Count them again."
 verify: "fraction([...'MATHEMATICS'].filter((c) => c === 'M').length, 'MATHEMATICS'.length)"
 ---
 
@@ -11,6 +17,10 @@ Each letter of the word MATHEMATICS is written on its own tile, and the tiles go
 ## Hint
 
 How many tiles are in the bag? Count every letter, even the repeated ones.
+
+## Hint 2
+
+There are 11 tiles, and M appears twice.
 
 ## Solution
 

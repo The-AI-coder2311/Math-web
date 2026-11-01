@@ -1,8 +1,14 @@
 ---
-order: 9
+order: 10
 difficulty: medium
-choices: ['$\frac{1}{3}$', '$\frac{1}{2}$', '$\frac{2}{3}$', '$\frac{5}{6}$', '$\frac{4}{5}$']
+lesson: 01-count-what-you-want
+choices: ["$\\frac{1}{3}$","$\\frac{1}{2}$","$\\frac{2}{3}$","$\\frac{5}{6}$","$\\frac{4}{5}$"]
 answer: C
+mistakes:
+  A: "That counts only the multiples of 3."
+  B: "That counts only the multiples of 2."
+  D: "That's 25 out of 30, which counts multiples of 6 twice. Subtract them once."
+  E: "That's 24 out of 30. Check your count: $15 + 10 - 5 = 20$."
 verify: "fraction(range(1, 30).filter((n) => n % 2 === 0 || n % 3 === 0).length, 30)"
 ---
 
@@ -11,6 +17,10 @@ A whole number from 1 to 30 is chosen at random. What is the probability that it
 ## Hint
 
 Count the multiples of 2 and the multiples of 3. Some numbers get counted twice. Which ones?
+
+## Hint 2
+
+There are 15 multiples of 2 and 10 multiples of 3. Multiples of 6 got counted twice.
 
 ## Solution
 

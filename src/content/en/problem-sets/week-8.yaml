@@ -25,7 +25,7 @@ problems:
   - question: A city has a square grid of streets. Sam walks from one corner to the opposite corner, going 3 blocks east and 3 blocks north in any order. How many different routes are possible?
     answer: 20
     verify: "product([0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1]).filter((route) => sum(route) === 3).length"
-    explanation: Every route has 6 blocks, and we just choose which 3 of them go east. Choosing in order gives $6 \times 5 \times 4$, but each group of 3 was counted $3 \times 2 \times 1$ times. $\frac{6 \times 5 \times 4}{3 \times 2 \times 1} = 20$
+    explanation: Every route has 6 blocks, and we choose which 3 of them go east. Choosing in order gives $6 \times 5 \times 4$, but each group of 3 was counted $3 \times 2 \times 1$ times. $\frac{6 \times 5 \times 4}{3 \times 2 \times 1} = 20$
   - question: How many whole numbers from 1 to 100 have digits that add up to 9?
     answer: 10
     verify: "range(1, 100).filter((n) => sum(digits(n)) === 9).length"

@@ -1,8 +1,14 @@
 ---
-order: 8
+order: 9
 difficulty: medium
-choices: [80, 90, 120, 160, 240]
+lesson: 01-equal-groups
+choices: ["80","90","120","160","240"]
 answer: C
+mistakes:
+  A: "That treats 60 as $\\frac{3}{4}$ of the book, which skips Tuesday. After both days, half of the book is left."
+  B: "That's how many pages were left after Monday when the book has 120 pages."
+  D: "Check by running it forward. From 160 pages, you'd have 80 left, not 60."
+  E: "That doubles too many times. The 60 pages are half of the book, so double once."
 verify: "range(1, 500).find((n) => n - n / 4 - (n - n / 4) / 3 === 60)"
 ---
 
@@ -11,6 +17,10 @@ Priya reads $\frac{1}{4}$ of a book on Monday. On Tuesday, she reads $\frac{1}{3
 ## Hint
 
 Careful: Tuesday's fraction is a fraction of what was left, not of the whole book. What fraction of the whole book is left after Monday?
+
+## Hint 2
+
+After Monday, $\frac{3}{4}$ is left. After Tuesday, $\frac{2}{3}$ of that is left, which is half of the book.
 
 ## Solution
 

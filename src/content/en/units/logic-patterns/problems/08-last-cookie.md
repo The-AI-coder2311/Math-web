@@ -1,8 +1,13 @@
 ---
-order: 8
+order: 9
 difficulty: medium
-choices: [Ana, Ben, Cal, "It can't be determined"]
+lesson: 04-logic-tables-pigeonholes
+choices: ["Ana","Ben","Cal","It can't be determined"]
 answer: C
+mistakes:
+  A: "If Ana ate it, then Ben's and Cal's statements are both true. That's 2 true statements."
+  B: "If Ben ate it, then Ana's and Cal's statements are both true. That's 2 true statements."
+  D: "Test all three cases. Exactly one of them gives exactly one true statement."
 verify: "['Ana', 'Ben', 'Cal'].filter((eater) => [eater === 'Ben', eater !== 'Ben', eater !== 'Cal'].filter(Boolean).length === 1).join()"
 ---
 
@@ -17,6 +22,10 @@ Who ate the cookie?
 ## Hint
 
 Make a table with a row for each friend. If that friend ate the cookie, how many of the statements are true?
+
+## Hint 2
+
+Test each friend in turn. If Ana ate it, which statements are true?
 
 ## Solution
 

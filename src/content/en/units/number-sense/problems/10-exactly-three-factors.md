@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 11
 difficulty: medium
-choices: [1, 2, 3, 4, 7]
+lesson: 04-factors-primes-leftovers
+choices: ["1","2","3","4","7"]
 answer: D
+mistakes:
+  A: "That finds too few. Check 4, 9, 25, and 49: each has exactly 3 factors."
+  B: "That finds too few. Check 4, 9, 25, and 49: each has exactly 3 factors."
+  C: "One is missing. Check 4, 9, 25, and 49: each has exactly 3 factors."
+  E: "That counts all of the perfect squares up to 50. Some have more than 3 factors. For example, 16 has 5, and 1 has only 1."
 verify: "range(1, 50).filter((n) => factors(n).length === 3).length"
 ---
 
@@ -11,6 +17,10 @@ How many whole numbers from 1 to 50 have exactly 3 positive factors?
 ## Hint
 
 An odd number of factors means the number must be a perfect square. Test the perfect squares up to 50, and count the factors of each one.
+
+## Hint 2
+
+A number with 3 factors must be a perfect square, and its square root must be prime. Test 4, 9, 16, 25, 36, and 49.
 
 ## Solution
 

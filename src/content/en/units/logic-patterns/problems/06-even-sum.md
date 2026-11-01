@@ -1,8 +1,14 @@
 ---
-order: 6
+order: 7
 difficulty: medium
-choices: [2500, 2525, 2550, 5050, 5100]
+lesson: 02-small-cases
+choices: ["2500","2525","2550","5050","5100"]
 answer: C
+mistakes:
+  A: "That's $25 \\times 100$. Each pair adds up to 102, not 100."
+  B: "Check your pairs. 2 and 100 add up to 102, and there are 25 pairs."
+  D: "That's the sum from 1 to 100, which includes the odd numbers."
+  E: "That's $50 \\times 102$, the total if you write the list twice. Divide by 2."
 verify: "sum(range(1, 100).filter((n) => n % 2 === 0))"
 ---
 
@@ -13,6 +19,10 @@ $$2 + 4 + 6 + \cdots + 100$$
 ## Hint
 
 Try pairing the first number with the last, and the second with the second-to-last. What does each pair add up to? How many pairs are there?
+
+## Hint 2
+
+There are 50 numbers, which make 25 pairs that each add up to 102.
 
 ## Solution
 

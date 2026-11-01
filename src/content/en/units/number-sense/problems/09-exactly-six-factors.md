@@ -1,8 +1,14 @@
 ---
-order: 9
+order: 10
 difficulty: medium
-choices: [6, 8, 10, 12, 16]
+lesson: 04-factors-primes-leftovers
+choices: ["6","8","10","12","16"]
 answer: D
+mistakes:
+  A: "It has only 4 factors: 1, 2, 3, and 6."
+  B: "It has only 4 factors: 1, 2, 4, and 8."
+  C: "It has only 4 factors: 1, 2, 5, and 10."
+  E: "It has only 5 factors: 1, 2, 4, 8, and 16."
 verify: "range(1, 100).find((n) => factors(n).length === 6)"
 ---
 
@@ -11,6 +17,10 @@ What is the smallest positive whole number that has exactly 6 positive factors?
 ## Hint
 
 Six factors means 3 factor pairs. Start with the smallest answer choice and count the factors of each one.
+
+## Hint 2
+
+Test the choices from the smallest. How many factors does 8 have? How many does 10 have?
 
 ## Solution
 

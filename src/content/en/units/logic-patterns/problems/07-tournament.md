@@ -1,8 +1,14 @@
 ---
-order: 7
+order: 8
 difficulty: medium
-choices: [16, 28, 32, 56, 64]
+lesson: 02-small-cases
+choices: ["16","28","32","56","64"]
 answer: B
+mistakes:
+  A: "That's $8 \\times 2$. Each player plays 7 others."
+  C: "That's $8 \\times 4$. Each player plays 7 games, and each game has 2 players."
+  D: "That counts each game twice. A game has 2 players, so divide by 2."
+  E: "That's $8 \\times 8$, which has players playing themselves."
 verify: "combos(range(1, 8), 2).length"
 ---
 
@@ -11,6 +17,10 @@ In a chess club tournament, each of 8 players plays every other player exactly o
 ## Hint
 
 This works like handshakes. How many games does each player play? Does that count any game twice?
+
+## Hint 2
+
+$8 \times 7$ counts each game twice, once for each player in it.
 
 ## Solution
 

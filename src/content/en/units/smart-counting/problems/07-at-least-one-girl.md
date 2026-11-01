@@ -18,7 +18,7 @@ Count all the possible teams first. Then which teams don't have a girl?
 
 $$\frac{7 \times 6 \times 5}{3 \times 2 \times 1} = 35$$
 
-**Step 2.** The opposite of "at least one girl" is "all boys." There are only 3 boys, so there's just 1 all-boy team.
+**Step 2.** The opposite of "at least one girl" is "all boys." There are only 3 boys, so there's only 1 all-boy team.
 
 **Step 3.** Subtract: $35 - 1 = 34$.
 
