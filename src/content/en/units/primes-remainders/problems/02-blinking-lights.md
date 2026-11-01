@@ -1,8 +1,14 @@
 ---
 order: 2
 difficulty: easy
-choices: [14, 16, 24, 32, 48]
+lesson: 03-gcf-and-lcm
+choices: ["14","16","24","32","48"]
 answer: C
+mistakes:
+  A: "That's $6 + 8$. They line up at a common multiple."
+  B: "That's a multiple of 8, but the first light blinks at 12 and 18, so it isn't lit then."
+  D: "That's a multiple of 8 but not of 6."
+  E: "That's $6 \\times 8$, which is a common multiple, but not the first one."
 verify: "range(1, 100).find((t) => t % 6 === 0 && t % 8 === 0)"
 ---
 
@@ -11,6 +17,10 @@ One light blinks every 6 seconds, and another blinks every 8 seconds. They blink
 ## Hint
 
 They blink together at a time that is a multiple of both 6 and 8. Which multiple is the smallest?
+
+## Hint 2
+
+List the multiples of 8: 8, 16, 24. Which is the first that 6 also divides?
 
 ## Solution
 

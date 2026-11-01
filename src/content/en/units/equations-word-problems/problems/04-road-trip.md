@@ -1,8 +1,14 @@
 ---
 order: 4
 difficulty: easy
-choices: [90, 100, 105, 110, 135]
+lesson: 03-distance-rate-time
+choices: ["90","100","105","110","135"]
 answer: C
+mistakes:
+  A: "That's only the first 2 hours. The car goes on for another 20 minutes."
+  B: "That adds 10 for the 20 minutes. Find what fraction of an hour 20 minutes is."
+  D: "That adds 20 for the 20 minutes. Twenty minutes is $\\frac{1}{3}$ of an hour, so that's 15 miles."
+  E: "That's 3 hours. Twenty minutes isn't a full hour."
 verify: "45 * (2 + 20 / 60)"
 ---
 
@@ -11,6 +17,10 @@ A car travels at a steady 45 miles per hour for 2 hours and 20 minutes. How many
 ## Hint
 
 Twenty minutes is what fraction of an hour?
+
+## Hint 2
+
+Twenty minutes is $\frac{1}{3}$ of an hour, so the car goes $45 \div 3$ miles in that time.
 
 ## Solution
 

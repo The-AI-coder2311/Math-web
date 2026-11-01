@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 18
 difficulty: hard
-choices: [64, 80, 100, 144, 160]
+lesson: 01-mod-notation
+choices: ["64","80","100","144","160"]
 answer: D
+mistakes:
+  A: "That's only one of the mixed cases. There are two, plus the case with both remainders 0."
+  B: "That's one mixed case plus the both-0 case. There are two mixed cases."
+  C: "Use the counts: 4 numbers give 0, 8 give 1, and 8 give 4."
+  E: "Use the counts: 4 numbers give 0, 8 give 1, and 8 give 4."
 verify: "product(range(1, 20), range(1, 20)).filter(([a, b]) => (a * a + b * b) % 5 === 0).length"
 ---
 
@@ -11,6 +17,10 @@ How many pairs of whole numbers $(a, b)$, each from 1 to 20, make $a^2 + b^2$ di
 ## Hint
 
 Which remainders can a perfect square leave when divided by 5? Which combinations of those remainders add up to a multiple of 5?
+
+## Hint 2
+
+Squares leave 0, 1, or 4. The pairs that add up to a multiple of 5 are 0 and 0, 1 and 4, and 4 and 1.
 
 ## Solution
 

@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 17
 difficulty: hard
-choices: [27, 36, 45, 54, 63]
+lesson: 02-age-and-number-stories
+choices: ["27","36","45","54","63"]
 answer: B
+mistakes:
+  A: "That's the difference. Its digits add up to 9, but swapping gives 72, which is 45 more."
+  C: "Swapping gives 54, which is only 9 more."
+  D: "Swapping gives 45, which is less."
+  E: "That's the swapped number. Swapping 63 gives something smaller."
 verify: "range(10, 99).find((n) => { const [a, b] = digits(n); return a + b === 9 && 10 * b + a === n + 27; })"
 ---
 
@@ -11,6 +17,10 @@ The digits of a two-digit number add up to 9. When the digits are swapped, the n
 ## Hint
 
 A two-digit number with tens digit $a$ and ones digit $b$ equals $10a + b$. For example, $47 = 10 \times 4 + 7$. What does the swapped number equal?
+
+## Hint 2
+
+Swapping gives $10b + a = 10a + b + 27$, which simplifies to $b = a + 3$.
 
 ## Solution
 

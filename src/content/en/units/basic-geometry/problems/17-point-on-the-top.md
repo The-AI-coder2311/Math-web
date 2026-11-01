@@ -12,7 +12,7 @@ mistakes:
 verify: "(() => { const middle = (x) => Math.abs(12 * 12 - x * 0) / 2; const left = range(0, 12).map((x) => 144 - middle(x)); return new Set(left).size === 1 ? left[0] : -1; })()"
 ---
 
-A square has sides of 12. Point $P$ is anywhere on the top side. Lines from $P$ to the two bottom corners cut the square into 3 triangles. What is the total area of the two side triangles?
+A square has sides of 12. Point $P$ is anywhere on the top side, between the two top corners. Lines from $P$ to the two bottom corners cut the square into 3 triangles. What is the total area of the two side triangles?
 
 ## Hint
 

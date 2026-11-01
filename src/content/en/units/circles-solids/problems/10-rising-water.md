@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 17
 difficulty: hard
-choices: [0.4, 0.8, 1, 1.6, 4]
+lesson: 04-boxes-and-3d
+choices: ["0.4","0.8","1","1.6","4"]
 answer: B
+mistakes:
+  A: "That's half of the right answer. Check: $64 \\div 80$."
+  C: "That would need 80 cubic inches of water. The cube pushes aside only 64."
+  D: "That divides by 40. The base of the tank is $8 \\times 10 = 80$."
+  E: "That's the side of the cube. The water spreads over the whole tank."
 verify: "(4 * 4 * 4) / (8 * 10)"
 ---
 
@@ -11,6 +17,10 @@ A fish tank has a rectangular base that is 8 inches by 10 inches, and it's partl
 ## Hint
 
 The cube pushes aside water equal to its own volume. That extra volume is shaped like a flat box on top of the water. What's its base?
+
+## Hint 2
+
+The cube pushes aside 64 cubic inches. That water spreads over a base of 80 square inches.
 
 ## Solution
 

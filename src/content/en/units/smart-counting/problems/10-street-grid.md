@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 17
 difficulty: hard
-choices: [12, 20, 35, 56, 70]
+lesson: 04-grid-paths
+choices: ["12","20","35","56","70"]
 answer: D
+mistakes:
+  A: "That's too few. Write a route as a list of 8 letters, and use \"8 choose 3.\""
+  B: "That's \"6 choose 3.\" There are 8 moves in all."
+  C: "That's \"7 choose 3.\" There are 8 moves in all."
+  E: "That's \"8 choose 4,\" for 4 moves each way. Here, 3 moves are north."
 verify: "new Set(perms([...'EEEEENNN']).map((p) => p.join(''))).size"
 ---
 
@@ -11,6 +17,10 @@ Kai walks to school on a grid of streets. The school is 5 blocks east and 3 bloc
 ## Hint
 
 Write each route as a list of 8 moves, such as E E N E N E E N. What decides the route?
+
+## Hint 2
+
+Every route has 8 moves, and 3 of them are north. Choose which 3.
 
 ## Solution
 

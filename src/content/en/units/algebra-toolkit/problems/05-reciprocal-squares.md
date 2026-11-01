@@ -1,8 +1,14 @@
 ---
-order: 5
+order: 9
 difficulty: medium
-choices: [8, 14, 16, 18, 2]
+lesson: 02-perfect-squares
+choices: ["8","14","16","18","2"]
 answer: B
+mistakes:
+  A: "That's $4 \\times 2$. Square both sides of the equation."
+  C: "That's the square of the sum, which includes the middle part of 2."
+  D: "That adds the 2. To remove the middle part, subtract it."
+  E: "That's the middle part. The question asks for the rest."
 verify: "(() => { const x = 2 + Math.sqrt(3); return Math.round(x * x + 1 / (x * x)); })()"
 ---
 
@@ -11,6 +17,10 @@ If $x + \frac{1}{x} = 4$, what is the value of $x^2 + \frac{1}{x^2}$?
 ## Hint
 
 Square both sides of the equation. What happens to the middle part when you multiply $x$ by $\frac{1}{x}$?
+
+## Hint 2
+
+Squaring gives $x^2 + 2 + \frac{1}{x^2} = 16$.
 
 ## Solution
 

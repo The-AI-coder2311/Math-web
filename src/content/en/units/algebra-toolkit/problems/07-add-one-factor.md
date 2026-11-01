@@ -1,8 +1,14 @@
 ---
-order: 7
+order: 16
 difficulty: hard
-choices: [2, 3, 4, 5, 8]
+lesson: 04-add-one-and-telescoping
+choices: ["2","3","4","5","8"]
 answer: B
+mistakes:
+  A: "That misses a pair. The factor pairs of 24 with both at least 2 are 2 and 12, 3 and 8, and 4 and 6."
+  C: "That includes 1 and 24, which would make $x = 0$. $x$ has to be positive."
+  D: "Only 3 factor pairs have both factors at least 2."
+  E: "That's the number of factors of 24. Pairs are what count."
 verify: "product(range(1, 23), range(1, 23)).filter(([x, y]) => x <= y && x * y + x + y === 23).length"
 ---
 
@@ -11,6 +17,10 @@ How many pairs of positive whole numbers $(x, y)$, with $x \le y$, satisfy $xy +
 ## Hint
 
 Add 1 to both sides. Can you factor the left side now?
+
+## Hint 2
+
+$(x + 1)(y + 1) = 24$, with both factors at least 2.
 
 ## Solution
 

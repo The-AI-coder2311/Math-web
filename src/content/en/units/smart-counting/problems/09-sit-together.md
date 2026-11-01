@@ -1,8 +1,14 @@
 ---
-order: 9
+order: 16
 difficulty: hard
-choices: [24, 36, 48, 60, 120]
+lesson: 02-restrictions
+choices: ["24","36","48","60","120"]
 answer: C
+mistakes:
+  A: "That's the block arrangements. Ari and Bo can also swap inside the block."
+  B: "That's less than the count from gluing. Use $4! \\times 2$."
+  D: "That's half of all lineups. They stand together less often than that."
+  E: "That's every lineup, with no rule."
 verify: "perms(['A', 'B', 'C', 'D', 'E']).filter((p) => Math.abs(p.indexOf('A') - p.indexOf('B')) === 1).length"
 ---
 
@@ -11,6 +17,10 @@ Five friends line up for a photo. Two of them, Ari and Bo, insist on standing ne
 ## Hint
 
 Pretend Ari and Bo are tied together and count as one person. How many "people" are lining up? Then, how many ways can Ari and Bo stand within their pair?
+
+## Hint 2
+
+Glue them together, so there are 4 things to arrange. Don't forget that they can swap.
 
 ## Solution
 

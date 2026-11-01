@@ -1,8 +1,14 @@
 ---
-order: 6
+order: 9
 difficulty: medium
-choices: ['$\pi$', '$2\pi$', '$4\pi$', '$8\pi$', '$16\pi$']
+lesson: 03-sectors-and-probability
+choices: ["$\\pi$","$2\\pi$","$4\\pi$","$8\\pi$","$16\\pi$"]
 answer: C
+mistakes:
+  A: "That's $\\frac{1}{4}$ of the radius times $\\pi$. Find the whole area first."
+  B: "That's the length of the arc. The question asks for the area."
+  D: "That's half of the pie. 90° is a quarter of a full turn."
+  E: "That's the whole pie. The slice is a quarter of it."
 verify: "pi((4 * 4 * 90) / 360)"
 ---
 
@@ -11,6 +17,10 @@ A pie has a radius of 4 inches. A slice is cut with an angle of 90° at the cent
 ## Hint
 
 What fraction of the whole circle is 90° out of 360°?
+
+## Hint 2
+
+The slice is $\frac{1}{4}$ of the pie, and the pie's area is $16\pi$.
 
 ## Solution
 

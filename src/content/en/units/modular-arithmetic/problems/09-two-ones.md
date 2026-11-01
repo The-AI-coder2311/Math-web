@@ -1,8 +1,14 @@
 ---
-order: 9
+order: 17
 difficulty: hard
-choices: [15, 21, 28, 35, 42]
+lesson: 04-other-bases
+choices: ["15","21","28","35","42"]
 answer: B
+mistakes:
+  A: "That's \"6 choose 2,\" which leaves out one power of 2. There are 7 up to 100."
+  C: "That's \"8 choose 2,\" which includes 128. That's over 100."
+  D: "That's \"7 choose 3,\" for three 1s. The question asks for two."
+  E: "That's $7 \\times 6$, which counts each pair twice."
 verify: "range(1, 100).filter((n) => n.toString(2).split('').filter((d) => d === '1').length === 2).length"
 ---
 
@@ -11,6 +17,10 @@ How many whole numbers from 1 to 100 have exactly two 1s when written in base 2?
 ## Hint
 
 A number with exactly two 1s is the sum of two different powers of 2. Which powers of 2 are available? This is also a counting problem, like the ones in Smart Counting.
+
+## Hint 2
+
+The powers of 2 up to 100 are 1, 2, 4, 8, 16, 32, and 64. Choose 2.
 
 ## Solution
 

@@ -1,8 +1,14 @@
 ---
-order: 8
+order: 17
 difficulty: hard
-choices: [20, 28, 32, 36, 44]
+lesson: 03-quadratics-and-vieta
+choices: ["20","28","32","36","44"]
 answer: B
+mistakes:
+  A: "That's $36 - 16$. The middle part is $2rs = 8$."
+  C: "That subtracts only $rs$. The middle part is $2rs$."
+  D: "That's $(r + s)^2$. Subtract $2rs$."
+  E: "That adds $2rs$. Subtract it."
 verify: "(() => { const r = 3 + Math.sqrt(5); const s = 3 - Math.sqrt(5); return Math.round(r * r + s * s); })()"
 ---
 
@@ -11,6 +17,10 @@ Let $r$ and $s$ be the two solutions of $x^2 - 6x + 4 = 0$. What is the value of
 ## Hint
 
 You don't need to find $r$ and $s$. What do the solutions add up to? What do they multiply to?
+
+## Hint 2
+
+$r + s = 6$ and $rs = 4$.
 
 ## Solution
 

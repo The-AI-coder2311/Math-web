@@ -1,8 +1,14 @@
 ---
-order: 5
+order: 8
 difficulty: medium
-choices: [9, 12, 18, 24, 36]
+lesson: 02-pythagoras-why
+choices: ["9","12","18","24","36"]
 answer: C
+mistakes:
+  A: "That's $6 \\times 6 \\div 4$, treating the diagonal as a side and halving it. Use $s^2 + s^2 = 36$."
+  B: "That's $6 \\times 2$. Use $s^2 + s^2 = 36$."
+  D: "That's $6 \\times 4$, the perimeter if the diagonal were a side."
+  E: "That's the area of a square with **sides** of 6. The 6 is the diagonal."
 verify: "(() => { const sideSquared = range(1, 36).find((s) => s + s === 6 * 6); return sideSquared; })()"
 ---
 
@@ -11,6 +17,10 @@ A square has a diagonal of length 6. What is the area of the square?
 ## Hint
 
 The diagonal is the hypotenuse of a right triangle with two equal legs. You don't need to find the side length itself. You only need the side times itself.
+
+## Hint 2
+
+$s^2 + s^2 = 36$, so $s^2 = 18$. What does $s^2$ tell you about the area?
 
 ## Solution
 

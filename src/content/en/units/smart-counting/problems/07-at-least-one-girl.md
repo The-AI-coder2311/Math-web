@@ -1,8 +1,14 @@
 ---
-order: 7
+order: 10
 difficulty: medium
-choices: [4, 18, 31, 34, 35]
+lesson: 04-grid-paths
+choices: ["4","18","31","34","35"]
 answer: D
+mistakes:
+  A: "That's the number of girls. A team with at least one girl can have 1, 2, or 3."
+  B: "That counts only some of the teams. Use the opposite: all teams minus all-boy teams."
+  C: "That subtracts 4. There's only 1 all-boy team, since there are only 3 boys."
+  E: "That's every team, including the all-boy one."
 verify: "combos(['B1', 'B2', 'B3', 'G1', 'G2', 'G3', 'G4'], 3).filter((team) => team.some((p) => p[0] === 'G')).length"
 ---
 
@@ -11,6 +17,10 @@ A group has 3 boys and 4 girls. A team of 3 people will be chosen from the group
 ## Hint
 
 Count all the possible teams first. Then which teams don't have a girl?
+
+## Hint 2
+
+There are $\binom{7}{3} = 35$ teams in all. How many have no girls?
 
 ## Solution
 

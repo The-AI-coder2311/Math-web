@@ -1,8 +1,14 @@
 ---
-order: 9
+order: 16
 difficulty: hard
-choices: [4, 4.8, 5, 5.2, 6]
+lesson: 03-helper-lines
+choices: ["4","4.8","5","5.2","6"]
 answer: B
+mistakes:
+  A: "That's half of 8. Use the area in two ways."
+  C: "That's half of the hypotenuse, which is the distance to its midpoint. The height is a little shorter."
+  D: "Use the area in two ways: $5h = 24$."
+  E: "That's a leg. The height has to be shorter than either leg."
 verify: "(() => { const c = range(1, 20).find((x) => x * x === 6 * 6 + 8 * 8); const area = (6 * 8) / 2; return (2 * area) / c; })()"
 ---
 
@@ -11,6 +17,10 @@ A right triangle has legs of length 6 and 8. A line is drawn from the right angl
 ## Hint
 
 You can find the triangle's area in two different ways, using two different bases. Both have to give the same area.
+
+## Hint 2
+
+The area is 24. Using the hypotenuse as the base: $\frac{1}{2} \times 10 \times h = 24$.
 
 ## Solution
 

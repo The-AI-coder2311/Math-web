@@ -1,8 +1,14 @@
 ---
-order: 7
+order: 9
 difficulty: medium
-choices: [22, 24, 25, 26, 50]
+lesson: 03-distance-rate-time
+choices: ["22","24","25","26","50"]
 answer: B
+mistakes:
+  A: "Find the total distance and the total time. It's 120 miles in 5 hours."
+  C: "That's the average of 30 and 20. Lena spends more time at the slower speed, so the average is lower."
+  D: "Find the total distance and the total time. It's 120 miles in 5 hours."
+  E: "That's $30 + 20$. Speeds don't add up across parts of a trip."
 verify: "(60 + 60) / (60 / 30 + 60 / 20)"
 ---
 
@@ -11,6 +17,10 @@ Lena bikes 60 miles at 30 miles per hour. Then she bikes 60 more miles at 20 mil
 ## Hint
 
 Average speed isn't the average of the two speeds. It's the total distance divided by the total time.
+
+## Hint 2
+
+The first part takes 2 hours, and the second takes 3 hours. That's 120 miles in 5 hours.
 
 ## Solution
 

@@ -1,8 +1,14 @@
 ---
 order: 2
 difficulty: easy
-choices: [5, 5.5, 6, 7, 9]
+lesson: 02-median-tables-graphs
+choices: ["5","5.5","6","7","9"]
 answer: C
+mistakes:
+  A: "That's one of the two middle numbers. With an even count, average them."
+  B: "That's close to the mean, about 5.5. The median is the middle, once sorted."
+  D: "That's one of the two middle numbers. With an even count, average them."
+  E: "That's the middle of the list as written. Sort the list first."
 verify: "(() => { const list = [7, 3, 9, 1, 5, 8].sort((a, b) => a - b); return (list[2] + list[3]) / 2; })()"
 ---
 
@@ -13,6 +19,10 @@ $$7, \ 3, \ 9, \ 1, \ 5, \ 8$$
 ## Hint
 
 Put them in order first. There's an even number of values, so what do you do with the two in the middle?
+
+## Hint 2
+
+In order, the numbers are 1, 3, 5, 7, 8, 9. Average the two in the middle.
 
 ## Solution
 

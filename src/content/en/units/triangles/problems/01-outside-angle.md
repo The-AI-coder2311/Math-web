@@ -1,8 +1,14 @@
 ---
 order: 1
 difficulty: easy
-choices: [25, 75, 105, 115, 140]
+lesson: 01-angle-chasing
+choices: ["25","75","105","115","140"]
 answer: C
+mistakes:
+  A: "That's $65 - 40$. The outside angle equals the sum of the two far angles."
+  B: "That's the third inside angle. The outside angle makes a straight line with it."
+  D: "Check your sum: $40 + 65$ is 105."
+  E: "That's $180 - 40$, the outside angle at a different corner."
 verify: "180 - (180 - 40 - 65)"
 ---
 
@@ -11,6 +17,10 @@ Two angles inside a triangle measure 40° and 65°. One side next to the third a
 ## Hint
 
 The third angle and the outside angle make a straight line. Or you could use the shortcut from the lesson.
+
+## Hint 2
+
+The third angle is 75°. The outside angle makes a straight line with it.
 
 ## Solution
 

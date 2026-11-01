@@ -5,10 +5,9 @@
 // It also checks the arithmetic in every math formula, and that each problem is
 // complete. Any error stops the build so a wrong key can't be published.
 //
-// A unit is held to the full writing standard once it has grown up: lessons from
-// 3 lessons on, problems from 20 problems on. Before that, gaps are counted but
-// don't stop the build. Set REQUIRE_FULL_STANDARD to make every unit meet it.
-// Add --standards to the command to list every gap.
+// Every unit is held to the full writing standard. A new unit stays exempt only
+// while it has fewer than 3 lessons and 20 problems, if you set
+// REQUIRE_FULL_STANDARD to false while drafting. Add --standards to list every gap.
 //
 // To check a different folder (such as a test copy): node scripts/verify-answers.mjs <folder>
 import { readdirSync, readFileSync, statSync } from 'node:fs';
@@ -18,7 +17,7 @@ import { parse } from 'yaml';
 const args = process.argv.slice(2);
 const listGaps = args.includes('--standards');
 const root = args.find((arg) => !arg.startsWith('--')) || 'src/content';
-const REQUIRE_FULL_STANDARD = false;
+const REQUIRE_FULL_STANDARD = true;
 const errors = [];
 const warnings = [];
 const gaps = [];

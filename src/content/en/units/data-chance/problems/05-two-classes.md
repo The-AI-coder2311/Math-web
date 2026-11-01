@@ -1,8 +1,14 @@
 ---
-order: 5
+order: 8
 difficulty: medium
-choices: [72, 75, 78, 80, 85]
+lesson: 01-the-total-trick
+choices: ["72","75","78","80","85"]
 answer: B
+mistakes:
+  A: "Check it: the total is 3,600 points, and $3600 \\div 48 = 75$."
+  C: "Check it: the total is 3,600 points, and $3600 \\div 48 = 75$."
+  D: "That's halfway between 70 and 90. The larger class counts for more."
+  E: "That's closer to the smaller class. The larger class pulls the mean toward 70."
 verify: "(12 * 90 + 36 * 70) / (12 + 36)"
 ---
 
@@ -11,6 +17,10 @@ A class of 12 students has a mean score of 90 on a quiz. Another class of 36 stu
 ## Hint
 
 The classes aren't the same size, so you can't take the number halfway between. Find the total points.
+
+## Hint 2
+
+The totals are 1,080 and 2,520 points, for 48 students.
 
 ## Solution
 

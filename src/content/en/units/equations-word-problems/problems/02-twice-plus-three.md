@@ -1,8 +1,14 @@
 ---
 order: 2
 difficulty: easy
-choices: [8, 10, 11, 16, 22]
+lesson: 01-solving-and-translating
+choices: ["8","10","11","16","22"]
 answer: A
+mistakes:
+  B: "That's from $2n = 20$. Check by putting it back: $2 \\times 10 + 3$ is 23."
+  C: "That adds 3 to 19 before halving. To undo \"plus 3,\" subtract 3."
+  D: "That's $2n$. You still need to divide by 2."
+  E: "That's $19 + 3$. Undo the steps in reverse: subtract 3, and then divide by 2."
 verify: "range(1, 50).find((n) => 2 * n + 3 === 19)"
 ---
 
@@ -11,6 +17,10 @@ Three more than twice a number is 19. What is the number?
 ## Hint
 
 Call the number $n$. How would you write "twice a number"? Then how would you write "three more than" that?
+
+## Hint 2
+
+Write $2n + 3 = 19$, and subtract 3 from both sides.
 
 ## Solution
 

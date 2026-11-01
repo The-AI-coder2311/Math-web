@@ -1,8 +1,14 @@
 ---
-order: 4
+order: 8
 difficulty: medium
-choices: [3, 5, 8, 10, 13]
+lesson: 01-difference-of-squares
+choices: ["3","5","8","10","13"]
 answer: C
+mistakes:
+  A: "That's $a - b$. Find $a$ itself."
+  B: "That's $b$. The question asks for $a$."
+  D: "That's half of $13 + 7$. Add the equations: $2a = 16$."
+  E: "That's $a + b$. Find $a$ itself."
 verify: "range(1, 50).find((a) => a * a - (a - 3) * (a - 3) === 39)"
 ---
 
@@ -11,6 +17,10 @@ The numbers $a$ and $b$ satisfy $a - b = 3$ and $a^2 - b^2 = 39$. What is the va
 ## Hint
 
 Factor $a^2 - b^2$. One of the factors is something you already know.
+
+## Hint 2
+
+$(a + b) \times 3 = 39$, so $a + b = 13$. Add this to $a - b = 3$.
 
 ## Solution
 

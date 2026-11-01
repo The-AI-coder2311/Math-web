@@ -1,8 +1,14 @@
 ---
-order: 8
+order: 10
 difficulty: medium
-choices: [0, 1, 2, 4, 6]
+lesson: 04-units-digits-and-remainders
+choices: ["0","1","2","4","6"]
 answer: B
+mistakes:
+  A: "That would mean that the product is a multiple of 7. Neither number is."
+  C: "That's $5 - 3$. Multiply the remainders."
+  D: "Check with real numbers: $10 \\times 12 = 120$, and 120 leaves a remainder of 1."
+  E: "Check with real numbers: $10 \\times 12 = 120$, and 120 leaves a remainder of 1."
 verify: "[...new Set(product([3, 10, 17, 24, 101], [5, 12, 19, 26, 103]).map(([a, b]) => (a * b) % 7))].join()"
 ---
 
@@ -11,6 +17,10 @@ When $a$ is divided by 7, the remainder is 3. When $b$ is divided by 7, the rema
 ## Hint
 
 To find the remainder of a product, you can multiply the remainders alone. You could also test it with real numbers, like 10 and 12.
+
+## Hint 2
+
+$3 \times 5 = 15$. What's the remainder of 15?
 
 ## Solution
 

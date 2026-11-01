@@ -1,8 +1,14 @@
 ---
-order: 9
+order: 16
 difficulty: hard
-choices: [1, 2, 3, 4, 6]
+lesson: 03-gcf-and-lcm
+choices: ["1","2","3","4","6"]
 answer: B
+mistakes:
+  A: "That misses one. The pairs for $x$ and $y$ are 1 and 12, and 3 and 4."
+  C: "That includes 2 and 6, which share a factor of 2. The GCF would be 12."
+  D: "Only pairs with $x$ and $y$ sharing no factors count."
+  E: "That's the GCF. The question asks how many pairs there are."
 verify: "product(range(1, 72), range(1, 72)).filter(([a, b]) => a < b && gcd(a, b) === 6 && lcm(a, b) === 72).length"
 ---
 
@@ -11,6 +17,10 @@ Two whole numbers $a$ and $b$, with $a$ smaller than $b$, have a GCF of 6 and an
 ## Hint
 
 Both numbers are multiples of 6, so write $a = 6x$ and $b = 6y$. If $x$ and $y$ shared a factor, the GCF would be bigger than 6.
+
+## Hint 2
+
+With $a = 6x$ and $b = 6y$, you get $x \times y = 12$. The two can't share a factor.
 
 ## Solution
 

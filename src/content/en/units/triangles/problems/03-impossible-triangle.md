@@ -1,8 +1,14 @@
 ---
 order: 3
 difficulty: easy
-choices: ['3, 4, 5', '2, 3, 6', '5, 5, 8', '4, 6, 9', '7, 8, 9']
+lesson: 03-helper-lines
+choices: ["3, 4, 5","2, 3, 6","5, 5, 8","4, 6, 9","7, 8, 9"]
 answer: B
+mistakes:
+  A: "$3 + 4 = 7$ is more than 5, so this is a real triangle."
+  C: "$5 + 5 = 10$ is more than 8, so this is a real triangle."
+  D: "$4 + 6 = 10$ is more than 9, so this is a real triangle."
+  E: "$7 + 8 = 15$ is more than 9, so this is a real triangle."
 verify: "[[3, 4, 5], [2, 3, 6], [5, 5, 8], [4, 6, 9], [7, 8, 9]].find(([a, b, c]) => a + b <= c).join(', ')"
 ---
 
@@ -11,6 +17,10 @@ Which three lengths **cannot** be the sides of a triangle?
 ## Hint
 
 Add the two shorter sides together. What has to be true of that sum?
+
+## Hint 2
+
+Add the two shortest sides in each choice. Is the sum more than the longest side?
 
 ## Solution
 

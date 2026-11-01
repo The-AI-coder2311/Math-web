@@ -1,8 +1,14 @@
 ---
-order: 9
+order: 16
 difficulty: hard
-choices: [1, 1.5, 2, 2.5, 3]
+lesson: 03-distance-rate-time
+choices: ["1","1.5","2","2.5","3"]
 answer: B
+mistakes:
+  A: "After 1 hour, Mia has gone 50 miles and John 60 miles. She hasn't caught up."
+  C: "After 2 hours, Mia has gone 100 miles and John 90 miles. She's already passed him."
+  D: "That's John's riding time. The question asks for the time after Mia leaves."
+  E: "After 3 hours, Mia is far ahead. Set the two distances equal."
 verify: "range(1, 100).map((n) => n / 10).find((t) => 30 * (t + 1) === 50 * t)"
 ---
 
@@ -11,6 +17,10 @@ John leaves home on a bike and rides at 30 miles per hour. One hour later, Mia l
 ## Hint
 
 When Mia catches up, they've gone the same distance. If Mia has been riding for $t$ hours, how long has John been riding?
+
+## Hint 2
+
+Their distances are equal: $50t = 30(t + 1)$.
 
 ## Solution
 

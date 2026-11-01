@@ -1,8 +1,14 @@
 ---
-order: 8
+order: 11
 difficulty: medium
-choices: [8, 12, 24, 36, 48]
+lesson: 04-boxes-and-3d
+choices: ["8","12","24","36","48"]
 answer: C
+mistakes:
+  A: "That's the corners, which have 3 painted faces."
+  B: "That's the number of edges. Each edge has 2 such cubes."
+  D: "That counts 3 per edge. The 2 corners on each edge don't count."
+  E: "That counts every edge cube, including corners. Corners have 3 painted faces."
 verify: "product(range(1, 4), range(1, 4), range(1, 4)).filter((cube) => cube.filter((x) => x === 1 || x === 4).length === 2).length"
 ---
 
@@ -11,6 +17,10 @@ A cube with sides of 4 is painted on the outside and then cut into 64 small cube
 ## Hint
 
 Small cubes with exactly 2 painted faces sit along the edges of the big cube, but not at the corners. How many are on each edge?
+
+## Hint 2
+
+Each of the 12 edges has 4 small cubes, and 2 of those are corners.
 
 ## Solution
 

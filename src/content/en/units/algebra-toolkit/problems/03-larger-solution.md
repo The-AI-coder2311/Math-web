@@ -1,8 +1,14 @@
 ---
-order: 3
+order: 2
 difficulty: easy
-choices: [2, 3, 4, 7, 12]
+lesson: 03-quadratics-and-vieta
+choices: ["2","3","4","7","12"]
 answer: C
+mistakes:
+  A: "Put it in: $4 - 14 + 12$ is 2, not 0."
+  B: "That's the smaller solution."
+  D: "That's the sum of the solutions."
+  E: "That's the product of the solutions."
 verify: "Math.max(...range(-20, 20).filter((x) => x * x - 7 * x + 12 === 0))"
 ---
 
@@ -11,6 +17,10 @@ What is the larger solution of $x^2 - 7x + 12 = 0$?
 ## Hint
 
 Look for two numbers that multiply to 12 and add to $-7$.
+
+## Hint 2
+
+$(x - 3)(x - 4) = 0$.
 
 ## Solution
 

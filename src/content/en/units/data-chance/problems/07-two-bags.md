@@ -1,8 +1,14 @@
 ---
-order: 7
+order: 9
 difficulty: medium
-choices: ['$\frac{19}{40}$', '$\frac{1}{2}$', '$\frac{4}{9}$', '$\frac{3}{5}$', '$\frac{19}{20}$']
+lesson: 03-multi-step-chance
+choices: ["$\\frac{19}{40}$","$\\frac{1}{2}$","$\\frac{4}{9}$","$\\frac{3}{5}$","$\\frac{19}{20}$"]
 answer: A
+mistakes:
+  B: "The two bags have different chances, so compute each path."
+  C: "That combines the two bags into one, with 4 red out of 9. But each bag has a $\\frac{1}{2}$ chance of being chosen, whatever its size."
+  D: "That's closer to Bag A alone. Add both paths."
+  E: "That adds $\\frac{3}{4} + \\frac{1}{5}$, leaving out the coin. Each path also has a $\\frac{1}{2}$."
 verify: "fraction((20 * 3) / 4 + (20 * 1) / 5, 40)"
 ---
 
@@ -11,6 +17,10 @@ You flip a fair coin. If it lands heads, you draw a marble from Bag A, which has
 ## Hint
 
 There are two paths to a red marble. Multiply along each path, and then add the two paths.
+
+## Hint 2
+
+The two paths are $\frac{1}{2} \times \frac{3}{4}$ and $\frac{1}{2} \times \frac{1}{5}$.
 
 ## Solution
 

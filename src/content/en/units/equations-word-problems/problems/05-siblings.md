@@ -1,8 +1,14 @@
 ---
-order: 5
+order: 7
 difficulty: medium
-choices: [6, 12, 15, 18, 24]
+lesson: 02-age-and-number-stories
+choices: ["6","12","15","18","24"]
 answer: D
+mistakes:
+  A: "That's her brother's age. The question asks about Maya."
+  B: "That's her brother's age in 6 years."
+  C: "Try it: Maya would be 15 and her brother 5. In 6 years, they'd be 21 and 11, and 21 isn't twice 11."
+  E: "That's Maya's age in 6 years. The question asks about her age now."
 verify: "range(1, 40).map((b) => [b, 3 * b]).find(([b, m]) => m + 6 === 2 * (b + 6))[1]"
 ---
 
@@ -11,6 +17,10 @@ Maya is 3 times as old as her brother. In 6 years, Maya will be 2 times as old a
 ## Hint
 
 Make a table with rows for each person and columns for "now" and "in 6 years." Use $b$ for her brother's age now.
+
+## Hint 2
+
+Let her brother be $b$, so Maya is $3b$. In 6 years, $3b + 6 = 2(b + 6)$.
 
 ## Solution
 

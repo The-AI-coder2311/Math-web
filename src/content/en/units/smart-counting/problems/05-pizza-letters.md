@@ -1,8 +1,14 @@
 ---
-order: 5
+order: 8
 difficulty: medium
-choices: [24, 30, 60, 90, 120]
+lesson: 03-repeats
+choices: ["24","30","60","90","120"]
 answer: C
+mistakes:
+  A: "That's $4!$. There are 5 letters."
+  B: "That divides by 4. Only one letter repeats, so divide by $2! = 2$."
+  D: "Check your division: $120 \\div 2$."
+  E: "That treats the two Zs as different. Swapping them doesn't make a new word."
 verify: "new Set(perms([...'PIZZA']).map((p) => p.join(''))).size"
 ---
 
@@ -11,6 +17,10 @@ How many different ways can you arrange the letters in the word PIZZA?
 ## Hint
 
 Arrange 5 letters as if they were all different. Then think about what swapping the two Zs does.
+
+## Hint 2
+
+There are $5! = 120$ orders if the letters are all different. Only the two Zs can swap.
 
 ## Solution
 

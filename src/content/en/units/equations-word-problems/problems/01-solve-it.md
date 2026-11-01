@@ -1,8 +1,14 @@
 ---
 order: 1
 difficulty: easy
-choices: [3, 5, 7, 14, 28]
+lesson: 01-solving-and-translating
+choices: ["3","5","7","14","28"]
 answer: C
+mistakes:
+  A: "That's from $4x = 14$, or subtracting 7 instead of adding. Add 7 to both sides."
+  B: "Put it back in: $4 \\times 5 - 7$ is 13, not 21."
+  D: "That's from subtracting 7 from 21. To undo \"subtract 7,\" add 7."
+  E: "That's $4x$. You still need to divide by 4."
 verify: "range(-50, 50).find((x) => 4 * x - 7 === 21)"
 ---
 
@@ -11,6 +17,10 @@ If $4x - 7 = 21$, what is the value of $x$?
 ## Hint
 
 First, undo the "subtract 7." What should you do to both sides?
+
+## Hint 2
+
+Adding 7 to both sides gives $4x = 28$.
 
 ## Solution
 

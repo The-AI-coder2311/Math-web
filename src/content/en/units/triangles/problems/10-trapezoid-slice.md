@@ -1,8 +1,14 @@
 ---
-order: 10
+order: 17
 difficulty: hard
-choices: [12, 20, 42, 50, 72]
+lesson: 04-similar-triangles
+choices: ["12","20","42","50","72"]
 answer: C
+mistakes:
+  A: "That multiplies 8 by 2.5 and subtracts. Area scales by the scale factor squared."
+  B: "That multiplies 8 by 2.5. Area scales by the scale factor squared."
+  D: "That's the whole triangle. Subtract the small triangle."
+  E: "That's $8 \\times 9$. Compare 4 with the whole side of 10, not 6."
 verify: "(() => { const ratio = (4 + 6) / 4; const whole = 8 * ratio * ratio; return whole - 8; })()"
 ---
 
@@ -11,6 +17,10 @@ In triangle $ABC$, point $D$ is on side $AB$ and point $E$ is on side $AC$, so t
 ## Hint
 
 Triangles $ADE$ and $ABC$ are similar. What's the scale factor? Remember how area changes when lengths are scaled.
+
+## Hint 2
+
+The scale factor is 2.5, so the area is multiplied by $2.5 \times 2.5 = 6.25$.
 
 ## Solution
 

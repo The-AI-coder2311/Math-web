@@ -1,8 +1,14 @@
 ---
-order: 6
+order: 10
 difficulty: medium
-choices: [22, 37, 52, 67, 87]
+lesson: 03-several-conditions
+choices: ["22","37","52","67","87"]
 answer: C
+mistakes:
+  A: "It leaves 1 when divided by 3 and 2 when divided by 5, but 1 when divided by 7."
+  B: "It leaves 1 when divided by 3 and 2 when divided by 5, but 2 when divided by 7."
+  D: "It leaves 1 when divided by 3 and 2 when divided by 5, but 4 when divided by 7."
+  E: "It leaves 2 when divided by 5 and 3 when divided by 7, but 0 when divided by 3."
 verify: "range(1, 1000).find((n) => n % 3 === 1 && n % 5 === 2 && n % 7 === 3)"
 ---
 
@@ -11,6 +17,10 @@ What is the smallest positive whole number that leaves a remainder of 1 when div
 ## Hint
 
 Start with the rule for the biggest number. List the numbers that have a remainder of 3 when divided by 7, and test each against the other rules.
+
+## Hint 2
+
+Numbers leaving 3 when divided by 7: 3, 10, 17, 24, 31, 38, 45, 52. Keep those ending in 2 or 7.
 
 ## Solution
 

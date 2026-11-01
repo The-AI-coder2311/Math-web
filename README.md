@@ -107,7 +107,9 @@ Put math between dollar signs: `$3 \times 4 = 12$`, or `$$3 \times 4 = 12$$` for
 
 - The `verify` code gets the same answer as the answer key.
 - The `**Answer: (C) 12**` line in the solution matches the answer key.
-- All of the answer choices are different, and the hint and solution both exist.
+- All of the answer choices are different, and both hints and the solution exist.
+- Every wrong choice has a mistake note, and the problem has a `lesson:` tag.
+- Each unit has at least 20 problems, close to 30% easy, 45% medium, and 25% hard, and each lesson has at least 2 tagged problems.
 - The arithmetic in each formula is correct. For example, `$5 \times 3 = 16$` gets flagged. It also checks formulas in lessons and teacher pages.
 
 It can't tell whether a problem is worded clearly, or whether your `verify` code solves the right question. That's why a second person should still solve each one.

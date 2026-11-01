@@ -1,8 +1,14 @@
 ---
-order: 7
+order: 9
 difficulty: medium
-choices: [31, 41, 61, 121, 601]
+lesson: 03-gcf-and-lcm
+choices: ["31","41","61","121","601"]
 answer: C
+mistakes:
+  A: "That leaves a remainder of 1 for 2, 3, and 5, but not for 4."
+  B: "That leaves a remainder of 2 when divided by 3."
+  D: "That works, but it isn't the smallest. A smaller number does too."
+  E: "That works, but it isn't the smallest. A smaller number does too."
 verify: "range(2, 1000).find((n) => [2, 3, 4, 5].every((d) => n % d === 1))"
 ---
 
@@ -11,6 +17,10 @@ What is the smallest whole number greater than 1 that leaves a remainder of 1 wh
 ## Hint
 
 If you subtract 1 from the number you want, what do you know about the result?
+
+## Hint 2
+
+The number minus 1 is a common multiple of 2, 3, 4, and 5. What's the LCM?
 
 ## Solution
 

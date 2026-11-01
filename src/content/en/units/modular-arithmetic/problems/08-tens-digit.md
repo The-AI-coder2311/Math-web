@@ -1,8 +1,14 @@
 ---
-order: 8
+order: 16
 difficulty: hard
-choices: [0, 2, 4, 6, 9]
+lesson: 02-giant-powers
+choices: ["0","2","4","6","9"]
 answer: C
+mistakes:
+  A: "That's the tens digit of $7^{100}$, which ends in 01. There are 2 more powers."
+  B: "Check the last two digits of $7^2$: they're 49."
+  D: "Check the last two digits of $7^2$: they're 49."
+  E: "That's the ones digit. The last two digits are 49, so the tens digit is 4."
 verify: "Math.floor(range(1, 102).reduce((r) => (r * 7) % 100, 1) / 10)"
 ---
 
@@ -11,6 +17,10 @@ What is the tens digit of $7^{102}$?
 ## Hint
 
 The last two digits are the remainder mod 100. Find the last two digits of the first few powers of 7. You should reach 01 soon.
+
+## Hint 2
+
+$7^4 = 2401$, so the last two digits repeat every 4 powers. $102 = 4 \times 25 + 2$.
 
 ## Solution
 
