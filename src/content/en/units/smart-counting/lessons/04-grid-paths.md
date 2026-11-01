@@ -114,7 +114,7 @@ Similarly, four-sided shapes number $\binom{6}{4} = \binom{6}{2} = 15$.
 
 ## Connections
 
-Choosing spots came from [arrangements with repeats](/pathway/smart-counting/03-repeats/). The adding table is a form of Pascal's triangle, which you'll explore in Level 3's Advanced Counting unit.
+Choosing spots came from [arrangements with repeats](/pathway/smart-counting/03-repeats/). The adding table is a form of Pascal's triangle, which you'll explore in Level 3's [Advanced Counting](/pathway/advanced-counting/) unit.
 
 </section>
 

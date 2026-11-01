@@ -111,7 +111,7 @@ $$432 + 15 = 447$$
 
 ## Connections
 
-Remainders come from [Number Sense](/pathway/number-sense/). They come back as [units-digit patterns](/pathway/primes-remainders/) in Level 2. Sequences & Series in Level 3 builds on growing patterns.
+Remainders come from [Number Sense](/pathway/number-sense/). They come back as [units-digit patterns](/pathway/primes-remainders/) in Level 2. [Sequences & Series](/pathway/sequences-series/) in Level 3 builds on growing patterns.
 
 </section>
 

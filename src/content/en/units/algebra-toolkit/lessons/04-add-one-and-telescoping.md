@@ -131,7 +131,7 @@ $$\frac{1}{10} \times \frac{11}{2} = \frac{11}{20}$$
 
 ## Connections
 
-This combines [factor pairs](/pathway/number-sense/04-factors-primes-leftovers/) with [difference of squares](/pathway/algebra-toolkit/01-difference-of-squares/). Telescoping appears again in Sequences & Series.
+This combines [factor pairs](/pathway/number-sense/04-factors-primes-leftovers/) with [difference of squares](/pathway/algebra-toolkit/01-difference-of-squares/). Telescoping appears again in [Sequences & Series](/pathway/sequences-series/04-recursive-and-special/).
 
 </section>
 

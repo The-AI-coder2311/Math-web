@@ -114,7 +114,7 @@ So $60 - 57 = 3$ students like none of the three.
 
 ## Connections
 
-This sharpens [counting the opposite](/pathway/counting/04-count-the-opposite/) from Level 1. [Probability](/pathway/intro-probability/04-one-minus/) problems use the same overlap fix, and it returns in Advanced Counting in Level 3.
+This sharpens [counting the opposite](/pathway/counting/04-count-the-opposite/) from Level 1. [Probability](/pathway/intro-probability/04-one-minus/) problems use the same overlap fix, and it returns in [Advanced Counting](/pathway/advanced-counting/) in Level 3.
 
 </section>
 

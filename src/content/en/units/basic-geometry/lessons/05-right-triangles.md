@@ -117,7 +117,7 @@ A rectangle has a length of 8 and a diagonal of 10. What is its area?
 
 ## Connections
 
-Helper lines come from [triangle area](/pathway/basic-geometry/02-triangle-area/). In Level 2, [Triangles](/pathway/triangles/) goes further, and Level 3's Coordinate Geometry unit uses this to find distances.
+Helper lines come from [triangle area](/pathway/basic-geometry/02-triangle-area/). In Level 2, [Triangles](/pathway/triangles/) goes further, and Level 3's [Coordinate Geometry](/pathway/coordinate-geometry/) unit uses this to find distances.
 
 </section>
 

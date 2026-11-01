@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 230" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>Two chords of a circle crossing at point E. Chord AB is cut into pieces 3 and 8. Chord CD is cut into pieces 4 and 6. The products of the pieces match, since 3 times 8 and 4 times 6 are both 24.</title>
+  <circle cx="237.5" cy="124.6" r="87.6" fill="#ffffff" stroke="#b4461a" stroke-width="3" />
+  <g stroke="#2b2622" stroke-width="2.5">
+    <line x1="155" y1="95" x2="320" y2="95" />
+    <line x1="220.5" y1="38.6" x2="169.2" y2="179.6" />
+  </g>
+  <circle cx="200" cy="95" r="3.5" fill="#2b2622" />
+  <g font-weight="700">
+    <text x="140" y="92">A</text>
+    <text x="324" y="92">B</text>
+    <text x="222" y="32">C</text>
+    <text x="154" y="194">D</text>
+    <text x="205" y="112">E</text>
+    <text x="172" y="88">3</text>
+    <text x="256" y="88">8</text>
+    <text x="214" y="70">4</text>
+    <text x="168" y="140">6</text>
+  </g>
+  <text x="345" y="150">3 × 8 = 24</text>
+  <text x="345" y="176">4 × 6 = 24</text>
+</svg>

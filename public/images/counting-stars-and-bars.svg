@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 170" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>Five identical cookies shared by three kids, drawn as a row of 5 dots and 2 bars. Two dots, then a bar, then one dot, then a bar, then two dots means the kids get 2, 1 and 2 cookies. A bar, then 4 dots, then a bar, then one dot means the kids get 0, 4 and 1 cookies.</title>
+  <g fill="#b4461a">
+    <circle cx="40" cy="45" r="11" /><circle cx="72" cy="45" r="11" />
+    <circle cx="136" cy="45" r="11" />
+    <circle cx="200" cy="45" r="11" /><circle cx="232" cy="45" r="11" />
+    <circle cx="72" cy="115" r="11" /><circle cx="104" cy="115" r="11" /><circle cx="136" cy="115" r="11" /><circle cx="168" cy="115" r="11" />
+    <circle cx="232" cy="115" r="11" />
+  </g>
+  <g stroke="#2b2622" stroke-width="4">
+    <line x1="104" y1="22" x2="104" y2="68" />
+    <line x1="168" y1="22" x2="168" y2="68" />
+    <line x1="40" y1="92" x2="40" y2="138" />
+    <line x1="200" y1="92" x2="200" y2="138" />
+  </g>
+  <g font-weight="700">
+    <text x="270" y="51">Kids get 2, 1, and 2</text>
+    <text x="270" y="121">Kids get 0, 4, and 1</text>
+  </g>
+</svg>

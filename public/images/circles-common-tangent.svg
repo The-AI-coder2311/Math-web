@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 230" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>Two circles of radius 4 and 9 that touch each other, both resting on a straight line. A dashed helper line from the smaller center runs level to below the larger center, making a right triangle with legs 12 and 5 and hypotenuse 13.</title>
+  <line x1="20" y1="210" x2="330" y2="210" stroke="#2b2622" stroke-width="2.5" />
+  <circle cx="70" cy="170" r="40" fill="#ffffff" stroke="#b4461a" stroke-width="3" />
+  <circle cx="190" cy="120" r="90" fill="#ffffff" stroke="#b4461a" stroke-width="3" />
+  <g stroke="#2b2622" stroke-width="2" stroke-dasharray="5 5">
+    <line x1="70" y1="170" x2="190" y2="170" />
+    <line x1="190" y1="120" x2="190" y2="210" />
+    <line x1="70" y1="170" x2="190" y2="120" />
+    <line x1="70" y1="170" x2="70" y2="210" />
+  </g>
+  <g font-weight="700">
+    <text x="58" y="195">4</text>
+    <text x="197" y="150">5</text>
+    <text x="197" y="195">4</text>
+    <text x="140" y="188">12</text>
+    <text x="112" y="136">13</text>
+  </g>
+  <text x="345" y="110">Small radius: 4</text>
+  <text x="345" y="136">Large radius: 9</text>
+  <text x="345" y="162">9 − 4 = 5</text>
+  <text x="345" y="188">4 + 9 = 13</text>
+</svg>

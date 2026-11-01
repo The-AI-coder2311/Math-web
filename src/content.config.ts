@@ -45,7 +45,7 @@ const problems = defineCollection({
     // The lesson file this problem practices, such as 02-when-order-matters.
     lesson: z.string().optional(),
     // For each wrong choice, what a student who picked it probably did.
-    mistakes: z.record(z.enum(['A', 'B', 'C', 'D', 'E', 'F']), z.string()).optional(),
+    mistakes: z.record(z.string(), z.string()).optional(),
   }),
 });
 

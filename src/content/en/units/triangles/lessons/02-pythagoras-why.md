@@ -123,7 +123,7 @@ Using two Pythagorean triples in a row is a favorite contest idea.
 
 ## Connections
 
-This deepens [the first look at right triangles](/pathway/basic-geometry/05-right-triangles/) from Level 1. The same theorem finds distances in Coordinate Geometry in Level 3.
+This deepens [the first look at right triangles](/pathway/basic-geometry/05-right-triangles/) from Level 1. The same theorem finds distances in [Coordinate Geometry](/pathway/coordinate-geometry/) in Level 3.
 
 </section>
 

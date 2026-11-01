@@ -110,7 +110,7 @@ In triangle $ABC$, a line parallel to $BC$ cuts off a small triangle at the top.
 
 ## Connections
 
-This uses [ratios](/pathway/fractions-ratios/02-ratios-as-boxes/) and [scaling](/pathway/fractions-ratios/03-rates-and-scaling/). Level 3's Similar Shapes & Circle Theorems unit extends these ideas to circles.
+This uses [ratios](/pathway/fractions-ratios/02-ratios-as-boxes/) and [scaling](/pathway/fractions-ratios/03-rates-and-scaling/). Level 3's [Similar Shapes & Circle Theorems](/pathway/similar-shapes-circles/) unit extends these ideas to circles.
 
 </section>
 

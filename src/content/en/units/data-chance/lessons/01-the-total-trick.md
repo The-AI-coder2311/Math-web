@@ -102,7 +102,7 @@ The new mean is $72 + 2 = 74$.
 
 ## Connections
 
-The middle of an evenly spaced list comes back in Sequences & Series in Level 3. Next, you'll look at [median, mode, and tables](/pathway/data-chance/02-median-tables-graphs/).
+The middle of an evenly spaced list comes back in [Sequences & Series](/pathway/sequences-series/) in Level 3. Next, you'll look at [median, mode, and tables](/pathway/data-chance/02-median-tables-graphs/).
 
 </section>
 

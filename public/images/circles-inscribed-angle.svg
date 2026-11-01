@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 220" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>A circle with center O and points A, B and C on it. Angle AOB at the center measures 80 degrees. Angle ACB at the edge, looking at the same arc, measures 40 degrees, which is half as much.</title>
+  <circle cx="130" cy="110" r="90" fill="#ffffff" stroke="#b4461a" stroke-width="3" />
+  <g stroke="#b4461a" stroke-width="2.5" fill="none">
+    <polyline points="72.1,178.9 130,20 187.9,178.9" />
+    <polyline points="72.1,178.9 130,110 187.9,178.9" stroke="#2b2622" />
+  </g>
+  <circle cx="130" cy="110" r="3.5" fill="#2b2622" />
+  <g font-weight="700">
+    <text x="124" y="15">C</text>
+    <text x="54" y="194">A</text>
+    <text x="194" y="194">B</text>
+    <text x="110" y="104">O</text>
+    <text x="118" y="145">80°</text>
+    <text x="116" y="80" font-size="15">40°</text>
+  </g>
+  <text x="250" y="90" font-weight="700">At the center: 80°</text>
+  <text x="250" y="120" font-weight="700">At the edge: 40°</text>
+  <text x="250" y="150">Same arc, half the angle</text>
+</svg>
