@@ -1,0 +1,139 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../layouts/Base.astro';
+import { getFormulas } from '../../lib/content';
+import { renderInline, renderMarkdown } from '../../lib/markdown';
+import { href, localePaths, t } from '../../i18n/config';
+import { contestRules } from '../../site.config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const all = t(lang);
+const text = all.formulas;
+const { sections, tips, traps } = await getFormulas(lang);
+const amc10 = contestRules['AMC 10'];
+const count = (keep: (stretch: boolean) => boolean) =>
+  sections
+    .flatMap((section) => section.groups)
+    .flatMap((group) => [...(group.items ?? []).map((item) => Boolean(item.stretch)), ...(group.table ? [Boolean(group.stretch)] : [])])
+    .filter(keep).length;
+const total = count(() => true);
+---
+<Base title={text.title} description={text.description} lang={lang} current="formulas">
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <p>{text.howTo}</p>
+  <div class="index-tools no-print needs-js">
+    <label for="formula-filter">{text.filterLabel}</label>
+    <select id="formula-filter" data-formula-filter>
+      <option value="all">{text.all}</option>
+      <option value="core">{text.core}</option>
+    </select>
+    <button class="btn" type="button" data-print>{text.print}</button>
+  </div>
+  <p class="no-print needs-js" role="status" data-formula-status data-all={text.status(total, total)} data-core={text.status(count((stretch) => !stretch), total)}>{text.status(total, total)}</p>
+  <nav class="formula-toc no-print" aria-label={text.tocLabel}>
+    <ul>
+      {sections.map((section) => <li><a href={`#${section.slug}`}>{section.title}</a></li>)}
+      <li><a href="#contest-day">{text.contestDay}</a></li>
+    </ul>
+  </nav>
+
+  {sections.map((section) => (
+    <section class="formula-section" aria-labelledby={section.slug}>
+      <h2 id={section.slug} tabindex="-1">{section.title}</h2>
+      <p>{section.intro}</p>
+      {section.groups.map((group) => (
+        <section class="formula-group" data-formula-group>
+          <h3>{group.title}</h3>
+          {group.lesson && (
+            <p class="muted no-print">{text.learn} <a class="tap-link" href={href(lang, group.lesson.path)}>{group.lesson.title}</a></p>
+          )}
+          {group.table && (
+            <div data-formula-item data-stretch={group.stretch ? 'true' : undefined}>
+              {group.stretch && <p><span class="pill">{text.stretch}</span></p>}
+              <div class="table-scroll">
+                <table class="data-table">
+                  <caption class="sr-only">{group.table.caption}</caption>
+                  <thead>
+                    <tr>
+                      {group.table.headers.map((header) => (header ? <th scope="col">{header}</th> : <td></td>))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {group.table.rows.map((row) => (
+                      <tr>
+                        {row.map((cell, i) => (i === 0 ? <th scope="row" set:html={renderInline(cell)} /> : <td set:html={renderInline(cell)} />))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          )}
+          {group.items && (
+            <ul class="formula-list">
+              {group.items.map((item) => (
+                <li data-formula-item data-stretch={item.stretch ? 'true' : undefined}>
+                  <p class="formula-name">
+                    <strong set:html={renderInline(item.name)} />
+                    {item.stretch && <span class="pill">{text.stretch}</span>}
+                  </p>
+                  {item.math && <div set:html={renderMarkdown(`$$${item.math}$$`)} />}
+                  {item.text && <p set:html={renderInline(item.text)} />}
+                  {item.note && <p class="muted" set:html={renderInline(item.note)} />}
+                  {item.lesson && (
+                    <p class="muted no-print">{text.learn} <a class="tap-link" href={href(lang, item.lesson.path)}>{item.lesson.title}</a></p>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
+      <section class="formula-group prose">
+        <h3>{text.tryTitle(section.title)}</h3>
+        <ol>
+          {section.examples.map((example) => (
+            <li>
+              <p set:html={renderInline(example.question)} />
+              <details class="check">
+                <summary>{text.showAnswer}</summary>
+                <p set:html={renderInline(example.solution)} />
+              </details>
+            </li>
+          ))}
+        </ol>
+      </section>
+    </section>
+  ))}
+
+  <section class="formula-section" aria-labelledby="contest-day">
+    <h2 id="contest-day" tabindex="-1">{text.contestDay}</h2>
+    <p>{all.contests.scoring('AMC 10', amc10.correct, amc10.blank, amc10.wrong)}</p>
+    <p>{text.guess(amc10.blank, amc10.correct / 5, amc10.correct / 3)}</p>
+    <h3>{text.tipsTitle}</h3>
+    <ul>
+      {tips.map((tip) => <li set:html={renderInline(tip)} />)}
+    </ul>
+    <h3>{text.trapsTitle}</h3>
+    <ul>
+      {traps.map((trap) => <li set:html={renderInline(trap)} />)}
+    </ul>
+  </section>
+</Base>
+<script>
+  const filter = document.querySelector('[data-formula-filter]') as HTMLSelectElement;
+  const status = document.querySelector('[data-formula-status]') as HTMLElement;
+  filter.addEventListener('change', () => {
+    const coreOnly = filter.value === 'core';
+    document.querySelectorAll<HTMLElement>('[data-stretch]').forEach((item) => {
+      item.hidden = coreOnly;
+    });
+    document.querySelectorAll<HTMLElement>('[data-formula-group]').forEach((group) => {
+      group.hidden = ![...group.querySelectorAll<HTMLElement>('[data-formula-item]')].some((item) => !item.hidden);
+    });
+    status.textContent = (coreOnly ? status.dataset.core : status.dataset.all) as string;
+  });
+</script>

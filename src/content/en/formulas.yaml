@@ -1,0 +1,698 @@
+# The Formulas page. Each group can link to the lesson that teaches it, as unit/lesson-file.
+# `stretch: true` marks a formula most students can learn later. The rest are must-knows.
+# A `verify` on an example is checked against its `answer` by npm run verify.
+sections:
+  - slug: algebra
+    title: Algebra
+    intro: Most contest algebra is about spotting a pattern, so you can skip the long calculation.
+    groups:
+      - title: Factoring patterns
+        lesson: algebra-toolkit/01-difference-of-squares
+        items:
+          - name: Square of a sum and of a difference
+            math: '(a+b)^2 = a^2 + 2ab + b^2 \qquad (a-b)^2 = a^2 - 2ab + b^2'
+          - name: Difference of squares
+            math: 'a^2 - b^2 = (a-b)(a+b)'
+            note: 'Great for mental math, such as $99 \times 101 = 100^2 - 1^2$.'
+          - name: Sum and difference of cubes
+            math: 'a^3 + b^3 = (a+b)(a^2 - ab + b^2) \qquad a^3 - b^3 = (a-b)(a^2 + ab + b^2)'
+            stretch: true
+          - name: Cube of a sum
+            math: '(a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3'
+            stretch: true
+          - name: Square of three terms
+            math: '(a+b+c)^2 = a^2 + b^2 + c^2 + 2(ab + bc + ca)'
+            stretch: true
+          - name: Adding one to factor
+            math: 'xy + x + y + 1 = (x+1)(y+1)'
+            note: 'Often called Simon''s Favorite Factoring Trick. Use it when an equation has $xy$, $x$, and $y$, and you want whole-number solutions.'
+          - name: Difference of two powers
+            math: 'x^n - y^n = (x-y)(x^{n-1} + x^{n-2}y + \cdots + y^{n-1})'
+            note: 'So $x - y$ always divides $x^n - y^n$.'
+            stretch: true
+          - name: Sophie Germain identity
+            math: 'a^4 + 4b^4 = (a^2+2b^2+2ab)(a^2+2b^2-2ab)'
+            stretch: true
+          - name: Three cubes
+            math: 'a^3+b^3+c^3-3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca)'
+            stretch: true
+      - title: Quadratics and their solutions
+        lesson: algebra-toolkit/03-quadratics-and-vieta
+        items:
+          - name: Quadratic formula
+            math: 'ax^2 + bx + c = 0 \implies x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}'
+          - name: Sum and product of the solutions (Vieta)
+            math: 'r + s = -\frac{b}{a} \qquad rs = \frac{c}{a}'
+            note: 'Here, $r$ and $s$ are the solutions of $ax^2 + bx + c = 0$.'
+          - name: Combinations of the solutions
+            math: 'r^2 + s^2 = (r+s)^2 - 2rs \qquad \frac{1}{r} + \frac{1}{s} = \frac{r+s}{rs}'
+          - name: Difference of the solutions
+            math: '(r-s)^2 = (r+s)^2 - 4rs'
+            stretch: true
+          - name: The discriminant
+            math: 'D = b^2 - 4ac'
+            note: 'If $D > 0$, there are two real solutions. If $D = 0$, there is one repeated solution. If $D < 0$, there are no real solutions.'
+            stretch: true
+          - name: Vertex of a parabola
+            math: 'y = ax^2 + bx + c \text{ turns around at } x = -\frac{b}{2a}'
+            stretch: true
+          - name: Vieta for a cubic
+            math: 'r+s+t = -\frac{b}{a} \qquad rs+st+tr = \frac{c}{a} \qquad rst = -\frac{d}{a}'
+            note: 'For $ax^3 + bx^2 + cx + d = 0$.'
+            stretch: true
+      - title: Sequences and sums
+        lesson: sequences-series/02-fast-sums
+        items:
+          - name: Arithmetic sequence
+            math: 'a_n = a_1 + (n-1)d \qquad S_n = \frac{n(a_1 + a_n)}{2}'
+            note: 'The sum is the number of terms times the average of the first and last terms.'
+          - name: Sum of the first $n$ whole numbers
+            math: '1 + 2 + \cdots + n = \frac{n(n+1)}{2}'
+          - name: Sum of the first $n$ odd numbers
+            math: '1 + 3 + 5 + \cdots + (2n-1) = n^2'
+          - name: Geometric sequence
+            math: 'a_n = a_1 r^{n-1} \qquad S_n = a_1 \cdot \frac{1 - r^n}{1 - r}'
+          - name: Sum that goes on forever
+            math: 'S = \frac{a_1}{1-r}'
+            note: 'This only works when $r$ is between $-1$ and 1.'
+            stretch: true
+          - name: Sums of squares and cubes
+            math: '1^2 + \cdots + n^2 = \frac{n(n+1)(2n+1)}{6} \qquad 1^3 + \cdots + n^3 = \left(\frac{n(n+1)}{2}\right)^2'
+            stretch: true
+          - name: Telescoping fractions
+            math: '\frac{1}{k(k+1)} = \frac{1}{k} - \frac{1}{k+1}'
+            note: 'Write each term this way, and nearly everything cancels.'
+      - title: Exponents and logarithms
+        items:
+          - name: Exponent rules
+            math: 'a^m a^n = a^{m+n} \qquad (a^m)^n = a^{mn} \qquad a^{-n} = \frac{1}{a^n} \qquad a^{1/n} = \sqrt[n]{a}'
+          - name: What a logarithm means
+            math: '\log_b x = y \iff b^y = x'
+            stretch: true
+          - name: Logarithm rules
+            math: '\log_b(xy) = \log_b x + \log_b y \qquad \log_b(x^k) = k\log_b x'
+            stretch: true
+          - name: Changing the base
+            math: '\log_b a = \frac{\log_c a}{\log_c b} \qquad \log_b a \cdot \log_a b = 1'
+            stretch: true
+      - title: Biggest and smallest values
+        lesson: algebra-toolkit/05-am-gm-inequality
+        items:
+          - name: AM-GM inequality
+            math: '\frac{a+b}{2} \ge \sqrt{ab}'
+            note: 'For $a, b \ge 0$. The two sides are equal only when $a = b$. For example, $x + \frac{1}{x} \ge 2$ when $x > 0$.'
+            stretch: true
+          - name: Equal parts win
+            text: 'With a fixed sum, a product is largest when the parts are equal. So among rectangles with the same perimeter, the square has the most area.'
+          - name: Squares are never negative
+            math: 'x^2 \ge 0'
+            note: 'Complete the square to find the smallest or largest value of a quadratic.'
+            stretch: true
+      - title: Rates, averages, and everyday math
+        lesson: equations-word-problems/03-distance-rate-time
+        items:
+          - name: Distance, rate, and time
+            math: 'd = rt'
+          - name: Working together
+            math: '\text{combined rate} = \frac{1}{a} + \frac{1}{b} \text{ jobs per hour}'
+            note: 'If one person takes $a$ hours and another takes $b$ hours, add their rates, not their times.'
+          - name: Average speed over equal distances
+            math: '\text{average speed} = \frac{2ab}{a+b}'
+            note: 'It always comes from total distance divided by total time. It is not $\frac{a+b}{2}$.'
+          - name: Adding a score to an average
+            math: '\text{new average} = \frac{nA + x}{n+1}'
+            note: 'For $n$ scores with average $A$, plus one new score $x$.'
+          - name: Weighted average
+            math: '\frac{n_1 a_1 + n_2 a_2}{n_1 + n_2}'
+          - name: Percent up, then the same percent down
+            text: 'You end up below where you started, since the second percent is taken from a bigger number.'
+          - name: Repeating decimals
+            math: '0.\overline{ab} = \frac{ab}{99}'
+            note: 'Here, $ab$ means the two-digit number. For example, $0.\overline{36} = \frac{36}{99} = \frac{4}{11}$.'
+      - title: Floors, distance, and polynomials
+        items:
+          - name: The floor of a number
+            math: '\lfloor x \rfloor = n \text{ means } n \le x < n + 1'
+            note: 'The floor is the greatest whole number that is not above $x$.'
+            stretch: true
+          - name: Absolute value as distance
+            text: '$|x - a|$ is the distance from $x$ to $a$ on the number line.'
+          - name: Remainder theorem
+            text: 'When $p(x)$ is divided by $x - a$, the remainder is $p(a)$. So $x - a$ is a factor exactly when $p(a) = 0$.'
+            stretch: true
+          - name: Rational root theorem
+            text: 'If a polynomial has whole-number coefficients, any fraction solution $\frac{p}{q}$ in lowest terms has $p$ dividing the constant term and $q$ dividing the leading coefficient.'
+            stretch: true
+          - name: Adding up coefficients
+            text: 'The coefficients of $p(x)$ add up to $p(1)$. The coefficients of the even powers add up to $\frac{p(1) + p(-1)}{2}$.'
+            stretch: true
+    examples:
+      - question: 'Let $r$ and $s$ be the solutions of $x^2 - 7x + 4 = 0$. What is $r^2 + s^2$?'
+        solution: 'The sum is 7 and the product is 4, so $r^2 + s^2 = 7^2 - 2 \times 4 = 41$.'
+        verify: '7 ** 2 - 2 * 4'
+        answer: '41'
+      - question: 'How many pairs of positive whole numbers $(x, y)$ have $xy - 2x - 2y = 0$?'
+        solution: 'Add 4 to both sides to get $(x-2)(y-2) = 4$. The factor pairs $(1, 4)$, $(2, 2)$, and $(4, 1)$ give $(3, 6)$, $(4, 4)$, and $(6, 3)$. Negative pairs make $x$ or $y$ too small. There are 3 pairs.'
+        verify: 'product(range(1, 100), range(1, 100)).filter(([x, y]) => x * y - 2 * x - 2 * y === 0).length'
+        answer: '3'
+      - question: 'You bike to a park at 10 miles per hour and back at 15 miles per hour. What is your average speed?'
+        solution: 'Use $\frac{2ab}{a+b} = \frac{2 \times 10 \times 15}{10 + 15} = \frac{300}{25} = 12$ miles per hour, not 12.5.'
+        verify: '(2 * 10 * 15) / (10 + 15)'
+        answer: '12'
+
+  - slug: number-theory
+    title: Number theory
+    intro: Most contest number theory starts with a prime factorization or a remainder.
+    groups:
+      - title: Factors and primes
+        lesson: primes-remainders/02-counting-divisors
+        items:
+          - name: Counting factors
+            math: 'n = p^a q^b \cdots \implies \text{number of factors} = (a+1)(b+1)\cdots'
+            note: 'For example, $72 = 2^3 \times 3^2$ has $4 \times 3 = 12$ factors.'
+          - name: Which numbers have an odd number of factors?
+            text: 'Only perfect squares do.'
+          - name: Testing for a prime
+            text: 'Check for prime factors up to $\sqrt{n}$. If none divide $n$, it is prime.'
+          - name: Primes under 50
+            text: '2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47'
+          - name: Adding up the factors
+            math: '(1 + p + \cdots + p^a)(1 + q + \cdots + q^b)\cdots'
+            stretch: true
+          - name: Multiplying all the factors
+            math: 'n^{d/2}'
+            note: 'Here, $d$ is the number of factors of $n$.'
+            stretch: true
+      - title: GCF and LCM
+        lesson: primes-remainders/03-gcf-and-lcm
+        items:
+          - name: The product rule
+            math: '\gcd(a,b) \times \operatorname{lcm}(a,b) = ab'
+          - name: Using prime factorizations
+            text: 'The GCF takes the smaller power of each prime. The LCM takes the larger power.'
+          - name: Neighbors share no factors
+            math: '\gcd(n, n+1) = 1'
+          - name: Euclidean algorithm
+            math: '\gcd(a, b) = \gcd(b,\ a \bmod b) = \gcd(a - b,\ b)'
+            stretch: true
+      - title: Divisibility rules
+        lesson: number-sense/03-divisibility-rules
+        table:
+          caption: 'How to test whether a number is divisible by a smaller number'
+          headers: ['Divisible by', 'Test']
+          rows:
+            - ['2, 5, 10', 'Look at the last digit']
+            - ['4', 'The last 2 digits are divisible by 4']
+            - ['8', 'The last 3 digits are divisible by 8']
+            - ['3, 9', 'The digit sum is divisible by 3 or 9']
+            - ['11', 'The alternating digit sum is divisible by 11']
+            - ['6, 12, 15', 'Test each part, such as 2 and 3 for 6']
+            - ['7', 'Double the last digit, and subtract it from the rest. Repeat as needed']
+      - title: Remainders
+        lesson: modular-arithmetic/01-mod-notation
+        items:
+          - name: What $\equiv$ means
+            math: 'a \equiv b \pmod n \text{ means } n \text{ divides } a - b'
+          - name: Remainders behave
+            math: 'a \equiv b,\ c \equiv d \implies a \pm c \equiv b \pm d, \quad ac \equiv bd, \quad a^k \equiv b^k'
+            note: 'Reduce at every step, so the numbers stay small. Only divide by numbers that share no factors with $n$.'
+          - name: Last digits
+            text: 'Mod 10 gives the last digit, and mod 100 gives the last two digits.'
+          - name: Digit sums
+            text: 'A number and its digit sum have the same remainder mod 9.'
+          - name: Use negative numbers
+            math: '13 \equiv -1 \pmod 7, \text{ so } 13^{100} \equiv 1 \pmod 7'
+          - name: Two conditions at once
+            text: 'If $m$ and $n$ share no factors, then $x \equiv a \pmod m$ and $x \equiv b \pmod n$ have exactly one solution mod $mn$. List the numbers that fit one condition, and test them against the other. This is the Chinese Remainder Theorem.'
+            stretch: true
+          - name: Squares mod small numbers
+            text: 'A square is 0 or 1 mod 3, and 0 or 1 mod 4. An odd square is 1 mod 8. A square ends in 0, 1, 4, 5, 6, or 9. These facts can prove that an equation has no solution.'
+          - name: Fermat's Little Theorem
+            math: 'p \text{ prime, } p \nmid a \implies a^{p-1} \equiv 1 \pmod p'
+            stretch: true
+            lesson: modular-arithmetic/05-fermat-and-euler
+          - name: Euler's theorem
+            math: '\varphi(n) = n\left(1 - \frac{1}{p_1}\right)\left(1 - \frac{1}{p_2}\right)\cdots \qquad \gcd(a,n)=1 \implies a^{\varphi(n)} \equiv 1 \pmod n'
+            note: '$\varphi(n)$ counts the numbers from 1 to $n$ that share no factors with $n$.'
+            stretch: true
+            lesson: modular-arithmetic/05-fermat-and-euler
+          - name: Wilson's theorem
+            math: '(p - 1)! \equiv -1 \pmod p'
+            stretch: true
+      - title: Last digits of powers
+        lesson: primes-remainders/04-units-digits-and-remainders
+        table:
+          caption: 'How the last digit of a power repeats, for each last digit of the base'
+          headers: ['Base ends in', 'Last digits of its powers', 'Cycle length']
+          rows:
+            - ['2', '2, 4, 8, 6', '4']
+            - ['3', '3, 9, 7, 1', '4']
+            - ['4', '4, 6', '2']
+            - ['7', '7, 9, 3, 1', '4']
+            - ['8', '8, 4, 2, 6', '4']
+            - ['9', '9, 1', '2']
+            - ['0, 1, 5, 6', 'Always the same digit', '1']
+      - title: Digits, bases, and factorials
+        lesson: modular-arithmetic/04-other-bases
+        items:
+          - name: Other bases
+            math: '(d_2 d_1 d_0)_b = d_2 b^2 + d_1 b + d_0'
+            note: 'To convert to base $b$, keep dividing by $b$, and read the remainders from the bottom up.'
+          - name: Two-digit numbers
+            text: 'Digits $a$ and $b$ make $10a + b$. The difference between a number and its reverse is $9(a - b)$.'
+          - name: Odd and even
+            text: 'A sum is odd exactly when it has an odd number of odd terms. A product is odd only when every factor is odd.'
+          - name: Counting multiples
+            math: '\text{multiples of } k \text{ from 1 to } N = \left\lfloor \frac{N}{k} \right\rfloor'
+          - name: Powers of a prime in a factorial
+            math: '\left\lfloor \frac{n}{p} \right\rfloor + \left\lfloor \frac{n}{p^2} \right\rfloor + \left\lfloor \frac{n}{p^3} \right\rfloor + \cdots'
+            stretch: true
+            lesson: primes-remainders/05-factorial-zeros
+          - name: Zeros at the end of $n!$
+            text: 'Count the powers of 5 in $n!$, using the formula above with $p = 5$.'
+            stretch: true
+            lesson: primes-remainders/05-factorial-zeros
+          - name: Number of digits
+            math: '\lfloor \log_{10} N \rfloor + 1'
+            stretch: true
+          - name: GCF of numbers one below a power
+            math: '\gcd(a^m - 1, a^n - 1) = a^{\gcd(m, n)} - 1'
+            stretch: true
+    examples:
+      - question: 'How many factors does 180 have?'
+        solution: 'Since $180 = 2^2 \times 3^2 \times 5$, it has $3 \times 3 \times 2 = 18$ factors.'
+        verify: 'factors(180).length'
+        answer: '18'
+      - question: 'What is the remainder when $3^{50}$ is divided by 8?'
+        solution: 'Since $3^2 = 9 \equiv 1 \pmod 8$, we get $3^{50} = (3^2)^{25} \equiv 1$. The remainder is 1.'
+        verify: 'Number(3n ** 50n % 8n)'
+        answer: '1'
+      - question: 'How many zeros does $250!$ end with?'
+        solution: 'Count the powers of 5: $50 + 10 + 2 = 62$.'
+        verify: 'Math.floor(250 / 5) + Math.floor(250 / 25) + Math.floor(250 / 125)'
+        answer: '62'
+      - question: 'Write 500 in base 6.'
+        solution: 'Since $500 = 2 \times 216 + 1 \times 36 + 5 \times 6 + 2$, it is $2152_6$.'
+        verify: '(500).toString(6)'
+        answer: '2152'
+
+  - slug: counting
+    title: Counting
+    intro: First decide whether order matters, and whether repeats are allowed. That picks the formula.
+    groups:
+      - title: Choosing a formula
+        lesson: counting/03-overcount-then-divide
+        table:
+          caption: 'Which formula to use when picking k items from n, depending on order and repeats'
+          headers: ['', 'Order matters', 'Order doesn''t matter']
+          rows:
+            - ['No repeats', '$P(n, k)$, as in choosing officers', '$\binom{n}{k}$, as in choosing a committee']
+            - ['Repeats allowed', '$n^k$, as in a phone passcode', '$\binom{n+k-1}{k}$, as in scoops of ice cream']
+        items:
+          - name: The swap test
+            text: 'Swap two of your picks. If that makes a different outcome, order matters. If it is the same outcome, order doesn''t matter.'
+          - name: How the two connect
+            math: 'P(n, k) = \binom{n}{k} \times k!'
+          - name: "\"And\" and \"or\""
+            text: '"And" usually means multiply. "Or," with no overlap, means add.'
+      - title: Core formulas
+        lesson: counting/02-when-order-matters
+        items:
+          - name: Factorial
+            math: 'n! = n(n-1)\cdots 2 \cdot 1 \qquad 0! = 1'
+          - name: Permutations and combinations
+            math: 'P(n,k) = \frac{n!}{(n-k)!} \qquad \binom{n}{k} = \frac{n!}{k!(n-k)!}'
+          - name: Arranging letters with repeats
+            math: '\frac{n!}{a!\,b!\,c!\cdots}'
+            note: 'Here, $a$, $b$, and $c$ count how many times each letter repeats.'
+          - name: Seats around a circle
+            math: '(n-1)!'
+            note: 'If flips also count as the same, as on a necklace, it is $\frac{(n-1)!}{2}$.'
+          - name: Grid paths
+            math: '\binom{m+n}{m}'
+            note: 'For paths from $(0, 0)$ to $(m, n)$, moving only right and up.'
+          - name: Subsets
+            math: '2^n'
+            note: 'A set of $n$ things has this many subsets.'
+          - name: Different things into different boxes
+            math: 'k^n'
+            note: 'For $n$ different things and $k$ boxes, when a box can stay empty.'
+          - name: Stars and bars
+            math: 'x_1 + \cdots + x_k = n: \quad \binom{n+k-1}{k-1} \text{ if } x_i \ge 0, \qquad \binom{n-1}{k-1} \text{ if } x_i \ge 1'
+            note: 'Use it for identical things going into different boxes.'
+          - name: Rectangles in a grid
+            math: '\binom{m+1}{2}\binom{n+1}{2}'
+            note: 'For a grid of $m$ by $n$ squares.'
+            stretch: true
+          - name: Splitting $2n$ people into pairs
+            math: '\frac{(2n)!}{2^n \, n!}'
+            stretch: true
+      - title: Overlaps
+        lesson: smart-counting/01-overlaps
+        items:
+          - name: Two groups
+            math: '|A \cup B| = |A| + |B| - |A \cap B|'
+          - name: Three groups
+            math: '|A \cup B \cup C| = |A| + |B| + |C| - |A \cap B| - |B \cap C| - |A \cap C| + |A \cap B \cap C|'
+      - title: Counting techniques
+        lesson: smart-counting/02-restrictions
+        items:
+          - name: Count the opposite
+            text: 'Count what you don''t want, and subtract. "At least one" is the usual signal.'
+          - name: Split into cases
+            text: 'Split by one key feature, and make sure that no two cases overlap.'
+          - name: Hardest choice first
+            text: 'Place the most restricted items first.'
+          - name: Glue items together
+            text: 'Items that must be together become one block. Then multiply by the ways to arrange the inside of the block.'
+          - name: Use the gaps
+            text: 'Items that can''t touch go into the gaps between the other items.'
+          - name: Pigeonhole principle
+            text: 'If $n + 1$ things go into $n$ boxes, some box has at least 2.'
+          - name: Trade for an easier count
+            text: 'Match a hard count, one to one, with an easier count that has the same answer.'
+            stretch: true
+      - title: Pascal's Triangle and binomials
+        lesson: advanced-counting/01-pascal-and-binomials
+        items:
+          - name: Binomial theorem
+            math: '(x+y)^n = \sum_{k=0}^{n} \binom{n}{k} x^{n-k} y^k'
+          - name: Pascal's rule and symmetry
+            math: '\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k} \qquad \binom{n}{k} = \binom{n}{n-k}'
+          - name: A full row adds up to a power of 2
+            math: '\sum_{k=0}^{n}\binom{n}{k} = 2^n'
+          - name: Hockey stick
+            math: '\binom{r}{r} + \binom{r+1}{r} + \cdots + \binom{n}{r} = \binom{n+1}{r+1}'
+            stretch: true
+          - name: Nobody in their own seat
+            math: 'D_n = (n-1)(D_{n-1} + D_{n-2})'
+            note: 'These are called derangements: $D_2 = 1$, $D_3 = 2$, $D_4 = 9$, and $D_5 = 44$.'
+            stretch: true
+          - name: Catalan numbers
+            text: '1, 1, 2, 5, 14, 42. They count balanced sets of parentheses, and grid paths that never cross the diagonal.'
+            stretch: true
+    examples:
+      - question: 'How many ways can 6 people sit in a row if two of them must sit together?'
+        solution: 'Glue the two into a block. There are $5!$ orders of the 5 units, and 2 orders inside the block, so $120 \times 2 = 240$.'
+        verify: 'perms(range(1, 6)).filter((p) => Math.abs(p.indexOf(1) - p.indexOf(2)) === 1).length'
+        answer: '240'
+      - question: 'How many three-digit numbers have at least one digit that repeats?'
+        solution: 'There are 900 three-digit numbers. Of those, $9 \times 9 \times 8 = 648$ have three different digits. So $900 - 648 = 252$ have a repeat.'
+        verify: 'range(100, 999).filter((n) => new Set(digits(n)).size < 3).length'
+        answer: '252'
+      - question: 'How many whole numbers from 1 to 300 are divisible by none of 2, 3, and 5?'
+        solution: 'At least one divides $150 + 100 + 60 - 50 - 30 - 20 + 10 = 220$ of them. So $300 - 220 = 80$ are divisible by none.'
+        verify: 'range(1, 300).filter((n) => n % 2 && n % 3 && n % 5).length'
+        answer: '80'
+      - question: 'How many ways can 8 identical candies go to 3 kids, if each kid gets at least 1?'
+        solution: 'Using the second stars and bars formula, $\binom{7}{2} = 21$.'
+        verify: 'product(range(1, 8), range(1, 8), range(1, 8)).filter(([a, b, c]) => a + b + c === 8).length'
+        answer: '21'
+
+  - slug: probability
+    title: Probability and expected value
+    intro: Probability is usually a counting problem in disguise.
+    groups:
+      - title: Probability rules
+        lesson: intro-probability/01-count-what-you-want
+        items:
+          - name: The definition
+            math: 'P(A) = \frac{\text{favorable outcomes}}{\text{total equally likely outcomes}}'
+          - name: The opposite
+            math: 'P(\text{not } A) = 1 - P(A)'
+            note: '"At least one" is 1 minus the probability of none.'
+          - name: Both things happen
+            math: 'P(A \text{ and } B) = P(A) \cdot P(B \text{ given } A)'
+            note: 'If the events are independent, this is $P(A) \cdot P(B)$.'
+          - name: Either thing happens
+            math: 'P(A \text{ or } B) = P(A) + P(B) - P(A \text{ and } B)'
+          - name: Conditional probability
+            math: 'P(A \text{ given } B) = \frac{P(A \text{ and } B)}{P(B)}'
+            stretch: true
+          - name: Exactly $k$ successes in $n$ tries
+            math: '\binom{n}{k} p^k (1-p)^{n-k}'
+            stretch: true
+          - name: Sums of two dice
+            math: 'P(\text{sum} = s) = \frac{6 - |s - 7|}{36}'
+          - name: With or without replacement
+            text: 'With replacement, the chances stay the same at each draw. Without replacement, the bottom number shrinks.'
+          - name: Any position is equally likely
+            text: 'When you draw without replacement, the chance that the 5th card is a king equals the chance that the 1st card is, $\frac{4}{52}$.'
+            stretch: true
+      - title: Expected value
+        lesson: data-chance/04-expected-value
+        items:
+          - name: The definition
+            math: 'E[X] = \sum x \cdot P(X = x)'
+          - name: Linearity
+            math: 'E[X + Y] = E[X] + E[Y]'
+            note: 'This is true even when $X$ and $Y$ depend on each other. Split a total into pieces that are 1 if something happens and 0 if not, then add up their probabilities.'
+            stretch: true
+            lesson: advanced-counting/05-linearity-of-expectation
+          - name: Waiting for a success
+            math: '\text{average number of tries} = \frac{1}{p}'
+            stretch: true
+          - name: Dice
+            text: 'One fair die averages 3.5, so the sum of $n$ dice averages $3.5n$.'
+      - title: Other probability tools
+        lesson: circles-solids/03-sectors-and-probability
+        items:
+          - name: Geometric probability
+            math: 'P = \frac{\text{favorable length, area, or volume}}{\text{total length, area, or volume}}'
+            note: 'For two random numbers between 0 and 1, draw a square and shade the region that works.'
+          - name: Games that restart
+            text: 'Let $p$ be the chance of winning from this point. Write an equation for $p$, using what happens next.'
+            stretch: true
+    examples:
+      - question: 'Two cards are drawn from a standard 52-card deck, with no replacement. What is the probability that both are aces?'
+        solution: '$\frac{4}{52} \times \frac{3}{51} = \frac{1}{221}$.'
+        verify: 'fraction(4 * 3, 52 * 51)'
+        answer: '1/221'
+      - question: 'You flip 4 coins. What is the probability of exactly 2 heads?'
+        solution: '$\binom{4}{2}$ of the 16 outcomes work, so it is $\frac{6}{16} = \frac{3}{8}$.'
+        verify: 'fraction(product([0, 1], [0, 1], [0, 1], [0, 1]).filter((flips) => sum(flips) === 2).length, 16)'
+        answer: '3/8'
+      - question: 'Ana and Bo take turns rolling a die, with Ana first. The first to roll a 6 wins. What is the probability that Ana wins?'
+        solution: 'Let $p$ be her chance. She wins now with chance $\frac{1}{6}$. Or both miss, with chance $\frac{25}{36}$, and the game restarts. Solving $p = \frac{1}{6} + \frac{25}{36}p$ gives $p = \frac{6}{11}$.'
+        verify: 'fraction(6, 11)'
+        answer: '6/11'
+
+  - slug: geometry
+    title: Geometry
+    intro: Most contest geometry comes down to similar triangles, the Pythagorean Theorem, or finding one area two ways.
+    groups:
+      - title: Triangle area
+        lesson: basic-geometry/02-triangle-area
+        items:
+          - name: Base and height
+            math: 'A = \frac{1}{2}bh'
+          - name: Equilateral triangle, side $a$
+            math: 'A = \frac{\sqrt{3}}{4}a^2 \qquad h = \frac{\sqrt{3}}{2}a'
+          - name: Same height
+            text: 'Triangles with the same height have areas in the same ratio as their bases.'
+          - name: Heron's formula
+            math: 'A = \sqrt{s(s-a)(s-b)(s-c)}, \quad s = \frac{a+b+c}{2}'
+            stretch: true
+            lesson: similar-shapes-circles/05-heron-and-inradius
+          - name: Using the circles
+            math: 'A = rs = \frac{abc}{4R}'
+            note: 'Here, $r$ is the radius of the circle inside, $R$ is the radius of the circle around the outside, and $s$ is half the perimeter.'
+            stretch: true
+          - name: Using an angle
+            math: 'A = \frac{1}{2}ab\sin C'
+            stretch: true
+          - name: Triangles that share an angle
+            text: 'Their areas are in the ratio of the products of the two sides around that angle.'
+            stretch: true
+      - title: Right triangles
+        lesson: triangles/02-pythagoras-why
+        items:
+          - name: Pythagorean Theorem
+            math: 'a^2 + b^2 = c^2'
+          - name: Special right triangles
+            text: '45-45-90 sides are $1 : 1 : \sqrt{2}$. 30-60-90 sides are $1 : \sqrt{3} : 2$.'
+          - name: Triples to know
+            text: '3-4-5, 5-12-13, 8-15-17, 7-24-25, and 20-21-29, plus their multiples, such as 6-8-10.'
+          - name: Height to the hypotenuse
+            math: 'h = \frac{ab}{c}'
+            note: 'It splits the triangle into two smaller triangles, each similar to the original.'
+          - name: Circles and right triangles
+            math: 'R = \frac{c}{2} \qquad r = \frac{a + b - c}{2}'
+            note: 'The hypotenuse is a diameter of the circle around the outside.'
+            stretch: true
+      - title: Triangle facts
+        lesson: triangles/01-angle-chasing
+        items:
+          - name: Angles
+            text: 'Angles in a triangle add up to $180^\circ$. An exterior angle equals the sum of the two far interior angles.'
+          - name: Triangle inequality
+            text: 'Each side is shorter than the sum of the other two.'
+          - name: Similar figures
+            text: 'If lengths scale by $k$, then areas scale by $k^2$ and volumes scale by $k^3$.'
+          - name: Medians
+            text: 'The point where the medians meet splits each one $2 : 1$, with the longer piece next to the corner.'
+            stretch: true
+          - name: Angle bisector theorem
+            math: '\frac{BD}{DC} = \frac{AB}{AC}'
+            stretch: true
+            lesson: triangles/05-angle-bisector
+          - name: Length of a median
+            math: 'm_a = \frac{1}{2}\sqrt{2b^2 + 2c^2 - a^2}'
+            stretch: true
+          - name: Law of cosines
+            math: 'c^2 = a^2 + b^2 - 2ab\cos C'
+            stretch: true
+          - name: Law of sines
+            math: '\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C} = 2R'
+            stretch: true
+          - name: Stewart's theorem
+            math: 'b^2 m + c^2 n = a(d^2 + mn)'
+            note: 'A segment of length $d$ runs from corner $A$ to side $a$, cutting it into $m$ next to $B$ and $n$ next to $C$. To remember it: "a man and his dad put a bomb in the sink."'
+            stretch: true
+          - name: Balancing with masses
+            text: 'Put masses at the corners, in inverse proportion to the pieces a segment creates. The balance gives every ratio. This is called mass points.'
+            stretch: true
+      - title: Sine, cosine, and tangent to know
+        table:
+          caption: 'Sine, cosine, and tangent of 30, 45, and 60 degrees'
+          headers: ['Angle', 'Sine', 'Cosine', 'Tangent']
+          rows:
+            - ['30 degrees', '$\frac{1}{2}$', '$\frac{\sqrt{3}}{2}$', '$\frac{1}{\sqrt{3}}$']
+            - ['45 degrees', '$\frac{\sqrt{2}}{2}$', '$\frac{\sqrt{2}}{2}$', '$1$']
+            - ['60 degrees', '$\frac{\sqrt{3}}{2}$', '$\frac{1}{2}$', '$\sqrt{3}$']
+        stretch: true
+      - title: Circles
+        lesson: circles-solids/01-circle-formulas
+        items:
+          - name: Circumference and area
+            math: 'C = 2\pi r \qquad A = \pi r^2'
+          - name: Arcs and sectors
+            math: '\text{arc} = 2\pi r \cdot \frac{\theta}{360^\circ} \qquad \text{sector} = \pi r^2 \cdot \frac{\theta}{360^\circ}'
+          - name: Sliver between a chord and an arc
+            math: '\text{segment} = \frac{\theta}{360^\circ}\pi r^2 - \frac{1}{2}r^2 \sin\theta'
+            stretch: true
+      - title: Circle theorems
+        lesson: similar-shapes-circles/03-chords-and-tangents
+        items:
+          - name: Inscribed angles
+            text: 'An inscribed angle is half the central angle on the same arc. An angle inscribed in a semicircle is $90^\circ$.'
+          - name: Tangents
+            text: 'A tangent meets the radius at $90^\circ$. Two tangents from one point are equal in length.'
+          - name: Crossing chords
+            math: 'AE \cdot EB = CE \cdot ED'
+          - name: Two lines from outside the circle
+            math: 'PA \cdot PB = PC \cdot PD \qquad PT^2 = PA \cdot PB'
+            note: 'Here, $PT$ is a tangent, and $PB$ is the whole length from $P$.'
+          - name: Four points on a circle
+            text: 'Opposite angles add up to $180^\circ$.'
+            stretch: true
+          - name: Ptolemy's theorem
+            math: 'AC \cdot BD = AB \cdot CD + AD \cdot BC'
+            note: 'For four points $A$, $B$, $C$, $D$, in order on a circle.'
+            stretch: true
+          - name: Tangent lines shared by two circles
+            math: '\text{outer} = \sqrt{d^2 - (r_1 - r_2)^2} \qquad \text{inner} = \sqrt{d^2 - (r_1 + r_2)^2}'
+            note: 'Here, $d$ is the distance between the centers.'
+            stretch: true
+          - name: Equilateral triangle, side $a$
+            math: 'R = \frac{a}{\sqrt{3}} \qquad r = \frac{a}{2\sqrt{3}}'
+            stretch: true
+      - title: Polygons
+        lesson: basic-geometry/03-angle-facts
+        items:
+          - name: Angles
+            math: '\text{interior sum} = (n-2) \cdot 180^\circ \qquad \text{each exterior angle (regular)} = \frac{360^\circ}{n}'
+          - name: Diagonals
+            math: '\frac{n(n-3)}{2}'
+          - name: Trapezoid
+            math: 'A = \frac{(b_1 + b_2)h}{2}'
+          - name: Rhombus or kite
+            math: 'A = \frac{d_1 d_2}{2}'
+          - name: Regular hexagon, side $a$
+            math: 'A = \frac{3\sqrt{3}}{2}a^2'
+            note: 'It is 6 equilateral triangles.'
+          - name: Rectangle and any point
+            math: 'PA^2 + PC^2 = PB^2 + PD^2'
+            note: 'This is the British flag theorem, for rectangle $ABCD$.'
+            stretch: true
+      - title: Coordinate geometry
+        lesson: coordinate-geometry/01-lines-and-slopes
+        items:
+          - name: Distance, midpoint, and slope
+            math: 'd = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2} \qquad M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right) \qquad m = \frac{y_2-y_1}{x_2-x_1}'
+          - name: Perpendicular lines
+            text: 'Their slopes multiply to $-1$.'
+          - name: Circle with center $(h, k)$
+            math: '(x-h)^2 + (y-k)^2 = r^2'
+          - name: Shoelace formula
+            math: 'A = \frac{1}{2}\left| \sum (x_i y_{i+1} - x_{i+1} y_i) \right|'
+          - name: Pick's theorem
+            math: 'A = I + \frac{B}{2} - 1'
+            note: 'For a shape with corners on grid points, $I$ counts grid points inside, and $B$ counts grid points on the edge.'
+            stretch: true
+          - name: Distance from a point to a line
+            math: '\frac{|ax_0 + by_0 + c|}{\sqrt{a^2+b^2}}'
+            note: 'From the point $(x_0, y_0)$ to the line $ax + by + c = 0$.'
+            stretch: true
+      - title: Solids
+        lesson: circles-solids/04-boxes-and-3d
+        table:
+          caption: 'Volume and surface area of common solids'
+          headers: ['Solid', 'Volume', 'Surface area']
+          rows:
+            - ['Cube, side $s$', '$s^3$', '$6s^2$']
+            - ['Box, $a$ by $b$ by $c$', '$abc$', '$2(ab + bc + ca)$']
+            - ['Cylinder', '$\pi r^2 h$', '$2\pi r^2 + 2\pi r h$']
+            - ['Cone, slant height $\ell$', '$\frac{1}{3}\pi r^2 h$', '$\pi r^2 + \pi r \ell$']
+            - ['Sphere', '$\frac{4}{3}\pi r^3$', '$4\pi r^2$']
+            - ['Pyramid', '$\frac{1}{3} \times \text{base area} \times h$', 'Base plus side faces']
+        items:
+          - name: Longest diagonal of a box
+            math: '\sqrt{a^2 + b^2 + c^2}'
+            note: 'For a cube of side $s$, this is $s\sqrt{3}$.'
+          - name: Distance in 3D
+            math: 'd = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}'
+            stretch: true
+          - name: Euler's formula
+            math: 'V - E + F = 2'
+            note: 'For a solid with flat faces: vertices minus edges plus faces.'
+            stretch: true
+          - name: Slice it
+            text: 'Cut a 3D problem with a flat plane, to turn it into a 2D right triangle.'
+    examples:
+      - question: 'A triangle has sides 7, 15, and 20. What is its area?'
+        solution: 'Half the perimeter is $s = 21$. By Heron''s formula, $A = \sqrt{21 \times 14 \times 6 \times 1} = \sqrt{1764} = 42$.'
+        verify: 'Math.sqrt(21 * 14 * 6 * 1)'
+        answer: '42'
+      - question: 'Two chords cross at $E$, with $AE = 6$, $EB = 4$, and $CE = 8$. What is $ED$?'
+        solution: 'Crossing chords give $6 \times 4 = 8 \times ED$, so $ED = 3$.'
+        verify: '(6 * 4) / 8'
+        answer: '3'
+      - question: 'What is the area of the triangle with corners $(0, 0)$, $(6, 2)$, and $(2, 5)$?'
+        solution: 'By the shoelace formula, $\frac{1}{2}|(0 - 0) + (30 - 4) + (0 - 0)| = 13$.'
+        verify: 'Math.abs(0 * 2 - 6 * 0 + 6 * 5 - 2 * 2 + 2 * 0 - 0 * 5) / 2'
+        answer: '13'
+      - question: 'How many diagonals does a regular 12-sided shape have?'
+        solution: '$\frac{12 \times 9}{2} = 54$.'
+        verify: 'combos(range(1, 12), 2).filter(([a, b]) => b - a !== 1 && b - a !== 11).length'
+        answer: '54'
+      - question: 'What is the longest diagonal of a 2 by 3 by 6 box?'
+        solution: '$\sqrt{4 + 9 + 36} = \sqrt{49} = 7$.'
+        verify: 'Math.sqrt(2 ** 2 + 3 ** 2 + 6 ** 2)'
+        answer: '7'
+
+tips:
+  - 'The early problems are usually quicker. Move steadily through them, so you have time for the later ones.'
+  - 'Answer choices are information. Plug them in, or check whether each one is odd or even, its size, and what divides it.'
+  - 'When you''re stuck, try small cases such as 1, 2, 3, and 4, and look for a pattern.'
+  - 'Draw every geometry problem close to scale. A good sketch can rule out choices.'
+  - 'Read the question again before you mark your answer. "How many," "what is the sum," and "which is NOT" are easy to mix up.'
+
+traps:
+  - '**Counting endpoints:** The whole numbers from $a$ to $b$, including both, number $b - a + 1$.'
+  - '**Order:** Choosing a committee is different from assigning roles.'
+  - '**Overcounting:** Watch for circular seating, identical items, and cases that mirror each other.'
+  - '**Outcomes that aren''t equally likely:** A sum of 7 on two dice is more likely than a sum of 2.'
+  - '**Positive or non-negative:** This changes which stars and bars formula you use.'
+  - '**Average speed:** Use total distance over total time. Never average the speeds.'
+  - '**Extra solutions:** After squaring both sides, test your answers in the original equation.'

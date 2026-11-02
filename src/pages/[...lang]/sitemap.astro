@@ -28,6 +28,7 @@ const topicsFor = (competition: string) =>
     <section>
       <h2>{text.lessons}</h2>
       <p><a href={href(lang, 'pathway/')}>{text.pathway}</a></p>
+      <p><a href={href(lang, 'formulas/')}>{text.formulas}</a></p>
       {competitions.map((competition) => (
         <section>
           <h3>{text.competition(competition)}</h3>

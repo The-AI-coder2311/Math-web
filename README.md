@@ -46,6 +46,7 @@ src/
   content/en/
     pathway.yaml          The levels, and the ordered units in each one
     teacher-plans.yaml    The six-week plans on the teacher pages
+    formulas.yaml         The Formulas page, with its practice examples
     units/counting/
       lessons/*.md        The unit's lessons, in order (3 to 5 of them)
       problems/*.md       One file per practice problem
@@ -102,8 +103,8 @@ Copy `templates/lesson-template.md` into the unit's `lessons/` folder and follow
 | Level | Who it's for | Status |
 |---|---|---|
 | 1: First Steps | Complete beginners, early AMC 8 questions | All 6 units are written |
-| 2: Contest Ready | Middle and later AMC 8 questions, MATHCOUNTS | All 6 units are written |
-| 3: Road to the AMC 10 | Students who finished Level 2 | All 6 units are written |
+| 2: Contest Ready | Middle and later AMC 8 questions, MATHCOUNTS | All 7 units are written |
+| 3: Road to the AMC 10 | Students who finished Level 2 | All 7 units are written |
 | 4: Toward the AMC 12 | High school contest math | Planned, with no units written yet |
 
 Problems can be marked `easy`, `medium`, or `hard`. Use `hard` for problems that combine ideas or need a step the student has to come up with on their own.

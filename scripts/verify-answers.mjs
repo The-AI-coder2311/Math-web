@@ -304,6 +304,32 @@ function checkProblemSet(file) {
   });
 }
 
+// ---- The Formulas page (one YAML file) ----
+function checkFormulas(file) {
+  const where = relative('.', file);
+  const source = readFileSync(file, 'utf8');
+  const data = parse(source);
+  const folder = file.replace(/\\/g, '/').replace(/formulas\.ya?ml$/, '');
+  if (PLACEHOLDER.test(source)) errors.push(where + ': contains unfinished placeholder text');
+  for (const word of source.matchAll(BANNED_WORDS)) errors.push(where + ': avoid the word "' + word[0] + '"');
+  for (const section of data.sections) {
+    for (const group of section.groups) {
+      for (const { lesson: named, title, name } of [group, ...(group.items || [])]) {
+        const [unit, lesson] = String(named).split('/');
+        if (named && !existsSync(folder + 'units/' + unit + '/lessons/' + lesson + '.md')) {
+          errors.push(where + ': "' + (title || name) + '" names lesson "' + named + '", which doesn\'t exist');
+        }
+      }
+      for (const item of group.items || []) if (item.note) checkArithmetic(item.note, where);
+    }
+    section.examples.forEach((example, i) => {
+      const label = where + ' ' + section.slug + ' example ' + (i + 1);
+      checkVerify(example.verify, example.answer, label);
+      checkArithmetic(example.solution, label);
+    });
+  }
+}
+
 const walk = (dir) =>
   readdirSync(dir).flatMap((name) => {
     const path = join(dir, name);
@@ -338,6 +364,8 @@ for (const file of walk(root)) {
     if (data) unit.problems.push({ ...data, where: relative('.', file) });
   } else if (/\/problem-sets\/[^/]+\.ya?ml$/.test(path)) {
     checkProblemSet(file);
+  } else if (/\/formulas\.ya?ml$/.test(path)) {
+    checkFormulas(file);
   } else if (/\.md$/.test(path)) {
     const source = readFileSync(file, 'utf8');
     checkArithmetic(source, relative('.', file));

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>Triangle ABC with AB equal to 6, AC equal to 9, and BC equal to 10. A line from A cuts the angle at A into two equal angles, and meets side BC at D. It splits BC into BD equal to 4 and DC equal to 6.</title>
+  <polygon points="122.5,30 40,190 340,190" fill="#fbeee6" stroke="#b4461a" stroke-width="2.5" />
+  <line x1="122.5" y1="30" x2="160" y2="190" stroke="#b4461a" stroke-width="2.5" />
+  <path d="M106.9,60.2 A34,34 0 0 0 130.3,63.1" fill="none" stroke="#2b2622" stroke-width="2" />
+  <path d="M130.3,63.1 A34,34 0 0 0 149.9,50.2" fill="none" stroke="#2b2622" stroke-width="2" />
+  <g font-weight="700">
+    <text x="116" y="22">A</text>
+    <text x="22" y="205">B</text>
+    <text x="346" y="205">C</text>
+    <text x="154" y="212">D</text>
+    <text x="62" y="108">6</text>
+    <text x="244" y="104">9</text>
+    <text x="94" y="182">4</text>
+    <text x="244" y="182">6</text>
+  </g>
+</svg>

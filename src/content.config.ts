@@ -115,4 +115,46 @@ const teacherPlans = defineCollection({
   }),
 });
 
-export const collections = { pathway, lessons, problems, pages, problemSets, contests, contestProblems, teacherPlans };
+const formulas = defineCollection({
+  loader: glob({ pattern: '*/formulas.yaml', base }),
+  schema: z.object({
+    sections: z.array(
+      z.object({
+        slug: z.string(),
+        title: z.string(),
+        intro: z.string(),
+        groups: z.array(
+          z.object({
+            title: z.string(),
+            // The lesson that teaches this group, such as counting/03-overcount-then-divide.
+            lesson: z.string().optional(),
+            stretch: z.boolean().optional(),
+            table: z
+              .object({ caption: z.string(), headers: z.array(z.string()), rows: z.array(z.array(text)) })
+              .optional(),
+            items: z
+              .array(
+                z.object({
+                  name: z.string(),
+                  math: z.string().optional(),
+                  text: z.string().optional(),
+                  note: z.string().optional(),
+                  stretch: z.boolean().optional(),
+                  // The lesson that teaches this one entry, if its group has no lesson or a different one.
+                  lesson: z.string().optional(),
+                }),
+              )
+              .optional(),
+          }),
+        ),
+        examples: z.array(
+          z.object({ question: z.string(), solution: z.string(), verify: z.string(), answer: text }),
+        ),
+      }),
+    ),
+    tips: z.array(z.string()),
+    traps: z.array(z.string()),
+  }),
+});
+
+export const collections = { pathway, lessons, problems, pages, problemSets, contests, contestProblems, teacherPlans, formulas };

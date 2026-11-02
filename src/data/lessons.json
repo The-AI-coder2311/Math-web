@@ -131,8 +131,8 @@
         "slug": "primes-remainders",
         "title": "Primes & Remainders",
         "review": false,
-        "lessons": 4,
-        "problems": 20
+        "lessons": 5,
+        "problems": 24
       },
       {
         "level": 2,
@@ -145,8 +145,8 @@
         "slug": "triangles",
         "title": "Triangles",
         "review": false,
-        "lessons": 4,
-        "problems": 20
+        "lessons": 5,
+        "problems": 24
       },
       {
         "level": 2,
@@ -184,6 +184,20 @@
           "AMC 8",
           "MATHCOUNTS"
         ],
+        "slug": "logic-puzzles",
+        "title": "Logic Puzzles",
+        "review": false,
+        "lessons": 3,
+        "problems": 20
+      },
+      {
+        "level": 2,
+        "levelTitle": "Level 2: Contest Ready",
+        "difficulty": "Intermediate",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
         "slug": "level-2-review",
         "title": "Level 2 Mixed Review",
         "review": true,
@@ -200,8 +214,8 @@
         "slug": "algebra-toolkit",
         "title": "Algebra Toolkit",
         "review": false,
-        "lessons": 4,
-        "problems": 20
+        "lessons": 5,
+        "problems": 24
       },
       {
         "level": 3,
@@ -213,8 +227,8 @@
         "slug": "modular-arithmetic",
         "title": "Remainder Math & Bases",
         "review": false,
-        "lessons": 4,
-        "problems": 20
+        "lessons": 5,
+        "problems": 24
       },
       {
         "level": 3,
@@ -239,8 +253,8 @@
         "slug": "advanced-counting",
         "title": "Advanced Counting",
         "review": false,
-        "lessons": 4,
-        "problems": 22
+        "lessons": 5,
+        "problems": 26
       },
       {
         "level": 3,
@@ -252,8 +266,8 @@
         "slug": "similar-shapes-circles",
         "title": "Similar Shapes & Circle Theorems",
         "review": false,
-        "lessons": 4,
-        "problems": 20
+        "lessons": 5,
+        "problems": 24
       },
       {
         "level": 3,
@@ -266,6 +280,19 @@
         "title": "Coordinate Geometry",
         "review": false,
         "lessons": 4,
+        "problems": 20
+      },
+      {
+        "level": 3,
+        "levelTitle": "Level 3: Road to the AMC 10",
+        "difficulty": "Advanced",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "pigeonholes-invariants",
+        "title": "Pigeonholes, Invariants & Games",
+        "review": false,
+        "lessons": 3,
         "problems": 20
       },
       {
@@ -954,6 +981,22 @@
           "AMC 8",
           "MATHCOUNTS"
         ],
+        "unit": "primes-remainders",
+        "topic": "Primes & Remainders",
+        "slug": "05-factorial-zeros",
+        "title": "Zeros at the End of a Factorial",
+        "summary": "Count the zeros at the end of a huge factorial by counting factors of 5, and find how many times any prime divides a factorial.",
+        "minutes": 9,
+        "path": "pathway/primes-remainders/05-factorial-zeros/"
+      },
+      {
+        "level": 2,
+        "levelTitle": "Level 2: Contest Ready",
+        "difficulty": "Intermediate",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
         "unit": "triangles",
         "topic": "Triangles",
         "slug": "01-angle-chasing",
@@ -1009,6 +1052,22 @@
         "summary": "Spot triangles with the same shape, use scale factors to find lengths you can't measure, and see why area grows by the square of the scale factor.",
         "minutes": 10,
         "path": "pathway/triangles/04-similar-triangles/"
+      },
+      {
+        "level": 2,
+        "levelTitle": "Level 2: Contest Ready",
+        "difficulty": "Intermediate",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "unit": "triangles",
+        "topic": "Triangles",
+        "slug": "05-angle-bisector",
+        "title": "The Angle Bisector Theorem",
+        "summary": "A line that cuts a triangle's angle in half splits the opposite side in the same ratio as the two nearby sides. Learn why, and how to use it.",
+        "minutes": 9,
+        "path": "pathway/triangles/05-angle-bisector/"
       },
       {
         "level": 2,
@@ -1139,6 +1198,54 @@
         "path": "pathway/data-chance/04-expected-value/"
       },
       {
+        "level": 2,
+        "levelTitle": "Level 2: Contest Ready",
+        "difficulty": "Intermediate",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "unit": "logic-puzzles",
+        "topic": "Logic Puzzles",
+        "slug": "01-if-then-reasoning",
+        "title": "If-Then Reasoning",
+        "summary": "Learn which statements mean the same thing as an if-then rule, how to test a rule, and how to prove a claim false with one example.",
+        "minutes": 10,
+        "path": "pathway/logic-puzzles/01-if-then-reasoning/"
+      },
+      {
+        "level": 2,
+        "levelTitle": "Level 2: Contest Ready",
+        "difficulty": "Intermediate",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "unit": "logic-puzzles",
+        "topic": "Logic Puzzles",
+        "slug": "02-truth-tellers-and-liars",
+        "title": "Truth-Tellers and Liars",
+        "summary": "Solve puzzles about people who always lie or always tell the truth by assuming a case, following it, and watching for a contradiction.",
+        "minutes": 11,
+        "path": "pathway/logic-puzzles/02-truth-tellers-and-liars/"
+      },
+      {
+        "level": 2,
+        "levelTitle": "Level 2: Contest Ready",
+        "difficulty": "Intermediate",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "unit": "logic-puzzles",
+        "topic": "Logic Puzzles",
+        "slug": "03-ordering-and-seating",
+        "title": "Ordering and Seating Puzzles",
+        "summary": "Turn clues about who came first or who sits where into a picture, separate what must be true from what could be true, and count the arrangements left.",
+        "minutes": 10,
+        "path": "pathway/logic-puzzles/03-ordering-and-seating/"
+      },
+      {
         "level": 3,
         "levelTitle": "Level 3: Road to the AMC 10",
         "difficulty": "Advanced",
@@ -1205,6 +1312,21 @@
         "competitions": [
           "AMC 10"
         ],
+        "unit": "algebra-toolkit",
+        "topic": "Algebra Toolkit",
+        "slug": "05-am-gm-inequality",
+        "title": "Biggest and Smallest Values: AM-GM",
+        "summary": "Use the AM-GM inequality to find the largest product for a fixed sum and the smallest sum for a fixed product, without trying every case.",
+        "minutes": 10,
+        "path": "pathway/algebra-toolkit/05-am-gm-inequality/"
+      },
+      {
+        "level": 3,
+        "levelTitle": "Level 3: Road to the AMC 10",
+        "difficulty": "Advanced",
+        "competitions": [
+          "AMC 10"
+        ],
         "unit": "modular-arithmetic",
         "topic": "Remainder Math & Bases",
         "slug": "01-mod-notation",
@@ -1257,6 +1379,21 @@
         "summary": "See how our number system works by trying a different one. Convert between bases, and use base 2 to count and solve problems.",
         "minutes": 10,
         "path": "pathway/modular-arithmetic/04-other-bases/"
+      },
+      {
+        "level": 3,
+        "levelTitle": "Level 3: Road to the AMC 10",
+        "difficulty": "Advanced",
+        "competitions": [
+          "AMC 10"
+        ],
+        "unit": "modular-arithmetic",
+        "topic": "Remainder Math & Bases",
+        "slug": "05-fermat-and-euler",
+        "title": "Fermat's and Euler's Theorems",
+        "summary": "Skip the search for a cycle by using Fermat's Little Theorem and Euler's theorem, which tell you a power that always leaves a remainder of 1.",
+        "minutes": 11,
+        "path": "pathway/modular-arithmetic/05-fermat-and-euler/"
       },
       {
         "level": 3,
@@ -1385,6 +1522,21 @@
         "competitions": [
           "AMC 10"
         ],
+        "unit": "advanced-counting",
+        "topic": "Advanced Counting",
+        "slug": "05-linearity-of-expectation",
+        "title": "Linearity of Expectation",
+        "summary": "Find an expected count by splitting it into simple yes-or-no pieces and adding their probabilities, even when the pieces depend on each other.",
+        "minutes": 10,
+        "path": "pathway/advanced-counting/05-linearity-of-expectation/"
+      },
+      {
+        "level": 3,
+        "levelTitle": "Level 3: Road to the AMC 10",
+        "difficulty": "Advanced",
+        "competitions": [
+          "AMC 10"
+        ],
         "unit": "similar-shapes-circles",
         "topic": "Similar Shapes & Circle Theorems",
         "slug": "01-similarity-tools",
@@ -1445,6 +1597,21 @@
         "competitions": [
           "AMC 10"
         ],
+        "unit": "similar-shapes-circles",
+        "topic": "Similar Shapes & Circle Theorems",
+        "slug": "05-heron-and-inradius",
+        "title": "Heron's Formula and the Circle Inside",
+        "summary": "Find a triangle's area from its three sides alone, then use that area to find any height and the radius of the circle inside the triangle.",
+        "minutes": 10,
+        "path": "pathway/similar-shapes-circles/05-heron-and-inradius/"
+      },
+      {
+        "level": 3,
+        "levelTitle": "Level 3: Road to the AMC 10",
+        "difficulty": "Advanced",
+        "competitions": [
+          "AMC 10"
+        ],
         "unit": "coordinate-geometry",
         "topic": "Coordinate Geometry",
         "slug": "01-lines-and-slopes",
@@ -1497,6 +1664,51 @@
         "summary": "When a geometry problem feels stuck, put it on a grid. Choose smart coordinates, then let algebra find the answer. Learn reflections and rotations too.",
         "minutes": 10,
         "path": "pathway/coordinate-geometry/04-geometry-with-coordinates/"
+      },
+      {
+        "level": 3,
+        "levelTitle": "Level 3: Road to the AMC 10",
+        "difficulty": "Advanced",
+        "competitions": [
+          "AMC 10"
+        ],
+        "unit": "pigeonholes-invariants",
+        "topic": "Pigeonholes, Invariants & Games",
+        "slug": "01-pigeonhole-power",
+        "title": "Pigeonhole Power",
+        "summary": "Use the stronger form of the pigeonhole principle, choose clever boxes such as pairs and remainders, and prove that an answer is the smallest possible.",
+        "minutes": 11,
+        "path": "pathway/pigeonholes-invariants/01-pigeonhole-power/"
+      },
+      {
+        "level": 3,
+        "levelTitle": "Level 3: Road to the AMC 10",
+        "difficulty": "Advanced",
+        "competitions": [
+          "AMC 10"
+        ],
+        "unit": "pigeonholes-invariants",
+        "topic": "Pigeonholes, Invariants & Games",
+        "slug": "02-parity-and-invariants",
+        "title": "Parity and Invariants",
+        "summary": "Prove that something can never happen by finding a quantity that doesn't change, using coloring, odd and even, and remainders.",
+        "minutes": 11,
+        "path": "pathway/pigeonholes-invariants/02-parity-and-invariants/"
+      },
+      {
+        "level": 3,
+        "levelTitle": "Level 3: Road to the AMC 10",
+        "difficulty": "Advanced",
+        "competitions": [
+          "AMC 10"
+        ],
+        "unit": "pigeonholes-invariants",
+        "topic": "Pigeonholes, Invariants & Games",
+        "slug": "03-winning-games",
+        "title": "Winning Games",
+        "summary": "Work backward from the end of a game to label every position as winning or losing, find the pattern, and use it or copy your opponent to win.",
+        "minutes": 10,
+        "path": "pathway/pigeonholes-invariants/03-winning-games/"
       }
     ]
   }

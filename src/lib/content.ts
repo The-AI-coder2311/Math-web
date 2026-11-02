@@ -160,6 +160,29 @@ export async function getAnswerKeys(lang: Locale) {
   ];
 }
 
+/** The Formulas page, with each group's lesson filled in from the lesson data. */
+export async function getFormulas(lang: Locale) {
+  const { lessons } = getLessonData(lang);
+  const [file] = (await getCollection('formulas')).filter(inLang(lang));
+  const lessonNamed = (name: string | undefined, where: string) => {
+    if (!name) return undefined;
+    const lesson = lessons.find((other) => other.path === `pathway/${name}/`);
+    if (!lesson) throw new Error(`formulas.yaml: "${where}" names lesson "${name}", which doesn't exist`);
+    return lesson;
+  };
+  return {
+    ...file.data,
+    sections: file.data.sections.map((section) => ({
+      ...section,
+      groups: section.groups.map((group) => ({
+        ...group,
+        lesson: lessonNamed(group.lesson, group.title),
+        items: group.items?.map((item) => ({ ...item, lesson: lessonNamed(item.lesson, item.name) })),
+      })),
+    })),
+  };
+}
+
 export async function getProblemSets(lang: Locale) {
   const sets = (await getCollection('problemSets')).filter(inLang(lang));
   return sets

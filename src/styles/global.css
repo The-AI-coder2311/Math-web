@@ -924,11 +924,58 @@ select {
   font-size: 1.05rem;
 }
 
+.formula-toc ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.formula-toc a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+}
+
+.formula-section {
+  margin-top: 2.5rem;
+}
+
+.formula-group {
+  margin-top: 1.75rem;
+}
+
+.formula-list {
+  padding: 0;
+  list-style: none;
+}
+
+.formula-list > li {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.formula-list p {
+  margin: 0.25rem 0;
+}
+
+.formula-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+}
+
 .print-only {
   display: none;
 }
 
 @media print {
+  .formula-list > li {
+    break-inside: avoid;
+  }
+
   :root,
   :root[data-theme='dark'],
   :root:not([data-theme='light']) {

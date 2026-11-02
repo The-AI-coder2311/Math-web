@@ -8,7 +8,7 @@ interface Props {
   title: string;
   description: string;
   lang: Locale;
-  current?: 'learn' | 'contests' | 'teachers' | 'about';
+  current?: 'learn' | 'contests' | 'formulas' | 'teachers' | 'about';
   /** For a page that shouldn't be in search results or the sitemap, such as the 404 page. */
   noindex?: boolean;
 }
@@ -19,6 +19,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const navItems = [
   { key: 'learn', label: text.nav.learn, url: href(lang, 'pathway/') },
   { key: 'contests', label: text.nav.contests, url: href(lang, 'contests/') },
+  { key: 'formulas', label: text.nav.formulas, url: href(lang, 'formulas/') },
   { key: 'teachers', label: text.nav.teachers, url: href(lang, 'teachers/') },
   { key: 'about', label: text.nav.about, url: href(lang, 'about/') },
 ];

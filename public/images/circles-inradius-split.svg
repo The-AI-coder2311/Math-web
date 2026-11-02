@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" font-family="system-ui, sans-serif" font-size="16" fill="#2b2622">
+  <title>A right triangle with a circle inside it that touches all three sides. Lines from the center of the circle to the three corners split the triangle into three smaller triangles. A radius r runs from the center to each side, at a right angle, so r is the height of each small triangle.</title>
+  <polygon points="90,30 90,190 210,190" fill="#fbeee6" stroke="#b4461a" stroke-width="2.5" />
+  <circle cx="130" cy="150" r="40" fill="#ffffff" stroke="#b4461a" stroke-width="2" />
+  <g stroke="#2b2622" stroke-width="1.5" stroke-dasharray="5 4">
+    <line x1="130" y1="150" x2="90" y2="30" />
+    <line x1="130" y1="150" x2="90" y2="190" />
+    <line x1="130" y1="150" x2="210" y2="190" />
+  </g>
+  <g stroke="#b4461a" stroke-width="2.5">
+    <line x1="130" y1="150" x2="90" y2="150" />
+    <line x1="130" y1="150" x2="130" y2="190" />
+    <line x1="130" y1="150" x2="162" y2="126" />
+  </g>
+  <circle cx="130" cy="150" r="3.5" fill="#2b2622" />
+  <g font-weight="700">
+    <text x="104" y="144">r</text>
+    <text x="136" y="176">r</text>
+    <text x="150" y="130">r</text>
+  </g>
+</svg>

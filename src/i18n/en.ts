@@ -1,7 +1,7 @@
 // All button labels and short interface text. Longer writing lives in src/content/en/.
 export const en = {
   skipLink: 'Skip to main content',
-  nav: { learn: 'Start learning', contests: 'Practice contests', teachers: 'For teachers', about: 'About us', label: 'Main' },
+  nav: { learn: 'Start learning', contests: 'Practice contests', formulas: 'Formulas', teachers: 'For teachers', about: 'About us', label: 'Main' },
   theme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
   footer: {
     free: 'Free to use. No login, no ads, no tracking.',
@@ -143,6 +143,27 @@ export const en = {
     fromLesson: 'From this lesson:',
     noScript: 'Scoring and the timer need JavaScript, but you can still read every question. Solutions appear under each one.',
   },
+  formulas: {
+    title: 'Formulas for Math Contests',
+    description: 'A free, printable list of the algebra, number theory, counting, probability, and geometry formulas used most on the AMC 10 and similar contests.',
+    intro: 'The formulas and facts that come up most on the AMC 10 and similar contests, grouped by topic. Where we have a lesson that explains one, there is a link to it.',
+    howTo: 'You do not need all of these at once. Learn the must-knows first. Formulas marked "Stretch" are for later, and some of them go beyond our lessons so far. A formula helps most once you know why it works, so try the problems after each topic.',
+    filterLabel: 'Show',
+    all: 'All formulas',
+    core: 'Must-knows only',
+    status: (shown: number, total: number) => `Showing ${shown} of ${total} entries.`,
+    print: 'Print this page',
+    tocLabel: 'Topics on this page',
+    stretch: 'Stretch',
+    learn: 'Learn it in this lesson:',
+    tryTitle: (topic: string) => `Try it: ${topic}`,
+    showAnswer: 'Show the answer',
+    contestDay: 'On contest day',
+    guess: (blank: number, none: number, two: number) =>
+      `If you can't rule out any choice, a random guess earns ${none} points on average, which is less than the ${blank} for a blank. If you can rule out two choices, a guess earns ${two} on average, so it's worth taking.`,
+    tipsTitle: 'Habits that help',
+    trapsTitle: 'Common traps',
+  },
   sets: {
     title: 'Printable Problem Sets',
     description: 'Original, printable math club problem sets with answer keys, one for each week of the club plan.',
@@ -176,6 +197,7 @@ export const en = {
       { path: 'teachers/answer-keys/', title: 'Worksheets and answer keys', text: 'Every unit and practice contest as a printable worksheet, with full solutions behind a toggle.' },
       { path: 'teachers/problem-sets/', title: 'Printable problem sets', text: 'A set for each week of the club plan, with a separate answer key.' },
       { path: 'teachers/start-a-team/', title: 'Start a math team', text: 'How the AMC 8 and MATHCOUNTS work, and how to register your school.' },
+      { path: 'formulas/', title: 'Formula list', text: 'A printable list of contest formulas by topic, linked to the lessons that teach them.' },
     ],
     contactTitle: 'Questions or feedback?',
     contactText: 'Tell us what worked with your students, what did not, or if you spot a mistake. We read every message.',
@@ -247,6 +269,7 @@ export const en = {
     home: 'Home',
     lessons: 'Lessons',
     pathway: 'Learning Pathway overview',
+    formulas: 'Formulas for math contests',
     competition: (competition: string) => `For the ${competition}`,
     practice: 'Practice',
     unitPractice: 'Unit practice',

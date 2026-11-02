@@ -55,6 +55,9 @@ levels:
       - slug: data-chance
         title: Averages, Data & Chance
         blurb: Mean and median shortcuts, reading tables, and probability with several steps.
+      - slug: logic-puzzles
+        title: Logic Puzzles
+        blurb: If-then reasoning, truth-tellers and liars, and clues about who goes where.
       - slug: level-2-review
         title: Level 2 Mixed Review
         blurb: Problems from all of Level 2, shuffled together. Real contests don't tell you the topic, so you have to work it out.
@@ -83,6 +86,9 @@ levels:
       - slug: coordinate-geometry
         title: Coordinate Geometry
         blurb: Use lines, slopes, and points on a grid to solve geometry with algebra.
+      - slug: pigeonholes-invariants
+        title: Pigeonholes, Invariants & Games
+        blurb: Prove that something must happen, prove that it never can, and find the winning move.
       - slug: level-3-review
         title: Level 3 Mixed Review
         blurb: Problems from all of Level 3, shuffled together. Real contests don't tell you the topic, so you have to work it out.
