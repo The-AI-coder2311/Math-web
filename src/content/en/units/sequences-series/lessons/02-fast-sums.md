@@ -1,7 +1,7 @@
 ---
 title: "Adding Long Lists Fast"
 summary: Add an arithmetic sequence in one step by pairing the outside terms, and see why the average of the list does all of the work.
-minutes: 10
+minutes: 12
 ---
 
 What is $1 + 2 + 3 + \cdots + 100$? A well-known story says that a young student named Gauss solved this in moments, while his class expected to be busy for an hour. Whether or not the story is exactly true, his method is real, and it works on far more than this one list. By the end of this lesson, you'll be able to add a list of 20 messy numbers with one multiplication.
@@ -90,6 +90,38 @@ A theater has 12 seats in its first row. Each row has 3 more seats than the row 
 So there are 11 rows. **Check:** $\frac{11 \times (12 + 42)}{2} = 297$.
 
 Notice that you can find any total in the table directly with the rule. You don't have to add up every row.
+
+<section data-box="deeper">
+
+## Going deeper
+
+A sum with alternating squares looks awful, until you see that each pair is a difference of squares.
+
+**A harder one:** What's the value of $100^2 - 99^2 + 98^2 - 97^2 + \cdots + 2^2 - 1^2$?
+
+**Group the terms in pairs:** Each pair is a difference of squares.
+
+$100^2 - 99^2 = (100 - 99)(100 + 99) = 199$
+
+Since the numbers differ by 1, the first factor is always 1. So each pair equals the **sum** of its two numbers:
+
+$100 + 99 + 98 + 97 + \cdots + 2 + 1$
+
+**So the whole thing is the sum from 1 to 100:**
+
+$\frac{100 \times 101}{2} = 5050$
+
+You turned squares into a plain sum, and the numbers stayed small. Contest writers love this kind of problem, because the direct calculation looks impossible on a timed test.
+
+Try this. What's the value of $20^2 - 19^2 + 18^2 - 17^2 + \cdots + 2^2 - 1^2$?
+
+<details class="check"><summary>Show the answer</summary>
+
+It equals $20 + 19 + \cdots + 1 = \frac{20 \times 21}{2} = 210$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

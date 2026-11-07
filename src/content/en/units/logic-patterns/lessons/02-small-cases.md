@@ -1,7 +1,7 @@
 ---
 title: "Try Small, Then Ask Why"
 summary: When a problem looks huge, solve tiny versions of it and look for a pattern. Then find the reason, because patterns can fool you.
-minutes: 10
+minutes: 12
 ---
 
 Ten people at a party all shake hands with each other once. How many handshakes is that? Trying to imagine all 10 people at once is overwhelming. So don't. Start with a party of 2, then 3, then 4, and watch what happens.
@@ -96,6 +96,36 @@ A square grid has 3 rows and 3 columns of small squares. How many squares of all
 **Why?** A square of size 2 in a 3 by 3 grid can slide to 2 positions across and 2 positions down, which gives $2 \times 2 = 4$ spots. That reason holds for any size. So a 10 by 10 grid has:
 
 $$1 + 4 + 9 + 16 + 25 + 36 + 49 + 64 + 81 + 100 = 385$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+Small cases help you find a pattern, but a pattern isn't a proof. Here's one that works, and one that fails.
+
+**A harder one:** Draw straight lines across a circle so that each pair of lines crosses inside it, and no three lines cross at one point. How many regions do 5 lines make?
+
+| Lines | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| Regions | 2 | 4 | 7 | 11 |
+
+**What's the pattern?** The jumps are 2, 3, and 4. So 5 lines add 5 more regions: $11 + 5 = 16$.
+
+**Why does it hold?** The 5th line crosses the 4 earlier lines, so it passes through 5 regions, and it splits each of them into two. So the pattern has a reason behind it.
+
+**Now a warning.** Put dots on a circle, connect each pair with a line, and count the regions. With 1, 2, 3, 4, and 5 dots, you get 1, 2, 4, 8, and 16. It's surely 32 for 6 dots, right? It's actually **31**. A pattern with no reason behind it can fail.
+
+So when you find a pattern, ask why it should continue.
+
+Try this. How many regions do 6 lines make?
+
+<details class="check"><summary>Show the answer</summary>
+
+The 6th line adds 6 more regions, so $16 + 6 = 22$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

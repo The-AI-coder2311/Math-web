@@ -1,7 +1,7 @@
 ---
 title: "Distance, Midpoints and Circles"
 summary: Find the distance between two points with the Pythagorean Theorem, find midpoints by averaging, and write a circle as an equation.
-minutes: 10
+minutes: 12
 ---
 
 A treasure map says to walk from the old well at $(1, 2)$ to the big oak at $(7, 10)$, and then to dig halfway between them. How far is the walk, and where do you dig? You don't need a ruler for this. Everything you need comes from two ideas you already know: the Pythagorean Theorem, and averages.
@@ -80,6 +80,40 @@ How many grid points, with both coordinates being integers (whole numbers or the
 The total is $8 + 4 = 12$ points.
 
 Symmetry does the work here. Once you find one point, reflections give you the others.
+
+<section data-box="deeper">
+
+## Going deeper
+
+All of the points the same distance from two fixed points form a line. You can find a specific one with a distance equation.
+
+**A harder one:** Which point on the $x$-axis is the same distance from $(1, 2)$ and $(5, 4)$?
+
+**Name the point.** It's on the $x$-axis, so call it $(x, 0)$.
+
+**Set the distances equal.** Square both sides right away, to get rid of the square roots:
+
+$(x - 1)^2 + 2^2 = (x - 5)^2 + 4^2$
+
+**Expand.** The $x^2$ terms cancel, which is why this always ends up easy:
+
+$x^2 - 2x + 5 = x^2 - 10x + 41$
+
+So $8x = 36$, and $x = 4.5$. The point is $(4.5, 0)$.
+
+**Check:** Both squared distances should match: $3.5^2 + 4 = 16.25$, and $0.5^2 + 16 = 16.25$.
+
+**Why a line?** All such points form the line that cuts the segment in half at a right angle. We found where it crosses the $x$-axis.
+
+Try this. Which point on the $y$-axis is the same distance from $(2, 0)$ and $(1, 3)$?
+
+<details class="check"><summary>Show the answer</summary>
+
+Let it be $(0, y)$. Then $4 + y^2 = 1 + (y - 3)^2$, which gives $6y = 6$. So the point is $(0, 1)$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

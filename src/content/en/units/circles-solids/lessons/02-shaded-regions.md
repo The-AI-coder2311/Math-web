@@ -1,7 +1,7 @@
 ---
 title: "Shaded Regions"
 summary: Find the area of strange-looking shaded shapes by subtracting, by moving pieces around, or by splitting them up.
-minutes: 9
+minutes: 11
 ---
 
 A circle fits perfectly inside a square. The four curved corners left over are shaded. How do you find the area of a curved corner? There's no formula for a shape like that, and you won't need one. On contests, shaded regions almost always look harder than they are, because they're nearly always familiar shapes combined in some way.
@@ -83,6 +83,39 @@ Three circles, each with a radius of 2, sit in a row inside a rectangle. Each on
 **Subtract:** $48 - 12\pi$.
 
 Notice that the fraction that's shaded doesn't depend on the radius. Each circle sits in its own square, and in every square, $\frac{\pi}{4}$ of the area is the circle. So the fraction outside is $1 - \frac{\pi}{4}$, no matter how many circles or what size they are.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Here's a shape that looks hard but breaks into pieces you know: a lens made by two overlapping arcs.
+
+**A harder one:** A square has sides of 4. Two quarter circles of radius 4 are drawn inside it, centered at opposite corners. What's the area where they overlap?
+
+**What does the overlap look like?** It's a lens, running along a diagonal of the square. The diagonal splits it into two identical parts.
+
+**What's one part?** Each part is a quarter circle with a triangle removed:
+
+- Quarter circle: $\frac{1}{4} \times \pi \times 4^2 = 4\pi$
+- Right triangle with legs of 4: $\frac{1}{2} \times 4 \times 4 = 8$
+
+So one part has an area of $4\pi - 8$.
+
+**The whole lens:** $2(4\pi - 8) = 8\pi - 16$.
+
+**Is that reasonable?** It's about 9.1, out of a square of 16. That looks about right.
+
+This "sector minus triangle" piece is worth remembering. It's called a circular segment, and it appears all over contest geometry.
+
+Try this. Do the same thing for a square with sides of 2. What's the area of the lens?
+
+<details class="check"><summary>Show the answer</summary>
+
+The quarter circle has an area of $\pi$, and the triangle has an area of 2. So the lens has an area of $2(\pi - 2) = 2\pi - 4$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

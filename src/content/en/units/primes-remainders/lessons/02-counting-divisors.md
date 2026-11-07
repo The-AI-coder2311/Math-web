@@ -1,7 +1,7 @@
 ---
 title: "Counting Divisors and Factorial Zeros"
 summary: Count a number's factors in seconds, without listing them, and find how many zeros a huge factorial ends with.
-minutes: 10
+minutes: 12
 ---
 
 How many factors does 720 have? In Level 1, you listed factor pairs, and that works for 24 or 36. But 720 has quite a few, and you might easily miss one. You'd need to test every number from 1 to 26. There's a beautiful shortcut that gives the answer in about 10 seconds, and it combines two ideas you already know.
@@ -86,6 +86,34 @@ How many zeros does $100!$ end with?
 The total is $20 + 4 = 24$ zeros.
 
 **Why don't we need more steps?** The next power of 5 is 125, which is greater than 100. For $200!$, you'd count multiples of 5, 25, and 125.
+
+<section data-box="deeper">
+
+## Going deeper
+
+You can count special kinds of factors by restricting the exponents.
+
+**A harder one:** How many of the factors of 360 are odd? How many are even?
+
+**Factor it:** $360 = 2^3 \times 3^2 \times 5$.
+
+**All factors:** Each factor picks a power of 2, a power of 3, and a power of 5. That's $4 \times 3 \times 2 = 24$ factors.
+
+**Odd factors:** An odd factor can't have any 2s, so its power of 2 is fixed. That leaves $3 \times 2 = 6$ odd factors.
+
+**Even factors:** Take the rest: $24 - 6 = 18$. Or count directly: an even factor has 1, 2, or 3 twos, which gives $3 \times 3 \times 2 = 18$.
+
+**How about perfect-square factors?** A square needs even exponents. So 2 can have power 0 or 2, 3 can have power 0 or 2, and 5 can only have power 0. That's $2 \times 2 \times 1 = 4$: they're 1, 4, 9, and 36.
+
+Try this. How many even factors does 180 have?
+
+<details class="check"><summary>Show the answer</summary>
+
+$180 = 2^2 \times 3^2 \times 5$. An even factor has 1 or 2 twos, so there are $2 \times 3 \times 2 = 12$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

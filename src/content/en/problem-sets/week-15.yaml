@@ -1,0 +1,32 @@
+week: 15
+title: Mock Contest Day 2 Warm-up
+summary: Four quick warm-ups before students take Practice Contest A as a second timed mock contest.
+teacherNote: >-
+  Use these as a 5-minute warm-up, then run Practice Contest A. Afterward, have students compare their
+  score with the first mock contest. Improvement in any area is worth celebrating.
+problems:
+  - question: What is $1 + 2 + 3 + \dots + 20$?
+    answer: 210
+    verify: "sum(range(1, 20))"
+    explanation: >-
+      Pair the first and last numbers: $1 + 20 = 21$, $2 + 19 = 21$, and so on. There are 10 pairs, so
+      the sum is $10 \times 21 = 210$.
+  - question: How many prime numbers are less than 30?
+    answer: 10
+    verify: "range(1, 29).filter(isPrime).length"
+    explanation: >-
+      They are 2, 3, 5, 7, 11, 13, 17, 19, 23, and 29. Remember that 1 is not prime.
+  - question: A shirt costs \$24 after a 25% discount. What was the price before the discount, in dollars?
+    answer: 32
+    verify: "range(1, 100).find((price) => price * 75 === 2400)"
+    explanation: >-
+      After 25% off, you pay 75% of the price, which is $\frac{3}{4}$ of it. If $\frac{3}{4}$ of the
+      price is 24, then $\frac{1}{4}$ is $24 \div 3 = 8$, and the whole price is $8 \times 4 = 32$.
+  - question: >-
+      A diagonal of a polygon connects two corners that aren't next to each other. How many diagonals
+      does a hexagon (6 sides) have?
+    answer: 9
+    verify: "combos(range(1, 6), 2).filter(([a, b]) => b - a !== 1 && !(a === 1 && b === 6)).length"
+    explanation: >-
+      Each of the 6 corners connects to every corner except itself and its 2 neighbors, which is 3
+      diagonals each. That counts every diagonal twice, once from each end. $\frac{6 \times 3}{2} = 9$

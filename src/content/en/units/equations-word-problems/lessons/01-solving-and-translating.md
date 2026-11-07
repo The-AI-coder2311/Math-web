@@ -1,7 +1,7 @@
 ---
 title: "Solving and Translating"
 summary: Use a letter for the number you don't know, solve equations by keeping them balanced, and turn English sentences into math.
-minutes: 10
+minutes: 12
 ---
 
 In Level 1, you solved problems with boxes and by working backwards. Those methods are great, but some stories get too tangled for them. Try this one: "Three consecutive whole numbers add up to 54. What are they?" You could guess and check. In this lesson, you'll learn a way that works every time, and it's the same way that handles problems far too tangled for guessing.
@@ -86,6 +86,33 @@ $$n + 12 = 3n - 2$$
 Subtract $n$ from both sides to get $12 = 2n - 2$. Add 2 to get $14 = 2n$. So $n = 7$.
 
 **Check:** $7 + 12 = 19$, and $3 \times 7 - 2 = 19$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Not every equation has one answer. Some have none, and some are true for every number. Contests like to ask about this.
+
+**Compare these two:**
+
+- $2x + 3 = 2x + 5$: Subtract $2x$ from both sides, and you're left saying that 3 equals 5. That's never true, so there's **no solution**.
+- $2(x + 3) = 2x + 6$: Multiply out the left side, and both sides match. It's true for **every** $x$.
+
+The clue is that the $x$ terms cancel. Then whatever is left decides what happens.
+
+**A harder one:** What value of $a$ makes $3x + a = 3(x + 2)$ true for every $x$?
+
+Multiply out the right side to get $3x + 6$. The $x$ terms already match, so the other parts have to match too. So $a = 6$. For any other value of $a$, the equation would have no solution.
+
+Try this. What value of $k$ makes $4x + k = 2(2x + 5)$ true for every $x$?
+
+<details class="check"><summary>Show the answer</summary>
+
+The right side is $4x + 10$. The $x$ terms match, so $k$ must be 10.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,7 +1,7 @@
 ---
 title: "When Order Matters"
 summary: Count lineups and arrangements, where each choice uses up an option, and learn why n factorial works.
-minutes: 9
+minutes: 11
 ---
 
 Five friends want a photo in a straight line. They'd like one picture of every possible lineup. If each photo takes 10 seconds, how long will it take? Before reading on, take a guess. Is it about a minute? About an hour?
@@ -86,6 +86,30 @@ Six students sit in a row of 6 chairs. Two of them, Dee and Eli, must sit in the
 Each way of placing Dee and Eli pairs with every way of placing the rest, so we multiply:
 
 $$2 \times 24 = 48$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+There's often more than one good way to count, and getting the same answer twice is the best check you have.
+
+**A harder one:** Eight runners race, and the top 3 get gold, silver, and bronze. In how many ways can the medals go if Ana must win one?
+
+**One way:** Choose Ana's medal, which has 3 options. Then fill the other two medals from the 7 other runners: $7 \times 6 = 42$. That gives $3 \times 42 = 126$.
+
+**Another way:** Count all of the ways, and take away the ones with no Ana. All of the ways: $8 \times 7 \times 6 = 336$. No Ana: $7 \times 6 \times 5 = 210$. And $336 - 210 = 126$.
+
+The two methods agree, so we can trust the answer. Notice that the first method starts with the person who has a rule. Dealing with the rule first keeps the later steps easy.
+
+Try this. Six people run for president, vice president, and treasurer. In how many ways can the jobs be filled if Bo must get one?
+
+<details class="check"><summary>Show the answer</summary>
+
+Bo has 3 possible jobs, and the other two jobs can go to $5 \times 4 = 20$ pairs of people in order. So there are $3 \times 20 = 60$ ways.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

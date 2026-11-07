@@ -1,0 +1,50 @@
+# La prueba de ubicación en /es/pathway/start/. Las preguntas van del Nivel 1 al Nivel 3.
+questions:
+  - level: 1
+    question: Un estudiante tiene 3 camisas y 4 pantalones. Un conjunto es una camisa y un pantalón. ¿Cuántos conjuntos diferentes puede formar?
+    choices: ["7", "12", "10", "16"]
+    answer: B
+    verify: "product(range(1, 3), range(1, 4)).length"
+    explanation: Cada una de las 3 camisas va con cada uno de los 4 pantalones, así que se multiplica. $3 \times 4 = 12$
+  - level: 1
+    question: Un cuadrado tiene un área de 49 pulgadas cuadradas. ¿Cuál es su perímetro, en pulgadas?
+    choices: ["7", "14", "28", "49"]
+    answer: C
+    verify: "range(1, 49).find((side) => side * side === 49) * 4"
+    explanation: El lado multiplicado por sí mismo da 49, así que cada lado mide 7 pulgadas. Un cuadrado tiene 4 lados iguales. $4 \times 7 = 28$
+  - level: 1
+    question: ¿Cuál es el residuo cuando 100 se divide entre 7?
+    choices: ["2", "3", "4", "5"]
+    answer: A
+    verify: "range(0, 6).find((r) => (100 - r) % 7 === 0)"
+    explanation: El múltiplo de 7 más grande que cabe en 100 es $7 \times 14 = 98$. Sobran $100 - 98 = 2$.
+  - level: 2
+    question: El promedio de cuatro números es 15. Tres de los números son 10, 12 y 20. ¿Cuál es el cuarto número?
+    choices: ["13", "15", "23", "18"]
+    answer: D
+    verify: "range(0, 100).find((x) => (10 + 12 + 20 + x) / 4 === 15)"
+    explanation: Cuatro números con promedio 15 suman $4 \times 15 = 60$. Los tres que conoces suman $10 + 12 + 20 = 42$, así que el cuarto es $60 - 42 = 18$.
+  - level: 2
+    question: Un entrenador elige un equipo de 3 jugadores entre 6 estudiantes. El orden no importa. ¿Cuántos equipos diferentes son posibles?
+    choices: ["18", "20", "120", "216"]
+    answer: B
+    verify: "combos(range(1, 6), 3).length"
+    explanation: Elegir en orden da $6 \times 5 \times 4 = 120$, pero cada equipo se contó una vez por cada orden de sus 3 jugadores, que son $3 \times 2 \times 1 = 6$ veces. $120 \div 6 = 20$
+  - level: 2
+    question: Un triángulo rectángulo tiene catetos de longitud 9 y 12. ¿Cuánto mide su lado más largo?
+    choices: ["13", "17", "15", "21"]
+    answer: C
+    verify: "range(1, 30).find((c) => c * c === 9 * 9 + 12 * 12)"
+    explanation: Por el teorema de Pitágoras, el lado más largo al cuadrado es $81 + 144 = 225$, y $15 \times 15 = 225$.
+  - level: 3
+    question: ¿Cuál es la suma de todos los números impares del 1 al 39?
+    choices: ["380", "420", "800", "400"]
+    answer: D
+    verify: "sum(range(1, 39).filter((n) => n % 2 === 1))"
+    explanation: Hay 20 números impares del 1 al 39. Junta el primero con el último, $1 + 39 = 40$, el segundo con el penúltimo, y así sucesivamente. Se forman 10 parejas de 40. $10 \times 40 = 400$
+  - level: 3
+    question: ¿Cuál es el residuo cuando $2^{20}$ se divide entre 7?
+    choices: ["4", "2", "1", "6"]
+    answer: A
+    verify: "range(1, 20).reduce((r) => (r * 2) % 7, 1)"
+    explanation: Los residuos de 2, 4, 8, 16, etcétera, al dividir entre 7, se repiten en el ciclo 2, 4, 1. Como $20 = 3 \times 6 + 2$, la potencia 20 cae en el 2.º lugar del ciclo, que es 4.

@@ -1,7 +1,7 @@
 ---
 title: "Place Value: What Digits Really Mean"
 summary: See that a number is a sum of its place values. That one idea solves digit puzzles and explains why many shortcuts work.
-minutes: 9
+minutes: 11
 ---
 
 Take any 2-digit number with two different digits, like 73. Swap the digits to get 37, and subtract the smaller from the larger: $73 - 37 = 36$. Now try 82 and 28: $82 - 28 = 54$. Try 91 and 19: $91 - 19 = 72$. Do you notice anything? All of the answers, 36, 54, and 72, are multiples of 9. Try a few more on your own. It always happens, and by the end of this lesson, you'll know why.
@@ -68,6 +68,38 @@ How many 3-digit numbers have a hundreds digit that's 3 more than their ones dig
 **What's the plan?** Count the choices. The hundreds digit can be 3 through 9. (It can't be 0, 1, or 2, because the ones digit would have to be negative.) That's 7 options, and each one decides the ones digit. The tens digit can be any of 10 digits.
 
 $$7 \times 10 = 70$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+Grouping numbers by how many digits they have turns a long count into three short ones.
+
+**A harder one:** You write the whole numbers from 1 to 100 in a row. How many digits do you write?
+
+**Group by size:**
+
+| Numbers | How many numbers | Digits each | Total digits |
+|---|---|---|---|
+| 1 to 9 | 9 | 1 | 9 |
+| 10 to 99 | 90 | 2 | 180 |
+| 100 | 1 | 3 | 3 |
+
+That makes $9 + 180 + 3 = 192$ digits.
+
+**Watch the count in the middle row.** From 10 to 99, there are $99 - 10 + 1 = 90$ numbers, not 89. Both ends count.
+
+This idea also runs in reverse. If a book uses 192 digits for its page numbers, it has 100 pages. Publishers really do think about this!
+
+Try this. How many digits do you write for the numbers from 1 to 150?
+
+<details class="check"><summary>Show the answer</summary>
+
+The numbers up to 99 use $9 + 180 = 189$ digits. The numbers from 100 to 150 are 51 numbers with 3 digits each, which makes 153. In all, that's $189 + 153 = 342$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

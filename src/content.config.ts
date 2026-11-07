@@ -82,6 +82,8 @@ const contests = defineCollection({
     title: z.string(),
     summary: z.string(),
     style: z.enum(['AMC 8', 'AMC 10']),
+    // The pathway level whose ideas the contest uses, so the pathway page can link to it.
+    level: z.number().int().min(1),
     order: z.number(),
     minutes: z.number(),
   }),
@@ -157,4 +159,71 @@ const formulas = defineCollection({
   }),
 });
 
-export const collections = { pathway, lessons, problems, pages, problemSets, contests, contestProblems, teacherPlans, formulas };
+// The placement quiz at /pathway/start/.
+const placement = defineCollection({
+  loader: glob({ pattern: '*/placement.yaml', base }),
+  schema: z.object({
+    questions: z.array(
+      z.object({
+        level: z.number().int().min(1),
+        question: z.string(),
+        choices: z.array(text).min(2).max(5),
+        answer: z.enum(['A', 'B', 'C', 'D', 'E']),
+        verify: z.string(),
+        explanation: z.string(),
+      }),
+    ),
+  }),
+});
+
+// Practice questions for the contest strategy lesson.
+const strategy = defineCollection({
+  loader: glob({ pattern: '*/strategy.yaml', base }),
+  schema: z.object({
+    questions: z.array(
+      z.object({
+        slug: z.string(),
+        question: z.string(),
+        choices: z.array(text).min(2).max(5),
+        answer: z.enum(['A', 'B', 'C', 'D', 'E']),
+        verify: z.string(),
+        hint: z.string(),
+        solution: z.string(),
+        mistakes: z.record(z.string(), z.string()).optional(),
+      }),
+    ),
+  }),
+});
+
+// Words students might not know yet, linked from the lesson where each first appears.
+const glossary = defineCollection({
+  loader: glob({ pattern: '*/glossary.yaml', base }),
+  schema: z.object({
+    terms: z.array(
+      z.object({
+        term: z.string(),
+        // Other spellings to link in lessons, such as "factors" for "factor".
+        forms: z.array(z.string()).optional(),
+        definition: z.string(),
+        example: z.string().optional(),
+        // The lesson where the word first appears, such as number-sense/04-factors-primes-leftovers.
+        lesson: z.string(),
+      }),
+    ),
+  }),
+});
+
+export const collections = {
+  pathway,
+  lessons,
+  problems,
+  pages,
+  problemSets,
+  contests,
+  contestProblems,
+  teacherPlans,
+  formulas,
+  placement,
+  strategy,
+  glossary,
+};

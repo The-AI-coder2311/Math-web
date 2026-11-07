@@ -1,0 +1,31 @@
+week: 13
+title: Mock Contest Day 1 Warm-up
+summary: Four quick warm-ups before students take the Level 1 Practice Test as a timed mock contest.
+teacherNote: >-
+  Use these as a 5-minute warm-up, then run the Level 1 Practice Test online or as a printed worksheet
+  from the answer keys page. The full plan for the day is in the club plan, week 13.
+problems:
+  - question: What is 15% of 60?
+    answer: 9
+    verify: "range(1, 60).filter((n) => n * 100 <= 60 * 15).length"
+    explanation: >-
+      10% of 60 is 6, and 5% is half of that, which is 3. So 15% is $6 + 3 = 9$.
+  - question: How many minutes are in 2.5 hours?
+    answer: 150
+    verify: "range(1, 300).find((minutes) => minutes / 60 === 2.5)"
+    explanation: >-
+      2 hours is $2 \times 60 = 120$ minutes, and half an hour is 30 minutes. $120 + 30 = 150$
+  - question: Which fraction is larger, $\frac{3}{7}$ or $\frac{4}{9}$?
+    answer: '$\frac{4}{9}$'
+    verify: "[[3, 7], [4, 9]].sort((a, b) => b[0] / b[1] - a[0] / a[1]).map(([n, d]) => fraction(n, d))[0]"
+    explanation: >-
+      Give them the same bottom number, 63. $\frac{3}{7} = \frac{27}{63}$ and $\frac{4}{9} = \frac{28}{63}$.
+      Since 28 is more than 27, $\frac{4}{9}$ is larger.
+  - question: >-
+      A contest has 25 questions and 40 minutes. You spend 90 seconds on each of the first 20 questions.
+      How many minutes are left for the last 5?
+    answer: 10
+    verify: "range(0, 40).find((left) => 20 * 90 + left * 60 === 40 * 60)"
+    explanation: >-
+      90 seconds is 1.5 minutes, and $20 \times 1.5 = 30$ minutes. That leaves $40 - 30 = 10$ minutes, or
+      2 minutes for each of the last 5 questions.

@@ -124,10 +124,21 @@ main:focus {
 .key-list a,
 .plan ul a,
 .sitemap a,
-.data-table a {
+.data-table a,
+.cheat-lesson h3 a,
+.level-tools a,
+.callout a,
+.potw-unit a {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
+}
+
+/* A link that wraps onto two lines still needs a full-size tap area. */
+.sitemap a,
+.cheat-lesson h3 a {
+  min-width: 2.75rem;
+  padding: 0.1rem 0;
 }
 
 .wrap {
@@ -228,6 +239,21 @@ main.wrap {
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 0.3em;
+}
+
+.language-switch {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.language-switch a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 0.5rem;
+  font-weight: 600;
 }
 
 .theme-toggle {
@@ -967,6 +993,274 @@ select {
   gap: 0.25rem 0.5rem;
 }
 
+/* Contest question list, flags, and review */
+.question-nav[hidden] {
+  display: none;
+}
+
+.question-nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.5rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.question-nav a {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.question-nav a.is-answered {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.question-nav a.is-answered::after {
+  content: '¹3';
+  position: absolute;
+  top: 0;
+  right: 0.2rem;
+  font-size: 0.7rem;
+}
+
+.question-nav a.is-flagged {
+  outline: 3px dashed var(--accent);
+  outline-offset: -3px;
+}
+
+.question-nav a.is-flagged::before {
+  content: '91';
+  position: absolute;
+  top: 0;
+  left: 0.2rem;
+  font-size: 0.7rem;
+}
+
+.flag-choice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  font-size: 1rem;
+}
+
+.flag-choice input {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: var(--accent);
+}
+
+.review-list li {
+  margin-bottom: 0.5rem;
+}
+
+/* Text inputs and text areas */
+.text-input,
+textarea {
+  display: block;
+  width: 100%;
+  max-width: 36rem;
+  min-height: 2.75rem;
+  margin: 0.35rem 0 0.75rem;
+  padding: 0.5rem 0.65rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--muted);
+  border-radius: 8px;
+  font: inherit;
+}
+
+textarea {
+  font-family: ui-monospace, Consolas, monospace;
+  font-size: 0.95rem;
+  word-break: break-all;
+}
+
+.field-label,
+.progress-code label {
+  display: block;
+  font-weight: 600;
+}
+
+.callout {
+  margin: 1rem 0 1.5rem;
+  background: var(--accent-soft);
+}
+
+.level-tools {
+  margin-top: 1rem;
+}
+
+.level-tools ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.level-tools li {
+  margin-bottom: 0.35rem;
+}
+
+.progress-code {
+  margin-top: 2.5rem;
+}
+
+.progress-code .code-half {
+  margin-top: 1rem;
+}
+
+.code-status:empty {
+  display: none;
+}
+
+.code-status {
+  margin: 1rem 0 0;
+  font-weight: 600;
+}
+
+/* Cheat sheets */
+.cheat-sheet h2 {
+  margin-top: 1.75rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid var(--accent);
+}
+
+.cheat-lesson h3 {
+  margin: 1rem 0 0.25rem;
+  font-size: 1.05rem;
+}
+
+.cheat-lesson .prose ul {
+  margin-top: 0.25rem;
+}
+
+/* Certificates */
+.certificate {
+  margin: 1.5rem 0;
+  padding: 2rem 1.25rem;
+  text-align: center;
+  background: var(--surface);
+  border: 6px double var(--accent);
+  border-radius: var(--radius);
+}
+
+.certificate-logo .logo {
+  height: 48px;
+}
+
+.certificate-heading {
+  margin: 0.5rem 0 1rem;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.certificate-name {
+  margin: 0.75rem auto;
+  padding-bottom: 0.25rem;
+  max-width: 28rem;
+  border-bottom: 2px solid var(--text);
+  font-size: 1.6rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* Glossary */
+.letter-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  list-style: none;
+}
+
+.letter-nav a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.glossary-list {
+  margin: 0;
+}
+
+.glossary-entry {
+  padding: 0.75rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.glossary-entry:target {
+  background: var(--accent-soft);
+}
+
+.glossary-entry dt {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.glossary-entry dd {
+  margin: 0.25rem 0 0;
+}
+
+.glossary-entry dd p {
+  margin: 0.25rem 0;
+}
+
+.glossary-link {
+  text-decoration-style: dotted;
+  text-underline-offset: 0.2em;
+}
+
+/* Problem of the Week */
+.potw {
+  margin-top: 2rem;
+}
+
+.potw-choices {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.75rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* Printable one-page handouts, like the recruiting flyer and parent letter */
+.handout {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.handout h2 {
+  margin-top: 0;
+}
+
+#flyer h2 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+#flyer h3 {
+  text-align: center;
+}
+
 .print-only {
   display: none;
 }
@@ -1088,6 +1382,76 @@ select {
     padding: 0.1rem 0.5rem;
   }
 
+  .cheat-sheet {
+    columns: 2;
+    column-gap: 1.5rem;
+    font-size: 10pt;
+  }
+
+  .cheat-sheet h2 {
+    margin-top: 0.75rem;
+    font-size: 12pt;
+    break-after: avoid;
+  }
+
+  .cheat-lesson {
+    break-inside: avoid;
+  }
+
+  .cheat-lesson h3 {
+    margin-top: 0.5rem;
+    font-size: 10.5pt;
+  }
+
+  .cheat-lesson .prose ul,
+  .cheat-unit ul {
+    margin: 0.15rem 0;
+    padding-left: 1rem;
+  }
+
+  .certificate {
+    page: certificate;
+    margin: 0;
+    padding: 3rem 2rem;
+    border: 10px double #000000;
+    font-size: 16pt;
+    break-inside: avoid;
+  }
+
+  .certificate-heading {
+    font-size: 30pt;
+  }
+
+  .certificate-name {
+    max-width: none;
+    font-size: 26pt;
+  }
+
+  .handout {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    break-after: page;
+    font-size: 11pt;
+  }
+
+  #flyer {
+    font-size: 14pt;
+  }
+
+  #flyer h2 {
+    font-size: 30pt;
+  }
+
+  body[data-print-only='flyer'] #parent-letter,
+  body[data-print-only='parent-letter'] #flyer {
+    display: none;
+  }
+
+  .handout:last-of-type {
+    break-after: auto;
+  }
+
   .name-line {
     display: flex;
     gap: 2rem;
@@ -1099,4 +1463,8 @@ select {
     padding-bottom: 0.25rem;
     border-bottom: 1px solid #000000;
   }
+}
+
+@page certificate {
+  size: landscape;
 }

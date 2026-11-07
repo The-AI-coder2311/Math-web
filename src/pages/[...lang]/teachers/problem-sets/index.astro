@@ -3,7 +3,7 @@ import Base from '../../../../layouts/Base.astro';
 import { getProblemSets } from '../../../../lib/content';
 import { href, localePaths, t } from '../../../../i18n/config';
 
-export const getStaticPaths = () => localePaths();
+export const getStaticPaths = () => localePaths('teachers/problem-sets/');
 
 const { lang } = Astro.props;
 const all = t(lang);

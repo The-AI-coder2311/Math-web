@@ -1,0 +1,204 @@
+# The Glossary page at /glossary/. Each term links from the lesson that teaches it:
+# the first time the term (or one of its `forms`) appears in that lesson's text, it
+# becomes a link to its entry here. `npm run verify` checks that the word is really in
+# that lesson. Keep definitions short and friendly, for a student who has never competed.
+terms:
+  - term: digit
+    forms: [digits]
+    definition: One of the ten symbols 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9 that we use to write numbers.
+    example: The number 305 has three digits, 3, 0, and 5.
+    lesson: number-sense/01-place-value
+  - term: place value
+    definition: How much a digit is worth because of where it sits in a number.
+    example: In 352, the 5 is in the tens place, so it's worth 50.
+    lesson: number-sense/01-place-value
+  - term: divisible
+    forms: [divisibility]
+    definition: One whole number is divisible by another when dividing leaves nothing left over.
+    example: 24 is divisible by 6, because $24 \div 6 = 4$ with nothing left.
+    lesson: number-sense/03-divisibility-rules
+  - term: multiple
+    forms: [multiples]
+    definition: What you get when you multiply a number by a whole number.
+    example: The multiples of 4 are 4, 8, 12, 16, and so on.
+    lesson: number-sense/03-divisibility-rules
+  - term: factor
+    forms: [factors]
+    definition: A whole number that divides into another number with nothing left over.
+    example: The factors of 12 are 1, 2, 3, 4, 6, and 12.
+    lesson: number-sense/04-factors-primes-leftovers
+  - term: prime
+    forms: [primes, prime number, prime numbers]
+    definition: A whole number greater than 1 whose only factors are 1 and itself.
+    example: 2, 3, 5, 7, 11, and 13 are the first six primes. The number 1 is not prime.
+    lesson: number-sense/04-factors-primes-leftovers
+  - term: remainder
+    forms: [remainders, leftover, leftovers]
+    definition: The amount left over, or leftover, when one whole number doesn't divide evenly into another.
+    example: 17 divided by 5 is 3 with a remainder of 2, because $5 \times 3 + 2 = 17$.
+    lesson: number-sense/04-factors-primes-leftovers
+  - term: perfect square
+    forms: [perfect squares]
+    definition: A number you get by multiplying a whole number by itself.
+    example: 1, 4, 9, 16, and 25 are perfect squares, because $5 \times 5 = 25$.
+    lesson: number-sense/04-factors-primes-leftovers
+  - term: tree diagram
+    forms: [tree]
+    definition: A drawing that shows every way a set of choices can go, with one branch for each option.
+    lesson: counting/01-multiply-choices
+  - term: factorial
+    definition: A whole number times every whole number below it, down to 1. It's written with an exclamation mark.
+    example: $4! = 4 \times 3 \times 2 \times 1 = 24$
+    lesson: counting/02-when-order-matters
+  - term: ratio
+    forms: [ratios]
+    definition: "A comparison of two amounts, written like 2 to 3 or $2 : 3$."
+    example: "A class with 2 boys for every 3 girls has a boy-to-girl ratio of $2 : 3$."
+    lesson: fractions-ratios/02-ratios-as-boxes
+  - term: rate
+    forms: [rates]
+    definition: How much of one thing happens for each unit of another, like miles per hour or pages per minute.
+    lesson: fractions-ratios/03-rates-and-scaling
+  - term: percent
+    forms: [percents]
+    definition: A number out of 100. The word means "per hundred."
+    example: 25 percent, written 25%, means 25 out of 100, which is the same as $\frac{1}{4}$.
+    lesson: fractions-ratios/04-percents
+  - term: perimeter
+    definition: The total distance around the outside of a shape.
+    example: A 3 by 5 rectangle has perimeter $3 + 5 + 3 + 5 = 16$.
+    lesson: basic-geometry/01-perimeter-and-area
+  - term: area
+    definition: The amount of flat space inside a shape, measured in square units.
+    example: A 3 by 5 rectangle has area $3 \times 5 = 15$ square units.
+    lesson: basic-geometry/01-perimeter-and-area
+  - term: right angle
+    forms: [right angles]
+    definition: An angle of exactly 90 degrees, like the corner of a sheet of paper.
+    lesson: basic-geometry/02-triangle-area
+  - term: isosceles
+    definition: An isosceles triangle has at least two sides of the same length. The angles across from those sides are equal too.
+    lesson: basic-geometry/03-angle-facts
+  - term: equilateral
+    definition: An equilateral triangle has all three sides the same length. Each of its angles is 60 degrees.
+    lesson: basic-geometry/03-angle-facts
+  - term: parallel
+    definition: Parallel lines go in the same direction and never meet, like the two rails of a train track.
+    lesson: basic-geometry/03-angle-facts
+  - term: hypotenuse
+    definition: The longest side of a right triangle. It's across from the right angle.
+    lesson: basic-geometry/05-right-triangles
+  - term: Pythagorean Theorem
+    definition: In a right triangle with shorter sides $a$ and $b$ and longest side $c$, $a^2 + b^2 = c^2$.
+    example: A triangle with sides 3, 4, and 5 is a right triangle, because $9 + 16 = 25$.
+    lesson: basic-geometry/05-right-triangles
+  - term: pigeonhole principle
+    forms: [pigeonhole]
+    definition: If you put more items than boxes, at least one box must hold two or more items.
+    lesson: logic-patterns/04-logic-tables-pigeonholes
+  - term: probability
+    definition: How likely something is, as a number from 0 (impossible) to 1 (certain). When every outcome is equally likely, it's the number of outcomes you want divided by the total number of outcomes.
+    lesson: intro-probability/01-count-what-you-want
+  - term: outcome
+    forms: [outcomes]
+    definition: One possible result of something random, like rolling a 4 on a die.
+    lesson: intro-probability/01-count-what-you-want
+  - term: mean
+    forms: [average]
+    definition: The total of a list of numbers divided by how many numbers there are. People also call it the average.
+    example: The mean of 2, 4, and 9 is $15 \div 3 = 5$.
+    lesson: data-chance/01-the-total-trick
+  - term: median
+    definition: The middle number when a list is put in order. With an even number of values, it's halfway between the two middle ones.
+    example: The median of 3, 8, 1, 6, 5 is 5, because in order they are 1, 3, 5, 6, 8.
+    lesson: data-chance/02-median-tables-graphs
+  - term: expected value
+    definition: The average result you'd get if you repeated something random many, many times.
+    lesson: data-chance/04-expected-value
+  - term: consecutive
+    definition: Coming one right after another, with no gaps.
+    example: 7, 8, and 9 are three consecutive whole numbers.
+    lesson: equations-word-problems/01-solving-and-translating
+  - term: prime factorization
+    definition: A number written as a product of primes. Every whole number greater than 1 has exactly one.
+    example: $60 = 2 \times 2 \times 3 \times 5$
+    lesson: primes-remainders/01-prime-factorization
+  - term: exponent
+    forms: [exponents]
+    definition: The small raised number that says how many times to multiply a number by itself.
+    example: In $2^3$, the exponent is 3, and $2^3 = 2 \times 2 \times 2 = 8$.
+    lesson: primes-remainders/01-prime-factorization
+  - term: greatest common factor
+    forms: [GCF]
+    definition: The biggest number that is a factor of two or more numbers. It's also called the GCF.
+    example: The greatest common factor of 12 and 18 is 6.
+    lesson: primes-remainders/03-gcf-and-lcm
+  - term: least common multiple
+    forms: [LCM]
+    definition: The smallest number that is a multiple of two or more numbers. It's also called the LCM.
+    example: The least common multiple of 4 and 6 is 12.
+    lesson: primes-remainders/03-gcf-and-lcm
+  - term: polygon
+    forms: [polygons]
+    definition: A flat, closed shape made of straight sides, like a triangle, a square, or a hexagon.
+    lesson: triangles/01-angle-chasing
+  - term: similar
+    definition: Two shapes are similar when one is a scaled-up or scaled-down copy of the other. Their angles match, and their sides are in the same ratio.
+    lesson: triangles/04-similar-triangles
+  - term: radius
+    definition: The distance from the center of a circle to its edge.
+    lesson: circles-solids/01-circle-formulas
+  - term: diameter
+    definition: The distance across a circle through its center. It's twice the radius.
+    lesson: circles-solids/01-circle-formulas
+  - term: circumference
+    definition: The distance around a circle. It equals $\pi$ times the diameter.
+    lesson: circles-solids/01-circle-formulas
+  - term: sector
+    forms: [sectors]
+    definition: A slice of a circle, shaped like a slice of pizza, between two radii.
+    lesson: circles-solids/03-sectors-and-probability
+  - term: volume
+    definition: The amount of space inside a 3D shape, measured in cubic units.
+    example: A box that is 2 by 3 by 4 has volume $2 \times 3 \times 4 = 24$ cubic units.
+    lesson: circles-solids/04-boxes-and-3d
+  - term: surface area
+    definition: The total area of all the outside faces of a 3D shape.
+    lesson: circles-solids/04-boxes-and-3d
+  - term: arithmetic sequence
+    forms: [arithmetic sequences]
+    definition: A list of numbers where you add the same amount each time.
+    example: 5, 8, 11, 14, ... adds 3 each time.
+    lesson: sequences-series/01-arithmetic-sequences
+  - term: geometric sequence
+    forms: [geometric sequences]
+    definition: A list of numbers where you multiply by the same amount each time.
+    example: 3, 6, 12, 24, ... doubles each time.
+    lesson: sequences-series/03-geometric-sequences
+  - term: slope
+    definition: How steep a line is. It's the change in height divided by the change in sideways distance between two points on the line.
+    lesson: coordinate-geometry/01-lines-and-slopes
+  - term: perpendicular
+    definition: Perpendicular lines cross at a right angle.
+    lesson: coordinate-geometry/01-lines-and-slopes
+  - term: midpoint
+    definition: The point exactly halfway between two points.
+    lesson: coordinate-geometry/02-distance-midpoints-circles
+  - term: chord
+    forms: [chords]
+    definition: A straight segment connecting two points on a circle.
+    lesson: similar-shapes-circles/03-chords-and-tangents
+  - term: tangent
+    forms: [tangents]
+    definition: A line that touches a circle at exactly one point. It makes a right angle with the radius at that point.
+    lesson: similar-shapes-circles/03-chords-and-tangents
+  - term: invariant
+    forms: [invariants]
+    definition: Something that never changes, no matter which allowed moves you make.
+    lesson: pigeonholes-invariants/02-parity-and-invariants
+  - term: parity
+    definition: Whether a whole number is even or odd.
+    lesson: pigeonholes-invariants/02-parity-and-invariants
+  - term: quadratic
+    definition: An expression or equation where the highest power of the unknown is 2, like $x^2 + 5x + 6$.
+    lesson: algebra-toolkit/03-quadratics-and-vieta

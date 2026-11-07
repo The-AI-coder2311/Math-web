@@ -1,0 +1,66 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Logo from '../../../../components/Logo.astro';
+import { getLevels, getProblems } from '../../../../lib/content';
+import { site } from '../../../../site.config';
+import { href, langParam, locales, t } from '../../../../i18n/config';
+
+// A certificate for each level whose units are all written.
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) =>
+      (await getLevels(lang))
+        .map((level, index) => ({ level, number: index + 1 }))
+        .filter(({ level }) => level.units.every((unit) => unit.available))
+        .map(({ level, number }) => ({ params: { lang: langParam(lang), n: String(number) }, props: { lang, level, number } })),
+    ),
+  );
+  return paths.flat();
+}
+
+const { lang, level } = Astro.props;
+const text = t(lang).certificate;
+const units = await Promise.all(
+  level.units.map(async (unit) => ({ slug: unit.slug, problems: (await getProblems(lang, unit.slug)).map((problem) => problem.slug) })),
+);
+---
+<Base title={text.title(level.title)} description={text.description(level.title)} lang={lang} current="learn">
+  <p class="eyebrow no-print"><a href={href(lang, 'pathway/')}>{text.back}</a></p>
+  <h1 class="no-print">{text.title(level.title)}</h1>
+  <noscript><p class="card">{text.noScript}</p></noscript>
+  <p class="card needs-js no-print" data-certificate-locked>{text.locked}</p>
+
+  <div data-certificate-ready data-units={JSON.stringify(units)} hidden>
+    <div class="no-print">
+      <p>{text.intro}</p>
+      <label class="field-label" for="certificate-name">{text.nameLabel}</label>
+      <input id="certificate-name" class="text-input" type="text" autocomplete="off" maxlength="60" data-certificate-input />
+      <p class="muted">{text.privacy}</p>
+      <div class="btn-row">
+        <button class="btn btn-primary" type="button" data-print>{text.print}</button>
+      </div>
+    </div>
+    <div class="certificate">
+      <div class="certificate-logo"><Logo /></div>
+      <p class="certificate-heading">{text.heading}</p>
+      <p>{text.awarded}</p>
+      <p class="certificate-name" data-certificate-name data-blank={text.blankName}>{text.blankName}</p>
+      <p>{text.finished(level.title)}</p>
+      <p>{text.site(site.name)}</p>
+    </div>
+  </div>
+</Base>
+<script>
+  import { unitsFinished } from '../../../../scripts/progress';
+
+  const ready = document.querySelector<HTMLElement>('[data-certificate-ready]');
+  if (ready && unitsFinished(JSON.parse(ready.dataset.units as string))) {
+    ready.hidden = false;
+    (document.querySelector('[data-certificate-locked]') as HTMLElement).hidden = true;
+    const input = ready.querySelector('[data-certificate-input]') as HTMLInputElement;
+    const name = ready.querySelector('[data-certificate-name]') as HTMLElement;
+    input.addEventListener('input', () => {
+      name.textContent = input.value.trim() || (name.dataset.blank as string);
+    });
+  }
+</script>

@@ -1,0 +1,33 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../layouts/Base.astro';
+import Problem from '../../../components/Problem.astro';
+import { getPage, getStrategyQuestions } from '../../../lib/content';
+import { practiceData } from '../../../lib/practice-data';
+import { href, localePaths, t } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths('contests/strategy/');
+
+const { lang } = Astro.props;
+const text = t(lang).strategy;
+const page = await getPage(lang, 'contest-strategy');
+const questions = await getStrategyQuestions(lang);
+---
+<Base title={text.title} description={text.description} lang={lang} current="contests">
+  <p class="eyebrow"><a href={href(lang, 'contests/')}>{t(lang).contests.allContests}</a></p>
+  <h1>{text.title}</h1>
+  <div class="prose" set:html={page.html} />
+
+  <section {...practiceData(lang, 'contest-strategy')}>
+    <h2>{text.practiceTitle}</h2>
+    <p>{text.practiceIntro}</p>
+    {questions.map((question, i) => <Problem lang={lang} number={i + 1} problem={question} headingLevel={3} />)}
+  </section>
+
+  <div class="btn-row no-print">
+    <a class="btn btn-primary" href={href(lang, 'contests/')}>{text.toTests}</a>
+  </div>
+</Base>
+<script>
+  import '../../../scripts/practice';
+</script>

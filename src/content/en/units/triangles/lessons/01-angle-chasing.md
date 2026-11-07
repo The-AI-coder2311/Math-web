@@ -1,7 +1,7 @@
 ---
 title: "Angle Chasing"
 summary: Find unknown angles one step at a time using outside angles, parallel lines, and the angle sum of any polygon.
-minutes: 10
+minutes: 12
 ---
 
 You've learned that a triangle's angles add up to 180°. But contest diagrams usually contain several triangles and lines, with a question mark on one angle and only a couple of numbers given. It might feel like there's not enough information. There almost always is. You don't need to see the path right away: you only have to find one more angle, and then one more.
@@ -65,6 +65,32 @@ In triangle $ABC$, sides $AB$ and $AC$ are equal, and angle $A$ is 36°. A line 
 - **Triangle $BDC$:** We now know angle $DBC$ is 36° and angle $C$ is 72°. So angle $BDC$ is $180 - 36 - 72 = 72$ degrees.
 
 Notice something neat: triangles $ABD$ and $BDC$ are both isosceles. Finding angles often reveals equal sides too.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Exterior angles make questions about regular polygons fast, including questions about what's impossible.
+
+**A harder one:** Each interior angle of a regular polygon is $150^\circ$. How many sides does it have?
+
+**The slow way:** Solve $\frac{(n-2) \times 180}{n} = 150$.
+
+**The fast way:** The interior and exterior angles at each corner add up to $180^\circ$, so each exterior angle is $30^\circ$. The exterior angles always add up to $360^\circ$. So there are $360 \div 30 = 12$ sides.
+
+**Can each interior angle be $125^\circ$?** Then each exterior angle would be $55^\circ$. But $360 \div 55$ isn't a whole number, so **no regular polygon** has that angle. You can answer these questions without ever drawing the shape.
+
+**Why do exterior angles always add up to $360^\circ$?** Imagine walking around the shape. At each corner, you turn by the exterior angle. When you get back to the start, you've turned exactly one full circle.
+
+Try this. Each interior angle of a regular polygon is $156^\circ$. How many sides does it have?
+
+<details class="check"><summary>Show the answer</summary>
+
+Each exterior angle is $180 - 156 = 24$ degrees. So there are $360 \div 24 = 15$ sides.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

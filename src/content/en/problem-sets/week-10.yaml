@@ -1,0 +1,51 @@
+week: 10
+title: Smart Counting
+summary: Six counting problems about overlaps, groups, repeated letters, and paths.
+teacherNote: >-
+  Many of these have a trap where something gets counted twice. When a group gets an answer, ask,
+  "Could any arrangement be counted more than once?" Have students try a smaller version, like 3
+  people instead of 5, and list every case to test their method.
+problems:
+  - question: How many whole numbers from 1 to 60 are multiples of 4 or multiples of 6 (or both)?
+    answer: 20
+    verify: "range(1, 60).filter((n) => n % 4 === 0 || n % 6 === 0).length"
+    explanation: >-
+      There are $60 \div 4 = 15$ multiples of 4 and $60 \div 6 = 10$ multiples of 6. Numbers like 12 and
+      24 are on both lists. Those are the multiples of 12, and there are $60 \div 12 = 5$ of them. So
+      $15 + 10 - 5 = 20$.
+  - question: >-
+      Five friends stand in a line for a photo. Amy and Ben insist on standing next to each other. How
+      many different lines are possible?
+    answer: 48
+    verify: "perms(['Amy', 'Ben', 'C', 'D', 'E']).filter((line) => Math.abs(line.indexOf('Amy') - line.indexOf('Ben')) === 1).length"
+    explanation: >-
+      Tape Amy and Ben together into one block. Now there are 4 things to line up, which can be done in
+      $4 \times 3 \times 2 \times 1 = 24$ ways. Inside the block, Amy can be on the left or the right,
+      which is 2 ways. In all, $24 \times 2 = 48$.
+  - question: A pizza shop offers 7 toppings. How many ways can you choose 2 different toppings?
+    answer: 21
+    verify: "combos(range(1, 7), 2).length"
+    explanation: >-
+      Choosing in order gives $7 \times 6 = 42$, but pepperoni-then-onion is the same pizza as
+      onion-then-pepperoni. Each pair was counted twice, so $42 \div 2 = 21$.
+  - question: How many different arrangements are there of the letters in the word BOOK?
+    answer: 12
+    verify: "new Set(perms(['B', 'O', 'O', 'K']).map((word) => word.join(''))).size"
+    explanation: >-
+      If the two O's were different, there would be $4 \times 3 \times 2 \times 1 = 24$ arrangements.
+      But swapping the two O's gives the same word, so every word was counted twice. $24 \div 2 = 12$
+  - question: >-
+      Lee walks along city streets from one corner to another, going 4 blocks east and 2 blocks north
+      in some order. Lee never walks west or south. How many different routes are possible?
+    answer: 15
+    verify: "product([0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1]).filter((route) => sum(route) === 2).length"
+    explanation: >-
+      Every route is 6 blocks long. A route is set by choosing which 2 of the 6 blocks go north. That's
+      $\frac{6 \times 5}{2} = 15$ routes.
+  - question: How many three-digit numbers have three different digits?
+    answer: 648
+    verify: "range(100, 999).filter((n) => new Set(digits(n)).size === 3).length"
+    explanation: >-
+      The first digit can't be 0, so it has 9 choices. The second digit can be anything except the first
+      digit, which is 9 choices, since 0 is now allowed. The third digit avoids both, so it has 8 choices.
+      $9 \times 9 \times 8 = 648$

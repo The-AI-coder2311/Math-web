@@ -1,7 +1,7 @@
 ---
 title: "Working Together"
 summary: Find how long a job takes when people work together by asking how much each one gets done in one hour.
-minutes: 9
+minutes: 11
 ---
 
 Mia can paint a fence in 3 hours. Jo can paint the same fence in 6 hours. How long does it take if they work together? Lots of people say 9 hours, because $3 + 6 = 9$. But that can't be right. With two people working, the job should take **less** time than Mia needs alone, not more! Others guess the average, 4.5 hours, and that's also too long, for the same reason.
@@ -81,6 +81,36 @@ Three workers, each working at the same rate, can build 4 identical tables in 6 
 **What's the question asking?** Six tables take $6 \times 4.5 = 27$ worker-days. With 2 workers, that's $27 \div 2 = 13.5$ days.
 
 **Does that make sense?** There are fewer workers and more tables, so it should take much longer than 6 days. It does.
+
+<section data-box="deeper">
+
+## Going deeper
+
+The pair-weighing trick works for rates too.
+
+**A harder one:** Working in pairs, Ann and Bo finish a job in 6 hours, Bo and Cy in 8 hours, and Ann and Cy in 12 hours. How long does the job take all three of them together?
+
+**Use rates, not times.** Add the three pair rates:
+
+$\frac{1}{6} + \frac{1}{8} + \frac{1}{12} = \frac{4 + 3 + 2}{24} = \frac{9}{24}$
+
+**What did we add?** Each person shows up in two pairs, so this is **twice** the rate of all three. So their combined rate is half of it:
+
+$\frac{9}{24} \div 2 = \frac{3}{16} \text{ of the job per hour}$
+
+So they finish in $\frac{16}{3}$ hours, which is 5 hours and 20 minutes.
+
+**A sanity check:** Three people should beat the fastest pair's 6 hours, but not by too much. It fits.
+
+Try this. Pairs take 3 hours, 6 hours, and 4 hours. How long do all three take together?
+
+<details class="check"><summary>Show the answer</summary>
+
+The rates add up to $\frac{1}{3} + \frac{1}{6} + \frac{1}{4} = \frac{9}{12} = \frac{3}{4}$. Half of that is $\frac{3}{8}$, so it takes $\frac{8}{3}$ hours.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

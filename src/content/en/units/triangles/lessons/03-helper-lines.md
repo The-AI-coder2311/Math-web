@@ -1,7 +1,7 @@
 ---
 title: "Helper Lines and Area Two Ways"
 summary: Draw a height to create a right triangle, find a triangle's area two different ways, and use the triangle inequality.
-minutes: 9
+minutes: 11
 ---
 
 A triangle has sides of 13, 13, and 10. What's its area? There's no height in sight, and no right angle mentioned. It looks as if you don't have enough information. But one extra line, drawn in the right place, turns this into two simple right triangles.
@@ -83,6 +83,36 @@ A trapezoid has parallel sides of 6 and 14, and its two slanted sides are each 5
 **Find the height:** Each right triangle has a leg of 4 and a hypotenuse of 5. It's a 3-4-5 triangle, so the height is 3.
 
 **Find the area:** The area of the rectangle is $6 \times 3 = 18$. Each triangle has an area of $\frac{1}{2} \times 4 \times 3 = 6$. The total is $18 + 6 + 6 = 30$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+A shape with no right angles often hides two right triangles. Drop heights to find them.
+
+**A harder one:** A trapezoid has parallel sides of 10 and 22, and both slanted sides have a length of 10. What's its area?
+
+**Drop two heights** from the ends of the short side, down to the long side. This splits the shape into a rectangle in the middle and a right triangle on each end.
+
+**How wide is each triangle?** The rectangle's width is 10, so that uses 10 of the long side's 22. The other 12 splits evenly: 6 on each end.
+
+**How tall is it?** Each triangle has a hypotenuse of 10 and a base of 6. It's a 6-8-10 triangle, so the height is 8.
+
+**The area:**
+
+$\frac{(10 + 22) \times 8}{2} = 128$
+
+The overhang is the key. Once you see it, these problems turn into the Pythagorean Theorem.
+
+Try this. A trapezoid has parallel sides of 8 and 18, and both slanted sides have a length of 13. What's its area?
+
+<details class="check"><summary>Show the answer</summary>
+
+Each overhang is $\frac{18 - 8}{2} = 5$. That's a 5-12-13 triangle, so the height is 12. The area is $\frac{(8 + 18) \times 12}{2} = 156$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

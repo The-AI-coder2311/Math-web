@@ -1,0 +1,52 @@
+week: 12
+title: Review Week
+summary: Six mixed problems from weeks 1 to 11. The topic isn't labeled, just like on a real contest.
+teacherNote: >-
+  This week is about choosing a tool. Before students solve anything, ask them to name the topic and
+  the idea they'll use, such as "this is counting, and I'll multiply." Groups can split the set and
+  then teach each other their problems.
+problems:
+  - question: >-
+      A license plate has 2 letters followed by 2 digits, such as AB 07. Letters and digits can repeat.
+      How many different plates are possible?
+    answer: 67600
+    verify: "product(range(1, 26), range(1, 26), range(0, 9), range(0, 9)).length"
+    explanation: >-
+      There are 26 choices for each letter and 10 choices for each digit. Multiply the choices:
+      $26 \times 26 \times 10 \times 10 = 67600$.
+  - question: >-
+      Fruit punch is mixed with 2 cups of juice for every 7 cups of water. How many cups of juice are in
+      36 cups of punch?
+    answer: 8
+    verify: "range(0, 36).find((juice) => juice * 9 === 36 * 2)"
+    explanation: >-
+      Each batch has $2 + 7 = 9$ cups. 36 cups is $36 \div 9 = 4$ batches, so there are
+      $4 \times 2 = 8$ cups of juice.
+  - question: A right triangle has legs of length 5 and 12. What is its perimeter?
+    answer: 30
+    verify: "5 + 12 + range(1, 30).find((c) => c * c === 5 * 5 + 12 * 12)"
+    explanation: >-
+      The longest side squared is $25 + 144 = 169$, and $13 \times 13 = 169$, so the longest side is 13.
+      The perimeter is $5 + 12 + 13 = 30$.
+  - question: >-
+      You flip two coins and roll one six-sided die. What is the probability of getting two heads and
+      a 6?
+    answer: '$\frac{1}{24}$'
+    verify: "fraction(product([0, 1], [0, 1], range(1, 6)).filter(([a, b, die]) => a === 1 && b === 1 && die === 6).length, 24)"
+    explanation: >-
+      There are $2 \times 2 \times 6 = 24$ equally likely outcomes, and only one of them is heads, heads,
+      6. So the probability is $\frac{1}{24}$.
+  - question: What is the smallest whole number that is divisible by each of the numbers 1, 2, 3, 4, 5, and 6?
+    answer: 60
+    verify: "range(1, 1000).find((n) => [1, 2, 3, 4, 5, 6].every((d) => n % d === 0))"
+    explanation: >-
+      The number needs $2 \times 2$ to be divisible by 4, a 3, and a 5. That's $4 \times 3 \times 5 = 60$,
+      and 60 is divisible by 6 too.
+  - question: >-
+      The average of 5 numbers is 12. One number is removed, and the average of the 4 numbers left is
+      10. What number was removed?
+    answer: 20
+    verify: "range(0, 100).find((x) => (5 * 12 - x) / 4 === 10)"
+    explanation: >-
+      Five numbers with average 12 add up to $5 \times 12 = 60$. Four numbers with average 10 add up to
+      $4 \times 10 = 40$. The removed number is the difference: $60 - 40 = 20$.

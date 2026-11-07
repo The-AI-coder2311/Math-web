@@ -1,0 +1,50 @@
+week: 11
+title: Primes & Remainders
+summary: Six number problems about factors, the GCF and LCM, units digits, and remainders.
+teacherNote: >-
+  Prime factorizations are the key tool this week. Ask students to write each number as a product of
+  primes before doing anything else. For the units digit and remainder problems, have them write out
+  the first several cases and look for a cycle.
+problems:
+  - question: How many positive factors does 72 have?
+    answer: 12
+    verify: "factors(72).length"
+    explanation: >-
+      Since $72 = 2^3 \times 3^2$, a factor can use 0 to 3 twos (4 choices) and 0 to 2 threes (3
+      choices). $4 \times 3 = 12$. You can check by listing the pairs: 1 and 72, 2 and 36, 3 and 24, 4
+      and 18, 6 and 12, 8 and 9.
+  - question: What is the greatest common factor of 84 and 126?
+    answer: 42
+    verify: "Math.max(...factors(84).filter((d) => 126 % d === 0))"
+    explanation: >-
+      Write both as products of primes: $84 = 2 \times 2 \times 3 \times 7$ and $126 = 2 \times 3 \times 3 \times 7$.
+      They share one 2, one 3, and one 7, so the GCF is $2 \times 3 \times 7 = 42$.
+  - question: >-
+      Two lights blink together right now. One blinks every 6 seconds, and the other blinks every 15
+      seconds. In how many seconds will they next blink together?
+    answer: 30
+    verify: "range(1, 100).find((t) => t % 6 === 0 && t % 15 === 0)"
+    explanation: >-
+      They blink together at times that are multiples of both 6 and 15. The smallest one is the least
+      common multiple. Multiples of 15 are 15, 30, 45, and 30 is the first that 6 divides.
+  - question: What is the units digit of $7^{25}$?
+    answer: 7
+    verify: "range(1, 25).reduce((units) => (units * 7) % 10, 1)"
+    explanation: >-
+      The units digits of 7, 49, 343, 2401 are 7, 9, 3, 1, and then the pattern repeats every 4 powers.
+      Since $25 = 4 \times 6 + 1$, the 25th power lands on the 1st spot of the cycle, which is 7.
+  - question: The number $30!$ means $30 \times 29 \times 28 \times \dots \times 2 \times 1$. How many zeros does it end with?
+    answer: 7
+    verify: "sum(range(1, 30).map((n) => { let count = 0; while (n % 5 === 0) { n /= 5; count++; } return count; }))"
+    explanation: >-
+      Each zero at the end comes from a 2 times a 5. There are far more 2s than 5s, so count the 5s.
+      The multiples of 5 up to 30 are 5, 10, 15, 20, 25, and 30, which is 6 numbers. But 25 is
+      $5 \times 5$, so it gives one extra 5. That's $6 + 1 = 7$ zeros.
+  - question: >-
+      A number leaves a remainder of 2 when divided by 5, and a remainder of 3 when divided by 7. What is
+      the smallest positive number that does both?
+    answer: 17
+    verify: "range(1, 100).find((n) => n % 5 === 2 && n % 7 === 3)"
+    explanation: >-
+      List numbers with remainder 3 when divided by 7: 3, 10, 17, 24, and so on. Check each one when
+      divided by 5. 3 leaves 3, 10 leaves 0, and 17 leaves 2. So the answer is 17.

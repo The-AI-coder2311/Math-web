@@ -1,7 +1,7 @@
 ---
 title: "The Multiply Trick"
 summary: Learn the one idea behind most counting problems. When you make choices one after another, multiply.
-minutes: 9
+minutes: 11
 ---
 
 A school locker uses a code with 3 digits, such as 4-0-7. How many different codes are there?
@@ -81,6 +81,32 @@ A license tag has one letter from A to Z, followed by two digits. The two digits
 $$26 \times 9 \times 9 = 2106$$
 
 Notice something important. We don't know **which** digit the first one was, but we do know that **exactly one** digit gets ruled out. The number of options stays the same, and that's all the trick needs.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Sometimes one choice decides a later spot for you. When that happens, that later spot gets **no** choices of its own, so it doesn't belong in the multiplication.
+
+**A harder one:** A palindrome reads the same forward and backward, such as 3773. How many four-digit palindromes are there?
+
+**What's really being chosen?** Once the first two digits are picked, the last two are forced, since they have to mirror the first two. So only two choices exist:
+
+- First digit: 9 options, since it can't be 0
+- Second digit: 10 options
+- Third and fourth digits: already decided
+
+That gives $9 \times 10 = 90$ palindromes. A common mistake is to multiply by four spots. Before you multiply, always ask, "Is this spot really a free choice?"
+
+Try this. How many five-digit palindromes are there?
+
+<details class="check"><summary>Show the answer</summary>
+
+The first three digits decide the rest, so there are $9 \times 10 \times 10 = 900$. The middle digit is free, because it mirrors itself.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

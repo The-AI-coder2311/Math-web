@@ -1,7 +1,7 @@
 ---
 title: "Rates and Scaling"
 summary: Find the cost or amount for one, and scale up or down. Learn why growing means multiplying, not adding.
-minutes: 9
+minutes: 11
 ---
 
 A photo is 4 inches wide and 6 inches tall. You want to enlarge it so that it's 8 inches wide without stretching anyone's face. How tall will it be? Many people say 10 inches, since 4 more wide should mean 4 more tall. If you did that, the people in the photo would look squashed. Let's see why.
@@ -74,6 +74,34 @@ Three painters can paint 2 identical rooms in 4 hours. Working at the same rate,
 **What's the amount for one?** Let's use "painter-hours," which is the number of painters times the number of hours. Three painters for 4 hours is $3 \times 4 = 12$ painter-hours, and that gets 2 rooms done. So one room takes $12 \div 2 = 6$ painter-hours.
 
 **Scale up:** 8 rooms need $8 \times 6 = 48$ painter-hours. With 6 painters, that takes $48 \div 6 = 8$ hours.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Rates with several parts can fool your intuition. The fix is to find the rate for **one** worker in **one** unit of time.
+
+**A harder one:** Three cats catch 3 mice in 3 minutes. At that rate, how many cats does it take to catch 100 mice in 100 minutes?
+
+The tempting answer is 100. Let's find the rate for one cat.
+
+**What does one cat do?** Three cats catch 3 mice in 3 minutes, so one cat catches 1 mouse in 3 minutes.
+
+**How much can one cat do in 100 minutes?** It catches $\frac{100}{3}$ mice.
+
+**How many cats do we need?** For 100 mice, it's $100 \div \frac{100}{3} = 3$ cats.
+
+The answer is still 3! More time alone lets the same 3 cats do more. When an answer seems to come from a pattern in the numbers, stop and find the rate for one.
+
+Try this. Five machines make 5 toys in 5 minutes. How long do 100 machines take to make 100 toys?
+
+<details class="check"><summary>Show the answer</summary>
+
+One machine makes 1 toy in 5 minutes. With 100 machines, each makes its one toy in those same 5 minutes. So it takes 5 minutes.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

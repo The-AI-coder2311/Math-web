@@ -1,7 +1,7 @@
 ---
 title: "Age and Number Stories"
 summary: Organize stories about ages and digits in a table, so that each sentence turns into one clean equation.
-minutes: 10
+minutes: 12
 ---
 
 Dana is 4 times as old as Eli. In 5 years, Dana will be 3 times as old as Eli. How old is Eli now? Try reasoning this out in your head, and you'll feel your brain juggling too many things at once. Here's the fix: a small table holds all of the information, so that your brain only has to deal with one sentence at a time.
@@ -111,6 +111,36 @@ Together, they get $m + 2m + (2m - 12) = 63$. That simplifies to $5m - 12 = 63$,
 **Check:** $15 + 30 + 18 = 63$, and 18 is 12 fewer than 30. The question asks about Nate, so the answer is 18, even though $m = 15$ is the number you found first.
 
 If you ever get a fraction of a sticker in a problem like this, treat it as a warning sign and look for a mistake in your setup.
+
+<section data-box="deeper">
+
+## Going deeper
+
+The trickiest age problems talk about the past using the present. The key fact is that the **gap** between two ages never changes.
+
+**A harder one:** Ann is 24. She is twice as old as Bo was when Ann was as old as Bo is now. How old is Bo?
+
+**Name the unknown:** Let Bo be $b$ now. The gap is $24 - b$ years.
+
+**Go back in time:** Ann was Bo's age, $b$, exactly $24 - b$ years ago. Back then, Bo was younger by that same gap: $b - (24 - b) = 2b - 24$.
+
+**Write the sentence as an equation:** Ann's age now is twice that:
+
+$24 = 2(2b - 24)$
+
+So $24 = 4b - 48$, which gives $4b = 72$, and $b = 18$.
+
+**Check:** The gap is 6. Six years ago, Ann was 18, which is Bo's age now, and Bo was 12. And 24 is twice 12.
+
+Try this. Mia is 30. She is three times as old as Ned was when Mia was as old as Ned is now. How old is Ned?
+
+<details class="check"><summary>Show the answer</summary>
+
+Let Ned be $n$. Back then, Ned was $2n - 30$. So $30 = 3(2n - 30)$, which gives $6n = 120$, and $n = 20$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

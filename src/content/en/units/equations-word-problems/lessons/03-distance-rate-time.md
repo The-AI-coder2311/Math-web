@@ -1,7 +1,7 @@
 ---
 title: "Distance, Speed and Time"
 summary: Use one formula for every motion problem, and avoid the most famous trap, which is averaging two speeds.
-minutes: 10
+minutes: 12
 ---
 
 You drive 60 miles to a city at 60 miles per hour, and you drive back at 30 miles per hour. What's your average speed for the whole trip? Nearly everyone says 45, since that's halfway between 60 and 30. That's wrong, and by the end of this lesson, you'll be able to explain why.
@@ -88,6 +88,34 @@ A boat travels 24 miles upstream and 24 miles back downstream on a river. The bo
 - Downstream takes $24 \div 12 = 2$ hours.
 
 The total is 5 hours. By the way, the average speed for the trip is $48 \div 5 = 9.6$ miles per hour, which is below the boat's still-water speed of 10. That's the trap from Example 2 again.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When an object has length, you have to ask what distance it really covers.
+
+**A harder one:** A train passes a pole in 10 seconds. It crosses a 200-meter bridge in 20 seconds. How long is the train, and how fast is it?
+
+**What distance does it cover?** To pass a pole, the train travels its own length, $L$. To cross a bridge, the front has to cross the bridge, and then the rest of the train has to clear it. So it travels $L + 200$.
+
+**What stays the same?** The speed. Set the two speeds equal:
+
+$\frac{L}{10} = \frac{L + 200}{20}$
+
+Multiply both sides by 20 to get $2L = L + 200$. So $L = 200$ meters. The speed is $200 \div 10 = 20$ meters per second.
+
+**A quick way to see it:** The extra 10 seconds covers exactly the 200-meter bridge. So the speed is 20 meters per second, and the train is as long as 10 seconds of travel.
+
+Try this. A train passes a pole in 8 seconds, and goes through a 300-meter tunnel in 20 seconds. How fast is it?
+
+<details class="check"><summary>Show the answer</summary>
+
+The extra 12 seconds cover the 300-meter tunnel, so the speed is $300 \div 12 = 25$ meters per second.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

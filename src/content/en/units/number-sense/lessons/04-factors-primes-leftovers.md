@@ -1,7 +1,7 @@
 ---
 title: "Factors, Primes and Leftovers"
 summary: Factors come in pairs, so you can find them all without missing any. Then see how primes and leftovers fit the same idea.
-minutes: 10
+minutes: 12
 ---
 
 Suppose you have 12 square tiles, and you want to arrange all of them into a rectangle. How many different rectangles can you make? Try to sketch them. How do you know when you've found them all?
@@ -76,6 +76,32 @@ How many whole numbers from 1 to 50 have an odd number of factors?
 **What's the key fact?** Only perfect squares have an odd number of factors. So we need to count perfect squares up to 50: 1, 4, 9, 16, 25, 36, and 49. That's 7 numbers.
 
 Notice how a question that looks like 50 separate checks turned into a short count, because we understood **why** the pattern holds.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Factor pairs can solve a puzzle that seems to have nothing to do with factors.
+
+**A harder one:** A hallway has 100 closed lockers, numbered 1 to 100. Student 1 opens every locker. Student 2 changes every 2nd locker, opening it if it's closed and closing it if it's open. Student 3 changes every 3rd locker, and so on, up to student 100. How many lockers end up open?
+
+**Who touches locker 12?** Students 1, 2, 3, 4, 6, and 12. Those are the factors of 12. So each locker gets touched once per factor.
+
+**When does a locker end up open?** It starts closed, so it needs an **odd** number of touches.
+
+**Which numbers have an odd number of factors?** Factors come in pairs, such as 3 and 4 for 12. A pair only fails when a number pairs with itself, as in $6 \times 6 = 36$. So only perfect squares have an odd number of factors.
+
+The open lockers are 1, 4, 9, 16, 25, 36, 49, 64, 81, and 100. That's **10** lockers.
+
+Try this. How many lockers end up open if there are 200?
+
+<details class="check"><summary>Show the answer</summary>
+
+We need the perfect squares up to 200. Since $14 \times 14 = 196$ and $15 \times 15 = 225$, there are 14.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import { getContestProblems, getContests } from '../../../lib/content';
 import { href, localePaths, t } from '../../../i18n/config';
 
-export const getStaticPaths = () => localePaths();
+export const getStaticPaths = () => localePaths('contests/');
 
 const { lang } = Astro.props;
 const text = t(lang).contests;

@@ -1,7 +1,7 @@
 ---
 title: "Stars and Bars"
 summary: Count the ways to share identical things among people, by turning the problem into choosing spots in a row.
-minutes: 10
+minutes: 12
 ---
 
 You have 5 identical cookies to share among 3 kids. Some kids might get none. How many ways can you do it? The multiply trick doesn't work here, because the cookies are identical, and the number one kid gets affects what the others can get. You could list the cases, but what if you had 20 cookies? A clever picture turns this into a problem you can solve in one line.
@@ -79,6 +79,38 @@ $$\binom{6}{2} = 15$$
 **Is there another catch?** Digits can't be bigger than 9, but we're only sharing 5 in total, so that never comes up here. If the digits had to add up to 20, you'd have to subtract the cases with a digit above 9.
 
 **A quick check by listing the first digit:** A first digit of 5 gives 500, which is 1 number. A first digit of 4 gives 410 and 401, which is 2 numbers. Keeping on, the counts are 1, 2, 3, 4, 5, which add up to 15. It matches!
+
+<section data-box="deeper">
+
+## Going deeper
+
+Stars and bars handles a lower limit easily. An **upper** limit takes one more step: count what breaks the rule, and subtract.
+
+**A harder one:** How many ways can three kids share 10 identical candies, if no kid gets more than 6?
+
+**Without the limit:** $\binom{12}{2} = 66$ ways.
+
+**What breaks the rule?** A kid gets 7 or more. Say the first kid does. Hand that kid 7 candies right away. Then 3 candies remain, to share freely among all three:
+
+$\binom{5}{2} = 10 \text{ ways}$
+
+Any of the three kids could be the one, so there are $3 \times 10 = 30$ bad ways.
+
+**Can two kids both break it?** That would take 14 candies, and there are only 10. So there's no overlap to fix.
+
+**The answer:** $66 - 30 = 36$.
+
+If two kids could break the limit at once, you'd need to add back the overlap, as in [Overlaps](/pathway/smart-counting/01-overlaps/).
+
+Try this. How many ways can three dice show a total of 10? (Hint: subtract 1 from each die, so that each number goes from 0 to 5, with a total of 7.)
+
+<details class="check"><summary>Show the answer</summary>
+
+Without a limit, there are $\binom{9}{2} = 36$ ways. If one number is 6 or more, 1 is left to share, for $\binom{3}{2} = 3$ ways, and there are 3 choices of number. So $36 - 9 = 27$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

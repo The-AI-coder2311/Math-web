@@ -1,7 +1,7 @@
 ---
 title: "Add-One Factoring and Telescoping"
 summary: Two clever tricks. Add a number to make an expression factor, and watch long products and sums collapse.
-minutes: 10
+minutes: 12
 ---
 
 Find all pairs of positive whole numbers with $xy + x + y = 11$. You can't factor that as it stands. But add 1 to both sides, and something magical happens: the left side factors perfectly, and the rest of the problem is a short list. You'll learn that trick here, along with another: how a sum of 99 messy fractions can collapse into a single short answer.
@@ -102,6 +102,40 @@ $$\left(\frac{1}{2} \times \frac{3}{2}\right) \times \left(\frac{2}{3} \times \f
 **What cancels?** The first fractions in each pair, $\frac{1}{2} \times \frac{2}{3} \times \frac{3}{4} \cdots \frac{9}{10}$, telescope to $\frac{1}{10}$. The second fractions, $\frac{3}{2} \times \frac{4}{3} \times \cdots \times \frac{11}{10}$, telescope to $\frac{11}{2}$.
 
 $$\frac{1}{10} \times \frac{11}{2} = \frac{11}{20}$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+Telescoping works on products too, once difference of squares splits each term.
+
+**A harder one:** What's the value of this product?
+
+$\left(1 - \frac{1}{2^2}\right)\left(1 - \frac{1}{3^2}\right)\cdots\left(1 - \frac{1}{10^2}\right)$
+
+**Factor each term.** Each one is a difference of squares:
+
+$1 - \frac{1}{k^2} = \left(1 - \frac{1}{k}\right)\left(1 + \frac{1}{k}\right) = \frac{k - 1}{k} \times \frac{k + 1}{k}$
+
+**Write out the pieces.**
+
+$\frac{1}{2} \times \frac{3}{2} \times \frac{2}{3} \times \frac{4}{3} \times \frac{3}{4} \times \frac{5}{4} \times \cdots \times \frac{9}{10} \times \frac{11}{10}$
+
+**What cancels?** Each $\frac{3}{2}$ meets a $\frac{2}{3}$, each $\frac{4}{3}$ meets a $\frac{3}{4}$, and so on. Only the first and last pieces survive:
+
+$\frac{1}{2} \times \frac{11}{10} = \frac{11}{20}$
+
+When a long product looks hopeless, write out the first few terms in full, and watch for matching tops and bottoms.
+
+Try this. What's the value of the same product, stopping at $1 - \frac{1}{5^2}$?
+
+<details class="check"><summary>Show the answer</summary>
+
+The first piece is $\frac{1}{2}$, and the last surviving piece is $\frac{6}{5}$. So the product is $\frac{1}{2} \times \frac{6}{5} = \frac{3}{5}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

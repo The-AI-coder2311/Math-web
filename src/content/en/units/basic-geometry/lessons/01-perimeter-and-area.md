@@ -1,7 +1,7 @@
 ---
 title: "Perimeter and Area"
 summary: Understand the difference between the distance around a shape and the space inside it, and see why knowing one doesn't tell you the other.
-minutes: 9
+minutes: 11
 ---
 
 Sam has 12 meters of fence for a rectangular garden. Does it matter what shape the rectangle is? After all, it's the same amount of fence, so maybe the garden comes out the same size either way. Take a guess, and then let's find out.
@@ -69,6 +69,34 @@ A rectangular patio is made of square tiles, each 1 foot on a side. It's 6 tiles
 $$8 \times 12 - 6 \times 10 = 96 - 60 = 36$$
 
 There's a common wrong answer here. The patio's perimeter is 32, so some students say 32 tiles. But the border also needs tiles at the 4 corners, which don't touch any side of the patio. And $32 + 4 = 36$. It matches.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Contest problems often ask you to count every possible shape, rather than compare a few.
+
+**A harder one:** A rectangle has whole-number sides and a perimeter of 24. How many different rectangles are possible, and which has the largest area?
+
+**What do we know?** The perimeter is twice the sum of two sides, so the two sides add up to 12. A 3 by 9 rectangle and a 9 by 3 rectangle are the same shape, so let the shorter side come first.
+
+| Sides | 1, 11 | 2, 10 | 3, 9 | 4, 8 | 5, 7 | 6, 6 |
+|---|---|---|---|---|---|---|
+| Area | 11 | 20 | 27 | 32 | 35 | 36 |
+
+There are **6** rectangles, and the largest area is 36.
+
+**What's the pattern?** The closer the two sides are, the bigger the area. You'll see why that always holds in [AM-GM](/pathway/algebra-toolkit/05-am-gm-inequality/) in Level 3.
+
+Try this. How many different rectangles with whole-number sides have a perimeter of 30? What's the largest area?
+
+<details class="check"><summary>Show the answer</summary>
+
+The two sides add up to 15, so the pairs are 1 and 14, 2 and 13, up to 7 and 8. That's 7 rectangles. The closest pair is 7 and 8, with an area of 56.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,7 +1,7 @@
 ---
 title: "Linearity of Expectation"
 summary: Find an expected count by splitting it into simple yes-or-no pieces and adding their probabilities, even when the pieces depend on each other.
-minutes: 10
+minutes: 12
 ---
 
 Ten people toss their hats into a pile, and each one grabs a hat at random. On average, how many people get their own hat back? Counting all of the ways to hand out 10 hats means working with over 3 million arrangements, and it gets messy fast. But the answer is exactly 1, and it takes one line to find. And with 100 people, or 1,000, the answer is still 1.
@@ -90,6 +90,38 @@ Three boys and three girls line up in a row at random. How many times, on averag
 **Add them:** $5 \times \frac{3}{5} = 3$.
 
 Listing all 20 boy-and-girl patterns would give the same answer, and it would take far longer.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Sometimes the right pieces aren't the obvious objects. Here, the pieces are the **faces** of the die, not the rolls.
+
+**A harder one:** You roll 3 dice. What's the expected number of **different** numbers showing?
+
+**The tempting pieces:** One piece per die? That doesn't work, since a die doesn't know whether its number is new.
+
+**Better pieces:** Make one piece for each of the 6 faces. Did this face show up at least once?
+
+**What's each probability?** A face fails to show if all 3 dice miss it, which has a chance of $\left(\frac{5}{6}\right)^3 = \frac{125}{216}$. So it shows up with a chance of $1 - \frac{125}{216} = \frac{91}{216}$.
+
+**Add up the 6 pieces:**
+
+$6 \times \frac{91}{216} = \frac{91}{36}$
+
+That's about 2.5, which seems right for 3 dice that sometimes match.
+
+**How to choose pieces:** Ask what you're really counting. If you're counting different values, then each value is a piece.
+
+Try this. You roll 2 dice. What's the expected number of different numbers showing?
+
+<details class="check"><summary>Show the answer</summary>
+
+Each face shows up with a chance of $1 - \frac{25}{36} = \frac{11}{36}$. Six faces give $6 \times \frac{11}{36} = \frac{11}{6}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -18,9 +18,9 @@ There are great resources for students who already compete, but most of them ass
 ## What we promise
 
 - **Free.** There's nothing to pay and no account to create.
-- **Private.** We don't use ads or tracking. Your progress is saved only on your own device.
+- **Private.** {{privacy}}
 - **Original and carefully checked.** We write our own practice problems and check every answer. If you ever spot a mistake, please tell us, and we'll fix it.
 
 ## Volunteer with us
 
-We need people to write lessons, check problems, and translate the site. You don't need to be a math star. You only need to enjoy explaining things kindly.
+We need people to write lessons, check problems, and translate the site. You don't need to be a math star. You only need to enjoy explaining things kindly. Our [Get Involved page](/get-involved/) explains how to volunteer, submit an original problem, or partner as a school.

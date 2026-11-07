@@ -1,7 +1,7 @@
 ---
 title: "Zeros at the End of a Factorial"
 summary: Count the zeros at the end of a huge factorial by counting factors of 5, and find how many times any prime divides a factorial.
-minutes: 9
+minutes: 11
 ---
 
 The number $100!$ means $100 \times 99 \times 98 \times \cdots \times 2 \times 1$. It has 158 digits, and no ordinary calculator can show all of them. How many zeros does it end with? You can answer that in about 20 seconds, with no calculator. The tempting answer is 20, and that's wrong.
@@ -99,6 +99,32 @@ $$5 \times 10 \times 15 \times \cdots \times 100 = 5^{20} \times 20!$$
 **Count the 2s:** All of the 2s come from the $20!$. We found 18 of those in Example 3.
 
 **Which is scarcer?** This time, it's the 2s! Each zero needs one of each, so there are **18** zeros. The rule about counting 5s is only for factorials. In other products, count both.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Dividing factorials takes away their factors. So count factors first, and subtract.
+
+**A harder one:** How many zeros does $\frac{100!}{50!}$ end with?
+
+**Count the 5s.** In $100!$, there are $20 + 4 = 24$. In $50!$, there are $10 + 2 = 12$. Dividing leaves $24 - 12 = 12$ fives.
+
+**Count the 2s.** Here's the step that's easy to skip. In $100!$, there are $50 + 25 + 12 + 6 + 3 + 1 = 97$. In $50!$, there are $25 + 12 + 6 + 3 + 1 = 47$. Dividing leaves 50 twos. That's plenty, so the 5s are still scarcer.
+
+So there are **12** zeros. Notice that $\frac{100!}{50!}$ is $51 \times 52 \times \cdots \times 100$, and you can check the 5s directly: there are 10 multiples of 5, and 2 of them, 75 and 100, are multiples of 25.
+
+A wrong approach is to divide the zero counts as if they're ordinary numbers. Always subtract, because dividing powers means subtracting exponents.
+
+Try this. How many zeros does $\frac{200!}{100!}$ end with?
+
+<details class="check"><summary>Show the answer</summary>
+
+In $200!$, there are $40 + 8 + 1 = 49$ fives. In $100!$, there are 24. So 25 fives remain, and there are plenty of 2s. That makes 25 zeros.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

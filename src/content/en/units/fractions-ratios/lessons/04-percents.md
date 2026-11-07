@@ -1,7 +1,7 @@
 ---
 title: "Percents"
 summary: A percent is a fraction out of 100. Build percents from easy pieces, and watch out for percents of a number that has changed.
-minutes: 9
+minutes: 11
 ---
 
 A \$40 game goes on sale for 50% off. A week later, the store raises the sale price by 50%. Is the game back to \$40? It feels like it should be, since it went down by 50% and up by 50%. Work it out, and you'll find that it's only \$30. Where did the \$10 go? This lesson will explain it.
@@ -76,6 +76,34 @@ A rectangle's length is increased by 20%, and its width is decreased by 10%. By 
 - The new area is $12 \times 9 = 108$.
 
 The area went from 100 to 108, which is an increase of **8%**. Notice that the answer isn't $20 - 10 = 10$. Percents don't add up that way when they multiply each other.
+
+<section data-box="deeper">
+
+## Going deeper
+
+In mixture problems, one amount usually stays fixed while the percent changes. Find it first.
+
+**A harder one:** A 50-gram mixture is 20% salt. How much water do you need to add to make it 10% salt?
+
+**What stays the same?** Adding water doesn't change the salt. There are $0.2 \times 50 = 10$ grams of salt, before and after.
+
+**What must the new total be?** The 10 grams must be 10% of the new mixture. Since 10% of 100 is 10, the new total is 100 grams.
+
+**How much did we add?** $100 - 50 = 50$ grams of water.
+
+Notice that cutting the percent in half took **doubling** the total. That makes sense, since the same salt is spread through twice as much mixture.
+
+**The trap:** Many people subtract the percents, or take 10% of 50. Neither one tracks the salt. Write down what stays fixed before you do any other math.
+
+Try this. A 40-liter drink is 25% juice. How much water do you add to make it 20% juice?
+
+<details class="check"><summary>Show the answer</summary>
+
+There are $0.25 \times 40 = 10$ liters of juice. If 10 liters is 20% of the new total, then the new total is 50 liters. So you add 10 liters of water.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

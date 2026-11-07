@@ -1,7 +1,7 @@
 ---
 title: "Median, Mode, Tables and Graphs"
 summary: Find the middle and the most common values, and read tables and graphs carefully, because that's where many points get lost.
-minutes: 9
+minutes: 11
 ---
 
 Five friends earn \$10, \$10, \$12, \$15, and \$953 at their jobs. What's the "typical" amount? The mean is \$200, but nobody earns anywhere near that. Here, a different kind of middle gives a far more honest picture. Choosing the right measure matters in real life too. And on contests, there's a second skill that matters as much: reading exactly what a table or graph says.
@@ -92,6 +92,37 @@ A list of 7 whole numbers has a median of 10. What's the smallest possible mean,
 $$\frac{1 + 1 + 1 + 10 + 10 + 10 + 10}{7} = \frac{43}{7}$$
 
 That's a bit more than 6. The answer is a fraction, which is fine.
+
+<section data-box="deeper">
+
+## Going deeper
+
+"Largest possible" questions about data are often solved by making everything else as small as the rules allow.
+
+**A harder one:** Five positive whole numbers have a mean of 10 and a median of 12. What's the largest possible value of the biggest number?
+
+**What do we know?** The mean tells us the total: $5 \times 10 = 50$. In order, call the numbers $a, b, 12, d, e$.
+
+**What's the plan?** To make $e$ as large as possible, make the others as small as possible:
+
+- $a$ and $b$ can be as small as 1.
+- $d$ has to be at least 12, since it comes after the median.
+
+**Solve:** $e = 50 - 1 - 1 - 12 - 12 = 24$.
+
+**Check:** The list 1, 1, 12, 12, 24 has a median of 12 and a mean of $\frac{50}{5} = 10$.
+
+Each time, ask what rules limit the numbers you're making small. Forgetting that $d$ must be at least the median is the usual mistake.
+
+Try this. Five positive whole numbers have a mean of 8 and a median of 9. What's the largest possible value of the biggest number?
+
+<details class="check"><summary>Show the answer</summary>
+
+The total is 40. The smallest choices give 1, 1, 9, 9, so the largest is $40 - 20 = 20$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

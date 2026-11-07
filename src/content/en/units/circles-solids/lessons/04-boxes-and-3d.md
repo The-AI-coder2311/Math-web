@@ -1,7 +1,7 @@
 ---
 title: "Boxes, Cylinders and Picturing 3D"
 summary: Find volume by stacking layers and surface area by unfolding. Then learn to reason about shapes you can't see all of.
-minutes: 10
+minutes: 12
 ---
 
 A cube is painted red on the outside, and then cut into 27 small cubes. How many of the small cubes have paint on exactly two faces? You can't see all of the small cubes from any one position, which is what makes this hard. But with a little organization, you can reason it out without ever picking up a paintbrush.
@@ -86,6 +86,38 @@ A fish tank has a rectangular base that's 8 by 10 inches, and it's partly filled
 **What shape does that water make?** It's a flat layer on top, with the tank's base as its base: $8 \times 10 = 80$ square inches.
 
 **What's the plan?** Volume is base times height, so the rise is $64 \div 80 = 0.8$ inches.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Volume problems can be about choosing the best shape, and a table can find it.
+
+**A harder one:** You have a 12 by 12 sheet of cardboard. You cut a square with whole-number sides out of each corner, and then fold up the flaps to make an open box. Which cut gives the largest volume?
+
+**What are the box's sizes?** If the corner squares have sides of $x$, the height is $x$. The base loses $x$ on each end, so it's $12 - 2x$ on each side.
+
+| Cut $x$ | Base side | Height | Volume |
+|---|---|---|---|
+| 1 | 10 | 1 | 100 |
+| 2 | 8 | 2 | 128 |
+| 3 | 6 | 3 | 108 |
+| 4 | 4 | 4 | 64 |
+| 5 | 2 | 5 | 20 |
+
+The best whole-number cut is 2, with a volume of **128**.
+
+**Why does the volume go up and then down?** A small cut makes a wide, flat box. A large cut makes a tall, skinny box. The best choice balances the two.
+
+Try this. For a 10 by 10 sheet, which whole-number cut gives the largest volume?
+
+<details class="check"><summary>Show the answer</summary>
+
+A cut of 1 gives 64, a cut of 2 gives $6 \times 6 \times 2 = 72$, and a cut of 3 gives 48. So a cut of 2 is best, with a volume of 72.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

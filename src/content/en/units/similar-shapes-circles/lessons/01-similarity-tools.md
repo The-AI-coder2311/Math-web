@@ -1,7 +1,7 @@
 ---
 title: "Stronger Similarity Tools"
 summary: Go beyond shadows. Find hidden similar triangles in right triangles and crossing lines, and use them to get lengths you couldn't find any other way.
-minutes: 11
+minutes: 13
 ---
 
 Two poles stand upright on flat ground, one 4 meters tall and the other 12 meters tall. A wire runs from the top of each pole to the bottom of the other. How high above the ground do the wires cross? Here's a strange fact: the answer doesn't depend on how far apart the poles are. You could move them closer or farther, and the wires would still cross at the same height. By the end of this lesson, you'll be able to explain why.
@@ -71,6 +71,32 @@ Two similar triangles have areas of 16 and 49. The smaller one has a perimeter o
 **What's the question asking?** A perimeter is a length, so it scales by $\frac{7}{4}$ itself: $20 \times \frac{7}{4} = 35$.
 
 Keep this straight: lengths scale by $k$, areas scale by $k^2$, and volumes scale by $k^3$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When the two diagonals of a trapezoid cross, they create four triangles, and all of their areas follow from a single ratio.
+
+**A harder one:** A trapezoid has parallel sides of 2 and 6. Its diagonals cross, making four triangles. The triangle on the short side has an area of 3. What's the area of the whole trapezoid?
+
+**The top and bottom triangles are similar**, since the parallel sides make matching angles equal. Their sides are in a ratio of 2 to 6, which is 1 to 3. Areas scale by the square, so the bottom one has an area of $3 \times 9 = 27$.
+
+**What about the side triangles?** The top triangle and a side triangle share a height, and their bases are the two parts of a diagonal, in a ratio of 1 to 3. So each side triangle has 3 times the top's area, which is 9.
+
+**Add them up:** $3 + 9 + 9 + 27 = 48$.
+
+**The pattern:** With a ratio of 1 to $k$, the areas are in the ratio $1$, $k$, $k$, and $k^2$. Both side triangles are always equal.
+
+Try this. A trapezoid has parallel sides of 3 and 6, and the top triangle has an area of 4. What's the area of the whole trapezoid?
+
+<details class="check"><summary>Show the answer</summary>
+
+The ratio is 1 to 2, so the areas are 4, 8, 8, and 16. The total is 36.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

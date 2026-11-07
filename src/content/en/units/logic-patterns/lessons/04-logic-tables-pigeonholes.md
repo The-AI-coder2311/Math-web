@@ -1,7 +1,7 @@
 ---
 title: "Logic Tables and Pigeonholes"
 summary: Organize clues in a table, test every case when someone may be lying, and use the pigeonhole principle to prove that something must happen.
-minutes: 10
+minutes: 12
 ---
 
 Your sock drawer holds a jumble of black, white, and blue socks, and the room is dark. How many socks do you have to pull out to be **sure** of having a matching pair? It can't be 3, since you might get one of each color. But with 4, you're guaranteed a match. That's real logic: you didn't need to know anything about which socks you got.
@@ -83,6 +83,35 @@ A bag holds 6 red, 5 blue, and 3 green marbles. You pull out marbles without loo
 **What's the worst case?** We need to think like the unluckiest person alive. To avoid blue as long as possible, you pull all 6 red and all 3 green first. That's 9 marbles with no blue. The next marble must be blue, which makes 10.
 
 **Do you also have a matching pair?** With that many red marbles, yes. So the answer is **10**.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Some logic puzzles ask for a plan that works no matter what happens. Think about how much each step can tell you.
+
+**A harder one:** You have 9 coins that look alike, and one is heavier than the others. You have a balance scale. How few weighings are enough to be certain that you've found the heavy coin?
+
+**What can one weighing tell you?** It has 3 possible results: left side heavier, right side heavier, or balanced. So one weighing can split the coins into 3 groups, not only 2.
+
+**The plan:** Put 3 coins on each side, and leave 3 off.
+
+- If one side is heavier, the heavy coin is in that group of 3.
+- If it balances, the heavy coin is in the group of 3 left off.
+
+Now do the same with those 3 coins: put 1 on each side, and leave 1 off. That finds the heavy coin. So **2** weighings are enough.
+
+**Why not split in half?** Weighing 4 against 4 leaves as many as 4 coins, and that needs 2 more weighings, for 3 in all.
+
+Try this. What if there are 27 coins, with one heavier than the others? How many weighings do you need?
+
+<details class="check"><summary>Show the answer</summary>
+
+Each weighing cuts the group to a third: 27 to 9, then 9 to 3, then 3 to 1. So you need 3 weighings.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

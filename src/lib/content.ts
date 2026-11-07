@@ -1,10 +1,32 @@
 import { getCollection } from 'astro:content';
-import { site } from '../site.config';
+import { analytics, analyticsOn, site } from '../site.config';
+import { t } from '../i18n/config';
 import lessonData from '../data/lessons.json';
-import type { Locale } from '../i18n/config';
+import { isTranslated, type Locale } from '../i18n/config';
 
 /** Every lesson and unit with its teacher details. scripts/build-lesson-data.mjs writes this file. */
-export const getLessonData = (lang: Locale) => lessonData[lang];
+export const getLessonData = (lang: Locale) => (lessonData as Record<string, typeof lessonData.en>)[lang] ?? { units: [], lessons: [] };
+
+/** True when a page (an address like "pathway/counting/") is built in this language. */
+export function pageExists(lang: Locale, path: string) {
+  if (!isTranslated(lang, path)) return false;
+  const { units } = getLessonData(lang);
+  const ready = (unit: { lessons: number; problems: number; review: boolean }) => (unit.review ? unit.problems > 0 : unit.lessons > 0);
+  const parts = path.split('/').filter(Boolean);
+  if (parts[0] === 'pathway' && parts[1] && parts[1] !== 'start') {
+    const level = parts[1].match(/^level-(\d+)$/);
+    if (level) {
+      const inLevel = units.filter((unit) => unit.level === Number(level[1]));
+      return inLevel.length > 0 && inLevel.every(ready);
+    }
+    const unit = units.find((other) => other.slug === parts[1]);
+    return Boolean(unit && ready(unit));
+  }
+  if (parts[0] === 'teachers' && parts[1] === 'answer-keys' && parts[2]) {
+    return units.some((unit) => unit.slug === parts[2] && unit.problems > 0);
+  }
+  return true;
+}
 
 const inLang = (lang: Locale) => (entry: { id: string }) => entry.id.startsWith(`${lang}/`);
 const lastPart = (id: string) => id.split('/').pop() as string;
@@ -47,7 +69,8 @@ async function lessonRef(lang: Locale, from: string | undefined) {
   const [unit, slug] = from.split('/');
   const lessons = await getCollection('lessons');
   const lesson = lessons.find((entry) => entry.id === `${lang}/units/${unit}/lessons/${slug}`);
-  return lesson && { title: lesson.data.title, path: `pathway/${unit}/${slug}/` };
+  const unitTitle = (await getUnits(lang)).find((other) => other.slug === unit)?.title ?? unit;
+  return lesson && { title: lesson.data.title, path: `pathway/${unit}/${slug}/`, unit, unitTitle, unitPath: `pathway/${unit}/` };
 }
 
 /** Practice contests in order. */
@@ -56,6 +79,11 @@ export async function getContests(lang: Locale) {
   return contests
     .sort((a, b) => a.data.order - b.data.order)
     .map((entry) => ({ ...entry.data, slug: entry.id.split('/')[2] }));
+}
+
+/** Practice contests for one level of the pathway (1 is the first level). */
+export async function getContestsForLevel(lang: Locale, level: number) {
+  return (await getContests(lang)).filter((contest) => contest.level === level);
 }
 
 /** A contest's questions in order, each with its solution and the lesson it comes from. */
@@ -103,11 +131,13 @@ export async function getProblems(lang: Locale, unit: string) {
 export async function getPage(lang: Locale, name: string) {
   const pages = await getCollection('pages');
   const page = pages.find((entry) => entry.id === `${lang}/pages/${name}`)!;
-  return {
-    ...page.data,
-    description: page.data.description.replaceAll('{{siteName}}', site.name),
-    html: (page.rendered?.html ?? '').replaceAll('{{siteName}}', site.name),
-  };
+  const privacy = t(lang).privacy;
+  // {{privacy}} in a page becomes the privacy promise that matches the analytics setting.
+  const promise = analyticsOn
+    ? privacy.on(analytics.provider === 'plausible' ? 'Plausible Analytics' : 'GoatCounter')
+    : privacy.off;
+  const fill = (text: string) => text.replaceAll('{{siteName}}', site.name).replaceAll('{{privacy}}', promise);
+  return { ...page.data, description: fill(page.data.description), html: fill(page.rendered?.html ?? '') };
 }
 
 /** The teacher plans, with each week's unit and lessons filled in from the lesson data. */
@@ -120,6 +150,7 @@ export async function getPlans(lang: Locale) {
   };
   const contests = await getContests(lang);
   const [file] = (await getCollection('teacherPlans')).filter(inLang(lang));
+  if (!file) return [];
   return file.data.plans.map((plan) => {
     const contest = contests.find((other) => other.slug === plan.finish.contest);
     if (!contest) throw new Error(`teacher-plans.yaml: ${plan.slug} names contest "${plan.finish.contest}", which doesn't exist`);
@@ -188,4 +219,25 @@ export async function getProblemSets(lang: Locale) {
   return sets
     .sort((a, b) => a.data.week - b.data.week)
     .map((set) => ({ ...set.data, slug: lastPart(set.id) }));
+}
+
+/** The placement quiz questions, easiest first. */
+export async function getPlacement(lang: Locale) {
+  const [file] = (await getCollection('placement')).filter(inLang(lang));
+  return file.data.questions;
+}
+
+/** The contest strategy lesson's practice questions, shaped like unit problems. */
+export async function getStrategyQuestions(lang: Locale) {
+  const { renderMarkdown } = await import('./markdown');
+  const [file] = (await getCollection('strategy')).filter(inLang(lang));
+  return file.data.questions.map((question) => ({
+    ...question,
+    difficulty: 'easy' as const,
+    question: renderMarkdown(question.question),
+    hint: renderMarkdown(question.hint),
+    hint2: '',
+    solution: renderMarkdown(question.solution),
+    another: '',
+  }));
 }

@@ -1,7 +1,7 @@
 ---
 title: "Repeating and Growing Patterns"
 summary: Use remainders to jump ahead in a repeating pattern, and learn how to reach the 100th term of a growing one without off-by-one mistakes.
-minutes: 9
+minutes: 11
 ---
 
 Today is Wednesday. What day of the week will it be 1,000 days from now? You could count on a calendar, but that would take a long time. It turns out that you can answer this with a single division, because the days of the week follow a pattern, and patterns let you skip ahead.
@@ -82,6 +82,30 @@ The digits 1, 4, 2, 8, 5, 7 repeat forever to make the decimal 0.142857142857...
 - The 4 extra digits are 1, 4, 2, and 8, which add up to 15.
 
 $$432 + 15 = 447$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+A repeating pattern can answer two kinds of question: what's in a position, and what's the total so far.
+
+**A harder one:** As a decimal, $\frac{1}{7}$ is 0.142857142857..., with the six digits 142857 repeating. What's the 100th digit after the decimal point? And what's the sum of the first 20 digits?
+
+**The 100th digit:** The cycle has 6 digits. Since $100 = 6 \times 16 + 4$, we pass 16 full cycles, and then go 4 digits into the next one. The 4th digit of 142857 is **8**.
+
+**The sum of the first 20:** One full cycle adds up to $1 + 4 + 2 + 8 + 5 + 7 = 27$. Since $20 = 6 \times 3 + 2$, there are 3 full cycles and 2 extra digits. So the sum is $3 \times 27 + 1 + 4 = 86$.
+
+**A check on the remainder:** A remainder of 0 means the **last** digit of a cycle, not the first. For example, the 6th digit is 7, and $6 = 6 \times 1 + 0$.
+
+Try this. What's the 50th digit after the decimal point in $\frac{1}{7}$?
+
+<details class="check"><summary>Show the answer</summary>
+
+Since $50 = 6 \times 8 + 2$, it's the 2nd digit of the cycle, which is 4.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

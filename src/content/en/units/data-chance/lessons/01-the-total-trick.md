@@ -1,7 +1,7 @@
 ---
 title: "The Total Trick"
 summary: An average hides a total. Multiply to find it, and most average problems become one or two lines.
-minutes: 8
+minutes: 10
 ---
 
 The mean of 4 test scores is 80. What score on a 5th test would raise the mean to 82? It seems as if you need to know the four scores. But you don't. There's a hidden number inside every average, and once you find it, these problems take about 20 seconds.
@@ -71,6 +71,34 @@ A class of 25 students has a mean test score of 72. When one student's score of 
 **What's the shortcut?** That 50 extra points gets shared among all 25 students, so the mean rises by $50 \div 25 = 2$.
 
 The new mean is $72 + 2 = 74$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When you don't know how many numbers there are, the total trick still works. Let the count be a letter.
+
+**A harder one:** The average of some test scores is 20. Adding one more score of 32 raises the average to 22. How many scores were there at first?
+
+**Use totals.** Let there be $n$ scores. Then:
+
+- The old total is $20n$.
+- The new total is $20n + 32$.
+- The new total is also $22(n + 1)$.
+
+Set them equal: $20n + 32 = 22n + 22$. So $10 = 2n$, and $n = 5$.
+
+**Another way to think about it:** The new score is 12 above the old average. That extra 12 gets spread across all of the scores, and it raises the average by 2. So there must be $12 \div 2 = 6$ scores after adding it, and 5 before.
+
+Try this. The average of some numbers is 15. Adding a 27 raises the average to 17. How many numbers were there at first?
+
+<details class="check"><summary>Show the answer</summary>
+
+The 27 is 12 above the old average, and it raises the average by 2. So there are 6 numbers after adding it, and 5 before.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

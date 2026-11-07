@@ -1,7 +1,7 @@
 ---
 title: "Similar Triangles"
 summary: Spot triangles with the same shape, use scale factors to find lengths you can't measure, and see why area grows by the square of the scale factor.
-minutes: 10
+minutes: 12
 ---
 
 How tall is a tree that you can't climb? Stand a 2-meter pole upright, and measure its shadow: 3 meters. At the same moment, the tree's shadow is 30 meters. With only that information, and without leaving the ground, you can find the tree's height. People have used this trick for thousands of years.
@@ -79,6 +79,32 @@ In triangle $ABC$, a line parallel to $BC$ cuts off a small triangle at the top.
 **Area scales by the square:** $\frac{2}{5} \times \frac{2}{5} = \frac{4}{25}$.
 
 **What's the question asking?** The area is $\frac{4}{25} \times 50 = 8$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When you know an area ratio, take its square root to get the length ratio.
+
+**A harder one:** A triangle has a height of 12. A line parallel to the base cuts off a small triangle at the top, with $\frac{1}{9}$ of the original area. How far is the line from the base?
+
+**Which triangles are similar?** The small top triangle and the whole triangle, since the parallel line makes matching angles equal.
+
+**What's the length ratio?** Area scales by the square of the length ratio. If the area ratio is $\frac{1}{9}$, then the length ratio is $\frac{1}{3}$.
+
+**What's the question asking?** The small triangle's height is $12 \times \frac{1}{3} = 4$. So the line is $12 - 4 = 8$ away from the base.
+
+**The trap:** Cutting off $\frac{1}{9}$ of the area doesn't mean cutting $\frac{1}{9}$ of the height. In fact, the piece on the bottom holds $\frac{8}{9}$ of the area with only $\frac{2}{3}$ of the height.
+
+Try this. A triangle has a height of 12. A parallel line cuts off a top triangle with $\frac{4}{9}$ of the area. How far is the line from the base?
+
+<details class="check"><summary>Show the answer</summary>
+
+The length ratio is $\frac{2}{3}$, so the top triangle's height is 8. The line is $12 - 8 = 4$ away from the base.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

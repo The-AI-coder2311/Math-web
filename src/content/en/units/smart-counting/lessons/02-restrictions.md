@@ -1,7 +1,7 @@
 ---
 title: "Counting With Rules"
 summary: Handle lineups with rules by gluing together people who must sit together, and by placing others into gaps to keep them apart.
-minutes: 10
+minutes: 12
 ---
 
 Six friends sit in a row at a movie. Two of them are a couple who insist on sitting together, and two others had an argument and refuse to sit next to each other. How many seating plans are there? In Level 1, you learned to count lineups with a factorial. In this lesson, you'll learn what to do when the people have opinions.
@@ -84,6 +84,30 @@ Eight people sit around a circular table. Two seating plans count as the same if
 $$7! = 5040$$
 
 **Check using overcounting:** If the seats were numbered, there'd be $8!$ plans. Each circular plan gets counted 8 times, once for each way to turn it. So $8! \div 8 = 7!$. The answers match.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Around a round table, only positions relative to other people matter. That changes the count.
+
+**A harder one:** Five people sit around a round table. Two seatings count as the same if one can be rotated into the other. How many seatings are there? And how many have Al and Bo side by side?
+
+**All seatings:** Sit one person down first, as a reference point. Everyone else's seat is then decided relative to that person. So the other 4 people can be arranged in $4! = 24$ ways.
+
+**With Al and Bo together:** Glue them into one block. That makes 4 units around the table. Fix one unit, and arrange the other 3 in $3! = 6$ ways. The block has 2 orders inside, so there are $6 \times 2 = 12$ seatings.
+
+Half of all seatings have Al and Bo together. Does that make sense? Bo sits in one of the 4 other seats, and 2 of those are next to Al. So the chance is $\frac{2}{4}$. It matches.
+
+Try this. Six people sit around a round table, with rotations counting as the same. How many seatings have Al and Bo side by side?
+
+<details class="check"><summary>Show the answer</summary>
+
+Glue them into a block, making 5 units. Fixing one, the others go in $4! = 24$ ways, and the block has 2 orders. So there are 48 seatings.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

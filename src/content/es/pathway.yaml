@@ -1,0 +1,114 @@
+# La ruta de aprendizaje en español. Usa los mismos `slug` que la versión en inglés.
+# Una unidad sin lecciones en español enlaza a su versión en inglés.
+levels:
+  - title: "Nivel 1: Primeros pasos"
+    blurb: No necesitas experiencia. Estas seis unidades te preparan para las primeras preguntas de tu primer concurso.
+    contest: AMC 8
+    difficulty: Principiante
+    competitions: [AMC 8]
+    units:
+      - slug: counting
+        title: Conteo
+        blurb: Cuenta cientos de posibilidades sin tener que escribirlas todas.
+      - slug: number-sense
+        title: Sentido numérico
+        blurb: Factores, primos, residuos y atajos para trabajar con números.
+      - slug: fractions-ratios
+        title: Fracciones y razones
+        blurb: Compara, reparte y escala cantidades con confianza.
+      - slug: basic-geometry
+        title: Geometría básica
+        blurb: Ángulos, perímetro y área, un dibujo a la vez.
+      - slug: logic-patterns
+        title: Lógica y patrones
+        blurb: Descubre qué sigue y razona para resolver acertijos.
+      - slug: intro-probability
+        title: Introducción a la probabilidad
+        blurb: Usa el conteo para saber qué tan probable es algo.
+      - slug: level-1-review
+        title: Repaso mixto del Nivel 1
+        blurb: Problemas de todo el Nivel 1, mezclados. Los concursos reales no te dicen el tema, así que tienes que descubrirlo.
+        review: true
+  - title: "Nivel 2: Listo para concursar"
+    blurb: Para después del Nivel 1. Estas unidades van más a fondo, hacia las preguntas intermedias y finales del AMC 8 y MATHCOUNTS.
+    contest: AMC 8
+    difficulty: Intermedio
+    competitions: [AMC 8, MATHCOUNTS]
+    units:
+      - slug: equations-word-problems
+        title: Ecuaciones y problemas verbales
+        blurb: Convierte historias sobre edades, velocidades y precios en matemáticas que puedes resolver.
+      - slug: smart-counting
+        title: Conteo inteligente
+        blurb: Elegir grupos, separar en casos y contar lo que no quieres.
+      - slug: primes-remainders
+        title: Primos y residuos
+        blurb: Factorización en primos, MCD y mcm, y los patrones escondidos en los residuos.
+      - slug: triangles
+        title: Triángulos
+        blurb: Persigue ángulos, usa el teorema de Pitágoras y escala figuras.
+      - slug: circles-solids
+        title: Círculos y sólidos
+        blurb: Círculos, regiones sombreadas, cajas y figuras en 3D.
+      - slug: data-chance
+        title: Promedios, datos y azar
+        blurb: Atajos para la media y la mediana, lectura de tablas y probabilidad en varios pasos.
+      - slug: logic-puzzles
+        title: Acertijos de lógica
+        blurb: Razonamiento si-entonces, los que dicen la verdad y los que mienten, y pistas sobre quién va dónde.
+      - slug: level-2-review
+        title: Repaso mixto del Nivel 2
+        blurb: Problemas de todo el Nivel 2, mezclados.
+        review: true
+  - title: "Nivel 3: Camino al AMC 10"
+    blurb: Un verdadero salto. Termina primero el Nivel 2 y espera atorarte más seguido. Así es como se vuelven más fáciles.
+    contest: AMC 10
+    difficulty: Avanzado
+    competitions: [AMC 10]
+    units:
+      - slug: algebra-toolkit
+        title: Herramientas de álgebra
+        blurb: Trucos de factorización que convierten cálculos enormes en rápidos.
+      - slug: modular-arithmetic
+        title: Aritmética modular y bases
+        blurb: Aritmética modular, potencias gigantes y números escritos en otras bases.
+      - slug: sequences-series
+        title: Sucesiones y series
+        blurb: Patrones aritméticos y geométricos, y cómo sumarlos rápido.
+      - slug: advanced-counting
+        title: Conteo avanzado
+        blurb: Estrellas y barras, conteo paso a paso y probabilidad más difícil.
+      - slug: similar-shapes-circles
+        title: Figuras semejantes y teoremas del círculo
+        blurb: Factores de escala, cuerdas, tangentes y ángulos dentro de círculos.
+      - slug: coordinate-geometry
+        title: Geometría de coordenadas
+        blurb: Usa rectas, pendientes y puntos en una cuadrícula para resolver geometría con álgebra.
+      - slug: pigeonholes-invariants
+        title: Palomares, invariantes y juegos
+        blurb: Demuestra que algo tiene que pasar, que nunca puede pasar, y encuentra la jugada ganadora.
+      - slug: level-3-review
+        title: Repaso mixto del Nivel 3
+        blurb: Problemas de todo el Nivel 3, mezclados.
+        review: true
+  - title: "Nivel 4: Hacia el AMC 12"
+    blurb: Matemáticas de preparatoria al estilo de concurso. Estas unidades están planeadas para más adelante.
+    contest: AMC 12
+    difficulty: Experto
+    competitions: [AMC 12]
+    units:
+      - slug: expected-value
+        title: Valor esperado y estados de probabilidad
+        blurb: Lo que pasa en promedio, incluso en juegos que podrían no terminar nunca.
+      - slug: polynomials
+        title: Polinomios
+        blurb: Lo que las raíces y los coeficientes de un polinomio revelan uno del otro.
+      - slug: logarithms
+        title: Logaritmos
+        blurb: La herramienta para preguntar qué potencia convierte un número en otro.
+      - slug: trigonometry
+        title: Trigonometría
+        blurb: Conecta los ángulos y los lados de cualquier triángulo.
+      - slug: complex-numbers
+        title: Números complejos
+        blurb: Un nuevo tipo de número que resuelve ecuaciones y describe rotaciones.

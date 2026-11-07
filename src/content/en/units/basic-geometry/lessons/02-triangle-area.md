@@ -1,7 +1,7 @@
 ---
 title: "Triangle Area and Helper Lines"
 summary: See why a triangle is half of a rectangle, what height really means, and how drawing one extra line can solve a problem.
-minutes: 9
+minutes: 11
 ---
 
 Why does the area of a triangle have a one half in it? Many students memorize the formula without ever seeing the reason. Here's a challenge: cut any paper rectangle along a diagonal. You've made two triangles that match perfectly. But what about a triangle that doesn't look like half of a rectangle? A single helper line will show you that it still works.
@@ -71,6 +71,32 @@ On a grid, a triangle has corners at $(0, 0)$, $(6, 0)$, and $(2, 5)$. A second 
 $$\frac{1}{2} \times 10 \times 5 = 25$$
 
 **Check:** The first has an area of 15, and the second has an area of 10. They add up to 25.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Two triangles that share a height have areas in the same ratio as their bases. This lets you find an area without knowing any lengths.
+
+**A harder one:** In triangle $ABC$, point $D$ is on side $BC$, with $BD$ to $DC$ in a ratio of 1 to 3. The area of triangle $ABC$ is 40. What's the area of triangle $ABD$?
+
+**What do the two small triangles share?** The corner $A$. The height from $A$ down to line $BC$ is the same for both triangles.
+
+**So what decides their areas?** Only their bases. Since the bases are in a ratio of 1 to 3, so are the areas. That's 4 boxes in a total of 40, so each box holds 10.
+
+So triangle $ABD$ has an area of 10, and triangle $ADC$ has an area of 30.
+
+Notice that we never learned the height or the base! The ratio was enough. This is one of the most useful facts in contest geometry, and it comes back in [The Angle Bisector Theorem](/pathway/triangles/05-angle-bisector/).
+
+Try this. Point $D$ is on side $BC$, with $BD$ to $DC$ in a ratio of 2 to 5. The area of triangle $ABC$ is 35. What's the area of triangle $ABD$?
+
+<details class="check"><summary>Show the answer</summary>
+
+There are 7 boxes in a total of 35, so each box holds 5. Triangle $ABD$ fills 2 boxes, so its area is 10.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,7 +1,7 @@
 ---
 title: "If-Then Reasoning"
 summary: Learn which statements mean the same thing as an if-then rule, how to test a rule, and how to prove a claim false with one example.
-minutes: 10
+minutes: 12
 ---
 
 Four cards lie on a table. Each has a shape on the front and a color on the back. You can see a circle, a square, a blue back, and a red back. Someone claims, "If a card has a circle on the front, it has a blue back." Which cards do you have to flip to test that claim? Most people choose the circle and the blue card. One of those is a waste of time, and they've missed a card that matters.
@@ -96,6 +96,34 @@ Who goes?
 **What do we know?** Start with the fact and follow the chain. Ann goes, so Ben goes. Ben goes, so Cal stays home. At least one of Cal and Dee goes, and Cal doesn't, so Dee goes.
 
 So Ann, Ben, and Dee go, which makes **3** people. Notice that each step used a rule in its forward direction, or used an "or" with one choice crossed out.
+
+<section data-box="deeper">
+
+## Going deeper
+
+A contrapositive can prove something that's hard to prove directly.
+
+**A harder one:** Show that if $n^2$ is even, then $n$ is even.
+
+**Why is the direct way hard?** Knowing that $n^2$ is even doesn't hand you anything useful about $n$ itself. Taking a square root doesn't help.
+
+**Use the contrapositive.** It means the same thing, and it says: "If $n$ is odd, then $n^2$ is odd." That's much easier! An odd number times an odd number is always odd.
+
+So the original statement is true too, and we've proved it.
+
+**Why this matters:** A proof like this covers **every** whole number at once. Testing examples can't do that. This is the real power of the contrapositive: it lets you start from the fact that's easier to work with.
+
+**Contest use:** When an answer choice says "if this, then that," test it through its contrapositive whenever that looks simpler.
+
+Try this. Two whole numbers multiply to an odd number. What must be true of both numbers? Use a contrapositive to explain.
+
+<details class="check"><summary>Show the answer</summary>
+
+Both must be odd. The contrapositive says, "If at least one number is even, then the product is even," and that's true, since an even factor makes the whole product even.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

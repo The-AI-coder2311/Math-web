@@ -1,7 +1,7 @@
 ---
 title: "Counting Step by Step"
 summary: Count huge numbers of possibilities by asking how the last step could have happened, and building up from small cases. This is called recursion.
-minutes: 10
+minutes: 12
 ---
 
 You climb a staircase with 10 steps, taking either 1 or 2 steps at a time. How many different ways can you get to the top? There are lots of them, with many different mixes of small and big steps, and it isn't clear how to organize a list. But try one simple question: **what was your last move?** That single question gives you the answer almost for free.
@@ -88,6 +88,42 @@ A frog sits on lily pad 1, in a row of pads numbered 1 to 8. It hops forward by 
 Pad 6 gets $0 + 3 = 3$, and pad 7 gets $3 + 0 = 3$. Pad 8 gets $3 + 3 = 6$. So there are **6** ways.
 
 This shows the strength of recursion: adding a rule like a broken pad only changes one entry in the table.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When a rule looks back several positions, ask how a valid string can **end**. That usually gives a recipe.
+
+**A harder one:** A string uses only 0s and 1s. How many strings of length 6 don't have three 1s in a row?
+
+**How can a valid string end?** Look for its last 0:
+
+- It ends in 0. Before that, there's any valid string of length $n - 1$.
+- It ends in 01. Before that, there's any valid string of length $n - 2$.
+- It ends in 011. Before that, there's any valid string of length $n - 3$.
+
+Those are the only choices, since it can't end in 111. So:
+
+$f(n) = f(n - 1) + f(n - 2) + f(n - 3)$
+
+**Start small and build up:**
+
+| Length | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| Strings | 2 | 4 | 7 | 13 | 24 | 44 |
+
+So there are **44** strings. Length 3 has 7, since only 111 is missing out of 8.
+
+Try this. Using only the table's recipe, how many strings of length 7 are there?
+
+<details class="check"><summary>Show the answer</summary>
+
+$f(7) = 44 + 24 + 13 = 81$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

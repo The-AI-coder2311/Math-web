@@ -1,0 +1,125 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../layouts/Base.astro';
+import { getLevels, getPlacement } from '../../../lib/content';
+import { renderInline, renderMarkdown } from '../../../lib/markdown';
+import { href, localePaths, t } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const text = t(lang).placement;
+const questions = await getPlacement(lang);
+const levels = await getLevels(lang);
+const letters = 'ABCDE';
+---
+<Base title={text.title} description={text.description} lang={lang} current="learn">
+  <p class="eyebrow"><a href={href(lang, 'pathway/')}>{t(lang).pathway.title}</a></p>
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <p class="muted">{text.calm}</p>
+  <noscript><p class="card">{text.noScript}</p></noscript>
+
+  <div
+    data-placement
+    data-your-answer={text.yourAnswer('{yours}', '{right}')}
+    data-skipped={text.yourAnswer('', '{right}')}
+  >
+    <form class="needs-js" data-placement-form>
+      {questions.map((question, i) => (
+        <article class="card problem" data-question data-level={question.level} data-answer={question.answer}>
+          <div class="problem-head"><h2>{text.questionLabel(i + 1)}</h2></div>
+          <div class="prose" set:html={renderMarkdown(question.question)} />
+          <fieldset>
+            <legend class="sr-only">{text.chooseAnswer(i + 1)}</legend>
+            {question.choices.map((choice, c) => (
+              <label class="choice">
+                <input type="radio" name={`q${i + 1}`} value={letters[c]} />
+                <span class="choice-letter">{letters[c]}.</span>
+                <span set:html={renderInline(choice)} />
+              </label>
+            ))}
+            <label class="choice choice-blank">
+              <input type="radio" name={`q${i + 1}`} value="" checked />
+              <span>{text.skip}</span>
+            </label>
+          </fieldset>
+          <div data-explain hidden>
+            <p class="mistake" data-verdict></p>
+            <div class="prose" set:html={renderMarkdown(question.explanation)} />
+          </div>
+        </article>
+      ))}
+      <button class="btn btn-primary" type="submit">{text.finish}</button>
+    </form>
+
+    <section class="card finished" tabindex="-1" data-placement-result hidden>
+      <h2>{text.resultTitle}</h2>
+      {levels.slice(0, 3).map((level, i) => (
+        <div data-recommend={i + 1} hidden>
+          <p class="contest-score">{level.title}</p>
+          <p data-reason={text.reasons[(i + 1) as 1 | 2 | 3]('{score}')}></p>
+          <a class="btn btn-primary" href={href(lang, `pathway/#level-${i + 1}`)}>{text.goLevel(level.title)}</a>
+        </div>
+      ))}
+      <p>{text.answersTitle}</p>
+      <button class="btn" type="button" data-placement-again>{text.again}</button>
+    </section>
+  </div>
+</Base>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-placement]').forEach((quiz) => {
+    const text = quiz.dataset as Record<string, string>;
+    const form = quiz.querySelector('[data-placement-form]') as HTMLFormElement;
+    const result = quiz.querySelector('[data-placement-result]') as HTMLElement;
+    const cards = [...quiz.querySelectorAll<HTMLElement>('[data-question]')];
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const right = { 1: 0, 2: 0, 3: 0 } as Record<number, number>;
+      const asked = { 1: 0, 2: 0, 3: 0 } as Record<number, number>;
+      cards.forEach((card) => {
+        const level = Number(card.dataset.level);
+        const yours = (card.querySelector('input:checked') as HTMLInputElement | null)?.value ?? '';
+        const answer = card.dataset.answer as string;
+        asked[level]++;
+        if (yours === answer) right[level]++;
+        const verdict = card.querySelector('[data-verdict]') as HTMLElement;
+        verdict.textContent = (yours ? text.yourAnswer : text.skipped).replace('{yours}', yours).replace('{right}', answer);
+        card.classList.toggle('is-solved', yours === answer);
+        card.classList.toggle('is-wrong', yours !== answer);
+        (card.querySelector('[data-explain]') as HTMLElement).hidden = false;
+        card.querySelectorAll<HTMLInputElement>('input').forEach((input) => {
+          input.disabled = true;
+        });
+      });
+      // Level 1 unless every Level 1 question is right. Level 3 needs most of Level 2 and some of Level 3.
+      let level = 1;
+      if (right[1] === asked[1]) level = right[2] >= asked[2] - 1 && right[3] >= 1 ? 3 : 2;
+      const score = right[1] + right[2] + right[3];
+      result.querySelectorAll<HTMLElement>('[data-recommend]').forEach((box) => {
+        box.hidden = Number(box.dataset.recommend) !== level;
+        const reason = box.querySelector('[data-reason]') as HTMLElement;
+        reason.textContent = (reason.dataset.reason as string).replace('{score}', String(score));
+      });
+      (form.querySelector('button[type="submit"]') as HTMLElement).hidden = true;
+      result.hidden = false;
+      form.before(result);
+      result.focus();
+    });
+
+    quiz.querySelector('[data-placement-again]')?.addEventListener('click', () => {
+      form.reset();
+      cards.forEach((card) => {
+        card.classList.remove('is-solved', 'is-wrong');
+        (card.querySelector('[data-explain]') as HTMLElement).hidden = true;
+        card.querySelectorAll<HTMLInputElement>('input').forEach((input) => {
+          input.disabled = false;
+        });
+      });
+      (form.querySelector('button[type="submit"]') as HTMLElement).hidden = false;
+      result.hidden = true;
+      (cards[0].querySelector('input') as HTMLInputElement).focus();
+    });
+  });
+</script>

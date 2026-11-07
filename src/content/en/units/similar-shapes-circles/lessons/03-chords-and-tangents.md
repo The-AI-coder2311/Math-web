@@ -1,7 +1,7 @@
 ---
 title: "Chords and Tangents"
 summary: Find lengths in circles using right angles at tangent points, equal tangents, and the products of pieces of crossing chords.
-minutes: 10
+minutes: 12
 ---
 
 Two chords cross inside a circle. One is cut into pieces of 3 and 8, and the other has a piece of 4. How long is its other piece? It seems as if you'd need to know the size of the circle, and where exactly the chords sit. You don't. There's a rule so neat that it barely feels fair, and it comes from similar triangles you can find in seconds.
@@ -85,6 +85,42 @@ Chord $AB$ is cut into two pieces by a diameter, at right angles, at point $E$. 
 **What's the question asking?** The whole diameter is $2 + 18 = 20$, so the radius is 10.
 
 **Check with Pythagoras:** The center is $10 - 2 = 8$ away from the chord, and half of the chord is 6. The radius should be the hypotenuse of a 6-8 right triangle, which is 10. It matches.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Four points on a circle follow one more rule, and it contains the Pythagorean Theorem as a special case.
+
+**Ptolemy's theorem:** If $A$, $B$, $C$, and $D$ lie in order on a circle, then:
+
+$AC \times BD = AB \times CD + AD \times BC$
+
+In words: the product of the diagonals equals the sum of the products of the opposite sides.
+
+**Try it on a rectangle.** All of a rectangle's corners lie on a circle. With sides of 5 and 12, each diagonal is $d$:
+
+$d \times d = 5 \times 5 + 12 \times 12$
+
+That's the Pythagorean Theorem, and $d = 13$!
+
+**A harder one:** Triangle $ABC$ is equilateral, and it sits inside a circle. Point $P$ lies on the arc between $B$ and $C$. If $PB = 3$ and $PC = 5$, how long is $PA$?
+
+**Use Ptolemy on $A$, $B$, $P$, $C$.** Let each side of the triangle be $s$:
+
+$PA \times s = PB \times s + PC \times s$
+
+Each $s$ cancels, leaving $PA = PB + PC = 8$. You never needed to know $s$.
+
+Try this. In the same setup, $PB = 4$ and $PC = 7$. How long is $PA$?
+
+<details class="check"><summary>Show the answer</summary>
+
+$PA = PB + PC = 4 + 7 = 11$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

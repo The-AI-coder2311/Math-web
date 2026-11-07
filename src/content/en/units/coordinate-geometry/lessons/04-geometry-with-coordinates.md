@@ -1,7 +1,7 @@
 ---
 title: "Solving Geometry With Coordinates"
 summary: When a geometry problem feels stuck, put it on a grid. Choose smart coordinates, then let algebra find the answer. Learn reflections and rotations too.
-minutes: 10
+minutes: 12
 ---
 
 A square has sides of 4. A line runs from one corner to the middle of a far side, and it crosses a diagonal of the square. What's the area of the small triangle that's formed? You could hunt for similar triangles, and that would work. But here's a different approach that needs no cleverness at all: put the square on a grid, write equations for the lines, and solve.
@@ -81,6 +81,34 @@ Rectangle $ABCD$ has $AB = 8$ and $BC = 6$. Point $E$ is on side $CD$, with $CE 
 **Where do they meet?** $x = -\frac{3}{4}x + 6$ gives $\frac{7}{4}x = 6$, so $x = \frac{24}{7}$. Since $y = x$, the height is $\frac{24}{7}$.
 
 The numbers aren't pretty, but you didn't have to spot any trick to get there.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Reflections solve a classic problem: finding the shortest path that has to touch a line.
+
+**A harder one:** You're at $A = (0, 3)$, and you need to get to $B = (8, 3)$. On the way, you have to touch the $x$-axis, say to fill a bucket at a river. What's the shortest total distance?
+
+**The trick:** Reflect $B$ across the $x$-axis, to get $B' = (8, -3)$. Any point $P$ on the axis is the same distance from $B$ and $B'$. So the path $A$ to $P$ to $B$ has the same length as the path $A$ to $P$ to $B'$.
+
+**What's the shortest path to $B'$?** It's a straight line, and that line crosses the axis, so it does touch the river:
+
+$AB' = \sqrt{8^2 + 6^2} = 10$
+
+So the shortest total distance is **10**.
+
+**Where do you touch?** The straight line crosses the axis at $(4, 0)$. A ball bouncing off a wall follows this same path, with matching angles on each side. That's why reflections work in pool games too.
+
+Try this. Go from $(0, 2)$ to $(12, 3)$, touching the $x$-axis on the way. What's the shortest distance?
+
+<details class="check"><summary>Show the answer</summary>
+
+Reflect $(12, 3)$ to $(12, -3)$. The distance from $(0, 2)$ is $\sqrt{12^2 + 5^2} = 13$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

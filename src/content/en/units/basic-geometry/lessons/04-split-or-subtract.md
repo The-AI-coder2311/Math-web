@@ -1,7 +1,7 @@
 ---
 title: "Split It or Subtract It"
 summary: Find the area of an unusual shape in two ways. Split it into pieces you know, or subtract the part you don't want.
-minutes: 9
+minutes: 11
 ---
 
 A floor is shaped like the letter L. How much carpet do you need to cover it? There's no formula for an "L shape." But you don't need one, because you can see rectangles hiding in it. In fact, there are two different ways to find them, and getting the same answer both ways is a wonderful check.
@@ -87,6 +87,34 @@ A square with sides of 8 has a corner triangle cut off at each of its 4 corners.
 $$64 - 8 = 56$$
 
 Splitting up an octagon directly would take a lot of work. Subtracting takes three lines.
+
+<section data-box="deeper">
+
+## Going deeper
+
+For perimeter, you can sometimes slide pieces into a simpler shape without changing the answer.
+
+**A harder one:** A staircase shape is 10 units wide and 6 units tall. It has steps of different sizes, and you aren't told the size of any step. What's its perimeter?
+
+**That seems impossible.** But look at the steps. Slide each small horizontal piece up, so that together they line up across the top. Slide each small vertical piece over, so that they line up down the side.
+
+**What do we get?** The pieces slide into the outline of a 10 by 6 rectangle. The lengths don't change when pieces slide, so the perimeter matches the rectangle's:
+
+$2 \times (10 + 6) = 32$
+
+**Does it work for any steps?** Yes, as long as the steps only go one way, always up and across. The horizontal pieces must add up to the width, and the vertical pieces must add up to the height.
+
+**Does this work for area?** No. The staircase has a smaller area than the rectangle. Sliding edges keeps the perimeter, but it changes the inside.
+
+Try this. A staircase is 12 units wide and 5 units tall. What's its perimeter?
+
+<details class="check"><summary>Show the answer</summary>
+
+The pieces slide into a 12 by 5 rectangle, so the perimeter is $2 \times (12 + 5) = 34$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

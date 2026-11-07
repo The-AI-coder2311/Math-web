@@ -101,3 +101,59 @@ export function updateBars() {
     status.textContent = template.replace('{solved}', String(solved));
   });
 }
+
+// ---- Progress codes: move saved progress to another device with no server ----
+// A code is "CMI1-" followed by the saved progress as JSON, in URL-safe base64.
+const CODE_PREFIX = 'CMI1-';
+
+type Bundle = { p: Progress; l: Progress; c: Record<string, ContestScore> };
+
+const readJson = (key: string) => {
+  try {
+    const parsed = JSON.parse(window.localStorage.getItem(key) ?? '{}');
+    return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    return {};
+  }
+};
+
+/** Every bit of saved progress on this device, as one short code. */
+export function exportCode() {
+  const bundle: Bundle = { p: load(PROBLEMS_KEY), l: load(LESSONS_KEY), c: readJson(CONTESTS_KEY) };
+  const base64 = window.btoa(JSON.stringify(bundle));
+  return CODE_PREFIX + base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+const isList = (value: unknown): value is string[] => Array.isArray(value) && value.every((item) => typeof item === 'string');
+const isProgress = (value: unknown): value is Progress =>
+  Boolean(value) && typeof value === 'object' && !Array.isArray(value) && Object.values(value as object).every(isList);
+
+/** Reads a code and adds it to what's already saved. Nothing is removed. Returns false for a broken code. */
+export function importCode(raw: string): boolean {
+  const code = raw.replace(/\s+/g, '');
+  if (!code.startsWith(CODE_PREFIX)) return false;
+  let bundle: Bundle;
+  try {
+    const base64 = code.slice(CODE_PREFIX.length).replace(/-/g, '+').replace(/_/g, '/');
+    bundle = JSON.parse(window.atob(base64 + '='.repeat((4 - (base64.length % 4)) % 4)));
+  } catch {
+    return false;
+  }
+  if (!bundle || !isProgress(bundle.p) || !isProgress(bundle.l) || typeof bundle.c !== 'object' || bundle.c === null) return false;
+
+  for (const [key, incoming] of [[PROBLEMS_KEY, bundle.p], [LESSONS_KEY, bundle.l]] as const) {
+    const merged = { ...load(key) };
+    for (const [unit, items] of Object.entries(incoming)) {
+      merged[unit] = [...new Set([...(Array.isArray(merged[unit]) ? merged[unit] : []), ...items])];
+    }
+    save(key, merged);
+  }
+  for (const [contest, best] of Object.entries(bundle.c)) {
+    if (typeof best?.score === 'number' && typeof best?.max === 'number') saveContestScore(contest, best.score, best.max);
+  }
+  return true;
+}
+
+/** True when every problem in every listed unit is solved. */
+export const unitsFinished = (units: { slug: string; problems: string[] }[]) =>
+  units.every((unit) => unit.problems.every((problem) => getSolved(unit.slug).includes(problem)));

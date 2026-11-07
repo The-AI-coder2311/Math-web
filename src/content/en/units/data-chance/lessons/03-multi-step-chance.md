@@ -1,7 +1,7 @@
 ---
 title: "Chance With Several Steps"
 summary: Use bigger trees to handle choices that lead to different situations, and add up every path that gets you what you want.
-minutes: 10
+minutes: 12
 ---
 
 A coin flip decides which bag you pick from. On heads, you use Bag A, which has 3 red marbles and 1 blue. On tails, you use Bag B, which has 1 red and 1 blue. What's the probability that you draw red? You can't count marbles directly, since the bags don't have equal chances per marble. But a tree handles it neatly.
@@ -80,6 +80,37 @@ Box 1 has 2 white balls and 1 black ball. Box 2 has 1 white ball and 1 black bal
 - A black ball moves, with a probability of $\frac{1}{3}$. Box 2 then has 1 white and 2 black, so white is $\frac{1}{3}$. The path is $\frac{1}{3} \times \frac{1}{3} = \frac{1}{9}$.
 
 **Add them:** $\frac{4}{9} + \frac{1}{9} = \frac{5}{9}$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Knowing a result can change how likely each path was. You can work backward with paths.
+
+**A harder one:** Bag A has 3 red and 1 blue marble. Bag B has 1 red and 3 blue marbles. You pick a bag at random, and draw a marble. It's red. What's the probability that you picked Bag A?
+
+**What are the paths to red?**
+
+- Bag A, then red: $\frac{1}{2} \times \frac{3}{4} = \frac{3}{8}$
+- Bag B, then red: $\frac{1}{2} \times \frac{1}{4} = \frac{1}{8}$
+
+**What do we know now?** We know that we're on one of these two paths. So compare them:
+
+$\frac{\frac{3}{8}}{\frac{3}{8} + \frac{1}{8}} = \frac{3}{4}$
+
+So seeing red raises the chance of Bag A from $\frac{1}{2}$ to $\frac{3}{4}$. That makes sense, since red is more common in Bag A.
+
+**Think in marbles:** Imagine the 8 marbles from both bags in a pile. Four are red, and 3 of those came from Bag A.
+
+Try this. Bag A has 2 red and 2 blue marbles. Bag B has 4 red marbles. You pick a bag at random and draw a red marble. What's the probability that it came from Bag A?
+
+<details class="check"><summary>Show the answer</summary>
+
+There are 6 red marbles in all, and 2 are from Bag A. So the probability is $\frac{2}{6} = \frac{1}{3}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

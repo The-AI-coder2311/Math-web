@@ -1,7 +1,7 @@
 ---
 title: "Prime Factorization"
 summary: Every whole number is built from primes in exactly one way. Learn to find a number's prime factors, and use them to answer questions quickly.
-minutes: 10
+minutes: 12
 ---
 
 What's the smallest whole number you can multiply 12 by to get a perfect square? You could try: $12 \times 2 = 24$, no. $12 \times 3 = 36$, yes! But why did 3 work? And what would you do for 180, or 2,000? There's a way to look inside a number and see the answer immediately, and it uses the numbers that everything else is built from: the primes.
@@ -85,6 +85,34 @@ The product of three different whole numbers, each greater than 1, is 30. What's
 So the numbers are 2, 3, and 5, and the sum is $2 + 3 + 5 = 10$.
 
 Notice how the factorization forced the answer. If the product were 60, there would be several options, like 3, 4, and 5, or 2, 5, and 6, which is why contests choose their numbers carefully.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Exponents can be made to meet two demands at once. Handle each prime on its own.
+
+**A harder one:** What's the smallest positive whole number $n$ such that $2n$ is a perfect square and $3n$ is a perfect cube?
+
+**What must $n$ look like?** Only 2s and 3s are needed, so write $n = 2^a \times 3^b$.
+
+**Look at the power of 2.** In $2n$, the exponent is $a + 1$, which must be even. In $3n$, the exponent is $a$, which must be a multiple of 3. The smallest $a$ that works is 3.
+
+**Look at the power of 3.** In $2n$, the exponent is $b$, which must be even. In $3n$, the exponent is $b + 1$, which must be a multiple of 3. The smallest $b$ that works is 2.
+
+So $n = 2^3 \times 3^2 = 72$.
+
+**Check:** $2 \times 72 = 144 = 12^2$, and $3 \times 72 = 216 = 6^3$.
+
+Try this. What's the smallest $n$ such that $3n$ is a perfect square and $2n$ is a perfect cube?
+
+<details class="check"><summary>Show the answer</summary>
+
+For the power of 2, $a$ must be even and $a + 1$ a multiple of 3, so $a = 2$. For the power of 3, $b + 1$ must be even and $b$ a multiple of 3, so $b = 3$. So $n = 4 \times 27 = 108$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

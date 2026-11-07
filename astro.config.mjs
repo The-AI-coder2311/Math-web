@@ -3,6 +3,7 @@ import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { rehypeBaseLinks } from './src/lib/rehype-base-links.mjs';
+import { rehypeGlossaryLinks } from './src/lib/rehype-glossary-links.mjs';
 import { rehypeTables } from './src/lib/rehype-tables.mjs';
 import { remarkDisplayMath } from './src/lib/remark-display-math.mjs';
 import { writeLessonData } from './scripts/build-lesson-data.mjs';
@@ -38,7 +39,7 @@ export default defineConfig({
     syntaxHighlight: false,
     processor: unified({
       remarkPlugins: [remarkMath, remarkDisplayMath],
-      rehypePlugins: [rehypeKatex, [rehypeBaseLinks, { base }], rehypeTables],
+      rehypePlugins: [rehypeKatex, [rehypeBaseLinks, { base }], [rehypeGlossaryLinks, { base }], rehypeTables],
     }),
   },
 });

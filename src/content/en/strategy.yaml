@@ -1,0 +1,75 @@
+# Practice questions for the Contest Strategy lesson (src/content/en/pages/contest-strategy.md).
+# They're about how to take a contest, not about one math topic. Each one is checked
+# by `verify`, like the unit problems, and gets a mistake note for every wrong choice.
+questions:
+  - slug: test-the-middle
+    question: "The answer choices to a question are (A) 6, (B) 9, (C) 12, (D) 15, and (E) 18, from smallest to largest. You plan to try the choices in the problem until one works. If a choice is too big, you'll know the answer is smaller, and if it's too small, you'll know the answer is bigger. Which choice should you try first?"
+    choices: ["6", "9", "12", "15", "18"]
+    answer: C
+    verify: "[6, 9, 12, 15, 18].map((c, i, all) => [c, Math.max(i, all.length - 1 - i)]).sort((a, b) => a[1] - b[1])[0][0]"
+    hint: After your first test, how many choices could still be right in the worst case?
+    solution: "Try the middle choice, 12. If it's too big, only 6 and 9 are left. If it's too small, only 15 and 18 are left. Either way, one test rules out 3 choices. Starting with 6 could rule out only one choice.\n\n**Answer: (C) 12**"
+    mistakes:
+      A: "If 6 doesn't work, you've ruled out only one choice. The middle choice rules out more."
+      B: "That's a good guess, but if 9 is too small, 3 choices are still left. The middle choice never leaves more than 2."
+      D: "If 15 is too big, 3 choices are still left. The middle choice never leaves more than 2."
+      E: "If 18 doesn't work, you've ruled out only one choice. The middle choice rules out more."
+  - slug: plug-in-choices
+    question: "A number is doubled, and then 9 is added. The result is 47. The choices are (A) 15, (B) 19, (C) 17, (D) 21, and (E) 23. Test the choices to find the number."
+    choices: ["15", "19", "17", "21", "23"]
+    answer: B
+    verify: "[15, 19, 17, 21, 23].find((n) => 2 * n + 9 === 47)"
+    hint: "Try a choice in the middle, like 19. Double it and add 9."
+    solution: "Test 19: $19 \\times 2 = 38$, and $38 + 9 = 47$. It works on the first try. You didn't need to write an equation.\n\n**Answer: (B) 19**"
+    mistakes:
+      A: "Test it: $15 \\times 2 + 9 = 39$, which is too small."
+      C: "Test it: $17 \\times 2 + 9 = 43$, which is a bit too small."
+      D: "Test it: $21 \\times 2 + 9 = 51$, which is too big."
+      E: "Test it: $23 \\times 2 + 9 = 55$, which is too big."
+  - slug: estimate-first
+    question: "Without working it out exactly, which choice is closest to $49 \\times 51$?"
+    choices: ["250", "25,000", "2,000", "2,500", "3,000"]
+    answer: D
+    verify: "[250, 25000, 2000, 2500, 3000].sort((a, b) => Math.abs(a - 49 * 51) - Math.abs(b - 49 * 51))[0]"
+    hint: Both numbers are close to 50.
+    solution: "Both numbers are close to 50, and $50 \\times 50 = 2500$. That's enough to pick the choice. (The exact answer is 2,499.)\n\n**Answer: (D) 2,500**"
+    mistakes:
+      A: "That's 10 times too small. Check the size: about 50 times about 50 is in the thousands."
+      B: "That's 10 times too big. About 50 times about 50 is in the thousands, not the tens of thousands."
+      C: "That's what $40 \\times 50$ would be. Both numbers are close to 50."
+      E: "That's what $50 \\times 60$ would be. Both numbers are close to 50."
+  - slug: guess-or-blank
+    question: "On the AMC 8, a correct answer earns 1 point, and a wrong or blank answer earns 0 points. With one minute left, there are 3 questions you can't solve. On how many of them should you guess?"
+    choices: ["3", "2", "1", "0"]
+    answer: A
+    verify: "range(0, 3).reduce((best, k) => (k / 5 > best / 5 ? k : best), 0)"
+    hint: Can a guess ever lose you a point on the AMC 8?
+    solution: "A blank always earns 0, and a guess earns 0 at worst. So every guess can only help. With 5 choices, each random guess has a 1 in 5 chance of earning a point.\n\n**Answer: (A) 3**"
+    mistakes:
+      B: "Why leave one blank? On the AMC 8, a wrong answer costs nothing, so a guess can't hurt."
+      C: "On the AMC 8, a wrong answer costs nothing, so guessing on all of them can't hurt."
+      D: "That's the rule on some other contests, but on the AMC 8 a wrong answer costs nothing. Guess on every one."
+  - slug: pacing
+    question: "A contest has 25 questions in 40 minutes. You spend 1 minute on each of the first 15 questions. On average, how many minutes can you spend on each of the last 10 questions?"
+    choices: ["1", "1.5", "2", "3", "2.5"]
+    answer: E
+    verify: "range(1, 100).map((t) => t / 10).find((t) => 15 + 10 * t === 40)"
+    hint: How many minutes are left after the first 15 questions?
+    solution: "The first 15 questions take 15 minutes, which leaves $40 - 15 = 25$ minutes for the last 10 questions. That's $25 \\div 10 = 2.5$ minutes each. Later questions are harder, so it helps that they get more time.\n\n**Answer: (E) 2.5**"
+    mistakes:
+      A: "That's the time for each early question. The later ones get the time that's left over."
+      B: "Find the minutes left first: $40 - 15 = 25$. Then share them among 10 questions."
+      C: "Find the minutes left first: $40 - 15 = 25$. Then share them among 10 questions."
+      D: "That would need 30 minutes for the last 10, but only 25 are left."
+  - slug: check-small-case
+    question: "A student says there are 60 whole numbers from 15 to 75, including both 15 and 75. Check the counting rule with a small case, like the numbers from 1 to 3. How many whole numbers are there from 15 to 75, including both?"
+    choices: ["59", "60", "61", "62", "75"]
+    answer: C
+    verify: "range(15, 75).length"
+    hint: "From 1 to 3 there are 3 numbers, but $3 - 1 = 2$. What's missing?"
+    solution: "Subtracting the ends counts the steps between the numbers, not the numbers. From 1 to 3 there are 3 numbers but only $3 - 1 = 2$ steps. So add 1: $75 - 15 + 1 = 61$.\n\n**Answer: (C) 61**"
+    mistakes:
+      A: "That subtracts 1, but the small case shows you need to add 1. From 1 to 3 there are 3 numbers."
+      B: "That's $75 - 15$, which counts the steps between the numbers. Try it on 1 to 3: $3 - 1 = 2$, but there are 3 numbers."
+      D: "That adds 2. The small case from 1 to 3 shows you need to add only 1."
+      E: "That counts from 1 to 75. The list starts at 15."

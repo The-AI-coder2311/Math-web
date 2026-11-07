@@ -1,7 +1,7 @@
 ---
 title: "Giant Powers"
 summary: Find the remainder of enormous powers using cycles, stepping stones, and the trick of replacing a base with negative 1.
-minutes: 10
+minutes: 12
 ---
 
 What's the remainder when $2^{1000}$ is divided by 7? That number has over 300 digits. No calculator on Earth displays it exactly, and yet you can answer this in about 30 seconds, without using any big numbers. This is one of the most satisfying tricks in contest math.
@@ -91,6 +91,34 @@ What's the remainder when $1^3 + 2^3 + 3^3 + \cdots + 20^3$ is divided by 7?
 $$1 + 1 + 6 + 1 + 6 + 6 = 21 \equiv 0$$
 
 So the remainder is **0**.
+
+<section data-box="deeper">
+
+## Going deeper
+
+What happens when the exponent itself is a huge power? Find what you need from the exponent, and nothing more.
+
+**A harder one:** What's the last digit of $7^{7^7}$? (The exponent is $7^7$, which is a very large number.)
+
+**What's the cycle?** The last digits of powers of 7 go 7, 9, 3, 1, with a cycle of 4. So we only need the exponent's remainder **mod 4**.
+
+**Find that remainder.** Since $7 \equiv -1 \pmod 4$:
+
+$7^7 \equiv (-1)^7 = -1 \equiv 3 \pmod 4$
+
+**Use it.** The exponent acts like a 3, so the last digit matches $7^3 = 343$. The last digit is **3**.
+
+**What are the two levels?** The base gets reduced by the modulus, 10. The exponent gets reduced by the cycle length, 4. Each level uses a different modulus. Mixing them up is the most common mistake here.
+
+Try this. What's the last digit of $3^{3^3}$?
+
+<details class="check"><summary>Show the answer</summary>
+
+The exponent is $3^3 = 27$. The cycle of 3, 9, 7, 1 has length 4, and 27 has a remainder of 3. So the last digit matches $3^3 = 27$, which is 7.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

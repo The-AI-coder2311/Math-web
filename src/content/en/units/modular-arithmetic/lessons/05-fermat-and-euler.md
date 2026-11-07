@@ -1,7 +1,7 @@
 ---
 title: "Fermat's and Euler's Theorems"
 summary: Skip the search for a cycle by using Fermat's Little Theorem and Euler's theorem, which tell you a power that always leaves a remainder of 1.
-minutes: 11
+minutes: 13
 ---
 
 What's the remainder when $7^{200}$ is divided by 101? You know how to hunt for a cycle, but mod 101 you might have to write out dozens of powers before anything repeats. Here's the amazing part: the answer is 1, and you can know that before you do any calculation. A French lawyer named Pierre de Fermat noticed why in the 1600s.
@@ -93,6 +93,32 @@ What's the remainder when $1^6 + 2^6 + 3^6 + 4^6 + 5^6 + 6^6$ is divided by 7?
 **Add them up:** That's six 1s, and the remainder is **6**.
 
 **Check:** The real sum is 67,171, and $67{,}171 = 7 \times 9595 + 6$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Fermat's theorem explains something you've seen since grade school: why fractions have repeating decimals of certain lengths.
+
+**A harder one:** Why does $\frac{1}{7} = 0.142857142857...$ repeat every 6 digits?
+
+**Long division is about remainders.** Each new digit comes from multiplying the remainder by 10, and dividing by 7. So the decimal repeats as soon as a remainder repeats, and that depends on the powers of 10 mod 7.
+
+**Fermat's theorem says:** $10^6 \equiv 1 \pmod 7$. After 6 steps, the remainder comes back to 1, and the digits start over.
+
+**Is the cycle always $p - 1$?** No, but its length always **divides** $p - 1$. The smallest power that gives 1 sets the length, and the theorem gives a power that works, not always the smallest. For 7, the powers of 10 give 3, 2, 6, 4, 5, 1, so the length is the full 6.
+
+So $\frac{1}{13}$ has a cycle whose length divides 12, and that length turns out to be 6.
+
+Try this. Without dividing, what could the cycle length of $\frac{1}{11}$ be? Now test: what are $10^1$ and $10^2$ mod 11?
+
+<details class="check"><summary>Show the answer</summary>
+
+The length must divide 10, so it's 1, 2, 5, or 10. Since $10 \equiv -1$ and $10^2 \equiv 1$, the length is 2. Indeed, $\frac{1}{11} = 0.0909...$
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

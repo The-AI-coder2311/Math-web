@@ -8,6 +8,8 @@ It's a static [Astro](https://astro.build) site. Lessons and problems are plain 
 
 - [ ] Choose a final name and set it in `src/site.config.ts`. "Count Me In" is a placeholder, so check that the name and web address are available.
 - [ ] Replace the placeholder email in `src/site.config.ts`.
+- [ ] Decide about visitor counts. Analytics is off until you fill in `analytics.siteId` in `src/site.config.ts` (see [Analytics](#analytics-off-by-default)).
+- [ ] Have a Spanish speaker read the Spanish pages, especially the Level 1 lessons and problems.
 - [ ] Set your real web address in `astro.config.mjs` (the `site` line), or in `SITE_URL` in the deploy workflow. It's `https://example.org` until then, and `sitemap.xml`, `robots.txt`, and canonical links all use it.
 - [ ] Read `src/content/en/pages/about.md` and make it true for your team. Add names if you'd like.
 - [ ] Have a second person solve every problem. The answer check catches wrong answers, but not confusing wording.
@@ -41,17 +43,24 @@ Then open <http://localhost:4321>. The page updates as you save files.
 
 ```
 src/
-  site.config.ts          Site name and contact email
-  i18n/en.ts              Button labels and short interface text
+  site.config.ts          Site name, contact email, contest scoring, and the analytics switch
+  i18n/config.ts          The languages, and which sections aren't translated yet
+  i18n/en.ts, es.ts       Button labels and short interface text, one file per language
   content/en/
     pathway.yaml          The levels, and the ordered units in each one
     teacher-plans.yaml    The six-week plans on the teacher pages
     formulas.yaml         The Formulas page, with its practice examples
+    glossary.yaml         The Glossary page, and which lesson links to each word
+    placement.yaml        The placement quiz at /pathway/start/
+    strategy.yaml         Practice questions for the contest strategy lesson
     units/counting/
       lessons/*.md        The unit's lessons, in order (3 to 5 of them)
       problems/*.md       One file per practice problem
-    problem-sets/*.yaml   Printable sets for teachers
-    pages/*.md            About, Accessibility, teacher pages, and club plan
+    contests/<name>/      Practice tests: contest.yaml plus problems/*.md
+    problem-sets/*.yaml   Printable sets for teachers, weeks 1 to 16
+    pages/*.md            About, Accessibility, Get Involved, contest strategy, teacher pages,
+                          club plan, and the recruiting kit
+  content/es/             The Spanish version (see "The Spanish version" below)
   data/lessons.json       Every lesson's details, written by a script (don't edit it)
   components/, layouts/, pages/, scripts/, styles/    The code
 templates/                Files to copy when adding content
@@ -78,6 +87,24 @@ Answer keys stay behind a toggle so students won't see them by accident. It isn'
 
 On GitHub Pages, a site at `https://YOUR-USERNAME.github.io/YOUR-REPO/` can't control the `robots.txt` at the top of that address, so search engines only read it once you use your own domain. On Vercel, its shallow git history can make older pages show newer dates.
 
+## Features at a glance
+
+| Page | Address | Where its content lives |
+|---|---|---|
+| Placement quiz | `/pathway/start/` | `placement.yaml` |
+| Practice tests | `/contests/` | `contests/<name>/` |
+| Contest strategy lesson | `/contests/strategy/` | `pages/contest-strategy.md` and `strategy.yaml` |
+| Formula and strategy sheet, one per level | `/pathway/level-1/cheat-sheet/` | Built from each lesson's "Remember this" card |
+| Completion certificate, one per level | `/pathway/level-1/certificate/` | Built from `pathway.yaml`. It unlocks when every problem in the level is solved on that device |
+| Glossary | `/glossary/` | `glossary.yaml` |
+| Problem of the Week | Home page | Picked from the medium problems in Levels 1 and 2 (see below) |
+| Recruiting kit | `/teachers/recruiting-kit/` | `pages/recruiting-kit.md` |
+| Get Involved | `/get-involved/` | `pages/get-involved.md` |
+
+**Progress codes.** The pathway page has a "Move your progress to another device" panel. It turns everything saved on the device (solved problems, read lessons, and best practice test scores) into a short text code that starts with `CMI1-`. Loading a code adds to what's already there and never erases anything. No server is involved. The saved-progress keys, including `count-me-in-progress-v1`, never change.
+
+**Problem of the Week.** The home page shows one problem a week, from a pool of 52 medium problems in Levels 1 and 2. The page is built with the current week's problem, and the browser swaps in the right one from `problem-of-the-week.json` if the site was built in an earlier week, so it changes every Monday without a rebuild.
+
 ## Add a practice problem
 
 1. Copy `templates/problem-template.md` into `src/content/en/units/<unit>/problems/`.
@@ -96,7 +123,7 @@ The unit stops saying "Coming soon" and becomes clickable as soon as it has a le
 
 ## Add a lesson
 
-Copy `templates/lesson-template.md` into the unit's `lessons/` folder and follow the notes in it. Number the file so it lands in the right place. Run `npm run verify`, which checks that the lesson has its required parts: a big idea, 3 to 5 worked examples, a check-yourself question, common traps, a contest strategy box, connections, and a summary card, in 900 to 1,500 words.
+Copy `templates/lesson-template.md` into the unit's `lessons/` folder and follow the notes in it. Number the file so it lands in the right place. Run `npm run verify`, which checks that the lesson has its required parts: a big idea, 3 to 5 worked examples, a check-yourself question, a Going deeper section, common traps, a contest strategy box, connections, and a summary card, in 900 to 1,500 words.
 
 ### The levels
 
@@ -115,12 +142,22 @@ The topic order for Levels 3 and 4 follows the chapters of *Mastering AMC 10/12*
 
 **A level review** is a unit marked `review: true` in `pathway.yaml`. It has problems but no lessons. Each problem uses `from: unit/lesson-file` in place of `lesson:`, which adds a link back to that lesson.
 
-**A practice contest** lives in `src/content/en/contests/<name>/`:
+**A practice contest** (also called a practice test) lives in `src/content/en/contests/<name>/`:
 
-- `contest.yaml` sets the `title`, `summary`, `style` (`AMC 8` or `AMC 10`), `order`, and `minutes`.
+- `contest.yaml` sets the `title`, `summary`, `style` (`AMC 8` or `AMC 10`), `level` (the pathway level whose ideas it uses, so the pathway page can link to it), `order`, and `minutes`.
 - `problems/01.md`, `problems/02.md`, and so on hold 15 or 25 questions, easiest first. Each one needs `order`, `topic`, `from`, 5 `choices`, `answer`, and `verify`, followed by the question and a `## Solution` section ending in the `**Answer: (C) 12**` line.
 
+The test page explains the rules, has an optional timer, lets students mark questions to come back to, and shows a numbered list of every question. The results screen shows the score, every solution, and a "what to review" list of the units the student missed most. The best score is saved under `count-me-in-contests-v1`.
+
 Scoring lives in `contestRules` in `src/site.config.ts`. **Check those numbers against the official rules once a year**, because the contests can change them.
+
+## Add a glossary word
+
+Add an entry to `src/content/en/glossary.yaml` with the `term`, any other `forms` of it (like a plural), a short `definition`, an optional `example`, and the `lesson` that teaches it. The first time the word appears in that lesson's text, it becomes a link to the Glossary. `npm run verify` checks that the word really appears in that lesson.
+
+## Add a placement quiz question
+
+Edit `src/content/en/placement.yaml`. Each question has a `level`, 4 `choices`, an `answer`, a `verify` line, and an `explanation`. The quiz suggests Level 1 unless every Level 1 question is right. It suggests Level 3 when nearly all of the Level 2 questions and at least one Level 3 question are right, and Level 2 otherwise.
 
 ## Add a printable problem set
 
@@ -138,14 +175,15 @@ Put math between dollar signs: `$3 \times 4 = 12$`, or `$$3 \times 4 = 12$$` for
 
 ## How answers get checked
 
-`npm run verify` runs before every build. If it finds a mistake, the build stops and nothing gets published. For every problem, it checks that:
+`npm run verify` runs before every build. If it finds a mistake, the build stops and nothing gets published. It checks unit problems, practice tests, problem sets, the Formulas page, the placement quiz, the strategy questions, and the glossary. For every problem, it checks that:
 
 - The `verify` code gets the same answer as the answer key.
 - The `**Answer: (C) 12**` line in the solution matches the answer key.
 - All of the answer choices are different, and both hints and the solution exist.
 - Every wrong choice has a mistake note, and the problem has a `lesson:` tag.
 - No single letter is the answer to more than 40% of a unit's or contest's problems, so guessing one letter doesn't pay off.
-- Each unit has at least 20 problems, close to 30% easy, 45% medium, and 25% hard, and each lesson has at least 2 tagged problems.
+- Each unit has at least 30 problems (a level review has at least 20), close to 30% easy, 45% medium, and 25% hard, and each lesson has at least 2 tagged problems.
+- A mistake note only uses a letter that's a real choice, and never the correct answer.
 - The arithmetic in each formula is correct. For example, `$5 \times 3 = 16$` gets flagged. It also checks formulas in lessons and teacher pages.
 
 It can't tell whether a problem is worded clearly, or whether your `verify` code solves the right question. That's why a second person should still solve each one.
@@ -217,16 +255,40 @@ Every push to `main` updates the site. Check Vercel's current terms to make sure
 
 If you later use a custom domain, or a repository named `YOUR-USERNAME.github.io`, change the workflow's `BASE_PATH` to `/` and `SITE_URL` to your real address.
 
-## Add a Spanish version later
+## Analytics (off by default)
 
-Each piece of the site is already separated by language:
+The site counts nothing until you turn it on. To turn on cookieless visitor counts, fill in `analytics` in `src/site.config.ts`:
 
-1. Add `'es'` to `locales` in `src/i18n/config.ts`, then import the new file and add it to `strings`.
-2. Copy `src/i18n/en.ts` to `src/i18n/es.ts`. Translate the text, and rename the export to `es`.
-3. Copy `src/content/en/` to `src/content/es/` and translate it. Keep the file names the same, along with the `slug` values and the `## Hint` and `## Solution` headings. Change internal links in the Spanish pages to start with `/es/`.
-4. Add a language switcher link to `src/layouts/Base.astro`.
+- **GoatCounter:** set `provider: 'goatcounter'` and `siteId` to your code, as in `https://YOURCODE.goatcounter.com`.
+- **Plausible:** set `provider: 'plausible'` and `siteId` to your domain.
 
-Spanish pages will appear at `/es/`, and students' progress carries over between languages. The answer checker covers every language folder automatically.
+Both count page views without cookies or personal data. The privacy promise on the About page (the `{{privacy}}` line) and the footer change by themselves to match the setting, so they're always accurate.
+
+## The Spanish version
+
+Spanish pages live at `/es/`, and the language switcher in the header links each page to its other-language version. Students' progress carries over between languages, because units and problems keep the same file names.
+
+**What's translated:** all interface text (`src/i18n/es.ts`), the home page, the Learning Pathway page, the placement quiz, every Level 1 lesson and problem (including the Level 1 review, formula sheet, and certificate), the teacher kit (For Teachers, Start a Math Team, Club Plan, and Club Tips), the recruiting kit, About, Accessibility, and Get Involved.
+
+**Still English-only:**
+
+- Levels 2 and 3 (the Spanish pathway page links to the English units and marks them "solo en inglés")
+- Practice tests and the contest strategy lesson
+- The Formulas page and the Glossary
+- The six-week teaching plans and the weekly problem sets
+- The words inside the SVG diagrams in `public/images/` (each diagram's description is translated)
+
+**How untranslated sections work:** `untranslated` in `src/i18n/config.ts` lists the sections that aren't built in Spanish yet. Links to them from Spanish pages go to the English page. A unit appears in Spanish as soon as it has Spanish lessons. When you translate a section, remove it from that list.
+
+**To translate more:**
+
+1. Copy the files from `src/content/en/` to the same place in `src/content/es/`, and keep the file names, `slug` values, and settings like `choices`, `answer`, and `verify` the same.
+2. Translate the text. Keep the `## Hint`, `## Hint 2`, `## Solution`, and `## Another way` headings in English, since the site uses them to split a problem into parts and never shows them. End each solution with `**Respuesta: (C) 12**`. In lessons, use `**La gran idea:**` and `## Ejemplo` headings.
+3. If a choice is a word (like a color or a day), translate it in `choices` and in the `verify` code too, so they still match.
+4. Point links at `/es/...` for pages that exist in Spanish, and at the English page for the rest.
+5. Run `npm run verify`. It checks Spanish files the same way as English ones. Spanish lessons may be up to 1,900 words, since translations run longer.
+
+**To add another language:** add its code to `locales` and `untranslated` in `src/i18n/config.ts`, add `src/i18n/<code>.ts` with the same shape as `en.ts`, register it in `strings`, and create `src/content/<code>/` with at least `pathway.yaml`, `placement.yaml`, and the pages in `pages/`.
 
 ## License
 

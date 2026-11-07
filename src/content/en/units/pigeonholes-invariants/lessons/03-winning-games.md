@@ -1,7 +1,7 @@
 ---
 title: "Winning Games"
 summary: Work backward from the end of a game to label every position as winning or losing, find the pattern, and use it or copy your opponent to win.
-minutes: 10
+minutes: 12
 ---
 
 There are 21 stones on a table. You and a friend take turns removing 1, 2, or 3 stones, and whoever takes the last stone wins. Would you rather go first or second? It looks like a guessing game, but it isn't. One of you can win every single time, no matter what the other one does, and you can work out who it is in under a minute.
@@ -77,6 +77,39 @@ You can remove 1, 3, or 4 stones, and whoever takes the last stone wins. For how
 **What's the pattern?** The losing positions are 0, 2, 7, and 9. Continuing the table gives 14 and 16, so the pattern repeats every 7 stones. Then comes 21, which is past our limit.
 
 **Count them:** From 1 to 20, the losing positions are 2, 7, 9, 14, and 16. That makes **5**.
+
+<section data-box="deeper">
+
+## Going deeper
+
+The most famous take-away game is **Nim**, and binary gives a complete solution.
+
+**The game:** There are several piles. On your turn, take any number of stones from one pile. Whoever takes the last stone wins.
+
+**The solution:** Write each pile in [base 2](/pathway/modular-arithmetic/04-other-bases/). Line up the digits, and count the 1s in each column. If every column has an **even** number of 1s, the player to move loses. Otherwise, that player can win, by making all of the columns even.
+
+**A harder one:** The piles have 3, 4, and 5 stones. What should the first player do?
+
+| Pile | 4s | 2s | 1s |
+|---|---|---|---|
+| 3 | 0 | 1 | 1 |
+| 4 | 1 | 0 | 0 |
+| 5 | 1 | 0 | 1 |
+| Count of 1s | 2 | 1 | 2 |
+
+The 2s column is odd. To fix it, change the pile of 3, which has a 1 in that column, into 1. So take **2** stones from the pile of 3, which leaves 1, 4, and 5.
+
+**Why does it work?** Any move changes at least one column, so it breaks an all-even position. From any other position, a move can restore it. It's the copying strategy from Example 4, in a more general form.
+
+Try this. The piles have 1, 4, and 5 stones. Who wins?
+
+<details class="check"><summary>Show the answer</summary>
+
+In base 2, they're 001, 100, and 101. Every column has an even number of 1s. So the player to move loses, and the second player wins.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

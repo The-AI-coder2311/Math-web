@@ -53,6 +53,7 @@ function sourcesFor(page, lang) {
   const content = `src/content/${lang}`;
   const templates = `src/pages/[...lang]`;
   const parts = page.split('/').filter(Boolean);
+  if (parts[0] === 'pathway' && /^level-\d+$/.test(parts[1] ?? '')) return [`${content}/units`, `${content}/pathway.yaml`];
   if (parts[0] === 'pathway' && parts.length === 3) {
     return [`${content}/units/${parts[1]}/${parts[2] === 'practice' ? 'problems' : `lessons/${parts[2]}.md`}`];
   }
@@ -66,7 +67,12 @@ function sourcesFor(page, lang) {
     '': [`${templates}/index.astro`],
     pathway: [`${templates}/pathway/index.astro`, `${content}/pathway.yaml`],
     contests: [`${templates}/contests/index.astro`, `${content}/contests`],
-    about: [`${content}/pages/about.md`],
+    about: [`${content}/pages/about.md`, 'src/site.config.ts'],
+    'pathway/start': [`${templates}/pathway/start.astro`, `${content}/placement.yaml`],
+    'contests/strategy': [`${templates}/contests/strategy.astro`, `${content}/pages/contest-strategy.md`, `${content}/strategy.yaml`],
+    glossary: [`${templates}/glossary.astro`, `${content}/glossary.yaml`],
+    'get-involved': [`${content}/pages/get-involved.md`],
+    'teachers/recruiting-kit': [`${content}/pages/recruiting-kit.md`],
     accessibility: [`${content}/pages/accessibility.md`],
     sitemap: [`${templates}/sitemap.astro`, 'src/data/lessons.json'],
     teachers: [`${templates}/teachers/index.astro`, `${content}/pages/for-teachers.md`, `${content}/pages/club-tips.md`, `${content}/teacher-plans.yaml`],
@@ -114,8 +120,11 @@ function checkUnique(field) {
 checkUnique('title');
 checkUnique('description');
 
-const sitemapPage = existsSync(join(DIST, 'sitemap/index.html')) ? readFileSync(join(DIST, 'sitemap/index.html'), 'utf8') : '';
-const linked = new Set([...sitemapPage.matchAll(/href="([^"]+)"/g)].map((match) => match[1]));
+// Each language has its own Sitemap page, so a page counts as linked if any of them links to it.
+const sitemapPages = pages
+  .filter(({ page }) => page === 'sitemap/')
+  .map(({ where }) => readFileSync(join(DIST, where, 'index.html'), 'utf8'));
+const linked = new Set(sitemapPages.flatMap((html) => [...html.matchAll(/href="([^"]+)"/g)].map((match) => match[1])));
 for (const page of pages) {
   if (page.headings !== 1) errors.push(`${page.where}: has ${page.headings} <h1> headings, and a page needs exactly 1`);
   if (!page.canonical) errors.push(`${page.where}: has no canonical link`);

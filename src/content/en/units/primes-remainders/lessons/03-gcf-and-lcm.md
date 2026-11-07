@@ -1,7 +1,7 @@
 ---
 title: "GCF and LCM"
 summary: Find the greatest common factor and least common multiple using primes, and learn how to tell which one a word problem needs.
-minutes: 10
+minutes: 12
 ---
 
 One bus comes every 24 minutes, and another comes every 36. They both arrive at noon. When do they next arrive together? And separately, you have 24 apples and 36 pears, and you want to make identical fruit bags, using all of the fruit. What's the largest number of bags you can make? Both problems use the same two numbers, but they need different tools. This lesson teaches you those tools, and how to tell them apart.
@@ -76,6 +76,35 @@ Two whole numbers have a GCF of 6 and an LCM of 36. Both numbers are greater tha
 **What are the options?** The pairs of $x$ and $y$ that multiply to 6 and share no factors are 1 and 6, or 2 and 3. Both numbers must be greater than 6, so $x$ and $y$ must both be more than 1. That leaves 2 and 3, which gives the numbers 12 and 18.
 
 **Check:** The GCF of 12 and 18 is 6, and the LCM is 36.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Factoring big numbers is slow. The **Euclidean algorithm** finds the GCF without factoring anything.
+
+**Why it works:** Any number that divides both $a$ and $b$ also divides $a - b$. So the GCF doesn't change if you replace the larger number with the difference. Doing this many times is the same as replacing it with the remainder.
+
+**A harder one:** What's the GCF of 84 and 36?
+
+- Divide 84 by 36: the remainder is 12. So we want the GCF of 36 and 12.
+- Divide 36 by 12: the remainder is 0. So the GCF is 12.
+
+It took two steps, with no factoring.
+
+**It works on big numbers too.** For 1001 and 143: since $1001 = 143 \times 7$, the remainder is 0 right away, so the GCF is 143. Factoring might take you longer to notice that.
+
+**Using it on a fraction:** To simplify $\frac{84}{36}$, divide the top and bottom by 12 to get $\frac{7}{3}$.
+
+Try this. Use the Euclidean algorithm to find the GCF of 91 and 35.
+
+<details class="check"><summary>Show the answer</summary>
+
+$91 = 35 \times 2 + 21$. Then $35 = 21 \times 1 + 14$. Then $21 = 14 \times 1 + 7$. Then 14 divides evenly by 7. So the GCF is 7.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

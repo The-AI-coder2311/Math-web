@@ -1,7 +1,7 @@
 ---
 title: "Ratios as Boxes"
 summary: A ratio tells you how to make equal groups. Draw boxes, find what goes in one box, and most ratio problems fall into place.
-minutes: 9
+minutes: 11
 ---
 
 A pitcher of punch uses 2 cups of juice for every 3 cups of water. You want 20 cups of punch for a party. How much juice do you need? Plenty of people want to set up a complicated equation, but you won't need one. You'll need a pencil and some boxes.
@@ -80,6 +80,37 @@ A bowl holds red and green candies in a ratio of 3 to 5. After 8 red candies are
 **What's the question asking?** The start had 8 boxes, so there were $8 \times 4 = 32$ candies.
 
 **Check:** At the start, there were 12 red and 20 green candies. After adding 8 red, there are 20 of each.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When both amounts change by the same number, their **difference** stays the same. That's a fixed point you can use to line up two ratios.
+
+**A harder one:** The ages of Ty and his sister are in a ratio of 3 to 5. In 6 years, the ratio will be 2 to 3. How old are they now?
+
+**What stays the same?** The difference between their ages. Now it's 2 boxes, since $5 - 3 = 2$. In 6 years, it's 1 box of a different size, since $3 - 2 = 1$.
+
+**Make the differences match.** Double the second ratio, so that its difference is also 2: 2 to 3 becomes 4 to 6. Now the boxes are the same size:
+
+| | Ty | Sister |
+|---|---|---|
+| Now | 3 boxes | 5 boxes |
+| In 6 years | 4 boxes | 6 boxes |
+
+Each person gains 1 box, and that box is 6 years. So Ty is $3 \times 6 = 18$, and his sister is $5 \times 6 = 30$.
+
+**Check:** In 6 years, they'll be 24 and 36, and 24 to 36 is 2 to 3.
+
+Try this. Two ages are in a ratio of 4 to 7. In 3 years, the ratio will be 5 to 8. How old is the older person now?
+
+<details class="check"><summary>Show the answer</summary>
+
+Both differences are 3 boxes, so the boxes already match. Each person gains 1 box, which is 3 years. So the older person is $7 \times 3 = 21$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { getAnswerKeys, getContests, getLessonData, getProblemSets } from '../../lib/content';
+import { getAnswerKeys, getContests, getLessonData, getLevels, getProblemSets } from '../../lib/content';
 import { href, localePaths, t } from '../../i18n/config';
 
 export const getStaticPaths = () => localePaths();
@@ -14,6 +14,9 @@ const practiceUnits = units.filter((unit) => unit.problems > 0);
 const contests = await getContests(lang);
 const sets = await getProblemSets(lang);
 const keys = await getAnswerKeys(lang);
+const finishedLevels = (await getLevels(lang))
+  .map((level, index) => ({ ...level, number: index + 1 }))
+  .filter((level) => level.units.every((unit) => unit.available));
 const topicsFor = (competition: string) =>
   units
     .filter((unit) => unit.lessons > 0 && unit.competitions.includes(competition))
@@ -29,6 +32,17 @@ const topicsFor = (competition: string) =>
       <h2>{text.lessons}</h2>
       <p><a href={href(lang, 'pathway/')}>{text.pathway}</a></p>
       <p><a href={href(lang, 'formulas/')}>{text.formulas}</a></p>
+      <p><a href={href(lang, 'pathway/start/')}>{all.placement.title}</a></p>
+      <p><a href={href(lang, 'glossary/')}>{text.glossary}</a></p>
+      <h3>{text.levelSheets}</h3>
+      <ul>
+        {finishedLevels.map((level) => (
+          <li><a href={href(lang, `pathway/level-${level.number}/cheat-sheet/`)}>{all.cheatSheet.title(level.title)}</a></li>
+        ))}
+        {finishedLevels.map((level) => (
+          <li><a href={href(lang, `pathway/level-${level.number}/certificate/`)}>{all.certificate.title(level.title)}</a></li>
+        ))}
+      </ul>
       {competitions.map((competition) => (
         <section>
           <h3>{text.competition(competition)}</h3>
@@ -52,6 +66,7 @@ const topicsFor = (competition: string) =>
       </ul>
       <h3><a href={href(lang, 'contests/')}>{text.contests}</a></h3>
       <ul>
+        <li><a href={href(lang, 'contests/strategy/')}>{all.strategy.title}</a></li>
         {contests.map((contest) => <li><a href={href(lang, `contests/${contest.slug}/`)}>{contest.title}</a></li>)}
       </ul>
     </section>
@@ -64,6 +79,7 @@ const topicsFor = (competition: string) =>
         <li><a href={href(lang, 'teachers/lessons/')}>{text.lessonIndex}</a></li>
         <li><a href={href(lang, 'teachers/club-plan/')}>{text.clubPlan}</a></li>
         <li><a href={href(lang, 'teachers/start-a-team/')}>{text.startTeam}</a></li>
+        <li><a href={href(lang, 'teachers/recruiting-kit/')}>{text.recruitingKit}</a></li>
       </ul>
       <h3><a href={href(lang, 'teachers/problem-sets/')}>{text.problemSets}</a></h3>
       <ul>
@@ -79,6 +95,7 @@ const topicsFor = (competition: string) =>
       <h2>{text.about}</h2>
       <ul>
         <li><a href={href(lang, 'about/')}>{all.nav.about}</a></li>
+        <li><a href={href(lang, 'get-involved/')}>{text.getInvolved}</a></li>
       </ul>
     </section>
 

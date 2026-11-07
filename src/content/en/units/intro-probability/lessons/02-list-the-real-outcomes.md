@@ -1,7 +1,7 @@
 ---
 title: "List the Real Outcomes"
 summary: Two coins can land three ways, so why isn't each way one third? Learn to list outcomes that really are equally likely, using the two-dice table.
-minutes: 9
+minutes: 11
 ---
 
 Is it harder to roll a total of 12 on two dice, or a total of 7? Each total looks like one result among 11 possible totals. So you might think that they're equally likely. If you've played a board game with dice, though, you probably have a feeling that 7 comes up a lot more often. This lesson shows you exactly how much more, and why.
@@ -77,6 +77,34 @@ You roll two dice and multiply the numbers. What's the probability that the prod
 **How many outcomes do we want?** The red die has 3 odd numbers, and the blue die has 3 odd numbers. That's $3 \times 3 = 9$ outcomes.
 
 The probability is $\frac{9}{36}$, or $\frac{1}{4}$. Notice that we didn't need to write out a table of 36 products. We used the multiply trick to count the ones we wanted.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Once you've listed outcomes in a table, look for a shortcut that explains the answer.
+
+**A harder one:** Two dice are rolled. What's the probability that the product of the numbers is even?
+
+**The long way:** Fill in a 6 by 6 table, and count the even products. You'd find 27 of the 36 outcomes.
+
+**A faster way:** Think about when a product is **odd**. It's odd only when both numbers are odd. Each die is odd with a probability of $\frac{1}{2}$, so both are odd with a probability of $\frac{1}{4}$.
+
+So the product is even with a probability of $1 - \frac{1}{4} = \frac{3}{4}$, and that agrees with $\frac{27}{36}$.
+
+**What about a sum?** A sum behaves differently. It's even when the two numbers are both odd or both even, and that's a probability of $\frac{1}{4} + \frac{1}{4} = \frac{1}{2}$.
+
+So products lean toward even, and sums don't. The table shows you the answer, and the even-and-odd reasoning shows you why.
+
+Try this. Use the same reasoning to check the sum. How many of the 36 outcomes have an even sum?
+
+<details class="check"><summary>Show the answer</summary>
+
+Half of them, which is 18. Both numbers are odd in 9 outcomes, and both are even in another 9.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

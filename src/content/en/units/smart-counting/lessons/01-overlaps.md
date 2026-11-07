@@ -1,7 +1,7 @@
 ---
 title: "Overlaps and Venn Diagrams"
 summary: Count groups that overlap without double counting, using Venn diagrams filled in from the middle out.
-minutes: 10
+minutes: 12
 ---
 
 In a class of 30 students, 18 play soccer, 15 are in band, and 8 do both. How many do neither? You might notice right away that $18 + 15 = 33$, which is more than the whole class. That's your clue that someone's been counted twice. This lesson gives you a way to keep everyone straight, even with three groups.
@@ -83,6 +83,34 @@ $$30 + 28 + 26 - 12 - 10 - 9 + 4 = 57$$
 So $60 - 57 = 3$ students like none of the three.
 
 **A check, from the middle out:** Those who like math and science but not art are $12 - 4 = 8$. The others are $10 - 4 = 6$ and $9 - 4 = 5$. Those who like only math are $30 - 8 - 6 - 4 = 12$, only science is $28 - 8 - 5 - 4 = 11$, and only art is $26 - 6 - 5 - 4 = 11$. Adding all seven regions gives $4 + 8 + 6 + 5 + 12 + 11 + 11 = 57$. It matches.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Overlaps and "count the opposite" team up well: find everything in at least one group, and subtract from the total.
+
+**A harder one:** How many whole numbers from 1 to 60 are divisible by none of 2, 3, and 5?
+
+**Add the single groups:** $30 + 20 + 12 = 62$. That's more than 60, so some numbers must be counted more than once.
+
+**Subtract the pairs:** Multiples of 6, 10, and 15 number 10, 6, and 4. Subtract all three: $62 - 20 = 42$.
+
+**Add back the triple:** Multiples of 30 got added 3 times and subtracted 3 times, so they're not counted at all. There are 2 of them, so add them back: $42 + 2 = 44$.
+
+**Take the opposite:** $60 - 44 = 16$ numbers are divisible by none of the three.
+
+**Check another way:** Each block of 30 has 8 such numbers: 1, 7, 11, 13, 17, 19, 23, and 29. Two blocks make 16.
+
+Try this. How many whole numbers from 1 to 30 are divisible by none of 2, 3, and 5?
+
+<details class="check"><summary>Show the answer</summary>
+
+At least one divides $15 + 10 + 6 - 5 - 3 - 2 + 1 = 22$ of them. So $30 - 22 = 8$ are divisible by none.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

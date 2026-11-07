@@ -1,7 +1,7 @@
 ---
 title: "Divisibility Rules and Why They Work"
 summary: Tell whether a big number divides evenly without doing long division, and use place value to see why the rules are true.
-minutes: 10
+minutes: 12
 ---
 
 Mr. Lee has 4,572 stickers and wants to share them equally among 9 students, with none left over. Can he do it? You could do long division. Or you could add $4 + 5 + 7 + 2 = 18$, notice that 18 is a multiple of 9, and say "yes" in five seconds. This lesson shows you these shortcuts, and also why they aren't magic.
@@ -84,6 +84,39 @@ How many whole numbers from 1 to 100 are divisible by 6 but not by 4?
 $$16 - 8 = 8$$
 
 Why 12 and not 24? Multiples of 12, like 12 and 36, are divisible by both 6 and 4, and 24 would miss them. You'll learn more about this idea in Level 2.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Here's one more rule that shows up on contests. To test for 11, **alternate** subtracting and adding the digits. If the result is a multiple of 11, including 0, the number is divisible by 11.
+
+**Why does it work?** Look at each place value. Notice that $10 = 11 - 1$, $100 = 99 + 1$, and $1000 = 1001 - 1$. Each one is a multiple of 11, plus or minus 1:
+
+| Place value | Written with a multiple of 11 | Leaves |
+|---|---|---|
+| 1 | $0 + 1$ | $+1$ |
+| 10 | $11 - 1$ | $-1$ |
+| 100 | $99 + 1$ | $+1$ |
+| 1000 | $1001 - 1$ | $-1$ |
+
+So the digits count with alternating signs.
+
+**A harder one:** Which digit $d$ makes the number $7d42$ divisible by 11?
+
+Alternate the signs from the left: $7 - d + 4 - 2 = 9 - d$. We need this to be a multiple of 11, and $d$ is from 0 to 9. Only $d = 9$ gives a multiple, which is 0.
+
+**Check:** $7942 = 11 \times 722$.
+
+Try this. Which digit $d$ makes $3d16$ divisible by 11?
+
+<details class="check"><summary>Show the answer</summary>
+
+The alternating sum is $3 - d + 1 - 6 = -2 - d$. For this to be a multiple of 11, $d$ must be 9, which gives $-11$. Check: $3916 = 11 \times 356$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

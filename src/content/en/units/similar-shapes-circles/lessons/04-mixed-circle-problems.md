@@ -1,7 +1,7 @@
 ---
 title: "Circles With Other Shapes"
 summary: Find the circle inside or around a triangle, work with circles that touch, and combine everything from this unit.
-minutes: 10
+minutes: 12
 ---
 
 A circle sits inside a right triangle with sides 6, 8, and 10, touching all three sides. How big is the circle? Now flip it: how big is the circle that passes through all three corners of that same triangle? These two circles are fixed by the triangle, and there are short ways to find both of them. Problems like these often come near the end of a contest, since they bring together everything you've learned about circles.
@@ -80,6 +80,36 @@ $$(r - 1)^2 + (r - 2)^2 = r^2$$
 **What's the plan?** Multiply it out, using the pattern from the [Algebra Toolkit](/pathway/algebra-toolkit/02-perfect-squares/). This gives $r^2 - 6r + 5 = 0$, which factors as $(r - 1)(r - 5) = 0$. So $r$ is 1 or 5, and the larger radius is 5.
 
 **Check:** With $r = 5$, the legs are 4 and 3, and the hypotenuse is 5. It works. Harder problems like this one are usually made up of several small steps you already know, so look for the first step you can do.
+
+<section data-box="deeper">
+
+## Going deeper
+
+For a right triangle, you know the radius of the circle around it: half of the hypotenuse. Here's the formula for any triangle.
+
+**The formula:** A triangle with sides $a$, $b$, $c$ and area $A$ has a circle around it with radius:
+
+$R = \frac{abc}{4A}$
+
+**A harder one:** What's the radius of the circle around a triangle with sides 13, 14, and 15?
+
+We know from [Heron's formula](/pathway/similar-shapes-circles/05-heron-and-inradius/) that the area is 84. So:
+
+$R = \frac{13 \times 14 \times 15}{4 \times 84} = \frac{2730}{336} = \frac{65}{8}$
+
+**Compare with the circle inside.** The same triangle has $r = 4$. The radius of the outer circle is always at least twice that of the inner one, and they're exactly 2 to 1 only for equilateral triangles. Here, $R$ is a little over 8.
+
+**Test with a right triangle.** A 3-4-5 triangle has an area of 6, so $R = \frac{60}{24} = \frac{5}{2}$. That's half of the hypotenuse, as expected.
+
+Try this. What's the radius of the circle around a triangle with sides 5, 5, and 6?
+
+<details class="check"><summary>Show the answer</summary>
+
+The area is 12. So $R = \frac{5 \times 5 \times 6}{4 \times 12} = \frac{150}{48} = \frac{25}{8}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

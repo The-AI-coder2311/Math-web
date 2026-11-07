@@ -130,7 +130,9 @@ function checkVerify(code, expected, where) {
 
 // ---- The writing standard ----
 const BANNED_WORDS = /\b(obviously|clearly|simply|just)\b/gi;
-const PLACEHOLDER = /\b(placeholder|todo|fixme|lorem ipsum)\b/i;
+// TODO and FIXME only count in capitals, since "todo" is an everyday Spanish word.
+const PLACEHOLDER_PATTERNS = [/\b(TODO|FIXME)\b/, /\b(placeholder|lorem ipsum)\b/i];
+const PLACEHOLDER = { test: (text) => PLACEHOLDER_PATTERNS.some((pattern) => pattern.test(text)) };
 
 /** Text a reader sees, without settings, math, tags or picture addresses. */
 const readableText = (source) =>
@@ -170,13 +172,16 @@ function checkLesson(file, unitPath) {
   (lessonsSeen[unitPath] ??= []).push(file.replace(/\\/g, '/').split('/').pop().replace(/\.md$/, ''));
 
   const found = checkAllWriting(source, where);
+  // Translations run longer than English, so other languages get more room.
+  const english = !/[\\/]content[\\/](?!en[\\/])[a-z]{2}[\\/]/.test(file);
+  const maxWords = english ? 1500 : 1900;
   const words = readableText(source).split(/\s+/).filter(Boolean).length;
-  if (words < 900 || words > 1500) found.push(where + ': has ' + words + ' words, and a lesson should have 900 to 1,500');
-  if (!/\*\*The big idea/.test(source)) found.push(where + ': needs a "**The big idea" statement');
-  const examples = (source.match(/^##+ Example/gm) || []).length;
+  if (words < 900 || words > maxWords) found.push(where + ': has ' + words + ' words, and a lesson should have 900 to ' + maxWords.toLocaleString('en'));
+  if (!/\*\*(The big idea|La gran idea)/.test(source)) found.push(where + ': needs a "**The big idea" statement');
+  const examples = (source.match(/^##+ (Example|Ejemplo)/gm) || []).length;
   if (examples < 3 || examples > 5) found.push(where + ': has ' + examples + ' worked examples, and a lesson should have 3 to 5');
   if (!/<details class="check">/.test(source)) found.push(where + ': needs a check-yourself question');
-  for (const box of ['traps', 'strategy', 'connections', 'summary']) {
+  for (const box of ['deeper', 'traps', 'strategy', 'connections', 'summary']) {
     if (!source.includes('<section data-box="' + box + '">')) found.push(where + ': needs a <section data-box="' + box + '">');
   }
   for (const picture of source.matchAll(/!\[([^\]]*)\]\(([^)]*)\)/g)) {
@@ -261,7 +266,7 @@ function checkProblem(file) {
   checkArithmetic(body, where);
   Object.values(data.mistakes || {}).forEach((note) => checkArithmetic(note, where));
 
-  const stated = solution.match(/\*\*Answer: \(([A-F])\) ([^*]+)\*\*/);
+  const stated = solution.match(/\*\*(?:Answer|Respuesta): \(([A-F])\) ([^*]+)\*\*/);
   if (!stated) {
     errors.push(where + ': the solution must end with a line like **Answer: (C) 12**');
   } else if (stated[1] !== data.answer || normalize(stated[2]) !== correct) {
@@ -302,6 +307,76 @@ function checkProblemSet(file) {
     checkArithmetic(problem.question, label);
     checkArithmetic(problem.explanation, label);
   });
+}
+
+// ---- Placement quiz and strategy questions (one YAML file each) ----
+// Each question needs a verify line, an answer that's one of its choices, different
+// choices, and (for strategy questions) a mistake note only on real, wrong choices.
+function checkQuizFile(file, kind) {
+  const where = relative('.', file);
+  const source = readFileSync(file, 'utf8');
+  const data = parse(source);
+  errors.push(...checkAllWriting(source, where));
+  const letters = 'ABCDE';
+  const levels = new Set();
+  (data.questions || []).forEach((question, i) => {
+    const label = where + ' question ' + (i + 1);
+    const choices = (question.choices || []).map(normalize);
+    if (new Set(choices).size !== choices.length) errors.push(label + ': two answer choices are the same');
+    const correct = choices[letters.indexOf(question.answer)];
+    if (correct === undefined) return errors.push(label + ': answer "' + question.answer + '" doesn\'t match any choice');
+    if (!question.verify) errors.push(label + ': needs verify code');
+    checkVerify(question.verify, correct, label);
+    for (const field of ['question', 'explanation', 'hint', 'solution']) {
+      if (question[field]) checkArithmetic(question[field], label);
+    }
+    if (kind === 'placement') {
+      levels.add(question.level);
+      if (!question.explanation) errors.push(label + ': needs an explanation');
+    } else {
+      if (!question.hint || !question.solution) errors.push(label + ': needs a hint and a solution');
+      const stated = String(question.solution || '').match(/\*\*Answer: \(([A-E])\) ([^*]+)\*\*/);
+      if (!stated || stated[1] !== question.answer || normalize(stated[2]) !== correct) {
+        errors.push(label + ': the solution must end with the answer line for (' + question.answer + ') ' + correct);
+      }
+      const notes = question.mistakes || {};
+      if (notes[question.answer]) errors.push(label + ': has a mistake note for the correct answer');
+      for (const letter of Object.keys(notes)) {
+        if (!letters.slice(0, choices.length).includes(letter)) errors.push(label + ': has a mistake note for ' + letter + ', which isn\'t a choice');
+        else checkArithmetic(notes[letter], label);
+      }
+    }
+  });
+  if (kind === 'placement' && levels.size < 3) errors.push(where + ': should have questions from at least 3 levels');
+}
+
+// ---- The Glossary (one YAML file) ----
+// Every term needs a definition, and its word has to appear in the lesson it names,
+// because that's where the lesson links to it.
+function checkGlossary(file) {
+  const where = relative('.', file);
+  const source = readFileSync(file, 'utf8');
+  const folder = file.replace(/\\/g, '/').replace(/glossary\.ya?ml$/, '');
+  errors.push(...checkAllWriting(source, where));
+  const seen = new Set();
+  for (const entry of parse(source).terms || []) {
+    const label = where + ' "' + entry.term + '"';
+    if (seen.has(entry.term.toLowerCase())) errors.push(label + ': appears twice');
+    seen.add(entry.term.toLowerCase());
+    if (!entry.definition) errors.push(label + ': needs a definition');
+    checkArithmetic(entry.definition, label);
+    if (entry.example) checkArithmetic(entry.example, label);
+    const lessonFile = folder + 'units/' + String(entry.lesson).replace('/', '/lessons/') + '.md';
+    if (!existsSync(lessonFile)) {
+      errors.push(label + ': names lesson "' + entry.lesson + '", which doesn\'t exist');
+      continue;
+    }
+    const text = readableText(readFileSync(lessonFile, 'utf8').replace(/\r\n/g, '\n')).replace(/\[([^\]]*)\]\([^)]*\)/g, ' ').replace(/^#+ .*$/gm, ' ');
+    const words = [entry.term, ...(entry.forms || [])].map((word) => word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+    if (!new RegExp('(^|[^\\p{L}\\p{N}])(' + words.join('|') + ')(?![\\p{L}\\p{N}])', 'iu').test(text)) {
+      errors.push(label + ': the word doesn\'t appear in ' + entry.lesson + ', so nothing can link to it');
+    }
+  }
 }
 
 // ---- The Formulas page (one YAML file) ----
@@ -366,6 +441,12 @@ for (const file of walk(root)) {
     checkProblemSet(file);
   } else if (/\/formulas\.ya?ml$/.test(path)) {
     checkFormulas(file);
+  } else if (/\/glossary\.ya?ml$/.test(path)) {
+    checkGlossary(file);
+  } else if (/\/placement\.ya?ml$/.test(path)) {
+    checkQuizFile(file, 'placement');
+  } else if (/\/strategy\.ya?ml$/.test(path)) {
+    checkQuizFile(file, 'strategy');
   } else if (/\.md$/.test(path)) {
     const source = readFileSync(file, 'utf8');
     checkArithmetic(source, relative('.', file));
@@ -391,13 +472,14 @@ for (const [name, unit] of Object.entries(units)) {
   checkAnswerSpread(short, unit.problems);
   const isReview = !unit.lessonCount;
   const lessonsDone = unit.lessonCount >= 3;
-  const problemsDone = unit.problems.length >= 20;
+  const minProblems = isReview ? 20 : 30;
+  const problemsDone = unit.problems.length >= minProblems;
   const count = (level) => unit.problems.filter((problem) => problem.difficulty === level).length;
   const share = (level) => count(level) / (unit.problems.length || 1);
 
   if (!isReview && !lessonsDone) unit.lessonGaps.push(short + ': has ' + unit.lessonCount + ' lessons, and a unit should have 3 to 5');
   if (unit.lessonCount > 5) unit.lessonGaps.push(short + ': has ' + unit.lessonCount + ' lessons, and a unit should have 3 to 5');
-  if (!problemsDone) unit.problemGaps.push(short + ': has ' + unit.problems.length + ' problems, and a unit should have at least 20');
+  if (!problemsDone) unit.problemGaps.push(short + ': has ' + unit.problems.length + ' problems, and a unit should have at least ' + minProblems);
   if (share('easy') < 0.2 || share('easy') > 0.4) unit.problemGaps.push(short + ': ' + count('easy') + ' easy problems is outside the 30% target');
   if (share('medium') < 0.35 || share('medium') > 0.55) unit.problemGaps.push(short + ': ' + count('medium') + ' medium problems is outside the 45% target');
   if (share('hard') < 0.15 || share('hard') > 0.35) unit.problemGaps.push(short + ': ' + count('hard') + ' hard problems is outside the 25% target');

@@ -1,7 +1,7 @@
 ---
 title: "Why Pythagoras Works"
 summary: See a picture that proves the Pythagorean Theorem, and learn the two special right triangles that contests use most.
-minutes: 10
+minutes: 12
 ---
 
 You've used $a^2 + b^2 = c^2$, but do you know **why** it's true? Why should the squares of two sides add up exactly to the square of the third? And what about when a side isn't a whole number? This lesson shows you a proof that you could explain to a friend, then gives you two special triangles that appear on contests again and again.
@@ -92,6 +92,37 @@ A rectangular box measures 3 by 4 by 12. What's the length of the longest straig
 - **Going up:** That bottom diagonal and the height of 12 form another right triangle, with a right angle where the height meets the floor. So the rod has $5^2 + 12^2 = 25 + 144 = 169$, and its length is 13.
 
 Using two Pythagorean triples in a row is a favorite contest idea.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Where do Pythagorean triples come from? Here's a recipe that makes as many as you want.
+
+**The recipe:** Pick two whole numbers $m$ and $n$, with $m$ bigger than $n$. Then these three numbers form a triple:
+
+$m^2 - n^2, \quad 2mn, \quad m^2 + n^2$
+
+| $m$ and $n$ | $m^2 - n^2$ | $2mn$ | $m^2 + n^2$ | Triple |
+|---|---|---|---|---|
+| 2 and 1 | 3 | 4 | 5 | 3-4-5 |
+| 3 and 2 | 5 | 12 | 13 | 5-12-13 |
+| 4 and 1 | 15 | 8 | 17 | 8-15-17 |
+| 4 and 3 | 7 | 24 | 25 | 7-24-25 |
+
+Several famous triples are there! In Level 3, you'll have the algebra to prove that the recipe always works.
+
+**A useful pattern:** When $m$ is one more than $n$, the hypotenuse is only 1 more than the long leg. That's why 5-12-13 and 7-24-25 look the way they do.
+
+Try this. Use $m = 5$ and $n = 2$. What triple do you get?
+
+<details class="check"><summary>Show the answer</summary>
+
+$25 - 4 = 21$, $2 \times 5 \times 2 = 20$, and $25 + 4 = 29$. The triple is 20-21-29. Check: $400 + 441 = 841$, which is $29^2$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

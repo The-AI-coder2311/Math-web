@@ -1,7 +1,7 @@
 ---
 title: "Two Unknowns at Once"
 summary: Solve problems with two unknown numbers, by rewriting one in terms of the other or by adding equations together.
-minutes: 10
+minutes: 12
 ---
 
 Tickets cost \$6 for adults and \$4 for students. A show sold 50 tickets for a total of \$230. How many adult tickets were sold? There are two unknowns here: adults and students. But one of them can be written using the other. If you know how many adult tickets were sold, you immediately know how many student tickets were sold.
@@ -75,6 +75,42 @@ An apple and a banana together weigh 11 ounces. A banana and a cherry cup togeth
 $$2a + 2b + 2c = 40$$
 
 So $a + b + c = 20$. We never needed to find the weight of any single item. When a question asks for a combination, look for a way to get it directly, before you solve for each letter.
+
+<section data-box="deeper">
+
+## Going deeper
+
+With three unknowns, you don't always have to solve for them one at a time. Look for a pattern in the equations.
+
+**A harder one:** Three boxes hold $x$, $y$, and $z$ marbles. We know:
+
+$x + y = 10, \quad y + z = 14, \quad x + z = 12$
+
+How many marbles are in each box?
+
+**What's special here?** Each letter shows up exactly twice. So if we add all three equations, we get twice the total:
+
+$2x + 2y + 2z = 36$
+
+So $x + y + z = 18$.
+
+**Now it's fast.** Subtract each equation from this total:
+
+- $z = 18 - 10 = 8$
+- $x = 18 - 14 = 4$
+- $y = 18 - 12 = 6$
+
+This trick shows up often, such as when you weigh three things in pairs. Adding equations can be faster than substituting, so look at the whole set before you start.
+
+Try this. If $a + b = 7$, $b + c = 9$, and $a + c = 12$, what is $c$?
+
+<details class="check"><summary>Show the answer</summary>
+
+Adding all three gives $2(a + b + c) = 28$, so the total is 14. Then $c = 14 - 7 = 7$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

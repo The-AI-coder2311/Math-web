@@ -1,7 +1,7 @@
 ---
 title: "One Minus the Chance It Doesn't Happen"
 summary: When you see "at least one," flip the question. Find the chance of "none," subtract from 1, and tie it back to counting the opposite.
-minutes: 9
+minutes: 11
 ---
 
 You flip a coin 5 times. What's the chance of getting at least one head? To work it out directly, you'd need the chance of exactly 1 head, 2 heads, 3 heads, 4 heads, and 5 heads, and then you'd add them. That's a lot of work. But there's only **one** way to get no heads at all. This lesson shows you how a problem with five cases shrinks to one.
@@ -81,6 +81,38 @@ A basketball player makes a free throw with a probability of $\frac{3}{4}$, no m
 $$\frac{27}{64} + \frac{27}{64} = \frac{54}{64} = \frac{27}{32}$$
 
 The lesson here is that the opposite isn't always shorter. Take a moment to compare before you choose.
+
+<section data-box="deeper">
+
+## Going deeper
+
+"All different" is the opposite of "at least two match," and it's easy to count, one person at a time.
+
+**A harder one:** Three people are each equally likely to be born on any day of the week. What's the probability that at least two share a day?
+
+**Why not count directly?** Exactly two could match, in several ways, or all three could. That's a lot of cases.
+
+**What's the opposite?** All three have different days.
+
+- The first person can have any day: $\frac{7}{7}$
+- The second must avoid that day: $\frac{6}{7}$
+- The third must avoid both days: $\frac{5}{7}$
+
+So all three are different with a probability of $\frac{7 \times 6 \times 5}{7 \times 7 \times 7} = \frac{30}{49}$.
+
+So at least two share a day with a probability of $1 - \frac{30}{49} = \frac{19}{49}$.
+
+**A famous fact:** With birthdays in a year, you need only 23 people for the chance of a match to pass one half. Most people guess far higher. Each new person has to avoid everyone before them, and those chances multiply fast.
+
+Try this. Three dice are rolled. What's the probability that at least two of them show the same number?
+
+<details class="check"><summary>Show the answer</summary>
+
+All different has a probability of $\frac{6 \times 5 \times 4}{216} = \frac{5}{9}$. So the answer is $1 - \frac{5}{9} = \frac{4}{9}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,7 +1,7 @@
 ---
 title: "Circle Formulas and Scaling"
 summary: Understand what pi really is, and why the circumference and area formulas work. Then see what happens when a circle grows.
-minutes: 9
+minutes: 11
 ---
 
 A 12-inch pizza costs \$10, and a 6-inch pizza costs \$5. The large one costs twice as much and is twice as wide, so is it a fair price? Before you answer, picture cutting up the large pizza. How many small pizzas' worth of pizza does it hold? The answer surprises nearly everyone, and it depends on how circles grow.
@@ -77,6 +77,32 @@ A circular garden has a radius of 10 feet. A path that's 2 feet wide runs all ar
 $$\pi \times 12^2 - \pi \times 10^2 = 144\pi - 100\pi = 44\pi$$
 
 So the area is $44\pi$ square feet. Notice that squaring the 2 and getting $4\pi$ doesn't work: a ring's area depends on how big it is around, as well as how wide it is.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When two wheels are linked by a belt or by gears, the distance traveled along their edges is the same.
+
+**A harder one:** A belt connects a wheel of radius 10 to a wheel of radius 4. When the big wheel turns 6 times, how many times does the small wheel turn?
+
+**What stays the same?** The belt doesn't slip, so both wheels' edges move the same distance.
+
+**How far does the belt move?** One turn of the big wheel is $2\pi \times 10 = 20\pi$. Six turns make $120\pi$.
+
+**How many small turns is that?** One small turn is $2\pi \times 4 = 8\pi$. So it's $120\pi \div 8\pi = 15$ turns.
+
+**A shortcut:** Turns times radius stays the same. So $6 \times 10 = 15 \times 4$. The small wheel spins faster, in the same ratio that it's smaller. Notice how $\pi$ cancels, as it often does in these problems.
+
+Try this. Two wheels have radii of 9 and 6, and they're linked by a belt. When the smaller wheel turns 12 times, how many times does the larger wheel turn?
+
+<details class="check"><summary>Show the answer</summary>
+
+Turns times radius stays the same: $12 \times 6 = 72$. So the larger wheel turns $72 \div 9 = 8$ times.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

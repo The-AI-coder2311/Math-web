@@ -1,7 +1,7 @@
 ---
 title: "A First Look at Right Triangles"
 summary: Use the Pythagorean Theorem to find a missing side of a right triangle, and learn the whole-number triangles that contests love.
-minutes: 9
+minutes: 11
 ---
 
 You walk 6 blocks east and then 8 blocks north. A friend walks straight across the park from your starting point to the same spot. How far did your friend walk? You can't add 6 and 8, since your friend took a shortcut. But more than 2,500 years ago, people knew a rule that gives the exact answer.
@@ -86,6 +86,37 @@ A rectangle has a length of 8 and a diagonal of 10. What is its area?
 **Is it a triple?** This is 6-8-10, so the width is 6.
 
 **What's the question asking?** The area is $8 \times 6 = 48$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When a path has several legs, you can often combine them into one big right triangle.
+
+**A harder one:** A hiker walks 2 miles north, 5 miles east, and then 10 more miles north. How far is the hiker from the start, in a straight line?
+
+**What's the plan?** A path with three parts doesn't look like a right triangle. But only the **totals** matter:
+
+- Total north: $2 + 10 = 12$ miles
+- Total east: 5 miles
+
+Those two totals are the legs of a right triangle, and the straight-line distance is the hypotenuse:
+
+$\sqrt{5^2 + 12^2} = \sqrt{169} = 13$
+
+So the hiker is 13 miles from the start, even though the walk was 17 miles long.
+
+**What about walking backward?** If the hiker had also walked 3 miles south, then the total north would drop to 9. Directions that oppose each other subtract before you use the Pythagorean Theorem.
+
+Try this. A robot moves 3 units east, 5 units north, 5 units east, and 1 unit north. How far is it from the start?
+
+<details class="check"><summary>Show the answer</summary>
+
+The total east is 8, and the total north is 6. So the distance is $\sqrt{8^2 + 6^2} = \sqrt{100} = 10$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

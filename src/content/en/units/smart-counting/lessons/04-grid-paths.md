@@ -1,7 +1,7 @@
 ---
 title: "Grid Paths and Choosing With Conditions"
 summary: Count routes on a street grid, then combine several choices at once when groups must follow rules.
-minutes: 10
+minutes: 12
 ---
 
 Kai walks from home to school on a grid of streets. The school is 4 blocks east and 3 blocks north, and Kai only walks east or north. How many different routes are there? You could trace them with your finger, but you'd quickly lose track. There's a beautiful way to turn this picture into something you already know how to count.
@@ -83,6 +83,38 @@ $$\binom{6}{3} = 20$$
 Similarly, four-sided shapes number $\binom{6}{4} = \binom{6}{2} = 15$.
 
 **How about if 3 of the 6 points were in a line?** Then that one group of 3 wouldn't make a triangle, so we'd subtract 1 from 20, which leaves 19. Looking for that kind of exception is good contest thinking.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When a formula doesn't fit a restriction, go back to adding along the grid. That method can handle a boundary.
+
+**A harder one:** You go from $(0, 0)$ to $(4, 4)$ using right and up steps. You can touch the diagonal $y = x$, but you can never go above it. How many paths are there?
+
+**Fill in the grid.** Each point's count is the sum of the point to its left and the point below it. Points above the diagonal are off limits.
+
+| | $x=0$ | $x=1$ | $x=2$ | $x=3$ | $x=4$ |
+|---|---|---|---|---|---|
+| $y=4$ | | | | | 14 |
+| $y=3$ | | | | 5 | 14 |
+| $y=2$ | | | 2 | 5 | 9 |
+| $y=1$ | | 1 | 2 | 3 | 4 |
+| $y=0$ | 1 | 1 | 1 | 1 | 1 |
+
+There are **14** paths. Without the rule, there would be 70.
+
+The numbers along the diagonal, 1, 1, 2, 5, 14, are called **Catalan numbers**. They count many things, such as ways to write balanced parentheses.
+
+Try this. Using the table, how many such paths go from $(0, 0)$ to $(3, 3)$?
+
+<details class="check"><summary>Show the answer</summary>
+
+Read the table at $x = 3$, $y = 3$. It's 5.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -6,7 +6,7 @@ import { renderInline, renderMarkdown } from '../../lib/markdown';
 import { href, localePaths, t } from '../../i18n/config';
 import { contestRules } from '../../site.config';
 
-export const getStaticPaths = () => localePaths();
+export const getStaticPaths = () => localePaths('formulas/');
 
 const { lang } = Astro.props;
 const all = t(lang);

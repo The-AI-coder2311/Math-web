@@ -4,6 +4,17 @@ export const site = {
   contactEmail: 'hello@example.org', // PLACEHOLDER: replace before launch
 };
 
+// Cookieless visitor counts, OFF by default. Analytics stays off until you fill in siteId.
+// - GoatCounter: siteId is your code, as in https://YOURCODE.goatcounter.com
+// - Plausible: siteId is your domain, as in example.org
+// Both count page views without cookies or personal data. Turning this on also
+// changes the privacy wording on the About page and in the footer by itself.
+export const analytics: { provider: 'goatcounter' | 'plausible'; siteId: string } = {
+  provider: 'goatcounter',
+  siteId: '',
+};
+export const analyticsOn = analytics.siteId.trim() !== '';
+
 // Official sites used in page templates. Pages link here instead of stating
 // dates or fees, because those change every year.
 // How practice contests are scored. Check these against the official rules once a

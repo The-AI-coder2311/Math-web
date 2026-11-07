@@ -1,7 +1,7 @@
 ---
 title: "Fractions as Equal Groups"
 summary: See what a fraction really means. Then find a fraction of a number, compare fractions, and add them without the most common mistakes.
-minutes: 10
+minutes: 12
 ---
 
 Which is more pizza: $\frac{3}{8}$ of a pizza, or $\frac{1}{3}$ of a pizza? The number 8 is bigger than 3, and the number 3 on top is bigger than 1, so does that settle it? Fractions fool lots of people, because the top and bottom numbers don't work like two separate numbers. They work together.
@@ -77,6 +77,34 @@ $$\frac{3}{5} - \frac{1}{3} = \frac{9}{15} - \frac{5}{15} = \frac{4}{15}$$
 **What does it mean?** $\frac{4}{15}$ of the tank is 12 liters. So one group, $\frac{1}{15}$ of the tank, is $12 \div 4 = 3$ liters. All 15 groups make $15 \times 3 = 45$ liters.
 
 **Check:** $\frac{3}{5}$ of 45 is 27, and $\frac{1}{3}$ of 45 is 15. The difference is 12. It works.
+
+<section data-box="deeper">
+
+## Going deeper
+
+The tricky word in many fraction problems is "rest." A fraction of the rest isn't a fraction of the whole.
+
+**A harder one:** Kim spends $\frac{1}{3}$ of her money on a book, then $\frac{1}{4}$ of the rest on lunch. She has \$18 left. How much did she start with?
+
+**Track what's left, not what's spent.** After the book, $\frac{2}{3}$ remains. After lunch, $\frac{3}{4}$ of that remains:
+
+$\frac{2}{3} \times \frac{3}{4} = \frac{1}{2}$
+
+So half of her money is \$18, and she started with \$36.
+
+**Check forward:** A third of \$36 is \$12, which leaves \$24. A quarter of \$24 is \$6, which leaves \$18. It works.
+
+The common mistake is to add $\frac{1}{3} + \frac{1}{4}$, but those two fractions are of different amounts, so they can't be added. Multiplying what's **left** avoids that problem.
+
+Try this. A tank loses $\frac{1}{5}$ of its water, and then $\frac{1}{2}$ of what remains. Now it holds 20 gallons. How much did it hold at first?
+
+<details class="check"><summary>Show the answer</summary>
+
+The part left is $\frac{4}{5} \times \frac{1}{2} = \frac{2}{5}$. If $\frac{2}{5}$ of the tank is 20 gallons, then $\frac{1}{5}$ is 10 gallons, and the whole tank held 50 gallons.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

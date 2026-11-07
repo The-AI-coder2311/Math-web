@@ -1,7 +1,7 @@
 ---
 title: "Truth-Tellers and Liars"
 summary: Solve puzzles about people who always lie or always tell the truth by assuming a case, following it, and watching for a contradiction.
-minutes: 11
+minutes: 13
 ---
 
 On a certain island, everyone is either a truth-teller, who always tells the truth, or a liar, who always lies. You meet two people, Ari and Bo. Ari says, "We are both liars." You haven't heard a word from Bo, and yet you can work out exactly who is who. It feels like a magic trick, but it comes down to one careful question: what happens if we assume Ari is telling the truth?
@@ -91,6 +91,37 @@ Six people sit around a round table. Each person says, "The person on my left is
 **What's the pattern?** Going around the table, each person is the opposite type from the next. So the types must alternate: truth-teller, liar, truth-teller, liar, and so on. With 6 seats, that works perfectly, so there are **3** liars.
 
 **What about 5 seats?** Going around an odd number of seats, alternating can't work, since you'd come back to the start with the wrong type. So 5 people couldn't all say this.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Here's a famous puzzle, where the solution is a question that forces the answer you need.
+
+**A harder one:** Two doors stand in front of you, and one is safe. Two guards know which one. One guard always tells the truth, and the other always lies, but you don't know which is which. You can ask one guard one question. What do you ask?
+
+**The trick:** Ask, "If I asked the other guard which door is safe, what would he say?"
+
+**Follow both cases.** Say the left door is safe.
+
+| Who you ask | What the other guard would say | What you hear |
+|---|---|---|
+| Truth-teller | The liar would say right. | Right, reported truthfully |
+| Liar | The truth-teller would say left. | Right, since the liar flips it |
+
+Either way, you hear the **wrong door**. So you go through the other one.
+
+**Why does it work?** The answer passes through both guards, so it gets flipped exactly once, whichever one you ask.
+
+Try this. Using this question, a guard answers, "The left door." Which door should you take?
+
+<details class="check"><summary>Show the answer</summary>
+
+The answer always names the wrong door. So take the right door.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

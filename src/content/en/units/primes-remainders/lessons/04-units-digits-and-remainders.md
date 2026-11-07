@@ -1,7 +1,7 @@
 ---
 title: "Units Digits and Remainder Arithmetic"
 summary: Find the last digit of enormous powers, and do arithmetic using only remainders.
-minutes: 9
+minutes: 11
 ---
 
 What's the last digit of $3^{50}$? That number has 24 digits, and your calculator wouldn't show it exactly even if you were allowed to use one. But you don't need any of the other 23 digits. In fact, this kind of question is one of the easiest ways to pick up points on a contest, once you know how it works.
@@ -89,6 +89,40 @@ Which whole numbers from 1 to 20 make $2^n + 1$ divisible by 5?
 **Using the cycle:** The last digits of $2^n$ are 2, 4, 8, 6. It ends in 4 when $n$ has a remainder of 2 when divided by 4. So $n$ can be 2, 6, 10, 14, or 18.
 
 That's 5 values. **Check one:** for $n = 6$, $2^6 + 1 = 65$, which is divisible by 5.
+
+<section data-box="deeper">
+
+## Going deeper
+
+A sum can look endless, and yet most of its terms can vanish for the last digit.
+
+**A harder one:** What's the last digit of $1! + 2! + 3! + \cdots + 50!$?
+
+**Look for a place to stop.** Starting at $5!$, every factorial includes both 2 and 5, so it ends in 0:
+
+| $n$ | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| $n!$ | 1 | 2 | 6 | 24 | 120 | 720 |
+
+So only the first four terms matter for the last digit:
+
+$1 + 2 + 6 + 24 = 33$
+
+The last digit is **3**, even though the whole sum has more than 60 digits.
+
+**What about the last two digits?** Starting at $10!$, every factorial ends in 00, since it has two factors of 5 and plenty of 2s. So you'd only need to add up the terms through $9!$.
+
+Whenever a list of terms eventually becomes divisible by your modulus, look for that cutoff first.
+
+Try this. What's the remainder when $1! + 2! + \cdots + 50!$ is divided by 5?
+
+<details class="check"><summary>Show the answer</summary>
+
+Starting at $5!$, each term is a multiple of 5. So only $1 + 2 + 6 + 24 = 33$ matters, and $33$ has a remainder of 3.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

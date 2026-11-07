@@ -1,7 +1,7 @@
 ---
 title: "Arrangements With Repeats"
 summary: Count arrangements of things that repeat by dividing out swaps, and see how this connects to choosing spots.
-minutes: 9
+minutes: 11
 ---
 
 How many ways can you arrange the letters in the word MISSISSIPPI? With 11 letters, there are 39,916,800 ways to arrange them if they're all different. But they aren't all different. Swapping two of the Ss doesn't change the word. It turns out that the true answer is far smaller, and you can find it in about a minute.
@@ -88,6 +88,36 @@ How many different 5-digit numbers can be made by arranging the digits 0, 0, 1, 
 $$60 - 24 = 36$$
 
 **Check it with a fraction:** Each digit is equally likely to come first. Since 2 of the 5 digits are 0, $\frac{2}{5}$ of the arrangements start with 0. And $\frac{2}{5}$ of 60 is 24. It matches.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Repeats and restrictions can combine. Handle the restricted letters last, using gaps.
+
+**A harder one:** How many arrangements of BANANA have no two A's next to each other?
+
+**Place the other letters first.** The letters B, N, N can be arranged in $\frac{3!}{2!} = 3$ ways: BNN, NBN, and NNB.
+
+**Now look at the gaps.** With 3 letters in a row, there are 4 gaps, counting both ends:
+
+$\_\ \text{B}\ \_\ \text{N}\ \_\ \text{N}\ \_$
+
+**Place the A's.** Each A goes in its own gap, so no two can touch. The A's are identical, so we only choose which 3 gaps they use. There are 4 ways, since that's the same as choosing the one gap to leave empty.
+
+**Multiply:** $3 \times 4 = 12$ arrangements.
+
+**Compare:** BANANA has 60 arrangements in all, so most of them have some A's touching.
+
+Try this. How many arrangements of MOON have the two O's apart?
+
+<details class="check"><summary>Show the answer</summary>
+
+M and N can go in 2 orders, which makes 3 gaps. Choose 2 gaps for the O's, in 3 ways. So there are $2 \times 3 = 6$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

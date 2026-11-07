@@ -1,7 +1,7 @@
 ---
 title: "Areas on a Grid"
 summary: Find the area of a tilted shape by boxing it in, or by using a neat pattern called the shoelace method.
-minutes: 10
+minutes: 12
 ---
 
 A triangle has corners at $(0, 0)$, $(5, 1)$, and $(2, 4)$. What's its area? None of its sides is level, so it's hard to see a base or a height. You could try to find a slanted base and a slanted height, but that gets messy quickly. There's a far easier way, and it only takes a moment of thinking outside the triangle.
@@ -91,6 +91,38 @@ A square has corners at $(0, 0)$, $(4, 0)$, $(4, 4)$, and $(0, 4)$. A triangle i
 - The top right triangle has legs of 3 and 3, so its area is 4.5.
 
 The triangle has an area of $16 - 2 - 2 - 4.5 = 7.5$. As a fraction of 16, that's $\frac{7.5}{16}$, or $\frac{15}{32}$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+There's an amazing way to find the area of any shape with corners on grid points: count dots.
+
+**Pick's theorem:** If a shape has straight sides and all of its corners are on grid points, then:
+
+$A = I + \frac{B}{2} - 1$
+
+Here, $I$ is the number of grid points strictly inside, and $B$ is the number on the boundary.
+
+**A harder one:** A triangle has corners at $(0, 0)$, $(6, 0)$, and $(0, 4)$. How many grid points are strictly inside it?
+
+**Find the area:** $\frac{1}{2} \times 6 \times 4 = 12$.
+
+**Count the boundary points.** A segment has a number of steps equal to the GCF of its horizontal and vertical changes. The sides have $\gcd(6, 0) = 6$, $\gcd(0, 4) = 4$, and $\gcd(6, 4) = 2$ steps. Going around the triangle, the steps add up to $B = 12$.
+
+**Use Pick's theorem backward:** $12 = I + 6 - 1$, so $I = 7$.
+
+Counting 7 by hand would work here, but imagine a triangle with hundreds of grid points inside.
+
+Try this. A triangle has corners at $(0, 0)$, $(4, 0)$, and $(0, 3)$. How many grid points are strictly inside?
+
+<details class="check"><summary>Show the answer</summary>
+
+The area is 6. The boundary has $4 + 3 + 1 = 8$ points. So $6 = I + 4 - 1$, and $I = 3$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

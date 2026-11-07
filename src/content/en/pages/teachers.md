@@ -1,6 +1,6 @@
 ---
 title: Start a Math Team
-description: A free kit for teachers with no competition background. Learn how AMC 8 and MATHCOUNTS work, how to register, and how to run an 8-week club.
+description: A free kit for teachers with no competition background. Learn how AMC 8 and MATHCOUNTS work, how to register, and how to run a 16-week club.
 ---
 
 **You don't need a competition background to do this.** You don't need to be able to solve every problem, either. What students need most is a regular time, a place to work together, and an adult who says, "Let's figure it out." This kit gives you the rest.
@@ -8,7 +8,8 @@ description: A free kit for teachers with no competition background. Learn how A
 ## What's in this kit
 
 - **This guide:** how the two main middle school competitions work and how to sign up.
-- **[An 8-week club plan](/teachers/club-plan/):** one 45-minute meeting per week, planned out minute by minute.
+- **[A club plan for weeks 1 to 16](/teachers/club-plan/):** one 45-minute meeting per week, planned out minute by minute, with two mock contests.
+- **[A recruiting kit](/teachers/recruiting-kit/):** a printable flyer to invite students and a letter for parents.
 - **[Printable problem sets](/teachers/problem-sets/):** a set for every week, with answer keys that explain each solution.
 
 ## The two competitions at a glance
@@ -67,6 +68,19 @@ Your school holds its own competition first, then you pick who moves on. Top stu
 ### Not ready for competition? Try a club first
 
 The [MATHCOUNTS National Math Club](https://www.mathcounts.org/programs/national-math-club) is a non-competitive program for grades 6 to 8, with free games, explorations, and problem sets. It works well alongside our club plan.
+
+## Other contests to try
+
+The AMC 8 and MATHCOUNTS aren't the only options. These contests are free or low-cost, and each one gives students a different kind of challenge. Costs, dates, and rules change, so check each official site before you plan.
+
+| Contest | What it is | Good for |
+|---|---|---|
+| [Purple Comet! Math Meet](https://purplecomet.org/) | A free, online team contest with a middle school division. An adult supervises each team. | Clubs that want a team event with no cost |
+| [CEMC Gauss Contest](https://cemc.uwaterloo.ca/contests/gauss.html) | A multiple-choice contest for grades 7 and 8 from the University of Waterloo, written at your school. Past contests are free on the same site. | Extra individual practice in the AMC 8 style |
+| [Math Kangaroo](https://mathkangaroo.org/mks/) | A multiple-choice contest for many grade levels, held at test centers across the country. | Students who like puzzle-style problems |
+| [MATHCOUNTS National Math Club](https://www.mathcounts.org/programs/national-math-club) | A free, non-competitive club program with activities and problem sets. | Clubs that want math without a contest |
+
+Some contests charge a small fee per student. If cost is a problem, ask the organizers directly whether fee waivers or other help is available. *Contest list last checked November 2026.*
 
 ## Where to find past official problems
 

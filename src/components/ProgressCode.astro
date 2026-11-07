@@ -1,0 +1,78 @@
+---
+import { t, type Locale } from '../i18n/config';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const text = t(lang).progressCode;
+---
+<section class="card progress-code needs-js" aria-labelledby="progress-code-title" data-progress-code
+  data-copied={text.copied}
+  data-loaded={text.loaded}
+  data-broken={text.broken}
+  data-empty={text.empty}
+>
+  <h2 id="progress-code-title">{text.title}</h2>
+  <p>{text.intro}</p>
+  <div class="code-half">
+    <h3>{text.saveTitle}</h3>
+    <p>{text.saveText}</p>
+    <button class="btn" type="button" data-make-code>{text.saveButton}</button>
+    <div data-code-box hidden>
+      <label for="my-progress-code">{text.codeLabel}</label>
+      <textarea id="my-progress-code" rows="3" readonly data-code-out></textarea>
+      <button class="btn" type="button" data-copy-code>{text.copy}</button>
+    </div>
+  </div>
+  <div class="code-half">
+    <h3>{text.loadTitle}</h3>
+    <p>{text.loadText}</p>
+    <label for="load-progress-code">{text.pasteLabel}</label>
+    <textarea id="load-progress-code" rows="3" data-code-in></textarea>
+    <button class="btn btn-primary" type="button" data-load-code>{text.loadButton}</button>
+  </div>
+  <p class="code-status" role="status" data-code-status></p>
+</section>
+<script>
+  import { exportCode, importCode, updateBars } from '../scripts/progress';
+
+  document.querySelectorAll<HTMLElement>('[data-progress-code]').forEach((panel) => {
+    const text = panel.dataset as Record<string, string>;
+    const status = panel.querySelector('[data-code-status]') as HTMLElement;
+    const out = panel.querySelector('[data-code-out]') as HTMLTextAreaElement;
+    const input = panel.querySelector('[data-code-in]') as HTMLTextAreaElement;
+
+    panel.querySelector('[data-make-code]')?.addEventListener('click', () => {
+      out.value = exportCode();
+      (panel.querySelector('[data-code-box]') as HTMLElement).hidden = false;
+      out.focus();
+      out.select();
+    });
+
+    panel.querySelector('[data-copy-code]')?.addEventListener('click', async () => {
+      out.select();
+      try {
+        await navigator.clipboard.writeText(out.value);
+      } catch {
+        document.execCommand('copy');
+      }
+      status.textContent = text.copied;
+    });
+
+    panel.querySelector('[data-load-code]')?.addEventListener('click', () => {
+      if (!input.value.trim()) {
+        status.textContent = text.empty;
+      } else if (importCode(input.value)) {
+        status.textContent = text.loaded;
+        input.value = '';
+        updateBars();
+        document.dispatchEvent(new CustomEvent('progress-loaded'));
+      } else {
+        status.textContent = text.broken;
+      }
+      input.focus();
+    });
+  });
+</script>

@@ -4,7 +4,7 @@ import { getPlans } from '../../../lib/content';
 import { href, localePaths, t } from '../../../i18n/config';
 import { links } from '../../../site.config';
 
-export const getStaticPaths = () => localePaths();
+export const getStaticPaths = () => localePaths('teachers/plans/');
 
 const { lang } = Astro.props;
 const all = t(lang);

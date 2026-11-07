@@ -1,7 +1,7 @@
 ---
 title: "Parity and Invariants"
 summary: Prove that something can never happen by finding a quantity that doesn't change, using coloring, odd and even, and remainders.
-minutes: 11
+minutes: 13
 ---
 
 Take a chessboard, and cut off two opposite corner squares. That leaves 62 squares. Can you cover all of them with 31 dominoes, where each domino covers two squares that touch? People have tried this for hours with real dominoes. It never works, and you can prove it in about ten seconds, without placing a single domino.
@@ -75,6 +75,36 @@ Which of these can't be written as the sum of two perfect squares: 13, 25, 41, 4
 **Now add two squares:** The result can be 0, 1, or 2 mod 4, but **never 3**. This isn't a move-by-move invariant, but the idea is the same: a fact that holds in every case.
 
 **Check the choices:** $43 = 4 \times 10 + 3$, so **43** is impossible. The others work: $13 = 4 + 9$, $25 = 9 + 16$, $41 = 16 + 25$, and $65 = 16 + 49$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+An invariant doesn't have to be odd or even. Remainders mod 3 or mod 9 work too.
+
+**A harder one:** Take the number 123,456,789. Replace it with the sum of its digits. Keep doing this until one digit is left. What's the digit?
+
+**Why bother with an invariant?** You could do this one by hand, but it shows an idea that works for numbers far too large to write down.
+
+**What stays the same?** A number and its digit sum have the same remainder mod 9. So the remainder mod 9 **never changes** through the whole process.
+
+**Find it at the start.** The digits add up to $1 + 2 + \cdots + 9 = 45$, which is a multiple of 9.
+
+**What's left at the end?** A single digit from 1 to 9 that's a multiple of 9. That's **9**.
+
+**A surprise:** For a number with billions of digits, you'd use this same reasoning, without doing the repeated adding.
+
+**Another kind of idea:** A quantity that only ever goes **down**, called a monovariant, proves that a process has to stop.
+
+Try this. Start with 1234 instead. What single digit do you end up with?
+
+<details class="check"><summary>Show the answer</summary>
+
+The digit sum is 10, and the digit sum of 10 is 1. So you end up with 1. Note that 1234 has a remainder of 1 mod 9.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

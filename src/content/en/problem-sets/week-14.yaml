@@ -1,0 +1,52 @@
+week: 14
+title: Triangles & Circles
+summary: Six geometry problems about angles, the Pythagorean Theorem, similar triangles, and circles.
+teacherNote: >-
+  Insist on a labeled drawing for every problem. Most mistakes this week come from using the radius when
+  the problem gives the diameter, or the other way around. Ask students to write "r =" before they use
+  any circle formula.
+problems:
+  - question: Two angles of a triangle measure 47 degrees and 68 degrees. How many degrees is the third angle?
+    answer: 65
+    verify: "range(1, 179).find((x) => 47 + 68 + x === 180)"
+    explanation: >-
+      The angles of a triangle add up to 180 degrees. $180 - 47 - 68 = 65$
+  - question: >-
+      A 13-foot ladder leans against a wall. Its foot is 5 feet from the wall. How many feet up the wall
+      does the ladder reach?
+    answer: 12
+    verify: "range(1, 13).find((h) => h * h + 5 * 5 === 13 * 13)"
+    explanation: >-
+      The wall, the ground, and the ladder make a right triangle with the ladder as the longest side.
+      $13^2 - 5^2 = 169 - 25 = 144$, and $12 \times 12 = 144$.
+  - question: A circle has a diameter of 10. What is its area? Leave your answer in terms of $\pi$.
+    answer: '$25\pi$'
+    verify: "pi(range(1, 100).find((r) => 2 * r === 10) ** 2)"
+    explanation: >-
+      The radius is half the diameter, so it's 5. The area is $\pi r^2 = \pi \times 5 \times 5$, which is
+      $25\pi$. If you got $100\pi$, you used the diameter instead of the radius.
+  - question: >-
+      A triangle has sides 6, 8, and 10. A larger, similar triangle has a shortest side of 9. How long is
+      its longest side?
+    answer: 15
+    verify: "range(1, 50).find((x) => x * 6 === 10 * 9)"
+    explanation: >-
+      The shortest side grew from 6 to 9, so every side is multiplied by $9 \div 6 = 1.5$. The longest
+      side is $10 \times 1.5 = 15$.
+  - question: >-
+      An isosceles triangle has whole-number side lengths and a perimeter of 20. How many different
+      triangles like this are there?
+    answer: 4
+    verify: "product(range(1, 18), range(1, 18), range(1, 18)).filter(([x, y, z]) => x <= y && y <= z && x + y + z === 20 && x + y > z && (x === y || y === z)).length"
+    explanation: >-
+      Call the two equal sides a and the third side b, so $2a + b = 20$. The third side has to be shorter
+      than $a + a$, or the triangle can't close. Try a = 6, 7, 8, and 9, which give b = 8, 6, 4, and 2.
+      With a = 5, b would be 10, which makes a flat triangle, and with a = 10, b would be 0. So there are 4.
+  - question: >-
+      A round pizza with a diameter of 12 inches is cut into 6 equal slices. What is the area of one
+      slice, in square inches? Leave your answer in terms of $\pi$.
+    answer: '$6\pi$'
+    verify: "pi(range(1, 20).find((r) => 2 * r === 12) ** 2 / 6)"
+    explanation: >-
+      The radius is 6, so the whole pizza has area $\pi \times 6 \times 6$, which is $36\pi$. One of 6
+      equal slices is $36\pi \div 6 = 6\pi$.

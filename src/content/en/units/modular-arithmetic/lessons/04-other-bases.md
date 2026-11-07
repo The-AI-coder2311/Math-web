@@ -1,7 +1,7 @@
 ---
 title: "Numbers in Other Bases"
 summary: See how our number system works by trying a different one. Convert between bases, and use base 2 to count and solve problems.
-minutes: 10
+minutes: 12
 ---
 
 What number does 101 mean? You'd say one hundred and one. But a computer would say five. Both of you are right, since you're counting in different ways. We use ten digits because humans have ten fingers, and there's nothing else special about ten. Understanding other bases shows you how numbers really work, and it often appears on contests.
@@ -80,6 +80,38 @@ How many whole numbers from 1 to 100 have exactly two 1s when written in base 2?
 **Do all of them fit?** The largest sum is $64 + 32 = 96$, which is under 100. So all 21 count.
 
 This shows how bases connect to counting, and that's a favorite contest combination.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Remember that a number and its digit sum share a remainder mod 9? That's really a fact about base 10. Every base has its own version.
+
+**The rule:** In base $b$, a number and its digit sum have the same remainder mod $b - 1$.
+
+**Why?** Since $b \equiv 1 \pmod{b - 1}$, every power of $b$ is also 1. So each digit counts as itself.
+
+**A harder one:** What's the remainder when $2351_7$ is divided by 6?
+
+**The fast way:** The base is 7, so mod 6 uses the digit sum. Here, $2 + 3 + 5 + 1 = 11$, and 11 has a remainder of 5.
+
+**Check the long way:**
+
+$2351_7 = 2 \times 343 + 3 \times 49 + 5 \times 7 + 1 = 869$
+
+Since $869 = 6 \times 144 + 5$, the remainder is 5. It matches.
+
+**There's a matching rule for 11.** In base $b$, an alternating digit sum gives the remainder mod $b + 1$, since $b \equiv -1$.
+
+Try this. What's the remainder when $1234_6$ is divided by 5?
+
+<details class="check"><summary>Show the answer</summary>
+
+The base is 6, so use mod 5 and the digit sum: $1 + 2 + 3 + 4 = 10$. The remainder is 0.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,7 +1,7 @@
 ---
 title: "Biggest and Smallest Values: AM-GM"
 summary: Use the AM-GM inequality to find the largest product for a fixed sum and the smallest sum for a fixed product, without trying every case.
-minutes: 10
+minutes: 12
 ---
 
 You have 40 feet of fence, and you want to enclose the largest possible rectangle. A long, skinny pen uses all of the fence and holds almost nothing. A square seems better, but how can you be sure that nothing beats it? You could test rectangles all day. There's a one-line tool that settles this question, and many harder ones, for good.
@@ -91,6 +91,85 @@ A farmer builds a rectangular pen against a long barn wall, so the fence only co
 **Apply it:** Each part should be half of 60, so $2w = 30$ and $l = 30$. That gives $w = 15$, and an area of $15 \times 30 = 450$.
 
 **Check:** A square pen with $w = l = 20$ uses all of the fence, and its area is only 400.
+
+<section data-box="deeper">
+
+## Going deeper
+
+AM-GM works with three numbers too: their average is at least the cube root of their product.
+
+$\frac{a + b + c}{3} \ge \sqrt[3]{abc}$
+
+**A harder one:** For $x > 0$, what's the smallest value of $x^2 + \frac{16}{x}$?
+
+**What's the problem?** With two terms, the product is $x^2 \times \frac{16}{x} = 16x$, and that isn't fixed. So plain AM-GM can't help.
+
+**The trick:** Split the second term into two equal parts, so that the $x
+
+## Common traps
+
+**Using negative numbers.** AM-GM needs positive numbers. For $x = -1$, the value of $x + \frac{1}{x}$ is $-2$, which is below 2. That's why these problems say $x > 0$.
+
+**Forgetting to check for equality.** The bound only counts if you can reach it. Suppose $x$ must be at least 4 in $x + \frac{9}{x}$. AM-GM gives 6, at $x = 3$, but 3 isn't allowed. The real smallest value is 6.25, at $x = 4$.
+
+**Using it when the product isn't fixed.** For $x + x^2$, the product of the terms changes with $x$. So AM-GM can't give you a constant bound.
+
+</section>
+
+<section data-box="strategy">
+
+## Contest strategy
+
+**How to spot it:** Look for "largest," "smallest," "maximum," or "minimum," along with a fixed sum or a fixed product.
+
+**Whole numbers:** If the parts must be whole numbers and can't be equal, pick the closest ones. With a sum of 15, the best product is $7 \times 8 = 56$.
+
+**Using the answer choices:** The answer is often the value at equal parts. Test that value first.
+
+**Time:** About a minute, once you've found the two parts.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+The proof uses [perfect squares](/pathway/algebra-toolkit/02-perfect-squares/). The "same perimeter" idea first came up in [Perimeter and Area](/pathway/basic-geometry/01-perimeter-and-area/).
+
+</section>
+
+<section data-box="summary">
+
+## Remember this
+
+- $\frac{a+b}{2} \ge \sqrt{ab}$ for positive numbers.
+- The two sides match only when $a = b$.
+- A fixed sum means that equal parts give the largest product.
+- A fixed product means that equal parts give the smallest sum.
+- Always check that equal parts are allowed.
+
+</section>
+s cancel:
+
+$x^2 + \frac{8}{x} + \frac{8}{x}$
+
+Now the product of the three terms is $x^2 \times \frac{8}{x} \times \frac{8}{x} = 64$, which is fixed!
+
+**Apply it:** The sum is at least $3\sqrt[3]{64} = 3 \times 4 = 12$.
+
+**Can we reach it?** The terms are equal when $x^2 = \frac{8}{x}$, so $x^3 = 8$, and $x = 2$. Check: $4 + 8 = 12$.
+
+Splitting a term so that the product becomes constant is the main idea in harder AM-GM problems.
+
+Try this. A box's length, width, and height add up to 15. What's its largest possible volume?
+
+<details class="check"><summary>Show the answer</summary>
+
+The product is largest when the three parts are equal, so each is 5. The volume is $5 \times 5 \times 5 = 125$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

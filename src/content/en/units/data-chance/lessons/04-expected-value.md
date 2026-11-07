@@ -1,7 +1,7 @@
 ---
 title: "Expected Value"
 summary: Find what happens on average in a game of chance, and use casework to count your way through harder probability.
-minutes: 9
+minutes: 11
 ---
 
 A game costs nothing to play. You spin a spinner with 4 equal sections, and you win \$0, \$0, \$1, or \$7. Would you pay \$1 to play this game? How about \$3? There's a number that tells you the fair price, and you can find it by combining two things you already know: averages and probabilities.
@@ -75,6 +75,39 @@ A game uses a bag of 4 tickets marked \$1, \$1, \$5, and \$10. You draw 2 ticket
 **What's the smart path?** Let's use the fact that expected values add. Your first ticket has an expected value of $(1 + 1 + 5 + 10) \div 4 = 4.25$ dollars. The second ticket has the same expected value, since before you look, it's equally likely to be any of the 4 tickets. So the expected total is $4.25 + 4.25 = 8.5$ dollars.
 
 **A check by listing:** There are 6 possible pairs, and their totals are 2, 6, 11, 6, 11, and 15. These add up to 51, and $51 \div 6 = 8.5$. It matches.
+
+<section data-box="deeper">
+
+## Going deeper
+
+How long do you expect to wait for something? You can write an equation where the answer shows up on both sides.
+
+**A harder one:** You roll a die until you get a 6. On average, how many rolls does it take?
+
+**Let $E$ be the answer.** Think about the first roll. It always costs 1 roll. Then there are two possibilities:
+
+- With a chance of $\frac{1}{6}$, you got a 6, and you're done.
+- With a chance of $\frac{5}{6}$, you didn't, and you're back where you started. You expect $E$ more rolls.
+
+So:
+
+$E = 1 + \frac{5}{6}E$
+
+Subtract to get $\frac{1}{6}E = 1$, so $E = 6$.
+
+**The general rule:** If something has a chance of $p$ on each try, you expect to wait $\frac{1}{p}$ tries.
+
+**That doesn't mean you'll see it on the 6th roll.** Some waits are short, and some are long. Six is the long-run average.
+
+Try this. Each card you draw, with replacement, has a $\frac{1}{4}$ chance of being a heart. On average, how many draws does it take to get a heart?
+
+<details class="check"><summary>Show the answer</summary>
+
+Using the rule, it's $\frac{1}{p} = 4$ draws. You can also solve $E = 1 + \frac{3}{4}E$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

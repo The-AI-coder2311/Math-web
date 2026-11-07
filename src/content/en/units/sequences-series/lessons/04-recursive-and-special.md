@@ -1,7 +1,7 @@
 ---
 title: "Lists Built From a Rule"
 summary: Follow rules that build each term from the ones before it, find hidden cycles, and watch sums collapse when terms cancel.
-minutes: 10
+minutes: 12
 ---
 
 A list starts with 3 and 5. Each new term equals the previous term minus the one before that. What's the 100th term? You might expect to need all 99 terms before it. But write out only a few, and you'll get a surprise: the list starts over again after a while. Rules like this one are common on contests, because they reward people who write out a few terms instead of panicking.
@@ -87,6 +87,36 @@ The digits of 49 add up to 13, and $13^2 = 169$. The digits of 169 add up to 16,
 **Finding the 50th:** From the 4th term on, even positions are 169, and odd positions are 256. Since 50 is even, the 50th term is **169**.
 
 Note that the start of a list doesn't have to be part of the cycle. Here, the cycle starts at the 4th term.
+
+<section data-box="deeper">
+
+## Going deeper
+
+A recursive list that grows forever can still have remainders that repeat.
+
+**A harder one:** The Fibonacci numbers go 1, 1, 2, 3, 5, 8, 13, 21, and so on, where each number is the sum of the two before it. What's the remainder when the 100th Fibonacci number is divided by 3?
+
+**Don't compute it.** The 100th one has 21 digits. Write only the remainders, which follow the same adding rule:
+
+| Position | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Mod 3 | 1 | 1 | 2 | 0 | 2 | 2 | 1 | 0 | 1 | 1 |
+
+**Find the cycle.** Positions 9 and 10 repeat positions 1 and 2. Since each term depends only on the two before it, everything repeats from there, with a cycle of 8.
+
+**Use it.** $100 = 8 \times 12 + 4$, so it matches position 4, which is **0**.
+
+So the 100th Fibonacci number is divisible by 3. In fact, every 4th one is.
+
+Try this. What's the remainder when the 50th Fibonacci number is divided by 3?
+
+<details class="check"><summary>Show the answer</summary>
+
+$50 = 8 \times 6 + 2$, so it matches position 2. The remainder is 1.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

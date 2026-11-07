@@ -1,7 +1,7 @@
 ---
 title: "Pascal's Triangle and Binomials"
 summary: See how choosing groups builds a famous triangle of numbers, and use it to count subsets and multiply out powers without doing the algebra.
-minutes: 11
+minutes: 13
 ---
 
 How many different pizzas can you make if there are 8 toppings to choose from, and you may use any number of them? You could work it out by counting the pizzas with 0 toppings, then 1, then 2, and so on, using "choose" each time. Or you could notice something much quicker. Hiding behind this question is a triangle of numbers that connects counting, algebra, and even probability.
@@ -68,6 +68,36 @@ How many subsets of $\{1, 2, 3, \ldots, 10\}$ have an even number of elements? (
 **Why is that?** Here's a neat argument. Set the number 10 aside for a moment. Choose any subset of the other 9 numbers. There are $2^9$ ways. Now the number 10 is decided for you: include it if your subset has an odd size, and leave it out if your subset has an even size. Either way, you end up with an even size, and each even-sized subset arises in exactly one way.
 
 So the answer is $2^9 = 512$, which is half of all of the subsets.
+
+<section data-box="deeper">
+
+## Going deeper
+
+You can add up a polynomial's coefficients without expanding it, by plugging in clever numbers.
+
+**The idea:** When you put $x = 1$ into a polynomial, each power of $x$ becomes 1, so only the coefficients are left. So the coefficients add up to $p(1)$.
+
+**A harder one:** Let $p(x) = (2x + 1)^4$. What do all of its coefficients add up to? What do the coefficients of the even powers add up to?
+
+**All of them:** $p(1) = 3^4 = 81$.
+
+**The even powers:** Put in $x = -1$. Even powers stay positive, and odd powers turn negative. So $p(-1)$ is the even coefficients minus the odd ones, and that's $(-1)^4 = 1$.
+
+Now add the two results. The odd coefficients cancel, and the even ones double:
+
+$\frac{p(1) + p(-1)}{2} = \frac{81 + 1}{2} = 41$
+
+**Check by expanding:** $(2x + 1)^4 = 16x^4 + 32x^3 + 24x^2 + 8x + 1$, and $16 + 24 + 1 = 41$.
+
+Try this. Let $p(x) = (x + 2)^3$. What do the coefficients of the even powers add up to? (The constant counts as an even power.)
+
+<details class="check"><summary>Show the answer</summary>
+
+Here, $p(1) = 27$ and $p(-1) = 1$. So the answer is $\frac{27 + 1}{2} = 14$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

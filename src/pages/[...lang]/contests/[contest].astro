@@ -40,8 +40,14 @@ const letters = 'ABCDE';
     data-correct-label={text.correctLabel}
     data-wrong-label={text.wrongLabel('{yours}', '{right}')}
     data-blank-label={text.blankLabel('{right}')}
+    data-nav-answered={text.navAnswered}
+    data-nav-flagged={text.navFlagged}
+    data-nav-blank={text.navBlank}
+    data-review-missed={text.reviewMissed('{count}')}
+    data-review-lessons={text.reviewLessons}
+    data-flag-confirm={text.flagConfirm('{count}')}
   >
-    <p class="eyebrow"><a href={href(lang, 'contests/')}>{text.allContests}</a> &middot; {text.style(contest.style)}</p>
+    <p class="eyebrow"><a href={href(lang, 'contests/')}>{text.allContests}</a> &middot; {text.style(contest.style)} &middot; {text.levelLabel(contest.level)}</p>
     <h1>{contest.title}</h1>
     <p>{contest.summary}</p>
     <noscript><p class="card">{text.noScript}</p></noscript>
@@ -49,6 +55,8 @@ const letters = 'ABCDE';
     <section class="card" data-contest-intro>
       <p>{text.scoring(contest.style, rules.correct, rules.blank, rules.wrong)} {text.tip(rules.blank)}</p>
       <p>{text.timing(rules.minutes, rules.questions, contest.minutes)} <a href={rules.rulesUrl}>{text.rules}</a></p>
+      <p>{text.skipTip}</p>
+      <p><a href={href(lang, 'contests/strategy/')}>{text.strategyLink}</a></p>
       <div class="needs-js">
         <label class="timer-choice"><input type="checkbox" data-use-timer checked /> {text.useTimer} ({text.minutes(contest.minutes)})</label>
         <button class="btn btn-primary" type="button" data-start>{text.start}</button>
@@ -61,6 +69,15 @@ const letters = 'ABCDE';
     </div>
     <p class="sr-only" role="status" data-timer-status></p>
 
+    <nav class="question-nav needs-js" aria-label={text.navLabel} data-question-nav hidden>
+      <p class="muted">{text.navHelp}</p>
+      <ol>
+        {problems.map((_, i) => (
+          <li><a href={`#q-${i + 1}`} data-nav-link={i + 1} aria-label={text.navItem(i + 1, text.navBlank)}>{i + 1}</a></li>
+        ))}
+      </ol>
+    </nav>
+
     <form class="no-js-show" data-contest-form hidden>
       {problems.map((problem, i) => (
         <article
@@ -71,6 +88,9 @@ const letters = 'ABCDE';
           data-topic={problem.topic}
           data-lesson-title={problem.lesson?.title}
           data-lesson-href={problem.lesson && href(lang, problem.lesson.path)}
+          data-unit-title={problem.lesson?.unitTitle}
+          data-unit-href={problem.lesson && href(lang, problem.lesson.unitPath)}
+          data-nav-template={text.navItem(i + 1, '{state}')}
         >
           <div class="problem-head"><h2>{text.questionLabel(i + 1)}</h2></div>
           <div class="prose" set:html={problem.question} />
@@ -88,6 +108,7 @@ const letters = 'ABCDE';
               <span>{text.leaveBlank}</span>
             </label>
           </fieldset>
+          <label class="flag-choice needs-js"><input type="checkbox" data-flag /> {text.flag}</label>
           <p class="mistake" data-verdict hidden></p>
           <div class="reveal-body no-js-show" data-solution hidden>
             <h3>{text.solution}</h3>
@@ -103,8 +124,11 @@ const letters = 'ABCDE';
       <h2>{text.resultsTitle}</h2>
       <p class="contest-score" data-result-score></p>
       <p data-result-counts></p>
-      <h3 data-review-title>{text.review}</h3>
-      <ul data-review-list></ul>
+      <div data-review-title>
+        <h3>{text.review}</h3>
+        <p>{text.reviewIntro}</p>
+      </div>
+      <ul class="review-list" data-review-list></ul>
       <p data-all-right-note hidden>{text.allRight}</p>
       <button class="btn" type="button" data-again>{text.again}</button>
     </section>

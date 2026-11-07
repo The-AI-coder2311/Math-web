@@ -1,7 +1,7 @@
 ---
 title: "Mental Math Shortcuts"
 summary: Calculators aren't allowed on these contests. Learn to rearrange problems so that the arithmetic gets easy and you make fewer mistakes.
-minutes: 9
+minutes: 11
 ---
 
 What is $25 \times 37 \times 4$? If you start from the left, you'll have to work out $25 \times 37$, which is messy. But look at the 25 and the 4. Since $25 \times 4 = 100$, the whole thing is $100 \times 37 = 3700$. You can do that in your head. Calculators aren't allowed on most contests for beginners, and problems are written so that you won't need one, as long as you look for the easy path.
@@ -16,7 +16,7 @@ There's one more tool, and a picture explains it. Suppose a rectangle is 7 tall 
 
 $$7 \times 23 = 7 \times 20 + 7 \times 3 = 140 + 21 = 161$$
 
-This is called the **distributive property**. It's how you multiply big numbers in your head. You can cut the rectangle anywhere you like, so choose cuts that give friendly numbers. For $7 	imes 23$, cutting at 20 and 3 is natural. For $7 	imes 19$, you could cut a 20-wide rectangle and take away a 1-wide strip instead, which gives $140 - 7 = 133$.
+This is called the **distributive property**. It's how you multiply big numbers in your head. You can cut the rectangle anywhere you like, so choose cuts that give friendly numbers. For $7 \times 23$, cutting at 20 and 3 is natural. For $7 \times 19$, you could cut a 20-wide rectangle and take away a 1-wide strip instead, which gives $140 - 7 = 133$.
 
 ## Example 1: Friendly pairs
 
@@ -74,6 +74,34 @@ What is $\frac{2 \times 4 \times 6 \times 8}{1 \times 2 \times 3 \times 4}$?
 $$2 \times 2 \times 2 \times 2 = 16$$
 
 Multiplying everything out would give 384 on top and 24 on the bottom, and then you would still have to divide. Canceling before multiplying is one of the most useful habits in contest math. It keeps the numbers small, and small numbers lead to fewer mistakes.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Here's a shortcut you can test for yourself: two numbers equally far from a round number multiply to almost its square.
+
+**A harder one:** What's $48 \times 52$?
+
+Both numbers are 2 away from 50. Let's break up 52 as $50 + 2$ and 48 as $50 - 2$, and multiply it out piece by piece:
+
+$48 \times 52 = 48 \times 50 + 48 \times 2 = 2400 + 96 = 2496$
+
+Now compare that with $50 \times 50 = 2500$. The answer is less by exactly 4, which is $2 \times 2$.
+
+**Is this a coincidence?** Try another: $29 \times 31 = 899$, and $30 \times 30 = 900$. Each number is 1 away, and the answer is less by $1 \times 1$. It keeps working. In Level 3, you'll see why this always holds, in [Difference of Squares](/pathway/algebra-toolkit/01-difference-of-squares/).
+
+So for two numbers equally far from a middle number, square the middle, and subtract the square of the distance.
+
+Try this. What's $97 \times 103$?
+
+<details class="check"><summary>Show the answer</summary>
+
+Both are 3 away from 100, so it's $100 \times 100 - 3 \times 3 = 10000 - 9 = 9991$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

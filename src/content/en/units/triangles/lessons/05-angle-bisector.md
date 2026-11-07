@@ -1,7 +1,7 @@
 ---
 title: "The Angle Bisector Theorem"
 summary: A line that cuts a triangle's angle in half splits the opposite side in the same ratio as the two nearby sides. Learn why, and how to use it.
-minutes: 9
+minutes: 11
 ---
 
 Triangle $ABC$ has $AB = 6$, $AC = 9$, and $BC = 10$. A line from $A$ cuts the angle at $A$ exactly in half, and hits side $BC$ at a point $D$. How long is $BD$? Many people guess 5, thinking that the line must cut the side in half too. But it doesn't, unless the two nearby sides are equal. The real answer comes from a beautifully simple ratio.
@@ -87,6 +87,36 @@ The bisector of angle $A$ splits $BC$ into $BD = 4$ and $DC = 6$. The perimeter 
 **Use boxes:** There are 5 boxes in a total of 20, so each box holds 4. So $AB = 8$ and $AC = 12$.
 
 **Check:** $\frac{8}{12} = \frac{4}{6}$, and $8 + 12 + 10 = 30$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+The three angle bisectors of a triangle all meet at one point, the **incenter**. The theorem tells you how that point splits each bisector.
+
+**A harder one:** In triangle $ABC$, $AB = 6$, $AC = 9$, and $BC = 10$. The bisector from $A$ meets $BC$ at $D$. The bisector from $B$ crosses $AD$ at $I$. What's the ratio of $AI$ to $ID$?
+
+**Find a triangle to use.** Look at triangle $ABD$. The line $BI$ bisects its angle at $B$, and it hits the side $AD$ at $I$. So the theorem applies inside this smaller triangle:
+
+$\frac{AI}{ID} = \frac{AB}{BD}$
+
+**What's $BD$?** From the opening problem, $BD = 4$.
+
+**The answer:** $\frac{AI}{ID} = \frac{6}{4} = \frac{3}{2}$.
+
+**A shortcut:** That ratio is always the sum of the two nearby sides over the opposite side: $\frac{6 + 9}{10} = \frac{3}{2}$. It matches.
+
+Using a theorem inside a smaller triangle is a common contest move. Keep an eye out for it.
+
+Try this. In triangle $ABC$, $AB = 4$, $AC = 8$, and $BC = 9$. What's the ratio of $AI$ to $ID$?
+
+<details class="check"><summary>Show the answer</summary>
+
+Here, $BD = 3$, so $\frac{AI}{ID} = \frac{4}{3}$. The shortcut agrees: $\frac{4 + 8}{9} = \frac{4}{3}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

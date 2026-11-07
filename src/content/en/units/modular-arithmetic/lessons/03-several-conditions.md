@@ -1,7 +1,7 @@
 ---
 title: "Several Conditions at Once"
 summary: Find a number that satisfies several remainder conditions by sieving, and learn when a solution has to exist.
-minutes: 10
+minutes: 12
 ---
 
 A teacher tries to line up her students. In rows of 3, there's 1 left over. In rows of 5, there are 2 left over. In rows of 7, there are 3 left over. There are fewer than 100 students. How many are there? This sounds as if it needs a lot of trial and error. But there's an organized way to do it that takes under a minute, and it also tells you exactly how many answers to expect.
@@ -77,6 +77,40 @@ A number leaves a remainder of 4 when divided by 6, and a remainder of 2 when di
 So there are **4** numbers.
 
 **Could there be no answers?** Yes! Suppose the remainders were 1 when divided by 6, and 2 when divided by 8. The first says the number is odd, and the second says it's even. That's impossible. When moduli share a factor, the conditions might conflict, so don't assume that an answer exists.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When the remainders follow no pattern, check the **largest** modulus first. That leaves you the fewest numbers to test.
+
+**A harder one:** Find the smallest positive whole number that has a remainder of 2 when divided by 3, a remainder of 3 when divided by 5, and a remainder of 2 when divided by 7.
+
+**Start with the largest modulus.** Numbers with a remainder of 2 mod 7 are 2, 9, 16, 23, 30, and so on.
+
+**Test mod 5.** We need a remainder of 3:
+
+| Number | 2 | 9 | 16 | 23 |
+|---|---|---|---|---|
+| Mod 5 | 2 | 4 | 1 | 3 |
+
+So 23 fits.
+
+**Test mod 3.** $23 = 3 \times 7 + 2$, so the remainder is 2. It fits too.
+
+The answer is **23**. And since 3, 5, and 7 share no factors, the solutions repeat every $3 \times 5 \times 7 = 105$. The next one is 128.
+
+This puzzle is over 1,500 years old, from a Chinese math book. The fact that there's always one solution in each block is called the **Chinese Remainder Theorem**.
+
+Try this. Find the smallest positive number with remainders of 1 mod 3, 4 mod 5, and 6 mod 7.
+
+<details class="check"><summary>Show the answer</summary>
+
+List the numbers that are 6 mod 7: 6, 13, 20, 27, 34. Only 34 has a remainder of 4 mod 5 and a remainder of 1 mod 3. So the answer is 34.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

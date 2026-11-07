@@ -1,7 +1,7 @@
 ---
 title: "Geometric Sequences"
 summary: Work with lists that multiply by the same number each time, add them up with a neat trick, and even add up lists that never end.
-minutes: 11
+minutes: 13
 ---
 
 Would you rather have one million dollars today, or a penny today, two pennies tomorrow, four the next day, and so on for 30 days? Most people pick the million, and most people lose out. Those doubling pennies add up to more than ten million dollars. Lists that multiply grow astonishingly fast, and you need your own tools for working with them.
@@ -92,6 +92,36 @@ A square has an area of 64. Join the midpoints of its sides to make a smaller sq
 **What's the sum?** The areas are 64, 32, 16, and so on, with $a = 64$ and $r = \frac{1}{2}$:
 
 $$\frac{64}{1 - \frac{1}{2}} = 128$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+A repeating decimal is a geometric series in disguise, and that lets you turn it into a fraction.
+
+**A harder one:** Write $0.272727...$ as a fraction.
+
+**See the series.** Split the decimal into its repeating blocks:
+
+$0.272727... = 0.27 + 0.0027 + 0.000027 + \cdots$
+
+Each term is $\frac{1}{100}$ of the one before. So the first term is $\frac{27}{100}$, and the ratio is $\frac{1}{100}$.
+
+**Use the formula:**
+
+$\frac{\frac{27}{100}}{1 - \frac{1}{100}} = \frac{\frac{27}{100}}{\frac{99}{100}} = \frac{27}{99} = \frac{3}{11}$
+
+**The pattern:** A repeating block of 2 digits sits over 99. A block of 3 digits sits over 999. That's why $0.\overline{1} = \frac{1}{9}$, and it even explains something strange: $0.\overline{9} = \frac{9}{9} = 1$. So 0.999... and 1 are exactly the same number.
+
+Try this. Write $0.454545...$ as a fraction in lowest terms.
+
+<details class="check"><summary>Show the answer</summary>
+
+It's $\frac{45}{99} = \frac{5}{11}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

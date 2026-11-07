@@ -1,7 +1,7 @@
 ---
 title: "Three Angle Facts"
 summary: Learn the three angle facts that solve most beginner problems, see why they're true, and fill in a diagram one step at a time.
-minutes: 9
+minutes: 11
 ---
 
 Draw any triangle you like on a sheet of paper: tall, wide, or lopsided. Tear off its three corners, and fit them together with the points touching. They'll make a perfectly straight line, every time. Why would that be true for every triangle? It seems too neat to be real, and it's one of the most useful facts in geometry.
@@ -75,9 +75,37 @@ In triangle $PQR$, sides $PQ$ and $PR$ are equal, and angle $P$ is 30° more tha
 
 $$y + y + y + 30 = 180$$
 
-So 3 copies of $y$ make 150, which means each one is $150 div 3 = 50$ degrees. Then angle $P$ is $50 + 30 = 80$ degrees.
+So 3 copies of $y$ make 150, which means each one is $150 \div 3 = 50$ degrees. Then angle $P$ is $50 + 30 = 80$ degrees.
 
 **Check:** $50 + 50 + 80 = 180$. It works. Notice that the first thing we did was work out which angles are equal. On problems like this, that's usually the key step.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Angles also show up where you might not expect them, such as on a clock.
+
+**A harder one:** What's the angle between the hands of a clock at 3:30?
+
+**What do we know?** A full circle is $360^\circ$, and the clock has 12 hours, so each hour mark is $30^\circ$ from the next.
+
+**Where's the minute hand?** At 30 minutes, it points straight down at the 6.
+
+**Where's the hour hand?** Here's the trap: it isn't on the 3. At 3:30, the hour hand is halfway from the 3 to the 4.
+
+**What's the gap?** From the 3 to the 6 is 3 hour marks, or $90^\circ$. The hour hand has moved halfway to the 4, which is $15^\circ$, closing the gap. So the angle is $90 - 15 = 75$ degrees.
+
+**Another way to think about it:** The hour hand moves $30^\circ$ in 60 minutes, which is half a degree per minute. In 30 minutes, it moves $15^\circ$.
+
+Try this. What's the angle between the hands at 2:30?
+
+<details class="check"><summary>Show the answer</summary>
+
+From the 2 to the 6 is 4 hour marks, or $120^\circ$. The hour hand has moved $15^\circ$ toward the 3. So the angle is $120 - 15 = 105$ degrees.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

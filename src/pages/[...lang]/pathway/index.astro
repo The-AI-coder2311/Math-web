@@ -1,43 +1,61 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import ProgressBar from '../../../components/ProgressBar.astro';
-import { getLevels, getProblems } from '../../../lib/content';
-import { href, localePaths, t } from '../../../i18n/config';
+import ProgressCode from '../../../components/ProgressCode.astro';
+import { getContestsForLevel, getLevels, getProblems } from '../../../lib/content';
+import { defaultLocale, href, hrefIn, isTranslated, localePaths, t } from '../../../i18n/config';
 
 export const getStaticPaths = () => localePaths();
 
 const { lang } = Astro.props;
 const text = t(lang).pathway;
+const otherOnly = t(lang).language.otherOnly;
+// A unit that isn't translated yet links to its English version.
+const english = lang === defaultLocale ? [] : (await getLevels(defaultLocale)).flatMap((level) => level.units);
 const levels = await Promise.all(
-  (await getLevels(lang)).map(async (level) => ({
-    ...level,
-    units: await Promise.all(
-      level.units.map(async (unit) => ({
-        ...unit,
-        problems: unit.available ? (await getProblems(lang, unit.slug)).map((problem) => problem.slug) : [],
-      })),
-    ),
-  })),
+  (await getLevels(lang)).map(async (level, index) => {
+    const units = await Promise.all(
+      level.units.map(async (unit) => {
+        const inEnglish = !unit.available && english.some((other) => other.slug === unit.slug && other.available);
+        const source = unit.available ? lang : defaultLocale;
+        return {
+          ...unit,
+          inEnglish,
+          url: hrefIn(source, unit.review ? `pathway/${unit.slug}/practice/` : `pathway/${unit.slug}/`),
+          problems: unit.available || inEnglish ? (await getProblems(source, unit.slug)).map((problem) => problem.slug) : [],
+        };
+      }),
+    );
+    return {
+      ...level,
+      number: index + 1,
+      units,
+      finished: units.every((unit) => unit.available),
+      english: units.every((unit) => unit.available || unit.inEnglish),
+      contests: await getContestsForLevel(isTranslated(lang, 'contests/') ? lang : defaultLocale, index + 1),
+    };
+  }),
 );
 ---
 <Base title={text.title} description={text.description} lang={lang} current="learn">
   <h1>{text.title}</h1>
   <p>{text.intro}</p>
+  <p class="card callout"><strong>{text.notSure}</strong> <a href={href(lang, 'pathway/start/')}>{text.placementLink}</a></p>
   {levels.map((level) => (
-    <section class="level">
+    <section class="level" id={`level-${level.number}`}>
       <h2>{level.title}</h2>
       <p>{level.blurb}</p>
       <ol class="unit-list" aria-label={text.listLabel(level.title)}>
         {level.units.map((unit) => (
-          <li class={unit.available ? '' : 'is-soon'}>
+          <li class={unit.available || unit.inEnglish ? '' : 'is-soon'}>
             <div class="card">
               <h3>{unit.title}</h3>
               <p>{unit.blurb}</p>
-              {unit.available ? (
+              {unit.available || unit.inEnglish ? (
                 <>
                   <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={unit.problems} />
-                  <a class="btn btn-primary" href={href(lang, unit.review ? `pathway/${unit.slug}/practice/` : `pathway/${unit.slug}/`)}>
-                    {text.start}<span class="sr-only">: {unit.title}</span>
+                  <a class="btn btn-primary" href={unit.url} hreflang={unit.inEnglish ? defaultLocale : undefined}>
+                    {text.start}<span class="sr-only">: {unit.title}</span>{unit.inEnglish && <> {otherOnly}</>}
                   </a>
                 </>
               ) : (
@@ -47,6 +65,41 @@ const levels = await Promise.all(
           </li>
         ))}
       </ol>
+      {(level.finished || level.english) && (
+        <div class="card level-tools">
+          <h3>{text.toolsTitle(level.title)}</h3>
+          <ul>
+            {level.contests.map((contest) => (
+              <li>{text.tests}: <a href={href(lang, `contests/${contest.slug}/`)}>{contest.title}</a></li>
+            ))}
+            {level.number === 1 && <li><a href={href(lang, 'contests/strategy/')}>{text.strategy}</a></li>}
+            <li>
+              <a href={level.finished ? href(lang, `pathway/level-${level.number}/cheat-sheet/`) : hrefIn(defaultLocale, `pathway/level-${level.number}/cheat-sheet/`)}>
+                {text.cheatSheet}{!level.finished && <> {otherOnly}</>}
+              </a>
+            </li>
+          </ul>
+          <p
+            class="solved-badge needs-js"
+            hidden
+            data-level-certificate
+            data-units={JSON.stringify(level.units.map((unit) => ({ slug: unit.slug, problems: unit.problems })))}
+          >
+            <a href={level.finished ? href(lang, `pathway/level-${level.number}/certificate/`) : hrefIn(defaultLocale, `pathway/level-${level.number}/certificate/`)}>{text.certificate}</a>
+          </p>
+        </div>
+      )}
     </section>
   ))}
+  <ProgressCode lang={lang} />
 </Base>
+<script>
+  import { unitsFinished } from '../../../scripts/progress';
+
+  const showCertificates = () =>
+    document.querySelectorAll<HTMLElement>('[data-level-certificate]').forEach((line) => {
+      line.hidden = !unitsFinished(JSON.parse(line.dataset.units as string));
+    });
+  showCertificates();
+  document.addEventListener('progress-loaded', showCertificates);
+</script>

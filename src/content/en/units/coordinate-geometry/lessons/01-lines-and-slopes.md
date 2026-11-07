@@ -1,7 +1,7 @@
 ---
 title: "Lines and Slopes"
 summary: Describe any straight line with two numbers. Then find where lines meet, tell when they're parallel or perpendicular, and count grid points on a line.
-minutes: 10
+minutes: 12
 ---
 
 A line segment runs from $(0, 0)$ to $(8, 12)$ on a grid. How many grid points, where both coordinates are whole numbers, does it pass through? You could draw it carefully and hope that your drawing is accurate. Or you could turn the whole picture into numbers. Giving every point an address, and then doing algebra with those addresses, is one of the most powerful ideas in all of math.
@@ -75,6 +75,43 @@ Back to the opening. How many grid points does the segment from $(0, 0)$ to $(8,
 **How many steps?** Going 8 across in steps of 2 takes 4 steps. Those connect 5 points: $(0, 0)$, $(2, 3)$, $(4, 6)$, $(6, 9)$, and $(8, 12)$.
 
 **The pattern:** The number of steps is the [GCF](/pathway/primes-remainders/03-gcf-and-lcm/) of the two changes. Here, the GCF of 8 and 12 is 4.
+
+<section data-box="deeper">
+
+## Going deeper
+
+A line can be written using where it crosses each axis, and that form is great for area problems.
+
+**Intercept form:** A line that crosses the axes at $(a, 0)$ and $(0, b)$ has the equation:
+
+$\frac{x}{a} + \frac{y}{b} = 1$
+
+Together with the axes, it makes a triangle with an area of $\frac{ab}{2}$.
+
+**A harder one:** A line passes through $(2, 3)$, and it crosses both axes at positive whole numbers. What's the smallest possible area of the triangle?
+
+**Use the point.** $\frac{2}{a} + \frac{3}{b} = 1$. Clear the fractions to get $2b + 3a = ab$. Using [the add-one trick](/pathway/algebra-toolkit/04-add-one-and-telescoping/), that factors as $(a - 2)(b - 3) = 6$.
+
+**List the factor pairs of 6:**
+
+| $a - 2$, $b - 3$ | $a$, $b$ | Area |
+|---|---|---|
+| 1, 6 | 3, 9 | 13.5 |
+| 2, 3 | 4, 6 | 12 |
+| 3, 2 | 5, 5 | 12.5 |
+| 6, 1 | 8, 4 | 16 |
+
+The smallest area is **12**.
+
+Try this. A line passes through $(1, 2)$, and it crosses both axes at positive whole numbers. What's the smallest area?
+
+<details class="check"><summary>Show the answer</summary>
+
+Now $(a - 1)(b - 2) = 2$. The options are $a = 2$, $b = 4$, with an area of 4, and $a = 3$, $b = 3$, with an area of 4.5. The smallest is 4.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

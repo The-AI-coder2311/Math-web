@@ -1,7 +1,7 @@
 ---
 title: "Overcount, Then Divide"
 summary: When order doesn't matter, count as if it did, then divide out the repeats. This is where the "choose" formula comes from.
-minutes: 10
+minutes: 12
 ---
 
 Four friends each shake hands with each other once. How many handshakes is that? You might think, "Each of the 4 people shakes 3 hands, so it's $4 \times 3 = 12$." Now grab 3 friends and try it. You'll get only 6. What happened to the other 6?
@@ -86,6 +86,30 @@ A class has 5 girls and 4 boys. A committee will have 2 girls and 2 boys. How ma
 - Boys: $\binom{4}{2} = \frac{4 \times 3}{2} = 6$
 
 $$10 \times 6 = 60$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+You may need to divide more than once, because a problem can overcount in more than one way.
+
+**A harder one:** In how many ways can 6 friends split into two teams of 3, if the teams have no names?
+
+**First count:** Choose 3 friends for one team: $\frac{6 \times 5 \times 4}{3 \times 2 \times 1} = 20$. The other 3 friends automatically form the second team.
+
+**What got counted twice?** Choosing A, B, and C leaves D, E, and F. Choosing D, E, and F leaves A, B, and C. Those are the same split! So each split got counted 2 times, and the answer is $20 \div 2 = 10$.
+
+**What changes if the teams have names?** If one team is Red and the other is Blue, the two choices really are different, so the answer stays 20. Reading whether groups have names or jobs is often the whole problem.
+
+Try this. In how many ways can 8 friends split into two teams of 4, with no team names?
+
+<details class="check"><summary>Show the answer</summary>
+
+There are $\frac{8 \times 7 \times 6 \times 5}{4 \times 3 \times 2 \times 1} = 70$ ways to choose one team. Each split got counted twice, so there are 35 splits.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

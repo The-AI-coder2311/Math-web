@@ -1,7 +1,7 @@
 ---
 title: "Quadratics and Vieta's Formulas"
 summary: Solve quadratic equations by factoring, and learn what a quadratic's solutions add up to and multiply to, without finding them.
-minutes: 11
+minutes: 13
 ---
 
 Let $r$ and $s$ be the solutions of $x^2 - 4x + 1 = 0$. What's $r^2 + s^2$? These solutions aren't whole numbers. They involve square roots, and you might expect a mess. But the answer is the tidy number 14, and you can find it in under a minute. The secret is that an equation's coefficients already know a lot about its solutions.
@@ -99,6 +99,38 @@ For how many whole numbers $k$ does $x^2 - kx + 12 = 0$ have two different posit
 | 3 and 4 | 7 |
 
 There are **3** values of $k$.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Vieta's formulas also work in reverse: you can write a new equation from old solutions without finding them.
+
+**A harder one:** Let $r$ and $s$ be the solutions of $x^2 - 5x + 3 = 0$. Write a quadratic whose solutions are $r + 1$ and $s + 1$.
+
+**What do we need?** A quadratic with first number 1 is $x^2 - (\text{sum})x + (\text{product})$. So find the new sum and the new product.
+
+**We know:** $r + s = 5$ and $rs = 3$.
+
+**The new sum:** $(r + 1) + (s + 1) = (r + s) + 2 = 7$.
+
+**The new product:** Multiply it out:
+
+$(r + 1)(s + 1) = rs + r + s + 1 = 3 + 5 + 1 = 9$
+
+So the new quadratic is $x^2 - 7x + 9 = 0$.
+
+Those solutions involve square roots, yet the whole calculation used only whole numbers. Any combination that treats $r$ and $s$ the same way can be written using their sum and product.
+
+Try this. Using the same $r$ and $s$, write a quadratic whose solutions are $2r$ and $2s$.
+
+<details class="check"><summary>Show the answer</summary>
+
+The sum is $2(r + s) = 10$, and the product is $4rs = 12$. So it's $x^2 - 10x + 12 = 0$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

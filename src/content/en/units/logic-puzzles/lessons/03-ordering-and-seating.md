@@ -1,7 +1,7 @@
 ---
 title: "Ordering and Seating Puzzles"
 summary: Turn clues about who came first or who sits where into a picture, separate what must be true from what could be true, and count the arrangements left.
-minutes: 10
+minutes: 12
 ---
 
 Four runners finish a race. Dee beats Ann. Ann beats Ben. Cal finishes after Ben. Nobody tells you the finishing order, and yet you can write it down in seconds. Puzzles like this feel hard when the clues sit in sentences. They get much easier once the clues sit on a line that you can look at.
@@ -94,6 +94,34 @@ Five runners, A, B, C, D, and E, finish a race with no ties. A finishes before B
 $$\frac{120}{6} = 20$$
 
 So there are **20** possible orders. This is the [overcount-then-divide](/pathway/counting/03-overcount-then-divide/) idea at work.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Order clues can be combined, as long as they involve different people.
+
+**A harder one:** Five tasks, A, B, C, D, and E, are done one at a time. A comes before B, B comes before C, and D comes before E. How many orders are possible?
+
+**Start with all orders:** $5! = 120$.
+
+**Use the first group's clue.** A, B, and C can land in 6 relative orders, all equally common. Only one of them is right. So $\frac{1}{6}$ of the orders survive, leaving 20.
+
+**Use the second group's clue.** D and E have 2 relative orders, and this choice doesn't depend on A, B, and C. So half of those survive, leaving **10**.
+
+In one step: $\frac{120}{6 \times 2} = 10$.
+
+**When does this work?** The groups have to be separate. If a clue says that C comes before D, then the groups link up, and dividing no longer works. You'd need to count another way, such as with cases.
+
+Try this. Six runners finish with no ties. A beats B, B beats C, and D beats E. How many finishing orders are possible?
+
+<details class="check"><summary>Show the answer</summary>
+
+There are $6! = 720$ orders. Dividing by 6 for the first group and by 2 for the second gives $\frac{720}{12} = 60$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

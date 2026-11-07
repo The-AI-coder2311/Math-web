@@ -15,7 +15,24 @@ if (page) {
   const useTimer = page.querySelector('[data-use-timer]') as HTMLInputElement;
   const cards = [...page.querySelectorAll<HTMLElement>('[data-question]')];
   const finish = page.querySelector('[data-finish]') as HTMLElement;
+  const questionNav = page.querySelector('[data-question-nav]') as HTMLElement;
   let ticker: number | undefined;
+
+  // The numbered list of questions: answered ones get a check, marked ones a flag.
+  const refreshNav = () => {
+    cards.forEach((card, i) => {
+      const link = page.querySelector(`[data-nav-link="${i + 1}"]`) as HTMLElement;
+      const answered = Boolean(picked(card));
+      const flagged = (card.querySelector('[data-flag]') as HTMLInputElement).checked;
+      link.classList.toggle('is-answered', answered);
+      link.classList.toggle('is-flagged', flagged);
+      const state = [answered ? text.navAnswered : text.navBlank, flagged ? text.navFlagged : '']
+        .filter(Boolean)
+        .join(', ');
+      link.setAttribute('aria-label', (card.dataset.navTemplate as string).replace('{state}', state));
+    });
+  };
+  form.addEventListener('change', refreshNav);
 
   const stopTimer = () => {
     window.clearInterval(ticker);
@@ -56,12 +73,15 @@ if (page) {
     });
     form.reset();
     finish.hidden = false;
+    refreshNav();
   };
 
   page.querySelector('[data-start]')?.addEventListener('click', () => {
     intro.hidden = true;
     results.hidden = true;
     form.hidden = false;
+    questionNav.hidden = false;
+    refreshNav();
     if (useTimer.checked) startTimer();
     window.dispatchEvent(new Event('resize'));
     (cards[0].querySelector('h2') as HTMLElement).scrollIntoView();
@@ -75,12 +95,16 @@ if (page) {
 
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    if (cards.some((card) => !picked(card)) && !window.confirm(text.confirm)) return;
+    const flagged = cards.filter((card) => (card.querySelector('[data-flag]') as HTMLInputElement).checked).length;
+    if (flagged && !window.confirm(text.flagConfirm.replace('{count}', String(flagged)))) return;
+    if (!flagged && cards.some((card) => !picked(card)) && !window.confirm(text.confirm)) return;
     stopTimer();
+    questionNav.hidden = true;
 
     let score = 0;
     const tally = { correct: 0, wrong: 0, blank: 0 };
-    const topics = new Map<string, { href: string; title: string; topic: string; count: number }>();
+    type Lesson = { href: string; title: string };
+    const units = new Map<string, { href: string; title: string; count: number; lessons: Map<string, Lesson> }>();
     cards.forEach((card) => {
       const answer = picked(card);
       const right = card.dataset.answer as string;
@@ -102,11 +126,12 @@ if (page) {
       card.querySelectorAll<HTMLInputElement>('input').forEach((input) => {
         input.disabled = true;
       });
-      if (kind !== 'correct') {
-        const key = card.dataset.lessonHref as string;
-        const entry = topics.get(key) ?? { href: key, title: card.dataset.lessonTitle as string, topic: card.dataset.topic as string, count: 0 };
+      if (kind !== 'correct' && card.dataset.unitHref) {
+        const key = card.dataset.unitHref;
+        const entry = units.get(key) ?? { href: key, title: card.dataset.unitTitle as string, count: 0, lessons: new Map() };
         entry.count++;
-        topics.set(key, entry);
+        entry.lessons.set(card.dataset.lessonHref as string, { href: card.dataset.lessonHref as string, title: card.dataset.lessonTitle as string });
+        units.set(key, entry);
       }
     });
 
@@ -119,19 +144,28 @@ if (page) {
       .replace('{blank}', String(tally.blank));
 
     const list = page.querySelector('[data-review-list]') as HTMLElement;
+    const linkTo = ({ href, title }: Lesson) => {
+      const link = document.createElement('a');
+      link.href = href;
+      link.textContent = title;
+      return link;
+    };
     list.replaceChildren(
-      ...[...topics.values()]
+      ...[...units.values()]
         .sort((a, b) => b.count - a.count)
         .map((entry) => {
           const item = document.createElement('li');
-          const link = document.createElement('a');
-          link.href = entry.href;
-          link.textContent = entry.title;
-          item.append(`${entry.topic} (${entry.count}): `, link);
+          const name = document.createElement('strong');
+          name.append(linkTo(entry));
+          item.append(name, ` (${text.reviewMissed.replace('{count}', String(entry.count))}). ${text.reviewLessons} `);
+          [...entry.lessons.values()].forEach((lesson, i) => {
+            if (i) item.append(', ');
+            item.append(linkTo(lesson));
+          });
           return item;
         }),
     );
-    const perfect = topics.size === 0;
+    const perfect = units.size === 0;
     list.hidden = perfect;
     (page.querySelector('[data-review-title]') as HTMLElement).hidden = perfect;
     (page.querySelector('[data-all-right-note]') as HTMLElement).hidden = !perfect;

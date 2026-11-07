@@ -1,0 +1,56 @@
+week: 9
+title: Equations & Word Problems
+summary: Six word problems that turn into equations, from ages to work rates.
+teacherNote: >-
+  Before anyone writes an equation, ask students to say in words what the unknown is, like "let b be
+  the brother's age now." Encourage them to check each answer by putting it back into the story.
+  Guess and check is a fine way to start, and it often shows students what the equation should be.
+problems:
+  - question: >-
+      Maria is 3 times as old as her brother. In 4 years, she will be twice as old as he is. How old is
+      Maria now?
+    answer: 12
+    verify: "range(1, 50).map((b) => 3 * b).find((m) => m + 4 === 2 * (m / 3 + 4))"
+    explanation: >-
+      Call the brother's age now b, so Maria is 3b. In 4 years they will be b + 4 and 3b + 4, and Maria
+      will be twice as old: 3b + 4 = 2(b + 4) = 2b + 8. Take 2b from both sides to get b + 4 = 8, so b = 4.
+      Maria is $3 \times 4 = 12$. Check: in 4 years she is 16 and he is 8.
+  - question: >-
+      A train travels 180 miles in 3 hours. At the same speed, how many hours does it take to travel
+      300 miles?
+    answer: 5
+    verify: "range(1, 20).find((hours) => (180 / 3) * hours === 300)"
+    explanation: >-
+      The train goes $180 \div 3 = 60$ miles each hour. To go 300 miles takes $300 \div 60 = 5$ hours.
+  - question: The sum of three consecutive whole numbers is 72. What is the largest of the three?
+    answer: 25
+    verify: "range(1, 72).find((n) => n + (n + 1) + (n + 2) === 72) + 2"
+    explanation: >-
+      Three numbers in a row are balanced around the middle one, so the middle number is the average:
+      $72 \div 3 = 24$. The numbers are 23, 24, and 25, and the largest is 25.
+  - question: >-
+      Pens cost \$2 each and notebooks cost \$5 each. Jo buys 8 items and spends \$31 in all. How many
+      notebooks does Jo buy?
+    answer: 5
+    verify: "range(0, 8).find((notebooks) => 2 * (8 - notebooks) + 5 * notebooks === 31)"
+    explanation: >-
+      If all 8 items were pens, Jo would spend $8 \times 2 = 16$ dollars. Jo spent $31 - 16 = 15$
+      dollars more. Each time a pen is swapped for a notebook, the cost goes up by $5 - 2 = 3$ dollars,
+      so Jo made $15 \div 3 = 5$ swaps. That's 5 notebooks and 3 pens. Check: $5 \times 5 + 3 \times 2 = 31$.
+  - question: >-
+      Ana can paint a fence by herself in 6 hours. Ben can paint the same fence by himself in 3 hours.
+      If they work together, how many hours does the job take?
+    answer: 2
+    verify: "range(1, 600).find((minutes) => minutes * (1080 / 360) + minutes * (1080 / 180) >= 1080) / 60"
+    explanation: >-
+      Think about one hour of work. Ana paints $\frac{1}{6}$ of the fence, and Ben paints $\frac{1}{3}$,
+      which is $\frac{2}{6}$. Together they paint $\frac{3}{6}$, or half the fence, each hour. So the
+      whole fence takes 2 hours.
+  - question: >-
+      A number is doubled, and then 7 is subtracted. The result is 3 more than the original number. What
+      is the number?
+    answer: 10
+    verify: "range(0, 100).find((n) => 2 * n - 7 === n + 3)"
+    explanation: >-
+      Write it as 2n - 7 = n + 3. Take n from both sides: n - 7 = 3. Add 7 to both sides: n = 10. Check:
+      $10 \times 2 - 7 = 13$, and $10 + 3 = 13$.

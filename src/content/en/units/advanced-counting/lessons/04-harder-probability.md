@@ -1,7 +1,7 @@
 ---
 title: "Harder Probability With Counting"
 summary: Combine all of your counting tools with probability, so that hard-looking chance questions become two counts and a fraction.
-minutes: 10
+minutes: 12
 ---
 
 Six friends sit in a row at random. What's the chance that Ana and Ben end up next to each other? You could try to draw a tree, but it would be huge. Or you could notice that this is really two counting problems, and you've already done harder versions of both. Most hard probability problems on contests are counting problems wearing a costume.
@@ -84,6 +84,35 @@ You roll 3 dice. What's the probability that at least two of them show the same 
 So the probability of all different is $\frac{120}{216} = \frac{5}{9}$, and the probability of at least two matching is $1 - \frac{5}{9} = \frac{4}{9}$.
 
 This idea leads to the famous birthday puzzle. In a room of only 23 people, it's more likely than not that two people share a birthday!
+
+<section data-box="deeper">
+
+## Going deeper
+
+Some games have no fixed length. You can still find the probability by writing equations for each position.
+
+**A harder one:** A token sits on spot 1 of a line with spots 0, 1, 2, and 3. Each turn, a coin flip moves it 1 spot left or right. The game ends when it reaches 0 or 3. What's the probability that it reaches 3?
+
+**Name the unknowns.** Let $p_1$ and $p_2$ be the chances of reaching 3 from spots 1 and 2.
+
+**Write what happens next.**
+
+- From spot 1: half the time it goes to 0 and loses, and half the time it goes to 2. So $p_1 = \frac{1}{2}p_2$.
+- From spot 2: half the time it reaches 3 and wins, and half the time it goes to 1. So $p_2 = \frac{1}{2} + \frac{1}{2}p_1$.
+
+**Solve.** Put the second into the first: $p_1 = \frac{1}{2}\left(\frac{1}{2} + \frac{1}{2}p_1\right) = \frac{1}{4} + \frac{1}{4}p_1$. So $\frac{3}{4}p_1 = \frac{1}{4}$, and $p_1 = \frac{1}{3}$.
+
+**The pattern:** From spot $k$ on a line up to $n$, the chance of reaching $n$ first is $\frac{k}{n}$. Here, that's $\frac{1}{3}$.
+
+Try this. Using the pattern, what's the chance of reaching 4 first, on a line from 0 to 4, starting at spot 1?
+
+<details class="check"><summary>Show the answer</summary>
+
+It's $\frac{k}{n} = \frac{1}{4}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

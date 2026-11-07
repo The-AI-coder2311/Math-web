@@ -1,0 +1,37 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getPage } from '../../../lib/content';
+import { href, localePaths, t } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths();
+
+const { lang } = Astro.props;
+const text = t(lang).recruit;
+const page = await getPage(lang, 'recruiting-kit');
+---
+<Base title={page.title} description={page.description} lang={lang} current="teachers">
+  <p class="no-print"><a class="tap-link" href={href(lang, 'teachers/')}>{t(lang).plan.back}</a></p>
+  <h1 class="no-print">{page.title}</h1>
+  <div class="no-print">
+    <p>{text.intro}</p>
+    <p class="muted">{text.howTo}</p>
+    <div class="btn-row needs-js">
+      <button class="btn btn-primary" type="button" data-print-handout="flyer">{text.printFlyer}</button>
+      <button class="btn" type="button" data-print-handout="parent-letter">{text.printLetter}</button>
+      <button class="btn" type="button" data-print-handout="">{text.printBoth}</button>
+    </div>
+  </div>
+  <div class="prose handouts" set:html={page.html} />
+</Base>
+<script>
+  // Prints one handout (or both). Each handout fits on its own page.
+  document.querySelectorAll<HTMLButtonElement>('[data-print-handout]').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.body.dataset.printOnly = button.dataset.printHandout;
+      window.print();
+    });
+  });
+  window.addEventListener('afterprint', () => {
+    delete document.body.dataset.printOnly;
+  });
+</script>

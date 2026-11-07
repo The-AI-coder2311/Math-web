@@ -1,0 +1,60 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../../layouts/Base.astro';
+import { getLessons, getLevels } from '../../../../lib/content';
+import { href, langParam, locales, t } from '../../../../i18n/config';
+
+// One printable sheet for each level whose units are all written.
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) =>
+      (await getLevels(lang))
+        .map((level, index) => ({ level, number: index + 1 }))
+        .filter(({ level }) => level.units.every((unit) => unit.available))
+        .map(({ level, number }) => ({ params: { lang: langParam(lang), n: String(number) }, props: { lang, level, number } })),
+    ),
+  );
+  return paths.flat();
+}
+
+const { lang, level } = Astro.props;
+const text = t(lang).cheatSheet;
+const summaryOf = (html: string) =>
+  (html.match(/<section data-box="summary">([\s\S]*?)<\/section>/)?.[1] ?? '').replace(/<h2[^>]*>[\s\S]*?<\/h2>/, '');
+const units = await Promise.all(
+  level.units
+    .filter((unit) => !unit.review)
+    .map(async (unit) => ({
+      ...unit,
+      lessons: (await getLessons(lang, unit.slug)).map((lesson) => ({ ...lesson, summary: summaryOf(lesson.html) })),
+    })),
+);
+---
+<Base title={text.title(level.title)} description={text.description(level.title)} lang={lang} current="learn">
+  <p class="eyebrow no-print"><a href={href(lang, 'pathway/')}>{text.back}</a></p>
+  <h1>{text.title(level.title)}</h1>
+  <p>{text.intro}</p>
+  <div class="btn-row no-print needs-js">
+    <button class="btn btn-primary" type="button" data-print>{text.print}</button>
+  </div>
+  <div class="cheat-sheet">
+    {units.map((unit) => (
+      <section class="cheat-unit">
+        <h2>{unit.title}</h2>
+        {unit.lessons.map((lesson) => (
+          <section class="cheat-lesson">
+            <h3><a href={href(lang, `pathway/${unit.slug}/${lesson.slug}/`)}>{lesson.title}</a></h3>
+            <div class="prose" set:html={lesson.summary} />
+          </section>
+        ))}
+      </section>
+    ))}
+    <section class="cheat-unit">
+      <h2>{text.strategyTitle}</h2>
+      <ul>
+        {text.strategyTips.map((tip) => <li>{tip}</li>)}
+      </ul>
+      <p class="no-print"><a class="tap-link" href={href(lang, 'contests/strategy/')}>{text.strategyLink}</a></p>
+    </section>
+  </div>
+</Base>

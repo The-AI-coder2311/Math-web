@@ -45,6 +45,14 @@ Examples slowly get harder. Write 3 to 5 of them.
 
 The last example should look like a real mid-contest question.
 
+<section data-box="deeper">
+
+## Going deeper
+
+Take the idea one step further: a harder worked problem, a new twist, or the reason a shortcut works. End with one more question, with its answer hidden in a details block like the one above.
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps

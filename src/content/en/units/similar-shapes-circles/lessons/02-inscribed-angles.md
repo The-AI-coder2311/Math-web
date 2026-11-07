@@ -1,7 +1,7 @@
 ---
 title: "Angles Inside a Circle"
 summary: Learn why an angle at the edge of a circle is half of the angle at the center, and use it to find angles that seem to have no connection.
-minutes: 10
+minutes: 12
 ---
 
 Pick any two points on a circle, and look at them from a third point on the circle. Now slide that third point around the edge. The view keeps changing, and the lines keep moving, yet the angle between them stays exactly the same. This is one of the most surprising facts in geometry, and it unlocks a huge number of contest problems.
@@ -71,6 +71,36 @@ Points $A$, $B$, and $C$ are on a circle with center $O$, and $C$ is on the long
 **What's the question asking?** The inscribed angle is half of that: $120 \div 2 = 60$ degrees.
 
 Drawing radii is the most common helper line in circle problems, because it instantly creates isosceles triangles.
+
+<section data-box="deeper">
+
+## Going deeper
+
+An inscribed angle has a close cousin: the angle between a tangent and a chord.
+
+**The fact:** The angle between a tangent and a chord that starts at the point of contact is **half the arc** that it cuts off. It works the same way as an inscribed angle.
+
+**Why?** Let the circle have center $O$, the tangent touch at $T$, and the chord be $TA$. Draw the radii $OT$ and $OA$. Let the central angle $TOA$ be $\theta$. Triangle $TOA$ is isosceles, so each of its base angles is $\frac{180 - \theta}{2} = 90 - \frac{\theta}{2}$.
+
+The radius meets the tangent at $90^\circ$. So the angle between the tangent and the chord is what's left:
+
+$90 - \left(90 - \frac{\theta}{2}\right) = \frac{\theta}{2}$
+
+**A harder one:** Chord $TA$ cuts off an arc of $100^\circ$. A tangent touches the circle at $T$. What's the angle between the tangent and the chord?
+
+It's half of the arc, which is **50 degrees**. Picture an inscribed angle where one side slides until it's a tangent. The arc stays, and so does the rule.
+
+This fact also explains the similar triangles behind $PT^2 = PA \times PB$ in [Chords and Tangents](/pathway/similar-shapes-circles/03-chords-and-tangents/).
+
+Try this. The arc is $140^\circ$. What's the angle between the tangent and the chord?
+
+<details class="check"><summary>Show the answer</summary>
+
+It's half of the arc, which is 70 degrees.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

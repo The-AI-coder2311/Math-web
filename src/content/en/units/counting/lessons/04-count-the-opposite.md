@@ -1,7 +1,7 @@
 ---
 title: "Count the Opposite"
 summary: When what you want is messy but what you don't want is tidy, count everything and subtract.
-minutes: 9
+minutes: 11
 ---
 
 A pizza place has 6 toppings, and you can put any number of them on a pizza, even none. How many pizzas have at least one topping? You could count the pizzas with exactly 1 topping, then exactly 2, and so on, but that's six separate counts. There's a move that finishes this in two lines.
@@ -81,6 +81,35 @@ You counted those in the last lesson: $9 \times 9 \times 8 = 648$.
 There are 900 three-digit numbers in all, so:
 
 $$900 - 648 = 252$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+Counting the opposite works best when the thing you want could happen in many overlapping ways.
+
+**A harder one:** A code has 4 digits, each from 1 to 6. How many codes have at least one pair of neighboring digits that match?
+
+**Why not count directly?** The first two digits could match, or the middle two, or the last two, or several at once. Those cases overlap, and that gets messy.
+
+**What's the opposite?** No neighbors match. That's easy to count, one digit at a time:
+
+- First digit: 6 options
+- Each later digit: 5 options, since it can't match the digit before it
+
+So $6 \times 5 \times 5 \times 5 = 750$ codes have no matching neighbors. There are $6^4 = 1296$ codes in all, so the answer is $1296 - 750 = 546$.
+
+Notice that the opposite of "at least one pair matches" is "no pair matches." It isn't "exactly one pair doesn't match."
+
+Try this. A code has 3 digits, each from 1 to 4. How many codes have at least one pair of matching neighbors?
+
+<details class="check"><summary>Show the answer</summary>
+
+There are $4^3 = 64$ codes. With no matching neighbors, there are $4 \times 3 \times 3 = 36$. So $64 - 36 = 28$ have a match.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,0 +1,55 @@
+---
+import 'katex/dist/katex.min.css';
+import { getWeeklyPool, weekNumber } from '../lib/problem-of-the-week';
+import { href, t, type Locale } from '../i18n/config';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const text = t(lang).potw;
+const pool = await getWeeklyPool(lang);
+const builtWeek = weekNumber(new Date());
+const problem = pool[builtWeek % pool.length];
+const letters = 'ABCDEF';
+---
+{problem && (
+  <section class="card potw" aria-labelledby="potw-title" data-potw data-week={builtWeek} data-source={href(lang, 'problem-of-the-week.json')}>
+    <h2 id="potw-title">{text.title}</h2>
+    <p class="muted potw-unit" data-potw-unit>{text.from} <a href={href(lang, `pathway/${problem.unit}/`)}>{problem.unitTitle}</a></p>
+    <div class="prose" data-potw-question set:html={problem.question} />
+    <ol class="potw-choices" data-potw-choices>
+      {problem.choices.map((choice, i) => (
+        <li><span class="choice-letter">{letters[i]}.</span> <span set:html={choice} /></li>
+      ))}
+    </ol>
+    <a class="btn btn-primary" data-potw-link href={href(lang, problem.path)}>{text.tryIt}</a>
+    <p class="muted">{text.changes}</p>
+  </section>
+)}
+<script>
+  // Swap in this week's problem if the site was built in a different week.
+  const box = document.querySelector<HTMLElement>('[data-potw]');
+  const today = new Date();
+  const week = Math.floor((Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) - Date.UTC(2024, 0, 1)) / 604800000);
+  if (box && String(week) !== box.dataset.week) {
+    fetch(box.dataset.source as string)
+      .then((response) => (response.ok ? response.json() : Promise.reject(new Error(String(response.status)))))
+      .then((pool: { href: string; unitHref: string; unitTitle: string; question: string; choices: string[] }[]) => {
+        const problem = pool[week % pool.length];
+        if (!problem) return;
+        const unitLink = box.querySelector('[data-potw-unit] a') as HTMLAnchorElement;
+        unitLink.href = problem.unitHref;
+        unitLink.textContent = problem.unitTitle;
+        (box.querySelector('[data-potw-question]') as HTMLElement).innerHTML = problem.question;
+        (box.querySelector('[data-potw-choices]') as HTMLElement).innerHTML = problem.choices
+          .map((choice, i) => `<li><span class="choice-letter">${'ABCDEF'[i]}.</span> <span>${choice}</span></li>`)
+          .join('');
+        (box.querySelector('[data-potw-link]') as HTMLAnchorElement).href = problem.href;
+      })
+      .catch(() => {
+        // Offline or blocked: keep the problem the page was built with.
+      });
+  }
+</script>

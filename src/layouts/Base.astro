@@ -1,8 +1,9 @@
 ---
 import '../styles/global.css';
 import Logo from '../components/Logo.astro';
-import { site } from '../site.config';
-import { href, t, type Locale } from '../i18n/config';
+import { analytics, analyticsOn, site } from '../site.config';
+import { defaultLocale, href, hrefIn, locales, t, type Locale } from '../i18n/config';
+import { pageExists } from '../lib/content';
 
 interface Props {
   title: string;
@@ -16,6 +17,16 @@ interface Props {
 const { title, description, lang, current, noindex } = Astro.props;
 const text = t(lang);
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
+// The current page's address without the hosting base path or language, like "pathway/".
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const pagePath = Astro.url.pathname
+  .slice(basePath.length)
+  .replace(/^\//, '')
+  .replace(new RegExp(`^${lang === defaultLocale ? '' : `${lang}/`}`), '');
+// The same page in each other language, or that language's home page if it isn't translated yet.
+const alternates = locales
+  .filter((other) => other !== lang)
+  .map((other) => ({ lang: other, exists: pageExists(other, pagePath), url: hrefIn(other, pageExists(other, pagePath) ? pagePath : '') }));
 const navItems = [
   { key: 'learn', label: text.nav.learn, url: href(lang, 'pathway/') },
   { key: 'contests', label: text.nav.contests, url: href(lang, 'contests/') },
@@ -32,6 +43,9 @@ const navItems = [
     <title>{`${title} | ${site.name}`}</title>
     <meta name="description" content={description} />
     {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+    {!noindex && alternates.filter((other) => other.exists).map((other) => (
+      <link rel="alternate" hreflang={other.lang} href={new URL(other.url, Astro.site).href} />
+    ))}
     <meta name="color-scheme" content="light dark" />
     <link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`} />
     <script is:inline>
@@ -40,6 +54,12 @@ const navItems = [
         if (savedTheme) document.documentElement.dataset.theme = savedTheme;
       } catch (e) {}
     </script>
+    {analyticsOn && analytics.provider === 'plausible' && (
+      <script is:inline defer data-domain={analytics.siteId} src="https://plausible.io/js/script.js"></script>
+    )}
+    {analyticsOn && analytics.provider === 'goatcounter' && (
+      <script is:inline async data-goatcounter={`https://${analytics.siteId}.goatcounter.com/count`} src="https://gc.zgo.at/count.js"></script>
+    )}
     <noscript><style>.needs-js { display: none !important; } .no-js-show { display: block !important; }</style></noscript>
   </head>
   <body data-scroll-label={text.scrollLabel}>
@@ -54,6 +74,15 @@ const navItems = [
             ))}
           </ul>
         </nav>
+        <ul class="language-switch">
+          {alternates.map((other) => (
+            <li>
+              <a href={other.url} lang={other.lang} hreflang={other.lang} aria-label={t(other.lang).language.switchLabel}>
+                {t(other.lang).language.name}
+              </a>
+            </li>
+          ))}
+        </ul>
         <button
           class="theme-toggle needs-js"
           type="button"
@@ -71,10 +100,12 @@ const navItems = [
     <main id="main" class="wrap" tabindex="-1"><slot /></main>
     <footer class="site-footer no-print">
       <div class="wrap">
-        <p>{text.footer.free}</p>
+        <p>{analyticsOn ? text.footer.freeCounted : text.footer.free}</p>
         <p class="muted">{text.footer.disclaimer}</p>
         <nav aria-label={text.footer.navLabel}>
           <ul class="footer-links">
+            <li><a href={href(lang, 'glossary/')}>{text.footer.glossary}</a></li>
+            <li><a href={href(lang, 'get-involved/')}>{text.footer.getInvolved}</a></li>
             <li><a href={href(lang, 'accessibility/')}>{text.footer.accessibility}</a></li>
             <li><a href={href(lang, 'sitemap/')}>{text.footer.sitemap}</a></li>
           </ul>

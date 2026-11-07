@@ -1,7 +1,7 @@
 ---
 title: "Heron's Formula and the Circle Inside"
 summary: Find a triangle's area from its three sides alone, then use that area to find any height and the radius of the circle inside the triangle.
-minutes: 10
+minutes: 12
 ---
 
 A triangle has sides of 9, 10, and 17. What's its area? There's no right angle, and nobody has given you a height. You could drop a height and set up equations, and that would take a while. Yet about 2,000 years ago, Heron of Alexandria wrote down a formula that gets the area from the three sides alone, and for this triangle, it's a neat 36.
@@ -87,6 +87,40 @@ $$A = \sqrt{24 \times 14 \times 7 \times 3} = \sqrt{7056} = 84$$
 **Find the height:** $84 = \frac{1}{2} \times 21 \times h$, so $h = 8$.
 
 **Check:** A height of 8 splits this triangle into a 6-8-10 triangle and an 8-15-17 triangle, and $6 + 15 = 21$. It all fits.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Heron's formula gets simpler if you think about the tangent lengths from each corner.
+
+**The tangent lengths:** The circle inside a triangle touches each side. Two tangents from one corner are equal, so call those lengths $x$, $y$, and $z$, one for each corner. Each side is the sum of two of them.
+
+Half the perimeter is $s = x + y + z$. And look at the differences: $s - a$, where $a = y + z$, is exactly $x$! So Heron's formula becomes:
+
+$A = \sqrt{(x + y + z) \times x \times y \times z}$
+
+**A harder one:** The circle inside a triangle cuts the sides into pieces, with tangent lengths of 2, 3, and 10. What's the area, and what's the radius?
+
+**The sides** are $2 + 3 = 5$, $3 + 10 = 13$, and $2 + 10 = 12$. Here, $s = 15$.
+
+**The area:** $\sqrt{15 \times 2 \times 3 \times 10} = \sqrt{900} = 30$.
+
+**The radius:** $r = \frac{30}{15} = 2$.
+
+**Check:** It's a 5-12-13 right triangle, with an area of $\frac{1}{2} \times 5 \times 12 = 30$.
+
+So the tangent lengths are the natural way to see a triangle's sides.
+
+Try this. The tangent lengths are 6, 7, and 8. What's the area?
+
+<details class="check"><summary>Show the answer</summary>
+
+Here, $s = 21$, so the area is $\sqrt{21 \times 6 \times 7 \times 8} = 84$. It's the 13-14-15 triangle.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

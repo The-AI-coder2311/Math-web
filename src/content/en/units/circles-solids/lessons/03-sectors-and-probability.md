@@ -1,7 +1,7 @@
 ---
 title: "Slices of Circles and Probability With Area"
 summary: Treat a slice of a circle as a fraction of the whole, and use area to find probabilities when there's nothing to count.
-minutes: 9
+minutes: 11
 ---
 
 A dart lands at a random spot on a square board with a circle painted on it. What's the chance that it lands in the circle? There are infinitely many spots where a dart could land, so you can't count outcomes the way you did with dice. But you can still compare **how much space** each part takes up.
@@ -76,6 +76,38 @@ A spinner is a circle divided into a red slice with a 90° angle, a blue slice w
 **What about two spins?** They don't affect each other, so we multiply:
 
 $$\frac{5}{12} \times \frac{5}{12} = \frac{25}{144}$$
+
+<section data-box="deeper">
+
+## Going deeper
+
+Sometimes a sector problem comes down to working out what the boundary really is.
+
+**A harder one:** A goat is tied to a corner of a square barn with sides of 4 meters, using a 6-meter rope. It can't go into the barn. How much ground can it graze?
+
+**The main region:** The rope sweeps around the outside of the barn. Inside the barn's corner is a right angle that the goat can't enter, so it covers $\frac{3}{4}$ of a circle of radius 6:
+
+$\frac{3}{4} \times \pi \times 6^2 = 27\pi$
+
+**What about at the walls?** When the rope lies along a wall, it reaches the next corner with $6 - 4 = 2$ meters to spare. So it can swing around that corner, covering a quarter circle of radius 2:
+
+$\frac{1}{4} \times \pi \times 2^2 = \pi$
+
+This happens at both of the neighboring corners, for $2\pi$ more.
+
+**The total:** $27\pi + 2\pi = 29\pi$ square meters.
+
+Drawing the rope in several positions makes the extra pieces easy to see.
+
+Try this. The barn has sides of 2 meters, and the rope is 4 meters long. How much ground can the goat graze?
+
+<details class="check"><summary>Show the answer</summary>
+
+The main region is $\frac{3}{4} \times \pi \times 16 = 12\pi$. Two quarter circles of radius 2 add $2\pi$. The total is $14\pi$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

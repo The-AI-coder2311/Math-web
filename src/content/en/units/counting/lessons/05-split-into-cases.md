@@ -1,7 +1,7 @@
 ---
 title: "Split Into Cases"
 summary: When one rule makes a problem awkward, break it into separate cases, count each one, and add.
-minutes: 9
+minutes: 11
 ---
 
 How many 3-digit numbers have digits that add up to 3? There's no single multiplication that gives the answer, because the options for each digit depend on the others. But if you pick an organized way to split the problem, each piece is small.
@@ -76,7 +76,38 @@ How many 2-digit numbers have a tens digit greater than their ones digit?
 
 $$1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 = 45$$
 
-**Is there a check?** Yes. Numbers that end in 0, like 30 or 70, always have a larger tens digit, and there are 9 of them. Now take the numbers with no zeros and two different digits. They come in swapped pairs, like 34 and 43, and there are $9 	imes 8 = 72$ of them. Exactly one number in each pair has the larger tens digit, so that's half of 72, or 36. And $9 + 36 = 45$. It matches.
+**Is there a check?** Yes. Numbers that end in 0, like 30 or 70, always have a larger tens digit, and there are 9 of them. Now take the numbers with no zeros and two different digits. They come in swapped pairs, like 34 and 43, and there are $9 \times 8 = 72$ of them. Exactly one number in each pair has the larger tens digit, so that's half of 72, or 36. And $9 + 36 = 45$. It matches.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Cases are most useful when each case is easy, even though the whole problem isn't. Look for one feature that, once you fix it, makes the rest simple.
+
+**A harder one:** How many two-digit numbers have a tens digit bigger than their ones digit?
+
+**Which feature should we fix?** The tens digit. Once it's fixed, the ones digit has a clear set of options:
+
+| Tens digit | Options for the ones digit | How many |
+|---|---|---|
+| 1 | 0 | 1 |
+| 2 | 0, 1 | 2 |
+| 3 | 0, 1, 2 | 3 |
+| 9 | 0 through 8 | 9 |
+
+The counts follow a pattern, so we don't need to write every row. In all, there are $1 + 2 + 3 + \cdots + 9 = 45$ numbers.
+
+**How do we know that we didn't miss or repeat one?** Each number has exactly one tens digit, so each number falls into exactly one case. That's what good cases look like.
+
+Try this. How many two-digit numbers have a digit sum of 9 or 10?
+
+<details class="check"><summary>Show the answer</summary>
+
+A sum of 9 gives 18, 27, 36, 45, 54, 63, 72, 81, and 90, which is 9 numbers. A sum of 10 gives 19, 28, 37, 46, 55, 64, 73, 82, and 91, which is 9 more. No number has both sums, so add: $9 + 9 = 18$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,7 +1,7 @@
 ---
 title: "Multiplying Out and Difference of Squares"
 summary: Learn how two sums multiply, and then use the most useful pattern in contest algebra to turn huge calculations into quick ones.
-minutes: 10
+minutes: 12
 ---
 
 What is $63^2 - 37^2$? Without a calculator, you'd have to square two numbers and subtract. Or you could notice a pattern and write down 2,600 in about five seconds. Welcome to Level 3, where problems that look like monster calculations are built around a small set of patterns. Getting stuck is normal here. The goal is to learn to spot the shortcut hiding inside.
@@ -88,6 +88,34 @@ How many pairs of positive whole numbers $(x, y)$ satisfy $x^2 - y^2 = 15$?
 - $x + y = 5$ and $x - y = 3$: Adding gives $2x = 8$, so $x = 4$ and $y = 1$. Check: $16 - 1 = 15$.
 
 There are **2** pairs. Turning a hard equation into a list of factor pairs is one of the great tricks in contest math.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Which numbers can be written as a difference of two squares? The factoring answers that question for every number at once.
+
+**The key fact:** In $a^2 - b^2 = (a - b)(a + b)$, the two factors differ by $2b$, which is even. So the factors are **both odd or both even**.
+
+- **An odd number** works: use the factors 1 and the number itself. For example, $15 = 1 \times 15$ gives $8^2 - 7^2$.
+- **A multiple of 4** works: use two even factors. For example, $12 = 2 \times 6$ gives $4^2 - 2^2$.
+- **An even number that isn't a multiple of 4** can't work. Two odd factors make an odd product, and two even factors make a multiple of 4.
+
+So 2, 6, 10, 14, and 18 can never be a difference of two squares.
+
+**A harder one:** How many pairs of positive whole numbers have $a^2 - b^2 = 45$?
+
+We need factor pairs of 45, and they're all odd: 1 and 45, 3 and 15, and 5 and 9. Each one gives a pair: 23 and 22, 9 and 6, and 7 and 2. So there are **3**.
+
+Try this. How many pairs of positive whole numbers have $a^2 - b^2 = 21$?
+
+<details class="check"><summary>Show the answer</summary>
+
+The factor pairs are 1 and 21, and 3 and 7. They give 11 and 10, and 5 and 2. So there are 2 pairs.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

@@ -1,7 +1,7 @@
 ---
 title: "Pigeonhole Power"
 summary: Use the stronger form of the pigeonhole principle, choose clever boxes such as pairs and remainders, and prove that an answer is the smallest possible.
-minutes: 11
+minutes: 13
 ---
 
 Pick any six whole numbers you like. Make them huge, or random, or as strange as you want. Two of them will always differ by a multiple of 5. You don't need to know a single one of your numbers to be certain of that. The reason is a simple-sounding idea, used in an unexpected place, and it's one of the most surprising tools in contest math.
@@ -79,6 +79,34 @@ You pick whole numbers from 1 to 20. How many must you pick to be sure that two 
 **Is 10 enough?** No. The numbers 1, 3, 5, and so on up to 19 are 10 picks with no two consecutive.
 
 So the answer is **11**.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Sometimes the boxes are hard to spot, since you have to rule out a box first.
+
+**A harder one:** In a group of 6 people, some pairs are friends, and friendship goes both ways. Show that two people in the group have the same number of friends in the group.
+
+**What are the boxes?** The number of friends. Each person could have 0, 1, 2, 3, 4, or 5 friends. That's 6 boxes for 6 people, so pigeonhole doesn't apply yet.
+
+**The key step:** Look at boxes 0 and 5. If someone has 5 friends, they're friends with everyone. Then nobody can have 0 friends. So boxes 0 and 5 can't **both** be used.
+
+**So how many boxes are really available?** At most 5. Six people in 5 boxes means that two people share a box. So two people have the same number of friends.
+
+This argument works for a group of any size.
+
+When a pigeonhole count falls short by one, look for two boxes that can't both be used.
+
+Try this. In a group of 10 people, what's the largest number of different friend counts that can appear?
+
+<details class="check"><summary>Show the answer</summary>
+
+The counts could be 0 through 9, but 0 and 9 can't both appear. So at most 9 different counts can appear.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

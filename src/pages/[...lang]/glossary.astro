@@ -1,0 +1,53 @@
+---
+import 'katex/dist/katex.min.css';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getLessonData } from '../../lib/content';
+import { renderInline } from '../../lib/markdown';
+import { glossaryId } from '../../lib/rehype-glossary-links.mjs';
+import { href, localePaths, t } from '../../i18n/config';
+
+export const getStaticPaths = () => localePaths('glossary/');
+
+const { lang } = Astro.props;
+const text = t(lang).glossary;
+const [file] = (await getCollection('glossary')).filter((entry) => entry.id.startsWith(`${lang}/`));
+const { lessons } = getLessonData(lang);
+const terms = file.data.terms
+  .map((entry) => ({
+    ...entry,
+    id: glossaryId(entry.term),
+    lessonInfo: lessons.find((lesson) => lesson.path === `pathway/${entry.lesson}/`),
+  }))
+  .sort((a, b) => a.term.localeCompare(b.term, lang, { sensitivity: 'base' }));
+const letterOf = (term: string) => term.normalize('NFD').charAt(0).toUpperCase();
+const letters = [...new Set(terms.map((entry) => letterOf(entry.term)))];
+---
+<Base title={text.title} description={text.description} lang={lang}>
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <nav aria-label={text.lettersLabel}>
+    <ul class="letter-nav">
+      {letters.map((letter) => <li><a href={`#letter-${letter}`}>{letter}</a></li>)}
+    </ul>
+  </nav>
+  {letters.map((letter) => (
+    <section class="glossary-group" aria-labelledby={`letter-${letter}`}>
+      <h2 id={`letter-${letter}`}>{letter}</h2>
+      <dl class="glossary-list">
+        {terms.filter((entry) => letterOf(entry.term) === letter).map((entry) => (
+          <div class="glossary-entry" id={entry.id} tabindex="-1">
+            <dt>{entry.term}</dt>
+            <dd>
+              <p set:html={renderInline(entry.definition)} />
+              {entry.example && <p><strong>{text.example}</strong> <span set:html={renderInline(entry.example)} /></p>}
+              {entry.lessonInfo && (
+                <p class="muted">{text.learnIt} <a href={href(lang, entry.lessonInfo.path)}>{entry.lessonInfo.title}</a> ({entry.lessonInfo.topic})</p>
+              )}
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  ))}
+</Base>

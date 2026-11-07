@@ -12,7 +12,7 @@
         "title": "Counting",
         "review": false,
         "lessons": 5,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 1,
@@ -25,7 +25,7 @@
         "title": "Number Sense",
         "review": false,
         "lessons": 4,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 1,
@@ -38,7 +38,7 @@
         "title": "Fractions & Ratios",
         "review": false,
         "lessons": 4,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 1,
@@ -51,7 +51,7 @@
         "title": "Basic Geometry",
         "review": false,
         "lessons": 5,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 1,
@@ -64,7 +64,7 @@
         "title": "Logic & Patterns",
         "review": false,
         "lessons": 4,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 1,
@@ -77,7 +77,7 @@
         "title": "Intro to Probability",
         "review": false,
         "lessons": 4,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 1,
@@ -104,7 +104,7 @@
         "title": "Equations & Word Problems",
         "review": false,
         "lessons": 5,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 2,
@@ -118,7 +118,7 @@
         "title": "Smart Counting",
         "review": false,
         "lessons": 4,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 2,
@@ -132,7 +132,7 @@
         "title": "Primes & Remainders",
         "review": false,
         "lessons": 5,
-        "problems": 24
+        "problems": 30
       },
       {
         "level": 2,
@@ -146,7 +146,7 @@
         "title": "Triangles",
         "review": false,
         "lessons": 5,
-        "problems": 24
+        "problems": 30
       },
       {
         "level": 2,
@@ -160,7 +160,7 @@
         "title": "Circles & Solids",
         "review": false,
         "lessons": 4,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 2,
@@ -174,7 +174,7 @@
         "title": "Averages, Data & Chance",
         "review": false,
         "lessons": 4,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 2,
@@ -188,7 +188,7 @@
         "title": "Logic Puzzles",
         "review": false,
         "lessons": 3,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 2,
@@ -215,7 +215,7 @@
         "title": "Algebra Toolkit",
         "review": false,
         "lessons": 5,
-        "problems": 24
+        "problems": 30
       },
       {
         "level": 3,
@@ -228,7 +228,7 @@
         "title": "Remainder Math & Bases",
         "review": false,
         "lessons": 5,
-        "problems": 24
+        "problems": 30
       },
       {
         "level": 3,
@@ -241,7 +241,7 @@
         "title": "Sequences & Series",
         "review": false,
         "lessons": 4,
-        "problems": 21
+        "problems": 30
       },
       {
         "level": 3,
@@ -254,7 +254,7 @@
         "title": "Advanced Counting",
         "review": false,
         "lessons": 5,
-        "problems": 26
+        "problems": 30
       },
       {
         "level": 3,
@@ -267,7 +267,7 @@
         "title": "Similar Shapes & Circle Theorems",
         "review": false,
         "lessons": 5,
-        "problems": 24
+        "problems": 30
       },
       {
         "level": 3,
@@ -280,7 +280,7 @@
         "title": "Coordinate Geometry",
         "review": false,
         "lessons": 4,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 3,
@@ -293,7 +293,7 @@
         "title": "Pigeonholes, Invariants & Games",
         "review": false,
         "lessons": 3,
-        "problems": 20
+        "problems": 30
       },
       {
         "level": 3,
@@ -387,7 +387,7 @@
         "slug": "01-multiply-choices",
         "title": "The Multiply Trick",
         "summary": "Learn the one idea behind most counting problems. When you make choices one after another, multiply.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/counting/01-multiply-choices/"
       },
       {
@@ -402,7 +402,7 @@
         "slug": "02-when-order-matters",
         "title": "When Order Matters",
         "summary": "Count lineups and arrangements, where each choice uses up an option, and learn why n factorial works.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/counting/02-when-order-matters/"
       },
       {
@@ -417,7 +417,7 @@
         "slug": "03-overcount-then-divide",
         "title": "Overcount, Then Divide",
         "summary": "When order doesn't matter, count as if it did, then divide out the repeats. This is where the \"choose\" formula comes from.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/counting/03-overcount-then-divide/"
       },
       {
@@ -432,7 +432,7 @@
         "slug": "04-count-the-opposite",
         "title": "Count the Opposite",
         "summary": "When what you want is messy but what you don't want is tidy, count everything and subtract.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/counting/04-count-the-opposite/"
       },
       {
@@ -447,7 +447,7 @@
         "slug": "05-split-into-cases",
         "title": "Split Into Cases",
         "summary": "When one rule makes a problem awkward, break it into separate cases, count each one, and add.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/counting/05-split-into-cases/"
       },
       {
@@ -462,7 +462,7 @@
         "slug": "01-place-value",
         "title": "Place Value: What Digits Really Mean",
         "summary": "See that a number is a sum of its place values. That one idea solves digit puzzles and explains why many shortcuts work.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/number-sense/01-place-value/"
       },
       {
@@ -477,7 +477,7 @@
         "slug": "02-mental-math",
         "title": "Mental Math Shortcuts",
         "summary": "Calculators aren't allowed on these contests. Learn to rearrange problems so that the arithmetic gets easy and you make fewer mistakes.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/number-sense/02-mental-math/"
       },
       {
@@ -492,7 +492,7 @@
         "slug": "03-divisibility-rules",
         "title": "Divisibility Rules and Why They Work",
         "summary": "Tell whether a big number divides evenly without doing long division, and use place value to see why the rules are true.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/number-sense/03-divisibility-rules/"
       },
       {
@@ -507,7 +507,7 @@
         "slug": "04-factors-primes-leftovers",
         "title": "Factors, Primes and Leftovers",
         "summary": "Factors come in pairs, so you can find them all without missing any. Then see how primes and leftovers fit the same idea.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/number-sense/04-factors-primes-leftovers/"
       },
       {
@@ -522,7 +522,7 @@
         "slug": "01-equal-groups",
         "title": "Fractions as Equal Groups",
         "summary": "See what a fraction really means. Then find a fraction of a number, compare fractions, and add them without the most common mistakes.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/fractions-ratios/01-equal-groups/"
       },
       {
@@ -537,7 +537,7 @@
         "slug": "02-ratios-as-boxes",
         "title": "Ratios as Boxes",
         "summary": "A ratio tells you how to make equal groups. Draw boxes, find what goes in one box, and most ratio problems fall into place.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/fractions-ratios/02-ratios-as-boxes/"
       },
       {
@@ -552,7 +552,7 @@
         "slug": "03-rates-and-scaling",
         "title": "Rates and Scaling",
         "summary": "Find the cost or amount for one, and scale up or down. Learn why growing means multiplying, not adding.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/fractions-ratios/03-rates-and-scaling/"
       },
       {
@@ -567,7 +567,7 @@
         "slug": "04-percents",
         "title": "Percents",
         "summary": "A percent is a fraction out of 100. Build percents from easy pieces, and watch out for percents of a number that has changed.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/fractions-ratios/04-percents/"
       },
       {
@@ -582,7 +582,7 @@
         "slug": "01-perimeter-and-area",
         "title": "Perimeter and Area",
         "summary": "Understand the difference between the distance around a shape and the space inside it, and see why knowing one doesn't tell you the other.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/basic-geometry/01-perimeter-and-area/"
       },
       {
@@ -597,7 +597,7 @@
         "slug": "02-triangle-area",
         "title": "Triangle Area and Helper Lines",
         "summary": "See why a triangle is half of a rectangle, what height really means, and how drawing one extra line can solve a problem.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/basic-geometry/02-triangle-area/"
       },
       {
@@ -612,7 +612,7 @@
         "slug": "03-angle-facts",
         "title": "Three Angle Facts",
         "summary": "Learn the three angle facts that solve most beginner problems, see why they're true, and fill in a diagram one step at a time.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/basic-geometry/03-angle-facts/"
       },
       {
@@ -627,7 +627,7 @@
         "slug": "04-split-or-subtract",
         "title": "Split It or Subtract It",
         "summary": "Find the area of an unusual shape in two ways. Split it into pieces you know, or subtract the part you don't want.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/basic-geometry/04-split-or-subtract/"
       },
       {
@@ -642,7 +642,7 @@
         "slug": "05-right-triangles",
         "title": "A First Look at Right Triangles",
         "summary": "Use the Pythagorean Theorem to find a missing side of a right triangle, and learn the whole-number triangles that contests love.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/basic-geometry/05-right-triangles/"
       },
       {
@@ -657,7 +657,7 @@
         "slug": "01-repeating-and-growing",
         "title": "Repeating and Growing Patterns",
         "summary": "Use remainders to jump ahead in a repeating pattern, and learn how to reach the 100th term of a growing one without off-by-one mistakes.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/logic-patterns/01-repeating-and-growing/"
       },
       {
@@ -672,7 +672,7 @@
         "slug": "02-small-cases",
         "title": "Try Small, Then Ask Why",
         "summary": "When a problem looks huge, solve tiny versions of it and look for a pattern. Then find the reason, because patterns can fool you.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/logic-patterns/02-small-cases/"
       },
       {
@@ -687,7 +687,7 @@
         "slug": "03-working-backwards",
         "title": "Working Backwards",
         "summary": "When a problem tells you how something ended, start at the end and undo each step in reverse order.",
-        "minutes": 8,
+        "minutes": 10,
         "path": "pathway/logic-patterns/03-working-backwards/"
       },
       {
@@ -702,7 +702,7 @@
         "slug": "04-logic-tables-pigeonholes",
         "title": "Logic Tables and Pigeonholes",
         "summary": "Organize clues in a table, test every case when someone may be lying, and use the pigeonhole principle to prove that something must happen.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/logic-patterns/04-logic-tables-pigeonholes/"
       },
       {
@@ -717,7 +717,7 @@
         "slug": "01-count-what-you-want",
         "title": "Count What You Want",
         "summary": "Probability is counting twice. Count the outcomes you want, count all of the outcomes, and divide.",
-        "minutes": 8,
+        "minutes": 10,
         "path": "pathway/intro-probability/01-count-what-you-want/"
       },
       {
@@ -732,7 +732,7 @@
         "slug": "02-list-the-real-outcomes",
         "title": "List the Real Outcomes",
         "summary": "Two coins can land three ways, so why isn't each way one third? Learn to list outcomes that really are equally likely, using the two-dice table.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/intro-probability/02-list-the-real-outcomes/"
       },
       {
@@ -747,7 +747,7 @@
         "slug": "03-trees-and-multiplying",
         "title": "Tree Diagrams and Multiplying",
         "summary": "Draw a tree for chance with several steps. Multiply along a path, add between paths, and account for what changes when a marble isn't put back.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/intro-probability/03-trees-and-multiplying/"
       },
       {
@@ -762,7 +762,7 @@
         "slug": "04-one-minus",
         "title": "One Minus the Chance It Doesn't Happen",
         "summary": "When you see \"at least one,\" flip the question. Find the chance of \"none,\" subtract from 1, and tie it back to counting the opposite.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/intro-probability/04-one-minus/"
       },
       {
@@ -778,7 +778,7 @@
         "slug": "01-solving-and-translating",
         "title": "Solving and Translating",
         "summary": "Use a letter for the number you don't know, solve equations by keeping them balanced, and turn English sentences into math.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/equations-word-problems/01-solving-and-translating/"
       },
       {
@@ -794,7 +794,7 @@
         "slug": "02-age-and-number-stories",
         "title": "Age and Number Stories",
         "summary": "Organize stories about ages and digits in a table, so that each sentence turns into one clean equation.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/equations-word-problems/02-age-and-number-stories/"
       },
       {
@@ -810,7 +810,7 @@
         "slug": "03-distance-rate-time",
         "title": "Distance, Speed and Time",
         "summary": "Use one formula for every motion problem, and avoid the most famous trap, which is averaging two speeds.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/equations-word-problems/03-distance-rate-time/"
       },
       {
@@ -826,7 +826,7 @@
         "slug": "04-two-unknowns",
         "title": "Two Unknowns at Once",
         "summary": "Solve problems with two unknown numbers, by rewriting one in terms of the other or by adding equations together.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/equations-word-problems/04-two-unknowns/"
       },
       {
@@ -842,7 +842,7 @@
         "slug": "05-work-rates",
         "title": "Working Together",
         "summary": "Find how long a job takes when people work together by asking how much each one gets done in one hour.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/equations-word-problems/05-work-rates/"
       },
       {
@@ -858,7 +858,7 @@
         "slug": "01-overlaps",
         "title": "Overlaps and Venn Diagrams",
         "summary": "Count groups that overlap without double counting, using Venn diagrams filled in from the middle out.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/smart-counting/01-overlaps/"
       },
       {
@@ -874,7 +874,7 @@
         "slug": "02-restrictions",
         "title": "Counting With Rules",
         "summary": "Handle lineups with rules by gluing together people who must sit together, and by placing others into gaps to keep them apart.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/smart-counting/02-restrictions/"
       },
       {
@@ -890,7 +890,7 @@
         "slug": "03-repeats",
         "title": "Arrangements With Repeats",
         "summary": "Count arrangements of things that repeat by dividing out swaps, and see how this connects to choosing spots.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/smart-counting/03-repeats/"
       },
       {
@@ -906,7 +906,7 @@
         "slug": "04-grid-paths",
         "title": "Grid Paths and Choosing With Conditions",
         "summary": "Count routes on a street grid, then combine several choices at once when groups must follow rules.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/smart-counting/04-grid-paths/"
       },
       {
@@ -922,7 +922,7 @@
         "slug": "01-prime-factorization",
         "title": "Prime Factorization",
         "summary": "Every whole number is built from primes in exactly one way. Learn to find a number's prime factors, and use them to answer questions quickly.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/primes-remainders/01-prime-factorization/"
       },
       {
@@ -938,7 +938,7 @@
         "slug": "02-counting-divisors",
         "title": "Counting Divisors and Factorial Zeros",
         "summary": "Count a number's factors in seconds, without listing them, and find how many zeros a huge factorial ends with.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/primes-remainders/02-counting-divisors/"
       },
       {
@@ -954,7 +954,7 @@
         "slug": "03-gcf-and-lcm",
         "title": "GCF and LCM",
         "summary": "Find the greatest common factor and least common multiple using primes, and learn how to tell which one a word problem needs.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/primes-remainders/03-gcf-and-lcm/"
       },
       {
@@ -970,7 +970,7 @@
         "slug": "04-units-digits-and-remainders",
         "title": "Units Digits and Remainder Arithmetic",
         "summary": "Find the last digit of enormous powers, and do arithmetic using only remainders.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/primes-remainders/04-units-digits-and-remainders/"
       },
       {
@@ -986,7 +986,7 @@
         "slug": "05-factorial-zeros",
         "title": "Zeros at the End of a Factorial",
         "summary": "Count the zeros at the end of a huge factorial by counting factors of 5, and find how many times any prime divides a factorial.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/primes-remainders/05-factorial-zeros/"
       },
       {
@@ -1002,7 +1002,7 @@
         "slug": "01-angle-chasing",
         "title": "Angle Chasing",
         "summary": "Find unknown angles one step at a time using outside angles, parallel lines, and the angle sum of any polygon.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/triangles/01-angle-chasing/"
       },
       {
@@ -1018,7 +1018,7 @@
         "slug": "02-pythagoras-why",
         "title": "Why Pythagoras Works",
         "summary": "See a picture that proves the Pythagorean Theorem, and learn the two special right triangles that contests use most.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/triangles/02-pythagoras-why/"
       },
       {
@@ -1034,7 +1034,7 @@
         "slug": "03-helper-lines",
         "title": "Helper Lines and Area Two Ways",
         "summary": "Draw a height to create a right triangle, find a triangle's area two different ways, and use the triangle inequality.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/triangles/03-helper-lines/"
       },
       {
@@ -1050,7 +1050,7 @@
         "slug": "04-similar-triangles",
         "title": "Similar Triangles",
         "summary": "Spot triangles with the same shape, use scale factors to find lengths you can't measure, and see why area grows by the square of the scale factor.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/triangles/04-similar-triangles/"
       },
       {
@@ -1066,7 +1066,7 @@
         "slug": "05-angle-bisector",
         "title": "The Angle Bisector Theorem",
         "summary": "A line that cuts a triangle's angle in half splits the opposite side in the same ratio as the two nearby sides. Learn why, and how to use it.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/triangles/05-angle-bisector/"
       },
       {
@@ -1082,7 +1082,7 @@
         "slug": "01-circle-formulas",
         "title": "Circle Formulas and Scaling",
         "summary": "Understand what pi really is, and why the circumference and area formulas work. Then see what happens when a circle grows.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/circles-solids/01-circle-formulas/"
       },
       {
@@ -1098,7 +1098,7 @@
         "slug": "02-shaded-regions",
         "title": "Shaded Regions",
         "summary": "Find the area of strange-looking shaded shapes by subtracting, by moving pieces around, or by splitting them up.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/circles-solids/02-shaded-regions/"
       },
       {
@@ -1114,7 +1114,7 @@
         "slug": "03-sectors-and-probability",
         "title": "Slices of Circles and Probability With Area",
         "summary": "Treat a slice of a circle as a fraction of the whole, and use area to find probabilities when there's nothing to count.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/circles-solids/03-sectors-and-probability/"
       },
       {
@@ -1130,7 +1130,7 @@
         "slug": "04-boxes-and-3d",
         "title": "Boxes, Cylinders and Picturing 3D",
         "summary": "Find volume by stacking layers and surface area by unfolding. Then learn to reason about shapes you can't see all of.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/circles-solids/04-boxes-and-3d/"
       },
       {
@@ -1146,7 +1146,7 @@
         "slug": "01-the-total-trick",
         "title": "The Total Trick",
         "summary": "An average hides a total. Multiply to find it, and most average problems become one or two lines.",
-        "minutes": 8,
+        "minutes": 10,
         "path": "pathway/data-chance/01-the-total-trick/"
       },
       {
@@ -1162,7 +1162,7 @@
         "slug": "02-median-tables-graphs",
         "title": "Median, Mode, Tables and Graphs",
         "summary": "Find the middle and the most common values, and read tables and graphs carefully, because that's where many points get lost.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/data-chance/02-median-tables-graphs/"
       },
       {
@@ -1178,7 +1178,7 @@
         "slug": "03-multi-step-chance",
         "title": "Chance With Several Steps",
         "summary": "Use bigger trees to handle choices that lead to different situations, and add up every path that gets you what you want.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/data-chance/03-multi-step-chance/"
       },
       {
@@ -1194,7 +1194,7 @@
         "slug": "04-expected-value",
         "title": "Expected Value",
         "summary": "Find what happens on average in a game of chance, and use casework to count your way through harder probability.",
-        "minutes": 9,
+        "minutes": 11,
         "path": "pathway/data-chance/04-expected-value/"
       },
       {
@@ -1210,7 +1210,7 @@
         "slug": "01-if-then-reasoning",
         "title": "If-Then Reasoning",
         "summary": "Learn which statements mean the same thing as an if-then rule, how to test a rule, and how to prove a claim false with one example.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/logic-puzzles/01-if-then-reasoning/"
       },
       {
@@ -1226,7 +1226,7 @@
         "slug": "02-truth-tellers-and-liars",
         "title": "Truth-Tellers and Liars",
         "summary": "Solve puzzles about people who always lie or always tell the truth by assuming a case, following it, and watching for a contradiction.",
-        "minutes": 11,
+        "minutes": 13,
         "path": "pathway/logic-puzzles/02-truth-tellers-and-liars/"
       },
       {
@@ -1242,7 +1242,7 @@
         "slug": "03-ordering-and-seating",
         "title": "Ordering and Seating Puzzles",
         "summary": "Turn clues about who came first or who sits where into a picture, separate what must be true from what could be true, and count the arrangements left.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/logic-puzzles/03-ordering-and-seating/"
       },
       {
@@ -1257,7 +1257,7 @@
         "slug": "01-difference-of-squares",
         "title": "Multiplying Out and Difference of Squares",
         "summary": "Learn how two sums multiply, and then use the most useful pattern in contest algebra to turn huge calculations into quick ones.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/algebra-toolkit/01-difference-of-squares/"
       },
       {
@@ -1272,7 +1272,7 @@
         "slug": "02-perfect-squares",
         "title": "Perfect Squares and the Missing Piece",
         "summary": "Squaring a sum has a middle part that people forget. Use that middle part to find values without ever solving for x or y.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/algebra-toolkit/02-perfect-squares/"
       },
       {
@@ -1287,7 +1287,7 @@
         "slug": "03-quadratics-and-vieta",
         "title": "Quadratics and Vieta's Formulas",
         "summary": "Solve quadratic equations by factoring, and learn what a quadratic's solutions add up to and multiply to, without finding them.",
-        "minutes": 11,
+        "minutes": 13,
         "path": "pathway/algebra-toolkit/03-quadratics-and-vieta/"
       },
       {
@@ -1302,7 +1302,7 @@
         "slug": "04-add-one-and-telescoping",
         "title": "Add-One Factoring and Telescoping",
         "summary": "Two clever tricks. Add a number to make an expression factor, and watch long products and sums collapse.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/algebra-toolkit/04-add-one-and-telescoping/"
       },
       {
@@ -1317,7 +1317,7 @@
         "slug": "05-am-gm-inequality",
         "title": "Biggest and Smallest Values: AM-GM",
         "summary": "Use the AM-GM inequality to find the largest product for a fixed sum and the smallest sum for a fixed product, without trying every case.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/algebra-toolkit/05-am-gm-inequality/"
       },
       {
@@ -1332,7 +1332,7 @@
         "slug": "01-mod-notation",
         "title": "Mod Notation and the Rules",
         "summary": "Learn the language of remainders, and find out which operations you can do with remainders alone, and which one you can't.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/modular-arithmetic/01-mod-notation/"
       },
       {
@@ -1347,7 +1347,7 @@
         "slug": "02-giant-powers",
         "title": "Giant Powers",
         "summary": "Find the remainder of enormous powers using cycles, stepping stones, and the trick of replacing a base with negative 1.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/modular-arithmetic/02-giant-powers/"
       },
       {
@@ -1362,7 +1362,7 @@
         "slug": "03-several-conditions",
         "title": "Several Conditions at Once",
         "summary": "Find a number that satisfies several remainder conditions by sieving, and learn when a solution has to exist.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/modular-arithmetic/03-several-conditions/"
       },
       {
@@ -1377,7 +1377,7 @@
         "slug": "04-other-bases",
         "title": "Numbers in Other Bases",
         "summary": "See how our number system works by trying a different one. Convert between bases, and use base 2 to count and solve problems.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/modular-arithmetic/04-other-bases/"
       },
       {
@@ -1392,7 +1392,7 @@
         "slug": "05-fermat-and-euler",
         "title": "Fermat's and Euler's Theorems",
         "summary": "Skip the search for a cycle by using Fermat's Little Theorem and Euler's theorem, which tell you a power that always leaves a remainder of 1.",
-        "minutes": 11,
+        "minutes": 13,
         "path": "pathway/modular-arithmetic/05-fermat-and-euler/"
       },
       {
@@ -1407,7 +1407,7 @@
         "slug": "01-arithmetic-sequences",
         "title": "Arithmetic Sequences",
         "summary": "Find any term of a list that grows by the same amount each time, and work out the pattern from only two of its terms.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/sequences-series/01-arithmetic-sequences/"
       },
       {
@@ -1422,7 +1422,7 @@
         "slug": "02-fast-sums",
         "title": "Adding Long Lists Fast",
         "summary": "Add an arithmetic sequence in one step by pairing the outside terms, and see why the average of the list does all of the work.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/sequences-series/02-fast-sums/"
       },
       {
@@ -1437,7 +1437,7 @@
         "slug": "03-geometric-sequences",
         "title": "Geometric Sequences",
         "summary": "Work with lists that multiply by the same number each time, add them up with a neat trick, and even add up lists that never end.",
-        "minutes": 11,
+        "minutes": 13,
         "path": "pathway/sequences-series/03-geometric-sequences/"
       },
       {
@@ -1452,7 +1452,7 @@
         "slug": "04-recursive-and-special",
         "title": "Lists Built From a Rule",
         "summary": "Follow rules that build each term from the ones before it, find hidden cycles, and watch sums collapse when terms cancel.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/sequences-series/04-recursive-and-special/"
       },
       {
@@ -1467,7 +1467,7 @@
         "slug": "01-pascal-and-binomials",
         "title": "Pascal's Triangle and Binomials",
         "summary": "See how choosing groups builds a famous triangle of numbers, and use it to count subsets and multiply out powers without doing the algebra.",
-        "minutes": 11,
+        "minutes": 13,
         "path": "pathway/advanced-counting/01-pascal-and-binomials/"
       },
       {
@@ -1482,7 +1482,7 @@
         "slug": "02-stars-and-bars",
         "title": "Stars and Bars",
         "summary": "Count the ways to share identical things among people, by turning the problem into choosing spots in a row.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/advanced-counting/02-stars-and-bars/"
       },
       {
@@ -1497,7 +1497,7 @@
         "slug": "03-counting-step-by-step",
         "title": "Counting Step by Step",
         "summary": "Count huge numbers of possibilities by asking how the last step could have happened, and building up from small cases. This is called recursion.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/advanced-counting/03-counting-step-by-step/"
       },
       {
@@ -1512,7 +1512,7 @@
         "slug": "04-harder-probability",
         "title": "Harder Probability With Counting",
         "summary": "Combine all of your counting tools with probability, so that hard-looking chance questions become two counts and a fraction.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/advanced-counting/04-harder-probability/"
       },
       {
@@ -1527,7 +1527,7 @@
         "slug": "05-linearity-of-expectation",
         "title": "Linearity of Expectation",
         "summary": "Find an expected count by splitting it into simple yes-or-no pieces and adding their probabilities, even when the pieces depend on each other.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/advanced-counting/05-linearity-of-expectation/"
       },
       {
@@ -1542,7 +1542,7 @@
         "slug": "01-similarity-tools",
         "title": "Stronger Similarity Tools",
         "summary": "Go beyond shadows. Find hidden similar triangles in right triangles and crossing lines, and use them to get lengths you couldn't find any other way.",
-        "minutes": 11,
+        "minutes": 13,
         "path": "pathway/similar-shapes-circles/01-similarity-tools/"
       },
       {
@@ -1557,7 +1557,7 @@
         "slug": "02-inscribed-angles",
         "title": "Angles Inside a Circle",
         "summary": "Learn why an angle at the edge of a circle is half of the angle at the center, and use it to find angles that seem to have no connection.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/similar-shapes-circles/02-inscribed-angles/"
       },
       {
@@ -1572,7 +1572,7 @@
         "slug": "03-chords-and-tangents",
         "title": "Chords and Tangents",
         "summary": "Find lengths in circles using right angles at tangent points, equal tangents, and the products of pieces of crossing chords.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/similar-shapes-circles/03-chords-and-tangents/"
       },
       {
@@ -1587,7 +1587,7 @@
         "slug": "04-mixed-circle-problems",
         "title": "Circles With Other Shapes",
         "summary": "Find the circle inside or around a triangle, work with circles that touch, and combine everything from this unit.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/similar-shapes-circles/04-mixed-circle-problems/"
       },
       {
@@ -1602,7 +1602,7 @@
         "slug": "05-heron-and-inradius",
         "title": "Heron's Formula and the Circle Inside",
         "summary": "Find a triangle's area from its three sides alone, then use that area to find any height and the radius of the circle inside the triangle.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/similar-shapes-circles/05-heron-and-inradius/"
       },
       {
@@ -1617,7 +1617,7 @@
         "slug": "01-lines-and-slopes",
         "title": "Lines and Slopes",
         "summary": "Describe any straight line with two numbers. Then find where lines meet, tell when they're parallel or perpendicular, and count grid points on a line.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/coordinate-geometry/01-lines-and-slopes/"
       },
       {
@@ -1632,7 +1632,7 @@
         "slug": "02-distance-midpoints-circles",
         "title": "Distance, Midpoints and Circles",
         "summary": "Find the distance between two points with the Pythagorean Theorem, find midpoints by averaging, and write a circle as an equation.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/coordinate-geometry/02-distance-midpoints-circles/"
       },
       {
@@ -1647,7 +1647,7 @@
         "slug": "03-areas-on-a-grid",
         "title": "Areas on a Grid",
         "summary": "Find the area of a tilted shape by boxing it in, or by using a neat pattern called the shoelace method.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/coordinate-geometry/03-areas-on-a-grid/"
       },
       {
@@ -1662,7 +1662,7 @@
         "slug": "04-geometry-with-coordinates",
         "title": "Solving Geometry With Coordinates",
         "summary": "When a geometry problem feels stuck, put it on a grid. Choose smart coordinates, then let algebra find the answer. Learn reflections and rotations too.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/coordinate-geometry/04-geometry-with-coordinates/"
       },
       {
@@ -1677,7 +1677,7 @@
         "slug": "01-pigeonhole-power",
         "title": "Pigeonhole Power",
         "summary": "Use the stronger form of the pigeonhole principle, choose clever boxes such as pairs and remainders, and prove that an answer is the smallest possible.",
-        "minutes": 11,
+        "minutes": 13,
         "path": "pathway/pigeonholes-invariants/01-pigeonhole-power/"
       },
       {
@@ -1692,7 +1692,7 @@
         "slug": "02-parity-and-invariants",
         "title": "Parity and Invariants",
         "summary": "Prove that something can never happen by finding a quantity that doesn't change, using coloring, odd and even, and remainders.",
-        "minutes": 11,
+        "minutes": 13,
         "path": "pathway/pigeonholes-invariants/02-parity-and-invariants/"
       },
       {
@@ -1707,8 +1707,776 @@
         "slug": "03-winning-games",
         "title": "Winning Games",
         "summary": "Work backward from the end of a game to label every position as winning or losing, find the pattern, and use it or copy your opponent to win.",
-        "minutes": 10,
+        "minutes": 12,
         "path": "pathway/pigeonholes-invariants/03-winning-games/"
+      }
+    ]
+  },
+  "es": {
+    "units": [
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "slug": "counting",
+        "title": "Conteo",
+        "review": false,
+        "lessons": 5,
+        "problems": 30
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "slug": "number-sense",
+        "title": "Sentido numérico",
+        "review": false,
+        "lessons": 4,
+        "problems": 30
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "slug": "fractions-ratios",
+        "title": "Fracciones y razones",
+        "review": false,
+        "lessons": 4,
+        "problems": 30
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "slug": "basic-geometry",
+        "title": "Geometría básica",
+        "review": false,
+        "lessons": 5,
+        "problems": 30
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "slug": "logic-patterns",
+        "title": "Lógica y patrones",
+        "review": false,
+        "lessons": 4,
+        "problems": 30
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "slug": "intro-probability",
+        "title": "Introducción a la probabilidad",
+        "review": false,
+        "lessons": 4,
+        "problems": 30
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "slug": "level-1-review",
+        "title": "Repaso mixto del Nivel 1",
+        "review": true,
+        "lessons": 0,
+        "problems": 20
+      },
+      {
+        "level": 2,
+        "levelTitle": "Nivel 2: Listo para concursar",
+        "difficulty": "Intermedio",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "slug": "equations-word-problems",
+        "title": "Ecuaciones y problemas verbales",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 2,
+        "levelTitle": "Nivel 2: Listo para concursar",
+        "difficulty": "Intermedio",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "slug": "smart-counting",
+        "title": "Conteo inteligente",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 2,
+        "levelTitle": "Nivel 2: Listo para concursar",
+        "difficulty": "Intermedio",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "slug": "primes-remainders",
+        "title": "Primos y residuos",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 2,
+        "levelTitle": "Nivel 2: Listo para concursar",
+        "difficulty": "Intermedio",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "slug": "triangles",
+        "title": "Triángulos",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 2,
+        "levelTitle": "Nivel 2: Listo para concursar",
+        "difficulty": "Intermedio",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "slug": "circles-solids",
+        "title": "Círculos y sólidos",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 2,
+        "levelTitle": "Nivel 2: Listo para concursar",
+        "difficulty": "Intermedio",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "slug": "data-chance",
+        "title": "Promedios, datos y azar",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 2,
+        "levelTitle": "Nivel 2: Listo para concursar",
+        "difficulty": "Intermedio",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "slug": "logic-puzzles",
+        "title": "Acertijos de lógica",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 2,
+        "levelTitle": "Nivel 2: Listo para concursar",
+        "difficulty": "Intermedio",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "slug": "level-2-review",
+        "title": "Repaso mixto del Nivel 2",
+        "review": true,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 3,
+        "levelTitle": "Nivel 3: Camino al AMC 10",
+        "difficulty": "Avanzado",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "algebra-toolkit",
+        "title": "Herramientas de álgebra",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 3,
+        "levelTitle": "Nivel 3: Camino al AMC 10",
+        "difficulty": "Avanzado",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "modular-arithmetic",
+        "title": "Aritmética modular y bases",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 3,
+        "levelTitle": "Nivel 3: Camino al AMC 10",
+        "difficulty": "Avanzado",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "sequences-series",
+        "title": "Sucesiones y series",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 3,
+        "levelTitle": "Nivel 3: Camino al AMC 10",
+        "difficulty": "Avanzado",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "advanced-counting",
+        "title": "Conteo avanzado",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 3,
+        "levelTitle": "Nivel 3: Camino al AMC 10",
+        "difficulty": "Avanzado",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "similar-shapes-circles",
+        "title": "Figuras semejantes y teoremas del círculo",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 3,
+        "levelTitle": "Nivel 3: Camino al AMC 10",
+        "difficulty": "Avanzado",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "coordinate-geometry",
+        "title": "Geometría de coordenadas",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 3,
+        "levelTitle": "Nivel 3: Camino al AMC 10",
+        "difficulty": "Avanzado",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "pigeonholes-invariants",
+        "title": "Palomares, invariantes y juegos",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 3,
+        "levelTitle": "Nivel 3: Camino al AMC 10",
+        "difficulty": "Avanzado",
+        "competitions": [
+          "AMC 10"
+        ],
+        "slug": "level-3-review",
+        "title": "Repaso mixto del Nivel 3",
+        "review": true,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 4,
+        "levelTitle": "Nivel 4: Hacia el AMC 12",
+        "difficulty": "Experto",
+        "competitions": [
+          "AMC 12"
+        ],
+        "slug": "expected-value",
+        "title": "Valor esperado y estados de probabilidad",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 4,
+        "levelTitle": "Nivel 4: Hacia el AMC 12",
+        "difficulty": "Experto",
+        "competitions": [
+          "AMC 12"
+        ],
+        "slug": "polynomials",
+        "title": "Polinomios",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 4,
+        "levelTitle": "Nivel 4: Hacia el AMC 12",
+        "difficulty": "Experto",
+        "competitions": [
+          "AMC 12"
+        ],
+        "slug": "logarithms",
+        "title": "Logaritmos",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 4,
+        "levelTitle": "Nivel 4: Hacia el AMC 12",
+        "difficulty": "Experto",
+        "competitions": [
+          "AMC 12"
+        ],
+        "slug": "trigonometry",
+        "title": "Trigonometría",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      },
+      {
+        "level": 4,
+        "levelTitle": "Nivel 4: Hacia el AMC 12",
+        "difficulty": "Experto",
+        "competitions": [
+          "AMC 12"
+        ],
+        "slug": "complex-numbers",
+        "title": "Números complejos",
+        "review": false,
+        "lessons": 0,
+        "problems": 0
+      }
+    ],
+    "lessons": [
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "counting",
+        "topic": "Conteo",
+        "slug": "01-multiply-choices",
+        "title": "El truco de multiplicar",
+        "summary": "Aprende la idea detrás de la mayoría de los problemas de conteo. Cuando haces elecciones una tras otra, multiplica.",
+        "minutes": 12,
+        "path": "pathway/counting/01-multiply-choices/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "counting",
+        "topic": "Conteo",
+        "slug": "02-when-order-matters",
+        "title": "Cuando el orden importa",
+        "summary": "Cuenta filas y ordenamientos, donde cada elección gasta una opción, y descubre por qué funciona n factorial.",
+        "minutes": 12,
+        "path": "pathway/counting/02-when-order-matters/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "counting",
+        "topic": "Conteo",
+        "slug": "03-overcount-then-divide",
+        "title": "Cuenta de más y luego divide",
+        "summary": "Cuando el orden no importa, cuenta como si importara y luego divide entre las repeticiones. De aquí sale la fórmula de \"combinaciones\".",
+        "minutes": 13,
+        "path": "pathway/counting/03-overcount-then-divide/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "counting",
+        "topic": "Conteo",
+        "slug": "04-count-the-opposite",
+        "title": "Cuenta lo contrario",
+        "summary": "Cuando lo que quieres es complicado pero lo que no quieres es sencillo, cuenta todo y resta.",
+        "minutes": 12,
+        "path": "pathway/counting/04-count-the-opposite/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "counting",
+        "topic": "Conteo",
+        "slug": "05-split-into-cases",
+        "title": "Divide en casos",
+        "summary": "Cuando una regla complica un problema, divídelo en casos separados, cuenta cada uno y suma.",
+        "minutes": 12,
+        "path": "pathway/counting/05-split-into-cases/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "number-sense",
+        "topic": "Sentido numérico",
+        "slug": "01-place-value",
+        "title": "Valor posicional: lo que de verdad significan los dígitos",
+        "summary": "Descubre que un número es la suma de sus valores posicionales. Esa idea resuelve acertijos de dígitos y explica por qué funcionan muchos atajos.",
+        "minutes": 12,
+        "path": "pathway/number-sense/01-place-value/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "number-sense",
+        "topic": "Sentido numérico",
+        "slug": "02-mental-math",
+        "title": "Atajos de cálculo mental",
+        "summary": "En estos concursos no se permiten calculadoras. Aprende a reacomodar los problemas para que las cuentas sean fáciles y te equivoques menos.",
+        "minutes": 12,
+        "path": "pathway/number-sense/02-mental-math/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "number-sense",
+        "topic": "Sentido numérico",
+        "slug": "03-divisibility-rules",
+        "title": "Reglas de divisibilidad y por qué funcionan",
+        "summary": "Descubre si un número grande se divide exactamente sin hacer la división larga, y usa el valor posicional para ver por qué las reglas son ciertas.",
+        "minutes": 13,
+        "path": "pathway/number-sense/03-divisibility-rules/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "number-sense",
+        "topic": "Sentido numérico",
+        "slug": "04-factors-primes-leftovers",
+        "title": "Factores, primos y sobrantes",
+        "summary": "Los factores vienen en parejas, así que puedes encontrarlos todos sin que se te escape ninguno. Luego ve cómo los primos y los sobrantes encajan en la misma idea.",
+        "minutes": 13,
+        "path": "pathway/number-sense/04-factors-primes-leftovers/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "fractions-ratios",
+        "topic": "Fracciones y razones",
+        "slug": "01-equal-groups",
+        "title": "Las fracciones como grupos iguales",
+        "summary": "Descubre lo que de verdad significa una fracción. Luego encuentra la fracción de un número, compara fracciones y súmalas sin cometer los errores más comunes.",
+        "minutes": 13,
+        "path": "pathway/fractions-ratios/01-equal-groups/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "fractions-ratios",
+        "topic": "Fracciones y razones",
+        "slug": "02-ratios-as-boxes",
+        "title": "Las razones como cajas",
+        "summary": "Una razón te dice cómo formar grupos iguales. Dibuja cajas, descubre qué va en una caja, y la mayoría de los problemas de razones se resuelven solos.",
+        "minutes": 12,
+        "path": "pathway/fractions-ratios/02-ratios-as-boxes/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "fractions-ratios",
+        "topic": "Fracciones y razones",
+        "slug": "03-rates-and-scaling",
+        "title": "Tasas y escalas",
+        "summary": "Encuentra el costo o la cantidad de uno, y escala hacia arriba o hacia abajo. Aprende por qué crecer significa multiplicar, no sumar.",
+        "minutes": 12,
+        "path": "pathway/fractions-ratios/03-rates-and-scaling/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "fractions-ratios",
+        "topic": "Fracciones y razones",
+        "slug": "04-percents",
+        "title": "Porcentajes",
+        "summary": "Un porcentaje es una fracción de 100. Arma los porcentajes con pedazos fáciles, y ten cuidado con los porcentajes de un número que ya cambió.",
+        "minutes": 12,
+        "path": "pathway/fractions-ratios/04-percents/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "basic-geometry",
+        "topic": "Geometría básica",
+        "slug": "01-perimeter-and-area",
+        "title": "Perímetro y área",
+        "summary": "Entiende la diferencia entre la distancia alrededor de una figura y el espacio de adentro, y por qué conocer uno no te dice el otro.",
+        "minutes": 12,
+        "path": "pathway/basic-geometry/01-perimeter-and-area/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "basic-geometry",
+        "topic": "Geometría básica",
+        "slug": "02-triangle-area",
+        "title": "El área del triángulo y las líneas auxiliares",
+        "summary": "Descubre por qué un triángulo es la mitad de un rectángulo, qué significa en realidad la altura y cómo una línea extra puede resolver un problema.",
+        "minutes": 12,
+        "path": "pathway/basic-geometry/02-triangle-area/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "basic-geometry",
+        "topic": "Geometría básica",
+        "slug": "03-angle-facts",
+        "title": "Tres datos sobre los ángulos",
+        "summary": "Aprende los tres datos sobre ángulos que resuelven la mayoría de los problemas para principiantes, descubre por qué son ciertos y completa un diagrama paso a paso.",
+        "minutes": 12,
+        "path": "pathway/basic-geometry/03-angle-facts/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "basic-geometry",
+        "topic": "Geometría básica",
+        "slug": "04-split-or-subtract",
+        "title": "Divídelo o réstalo",
+        "summary": "Encuentra el área de una figura poco común de dos formas. Divídela en partes que conoces, o resta la parte que no quieres.",
+        "minutes": 12,
+        "path": "pathway/basic-geometry/04-split-or-subtract/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "basic-geometry",
+        "topic": "Geometría básica",
+        "slug": "05-right-triangles",
+        "title": "Un primer vistazo a los triángulos rectángulos",
+        "summary": "Usa el teorema de Pitágoras para encontrar un lado que falta en un triángulo rectángulo, y aprende los triángulos de números enteros que tanto les gustan a los concursos.",
+        "minutes": 12,
+        "path": "pathway/basic-geometry/05-right-triangles/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "logic-patterns",
+        "topic": "Lógica y patrones",
+        "slug": "01-repeating-and-growing",
+        "title": "Patrones que se repiten y que crecen",
+        "summary": "Usa los residuos para adelantarte en un patrón que se repite, y aprende a llegar al término 100 de un patrón que crece sin equivocarte por uno.",
+        "minutes": 12,
+        "path": "pathway/logic-patterns/01-repeating-and-growing/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "logic-patterns",
+        "topic": "Lógica y patrones",
+        "slug": "02-small-cases",
+        "title": "Prueba en pequeño y luego pregunta por qué",
+        "summary": "Cuando un problema parece enorme, resuelve versiones diminutas y busca un patrón. Luego encuentra la razón, porque los patrones pueden engañarte.",
+        "minutes": 13,
+        "path": "pathway/logic-patterns/02-small-cases/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "logic-patterns",
+        "topic": "Lógica y patrones",
+        "slug": "03-working-backwards",
+        "title": "Trabajar hacia atrás",
+        "summary": "Cuando un problema te dice cómo terminó algo, empieza por el final y deshaz cada paso en orden inverso.",
+        "minutes": 11,
+        "path": "pathway/logic-patterns/03-working-backwards/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "logic-patterns",
+        "topic": "Lógica y patrones",
+        "slug": "04-logic-tables-pigeonholes",
+        "title": "Tablas de lógica y palomares",
+        "summary": "Organiza las pistas en una tabla, prueba todos los casos cuando alguien podría estar mintiendo, y usa el principio del palomar para demostrar que algo tiene que pasar.",
+        "minutes": 13,
+        "path": "pathway/logic-patterns/04-logic-tables-pigeonholes/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "intro-probability",
+        "topic": "Introducción a la probabilidad",
+        "slug": "01-count-what-you-want",
+        "title": "Cuenta lo que quieres",
+        "summary": "La probabilidad es contar dos veces. Cuenta los resultados que quieres, cuenta todos los resultados y divide.",
+        "minutes": 11,
+        "path": "pathway/intro-probability/01-count-what-you-want/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "intro-probability",
+        "topic": "Introducción a la probabilidad",
+        "slug": "02-list-the-real-outcomes",
+        "title": "Haz la lista de los resultados reales",
+        "summary": "Dos monedas pueden caer de tres formas, así que ¿por qué cada forma no es un tercio? Aprende a hacer listas de resultados que de verdad son igual de probables, con la tabla de los dos dados.",
+        "minutes": 12,
+        "path": "pathway/intro-probability/02-list-the-real-outcomes/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "intro-probability",
+        "topic": "Introducción a la probabilidad",
+        "slug": "03-trees-and-multiplying",
+        "title": "Diagramas de árbol y multiplicar",
+        "summary": "Dibuja un árbol para probabilidades de varios pasos. Multiplica a lo largo de un camino, suma entre caminos, y toma en cuenta lo que cambia cuando no regresas una canica.",
+        "minutes": 13,
+        "path": "pathway/intro-probability/03-trees-and-multiplying/"
+      },
+      {
+        "level": 1,
+        "levelTitle": "Nivel 1: Primeros pasos",
+        "difficulty": "Principiante",
+        "competitions": [
+          "AMC 8"
+        ],
+        "unit": "intro-probability",
+        "topic": "Introducción a la probabilidad",
+        "slug": "04-one-minus",
+        "title": "Uno menos la probabilidad de que no pase",
+        "summary": "Cuando veas \"al menos uno\", voltea la pregunta. Encuentra la probabilidad de \"ninguno\", réstala de 1 y conéctalo con contar lo contrario.",
+        "minutes": 12,
+        "path": "pathway/intro-probability/04-one-minus/"
       }
     ]
   }

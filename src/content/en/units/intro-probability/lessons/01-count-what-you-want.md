@@ -1,7 +1,7 @@
 ---
 title: "Count What You Want"
 summary: Probability is counting twice. Count the outcomes you want, count all of the outcomes, and divide.
-minutes: 8
+minutes: 10
 ---
 
 You have a bag with 3 red marbles and 7 blue ones. Without looking, you pull out one marble. Everyone agrees that blue is more likely. But how much more likely? Probability is the math that puts an exact number on it, and the good news is that you already know most of what you need, because it's built on counting.
@@ -82,6 +82,37 @@ Each letter of the word PROBABILITY is written on its own card, and the cards go
 The probability is $\frac{4}{11}$.
 
 **What if you changed the question?** If it asked for the probability of drawing a B, then you'd need to notice that B appears twice. That's $\frac{2}{11}$, and counting only one of them is a common error.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Counting the outcomes you want can involve an overlap, so watch out for anything that gets counted twice.
+
+**A harder one:** A whole number from 1 to 100 is picked at random. What's the probability that it's a multiple of 3 or a multiple of 5?
+
+**Count each group:**
+
+- Multiples of 3: there are 33, since $3 \times 33 = 99$.
+- Multiples of 5: there are 20, since $5 \times 20 = 100$.
+
+**What got counted twice?** Numbers that are multiples of both, such as 15 and 30. These are the multiples of 15, and there are 6 of them, since $15 \times 6 = 90$.
+
+**Fix the count:** $33 + 20 - 6 = 47$ numbers work.
+
+So the probability is $\frac{47}{100}$.
+
+**Why subtract and not ignore it?** The 6 overlapping numbers are in both lists, so adding the lists counts each of them twice. We want each one counted once, so we take away one copy of them. You'll see more about this in [Overlaps](/pathway/smart-counting/01-overlaps/).
+
+Try this. A number from 1 to 30 is picked at random. What's the probability that it's a multiple of 2 or 3?
+
+<details class="check"><summary>Show the answer</summary>
+
+There are 15 multiples of 2, 10 multiples of 3, and 5 multiples of 6. So $15 + 10 - 5 = 20$ work, and the probability is $\frac{20}{30} = \frac{2}{3}$.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

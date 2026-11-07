@@ -1,7 +1,7 @@
 ---
 title: "Perfect Squares and the Missing Piece"
 summary: Squaring a sum has a middle part that people forget. Use that middle part to find values without ever solving for x or y.
-minutes: 10
+minutes: 12
 ---
 
 If $x + y = 6$ and $xy = 5$, what's $x^2 + y^2$? You could try to figure out $x$ and $y$ first, and in this case they're 1 and 5. But in harder versions of this problem, they aren't whole numbers. They might even be messy. Here's a surprising fact: you don't need them at all. There's a pattern that goes straight from what you know to what you want.
@@ -89,6 +89,36 @@ For how many whole numbers $n$ from 1 to 50 is $n^2 + 6n + 9$ a multiple of 16?
 **How many are there?** As $n$ goes from 1 to 50, $n + 3$ goes from 4 to 53. The multiples of 4 from 4 to 53 are 4, 8, and so on up to 52, and there are $52 \div 4 = 13$ of them.
 
 So there are **13** values.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Perfect squares give you two powerful moves: finding a smallest value, and proving a recipe.
+
+**Finding a smallest value:** What's the smallest possible value of $x^2 - 6x + 13$?
+
+Complete the square. Half of 6 is 3, and $(x - 3)^2 = x^2 - 6x + 9$. So:
+
+$x^2 - 6x + 13 = (x - 3)^2 + 4$
+
+A square is never negative, so the smallest value of $(x - 3)^2$ is 0, at $x = 3$. So the smallest value of the whole expression is **4**.
+
+**Proving a recipe:** In [The Pythagorean Theorem](/pathway/triangles/02-pythagoras-why/), the numbers $m^2 - n^2$, $2mn$, and $m^2 + n^2$ always make a triple. Now we can show why. Expand the squares of the two shorter sides:
+
+$(m^2 - n^2)^2 + (2mn)^2 = m^4 - 2m^2n^2 + n^4 + 4m^2n^2 = m^4 + 2m^2n^2 + n^4$
+
+That last expression is exactly $(m^2 + n^2)^2$. So the recipe works for every choice of $m$ and $n$.
+
+Try this. What's the smallest possible value of $x^2 + 10x + 30$?
+
+<details class="check"><summary>Show the answer</summary>
+
+Since $(x + 5)^2 = x^2 + 10x + 25$, the expression is $(x + 5)^2 + 5$. Its smallest value is 5.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

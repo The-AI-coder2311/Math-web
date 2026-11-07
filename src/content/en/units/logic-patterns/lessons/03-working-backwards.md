@@ -1,7 +1,7 @@
 ---
 title: "Working Backwards"
 summary: When a problem tells you how something ended, start at the end and undo each step in reverse order.
-minutes: 8
+minutes: 10
 ---
 
 Leo spends half of his money on lunch. Then he spends \$3 on a snack. He has \$5 left. How much did he start with? You could guess and check. You could write an equation. Or you could start at the end, where you know exactly how much he has, and walk back through time.
@@ -91,6 +91,38 @@ A frog is at the bottom of a staircase. Each time it hops, it does this: it **do
 - From 1: $0 \div 2 = 0$.
 
 That's 6 steps back to 0, so it took **6 hops**. It would've been hard to go forward without knowing when to stop, but going backwards leaves no choices.
+
+<section data-box="deeper">
+
+## Going deeper
+
+When a problem has "half plus one" steps, you have to undo the operations in the **opposite order**.
+
+**A harder one:** Each day, a baker gives away half of the remaining loaves, plus 1 more. After 3 days, 2 loaves are left. How many were there at the start?
+
+**What does one day do?** It takes half away, and then takes 1 more. To undo it, add the 1 back first, and then double.
+
+| Day | Loaves left at the end | Add 1 | Double, giving the start of the day |
+|---|---|---|---|
+| 3 | 2 | 3 | 6 |
+| 2 | 6 | 7 | 14 |
+| 1 | 14 | 15 | 30 |
+
+So the baker started with **30** loaves.
+
+**Check forward:** From 30, half is 15, plus 1 is 16 given away, leaving 14. From 14, 8 are given away, leaving 6. From 6, 4 are given away, leaving 2. It works.
+
+**The common mistake** is to double first and then add 1. From 2, that gives 5, which isn't even a number you could halve on the way forward.
+
+Try this. Each day, Ria spends half of her money, plus \$2. After 2 days, she has \$3. How much did she start with?
+
+<details class="check"><summary>Show the answer</summary>
+
+Undo day 2: $3 + 2 = 5$, and doubling gives 10. Undo day 1: $10 + 2 = 12$, and doubling gives 24. She started with \$24.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 

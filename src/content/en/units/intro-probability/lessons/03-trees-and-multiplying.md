@@ -1,7 +1,7 @@
 ---
 title: "Tree Diagrams and Multiplying"
 summary: Draw a tree for chance with several steps. Multiply along a path, add between paths, and account for what changes when a marble isn't put back.
-minutes: 10
+minutes: 12
 ---
 
 You pull 2 marbles from a bag of 3 red and 2 blue marbles, and you don't put the first one back. What's the chance that they're both red? It feels like the chance should be $\frac{3}{5}$ each time. But after the first marble is gone, the bag has changed. A tree diagram keeps track of exactly what's happening at each step.
@@ -73,6 +73,35 @@ Spinner A lands on 1, 2, or 3, each equally likely. Spinner B lands on 1 or 2, e
 The even sums are 2, 4, and 4, which is 3 of the 6. So the probability is $\frac{1}{2}$.
 
 **Why is it exactly half?** Whatever spinner A shows, spinner B is odd half of the time and even half of the time, so it decides whether the sum is even. Spotting a reason like that can save a lot of time.
+
+<section data-box="deeper">
+
+## Going deeper
+
+Here's a surprising fact that a tree can prove: when you draw without replacement, the second draw has the same chance as the first, if you don't know how the first one went.
+
+**A harder one:** A bag has 3 red and 2 blue marbles. You draw two, without putting the first one back. What's the probability that the **second** marble is red?
+
+**It seems to depend on the first draw.** So use a tree with both paths that end in red:
+
+- Red, then red: $\frac{3}{5} \times \frac{2}{4} = \frac{6}{20}$
+- Blue, then red: $\frac{2}{5} \times \frac{3}{4} = \frac{6}{20}$
+
+Add the paths: $\frac{6}{20} + \frac{6}{20} = \frac{12}{20} = \frac{3}{5}$.
+
+That's the same as the chance that the **first** marble is red!
+
+**Why?** Imagine laying all 5 marbles out in a random line. The first and second spots are equally likely to hold any marble. So each spot has a $\frac{3}{5}$ chance of being red. The chance only changes once you **know** what the first draw was.
+
+Try this. A bag has 4 red marbles and 1 blue marble. You draw two without replacement. What's the chance that the second one is blue?
+
+<details class="check"><summary>Show the answer</summary>
+
+The only path is red, then blue: $\frac{4}{5} \times \frac{1}{4} = \frac{1}{5}$. That matches the chance of blue on the first draw.
+
+</details>
+
+</section>
 
 <section data-box="traps">
 
