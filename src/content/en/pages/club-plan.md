@@ -126,7 +126,7 @@ Keep scores private. Students could also retake the contest later to see their i
 
 ## Part 2: Weeks 9 to 16
 
-The second half of the plan is for a club that wants to keep going. It moves into Level 2 topics, includes a review week, and runs two mock contests using our free practice tests. The last meeting looks ahead to what comes after the AMC 8.
+The second half of the plan is for a club that wants to keep going. It moves into Level 2 topics, includes a review week, and runs two mock contests using our free practice contests. The last meeting looks ahead to what comes after the AMC 8.
 
 The meeting shape stays the same: a 5-minute warm-up, 10 minutes on the big idea, 20 minutes on the problem set, and 10 minutes to share. The mock contest weeks use a different schedule, shown below.
 
@@ -174,7 +174,7 @@ The meeting shape stays the same: a 5-minute warm-up, 10 minutes on the big idea
 
 **Goal:** Students take a full-length, timed practice contest in a calm, low-stakes way.
 
-This week uses the [Level 1 Practice Test](/contests/level-1-practice-test/): 25 questions, 40 minutes, in the style of the AMC 8. Students can take it online, or you can print the [worksheet version](/teachers/answer-keys/level-1-practice-test/). Plan for a longer meeting, or split it over two meetings.
+This week uses the [Level 1 Practice Contest](/contests/level-1-practice-test/): 25 questions, 40 minutes, in the style of the AMC 8. Students can take it online, or you can print the [worksheet version](/teachers/answer-keys/level-1-practice-test/). Plan for a longer meeting, or split it over two meetings.
 
 | Time | Activity |
 |---|---|

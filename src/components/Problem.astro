@@ -31,7 +31,7 @@ const mistakes = Object.entries(problem.mistakes ?? {});
 ---
 <article class="card problem" id={`p-${problem.slug}`} data-problem data-slug={problem.slug} data-answer={problem.answer}>
   <div class="problem-head">
-    <Heading>{text.problem} {number}</Heading>
+    <Heading>{`${text.problem} ${number}`}</Heading>
     <span class="pill">{text.difficulty[problem.difficulty]}</span>
     <span class="solved-badge" data-solved-badge hidden>&#10003; {text.solved}</span>
   </div>

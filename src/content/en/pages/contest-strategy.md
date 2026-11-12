@@ -13,7 +13,7 @@ On the AMC 8, a correct answer earns 1 point. A wrong answer earns 0, and a blan
 
 So before time runs out, **fill in an answer for every question**. If you can rule out even one choice, your guess gets better.
 
-Other contests can have different rules. On the AMC 10, a blank earns a little, so guessing blindly isn't always worth it. Always read the rules for your contest. Our practice tests tell you the scoring before you start.
+Other contests can have different rules. On the AMC 10, a blank earns a little, so guessing blindly isn't always worth it. Always read the rules for your contest. Our practice contests tell you the scoring before you start.
 
 ## 2. Use the answer choices
 
@@ -33,7 +33,7 @@ Estimating also catches mistakes. If you're finding the area of a small garden a
 
 The questions usually get harder as you go, but not always. Everyone gets stuck sometimes, even on an early question. If you've spent about two minutes on a question and you don't have a plan, **skip it**. Mark it so you can find it again, and move on.
 
-There's a later question you can solve, and it's worth exactly as much as the one you're stuck on. Coming back with fresh eyes often helps, too. On our practice tests, you can mark a question to come back to, and the numbered list at the top shows which ones you marked.
+There's a later question you can solve, and it's worth exactly as much as the one you're stuck on. Coming back with fresh eyes often helps, too. On our practice contests, you can mark a question to come back to, and the numbered list at the top shows which ones you marked.
 
 ## 5. Pace your 40 minutes
 

@@ -54,7 +54,7 @@ export const en = {
     notSure: 'Not sure where to start?',
     placementLink: 'Take the 8-question placement quiz',
     toolsTitle: (level: string) => `More for ${level}`,
-    tests: 'Practice tests',
+    tests: 'Practice contests',
     strategy: 'Contest strategy: how to take a math contest',
     cheatSheet: 'Printable formula and strategy sheet',
     certificate: 'You finished every unit in this level! Print your certificate.',
@@ -65,7 +65,7 @@ export const en = {
       'Your progress is saved only in this browser. To keep going on another computer or phone, make a progress code here and load it there. Nothing is sent anywhere.',
     saveTitle: 'Save my progress code',
     saveText:
-      'This makes a code that holds every problem you solved, every lesson you read, and your best practice test scores. Keep it somewhere safe, like a notebook or a note to yourself.',
+      'This makes a code that holds every problem you solved, every lesson you read, and your best practice contest scores. Keep it somewhere safe, like a notebook or a note to yourself.',
     saveButton: 'Make my progress code',
     codeLabel: 'Your progress code',
     copy: 'Copy the code',
@@ -160,7 +160,7 @@ export const en = {
       'A short lesson on test-taking for math contests like the AMC 8: answer every question, test the answer choices, estimate, skip and come back, and pace your 40 minutes.',
     practiceTitle: 'Practice the strategies',
     practiceIntro: 'These questions are about how to take the test, not about a math topic. Pick an answer and check it.',
-    toTests: 'Try a practice test',
+    toTests: 'Try a practice contest',
   },
   unit: {
     lessons: 'Lessons',
@@ -455,5 +455,7 @@ export const en = {
     title: 'Page not found',
     text: 'That page is not here. Let us get you back on track.',
     home: 'Go to the home page',
+    pathway: 'See every lesson on the Learning Pathway',
+    sitemap: 'Browse the sitemap',
   },
 };

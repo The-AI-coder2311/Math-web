@@ -33,8 +33,7 @@ const tryIt = (await getProblems(lang, unit.slug)).filter((problem) => problem.l
 ---
 <Base title={`${lesson.title}: ${unit.title}`} description={lesson.summary} lang={lang} current="learn">
   <p class="eyebrow">
-    <a href={href(lang, `pathway/${unit.slug}/`)}>{unit.title}</a>
-    &middot; {text.position(index + 1, lessons.length)} &middot; {text.readTime(lesson.minutes)}
+    <a href={href(lang, `pathway/${unit.slug}/`)}>{unit.title}</a>{' '}&middot; {text.position(index + 1, lessons.length)} &middot; {text.readTime(lesson.minutes)}
   </p>
   <h1>{lesson.title}</h1>
   <div class="prose" set:html={lesson.html} />

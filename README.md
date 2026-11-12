@@ -56,7 +56,7 @@ src/
     units/counting/
       lessons/*.md        The unit's lessons, in order (3 to 5 of them)
       problems/*.md       One file per practice problem
-    contests/<name>/      Practice tests: contest.yaml plus problems/*.md
+    contests/<name>/      Practice contests: contest.yaml plus problems/*.md
     problem-sets/*.yaml   Printable sets for teachers, weeks 1 to 16
     pages/*.md            About, Accessibility, Get Involved, contest strategy, teacher pages,
                           club plan, and the recruiting kit
@@ -92,7 +92,7 @@ On GitHub Pages, a site at `https://YOUR-USERNAME.github.io/YOUR-REPO/` can't co
 | Page | Address | Where its content lives |
 |---|---|---|
 | Placement quiz | `/pathway/start/` | `placement.yaml` |
-| Practice tests | `/contests/` | `contests/<name>/` |
+| Practice contests | `/contests/` | `contests/<name>/` |
 | Contest strategy lesson | `/contests/strategy/` | `pages/contest-strategy.md` and `strategy.yaml` |
 | Formula and strategy sheet, one per level | `/pathway/level-1/cheat-sheet/` | Built from each lesson's "Remember this" card |
 | Completion certificate, one per level | `/pathway/level-1/certificate/` | Built from `pathway.yaml`. It unlocks when every problem in the level is solved on that device |
@@ -273,7 +273,7 @@ Spanish pages live at `/es/`, and the language switcher in the header links each
 **Still English-only:**
 
 - Levels 2 and 3 (the Spanish pathway page links to the English units and marks them "solo en inglés")
-- Practice tests and the contest strategy lesson
+- Practice contests and the contest strategy lesson
 - The Formulas page and the Glossary
 - The six-week teaching plans and the weekly problem sets
 - The words inside the SVG diagrams in `public/images/` (each diagram's description is translated)

@@ -8,5 +8,9 @@ const text = t(lang).notFound;
 <Base title={text.title} description={text.text} lang={lang} noindex>
   <h1>{text.title}</h1>
   <p>{text.text}</p>
-  <a class="btn btn-primary" href={href(lang)}>{text.home}</a>
+  <div class="btn-row">
+    <a class="btn btn-primary" href={href(lang)}>{text.home}</a>
+    <a class="btn" href={href(lang, 'pathway/')}>{text.pathway}</a>
+  </div>
+  <p><a href={href(lang, 'sitemap/')}>{text.sitemap}</a></p>
 </Base>

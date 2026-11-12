@@ -56,7 +56,7 @@ export const es: typeof en = {
     notSure: '¿No sabes por dónde empezar?',
     placementLink: 'Haz la prueba de ubicación de 8 preguntas',
     toolsTitle: (level: string) => `Más para ${level}`,
-    tests: 'Exámenes de práctica (en inglés)',
+    tests: 'Concursos de práctica (en inglés)',
     strategy: 'Estrategia para concursos (en inglés)',
     cheatSheet: 'Hoja imprimible de fórmulas y estrategias',
     certificate: '¡Terminaste todas las unidades de este nivel! Imprime tu certificado.',
@@ -67,7 +67,7 @@ export const es: typeof en = {
       'Tu progreso se guarda solo en este navegador. Para seguir en otra computadora o teléfono, crea aquí un código de progreso y cárgalo allá. No se envía nada a ningún lado.',
     saveTitle: 'Guardar mi código de progreso',
     saveText:
-      'Esto crea un código con cada problema que resolviste, cada lección que leíste y tus mejores puntajes en los exámenes de práctica. Guárdalo en un lugar seguro, como un cuaderno o una nota para ti.',
+      'Esto crea un código con cada problema que resolviste, cada lección que leíste y tus mejores puntajes en los concursos de práctica. Guárdalo en un lugar seguro, como un cuaderno o una nota para ti.',
     saveButton: 'Crear mi código de progreso',
     codeLabel: 'Tu código de progreso',
     copy: 'Copiar el código',
@@ -161,7 +161,7 @@ export const es: typeof en = {
     description: 'Una lección corta sobre cómo presentar un concurso de matemáticas.',
     practiceTitle: 'Practica las estrategias',
     practiceIntro: 'Estas preguntas tratan de cómo presentar el examen, no de un tema de matemáticas.',
-    toTests: 'Prueba un examen de práctica',
+    toTests: 'Prueba un concurso de práctica',
   },
   unit: {
     lessons: 'Lecciones',
@@ -451,5 +451,7 @@ export const es: typeof en = {
     title: 'Página no encontrada',
     text: 'Esa página no está aquí. Te ayudamos a regresar.',
     home: 'Ir a la página de inicio',
+    pathway: 'Ver todas las lecciones en la ruta de aprendizaje',
+    sitemap: 'Ver el mapa del sitio',
   },
 };

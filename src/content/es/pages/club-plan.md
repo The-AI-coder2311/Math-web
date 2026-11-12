@@ -127,9 +127,9 @@ Mantén los puntajes en privado. Los estudiantes pueden repetir el concurso más
 
 ## Segunda parte: semanas 9 a 16
 
-La segunda mitad del plan es para un club que quiere seguir. Pasa a temas del Nivel 2, incluye una semana de repaso y organiza dos concursos de prueba con nuestros exámenes de práctica gratis. La última reunión mira hacia lo que viene después del AMC 8.
+La segunda mitad del plan es para un club que quiere seguir. Pasa a temas del Nivel 2, incluye una semana de repaso y organiza dos concursos de prueba con nuestros concursos de práctica gratis. La última reunión mira hacia lo que viene después del AMC 8.
 
-Las reuniones siguen la misma forma: 5 minutos de calentamiento, 10 minutos para la gran idea, 20 minutos con la hoja de problemas y 10 minutos para compartir. Las semanas de concurso de prueba usan otro horario, que aparece abajo. Las unidades del Nivel 2 y los exámenes de práctica están en inglés por ahora.
+Las reuniones siguen la misma forma: 5 minutos de calentamiento, 10 minutos para la gran idea, 20 minutos con la hoja de problemas y 10 minutos para compartir. Las semanas de concurso de prueba usan otro horario, que aparece abajo. Las unidades del Nivel 2 y los concursos de práctica están en inglés por ahora.
 
 ## Semana 9: Ecuaciones y problemas verbales
 
@@ -175,7 +175,7 @@ Las reuniones siguen la misma forma: 5 minutos de calentamiento, 10 minutos para
 
 **Meta:** Los estudiantes presentan un concurso de práctica completo y con tiempo, con calma y sin nada en juego.
 
-Esta semana usa el [Level 1 Practice Test](/contests/level-1-practice-test/) (en inglés): 25 preguntas en 40 minutos, al estilo del AMC 8. Los estudiantes pueden presentarlo en línea, o puedes imprimir la [versión de hoja de trabajo](/teachers/answer-keys/level-1-practice-test/). Planea una reunión más larga o divídela en dos.
+Esta semana usa el [Level 1 Practice Contest](/contests/level-1-practice-test/) (en inglés): 25 preguntas en 40 minutos, al estilo del AMC 8. Los estudiantes pueden presentarlo en línea, o puedes imprimir la [versión de hoja de trabajo](/teachers/answer-keys/level-1-practice-test/). Planea una reunión más larga o divídela en dos.
 
 | Tiempo | Actividad |
 |---|---|
