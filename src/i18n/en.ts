@@ -283,6 +283,17 @@ export const en = {
     skipTip:
       'Stuck on a question? Skip it, or mark it to come back later, and keep going. The numbered list at the top shows which questions you have answered and which you marked.',
     strategyLink: 'New to contests? Read the contest strategy lesson first.',
+    sheetLink: 'Taking it on paper? Print an answer sheet.',
+    sheetTitle: (contest: string) => `Answer Sheet: ${contest}`,
+    sheetDescription: (contest: string, questions: number) =>
+      `A printable answer sheet with ${questions} rows of bubbles for ${contest}, for clubs that run the contest on paper.`,
+    sheetIntro: 'Print one sheet for each student. Fill in one bubble for each question, or leave it blank.',
+    sheetPrint: 'Print this answer sheet',
+    sheetName: 'Name',
+    sheetDate: 'Date',
+    sheetBack: (contest: string) => `Back to ${contest}`,
+    sheetKey: 'Worksheet and answer key for teachers',
+    sheetShort: 'answer sheet',
     flag: 'Mark to come back later',
     flagConfirm: (count: string) => `You marked ${count} question(s) to come back to. Finish anyway?`,
     navLabel: 'Jump to a question',

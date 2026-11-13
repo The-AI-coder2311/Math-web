@@ -33,7 +33,10 @@ const contestKeys = keys.filter((key) => key.kind === 'contest');
     <h2>{text.contestsTitle}</h2>
     <ul class="key-list">
       {contestKeys.map((key) => (
-        <li><a href={href(lang, `teachers/answer-keys/${key.slug}/`)}>{key.title}</a> <span class="muted">({text.questions(key.questions)})</span></li>
+        <li>
+          <a href={href(lang, `teachers/answer-keys/${key.slug}/`)}>{key.title}</a> <span class="muted">({text.questions(key.questions)})</span>
+          &middot; <a href={href(lang, `contests/${key.slug}/answer-sheet/`)} aria-label={all.contests.sheetTitle(key.title)}>{all.contests.sheetShort}</a>
+        </li>
       ))}
     </ul>
   </section>

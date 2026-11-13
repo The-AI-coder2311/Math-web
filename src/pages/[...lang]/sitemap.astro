@@ -67,7 +67,12 @@ const topicsFor = (competition: string) =>
       <h3><a href={href(lang, 'contests/')}>{text.contests}</a></h3>
       <ul>
         <li><a href={href(lang, 'contests/strategy/')}>{all.strategy.title}</a></li>
-        {contests.map((contest) => <li><a href={href(lang, `contests/${contest.slug}/`)}>{contest.title}</a></li>)}
+        {contests.map((contest) => (
+          <li>
+            <a href={href(lang, `contests/${contest.slug}/`)}>{contest.title}</a>
+            &middot; <a href={href(lang, `contests/${contest.slug}/answer-sheet/`)}>{all.contests.sheetTitle(contest.title)}</a>
+          </li>
+        ))}
       </ul>
     </section>
 

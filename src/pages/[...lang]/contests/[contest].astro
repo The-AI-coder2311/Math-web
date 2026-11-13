@@ -57,6 +57,7 @@ const letters = 'ABCDE';
       <p>{text.timing(rules.minutes, rules.questions, contest.minutes)} <a href={rules.rulesUrl}>{text.rules}</a></p>
       <p>{text.skipTip}</p>
       <p><a href={href(lang, 'contests/strategy/')}>{text.strategyLink}</a></p>
+      <p><a href={href(lang, `contests/${contest.slug}/answer-sheet/`)}>{text.sheetLink}</a></p>
       <div class="needs-js">
         <label class="timer-choice"><input type="checkbox" data-use-timer checked /> {text.useTimer} ({text.minutes(contest.minutes)})</label>
         <button class="btn btn-primary" type="button" data-start>{text.start}</button>

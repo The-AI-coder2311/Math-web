@@ -94,6 +94,7 @@ On GitHub Pages, a site at `https://YOUR-USERNAME.github.io/YOUR-REPO/` can't co
 | Placement quiz | `/pathway/start/` | `placement.yaml` |
 | Practice contests | `/contests/` | `contests/<name>/` |
 | Contest strategy lesson | `/contests/strategy/` | `pages/contest-strategy.md` and `strategy.yaml` |
+| Printable answer sheet, one per practice contest | `/contests/practice-contest-a/answer-sheet/` | Built from the contest. It has one row of bubbles for each question |
 | Formula and strategy sheet, one per level | `/pathway/level-1/cheat-sheet/` | Built from each lesson's "Remember this" card |
 | Completion certificate, one per level | `/pathway/level-1/certificate/` | Built from `pathway.yaml`. It unlocks when every problem in the level is solved on that device |
 | Glossary | `/glossary/` | `glossary.yaml` |
@@ -102,6 +103,10 @@ On GitHub Pages, a site at `https://YOUR-USERNAME.github.io/YOUR-REPO/` can't co
 | Get Involved | `/get-involved/` | `pages/get-involved.md` |
 
 **Progress codes.** The pathway page has a "Move your progress to another device" panel. It turns everything saved on the device (solved problems, read lessons, and best practice test scores) into a short text code that starts with `CMI1-`. Loading a code adds to what's already there and never erases anything. No server is involved. The saved-progress keys, including `count-me-in-progress-v1`, never change.
+
+**Continue where you left off.** The home page and the pathway page show a "Welcome back" link to the next unread lesson or unsolved problem in the unit the student used last. The last unit is remembered under `count-me-in-last-v1`. The pathway page also opens the level the student is working on, and a link like `/pathway/#level-3` opens that level.
+
+**Practice pages.** Each practice page has a numbered list that jumps to any problem and marks the solved ones, a "Show unsolved problems only" switch, and a link to the next unsolved problem after each correct answer.
 
 **Problem of the Week.** The home page shows one problem a week, from a pool of 52 medium problems in Levels 1 and 2. The page is built with the current week's problem, and the browser swaps in the right one from `problem-of-the-week.json` if the site was built in an earlier week, so it changes every Monday without a rebuild.
 

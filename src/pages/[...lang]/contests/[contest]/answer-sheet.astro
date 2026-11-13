@@ -1,0 +1,53 @@
+---
+// A printable bubble sheet for one practice contest, so a club can run it on paper.
+import Base from '../../../../layouts/Base.astro';
+import { getContestProblems, getContests } from '../../../../lib/content';
+import { contestRules } from '../../../../site.config';
+import { href, langParam, locales, t } from '../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales.map(async (lang) =>
+      (await getContests(lang)).map((contest) => ({
+        params: { lang: langParam(lang), contest: contest.slug },
+        props: { lang, contest },
+      })),
+    ),
+  );
+  return paths.flat();
+}
+
+const { lang, contest } = Astro.props;
+const text = t(lang).contests;
+const questions = (await getContestProblems(lang, contest.slug)).length;
+const rules = contestRules[contest.style];
+const letters = ['A', 'B', 'C', 'D', 'E'];
+---
+<Base title={text.sheetTitle(contest.title)} description={text.sheetDescription(contest.title, questions)} lang={lang} current="contests">
+  <p class="eyebrow no-print"><a href={href(lang, `contests/${contest.slug}/`)}>{text.sheetBack(contest.title)}</a></p>
+  <h1>{text.sheetTitle(contest.title)}</h1>
+  <p class="no-print">{text.sheetIntro}</p>
+  <div class="btn-row no-print">
+    <button class="btn btn-primary needs-js" type="button" data-print>{text.sheetPrint}</button>
+    <a class="btn" href={href(lang, `teachers/answer-keys/${contest.slug}/`)}>{text.sheetKey}</a>
+  </div>
+
+  <div class="answer-sheet">
+    <p class="sheet-fields">
+      <span>{text.sheetName}: <span class="sheet-line"></span></span>
+      <span>{text.sheetDate}: <span class="sheet-line sheet-line-short"></span></span>
+    </p>
+    <p class="muted">
+      {text.style(contest.style)} &middot; {text.questions(questions)} &middot; {text.minutes(contest.minutes)}.{' '}
+      {text.scoring(contest.style, rules.correct, rules.blank, rules.wrong)}
+    </p>
+    <ol class="bubble-rows">
+      {Array.from({ length: questions }, (_, i) => (
+        <li>
+          <span class="bubble-number">{i + 1}.</span>
+          {letters.map((letter) => <span class="bubble">{letter}</span>)}
+        </li>
+      ))}
+    </ol>
+  </div>
+</Base>

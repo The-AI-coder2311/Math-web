@@ -204,5 +204,5 @@ terms:
     lesson: algebra-toolkit/03-quadratics-and-vieta
   - term: conditional probability
     definition: The probability of something once you have been told a clue. Cross out the outcomes the clue rules out, and count from what is left.
-    example: "A die shows an even number. The probability that it is a 6 is $\frac{1}{3}$, because only 2, 4, and 6 are left."
+    example: "A die shows an even number. The probability that it is a 6 is $\\frac{1}{3}$, because only 2, 4, and 6 are left."
     lesson: data-chance/05-told-something
