@@ -1468,3 +1468,18 @@ textarea {
 @page certificate {
   size: landscape;
 }
+
+/* Practice page: numbered list of problems, "unsolved only" filter, and next-problem link */
+.problem-nav {
+  margin: 1rem 0;
+}
+
+.problem-nav [role='status'] {
+  min-height: 1.5em;
+  margin: 0.25rem 0 0;
+}
+
+.next-unsolved {
+  margin: 0.75rem 0 0;
+  font-weight: 600;
+}

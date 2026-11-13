@@ -37,6 +37,20 @@ const nextUnit = units[units.findIndex((other) => other.slug === unit.slug) + 1]
       <ProgressBar lang={lang} unit={unit.slug} unitTitle={unit.title} problems={problems.map((problem) => problem.slug)} />
     </div>
 
+    <nav class="question-nav problem-nav no-print" aria-label={text.navLabel}>
+      <p class="muted">{text.navHelp}</p>
+      <ol>
+        {problems.map((problem, i) => (
+          <li><a href={`#p-${problem.slug}`} data-nav-problem={problem.slug} aria-label={text.navItem(i + 1, text.navUnsolved)}>{i + 1}</a></li>
+        ))}
+      </ol>
+      <label class="flag-choice needs-js">
+        <input type="checkbox" data-unsolved-only />
+        {text.unsolvedOnly}
+      </label>
+      <p class="muted needs-js" role="status" data-filter-status></p>
+    </nav>
+
     {problems.map((problem, i) => <Problem lang={lang} number={i + 1} problem={problem} />)}
 
     <section class="card finished" data-finished hidden>

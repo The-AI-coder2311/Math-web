@@ -29,7 +29,7 @@ const text = t(lang).practice;
 const letters = 'ABCDEF';
 const mistakes = Object.entries(problem.mistakes ?? {});
 ---
-<article class="card problem" id={`p-${problem.slug}`} data-problem data-slug={problem.slug} data-answer={problem.answer}>
+<article class="card problem" id={`p-${problem.slug}`} tabindex="-1" data-problem data-number={number} data-slug={problem.slug} data-answer={problem.answer}>
   <div class="problem-head">
     <Heading>{`${text.problem} ${number}`}</Heading>
     <span class="pill">{text.difficulty[problem.difficulty]}</span>
@@ -54,6 +54,7 @@ const mistakes = Object.entries(problem.mistakes ?? {});
         <p class="mistake" data-mistake={letter} hidden set:html={renderInline(note as string)} />
       ))}
     </div>
+    <p class="next-unsolved needs-js" data-next hidden><a class="tap-link" href="#" data-next-link></a></p>
   </form>
   <div class="reveals">
     <details class="reveal" data-reveal="hint">

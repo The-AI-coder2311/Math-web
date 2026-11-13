@@ -11,5 +11,13 @@ export const practiceData = (lang: Locale, unit: string) => {
     'data-wrong': text.wrong('{letter}'),
     'data-already-solved': text.alreadySolved,
     'data-reset-confirm': text.resetConfirm,
+    'data-next-unsolved': text.nextUnsolved('{n}'),
+    'data-nav-item': text.navItem('{n}', '{state}'),
+    'data-nav-solved': text.navSolved,
+    'data-nav-unsolved': text.navUnsolved,
+    'data-showing-all': text.showingAll('{n}'),
+    'data-showing-unsolved': text.showingUnsolved('{n}'),
+    'data-showing-one-unsolved': text.showingOneUnsolved,
+    'data-showing-none': text.showingNone,
   };
 };
