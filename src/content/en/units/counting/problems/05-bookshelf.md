@@ -2,13 +2,13 @@
 order: 5
 difficulty: easy
 lesson: 02-when-order-matters
-choices: ["4","24","16","10","256"]
-answer: B
+choices: ["4","10","12","16","24"]
+answer: E
 mistakes:
   A: "That's how many books there are. Each book can go in several positions."
-  D: "That's $4 + 3 + 2 + 1$. You make one choice and then another, so multiply."
-  C: "That's $4 \\times 4$. Once a book is placed, fewer are left."
-  E: "That's $4 \\times 4 \\times 4 \\times 4$, which reuses books. Each book can only go in one spot."
+  B: "That's $4 + 3 + 2 + 1$. You make one choice and then another, so multiply."
+  C: "That's $4 \\times 3$, which fills only the first two spots on the shelf. Keep multiplying for the last two books."
+  D: "That's $4 \\times 4$. Once a book is placed, fewer are left."
 verify: "perms(['a', 'b', 'c', 'd']).length"
 ---
 
@@ -37,4 +37,4 @@ $$4 \times 3 \times 2 \times 1 = 24$$
 
 **A common mistake:** answering $4 \times 4 \times 4 \times 4 = 256$. That would let the same book be in two spots at once!
 
-**Answer: (B) 24**
+**Answer: (E) 24**

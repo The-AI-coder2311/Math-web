@@ -2,12 +2,12 @@
 order: 9
 difficulty: medium
 lesson: 01-multiply-choices
-choices: ["24","100","75","50","125"]
-answer: D
+choices: ["50","60","75","100","125"]
+answer: A
 mistakes:
-  A: "Eso es $4 \\times 3 \\times 2$, que no permite repetir. Este problema sí lo permite."
+  B: "Eso es $5 \\times 4 \\times 3$, que cuenta números sin dígitos repetidos. Aquí los dígitos se pueden repetir, y el último dígito tiene que ser par."
   C: "Eso es $3 \\times 5 \\times 5$, que usa los dígitos impares en el último lugar. Solo 2 y 4 son pares."
-  B: "Eso es la mitad de $200$. Solo 2 de los 5 dígitos son pares, no la mitad."
+  D: "Eso es la mitad de $200$. Solo 2 de los 5 dígitos son pares, no la mitad."
   E: "Eso cuenta todos los números. El último dígito tiene que ser par."
 verify: "product(range(1, 5), range(1, 5), range(1, 5)).filter(([a, b, c]) => c % 2 === 0).length"
 ---
@@ -32,4 +32,4 @@ El último dígito tiene que ser 2 o 4. Los otros dos dígitos tienen 5 opciones
 
 $$5 \times 5 \times 2 = 50$$
 
-**Respuesta: (D) 50**
+**Respuesta: (A) 50**

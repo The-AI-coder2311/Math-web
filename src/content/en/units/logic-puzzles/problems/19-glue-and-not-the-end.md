@@ -2,13 +2,13 @@
 order: 19
 difficulty: hard
 lesson: 03-ordering-and-seating
-choices: ["6","12","18","24","48"]
-answer: D
+choices: ["2","6","12","18","24"]
+answer: E
 mistakes:
-  A: "That's only the arrangements with A on the left and C in one fixed spot. Count all of them."
-  B: "That's how many have C at one end. Subtract those from the total."
-  C: "Check your count of arrangements with C at an end. Each end gives 12, not 15."
-  E: "That's the count with A next to B, but C could still be at an end."
+  A: "That's the 2 ways A and B can stand inside their pair. There are also many ways to place the pair and the other three people."
+  B: "That's only the arrangements with A on the left and C in one fixed spot. Count all of them."
+  C: "That's how many have C at one end. Subtract those from the total."
+  D: "Check your count of arrangements with C at an end. Each end gives 12, not 15."
 verify: "perms(['A', 'B', 'C', 'D', 'E']).filter((o) => Math.abs(o.indexOf('A') - o.indexOf('B')) === 1 && o[0] !== 'C' && o[4] !== 'C').length"
 ---
 
@@ -30,4 +30,4 @@ Now take out the ones with C at an end. With C at the left end, the block, D, an
 
 So $48 - 24 = 24$ arrangements are left.
 
-**Answer: (D) 24**
+**Answer: (E) 24**

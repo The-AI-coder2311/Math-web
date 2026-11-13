@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 02-ratios-as-boxes
-choices: ["125","75","100","50","150"]
-answer: A
+choices: ["50","75","100","125","150"]
+answer: D
 mistakes:
-  D: "That's the number of red beads at the start. The question asks for all of the beads."
+  A: "That's the number of red beads at the start. The question asks for all of the beads."
   B: "That's the number of blue beads at the start. The question asks for all of the beads."
   C: "Check it: 40 red and 60 blue. Adding 10 red gives 50 to 60, which isn't 4 to 5."
   E: "Check it: 60 red and 90 blue. Adding 10 red gives 70 to 90, which isn't 4 to 5."
@@ -32,4 +32,4 @@ $\frac{2x + 10}{3x} = \frac{4}{5}$. Cross-multiply: $5(2x + 10) = 4 \times 3x$.
 
 **Check:** 50 red and 75 blue. Then 60 to 75 simplifies to 4 to 5.
 
-**Answer: (A) 125**
+**Answer: (D) 125**

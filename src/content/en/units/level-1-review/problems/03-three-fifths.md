@@ -2,13 +2,13 @@
 order: 3
 difficulty: easy
 from: fractions-ratios/01-equal-groups
-choices: ["8","15","35","32","24"]
-answer: E
+choices: ["8","15","16","24","32"]
+answer: D
 mistakes:
   A: "That's one group, or $\\frac{1}{5}$. The top number says to take 3."
   B: "Make 5 equal groups of the 40, and take 3."
-  D: "That's $\\frac{4}{5}$. The top number is 3."
-  C: "That's $40 - 5$. The bottom number tells you how many groups to make."
+  C: "That's two fifths, $2 \\times 8 = 16$. Three fifths is 3 of the 8s."
+  E: "That's $\\frac{4}{5}$. The top number is 3."
 verify: "(40 / 5) * 3"
 ---
 
@@ -26,4 +26,4 @@ Each group has 8. Take 3 groups.
 
 Make 5 equal groups: $40 \div 5 = 8$. Take 3 of them: $3 \times 8 = 24$.
 
-**Answer: (E) 24**
+**Answer: (D) 24**

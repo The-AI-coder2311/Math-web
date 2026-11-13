@@ -2,10 +2,10 @@
 order: 7
 difficulty: medium
 lesson: 02-when-order-matters
-choices: ["42","21","14","49","56"]
-answer: A
+choices: ["14","21","42","49","56"]
+answer: C
 mistakes:
-  C: "Eso es $7 \\times 2$. Elige a las personas un puesto a la vez: 7 opciones y luego 6."
+  A: "Eso es $7 \\times 2$. Elige a las personas un puesto a la vez: 7 opciones y luego 6."
   B: "Eso es \"combinaciones de 7 en 2\", que trata los puestos como iguales. Ana como presidenta es diferente de Ben como presidente, así que no dividas."
   D: "Eso es $7 \\times 7$, que deja que una persona tenga los dos puestos."
   E: "Eso es $8 \\times 7$. El club tiene 7 miembros."
@@ -34,4 +34,4 @@ $$7 \times 6 = 42$$
 
 **Por qué importa el orden:** supón que Ana es presidenta y Ben es vicepresidente. Eso es diferente a que Ben sea presidente y Ana vicepresidenta, así que contamos los dos.
 
-**Respuesta: (A) 42**
+**Respuesta: (C) 42**

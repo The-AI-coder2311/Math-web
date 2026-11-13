@@ -2,12 +2,12 @@
 order: 8
 difficulty: medium
 lesson: 02-ratios-as-boxes
-choices: ["14","21","56","35","70"]
-answer: C
+choices: ["14","21","35","56","70"]
+answer: D
 mistakes:
   A: "Esa es la diferencia. Vale 2 cajas, así que cada caja tiene 7."
   B: "Esos son solo los perros. La pregunta es de gatos y perros."
-  D: "Esos son solo los gatos. La pregunta es de gatos y perros."
+  C: "Esos son solo los gatos. La pregunta es de gatos y perros."
   E: "Eso usa 10 cajas. Hay $5 + 3 = 8$ cajas."
 verify: "range(1, 200).filter((n) => n % 8 === 0).find((total) => (total * 5) / 8 - (total * 3) / 8 === 14)"
 ---
@@ -32,4 +32,4 @@ Los gatos tienen 2 cajas más que los perros, y esas cajas tienen los 14 gatos e
 
 **Comprobación:** Son $5 \times 7 = 35$ gatos y $3 \times 7 = 21$ perros. La diferencia es $35 - 21 = 14$.
 
-**Respuesta: (C) 56**
+**Respuesta: (D) 56**

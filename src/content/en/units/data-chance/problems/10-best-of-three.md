@@ -2,13 +2,13 @@
 order: 17
 difficulty: hard
 lesson: 03-multi-step-chance
-choices: ["$\\frac{20}{27}$","$\\frac{4}{9}$","$\\frac{2}{3}$","$\\frac{8}{27}$","$\\frac{7}{9}$"]
-answer: A
+choices: ["$\\frac{4}{27}$","$\\frac{8}{27}$","$\\frac{4}{9}$","$\\frac{2}{3}$","$\\frac{20}{27}$"]
+answer: E
 mistakes:
-  C: "That's one game. Winning a series is more likely than winning a game when you're the better team."
-  B: "That's the chance of winning the first 2 games only. There are other ways to win 2 of 3."
-  D: "That's the chance of winning all 3. Winning exactly 2 also wins the series."
-  E: "Add the cases: $\\frac{8}{27}$ for 3 wins, and $\\frac{12}{27}$ for exactly 2."
+  A: "That's the probability of one path, such as win, lose, win. Add up every path that gives Team A two wins."
+  B: "That's the chance of winning all 3. Winning exactly 2 also wins the series."
+  C: "That's the chance of winning the first 2 games only. There are other ways to win 2 of 3."
+  D: "That's one game. Winning a series is more likely than winning a game when you're the better team."
 verify: "fraction(sum(product([1, 0], [1, 0], [1, 0]).filter((g) => sum(g) >= 2).map((g) => g.reduce((p, won) => p * (won ? 2 : 1), 1))), 27)"
 ---
 
@@ -32,4 +32,4 @@ Pretend that they play all 3 games. Team A needs at least 2 wins.
 
 **Step 4.** Add the two: $\frac{8}{27} + \frac{12}{27} = \frac{20}{27}$.
 
-**Answer: (A) $\frac{20}{27}$**
+**Answer: (E) $\frac{20}{27}$**

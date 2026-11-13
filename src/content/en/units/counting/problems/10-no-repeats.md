@@ -2,13 +2,13 @@
 order: 11
 difficulty: medium
 lesson: 02-when-order-matters
-choices: ["648","576","504","720","900"]
-answer: A
+choices: ["81","504","576","648","720"]
+answer: D
 mistakes:
-  C: "That's $9 \\times 8 \\times 7$. The second digit has 9 options, since 0 is allowed there."
-  B: "That's $9 \\times 8 \\times 8$. Count again: 9, then 9, then 8."
-  D: "That's $10 \\times 9 \\times 8$, which allows a first digit of 0. That isn't a 3-digit number."
-  E: "That counts all of the 3-digit numbers, including those with repeats."
+  A: "That's $9 \\times 9$, which fills only the first two digits. The third digit still has 8 options."
+  B: "That's $9 \\times 8 \\times 7$. The second digit has 9 options, since 0 is allowed there."
+  C: "That's $9 \\times 8 \\times 8$. Count again: 9, then 9, then 8."
+  E: "That's $10 \\times 9 \\times 8$, which allows a first digit of 0. That isn't a 3-digit number."
 verify: "range(100, 999).filter((n) => new Set(digits(n)).size === 3).length"
 ---
 
@@ -36,4 +36,4 @@ $$9 \times 9 \times 8 = 648$$
 
 **A common mistake:** answering $10 \times 9 \times 8 = 720$. That count includes "numbers" like 012, which don't really have three digits.
 
-**Answer: (A) 648**
+**Answer: (D) 648**

@@ -2,10 +2,10 @@
 order: 11
 difficulty: medium
 lesson: 02-list-the-real-outcomes
-choices: ["$\\frac{5}{12}$","$\\frac{1}{6}$","$\\frac{1}{2}$","$\\frac{7}{12}$","$\\frac{5}{6}$"]
-answer: A
+choices: ["$\\frac{1}{6}$","$\\frac{5}{12}$","$\\frac{1}{2}$","$\\frac{7}{12}$","$\\frac{5}{6}$"]
+answer: B
 mistakes:
-  B: "Esa es la probabilidad de que los dos lanzamientos coincidan."
+  A: "Esa es la probabilidad de que los dos lanzamientos coincidan."
   C: "Eso olvida que los lanzamientos pueden coincidir. Mayor y menor solo se reparten 30 de los resultados."
   D: "Esa es la probabilidad de que el segundo sea mayor **o** igual. La pregunta dice mayor."
   E: "Esa es la probabilidad de que los lanzamientos sean diferentes. Solo la mitad de esos tienen un segundo lanzamiento mayor."
@@ -32,4 +32,4 @@ Seis de los 36 resultados coinciden. Mayor y menor se reparten los otros 30 en p
 
 **Paso 4.** La probabilidad es $\frac{15}{36}$, que se simplifica a $\frac{5}{12}$.
 
-**Respuesta: (A) $\frac{5}{12}$**
+**Respuesta: (B) $\frac{5}{12}$**

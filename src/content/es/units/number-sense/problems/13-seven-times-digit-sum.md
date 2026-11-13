@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 01-place-value
-choices: ["4","2","3","1","9"]
-answer: A
+choices: ["1","2","3","4","9"]
+answer: D
 mistakes:
-  D: "Probar un solo número no es suficiente. Encuentra la regla, $a = 2b$, y haz la lista de todos los números que cumplen."
+  A: "Probar un solo número no es suficiente. Encuentra la regla, $a = 2b$, y haz la lista de todos los números que cumplen."
   B: "Te faltan algunos. Con $a = 2b$, el dígito de las unidades puede ser 1, 2, 3 o 4."
   C: "Te falta uno. Con $a = 2b$, el dígito de las unidades puede ser 1, 2, 3 o 4."
   E: "Esa es la cantidad de dígitos de las decenas. La regla $a = 2b$ solo permite algunos."
@@ -30,4 +30,4 @@ $10a + b = 7(a + b)$ se simplifica a $3a = 6b$, así que $a = 2b$. ¿Qué dígit
 
 **Comprobación:** $7 \times (6 + 3) = 63$.
 
-**Respuesta: (A) 4**
+**Respuesta: (D) 4**

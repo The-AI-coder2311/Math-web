@@ -2,13 +2,13 @@
 order: 16
 difficulty: hard
 lesson: 01-lines-and-slopes
-choices: ["6","31","13","19","7"]
-answer: E
+choices: ["6","7","13","19","31"]
+answer: B
 mistakes:
   A: "That's the number of jumps, which is the GCF of 12 and 18. The jumps connect 7 points."
   C: "That counts every whole-number $x$. For an odd $x$, the $y$-coordinate isn't a whole number."
   D: "That counts every whole-number $y$. Most of those have an $x$-coordinate that isn't whole."
-  B: "That's $12 + 18 + 1$. Only points landing exactly on the line count."
+  E: "That's $12 + 18 + 1$. Only points landing exactly on the line count."
 verify: "range(0, 12).filter((x) => (x * 18) % 12 === 0).length"
 ---
 
@@ -30,4 +30,4 @@ The slope is $\frac{18}{12} = \frac{3}{2}$, so each jump is 2 across and 3 up. H
 
 **Step 3.** 6 jumps connect 7 points.
 
-**Answer: (E) 7**
+**Answer: (B) 7**

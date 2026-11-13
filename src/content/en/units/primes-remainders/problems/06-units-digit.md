@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 04-units-digits-and-remainders
-choices: ["1","3","7","9","0"]
-answer: D
+choices: ["0","1","3","7","9"]
+answer: E
 mistakes:
-  A: "That's the last spot, for a remainder of 0. Here, 50 divided by 4 leaves 2."
-  B: "That's the 3rd spot. Here, 50 divided by 4 leaves 2."
-  C: "That's the 1st spot. Here, 50 divided by 4 leaves 2."
-  E: "Powers of 7 never end in 0, since 7 has no factors of 2 or 5."
+  A: "Powers of 7 never end in 0, since 7 has no factors of 2 or 5."
+  B: "That's the last spot, for a remainder of 0. Here, 50 divided by 4 leaves 2."
+  C: "That's the 3rd spot. Here, 50 divided by 4 leaves 2."
+  D: "That's the 1st spot. Here, 50 divided by 4 leaves 2."
 verify: "range(1, 50).reduce((digit) => (digit * 7) % 10, 1)"
 ---
 
@@ -30,4 +30,4 @@ The cycle is 7, 9, 3, 1. Divide 50 by 4 to find the spot.
 
 **Step 3.** Go 2 more steps: $7^{49}$ ends in 7, and $7^{50}$ ends in 9.
 
-**Answer: (D) 9**
+**Answer: (E) 9**

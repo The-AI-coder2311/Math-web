@@ -2,13 +2,13 @@
 order: 5
 difficulty: easy
 from: logic-patterns/01-repeating-and-growing
-choices: ["65","74","70","75","79"]
-answer: B
+choices: ["60","65","70","74","75"]
+answer: D
 mistakes:
-  A: "Revisa tus pasos. Hay 14 pasos de 5, que suman 70."
+  A: "Eso es $15 \\times 4$. La lista empieza en 4 y sube de 5 en 5."
+  B: "Revisa tus pasos. Hay 14 pasos de 5, que suman 70."
   C: "Esos son los 14 pasos. Todavía tienes que empezar desde el 4."
-  D: "Eso es $15 \\times 5$. Usa demasiados pasos y se salta el inicio."
-  E: "Eso es $4 + 15 \\times 5$, que es un paso de más."
+  E: "Eso es $15 \\times 5$. Usa demasiados pasos y se salta el inicio."
 verify: "range(2, 15).reduce((t) => t + 5, 4)"
 ---
 
@@ -26,4 +26,4 @@ Se necesitan 14 pasos de 5.
 
 Se necesitan 14 pasos desde el 1.er número: $4 + 14 \times 5 = 74$.
 
-**Respuesta: (B) 74**
+**Respuesta: (D) 74**

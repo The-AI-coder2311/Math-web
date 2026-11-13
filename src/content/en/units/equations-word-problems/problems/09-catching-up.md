@@ -2,12 +2,12 @@
 order: 16
 difficulty: hard
 lesson: 03-distance-rate-time
-choices: ["1","2.5","2","1.5","3"]
-answer: D
+choices: ["1","1.5","2","2.5","3"]
+answer: B
 mistakes:
   A: "After 1 hour, Mia has gone 50 miles and John 60 miles. She hasn't caught up."
   C: "After 2 hours, Mia has gone 100 miles and John 90 miles. She's already passed him."
-  B: "That's John's riding time. The question asks for the time after Mia leaves."
+  D: "That's John's riding time. The question asks for the time after Mia leaves."
   E: "After 3 hours, Mia is far ahead. Set the two distances equal."
 verify: "range(1, 100).map((n) => n / 10).find((t) => 30 * (t + 1) === 50 * t)"
 ---
@@ -34,4 +34,4 @@ $$50t = 30(t + 1)$$
 
 **Check:** Mia goes $50 \times 1.5 = 75$ miles, and John goes $30 \times 2.5 = 75$ miles.
 
-**Answer: (D) 1.5**
+**Answer: (B) 1.5**

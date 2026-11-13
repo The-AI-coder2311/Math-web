@@ -5,7 +5,7 @@
 order: 21                       # Where it appears in the unit (no two problems can share a number)
 difficulty: easy                # easy, medium, or hard. Hard means combining two ideas, or a step students must invent.
 lesson: 01-multiply-choices     # The file name of the lesson this practices, without .md
-choices: [6, 7, 10, 12, 25]     # Two to six choices. Use single quotes around math: '$\frac{1}{2}$'
+choices: [6, 7, 10, 12, 25]     # Two to six choices. List numbers from smallest to largest. Use single quotes around math: '$\frac{1}{2}$'
 answer: C                       # The letter of the correct choice
 
 # For each WRONG choice, what a student who picked it probably did. Math works here too.

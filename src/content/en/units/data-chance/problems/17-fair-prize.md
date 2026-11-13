@@ -2,13 +2,13 @@
 order: 15
 difficulty: medium
 lesson: 04-expected-value
-choices: ["6","9","12","36","18"]
+choices: ["3","6","9","12","18"]
 answer: E
 mistakes:
-  A: "That would make the expected win only \\$1."
-  B: "That would make the expected win only \\$1.50."
-  C: "That would make the expected win only \\$2."
-  D: "That would make the expected win \\$6, which is twice the cost."
+  A: "A prize of 3 dollars only returns what you paid, and you win only 1 roll in 6."
+  B: "That would make the expected win only \\$1."
+  C: "That would make the expected win only \\$1.50."
+  D: "That would make the expected win only \\$2."
 verify: "range(1, 100).find((p) => p / 6 === 3)"
 ---
 

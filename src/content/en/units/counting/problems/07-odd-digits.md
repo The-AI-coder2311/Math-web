@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 01-multiply-choices
-choices: ["15","60","100","243","125"]
+choices: ["15","25","60","100","125"]
 answer: E
 mistakes:
   A: "That's $5 + 5 + 5$. Each position is another choice, so multiply."
-  B: "That's $5 \\times 4 \\times 3$, which doesn't allow repeats. The number 111 counts, so digits can repeat."
-  C: "That's $4 \\times 5 \\times 5$, which would be right if 0 were one of the digits. The odd digits don't include 0, so the first digit has 5 options."
-  D: "That's $3^5$, which swaps the two numbers. There are 3 positions with 5 options each."
+  B: "That's $5 \\times 5$, which fills only two of the three digits. The third digit has 5 options too."
+  C: "That's $5 \\times 4 \\times 3$, which doesn't allow repeats. The number 111 counts, so digits can repeat."
+  D: "That's $4 \\times 5 \\times 5$, which would be right if 0 were one of the digits. The odd digits don't include 0, so the first digit has 5 options."
 verify: "range(100, 999).filter((n) => digits(n).every((d) => d % 2 === 1)).length"
 ---
 

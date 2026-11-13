@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 04-count-the-opposite
-choices: ["2439","729","2916","3439","6561"]
-answer: A
+choices: ["729","2439","2916","3439","6561"]
+answer: B
 mistakes:
-  B: "That's the count for 3 digits with no 0s. There are 4 digits."
+  A: "That's the count for 3 digits with no 0s. There are 4 digits."
   C: "That's $4 \\times 729$, which counts one 0 in each of 4 spots. The first digit can't be 0, and numbers with several 0s get counted more than once."
   D: "That's $10000 - 6561$. There are only 9000 four-digit numbers."
   E: "That's the count with **no** 0s. Subtract it from 9000."
@@ -30,4 +30,4 @@ With no 0s, each of the 4 digits has 9 options, so there are $9^4 = 6561$. How m
 
 **Step 3.** So $9000 - 6561 = 2439$ have at least one 0.
 
-**Answer: (A) 2439**
+**Answer: (B) 2439**

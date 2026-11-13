@@ -2,12 +2,12 @@
 order: 8
 difficulty: medium
 lesson: 04-split-or-subtract
-choices: ["28","30","36","32","56"]
-answer: D
+choices: ["28","30","32","36","56"]
+answer: C
 mistakes:
   A: "That subtracts the cut part from the perimeter. The notch also adds 2 new sides."
   B: "That subtracts 2. The cut removes 4 inches and adds 4 inches back."
-  C: "That adds the 2 new sides without taking anything away from the old ones."
+  D: "That adds the 2 new sides without taking anything away from the old ones."
   E: "That's the area of the new shape. The question asks for the perimeter."
 verify: "(() => { const p = [[0, 0], [10, 0], [10, 4], [8, 4], [8, 6], [0, 6]]; return sum(p.map(([x, y], i) => { const [a, b] = p[(i + 1) % 6]; return Math.abs(a - x) + Math.abs(b - y); })); })()"
 ---
@@ -32,4 +32,4 @@ $$10 + 4 + 2 + 2 + 8 + 6 = 32$$
 
 **Notice:** That's the same as the perimeter of the whole rectangle, since $10 + 6 + 10 + 6 = 32$. The cut removes 2 inches from each of two sides, and the notch adds those same 4 inches back.
 
-**Answer: (D) 32**
+**Answer: (C) 32**

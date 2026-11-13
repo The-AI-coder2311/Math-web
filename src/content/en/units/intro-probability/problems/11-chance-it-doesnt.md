@@ -2,13 +2,13 @@
 order: 6
 difficulty: easy
 lesson: 04-one-minus
-choices: ["$\\frac{3}{8}$","$\\frac{1}{2}$","1","$\\frac{8}{5}$","$\\frac{5}{8}$"]
-answer: E
+choices: ["$\\frac{1}{8}$","$\\frac{3}{8}$","$\\frac{1}{2}$","$\\frac{5}{8}$","1"]
+answer: D
 mistakes:
-  A: "That's the chance of red. The question asks for not red."
-  B: "It either happens or it doesn't, but those aren't equally likely. Subtract from 1."
-  D: "That's more than 1, and a probability can't be more than 1."
-  C: "That's the total of both possibilities. Subtract the chance of red."
+  A: "That's one eighth. The whole is $\\frac{8}{8}$, and taking away $\\frac{3}{8}$ leaves more than one eighth."
+  B: "That's the chance of red. The question asks for not red."
+  C: "It either happens or it doesn't, but those aren't equally likely. Subtract from 1."
+  E: "That's the total of both possibilities. Subtract the chance of red."
 verify: "fraction(8 - 3, 8)"
 ---
 
@@ -26,4 +26,4 @@ They add up to 1. Subtract $\frac{3}{8}$ from 1.
 
 The two probabilities add up to 1, so the answer is $1 - \frac{3}{8} = \frac{5}{8}$.
 
-**Answer: (E) $\frac{5}{8}$**
+**Answer: (D) $\frac{5}{8}$**

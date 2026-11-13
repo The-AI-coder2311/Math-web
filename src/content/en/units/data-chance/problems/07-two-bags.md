@@ -2,11 +2,11 @@
 order: 9
 difficulty: medium
 lesson: 03-multi-step-chance
-choices: ["$\\frac{19}{40}$","$\\frac{1}{2}$","$\\frac{4}{9}$","$\\frac{3}{5}$","$\\frac{19}{20}$"]
-answer: A
+choices: ["$\\frac{4}{9}$","$\\frac{19}{40}$","$\\frac{1}{2}$","$\\frac{3}{5}$","$\\frac{19}{20}$"]
+answer: B
 mistakes:
-  B: "The two bags have different chances, so compute each path."
-  C: "That combines the two bags into one, with 4 red out of 9. But each bag has a $\\frac{1}{2}$ chance of being chosen, whatever its size."
+  A: "That combines the two bags into one, with 4 red out of 9. But each bag has a $\\frac{1}{2}$ chance of being chosen, whatever its size."
+  C: "The two bags have different chances, so compute each path."
   D: "That's closer to Bag A alone. Add both paths."
   E: "That adds $\\frac{3}{4} + \\frac{1}{5}$, leaving out the coin. Each path also has a $\\frac{1}{2}$."
 verify: "fraction((20 * 3) / 4 + (20 * 1) / 5, 40)"
@@ -32,4 +32,4 @@ The two paths are $\frac{1}{2} \times \frac{3}{4}$ and $\frac{1}{2} \times \frac
 
 $$\frac{3}{8} + \frac{1}{10} = \frac{15}{40} + \frac{4}{40} = \frac{19}{40}$$
 
-**Answer: (A) $\frac{19}{40}$**
+**Answer: (B) $\frac{19}{40}$**

@@ -2,13 +2,13 @@
 order: 9
 difficulty: medium
 lesson: 03-trees-and-multiplying
-choices: ["$\\frac{2}{7}$","$\\frac{16}{49}$","$\\frac{1}{3}$","$\\frac{4}{7}$","$\\frac{1}{2}$"]
+choices: ["$\\frac{2}{7}$","$\\frac{16}{49}$","$\\frac{1}{3}$","$\\frac{1}{2}$","$\\frac{4}{7}$"]
 answer: A
 mistakes:
   B: "That's $\\frac{4}{7} \\times \\frac{4}{7}$, as if you put the first sock back. The drawer changes."
   C: "Update the drawer after the first sock, and multiply: $\\frac{4}{7} \\times \\frac{3}{6}$."
-  D: "That's only the first sock. The second one also has to be red."
-  E: "That's only the second sock, after a red one comes out. Multiply it by the chance of the first."
+  D: "That's only the second sock, after a red one comes out. Multiply it by the chance of the first."
+  E: "That's only the first sock. The second one also has to be red."
 verify: "fraction(combos(range(1, 7), 2).filter((pair) => pair.every((sock) => sock <= 4)).length, combos(range(1, 7), 2).length)"
 ---
 

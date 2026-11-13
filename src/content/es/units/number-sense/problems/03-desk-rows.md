@@ -2,13 +2,13 @@
 order: 3
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["14","6","7","8","4"]
-answer: E
+choices: ["4","6","7","8","14"]
+answer: A
 mistakes:
   B: "Eso cuenta todos los factores de 28. No se permite una sola fila ni un solo pupitre por fila."
   C: "Ese es uno de los números posibles de filas, no cuántos hay."
   D: "Haz la lista de factores: 1, 2, 4, 7, 14, 28. Solo son 6, y 2 de ellos no se permiten."
-  A: "Ese es uno de los números posibles de filas, no cuántos hay."
+  E: "Ese es uno de los números posibles de filas, no cuántos hay."
 verify: "factors(28).filter((rows) => rows >= 2 && 28 / rows >= 2).length"
 ---
 
@@ -33,4 +33,4 @@ Los factores de 28 son 1, 2, 4, 7, 14 y 28. ¿Cuáles rompen las reglas de "por 
 
 **Paso 3.** Quedan 2, 4, 7 y 14 filas, así que hay 4 posibilidades.
 
-**Respuesta: (E) 4**
+**Respuesta: (A) 4**

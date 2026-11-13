@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-angle-chasing
-choices: ["360","540","900","720","1080"]
+choices: ["180","360","540","720","900"]
 answer: D
 mistakes:
-  A: "That's a four-sided shape, or the sum of outside angles. A hexagon has more."
-  B: "That's a pentagon, with 3 triangles. A hexagon splits into 4."
-  C: "That's a 7-sided shape, with 5 triangles."
-  E: "That's $6 \\times 180$. A hexagon splits into $6 - 2$ triangles, not 6."
+  A: "That's the sum for one triangle. A hexagon splits into 4 triangles."
+  B: "That's a four-sided shape, or the sum of outside angles. A hexagon has more."
+  C: "That's a pentagon, with 3 triangles. A hexagon splits into 4."
+  E: "That's a 7-sided shape, with 5 triangles."
 verify: "(6 - 2) * 180"
 ---
 

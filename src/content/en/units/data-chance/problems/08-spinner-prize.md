@@ -2,13 +2,13 @@
 order: 10
 difficulty: medium
 lesson: 04-expected-value
-choices: ["1","1.5","3","2.5","2"]
-answer: E
+choices: ["1","1.5","2","2.5","3"]
+answer: C
 mistakes:
   A: "Check it: over 4 spins, you win \\$8."
   B: "Check it: over 4 spins, you win \\$8."
   D: "Check it: over 4 spins, you win \\$8."
-  C: "That's the middle of the prizes that aren't zero. The two \\$0 sections count too."
+  E: "That's the middle of the prizes that aren't zero. The two \\$0 sections count too."
 verify: "sum([0, 0, 2, 6]) / 4"
 ---
 
@@ -28,4 +28,4 @@ Spinning once on each section wins \$8 over 4 spins.
 
 **Step 2.** That's over 4 spins, so the average is $8 \div 4 = 2$ dollars per spin.
 
-**Answer: (E) 2**
+**Answer: (C) 2**

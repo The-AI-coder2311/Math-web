@@ -2,11 +2,11 @@
 order: 5
 difficulty: easy
 lesson: 03-geometric-sequences
-choices: ["24","384","192","48","768"]
-answer: B
+choices: ["24","48","192","384","768"]
+answer: D
 mistakes:
   A: "That's the 4th term. Keep doubling until you reach the 8th."
-  D: "That's $3 \\times 2^4$, the 5th term. You need 7 doublings."
+  B: "That's $3 \\times 2^4$, the 5th term. You need 7 doublings."
   C: "That's $3 \\times 2^6$, the 7th term. It takes 7 steps to reach the 8th term."
   E: "That's $3 \\times 2^8$, the 9th term. It takes 7 steps to reach the 8th term, not 8."
 verify: "range(2, 8).reduce((t) => t * 2, 3)"
@@ -26,4 +26,4 @@ There are 7 steps, each multiplying by 2. So the term is $3 \times 2^7$.
 
 There are 7 steps from the 1st term to the 8th, and each one doubles: $3 \times 2^7 = 3 \times 128 = 384$.
 
-**Answer: (B) 384**
+**Answer: (D) 384**

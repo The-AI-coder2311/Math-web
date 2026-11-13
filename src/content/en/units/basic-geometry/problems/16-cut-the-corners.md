@@ -2,10 +2,10 @@
 order: 16
 difficulty: hard
 lesson: 04-split-or-subtract
-choices: ["82","64","18","91","94"]
-answer: A
+choices: ["18","64","82","91","94"]
+answer: C
 mistakes:
-  C: "That's the area cut off. Subtract it from the square."
+  A: "That's the area cut off. Subtract it from the square."
   B: "That's $100 - 36$, which treats each corner as a full 3 by 3 square. Each corner triangle is half of that."
   D: "That cuts off only 2 corners. There are 4."
   E: "Check your corners: 4 triangles of 4.5 make 18."
@@ -26,4 +26,4 @@ Each triangle has an area of $\frac{1}{2} \times 3 \times 3 = 4.5$.
 
 The square has an area of 100. Each triangle has an area of 4.5, and there are 4 of them, for a total of 18. So $100 - 18 = 82$.
 
-**Answer: (A) 82**
+**Answer: (C) 82**

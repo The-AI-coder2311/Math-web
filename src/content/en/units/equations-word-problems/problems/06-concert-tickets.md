@@ -2,12 +2,12 @@
 order: 8
 difficulty: medium
 lesson: 04-two-unknowns
-choices: ["12","24","20","15","29"]
-answer: D
+choices: ["12","15","20","24","29"]
+answer: B
 mistakes:
   A: "Check it: 12 adult tickets bring in \\$96, and 32 student tickets bring in \\$160, for a total of \\$256."
   C: "Check it: 20 adult tickets bring in \\$160, and 24 student tickets bring in \\$120, for a total of \\$280."
-  B: "Check it: 24 adult tickets bring in \\$192, and 20 student tickets bring in \\$100, for a total of \\$292."
+  D: "Check it: 24 adult tickets bring in \\$192, and 20 student tickets bring in \\$100, for a total of \\$292."
   E: "That's the number of student tickets. The question asks about adult tickets."
 verify: "range(0, 44).find((a) => 8 * a + 5 * (44 - a) === 265)"
 ---
@@ -34,4 +34,4 @@ $$8a + 5(44 - a) = 265$$
 
 **Check:** 15 adult tickets bring in \$120, and 29 student tickets bring in \$145. Together, that's \$265.
 
-**Answer: (D) 15**
+**Answer: (B) 15**

@@ -2,12 +2,12 @@
 order: 20
 difficulty: hard
 lesson: 04-other-bases
-choices: ["6","7","9","8","10"]
-answer: D
+choices: ["6","7","8","9","10"]
+answer: C
 mistakes:
   A: "Check it: $3 \\times 6 + 3$ is 21."
   B: "Check it: $3 \\times 7 + 3$ is 24."
-  C: "That's $27 \\div 3$. It leaves out the 3 being added."
+  D: "That's $27 \\div 3$. It leaves out the 3 being added."
   E: "In base 10, the sum would be 33."
 verify: "range(3, 40).find((b) => b + 2 + (2 * b + 1) === 27)"
 ---
@@ -26,4 +26,4 @@ $12_b = b + 2$, and $21_b = 2b + 1$.
 
 $12_b = b + 2$ and $21_b = 2b + 1$. Their sum is $3b + 3 = 27$, so $3b = 24$ and $b = 8$.
 
-**Answer: (D) 8**
+**Answer: (C) 8**

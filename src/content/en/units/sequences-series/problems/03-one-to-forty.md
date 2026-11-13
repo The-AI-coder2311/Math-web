@@ -2,11 +2,11 @@
 order: 3
 difficulty: easy
 lesson: 02-fast-sums
-choices: ["800","840","820","1600","1640"]
-answer: C
+choices: ["820","840","860","1600","1640"]
+answer: A
 mistakes:
-  A: "That's $40 \\times 40 \\div 2$. Each pair adds up to 41, not 40."
   B: "That's 20 pairs of 42. Check a pair: 1 and 40 add up to 41."
+  C: "That's $40 \\times 43 \\div 2$. Pair 1 with 40 to get 41, and there are 20 pairs."
   D: "That's $40 \\times 40$. Each pair adds up to 41, and you also need to divide by 2."
   E: "That's $40 \\times 41$, which counts the list twice. Divide by 2."
 verify: "sum(range(1, 40))"
@@ -26,4 +26,4 @@ Each pair adds up to 41, and 40 numbers make 20 pairs.
 
 There are 40 terms, so the sum is half of 40 times the first term plus the last term: $\frac{40 \times 41}{2} = 820$.
 
-**Answer: (C) 820**
+**Answer: (A) 820**

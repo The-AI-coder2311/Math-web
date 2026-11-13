@@ -2,13 +2,13 @@
 order: 1
 difficulty: easy
 lesson: 01-repeating-and-growing
-choices: ["31","37","35","39","41"]
-answer: B
+choices: ["31","33","35","36","37"]
+answer: E
 mistakes:
   A: "Eso le suma 5 a 26. Los saltos siguen creciendo: 3, 5, 7, 9 y luego 11."
+  B: "Eso vuelve a sumar 7. Los saltos son 3, 5, 7 y 9, así que el siguiente salto es 11."
   C: "Eso vuelve a sumar 9. Cada salto es 2 más que el anterior."
-  D: "Eso suma 13. El salto que sigue después del 9 es 11."
-  E: "Eso suma 15. El salto que sigue después del 9 es 11."
+  D: "Eso es $6 \\times 6$. Cada número de la lista es 1 más que un cuadrado, así que el siguiente es 1 más que eso."
 verify: "6 * 6 + 1"
 ---
 
@@ -32,4 +32,4 @@ Los saltos son 3, 5, 7 y 9. ¿Cuál es el siguiente salto?
 
 **Paso 3.** El siguiente número es $26 + 11 = 37$.
 
-**Respuesta: (B) 37**
+**Respuesta: (E) 37**

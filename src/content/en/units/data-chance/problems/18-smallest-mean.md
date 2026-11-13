@@ -2,11 +2,11 @@
 order: 18
 difficulty: hard
 lesson: 02-median-tables-graphs
-choices: ["5","5.2","6.4","8","26"]
-answer: B
+choices: ["5.2","6.4","6.5","8","26"]
+answer: A
 mistakes:
-  A: "That would need a total of 25. The smallest possible total is 26."
-  C: "That would need a total of 32. The two smallest numbers can be as low as 1."
+  B: "That would need a total of 32. The two smallest numbers can be as low as 1."
+  C: "That's $26 \\div 4$. The list has 5 numbers, so divide by 5."
   D: "That's the median. The mean can be lower if the small numbers are low."
   E: "That's the total. You still need to divide by 5."
 verify: "Math.min(...product(range(1, 8), range(1, 8)).filter(([a, b]) => a <= b).map(([a, b]) => (a + b + 8 + 8 + 8) / 5))"
@@ -26,4 +26,4 @@ The two below can be 1, and the two above have to be at least 8.
 
 The smallest list is 1, 1, 8, 8, 8. It adds up to 26, so the mean is $26 \div 5 = 5.2$.
 
-**Answer: (B) 5.2**
+**Answer: (A) 5.2**

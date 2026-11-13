@@ -2,13 +2,13 @@
 order: 3
 difficulty: easy
 from: primes-remainders/03-gcf-and-lcm
-choices: ["4","6","24","12","180"]
+choices: ["2","4","6","12","24"]
 answer: D
 mistakes:
-  A: "That divides both, but it isn't the largest."
+  A: "2 is a common factor, but it isn't the greatest one."
   B: "That divides both, but it isn't the largest."
-  C: "24 doesn't divide 36."
-  E: "That's the LCM. The GCF has to be small enough to divide both."
+  C: "That divides both, but it isn't the largest."
+  E: "24 doesn't divide 36."
 verify: "gcd(36, 60)"
 ---
 

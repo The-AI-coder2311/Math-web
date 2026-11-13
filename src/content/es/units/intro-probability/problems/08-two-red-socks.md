@@ -2,13 +2,13 @@
 order: 9
 difficulty: medium
 lesson: 03-trees-and-multiplying
-choices: ["$\\frac{2}{7}$","$\\frac{16}{49}$","$\\frac{1}{3}$","$\\frac{4}{7}$","$\\frac{1}{2}$"]
+choices: ["$\\frac{2}{7}$","$\\frac{16}{49}$","$\\frac{1}{3}$","$\\frac{1}{2}$","$\\frac{4}{7}$"]
 answer: A
 mistakes:
   B: "Eso es $\\frac{4}{7} \\times \\frac{4}{7}$, como si regresaras el primer calcetín. El cajón cambia."
   C: "Actualiza el cajón después del primer calcetín y multiplica: $\\frac{4}{7} \\times \\frac{3}{6}$."
-  D: "Eso es solo el primer calcetín. El segundo también tiene que ser rojo."
-  E: "Eso es solo el segundo calcetín, después de que sale uno rojo. Multiplícalo por la probabilidad del primero."
+  D: "Eso es solo el segundo calcetín, después de que sale uno rojo. Multiplícalo por la probabilidad del primero."
+  E: "Eso es solo el primer calcetín. El segundo también tiene que ser rojo."
 verify: "fraction(combos(range(1, 7), 2).filter((pair) => pair.every((sock) => sock <= 4)).length, combos(range(1, 7), 2).length)"
 ---
 

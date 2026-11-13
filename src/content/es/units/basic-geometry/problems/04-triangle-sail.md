@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 02-triangle-area
-choices: ["17","34","140","70","35"]
-answer: E
+choices: ["17","34","35","70","140"]
+answer: C
 mistakes:
   A: "Eso es $10 + 7$. El área multiplica la base y la altura."
   B: "Eso es el doble de $10 + 7$, que es el perímetro de un rectángulo. Multiplica la base y la altura, y luego saca la mitad."
   D: "Ese es el rectángulo que rodea la vela. El triángulo es la mitad."
-  C: "Eso duplica el rectángulo. Un triángulo es la mitad del rectángulo."
+  E: "Eso duplica el rectángulo. Un triángulo es la mitad del rectángulo."
 verify: "(10 * 7) / 2"
 ---
 
@@ -28,4 +28,4 @@ El rectángulo tiene un área de $10 \times 7 = 70$. El triángulo es la mitad.
 
 **Paso 2.** El triángulo es la mitad de eso: $70 \div 2 = 35$ pies cuadrados.
 
-**Respuesta: (E) 35**
+**Respuesta: (C) 35**

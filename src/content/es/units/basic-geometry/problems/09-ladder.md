@@ -2,11 +2,11 @@
 order: 10
 difficulty: medium
 lesson: 05-right-triangles
-choices: ["18","24","20","26","32"]
-answer: B
+choices: ["18","20","24","26","32"]
+answer: C
 mistakes:
   A: "Eso es $25 - 7$. Los triángulos rectángulos usan cuadrados, no una simple resta."
-  C: "Revísalo: $20^2 + 7^2$ da 449, no 625."
+  B: "Revísalo: $20^2 + 7^2$ da 449, no 625."
   D: "Eso trata la escalera como cateto. Es el lado más largo, opuesto al ángulo recto."
   E: "Eso es $25 + 7$. La altura tiene que ser menor que la escalera."
 verify: "range(1, 25).find((h) => h * h + 7 * 7 === 25 * 25)"
@@ -32,4 +32,4 @@ $$7^2 + h^2 = 25^2$$
 
 **Paso 3.** Como $24 \times 24 = 576$, la escalera llega a 24 pies de altura.
 
-**Respuesta: (B) 24**
+**Respuesta: (C) 24**

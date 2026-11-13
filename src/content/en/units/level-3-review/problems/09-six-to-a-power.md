@@ -2,13 +2,13 @@
 order: 9
 difficulty: medium
 from: modular-arithmetic/02-giant-powers
-choices: ["6","2","3","5","1"]
-answer: E
+choices: ["1","2","3","5","6"]
+answer: A
 mistakes:
   B: "Replace 6 with $-1$. Even powers of $-1$ are 1."
   C: "Replace 6 with $-1$. Even powers of $-1$ are 1."
   D: "Replace 6 with $-1$. Even powers of $-1$ are 1."
-  A: "That's for an odd exponent. Here, 50 is even."
+  E: "That's for an odd exponent. Here, 50 is even."
 verify: "range(1, 50).reduce((r) => (r * 6) % 7, 1)"
 ---
 
@@ -26,4 +26,4 @@ $6 \equiv -1 \pmod{7}$, and the exponent is even.
 
 Since $6 \equiv -1 \pmod{7}$, we have $6^{50} \equiv (-1)^{50} = 1$.
 
-**Answer: (E) 1**
+**Answer: (A) 1**

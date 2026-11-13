@@ -2,11 +2,11 @@
 order: 22
 difficulty: hard
 lesson: 04-harder-probability
-choices: ["$\\frac{1}{6}$","$\\frac{4}{9}$","$\\frac{5}{12}$","$\\frac{1}{2}$","$\\frac{5}{9}$"]
-answer: B
+choices: ["$\\frac{1}{6}$","$\\frac{5}{12}$","$\\frac{4}{9}$","$\\frac{1}{2}$","$\\frac{5}{9}$"]
+answer: C
 mistakes:
   A: "That's the chance that the second die matches the first. There are more ways to get a match."
-  C: "That's the chance of exactly two matching. It leaves out the case where all three match."
+  B: "That's the chance of exactly two matching. It leaves out the case where all three match."
   D: "It's close, but compute it exactly. The chance of no match is 120 out of 216."
   E: "That's the chance that all three are **different**. You need to subtract it from 1."
 verify: "fraction(product(range(1, 6), range(1, 6), range(1, 6)).filter((d) => new Set(d).size < 3).length, 216)"
@@ -28,4 +28,4 @@ The opposite is "all three are different." Count those: $6 \times 5 \times 4$.
 
 **Step 2.** So the probability of a match is $1 - \frac{5}{9} = \frac{4}{9}$.
 
-**Answer: (B) $\frac{4}{9}$**
+**Answer: (C) $\frac{4}{9}$**

@@ -2,13 +2,13 @@
 order: 9
 difficulty: medium
 lesson: 05-right-triangles
-choices: ["15","13","17","18","21"]
+choices: ["15","17","18","21","225"]
 answer: A
 mistakes:
-  B: "That's from a 5-12-13 triangle. Here, the legs are 9 and 12."
-  C: "That's from an 8-15-17 triangle. Here, the legs are 9 and 12."
-  D: "Check it: $18 \\times 18 = 324$, which is too big."
-  E: "That's $9 + 12$. The hypotenuse is shorter than the two legs put together."
+  B: "That's from an 8-15-17 triangle. Here, the legs are 9 and 12."
+  C: "Check it: $18 \\times 18 = 324$, which is too big."
+  D: "That's $9 + 12$. The hypotenuse is shorter than the two legs put together."
+  E: "That's $81 + 144 = 225$, which is the hypotenuse squared. Take the square root to finish."
 verify: "range(1, 50).find((c) => c * c === 9 * 9 + 12 * 12)"
 ---
 

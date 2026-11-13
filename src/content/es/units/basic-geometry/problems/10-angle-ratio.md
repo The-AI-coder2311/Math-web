@@ -2,13 +2,13 @@
 order: 11
 difficulty: medium
 lesson: 03-angle-facts
-choices: ["40","60","100","90","80"]
-answer: E
+choices: ["40","60","80","90","100"]
+answer: C
 mistakes:
   A: "Ese es el ángulo menor, que tiene 2 cajas."
   B: "Ese es el ángulo de en medio, que tiene 3 cajas."
   D: "Eso supone un triángulo rectángulo. La razón te da los ángulos directamente."
-  C: "Eso son 5 cajas. El ángulo mayor tiene 4 cajas."
+  E: "Eso son 5 cajas. El ángulo mayor tiene 4 cajas."
 verify: "(() => { const unit = range(1, 60).find((u) => 2 * u + 3 * u + 4 * u === 180); return 4 * unit; })()"
 ---
 
@@ -32,4 +32,4 @@ Hay 9 cajas en total que se reparten 180 grados. Así que cada caja tiene 20 gra
 
 **Comprobación:** Los ángulos miden 40°, 60° y 80°, y $40 + 60 + 80 = 180$.
 
-**Respuesta: (E) 80**
+**Respuesta: (C) 80**

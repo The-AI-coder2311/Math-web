@@ -2,13 +2,13 @@
 order: 18
 difficulty: hard
 lesson: 04-one-minus
-choices: ["$\\frac{3}{5}$","$\\frac{1}{3}$","$\\frac{2}{5}$","$\\frac{4}{15}$","$\\frac{2}{3}$"]
-answer: A
+choices: ["$\\frac{1}{15}$","$\\frac{4}{15}$","$\\frac{1}{3}$","$\\frac{2}{5}$","$\\frac{3}{5}$"]
+answer: E
 mistakes:
-  D: "Eso cuenta 4 parejas. Hay 9 parejas que incluyen a una niña."
-  B: "Esa es la probabilidad de que una elección en particular sea niña. Hay dos elecciones."
-  C: "Esa es la probabilidad de que los dos sean niños. Réstala de 1."
-  E: "Eso suma $\\frac{1}{3} + \\frac{1}{3}$, que cuenta dos veces la pareja de dos niñas."
+  A: "Esa es la probabilidad de que las dos personas elegidas sean niñas. \"Al menos una\" también incluye una niña y un niño."
+  B: "Eso cuenta 4 parejas. Hay 9 parejas que incluyen a una niña."
+  C: "Esa es la probabilidad de que una elección en particular sea niña. Hay dos elecciones."
+  D: "Esa es la probabilidad de que los dos sean niños. Réstala de 1."
 verify: "(() => { const all = combos(['G', 'G', 'B', 'B', 'B', 'B'], 2); return fraction(all.filter((p) => p.includes('G')).length, all.length); })()"
 ---
 
@@ -26,4 +26,4 @@ Hay $\binom{6}{2} = 15$ parejas. Las parejas de solo niños son $\binom{4}{2} = 
 
 Hay 15 parejas en total, y 6 son solo de niños. Así que la probabilidad de que los dos sean niños es $\frac{6}{15} = \frac{2}{5}$. La probabilidad de al menos una niña es $1 - \frac{2}{5} = \frac{3}{5}$.
 
-**Respuesta: (A) $\frac{3}{5}$**
+**Respuesta: (E) $\frac{3}{5}$**

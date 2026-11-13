@@ -2,12 +2,12 @@
 order: 1
 difficulty: easy
 from: counting/01-multiply-choices
-choices: ["8","9","25","15","35"]
-answer: D
+choices: ["8","9","15","25","35"]
+answer: C
 mistakes:
   A: "Eso es $3 + 5$. Elige un sombrero **y** una bufanda, así que multiplica."
   B: "Eso es $3 \\times 3$. Hay 5 bufandas."
-  C: "Eso es $5 \\times 5$. Hay 3 sombreros."
+  D: "Eso es $5 \\times 5$. Hay 3 sombreros."
   E: "Revisa tu multiplicación: $3 \\times 5$."
 verify: "product(range(1, 3), range(1, 5)).length"
 ---
@@ -26,4 +26,4 @@ Para cada uno de los 3 sombreros hay 5 bufandas.
 
 Elige un sombrero y luego una bufanda, así que multiplica: $3 \times 5 = 15$.
 
-**Respuesta: (D) 15**
+**Respuesta: (C) 15**

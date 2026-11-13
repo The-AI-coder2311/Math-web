@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-equal-groups
-choices: ["$\\frac{3}{5}$","$\\frac{2}{5}$","$\\frac{1}{2}$","$\\frac{4}{9}$","$\\frac{5}{12}$"]
-answer: A
+choices: ["$\\frac{2}{5}$","$\\frac{5}{12}$","$\\frac{4}{9}$","$\\frac{1}{2}$","$\\frac{3}{5}$"]
+answer: E
 mistakes:
-  C: "Es una buena referencia, pero $\\frac{3}{5}$ es un poco más que un medio."
-  B: "Esto es menos que un medio, porque la mitad de 5 es 2.5."
-  D: "Esto es menos que un medio, porque la mitad de 9 es 4.5."
-  E: "Los números son más grandes, pero esto es menos que un medio, porque la mitad de 12 es 6."
+  A: "Esto es menos que un medio, porque la mitad de 5 es 2.5."
+  B: "Los números son más grandes, pero esto es menos que un medio, porque la mitad de 12 es 6."
+  C: "Esto es menos que un medio, porque la mitad de 9 es 4.5."
+  D: "Es una buena referencia, pero $\\frac{3}{5}$ es un poco más que un medio."
 verify: "[[1, 2], [2, 5], [3, 5], [4, 9], [5, 12]].sort((a, b) => b[0] * a[1] - a[0] * b[1]).map(([n, d]) => fraction(n, d))[0]"
 ---
 
@@ -34,4 +34,4 @@ Una fracción es mayor que $\frac{1}{2}$ solo cuando el número de arriba es má
 
 Solo $\frac{3}{5}$ es mayor que un medio, así que es la mayor.
 
-**Respuesta: (A) $\frac{3}{5}$**
+**Respuesta: (E) $\frac{3}{5}$**

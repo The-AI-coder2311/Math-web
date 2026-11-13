@@ -2,13 +2,13 @@
 order: 10
 difficulty: medium
 lesson: 01-count-what-you-want
-choices: ["$\\frac{1}{3}$","$\\frac{2}{3}$","$\\frac{1}{2}$","$\\frac{5}{6}$","$\\frac{4}{5}$"]
-answer: B
+choices: ["$\\frac{1}{3}$","$\\frac{1}{2}$","$\\frac{2}{3}$","$\\frac{4}{5}$","$\\frac{5}{6}$"]
+answer: C
 mistakes:
   A: "That counts only the multiples of 3."
-  C: "That counts only the multiples of 2."
-  D: "That's 25 out of 30, which counts multiples of 6 twice. Subtract them once."
-  E: "That's 24 out of 30. Check your count: $15 + 10 - 5 = 20$."
+  B: "That counts only the multiples of 2."
+  D: "That's 24 out of 30. Check your count: $15 + 10 - 5 = 20$."
+  E: "That's 25 out of 30, which counts multiples of 6 twice. Subtract them once."
 verify: "fraction(range(1, 30).filter((n) => n % 2 === 0 || n % 3 === 0).length, 30)"
 ---
 
@@ -32,4 +32,4 @@ There are 15 multiples of 2 and 10 multiples of 3. Multiples of 6 got counted tw
 
 **Step 4.** The probability is $\frac{20}{30}$, which simplifies to $\frac{2}{3}$.
 
-**Answer: (B) $\frac{2}{3}$**
+**Answer: (C) $\frac{2}{3}$**

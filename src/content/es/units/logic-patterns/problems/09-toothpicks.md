@@ -2,11 +2,11 @@
 order: 10
 difficulty: medium
 lesson: 01-repeating-and-growing
-choices: ["60","63","61","64","80"]
-answer: C
+choices: ["60","61","63","64","80"]
+answer: B
 mistakes:
   A: "Eso es $20 \\times 3$. El primer cuadrado necesita un palillo más, porque no tiene vecino."
-  B: "Eso es $3 + 20 \\times 3$. Solo 19 cuadrados agregan 3 palillos cada uno."
+  C: "Eso es $3 + 20 \\times 3$. Solo 19 cuadrados agregan 3 palillos cada uno."
   D: "Eso es $4 + 20 \\times 3$. Después del primer cuadrado, solo hay 19 más."
   E: "Eso es $20 \\times 4$, que cuenta dos veces los lados compartidos."
 verify: "(() => { const n = 20; const edges = new Set(); range(0, n - 1).forEach((x) => { edges.add(`h${x}top`); edges.add(`h${x}bottom`); edges.add(`v${x}`); edges.add(`v${x + 1}`); }); return edges.size; })()"
@@ -32,4 +32,4 @@ El primer cuadrado usa 4. Cada uno de los otros 19 cuadrados agrega 3.
 
 $$4 + 19 \times 3 = 61$$
 
-**Respuesta: (C) 61**
+**Respuesta: (B) 61**

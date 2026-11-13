@@ -2,11 +2,11 @@
 order: 12
 difficulty: medium
 lesson: 02-triangle-area
-choices: ["5","2.5","10","18","360"]
+choices: ["5","10","15","18","360"]
 answer: A
 mistakes:
-  B: "Eso es $30 \\div 12$, que deja fuera el medio. Un triángulo es la mitad de un rectángulo."
-  C: "Eso es el doble de la altura. La mitad de 12 es 6, y $30 \\div 6 = 5$."
+  B: "Eso es el doble de la altura. La mitad de 12 es 6, y $30 \\div 6 = 5$."
+  C: "Eso es $30 \\div 2$. Sacar la mitad del área no es el último paso. El área es la mitad de $12$ por la altura, así que la mitad de 12 por la altura debe dar 30."
   D: "Eso es $30 - 12$. El área viene de multiplicar, así que divide para regresar."
   E: "Eso es $30 \\times 12$. Divide para regresar."
 verify: "range(1, 100).find((h) => (12 * h) / 2 === 30)"

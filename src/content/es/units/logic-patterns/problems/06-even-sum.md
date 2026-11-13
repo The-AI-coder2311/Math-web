@@ -2,12 +2,12 @@
 order: 7
 difficulty: medium
 lesson: 02-small-cases
-choices: ["2500","2525","5050","2550","5100"]
-answer: D
+choices: ["2500","2525","2550","5050","5100"]
+answer: C
 mistakes:
   A: "Eso es $25 \\times 100$. Cada pareja suma 102, no 100."
   B: "Revisa tus parejas. 2 y 100 suman 102, y hay 25 parejas."
-  C: "Esa es la suma del 1 al 100, que incluye los impares."
+  D: "Esa es la suma del 1 al 100, que incluye los impares."
   E: "Eso es $50 \\times 102$, el total si escribes la lista dos veces. Divide entre 2."
 verify: "sum(range(1, 100).filter((n) => n % 2 === 0))"
 ---
@@ -32,4 +32,4 @@ Hay 50 números, que forman 25 parejas que suman 102 cada una.
 
 **Paso 3.** La suma es $25 \times 102 = 2550$.
 
-**Respuesta: (D) 2550**
+**Respuesta: (C) 2550**

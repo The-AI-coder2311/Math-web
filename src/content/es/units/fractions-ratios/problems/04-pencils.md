@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 03-rates-and-scaling
-choices: ["1.75","3","2.25","2.5","2"]
-answer: E
+choices: ["1.75","2","2.25","2.5","3"]
+answer: B
 mistakes:
   A: "Eso suma 50 centavos al precio. Escalar significa multiplicar: primero encuentra el costo de un lápiz."
   C: "Eso suma un dólar. Primero encuentra el costo de un lápiz, que es 25 centavos."
   D: "Ese es el costo de 10 lápices."
-  B: "Ese es el costo de 12 lápices. Un lápiz cuesta 25 centavos."
+  E: "Ese es el costo de 12 lápices. Un lápiz cuesta 25 centavos."
 verify: "(1.25 / 5) * 8"
 ---
 
@@ -28,4 +28,4 @@ Un lápiz cuesta $1.25 \div 5$. Multiplícalo por 8.
 
 **Paso 2.** Ocho lápices cuestan $8 \times 0.25 = 2$, que son 2 dólares.
 
-**Respuesta: (E) 2**
+**Respuesta: (B) 2**

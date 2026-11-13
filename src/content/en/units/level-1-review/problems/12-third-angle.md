@@ -2,11 +2,11 @@
 order: 12
 difficulty: medium
 from: basic-geometry/03-angle-facts
-choices: ["50","70","60","120","180"]
-answer: C
+choices: ["50","60","70","120","180"]
+answer: B
 mistakes:
   A: "That's $85 - 35$. All three angles add up to 180°."
-  B: "Check it: $35 + 85 + 70$ is 190."
+  C: "Check it: $35 + 85 + 70$ is 190."
   D: "That's $35 + 85$. Subtract it from 180."
   E: "That's what all three add up to."
 verify: "range(1, 179).find((x) => x + 35 + 85 === 180)"
@@ -26,4 +26,4 @@ They add up to 180°.
 
 The third angle is $180 - 35 - 85 = 60$ degrees.
 
-**Answer: (C) 60**
+**Answer: (B) 60**

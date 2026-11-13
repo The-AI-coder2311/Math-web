@@ -2,13 +2,13 @@
 order: 5
 difficulty: easy
 lesson: 02-when-order-matters
-choices: ["4","24","16","10","256"]
-answer: B
+choices: ["4","10","12","16","24"]
+answer: E
 mistakes:
   A: "Esa es la cantidad de libros. Cada libro puede ir en varias posiciones."
-  D: "Eso es $4 + 3 + 2 + 1$. Haces una elección y luego otra, así que multiplica."
-  C: "Eso es $4 \\times 4$. Una vez que acomodas un libro, quedan menos."
-  E: "Eso es $4 \\times 4 \\times 4 \\times 4$, que reutiliza libros. Cada libro solo puede ir en un lugar."
+  B: "Eso es $4 + 3 + 2 + 1$. Haces una elección y luego otra, así que multiplica."
+  C: "Eso es $4 \\times 3$, que llena solo los dos primeros lugares del estante. Sigue multiplicando para los últimos dos libros."
+  D: "Eso es $4 \\times 4$. Una vez que acomodas un libro, quedan menos."
 verify: "perms(['a', 'b', 'c', 'd']).length"
 ---
 
@@ -37,4 +37,4 @@ $$4 \times 3 \times 2 \times 1 = 24$$
 
 **Un error común:** contestar $4 \times 4 \times 4 \times 4 = 256$. ¡Eso dejaría que el mismo libro estuviera en dos lugares a la vez!
 
-**Respuesta: (B) 24**
+**Respuesta: (E) 24**

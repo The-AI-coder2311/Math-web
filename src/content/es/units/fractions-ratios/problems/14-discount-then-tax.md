@@ -2,13 +2,13 @@
 order: 14
 difficulty: medium
 lesson: 04-percents
-choices: ["38.5","35","30","40","45"]
-answer: A
+choices: ["15","30","35","38.5","40"]
+answer: D
 mistakes:
-  C: "Eso quita el 40%. El impuesto sube el precio, no lo baja."
-  B: "Ese es el precio de oferta. Todavía tienes que sumar el impuesto."
-  D: "Eso es $50 - 10$. Los dos porcentajes no se juntan en un 20%, porque son de números diferentes."
-  E: "Eso solo quita el 10%. Es 30% de descuento y luego 10% de impuesto."
+  A: "Esa es la cantidad que se descuenta, $0.3 \\times 50 = 15$. Réstala de 50 y luego suma el impuesto."
+  B: "Eso quita el 40%. El impuesto sube el precio, no lo baja."
+  C: "Ese es el precio de oferta. Todavía tienes que sumar el impuesto."
+  E: "Eso es $50 - 10$. Los dos porcentajes no se juntan en un 20%, porque son de números diferentes."
 verify: "(50 * 70 / 100) * 110 / 100"
 ---
 
@@ -28,4 +28,4 @@ El precio de oferta es \$35. El impuesto es el 10% de eso.
 
 **Paso 2.** El 10% de 35 es 3.5, así que el precio final es $35 + 3.5 = 38.5$.
 
-**Respuesta: (A) 38.5**
+**Respuesta: (D) 38.5**

@@ -2,11 +2,11 @@
 order: 10
 difficulty: medium
 lesson: 01-angle-chasing
-choices: ["36","72","54","90","108"]
-answer: B
+choices: ["36","54","72","90","108"]
+answer: C
 mistakes:
   A: "That's angle $DBC$. Use triangle $BDC$ to find angle $BDC$."
-  C: "Angle $C$ is 72°, and angle $DBC$ is 36°. Those leave 72° for angle $BDC$."
+  B: "Angle $C$ is 72°, and angle $DBC$ is 36°. Those leave 72° for angle $BDC$."
   D: "The problem doesn't say that this is a right angle. Use the angle sum of triangle $BDC$."
   E: "That's the outside angle at $D$, angle $ADB$. The question asks for angle $BDC$."
 verify: "(() => { const a = 36; const b = (180 - a) / 2; const c = b; return 180 - b / 2 - c; })()"
@@ -30,4 +30,4 @@ Angles $B$ and $C$ are each 72°, so angle $DBC$ is 36°.
 
 **Step 3.** In triangle $BDC$, the angles add up to 180°. So angle $BDC$ is $180 - 36 - 72 = 72$ degrees.
 
-**Answer: (B) 72**
+**Answer: (C) 72**

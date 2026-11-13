@@ -2,11 +2,11 @@
 order: 20
 difficulty: hard
 lesson: 04-count-the-opposite
-choices: ["72","90","78","96","114"]
-answer: C
+choices: ["72","78","90","96","114"]
+answer: B
 mistakes:
   A: "That's $120 - 24 - 24$. Lineups with Ari first **and** Bo last got subtracted twice, so add those 6 back."
-  B: "That's $120 - 24 - 6$. Both of the rules remove 24 lineups each."
+  C: "That's $120 - 24 - 6$. Both of the rules remove 24 lineups each."
   D: "That's $120 - 24$, which only uses one rule."
   E: "That's $120 - 6$, which removes only the lineups that break both rules. A lineup that breaks either rule has to go."
 verify: "perms(['A', 'B', 'C', 'D', 'E']).filter((p) => p[0] !== 'A' && p[4] !== 'B').length"
@@ -32,4 +32,4 @@ There are 24 of each. But some lineups have both Ari first and Bo last, and thos
 
 **Step 4.** $120 - 24 - 24 + 6 = 78$.
 
-**Answer: (C) 78**
+**Answer: (B) 78**

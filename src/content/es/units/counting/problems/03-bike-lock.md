@@ -2,12 +2,12 @@
 order: 3
 difficulty: easy
 lesson: 01-multiply-choices
-choices: ["30","100","1000","999","729"]
-answer: C
+choices: ["30","100","729","999","1000"]
+answer: E
 mistakes:
   A: "Eso es $10 + 10 + 10$. Cada rueda es otra elección, así que multiplica."
   B: "Eso es solo para 2 ruedas. Una tercera rueda multiplica por 10 otra vez."
-  E: "Eso es $9 \\times 9 \\times 9$. Los dígitos del 0 al 9 son 10 dígitos, no 9."
+  C: "Eso es $9 \\times 9 \\times 9$. Los dígitos del 0 al 9 son 10 dígitos, no 9."
   D: "Eso deja fuera el código 000. Los códigos van del 000 al 999."
 verify: "product(range(0, 9), range(0, 9), range(0, 9)).length"
 ---
@@ -32,4 +32,4 @@ $$10 \times 10 \times 10 = 1000$$
 
 **Una comprobación:** los códigos van del 000 al 999. Son todos los números enteros del 0 al 999, o sea 1000 números.
 
-**Respuesta: (C) 1000**
+**Respuesta: (E) 1000**

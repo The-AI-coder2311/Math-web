@@ -2,10 +2,10 @@
 order: 8
 difficulty: medium
 from: counting/03-overcount-then-divide
-choices: ["20","18","30","60","120"]
-answer: A
+choices: ["18","20","30","60","120"]
+answer: B
 mistakes:
-  B: "That's $6 \\times 3$. Pick one at a time, and then divide."
+  A: "That's $6 \\times 3$. Pick one at a time, and then divide."
   C: "That's $6 \\times 5$, which stops after 2 picks."
   D: "That divides by 2. Three people can be ordered in 6 ways."
   E: "That counts every order of the same group. Divide by 6."
@@ -26,4 +26,4 @@ $6 \times 5 \times 4 = 120$ counts each group $3 \times 2 \times 1$ times.
 
 Picking in order gives $6 \times 5 \times 4 = 120$. Each group is counted 6 times, so $120 \div 6 = 20$.
 
-**Answer: (A) 20**
+**Answer: (B) 20**

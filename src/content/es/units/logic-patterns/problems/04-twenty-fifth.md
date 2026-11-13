@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 01-repeating-and-growing
-choices: ["120","121","126","125","131"]
-answer: C
+choices: ["31","120","121","125","126"]
+answer: E
 mistakes:
-  A: "Esos son los 24 pasos de 5. Todavía tienes que empezar desde el primer número, 6."
-  B: "Eso empieza desde el 1. El primer número es 6."
+  A: "Eso es $6 + 25$. Cada paso suma 5, y hay 24 pasos del primer número al número 25."
+  B: "Esos son los 24 pasos de 5. Todavía tienes que empezar desde el primer número, 6."
+  C: "Eso empieza desde el 1. El primer número es 6."
   D: "Eso es $25 \\times 5$. Deja fuera el valor inicial y usa 25 pasos."
-  E: "Eso usa 25 pasos. Para llegar al número 25 solo se necesitan 24 pasos."
 verify: "range(2, 25).reduce((value) => value + 5, 6)"
 ---
 
@@ -30,4 +30,4 @@ Se necesitan 24 pasos para llegar al número 25.
 
 $$6 + 24 \times 5 = 126$$
 
-**Respuesta: (C) 126**
+**Respuesta: (E) 126**

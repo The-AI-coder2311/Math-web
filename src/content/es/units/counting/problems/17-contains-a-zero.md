@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 04-count-the-opposite
-choices: ["2439","729","2916","3439","6561"]
-answer: A
+choices: ["729","2439","2916","3439","6561"]
+answer: B
 mistakes:
-  B: "Esa es la cuenta para 3 dígitos sin ceros. Hay 4 dígitos."
+  A: "Esa es la cuenta para 3 dígitos sin ceros. Hay 4 dígitos."
   C: "Eso es $4 \\times 729$, que cuenta un 0 en cada uno de 4 lugares. El primer dígito no puede ser 0, y los números con varios ceros se cuentan más de una vez."
   D: "Eso es $10000 - 6561$. Solo hay 9000 números de cuatro dígitos."
   E: "Esa es la cuenta **sin** ceros. Réstala de 9000."
@@ -30,4 +30,4 @@ Sin ceros, cada uno de los 4 dígitos tiene 9 opciones, así que hay $9^4 = 6561
 
 **Paso 3.** Así que $9000 - 6561 = 2439$ tienen al menos un 0.
 
-**Respuesta: (A) 2439**
+**Respuesta: (B) 2439**

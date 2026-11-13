@@ -2,10 +2,10 @@
 order: 7
 difficulty: medium
 from: equations-word-problems/03-distance-rate-time
-choices: ["28.8","24","30","32","60"]
-answer: A
+choices: ["24","28.8","30","32","60"]
+answer: B
 mistakes:
-  B: "That's the slower speed alone. The average is between the two speeds."
+  A: "That's the slower speed alone. The average is between the two speeds."
   C: "That's the average of 36 and 24. More time is spent at the slower speed, so the average is lower."
   D: "Find the totals: 144 miles in 5 hours."
   E: "That's $36 + 24$. Speeds don't add up across parts of a trip."
@@ -26,4 +26,4 @@ It takes 2 hours out, and 3 hours back.
 
 It takes 2 hours out and 3 hours back. That's 144 miles in 5 hours, and $144 \div 5 = 28.8$.
 
-**Answer: (A) 28.8**
+**Answer: (B) 28.8**

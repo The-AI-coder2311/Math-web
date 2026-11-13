@@ -2,11 +2,11 @@
 order: 9
 difficulty: medium
 lesson: 03-gcf-and-lcm
-choices: ["31","61","41","121","601"]
-answer: B
+choices: ["31","41","61","121","601"]
+answer: C
 mistakes:
   A: "That leaves a remainder of 1 for 2, 3, and 5, but not for 4."
-  C: "That leaves a remainder of 2 when divided by 3."
+  B: "That leaves a remainder of 2 when divided by 3."
   D: "That works, but it isn't the smallest. A smaller number does too."
   E: "That works, but it isn't the smallest. A smaller number does too."
 verify: "range(2, 1000).find((n) => [2, 3, 4, 5].every((d) => n % d === 1))"
@@ -30,4 +30,4 @@ The number minus 1 is a common multiple of 2, 3, 4, and 5. What's the LCM?
 
 **Step 3.** So the number is $60 + 1 = 61$.
 
-**Answer: (B) 61**
+**Answer: (C) 61**

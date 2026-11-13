@@ -2,11 +2,11 @@
 order: 13
 difficulty: medium
 lesson: 03-working-backwards
-choices: ["18","36","24","48","72"]
-answer: B
+choices: ["18","24","36","48","72"]
+answer: C
 mistakes:
   A: "Eso es lo que quedaba después de la mañana. Regresa un paso más."
-  C: "Síguelo hacia adelante: la mitad de 24 es 12, y vender un tercio deja 8."
+  B: "Síguelo hacia adelante: la mitad de 24 es 12, y vender un tercio deja 8."
   D: "Síguelo hacia adelante: la mitad de 48 es 24, y vender un tercio deja 16."
   E: "Eso toma 12 como $\\frac{1}{6}$ del inicio. Revísalo: ¿qué fracción queda después de las dos ventas?"
 verify: "range(1, 100).find((n) => n - n / 2 - (n / 2) / 3 === 12)"
@@ -30,4 +30,4 @@ Los 12 panquecitos son $\frac{2}{3}$ de lo que quedaba después de la mañana, a
 
 **Comprobación:** 36 se vuelve 18, y luego vender un tercio de 18 deja 12.
 
-**Respuesta: (B) 36**
+**Respuesta: (C) 36**

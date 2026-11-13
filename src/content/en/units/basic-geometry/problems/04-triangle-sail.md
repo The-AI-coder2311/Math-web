@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 02-triangle-area
-choices: ["17","34","140","70","35"]
-answer: E
+choices: ["17","34","35","70","140"]
+answer: C
 mistakes:
   A: "That's $10 + 7$. Area multiplies the base and height."
   B: "That's twice $10 + 7$, which is the perimeter of a rectangle. Multiply the base and height, and then halve."
   D: "That's the rectangle around the sail. The triangle is half of it."
-  C: "That doubles the rectangle. A triangle is half of the rectangle."
+  E: "That doubles the rectangle. A triangle is half of the rectangle."
 verify: "(10 * 7) / 2"
 ---
 
@@ -28,4 +28,4 @@ The rectangle has an area of $10 \times 7 = 70$. The triangle is half of it.
 
 **Step 2.** The triangle is half of that: $70 \div 2 = 35$ square feet.
 
-**Answer: (E) 35**
+**Answer: (C) 35**

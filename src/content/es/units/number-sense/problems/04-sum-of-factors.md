@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["16","27","36","28","78"]
+choices: ["6","16","27","28","36"]
 answer: D
 mistakes:
-  A: "Eso deja fuera el 12. Un número es factor de sí mismo."
-  B: "Eso deja fuera el 1. Es factor de todos los números."
-  C: "Eso es más de lo que suman todos los factores. Revisa tu lista: 1, 2, 3, 4, 6, 12."
-  E: "Eso suma todos los números del 1 al 12. Solo cuentan los factores."
+  A: "Ese es el número de factores que tiene el 12. La pregunta pide su suma."
+  B: "Eso deja fuera el 12. Un número es factor de sí mismo."
+  C: "Eso deja fuera el 1. Es factor de todos los números."
+  E: "Eso es más de lo que suman todos los factores. Revisa tu lista: 1, 2, 3, 4, 6, 12."
 verify: "sum(factors(12))"
 ---
 

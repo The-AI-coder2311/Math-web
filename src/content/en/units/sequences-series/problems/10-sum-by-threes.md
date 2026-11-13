@@ -2,13 +2,13 @@
 order: 10
 difficulty: medium
 lesson: 02-fast-sums
-choices: ["585","617.5","650","1235","1300"]
-answer: C
+choices: ["65","585","617.5","650","1235"]
+answer: D
 mistakes:
-  A: "That uses 18 terms. The 19 steps connect 20 terms."
-  B: "That uses 19 terms, which is the number of steps. 19 steps connect 20 terms."
-  D: "That's $19 \\times 65$. There are 20 terms, not 19, and you also need to divide by 2."
-  E: "That's $20 \\times 65$, which counts the list twice. Divide by 2."
+  A: "That's $4 + 61$, the sum of one pair. There are 10 pairs."
+  B: "That uses 18 terms. The 19 steps connect 20 terms."
+  C: "That uses 19 terms, which is the number of steps. 19 steps connect 20 terms."
+  E: "That's $19 \\times 65$. There are 20 terms, not 19, and you also need to divide by 2."
 verify: "sum(range(4, 61).filter((n) => (n - 4) % 3 === 0))"
 ---
 
@@ -28,4 +28,4 @@ There are 20 terms. The first and last add up to 65.
 
 **Step 2.** The sum is $\frac{20 \times (4 + 61)}{2} = 650$.
 
-**Answer: (C) 650**
+**Answer: (D) 650**

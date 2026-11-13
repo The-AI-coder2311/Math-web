@@ -2,11 +2,11 @@
 order: 20
 difficulty: hard
 lesson: 04-count-the-opposite
-choices: ["72","90","78","96","114"]
-answer: C
+choices: ["72","78","90","96","114"]
+answer: B
 mistakes:
   A: "Eso es $120 - 24 - 24$. Las filas con Ari primero **y** Bo al final se restaron dos veces, así que suma esas 6 de vuelta."
-  B: "Eso es $120 - 24 - 6$. Cada una de las dos reglas quita 24 filas."
+  C: "Eso es $120 - 24 - 6$. Cada una de las dos reglas quita 24 filas."
   D: "Eso es $120 - 24$, que solo usa una regla."
   E: "Eso es $120 - 6$, que solo quita las filas que rompen las dos reglas. Una fila que rompe cualquiera de las reglas tiene que salir."
 verify: "perms(['A', 'B', 'C', 'D', 'E']).filter((p) => p[0] !== 'A' && p[4] !== 'B').length"
@@ -32,4 +32,4 @@ Hay 24 de cada una. Pero algunas filas tienen a Ari primero y a Bo al final, y e
 
 **Paso 4.** $120 - 24 - 24 + 6 = 78$.
 
-**Respuesta: (C) 78**
+**Respuesta: (B) 78**

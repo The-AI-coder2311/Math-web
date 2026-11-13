@@ -2,13 +2,13 @@
 order: 7
 difficulty: medium
 lesson: 02-counting-divisors
-choices: ["9","12","16","24","18"]
-answer: E
+choices: ["9","12","16","18","24"]
+answer: D
 mistakes:
   A: "That leaves out the 5. Its exponent of 1 gives a factor of 2."
   B: "Check the exponents: 2, 2, and 1 become 3, 3, and 2."
   C: "Check the exponents: 2, 2, and 1 become 3, 3, and 2."
-  D: "Check the exponents: 2, 2, and 1 become 3, 3, and 2."
+  E: "Check the exponents: 2, 2, and 1 become 3, 3, and 2."
 verify: "factors(180).length"
 ---
 
@@ -30,4 +30,4 @@ $180 = 2^2 \times 3^2 \times 5^1$. Add 1 to each exponent.
 
 **Step 3.** Multiply: $3 \times 3 \times 2 = 18$.
 
-**Answer: (E) 18**
+**Answer: (D) 18**

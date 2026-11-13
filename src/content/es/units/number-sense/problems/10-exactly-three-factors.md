@@ -2,11 +2,11 @@
 order: 11
 difficulty: medium
 lesson: 04-factors-primes-leftovers
-choices: ["1","4","3","2","7"]
-answer: B
+choices: ["1","2","3","4","7"]
+answer: D
 mistakes:
   A: "Eso encuentra muy pocos. Revisa 4, 9, 25 y 49: cada uno tiene exactamente 3 factores."
-  D: "Eso encuentra muy pocos. Revisa 4, 9, 25 y 49: cada uno tiene exactamente 3 factores."
+  B: "Eso encuentra muy pocos. Revisa 4, 9, 25 y 49: cada uno tiene exactamente 3 factores."
   C: "Te falta uno. Revisa 4, 9, 25 y 49: cada uno tiene exactamente 3 factores."
   E: "Eso cuenta todos los cuadrados perfectos hasta 50. Algunos tienen más de 3 factores. Por ejemplo, 16 tiene 5, y 1 solo tiene 1."
 verify: "range(1, 50).filter((n) => factors(n).length === 3).length"
@@ -42,4 +42,4 @@ Un número con 3 factores tiene que ser un cuadrado perfecto, y su raíz cuadrad
 
 **Un error común:** contestar 7 por contar todos los cuadrados perfectos.
 
-**Respuesta: (B) 4**
+**Respuesta: (D) 4**

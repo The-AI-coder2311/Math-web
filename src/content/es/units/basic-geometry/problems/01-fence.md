@@ -2,11 +2,11 @@
 order: 1
 difficulty: easy
 lesson: 01-perimeter-and-area
-choices: ["13","26","18","36","40"]
-answer: B
+choices: ["13","18","26","36","40"]
+answer: C
 mistakes:
   A: "Eso es $9 + 4$, que es solo la mitad del recorrido."
-  C: "Eso es $9 + 9$, que deja fuera los dos lados cortos."
+  B: "Eso es $9 + 9$, que deja fuera los dos lados cortos."
   D: "Eso es $9 \\times 4$, el área. La cerca va por fuera, alrededor."
   E: "Eso es demasiado. Suma los cuatro lados: 9, 4, 9 y 4."
 verify: "sum([9, 4, 9, 4])"
@@ -28,4 +28,4 @@ Rodearlo todo significa sumar los cuatro lados:
 
 $$9 + 4 + 9 + 4 = 26$$
 
-**Respuesta: (B) 26**
+**Respuesta: (C) 26**

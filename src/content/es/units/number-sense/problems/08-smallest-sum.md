@@ -2,12 +2,12 @@
 order: 9
 difficulty: medium
 lesson: 04-factors-primes-leftovers
-choices: ["23","17","19","16","32"]
-answer: D
+choices: ["16","17","19","23","32"]
+answer: A
 mistakes:
   B: "Eso es $5 + 12$. Una pareja más cercana, $6 + 10$, da menos."
   C: "Eso es $4 + 15$. Sigue avanzando hacia la mitad de la lista."
-  A: "Eso es $3 + 20$. Sigue avanzando hacia la mitad de la lista."
+  D: "Eso es $3 + 20$. Sigue avanzando hacia la mitad de la lista."
   E: "Eso es $2 + 30$. Mientras más cerca estén los dos números, menor es su suma."
 verify: "Math.min(...factors(60).map((a) => a + 60 / a))"
 ---
@@ -39,4 +39,4 @@ Las parejas de 60 son 1 y 60, 2 y 30, 3 y 20, 4 y 15, 5 y 12, y 6 y 10. ¿Cuál 
 
 $$6 + 10 = 16$$
 
-**Respuesta: (D) 16**
+**Respuesta: (A) 16**

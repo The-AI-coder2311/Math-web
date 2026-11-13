@@ -2,13 +2,13 @@
 order: 17
 difficulty: hard
 lesson: 02-distance-midpoints-circles
-choices: ["4","12","10","8","16"]
-answer: B
+choices: ["4","6","8","10","12"]
+answer: E
 mistakes:
   A: "That counts only the points on the axes. The 3-4-5 triangle gives more."
-  D: "That counts the 3-4-5 points but misses the 4 points on the axes, like $(5, 0)$."
-  C: "Count again by groups: 4 on the axes, and 8 from the 3-4-5 triangle."
-  E: "That counts the axis points as if they had 8 versions each. A point like $(5, 0)$ has only 4 versions, since 0 has no sign."
+  B: "That's half of them. Every point has a mirror image, such as $(3, 4)$ and $(-3, -4)$, so count both."
+  C: "That counts the 3-4-5 points but misses the 4 points on the axes, like $(5, 0)$."
+  D: "Count again by groups: 4 on the axes, and 8 from the 3-4-5 triangle."
 verify: "product(range(-5, 5), range(-5, 5)).filter(([x, y]) => x * x + y * y === 25).length"
 ---
 
@@ -30,4 +30,4 @@ The pairs are $0 + 25$ and $9 + 16$. Now count all of the signs and orders.
 
 **Step 3.** The total is $4 + 8 = 12$.
 
-**Answer: (B) 12**
+**Answer: (E) 12**

@@ -2,13 +2,13 @@
 order: 1
 difficulty: easy
 lesson: 01-repeating-and-growing
-choices: ["31","37","35","39","41"]
-answer: B
+choices: ["31","33","35","36","37"]
+answer: E
 mistakes:
   A: "That adds 5 to 26. The jumps keep growing: 3, 5, 7, 9, and then 11."
+  B: "That adds 7 again. The jumps are 3, 5, 7, and 9, so the next jump is 11."
   C: "That adds 9 again. Each jump is 2 more than the one before it."
-  D: "That adds 13. The next jump after 9 is 11."
-  E: "That adds 15. The next jump after 9 is 11."
+  D: "That's $6 \\times 6$. Each number in the list is 1 more than a square, so the next one is 1 more than that."
 verify: "6 * 6 + 1"
 ---
 
@@ -32,4 +32,4 @@ The jumps are 3, 5, 7, and 9. What's the next jump?
 
 **Step 3.** The next number is $26 + 11 = 37$.
 
-**Answer: (B) 37**
+**Answer: (E) 37**

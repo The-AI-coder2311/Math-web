@@ -2,10 +2,10 @@
 order: 16
 difficulty: hard
 lesson: 02-restrictions
-choices: ["48","36","24","60","120"]
-answer: A
+choices: ["24","36","48","60","120"]
+answer: C
 mistakes:
-  C: "That's the block arrangements. Ari and Bo can also swap inside the block."
+  A: "That's the block arrangements. Ari and Bo can also swap inside the block."
   B: "That's less than the count from gluing. Use $4! \\times 2$."
   D: "That's half of all lineups. They stand together less often than that."
   E: "That's every lineup, with no rule."
@@ -30,4 +30,4 @@ Glue them together, so there are 4 things to arrange. Don't forget that they can
 
 **Step 3.** The total is $24 \times 2 = 48$.
 
-**Answer: (A) 48**
+**Answer: (C) 48**

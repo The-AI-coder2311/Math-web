@@ -2,13 +2,13 @@
 order: 7
 difficulty: medium
 lesson: 02-list-the-real-outcomes
-choices: ["$\\frac{1}{8}$","$\\frac{1}{4}$","$\\frac{3}{8}$","$\\frac{1}{3}$","$\\frac{1}{2}$"]
-answer: C
+choices: ["$\\frac{1}{8}$","$\\frac{3}{16}$","$\\frac{1}{4}$","$\\frac{1}{3}$","$\\frac{3}{8}$"]
+answer: E
 mistakes:
   A: "Esa es la probabilidad de un orden específico, como CCX. Funcionan tres órdenes."
-  B: "Eso cuenta solo 2 órdenes. Funcionan tres."
+  B: "El 3 de arriba está bien, pero 3 monedas tienen $2 \\times 2 \\times 2 = 8$ resultados, no 16."
+  C: "Eso cuenta solo 2 órdenes. Funcionan tres."
   D: "Eso trata los números de caras como igual de probables. Haz la lista de los 8 resultados."
-  E: "Esa es la probabilidad de 2 **o** 3 caras. La pregunta dice exactamente 2."
 verify: "fraction(product([0, 1], [0, 1], [0, 1]).filter((f) => sum(f) === 2).length, 8)"
 ---
 
@@ -30,4 +30,4 @@ Hay 8 resultados. Los que quieres son CCX, CXC y XCC.
 
 **Paso 3.** La probabilidad es $\frac{3}{8}$.
 
-**Respuesta: (C) $\frac{3}{8}$**
+**Respuesta: (E) $\frac{3}{8}$**

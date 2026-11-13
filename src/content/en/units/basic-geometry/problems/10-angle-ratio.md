@@ -2,13 +2,13 @@
 order: 11
 difficulty: medium
 lesson: 03-angle-facts
-choices: ["40","60","100","90","80"]
-answer: E
+choices: ["40","60","80","90","100"]
+answer: C
 mistakes:
   A: "That's the smallest angle, which has 2 boxes."
   B: "That's the middle angle, which has 3 boxes."
   D: "That assumes a right triangle. The ratio gives you the angles directly."
-  C: "That's 5 boxes. The largest angle has 4 boxes."
+  E: "That's 5 boxes. The largest angle has 4 boxes."
 verify: "(() => { const unit = range(1, 60).find((u) => 2 * u + 3 * u + 4 * u === 180); return 4 * unit; })()"
 ---
 
@@ -32,4 +32,4 @@ There are 9 boxes in all, sharing 180 degrees. So each box holds 20 degrees.
 
 **Check:** The angles are 40°, 60°, and 80°, and $40 + 60 + 80 = 180$.
 
-**Answer: (E) 80**
+**Answer: (C) 80**

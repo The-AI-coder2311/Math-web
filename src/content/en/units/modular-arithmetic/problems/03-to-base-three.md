@@ -2,13 +2,13 @@
 order: 7
 difficulty: medium
 lesson: 04-other-bases
-choices: ["1200","1120","1210","2100","1020"]
-answer: A
+choices: ["1020","1120","1200","1210","2100"]
+answer: C
 mistakes:
+  A: "That's $27 + 6$, which is 33."
   B: "That's $27 + 9 + 6$, which is 42."
-  C: "That's $27 + 18 + 3$, which is 48."
-  D: "That's $54 + 9$, which is 63."
-  E: "That's $27 + 6$, which is 33."
+  D: "That's $27 + 18 + 3$, which is 48."
+  E: "That's $54 + 9$, which is 63."
 verify: "(45).toString(3)"
 ---
 
@@ -32,4 +32,4 @@ $45 = 1 \times 27 + 18$, and $18 = 2 \times 9$.
 
 **Check:** $1 \times 27 + 2 \times 9 + 0 \times 3 + 0 \times 1 = 45$.
 
-**Answer: (A) 1200**
+**Answer: (C) 1200**

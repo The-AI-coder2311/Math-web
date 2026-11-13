@@ -2,12 +2,12 @@
 order: 3
 difficulty: easy
 lesson: 01-multiply-choices
-choices: ["30","100","1000","999","729"]
-answer: C
+choices: ["30","100","729","999","1000"]
+answer: E
 mistakes:
   A: "That's $10 + 10 + 10$. Each dial is another choice, so multiply."
   B: "That's only 2 dials. A third dial multiplies by 10 again."
-  E: "That's $9 \\times 9 \\times 9$. The digits 0 through 9 make 10 digits, not 9."
+  C: "That's $9 \\times 9 \\times 9$. The digits 0 through 9 make 10 digits, not 9."
   D: "That leaves out the code 000. Codes run from 000 to 999."
 verify: "product(range(0, 9), range(0, 9), range(0, 9)).length"
 ---
@@ -32,4 +32,4 @@ $$10 \times 10 \times 10 = 1000$$
 
 **A check:** the codes run from 000 up to 999. That's every whole number from 0 to 999, which is 1000 numbers.
 
-**Answer: (C) 1000**
+**Answer: (E) 1000**

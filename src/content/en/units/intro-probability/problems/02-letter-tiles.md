@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-count-what-you-want
-choices: ["$\\frac{2}{11}$","$\\frac{1}{11}$","$\\frac{1}{8}$","$\\frac{1}{4}$","$\\frac{2}{9}$"]
-answer: A
+choices: ["$\\frac{1}{11}$","$\\frac{1}{8}$","$\\frac{2}{11}$","$\\frac{2}{9}$","$\\frac{1}{4}$"]
+answer: C
 mistakes:
-  B: "That counts only one M. The word has 2."
-  C: "That counts different letters, of which there are 8. Each tile is an outcome, and there are 11 tiles."
-  D: "Count the tiles and the Ms: 2 Ms out of 11 tiles."
-  E: "The word has 11 letters, not 9. Count them again."
+  A: "That counts only one M. The word has 2."
+  B: "That counts different letters, of which there are 8. Each tile is an outcome, and there are 11 tiles."
+  D: "The word has 11 letters, not 9. Count them again."
+  E: "Count the tiles and the Ms: 2 Ms out of 11 tiles."
 verify: "fraction([...'MATHEMATICS'].filter((c) => c === 'M').length, 'MATHEMATICS'.length)"
 ---
 
@@ -28,4 +28,4 @@ There are 11 tiles, and M appears twice.
 
 **Step 2.** The letter M appears 2 times, so the probability is $\frac{2}{11}$.
 
-**Answer: (A) $\frac{2}{11}$**
+**Answer: (C) $\frac{2}{11}$**

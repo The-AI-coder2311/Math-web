@@ -2,12 +2,12 @@
 order: 8
 difficulty: medium
 lesson: 04-split-or-subtract
-choices: ["28","30","36","32","56"]
-answer: D
+choices: ["28","30","32","36","56"]
+answer: C
 mistakes:
   A: "Eso le resta al perímetro la parte cortada. El hueco también agrega 2 lados nuevos."
   B: "Eso resta 2. El corte quita 4 pulgadas y regresa 4 pulgadas."
-  C: "Eso suma los 2 lados nuevos sin quitar nada de los anteriores."
+  D: "Eso suma los 2 lados nuevos sin quitar nada de los anteriores."
   E: "Esa es el área de la figura nueva. La pregunta pide el perímetro."
 verify: "(() => { const p = [[0, 0], [10, 0], [10, 4], [8, 4], [8, 6], [0, 6]]; return sum(p.map(([x, y], i) => { const [a, b] = p[(i + 1) % 6]; return Math.abs(a - x) + Math.abs(b - y); })); })()"
 ---
@@ -32,4 +32,4 @@ $$10 + 4 + 2 + 2 + 8 + 6 = 32$$
 
 **Fíjate:** Es lo mismo que el perímetro del rectángulo completo, porque $10 + 6 + 10 + 6 = 32$. El corte quita 2 pulgadas de cada uno de dos lados, y el hueco regresa esas mismas 4 pulgadas.
 
-**Respuesta: (D) 32**
+**Respuesta: (C) 32**

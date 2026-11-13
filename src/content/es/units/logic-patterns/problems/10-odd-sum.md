@@ -2,12 +2,12 @@
 order: 11
 difficulty: medium
 lesson: 02-small-cases
-choices: ["200","361","441","400","800"]
-answer: D
+choices: ["200","361","400","441","800"]
+answer: C
 mistakes:
   A: "Eso es la mitad de la respuesta correcta. La suma de los primeros 20 impares es $20 \\times 20$."
   B: "Eso es $19 \\times 19$. Hay 20 números impares del 1 al 39."
-  C: "Eso es $21 \\times 21$. Hay 20 números impares del 1 al 39."
+  D: "Eso es $21 \\times 21$. Hay 20 números impares del 1 al 39."
   E: "Eso es $20 \\times 40$, el total si escribes la lista dos veces. Divide entre 2."
 verify: "sum(range(1, 39).filter((n) => n % 2 === 1))"
 ---
@@ -32,4 +32,4 @@ Hay 20 números impares del 1 al 39. ¿Qué te dice el dibujo de puntos?
 
 $$20 \times 20 = 400$$
 
-**Respuesta: (D) 400**
+**Respuesta: (C) 400**

@@ -2,13 +2,13 @@
 order: 5
 difficulty: easy
 lesson: 03-working-backwards
-choices: ["3","23","9","13","5"]
-answer: E
+choices: ["3","5","9","13","23"]
+answer: B
 mistakes:
   A: "That's $9 \\div 3$. Undo each step once: divide by 3, and then subtract 4."
   C: "That's only the first step backward. You still need to undo \"add 4.\""
   D: "That adds 4 when going back. To undo adding 4, subtract 4."
-  B: "That undoes the steps in the wrong order. The last step gets undone first."
+  E: "That undoes the steps in the wrong order. The last step gets undone first."
 verify: "range(0, 50).find((n) => (n + 4) * 3 === 27)"
 ---
 
@@ -32,4 +32,4 @@ Work backwards from 27:
 
 **Check:** $5 + 4 = 9$, and $9 \times 3 = 27$.
 
-**Answer: (E) 5**
+**Answer: (B) 5**

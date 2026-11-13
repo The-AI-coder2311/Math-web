@@ -2,11 +2,11 @@
 order: 13
 difficulty: medium
 lesson: 03-working-backwards
-choices: ["18","36","24","48","72"]
-answer: B
+choices: ["18","24","36","48","72"]
+answer: C
 mistakes:
   A: "That's what was left after the morning. Go back one more step."
-  C: "Run it forward: half of 24 is 12, and then selling a third leaves 8."
+  B: "Run it forward: half of 24 is 12, and then selling a third leaves 8."
   D: "Run it forward: half of 48 is 24, and then selling a third leaves 16."
   E: "That treats 12 as $\\frac{1}{6}$ of the start. Check it: what fraction is left after both sales?"
 verify: "range(1, 100).find((n) => n - n / 2 - (n / 2) / 3 === 12)"
@@ -30,4 +30,4 @@ The 12 muffins are $\frac{2}{3}$ of what remained after the morning, so that was
 
 **Check:** 36 becomes 18, and then selling a third of 18 leaves 12.
 
-**Answer: (B) 36**
+**Answer: (C) 36**

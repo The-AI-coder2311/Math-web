@@ -2,12 +2,12 @@
 order: 19
 difficulty: hard
 lesson: 04-percents
-choices: ["20","5","10","0","45"]
-answer: D
+choices: ["0","5","10","20","45"]
+answer: A
 mistakes:
   B: "That's $25 - 20$. Percents that multiply each other don't subtract like that. Try real numbers."
   C: "Try a 10 by 10 rectangle. The new area is $12.5 \\times 8$."
-  A: "That's only the change in width. The length also changes."
+  D: "That's only the change in width. The length also changes."
   E: "That's $25 + 20$. One side grows, and the other shrinks."
 verify: "((125 * 80) / 100 - 100) / 1"
 ---
@@ -26,4 +26,4 @@ The new sides are 12.5 and 8. What's the new area?
 
 Start with a 10 by 10 rectangle, with an area of 100. The new sides are 12.5 and 8, and $12.5 \times 8 = 100$. The area is the same, so it changes by 0%.
 
-**Answer: (D) 0**
+**Answer: (A) 0**

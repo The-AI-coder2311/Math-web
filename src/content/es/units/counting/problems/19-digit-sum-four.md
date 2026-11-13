@@ -2,13 +2,13 @@
 order: 19
 difficulty: hard
 lesson: 05-split-into-cases
-choices: ["6","9","15","12","10"]
-answer: E
+choices: ["4","6","9","10","12"]
+answer: D
 mistakes:
-  A: "Eso deja fuera un caso completo. Revisa los primeros dígitos 1, 2, 3 y 4."
-  B: "Eso deja fuera un número. Un caso como el 400 es fácil de olvidar."
-  D: "Haz la lista de los números de cada caso. Un primer dígito de 1 da 4 números, y a partir de ahí las cuentas bajan de 1 en 1."
-  C: "Eso permitiría que el primer dígito fuera 0. Un número como 040 no es de 3 dígitos."
+  A: "Eso cuenta solo los números que empiezan con 1. El primer dígito también puede ser 2, 3 o 4."
+  B: "Eso deja fuera un caso completo. Revisa los primeros dígitos 1, 2, 3 y 4."
+  C: "Eso deja fuera un número. Un caso como el 400 es fácil de olvidar."
+  E: "Haz la lista de los números de cada caso. Un primer dígito de 1 da 4 números, y a partir de ahí las cuentas bajan de 1 en 1."
 verify: "range(100, 999).filter((n) => sum(digits(n)) === 4).length"
 ---
 
@@ -33,4 +33,4 @@ Divide según el primer dígito:
 
 El total es $4 + 3 + 2 + 1 = 10$.
 
-**Respuesta: (E) 10**
+**Respuesta: (D) 10**

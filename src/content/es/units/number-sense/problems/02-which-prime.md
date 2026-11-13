@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["15","21","31","27","33"]
-answer: C
+choices: ["15","21","25","27","31"]
+answer: E
 mistakes:
   A: "Eso es $3 \\times 5$, así que no es primo."
   B: "Eso es $3 \\times 7$, así que no es primo."
+  C: "$25 = 5 \\times 5$, así que no es primo."
   D: "Eso es $3 \\times 9$, así que no es primo."
-  E: "Eso es $3 \\times 11$, así que no es primo."
 verify: "[15, 21, 27, 31, 33].filter(isPrime).join()"
 ---
 
@@ -35,4 +35,4 @@ Así que ninguno de estos cuatro números es primo.
 
 **Paso 2.** Ahora prueba con 31. No es divisible entre 2, 3 ni 5. Podemos parar ahí porque $6 \times 6 = 36$ ya es más que 31, así que cualquier pareja de factores tendría que incluir un número menor que 6. Eso significa que su única pareja es 1 y 31.
 
-**Respuesta: (C) 31**
+**Respuesta: (E) 31**

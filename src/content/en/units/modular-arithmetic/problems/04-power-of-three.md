@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 02-giant-powers
-choices: ["1","2","3","4","6"]
-answer: D
+choices: ["0","1","2","3","4"]
+answer: E
 mistakes:
-  A: "That would be right if 100 were a multiple of 6. It leaves a remainder of 4."
-  B: "That's the 2nd spot. Here, 100 divided by 6 leaves 4."
-  C: "That's the 1st spot. Here, 100 divided by 6 leaves 4."
-  E: "That's the 3rd spot. Here, 100 divided by 6 leaves 4."
+  A: "A remainder of 0 would mean that 7 divides $3^{100}$. But the only prime factor of $3^{100}$ is 3."
+  B: "That would be right if 100 were a multiple of 6. It leaves a remainder of 4."
+  C: "That's the 2nd spot. Here, 100 divided by 6 leaves 4."
+  D: "That's the 1st spot. Here, 100 divided by 6 leaves 4."
 verify: "range(1, 100).reduce((r) => (r * 3) % 7, 1)"
 ---
 
@@ -34,4 +34,4 @@ The remainders go 3, 2, 6, 4, 5, 1. So $3^6$ leaves 1.
 
 **Step 3.** That means $3^{100}$ has the same remainder as $3^4$, which is 4.
 
-**Answer: (D) 4**
+**Answer: (E) 4**

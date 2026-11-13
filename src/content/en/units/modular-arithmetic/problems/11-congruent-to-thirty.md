@@ -2,10 +2,10 @@
 order: 3
 difficulty: easy
 lesson: 01-mod-notation
-choices: ["2","1","3","4","6"]
-answer: A
+choices: ["1","2","3","4","6"]
+answer: B
 mistakes:
-  B: "Check it: $30 - 1 = 29$, which isn't a multiple of 7."
+  A: "Check it: $30 - 1 = 29$, which isn't a multiple of 7."
   C: "Check it: $30 - 3 = 27$, which isn't a multiple of 7."
   D: "That's how many 7s fit in 30. The remainder is what's left."
   E: "Check it: $30 - 6 = 24$, which isn't a multiple of 7."
@@ -26,4 +26,4 @@ $7 \times 4 = 28$.
 
 Since $30 = 7 \times 4 + 2$, the remainder is 2.
 
-**Answer: (A) 2**
+**Answer: (B) 2**

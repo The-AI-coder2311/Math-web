@@ -2,12 +2,12 @@
 order: 6
 difficulty: easy
 lesson: 04-expected-value
-choices: ["3","3.5","4","6","21"]
-answer: B
+choices: ["3.5","4","6","7","21"]
+answer: A
 mistakes:
-  A: "Check the division: $21 \\div 6$. An expected value doesn't have to be a whole number."
-  C: "Check the division: $21 \\div 6$. An expected value doesn't have to be a whole number."
-  D: "That's the largest roll. The expected value is the average."
+  B: "Check the division: $21 \\div 6$. An expected value doesn't have to be a whole number."
+  C: "That's the largest roll. The expected value is the average."
+  D: "That's $1 + 6$, the smallest and largest rolls added together. The expected value is the average, which is half of that."
   E: "That's the total of all of the faces. Divide by 6."
 verify: "sum(range(1, 6)) / 6"
 ---
@@ -26,4 +26,4 @@ The numbers add up to 21, over 6 rolls.
 
 The numbers add up to 21, so the average is $21 \div 6 = 3.5$.
 
-**Answer: (B) 3.5**
+**Answer: (A) 3.5**

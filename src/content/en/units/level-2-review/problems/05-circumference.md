@@ -2,10 +2,10 @@
 order: 5
 difficulty: easy
 from: circles-solids/01-circle-formulas
-choices: ["$18\\pi$","$9\\pi$","$36\\pi$","$81\\pi$","$162\\pi$"]
-answer: A
+choices: ["$9\\pi$","$18\\pi$","$36\\pi$","$81\\pi$","$162\\pi$"]
+answer: B
 mistakes:
-  B: "That leaves out the 2 in $2 \\pi r$."
+  A: "That leaves out the 2 in $2 \\pi r$."
   C: "That uses the diameter in $2 \\pi r$. The formula uses the radius."
   D: "That's the area. The question asks for the distance around."
   E: "That's twice the area. Use $2 \\pi r$."
@@ -26,4 +26,4 @@ The formula is $2 \pi r$.
 
 The circumference is $2 \times 9 \times \pi$, which is $18\pi$.
 
-**Answer: (A) $18\pi$**
+**Answer: (B) $18\pi$**

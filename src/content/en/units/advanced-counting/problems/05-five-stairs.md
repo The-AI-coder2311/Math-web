@@ -2,12 +2,12 @@
 order: 5
 difficulty: easy
 lesson: 03-counting-step-by-step
-choices: ["5","8","10","13","32"]
-answer: B
+choices: ["8","10","13","16","32"]
+answer: A
 mistakes:
-  A: "That's the count for step 4. Add step 3 and step 4 to get step 5."
-  C: "That's $5 \\times 2$. The rule adds the two previous counts: $3 + 5$."
-  D: "That's the count for step 6."
+  B: "That's $5 \\times 2$. The rule adds the two previous counts: $3 + 5$."
+  C: "That's the count for step 6."
+  D: "That doubles at every step: 1, 2, 4, 8, 16. Each count is the sum of the two counts before it, not double the last one."
   E: "That's $2^5$, which treats every step as a separate choice. A 2-step move uses up two steps."
 verify: "range(3, 5).reduce(([a, b]) => [b, a + b], [1, 2])[1]"
 ---
@@ -26,4 +26,4 @@ Ways to reach a step = ways to the step before + ways to the step 2 before. Star
 
 Each step's count is the sum of the two before it, starting with 1 way for step 1 and 2 ways for step 2. That gives 1, 2, 3, 5, 8. So there are 8 ways to reach step 5.
 
-**Answer: (B) 8**
+**Answer: (A) 8**

@@ -2,12 +2,12 @@
 order: 18
 difficulty: hard
 from: primes-remainders/03-gcf-and-lcm
-choices: ["22","32","122","62","602"]
+choices: ["14","22","32","62","122"]
 answer: D
 mistakes:
-  A: "It leaves 1 when divided by 3."
-  B: "It leaves 2 when divided by 3, but 0 when divided by 4."
-  C: "It works, but it isn't the smallest."
+  A: "14 leaves a remainder of 2 when divided by 3 and by 4, but dividing 14 by 5 leaves a remainder of 4."
+  B: "It leaves 1 when divided by 3."
+  C: "It leaves 2 when divided by 3, but 0 when divided by 4."
   E: "It works, but it isn't the smallest."
 verify: "range(3, 1000).find((n) => [3, 4, 5].every((d) => n % d === 2))"
 ---

@@ -2,13 +2,13 @@
 order: 14
 difficulty: medium
 lesson: 04-mixed-circle-problems
-choices: ["2","5","6","13","6.5"]
+choices: ["2","2.5","5","6","6.5"]
 answer: E
 mistakes:
   A: "That's the radius of the circle **inside** the triangle. This circle goes through the corners."
-  B: "That's the shortest side. The hypotenuse is what matters."
-  C: "That's half of the side of 12. The diameter is the hypotenuse, which is 13."
-  D: "That's the diameter. The radius is half of it."
+  B: "That's half of the shortest side. The hypotenuse, 13, is the diameter of the circle, so the radius is half of 13."
+  C: "That's the shortest side. The hypotenuse is what matters."
+  D: "That's half of the side of 12. The diameter is the hypotenuse, which is 13."
 verify: "range(1, 300).map((n) => n / 20).find((r) => Math.abs(Math.hypot(5 / 2, 12 / 2) - r) < 1e-9)"
 ---
 

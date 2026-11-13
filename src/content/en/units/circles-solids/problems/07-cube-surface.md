@@ -2,10 +2,10 @@
 order: 10
 difficulty: medium
 lesson: 04-boxes-and-3d
-choices: ["96","64","16","128","384"]
-answer: A
+choices: ["16","64","96","128","384"]
+answer: C
 mistakes:
-  C: "That's one face. A cube has 6."
+  A: "That's one face. A cube has 6."
   B: "That's the volume. The surface area is the outside."
   D: "That uses 8 faces. A cube has 6."
   E: "That's $64 \\times 6$, which uses the volume as the area of a face. Each face has an area of 16."
@@ -30,4 +30,4 @@ The side is 4, so each face has an area of 16. There are 6 faces.
 
 **Step 3.** A cube has 6 faces, so the surface area is $6 \times 16 = 96$.
 
-**Answer: (A) 96**
+**Answer: (C) 96**

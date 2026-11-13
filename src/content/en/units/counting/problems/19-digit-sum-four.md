@@ -2,13 +2,13 @@
 order: 19
 difficulty: hard
 lesson: 05-split-into-cases
-choices: ["6","9","15","12","10"]
-answer: E
+choices: ["4","6","9","10","12"]
+answer: D
 mistakes:
-  A: "That misses a whole case. Check first digits of 1, 2, 3, and 4."
-  B: "That misses one number. A case like 400 is easy to forget."
-  D: "List the numbers in each case. A first digit of 1 gives 4 numbers, and the counts go down by 1 from there."
-  C: "That would allow a first digit of 0. A number like 040 isn't a 3-digit number."
+  A: "That counts only the numbers that start with 1. The first digit can also be 2, 3, or 4."
+  B: "That misses a whole case. Check first digits of 1, 2, 3, and 4."
+  C: "That misses one number. A case like 400 is easy to forget."
+  E: "List the numbers in each case. A first digit of 1 gives 4 numbers, and the counts go down by 1 from there."
 verify: "range(100, 999).filter((n) => sum(digits(n)) === 4).length"
 ---
 
@@ -33,4 +33,4 @@ Split by the first digit:
 
 The total is $4 + 3 + 2 + 1 = 10$.
 
-**Answer: (E) 10**
+**Answer: (D) 10**

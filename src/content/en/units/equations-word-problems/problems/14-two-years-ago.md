@@ -2,10 +2,10 @@
 order: 12
 difficulty: medium
 lesson: 02-age-and-number-stories
-choices: ["10","8","6","12","18"]
-answer: A
+choices: ["6","8","10","12","18"]
+answer: C
 mistakes:
-  C: "Check it: Ana is 6 and Ben is 14. Two years ago, they were 4 and 12, and 12 is 3 times 4."
+  A: "Check it: Ana is 6 and Ben is 14. Two years ago, they were 4 and 12, and 12 is 3 times 4."
   B: "That's Ana's age 2 years ago. The question asks about now."
   D: "Check it: Ana is 12 and Ben is 20. Two years ago, they were 10 and 18, which isn't double."
   E: "That's Ben's age. The question asks about Ana."
@@ -28,4 +28,4 @@ Two years ago, Ana was $a - 2$ and Ben was $a + 6$. So $a + 6 = 2a - 4$, which g
 
 **Check:** Now they're 10 and 18. Two years ago, they were 8 and 16.
 
-**Answer: (A) 10**
+**Answer: (C) 10**

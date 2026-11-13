@@ -2,13 +2,13 @@
 order: 11
 difficulty: medium
 lesson: 03-chords-and-tangents
-choices: ["5","10","13","12","36"]
+choices: ["5","6.75","10","12","13"]
 answer: D
 mistakes:
   A: "That's $9 - 4$. The rule uses multiplication, not subtraction."
-  B: "That's $13 - 3$, as if the two chords had the same length. They don't have to."
-  C: "That's the whole chord $AB$. The rule gives the piece $ED$ by itself."
-  E: "That's the product of the pieces. Divide by 3 to find $ED$."
+  B: "That's $9 \\times 3 \\div 4$, which mixes pieces of different chords. The two pieces of one chord multiply to the same number as the two pieces of the other."
+  C: "That's $13 - 3$, as if the two chords had the same length. They don't have to."
+  E: "That's the whole chord $AB$. The rule gives the piece $ED$ by itself."
 verify: "range(1, 50).find((d) => 3 * d === 4 * 9)"
 ---
 

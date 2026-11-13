@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 01-pascal-and-binomials
-choices: ["10","40","32","20","80"]
-answer: B
+choices: ["4","10","20","32","40"]
+answer: E
 mistakes:
-  A: "That's the answer for $(x + 1)^5$. Here, the other 2 groups each contribute a 2."
-  D: "That counts only one factor of 2. There are 2 groups left over, and each contributes a 2."
-  C: "That's $2^5$. It isn't the coefficient you're looking for, which needs \"5 choose 3\" too."
-  E: "That uses $2^3$. The 2s come from the groups where you **don't** pick $x$, and there are only 2 of those."
+  A: "That's $2^2$ alone. Multiply it by the 10 from Pascal's triangle."
+  B: "That's the answer for $(x + 1)^5$. Here, the other 2 groups each contribute a 2."
+  C: "That counts only one factor of 2. There are 2 groups left over, and each contributes a 2."
+  D: "That's $2^5$. It isn't the coefficient you're looking for, which needs \"5 choose 3\" too."
 verify: "range(1, 5).reduce((p) => { const n = Array(p.length + 1).fill(0); p.forEach((c, i) => { n[i] += 2 * c; n[i + 1] += c; }); return n; }, [1])[3]"
 ---
 
@@ -30,4 +30,4 @@ There are $\binom{5}{3} = 10$ ways to pick the groups, and each way also multipl
 
 **Step 3.** The coefficient is $10 \times 4 = 40$.
 
-**Answer: (B) 40**
+**Answer: (E) 40**

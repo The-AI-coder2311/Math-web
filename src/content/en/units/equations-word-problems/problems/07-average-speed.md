@@ -2,11 +2,11 @@
 order: 9
 difficulty: medium
 lesson: 03-distance-rate-time
-choices: ["22","25","24","26","50"]
-answer: C
+choices: ["22","24","25","26","50"]
+answer: B
 mistakes:
   A: "Find the total distance and the total time. It's 120 miles in 5 hours."
-  B: "That's the average of 30 and 20. Lena spends more time at the slower speed, so the average is lower."
+  C: "That's the average of 30 and 20. Lena spends more time at the slower speed, so the average is lower."
   D: "Find the total distance and the total time. It's 120 miles in 5 hours."
   E: "That's $30 + 20$. Speeds don't add up across parts of a trip."
 verify: "(60 + 60) / (60 / 30 + 60 / 20)"
@@ -30,4 +30,4 @@ The first part takes 2 hours, and the second takes 3 hours. That's 120 miles in 
 
 **Step 3.** That's 120 miles in 5 hours, so her average speed is $120 \div 5 = 24$ miles per hour.
 
-**Answer: (C) 24**
+**Answer: (B) 24**

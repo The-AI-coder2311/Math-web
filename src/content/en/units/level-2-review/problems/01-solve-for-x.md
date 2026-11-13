@@ -2,13 +2,13 @@
 order: 1
 difficulty: easy
 from: equations-word-problems/01-solving-and-translating
-choices: ["9","20","11","22","40"]
-answer: C
+choices: ["11","20","22","40","71"]
+answer: A
 mistakes:
-  A: "That's the number being added. Solve for $x$."
   B: "That adds 9 to 31 and halves it. To undo \"plus 9,\" subtract 9."
-  D: "That's $2x$. Divide by 2."
-  E: "That's $31 + 9$. To undo \"plus 9,\" subtract 9."
+  C: "That's $2x$. Divide by 2."
+  D: "That's $31 + 9$. To undo \"plus 9,\" subtract 9."
+  E: "That's $2 \\times 31 + 9 = 71$, which does the steps to 31. Undo them instead."
 verify: "range(-50, 50).find((x) => 2 * x + 9 === 31)"
 ---
 
@@ -26,4 +26,4 @@ $2x = 22$.
 
 Subtract 9 to get $2x = 22$. Divide by 2 to get $x = 11$.
 
-**Answer: (C) 11**
+**Answer: (A) 11**

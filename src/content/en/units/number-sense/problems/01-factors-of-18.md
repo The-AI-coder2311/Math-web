@@ -2,10 +2,10 @@
 order: 1
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["6","4","8","9","18"]
-answer: A
+choices: ["4","6","8","9","18"]
+answer: B
 mistakes:
-  B: "That leaves out 1 and 18, which are factors too."
+  A: "That leaves out 1 and 18, which are factors too."
   C: "List the pairs again. There are 3 pairs, which makes 6 factors."
   D: "That's half of 18. Factors have to divide 18 evenly, so count them using pairs."
   E: "That's the number itself. Not every number up to 18 is a factor."
@@ -38,4 +38,4 @@ $$3 \times 6 = 18$$
 
 **A common mistake:** answering 18. Not every number up to 18 is a factor of 18!
 
-**Answer: (A) 6**
+**Answer: (B) 6**

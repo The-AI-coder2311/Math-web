@@ -2,10 +2,10 @@
 order: 9
 difficulty: medium
 lesson: 01-pascal-and-binomials
-choices: ["247","28","248","255","256"]
-answer: A
+choices: ["28","247","248","255","256"]
+answer: B
 mistakes:
-  B: "That's $\\binom{8}{2}$, the subsets with exactly 2 things. \"At least 2\" also includes 3, 4, and more."
+  A: "That's $\\binom{8}{2}$, the subsets with exactly 2 things. \"At least 2\" also includes 3, 4, and more."
   C: "That removes the 8 subsets with 1 thing, but it keeps the empty subset, which has 0 things."
   D: "That removes only the empty subset. Subsets with exactly 1 thing also have fewer than 2."
   E: "That counts every subset, including those with 0 or 1 things."
@@ -30,4 +30,4 @@ There are 256 subsets. Remove the subset with 0 things and the subsets with exac
 
 **Step 3.** That leaves $256 - 1 - 8 = 247$.
 
-**Answer: (A) 247**
+**Answer: (B) 247**

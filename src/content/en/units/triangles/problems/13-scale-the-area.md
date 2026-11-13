@@ -2,13 +2,13 @@
 order: 6
 difficulty: easy
 lesson: 04-similar-triangles
-choices: ["45","15","25","8","125"]
-answer: A
+choices: ["8","9","15","25","45"]
+answer: E
 mistakes:
-  D: "That's $5 + 3$. Similar shapes multiply."
-  B: "That multiplies by 3, but both the base and the height grow."
-  C: "That squares the 5. It's the scale factor that gets squared."
-  E: "That's $5 \\times 25$. The scale factor is 3, so multiply by 9."
+  A: "That's $5 + 3$. Similar shapes multiply."
+  B: "That's $3 \\times 3$, the number the area gets multiplied by. Multiply it by the small area, 5."
+  C: "That multiplies by 3, but both the base and the height grow."
+  D: "That squares the 5. It's the scale factor that gets squared."
 verify: "5 * 3 * 3"
 ---
 
@@ -26,4 +26,4 @@ Both get multiplied by 3, so the area is multiplied by $3 \times 3$.
 
 The area is multiplied by the scale factor squared: $5 \times 9 = 45$.
 
-**Answer: (A) 45**
+**Answer: (E) 45**

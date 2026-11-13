@@ -2,12 +2,12 @@
 order: 1
 difficulty: easy
 lesson: 01-the-total-trick
-choices: ["14","12","15","16","70"]
+choices: ["14","15","16","17.5","70"]
 answer: A
 mistakes:
-  B: "That's one of the numbers, not the mean. Add them all, and divide by 5."
-  C: "That's the middle of the list as it's written. The mean uses the total."
-  D: "Check your division: $70 \\div 5$."
+  B: "That's the middle of the list as it's written. The mean uses the total."
+  C: "Check your division: $70 \\div 5$."
+  D: "That's $70 \\div 4$. There are 5 students, so divide by 5."
   E: "That's the total. You still need to divide by 5."
 verify: "sum([12, 15, 9, 20, 14]) / 5"
 ---

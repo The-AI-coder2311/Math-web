@@ -2,11 +2,11 @@
 order: 5
 difficulty: easy
 lesson: 03-angle-facts
-choices: ["50","75","65","130","150"]
-answer: C
+choices: ["50","65","75","130","150"]
+answer: B
 mistakes:
   A: "Ese es el ángulo de arriba. Los tres no son iguales, porque el triángulo no es equilátero."
-  B: "Revísalo: $75 + 75 + 50$ es 200, que es demasiado."
+  C: "Revísalo: $75 + 75 + 50$ es 200, que es demasiado."
   D: "Eso es lo que se reparten los dos ángulos de abajo. Divídelo entre ellos."
   E: "Eso es más de lo que un triángulo puede tener junto con los otros ángulos."
 verify: "range(1, 179).find((x) => x + x + 50 === 180)"
@@ -30,4 +30,4 @@ Los ángulos de abajo se reparten $180 - 50 = 130$ grados en partes iguales.
 
 **Comprobación:** $65 + 65 + 50 = 180$.
 
-**Respuesta: (C) 65**
+**Respuesta: (B) 65**

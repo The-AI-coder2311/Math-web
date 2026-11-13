@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-equal-groups
-choices: ["$\\frac{3}{5}$","$\\frac{2}{5}$","$\\frac{1}{2}$","$\\frac{4}{9}$","$\\frac{5}{12}$"]
-answer: A
+choices: ["$\\frac{2}{5}$","$\\frac{5}{12}$","$\\frac{4}{9}$","$\\frac{1}{2}$","$\\frac{3}{5}$"]
+answer: E
 mistakes:
-  C: "It's a good benchmark, but $\\frac{3}{5}$ is a little more than one half."
-  B: "This is less than one half, since half of 5 is 2.5."
-  D: "This is less than one half, since half of 9 is 4.5."
-  E: "The numbers are bigger, but this is less than one half, since half of 12 is 6."
+  A: "This is less than one half, since half of 5 is 2.5."
+  B: "The numbers are bigger, but this is less than one half, since half of 12 is 6."
+  C: "This is less than one half, since half of 9 is 4.5."
+  D: "It's a good benchmark, but $\\frac{3}{5}$ is a little more than one half."
 verify: "[[1, 2], [2, 5], [3, 5], [4, 9], [5, 12]].sort((a, b) => b[0] * a[1] - a[0] * b[1]).map(([n, d]) => fraction(n, d))[0]"
 ---
 
@@ -34,4 +34,4 @@ A fraction is bigger than $\frac{1}{2}$ only when its top number is more than ha
 
 Only $\frac{3}{5}$ is greater than one half, so it's the largest.
 
-**Answer: (A) $\frac{3}{5}$**
+**Answer: (E) $\frac{3}{5}$**

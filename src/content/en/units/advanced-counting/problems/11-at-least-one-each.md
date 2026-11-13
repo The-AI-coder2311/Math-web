@@ -2,11 +2,11 @@
 order: 11
 difficulty: medium
 lesson: 02-stars-and-bars
-choices: ["36","30","45","66","120"]
+choices: ["36","45","55","66","120"]
 answer: A
 mistakes:
-  B: "That's $10 \\times 3$. The kids' amounts depend on each other, so this doesn't work."
-  C: "That's $\\binom{10}{2}$. After handing out 3 cookies, only 7 stars are left, so there are 9 symbols."
+  B: "That's $\\binom{10}{2}$. After handing out 3 cookies, only 7 stars are left, so there are 9 symbols."
+  C: "That's the count for sharing 9 cookies with no rule. Giving each kid 1 cookie first leaves 7 cookies to share, not 9."
   D: "That's $\\binom{12}{2}$, which allows a kid to get 0. Each kid must get at least 1."
   E: "That's $\\binom{10}{3}$. With 3 kids, you need 2 bars, not 3."
 verify: "product(range(1, 10), range(1, 10), range(1, 10)).filter((s) => sum(s) === 10).length"

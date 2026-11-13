@@ -2,13 +2,13 @@
 order: 14
 difficulty: medium
 lesson: 02-list-the-real-outcomes
-choices: ["$\\frac{1}{12}$","$\\frac{1}{11}$","$\\frac{1}{9}$","$\\frac{1}{6}$","$\\frac{4}{9}$"]
-answer: C
+choices: ["$\\frac{1}{18}$","$\\frac{1}{12}$","$\\frac{1}{11}$","$\\frac{1}{9}$","$\\frac{1}{6}$"]
+answer: D
 mistakes:
-  A: "That counts 3 pairs. There are 4: (3, 6), (4, 5), (5, 4), and (6, 3)."
-  B: "That treats the 11 possible totals as equally likely. They aren't."
-  D: "That's the chance of a total of 7, the most likely total."
-  E: "That uses 9 as the bottom number. There are 36 outcomes."
+  A: "That counts only 2 rolls, such as 3 then 6, and 6 then 3. The rolls 4 then 5, and 5 then 4, also work."
+  B: "That counts 3 pairs. There are 4: (3, 6), (4, 5), (5, 4), and (6, 3)."
+  C: "That treats the 11 possible totals as equally likely. They aren't."
+  E: "That's the chance of a total of 7, the most likely total."
 verify: "fraction(product(range(1, 6), range(1, 6)).filter(([a, b]) => a + b === 9).length, 36)"
 ---
 
@@ -26,4 +26,4 @@ The pairs are (3, 6), (4, 5), (5, 4), and (6, 3).
 
 There are 4 pairs that make 9 out of 36 outcomes, so the probability is $\frac{4}{36} = \frac{1}{9}$.
 
-**Answer: (C) $\frac{1}{9}$**
+**Answer: (D) $\frac{1}{9}$**

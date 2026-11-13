@@ -2,13 +2,13 @@
 order: 5
 difficulty: easy
 lesson: 03-working-backwards
-choices: ["3","23","9","13","5"]
-answer: E
+choices: ["3","5","9","13","23"]
+answer: B
 mistakes:
   A: "Eso es $9 \\div 3$. Deshaz cada paso una vez: divide entre 3 y luego resta 4."
   C: "Ese es solo el primer paso hacia atrás. Todavía tienes que deshacer \"sumar 4\"."
   D: "Eso suma 4 al regresar. Para deshacer sumar 4, resta 4."
-  B: "Eso deshace los pasos en el orden equivocado. El último paso se deshace primero."
+  E: "Eso deshace los pasos en el orden equivocado. El último paso se deshace primero."
 verify: "range(0, 50).find((n) => (n + 4) * 3 === 27)"
 ---
 
@@ -32,4 +32,4 @@ Trabaja hacia atrás desde 27:
 
 **Comprobación:** $5 + 4 = 9$, y $9 \times 3 = 27$.
 
-**Respuesta: (E) 5**
+**Respuesta: (B) 5**

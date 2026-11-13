@@ -2,12 +2,12 @@
 order: 19
 difficulty: hard
 lesson: 03-divisibility-rules
-choices: ["28","26","27","25","36"]
-answer: D
+choices: ["25","26","27","28","36"]
+answer: A
 mistakes:
   B: "Eso quita un solo número. Tanto 36 como 72 tienen solo 2 dígitos."
   C: "Eso cuenta todos los múltiplos de 36 hasta 999, incluidos 36 y 72, que tienen 2 dígitos."
-  A: "El múltiplo más grande es $36 \\times 27 = 972$, así que hay 27 hasta 999. Luego quita los de 2 dígitos."
+  D: "El múltiplo más grande es $36 \\times 27 = 972$, así que hay 27 hasta 999. Luego quita los de 2 dígitos."
   E: "Ese es el número del que estás contando múltiplos. Divide para saber cuántos múltiplos hay."
 verify: "range(100, 999).filter((n) => n % 4 === 0 && n % 9 === 0).length"
 ---
@@ -30,4 +30,4 @@ Es múltiplo de 36. ¿Cuántos múltiplos de 36 son menores o iguales que 999? �
 
 **Paso 3.** Dos de ellos, 36 y 72, solo tienen 2 dígitos. Así que $27 - 2 = 25$.
 
-**Respuesta: (D) 25**
+**Respuesta: (A) 25**

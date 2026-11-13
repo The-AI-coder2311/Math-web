@@ -2,12 +2,12 @@
 order: 9
 difficulty: medium
 lesson: 01-equal-groups
-choices: ["80","90","160","120","240"]
-answer: D
+choices: ["80","90","120","160","240"]
+answer: C
 mistakes:
   A: "That treats 60 as $\\frac{3}{4}$ of the book, which skips Tuesday. After both days, half of the book is left."
   B: "That's how many pages were left after Monday when the book has 120 pages."
-  C: "Check by running it forward. From 160 pages, you'd have 80 left, not 60."
+  D: "Check by running it forward. From 160 pages, you'd have 80 left, not 60."
   E: "That doubles too many times. The 60 pages are half of the book, so double once."
 verify: "range(1, 500).find((n) => n - n / 4 - (n - n / 4) / 3 === 60)"
 ---
@@ -34,4 +34,4 @@ $$\frac{2}{3} \times \frac{3}{4} = \frac{1}{2}$$
 
 **Check:** On Monday, she reads 30 pages, leaving 90. On Tuesday, she reads a third of 90, which is 30, leaving 60.
 
-**Answer: (D) 120**
+**Answer: (C) 120**

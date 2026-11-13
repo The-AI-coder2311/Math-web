@@ -2,13 +2,13 @@
 order: 20
 difficulty: hard
 lesson: 04-percents
-choices: ["85","95","100","105","120"]
-answer: C
+choices: ["81","85","95","100","105"]
+answer: D
 mistakes:
-  A: "That's $90 - 5$, subtracting the difference of the percents. Run your answer forward through the story to check."
-  B: "That's $90 + 5$, adding the difference of the percents. Percents multiply each other."
-  D: "Run it forward: 105 goes up to 126, and then down to 94.5."
-  E: "That's the number after the increase, before the decrease. Go back one more step."
+  A: "That's $90 \\times 1.2 \\times 0.75 = 81$, which applies both changes to 90. But 90 is the final result, so work backward."
+  B: "That's $90 - 5$, subtracting the difference of the percents. Run your answer forward through the story to check."
+  C: "That's $90 + 5$, adding the difference of the percents. Percents multiply each other."
+  E: "Run it forward: 105 goes up to 126, and then down to 94.5."
 verify: "range(1, 300).find((n) => n * 120 * 75 === 90 * 10000)"
 ---
 
@@ -28,4 +28,4 @@ The steps multiply the number by $1.2 \times 0.75 = 0.9$. So $0.9$ of the origin
 
 **Check:** 100 goes up to 120, and then down 25% to 90.
 
-**Answer: (C) 100**
+**Answer: (D) 100**

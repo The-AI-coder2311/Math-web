@@ -2,10 +2,10 @@
 order: 8
 difficulty: medium
 from: algebra-toolkit/03-quadratics-and-vieta
-choices: ["8","3","-3","11","24"]
-answer: A
+choices: ["-3","3","8","11","24"]
+answer: C
 mistakes:
-  C: "Check the sign: $(x - 3)$ is zero when $x$ is positive 3."
+  A: "Check the sign: $(x - 3)$ is zero when $x$ is positive 3."
   B: "That's the smaller solution."
   D: "That's the sum of the solutions."
   E: "That's the product of the solutions."
@@ -26,4 +26,4 @@ $(x - 3)(x - 8) = 0$.
 
 $(x - 3)(x - 8) = 0$, so $x$ is 3 or 8. The larger is 8.
 
-**Answer: (A) 8**
+**Answer: (C) 8**

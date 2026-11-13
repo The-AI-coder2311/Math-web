@@ -2,12 +2,12 @@
 order: 16
 difficulty: hard
 lesson: 03-overcount-then-divide
-choices: ["25","75","300","150","462"]
-answer: D
+choices: ["25","75","150","300","462"]
+answer: C
 mistakes:
   A: "Eso es $15 + 10$. Cada grupo de niños puede ir con cada grupo de niñas, así que multiplica."
   B: "Eso es la mitad de la respuesta correcta. Revisa las niñas: $\\binom{5}{3} = 10$."
-  C: "Eso es $30 \\times 10$, que cuenta a los 2 niños en orden. Divide esa cuenta entre 2."
+  D: "Eso es $30 \\times 10$, que cuenta a los 2 niños en orden. Divide esa cuenta entre 2."
   E: "Eso es $\\binom{11}{5}$, cualesquiera 5 personas del grupo. El comité necesita exactamente 2 niños y 3 niñas."
 verify: "combos(range(1, 6), 2).length * combos(range(1, 5), 3).length"
 ---
@@ -30,4 +30,4 @@ Niños: $\binom{6}{2}$. Niñas: $\binom{5}{3}$. Eliges niños **y** niñas.
 
 **Paso 3.** Haces las dos cosas, así que multiplica: $15 \times 10 = 150$.
 
-**Respuesta: (D) 150**
+**Respuesta: (C) 150**

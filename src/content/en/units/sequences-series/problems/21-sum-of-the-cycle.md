@@ -2,10 +2,10 @@
 order: 21
 difficulty: hard
 lesson: 04-recursive-and-special
-choices: ["7","3","5","0","10"]
-answer: A
+choices: ["0","3","5","7","10"]
+answer: D
 mistakes:
-  D: "A full cycle adds up to 0, but 100 isn't a multiple of 6. There are 4 extra terms."
+  A: "A full cycle adds up to 0, but 100 isn't a multiple of 6. There are 4 extra terms."
   B: "That's only the first leftover term. There are 4 leftover terms: 3, 5, 2, and $-3$."
   C: "That's only the second leftover term. Add all 4 of them: 3, 5, 2, and $-3$."
   E: "That's $3 + 5 + 2$, which is 3 leftover terms. There are 4, and the 4th is $-3$."
@@ -28,4 +28,4 @@ One cycle of 6 terms adds up to 0. So only the terms left over after full cycles
 
 **Step 2.** Since $100 = 6 \times 16 + 4$, only the first 4 terms of a cycle are left over: $3 + 5 + 2 - 3 = 7$.
 
-**Answer: (A) 7**
+**Answer: (D) 7**

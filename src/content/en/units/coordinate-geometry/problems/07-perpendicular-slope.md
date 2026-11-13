@@ -2,13 +2,13 @@
 order: 7
 difficulty: medium
 lesson: 01-lines-and-slopes
-choices: ["$-\\frac{3}{2}$","$-\\frac{2}{3}$","$\\frac{2}{3}$","$\\frac{3}{2}$","-1"]
+choices: ["$-\\frac{3}{2}$","-1","$-\\frac{2}{3}$","$\\frac{2}{3}$","$\\frac{3}{2}$"]
 answer: A
 mistakes:
-  B: "That changes the sign but doesn't flip the fraction. The two slopes must multiply to $-1$."
-  C: "That's the same slope, which gives a parallel line."
-  D: "That flips the fraction, but both lines would go uphill, so they can't meet at a right angle."
-  E: "That's what the two slopes multiply to, not the slope itself."
+  B: "That's what the two slopes multiply to, not the slope itself."
+  C: "That changes the sign but doesn't flip the fraction. The two slopes must multiply to $-1$."
+  D: "That's the same slope, which gives a parallel line."
+  E: "That flips the fraction, but both lines would go uphill, so they can't meet at a right angle."
 verify: "'-' + fraction(3, 2)"
 ---
 

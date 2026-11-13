@@ -2,10 +2,10 @@
 order: 2
 difficulty: easy
 lesson: 01-multiply-choices
-choices: ["30","10","15","8","60"]
-answer: A
+choices: ["8","10","15","30","60"]
+answer: D
 mistakes:
-  D: "Eso es $5 + 3$, sin contar los zapatos. Las elecciones que se hacen una tras otra se multiplican."
+  A: "Eso es $5 + 3$, sin contar los zapatos. Las elecciones que se hacen una tras otra se multiplican."
   B: "Eso es $5 + 3 + 2$. Sumar cuenta las prendas, no los conjuntos."
   C: "Eso es $5 \\times 3$, que deja fuera los zapatos."
   E: "Eso es el doble de la respuesta correcta. Vuelve a multiplicar $5 \\times 3 \\times 2$ y revisa."
@@ -30,4 +30,4 @@ Multiplica el número de camisas, de pantalones y de zapatos.
 
 $$5 \times 3 \times 2 = 30$$
 
-**Respuesta: (A) 30**
+**Respuesta: (D) 30**

@@ -2,10 +2,10 @@
 order: 1
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["6","4","8","9","18"]
-answer: A
+choices: ["4","6","8","9","18"]
+answer: B
 mistakes:
-  B: "Eso deja fuera el 1 y el 18, que también son factores."
+  A: "Eso deja fuera el 1 y el 18, que también son factores."
   C: "Vuelve a hacer la lista de parejas. Hay 3 parejas, o sea 6 factores."
   D: "Eso es la mitad de 18. Los factores tienen que dividir 18 exactamente, así que cuéntalos usando parejas."
   E: "Ese es el número mismo. No todos los números hasta 18 son factores."
@@ -38,4 +38,4 @@ $$3 \times 6 = 18$$
 
 **Un error común:** contestar 18. ¡No todos los números hasta 18 son factores de 18!
 
-**Respuesta: (A) 6**
+**Respuesta: (B) 6**

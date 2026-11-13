@@ -2,13 +2,13 @@
 order: 1
 difficulty: easy
 lesson: 01-lines-and-slopes
-choices: ["3","2","$\\frac{1}{3}$","9","$\\frac{13}{5}$"]
-answer: A
+choices: ["$\\frac{1}{3}$","2","$\\frac{9}{4}$","$\\frac{13}{5}$","3"]
+answer: E
 mistakes:
-  C: "That's run over rise, which is flipped. Slope is rise over run."
+  A: "That's run over rise, which is flipped. Slope is rise over run."
   B: "Check your subtraction. The rise is 9, and the run is 3."
-  D: "That's only the rise. You still need to divide by the run."
-  E: "That adds the coordinates. Slope uses their differences."
+  C: "That divides the rise, 9, by 4. The run is $4 - 1 = 3$."
+  D: "That adds the coordinates. Slope uses their differences."
 verify: "(11 - 2) / (4 - 1)"
 ---
 
@@ -26,4 +26,4 @@ The rise is $11 - 2$, and the run is $4 - 1$.
 
 The rise is $11 - 2 = 9$, and the run is $4 - 1 = 3$. So the slope is $9 \div 3 = 3$.
 
-**Answer: (A) 3**
+**Answer: (E) 3**

@@ -2,13 +2,13 @@
 order: 1
 difficulty: easy
 lesson: 01-count-what-you-want
-choices: ["$\\frac{1}{8}$","$\\frac{1}{2}$","$\\frac{3}{8}$","$\\frac{1}{3}$","$\\frac{1}{4}$"]
-answer: E
+choices: ["$\\frac{1}{8}$","$\\frac{1}{4}$","$\\frac{1}{3}$","$\\frac{3}{8}$","$\\frac{1}{2}$"]
+answer: B
 mistakes:
   A: "Eso cuenta solo un múltiplo de 3. Cuentan el 3 y el 6."
-  C: "Eso cuenta 3 secciones. Solo 3 y 6 son múltiplos de 3."
-  D: "Eso confunde \"múltiplo de 3\" con \"uno de cada 3\". Hay 8 secciones, y 2 son múltiplos."
-  B: "Eso serían 4 secciones. Solo 3 y 6 son múltiplos de 3."
+  C: "Eso confunde \"múltiplo de 3\" con \"uno de cada 3\". Hay 8 secciones, y 2 son múltiplos."
+  D: "Eso cuenta 3 secciones. Solo 3 y 6 son múltiplos de 3."
+  E: "Eso serían 4 secciones. Solo 3 y 6 son múltiplos de 3."
 verify: "fraction(range(1, 8).filter((n) => n % 3 === 0).length, 8)"
 ---
 
@@ -28,4 +28,4 @@ Los múltiplos de 3 del 1 al 8 son 3 y 6.
 
 **Paso 2.** Hay 8 resultados igual de probables en total, así que la probabilidad es $\frac{2}{8}$, que se simplifica a $\frac{1}{4}$.
 
-**Respuesta: (E) $\frac{1}{4}$**
+**Respuesta: (B) $\frac{1}{4}$**

@@ -2,13 +2,13 @@
 order: 16
 difficulty: hard
 lesson: 03-sectors-and-probability
-choices: ["$\\frac{1}{3}$","$\\frac{\\pi}{6}$","$\\frac{\\pi}{4}$","$\\frac{\\pi}{3}$","$\\frac{\\pi}{12}$"]
-answer: E
+choices: ["$\\frac{\\pi}{12}$","$\\frac{1}{3}$","$\\frac{\\pi}{6}$","$\\frac{\\pi}{4}$","$\\frac{\\pi}{3}$"]
+answer: A
 mistakes:
-  B: "That uses 6 as the area. The rectangle is 6 by 2."
-  C: "That's the chance of landing in **some** circle. The question asks about the middle one."
-  D: "Check the rectangle's area: $6 \\times 2 = 12$."
-  A: "That's one circle out of 3. But the circles don't fill the rectangle."
+  B: "That's one circle out of 3. But the circles don't fill the rectangle."
+  C: "That uses 6 as the area. The rectangle is 6 by 2."
+  D: "That's the chance of landing in **some** circle. The question asks about the middle one."
+  E: "Check the rectangle's area: $6 \\times 2 = 12$."
 verify: "`${pi(1)}/${(3 * 2) * 2}`"
 ---
 
@@ -32,4 +32,4 @@ Let each radius be 1. The rectangle is 6 by 2, and the middle circle has an area
 
 **Step 4.** The probability is the area you want divided by the total area, which is $\frac{\pi}{12}$.
 
-**Answer: (E) $\frac{\pi}{12}$**
+**Answer: (A) $\frac{\pi}{12}$**

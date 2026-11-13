@@ -2,13 +2,13 @@
 order: 9
 difficulty: medium
 from: number-sense/02-mental-math
-choices: ["875","1000","8750","7125","7000"]
-answer: E
+choices: ["140","875","1000","7000","7125"]
+answer: D
 mistakes:
-  A: "That's $125 \\times 7$. There's also an 8 to multiply by."
-  B: "That's $125 \\times 8$. There's also a 7 to multiply by."
-  D: "That adds the 125. Multiply all three numbers."
-  C: "That's $125 \\times 70$. Check the friendly pair: $125 \\times 8$."
+  A: "That's $125 + 7 + 8$. The numbers are multiplied, not added."
+  B: "That's $125 \\times 7$. There's also an 8 to multiply by."
+  C: "That's $125 \\times 8$. There's also a 7 to multiply by."
+  E: "That adds the 125. Multiply all three numbers."
 verify: "125 * 8 * 7"
 ---
 
@@ -26,4 +26,4 @@ $125 \times 8 = 1000$.
 
 Since $125 \times 8 = 1000$, the product is $1000 \times 7 = 7000$.
 
-**Answer: (E) 7000**
+**Answer: (D) 7000**

@@ -2,12 +2,12 @@
 order: 9
 difficulty: medium
 lesson: 01-equal-groups
-choices: ["80","90","160","120","240"]
-answer: D
+choices: ["80","90","120","160","240"]
+answer: C
 mistakes:
   A: "Eso toma 60 como $\\frac{3}{4}$ del libro, sin contar el martes. Después de los dos días, queda la mitad del libro."
   B: "Esas son las páginas que quedaban después del lunes si el libro tiene 120 páginas."
-  C: "Compruébalo hacia adelante. Con 160 páginas te quedarían 80, no 60."
+  D: "Compruébalo hacia adelante. Con 160 páginas te quedarían 80, no 60."
   E: "Eso duplica demasiadas veces. Las 60 páginas son la mitad del libro, así que se duplica una vez."
 verify: "range(1, 500).find((n) => n - n / 4 - (n - n / 4) / 3 === 60)"
 ---
@@ -34,4 +34,4 @@ $$\frac{2}{3} \times \frac{3}{4} = \frac{1}{2}$$
 
 **Comprobación:** El lunes lee 30 páginas y le quedan 90. El martes lee un tercio de 90, que es 30, y le quedan 60.
 
-**Respuesta: (D) 120**
+**Respuesta: (C) 120**

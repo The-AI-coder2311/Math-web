@@ -2,12 +2,12 @@
 order: 14
 difficulty: medium
 lesson: 05-split-into-cases
-choices: ["5","8","7","6","36"]
-answer: D
+choices: ["6","7","8","12","36"]
+answer: A
 mistakes:
-  A: "Eso deja fuera el 60. Un 0 en las unidades está bien, siempre que el dígito de las decenas no sea 0."
-  C: "Eso incluye el 06, que no es un número de 2 dígitos."
-  B: "Haz la lista según el dígito de las decenas: 15, 24, 33, 42, 51, 60. Solo son 6."
+  B: "Eso incluye el 06, que no es un número de 2 dígitos."
+  C: "Haz la lista según el dígito de las decenas: 15, 24, 33, 42, 51, 60. Solo son 6."
+  D: "Eso cuenta cada número dos veces. Los números 15 y 51 son diferentes, y cada uno ya está en la lista de 6."
   E: "Eso es $6 \\times 6$. Los dígitos dependen uno del otro, así que divide en casos."
 verify: "range(10, 99).filter((n) => sum(digits(n)) === 6).length"
 ---
@@ -26,4 +26,4 @@ El dígito de las decenas puede ser 1, 2, 3, 4, 5 o 6. Cada uno decide el dígit
 
 Cada dígito de las decenas del 1 al 6 decide el de las unidades: 15, 24, 33, 42, 51 y 60. Son 6 números.
 
-**Respuesta: (D) 6**
+**Respuesta: (A) 6**

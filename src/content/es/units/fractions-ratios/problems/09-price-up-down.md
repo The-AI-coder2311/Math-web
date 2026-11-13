@@ -2,11 +2,11 @@
 order: 10
 difficulty: medium
 lesson: 04-percents
-choices: ["60","75","70","80","85"]
-answer: B
+choices: ["60","70","75","80","85"]
+answer: C
 mistakes:
   A: "Eso le quita el 25% a 80. El descuento se aplica al precio que ya subió."
-  C: "Eso es $100 - 30$. El 25% de 100 es 25."
+  B: "Eso es $100 - 30$. El 25% de 100 es 25."
   D: "Una subida y una bajada del mismo porcentaje no se cancelan. El segundo porcentaje es de un número más grande."
   E: "Eso es $100 - 15$. El 25% de 100 es 25."
 verify: "(80 * 125 / 100) * 75 / 100"
@@ -30,4 +30,4 @@ El 25% de 80 es 20, así que el precio nuevo es 100. Ahora quítale el 25% a 100
 
 El precio no regresa a \$80, porque los dos porcentajes se sacan de números diferentes.
 
-**Respuesta: (B) 75**
+**Respuesta: (C) 75**

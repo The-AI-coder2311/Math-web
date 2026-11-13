@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 01-multiply-choices
-choices: ["15","60","100","243","125"]
+choices: ["15","25","60","100","125"]
 answer: E
 mistakes:
   A: "Eso es $5 + 5 + 5$. Cada posición es otra elección, así que multiplica."
-  B: "Eso es $5 \\times 4 \\times 3$, que no permite repetir. El número 111 cuenta, así que los dígitos se pueden repetir."
-  C: "Eso es $4 \\times 5 \\times 5$, que sería correcto si el 0 fuera uno de los dígitos. Los dígitos impares no incluyen el 0, así que el primer dígito tiene 5 opciones."
-  D: "Eso es $3^5$, que invierte los dos números. Hay 3 posiciones con 5 opciones cada una."
+  B: "Eso es $5 \\times 5$, que llena solo dos de los tres dígitos. El tercer dígito también tiene 5 opciones."
+  C: "Eso es $5 \\times 4 \\times 3$, que no permite repetir. El número 111 cuenta, así que los dígitos se pueden repetir."
+  D: "Eso es $4 \\times 5 \\times 5$, que sería correcto si el 0 fuera uno de los dígitos. Los dígitos impares no incluyen el 0, así que el primer dígito tiene 5 opciones."
 verify: "range(100, 999).filter((n) => digits(n).every((d) => d % 2 === 1)).length"
 ---
 

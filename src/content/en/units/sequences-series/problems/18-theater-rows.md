@@ -2,13 +2,13 @@
 order: 18
 difficulty: hard
 lesson: 02-fast-sums
-choices: ["9","10","11","12","27"]
-answer: C
+choices: ["7","8","9","10","11"]
+answer: E
 mistakes:
-  A: "With 9 rows, the last row has 36 seats, and the total is only 216."
-  B: "With 10 rows, the last row has 39 seats, and the total is only 255."
-  D: "With 12 rows, the last row has 45 seats, and the total is 342, which is too many."
-  E: "That's $297 \\div 11$, which is the average number of seats per row. The question asks how many rows."
+  A: "With 7 rows, the theater would have only 147 seats."
+  B: "With 8 rows, the theater would have only 180 seats."
+  C: "With 9 rows, the last row has 36 seats, and the total is only 216."
+  D: "With 10 rows, the last row has 39 seats, and the total is only 255."
 verify: "range(1, 40).find((n) => sum(range(0, n - 1).map((i) => 12 + 3 * i)) === 297)"
 ---
 
@@ -28,4 +28,4 @@ With $n$ rows, the last row has $12 + (n - 1) \times 3$ seats, and the total is 
 
 **Step 2.** The total is $\frac{11 \times (12 + 42)}{2} = 297$. That's exactly the number we need.
 
-**Answer: (C) 11**
+**Answer: (E) 11**

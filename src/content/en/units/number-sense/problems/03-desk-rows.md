@@ -2,13 +2,13 @@
 order: 3
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["14","6","7","8","4"]
-answer: E
+choices: ["4","6","7","8","14"]
+answer: A
 mistakes:
   B: "That counts all of the factors of 28. One row, or one desk per row, isn't allowed."
   C: "That's one of the possible numbers of rows, not how many there are."
   D: "List the factors: 1, 2, 4, 7, 14, 28. There are only 6, and 2 of them are ruled out."
-  A: "That's one of the possible numbers of rows, not how many there are."
+  E: "That's one of the possible numbers of rows, not how many there are."
 verify: "factors(28).filter((rows) => rows >= 2 && 28 / rows >= 2).length"
 ---
 
@@ -33,4 +33,4 @@ The factors of 28 are 1, 2, 4, 7, 14, and 28. Which ones break the "at least 2" 
 
 **Step 3.** That leaves 2, 4, 7, and 14 rows, so there are 4 possibilities.
 
-**Answer: (E) 4**
+**Answer: (A) 4**

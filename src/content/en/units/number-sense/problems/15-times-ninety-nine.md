@@ -2,13 +2,13 @@
 order: 14
 difficulty: medium
 lesson: 02-mental-math
-choices: ["4554","4546","4504","4600","4646"]
-answer: A
+choices: ["4140","4504","4546","4554","4600"]
+answer: D
 mistakes:
-  C: "Check the subtraction: $4600 - 46$ is 4554."
+  A: "That's $46 \\times 90 = 4140$, which leaves out $46 \\times 9$."
   B: "Check the subtraction: $4600 - 46$ is 4554."
-  D: "That's $46 \\times 100$. You used one 46 too many, so subtract it."
-  E: "That adds 46. Since 99 is less than 100, the answer has to be less than 4600."
+  C: "Check the subtraction: $4600 - 46$ is 4554."
+  E: "That's $46 \\times 100$. You used one 46 too many, so subtract it."
 verify: "46 * 99"
 ---
 
@@ -26,4 +26,4 @@ $46 \times 100 = 4600$. Is that too many or too few? By how much?
 
 $46 \times 100 = 4600$, which is one 46 too many. So $4600 - 46 = 4554$.
 
-**Answer: (A) 4554**
+**Answer: (D) 4554**

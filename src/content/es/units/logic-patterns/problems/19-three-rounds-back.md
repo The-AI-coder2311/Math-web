@@ -2,10 +2,10 @@
 order: 19
 difficulty: hard
 lesson: 03-working-backwards
-choices: ["5","4","10","22","23"]
-answer: B
+choices: ["4","5","10","22","23"]
+answer: A
 mistakes:
-  A: "Síguelo hacia adelante: 5 se vuelve 12, luego 26 y luego 54."
+  B: "Síguelo hacia adelante: 5 se vuelve 12, luego 26 y luego 54."
   C: "Eso es después de una ronda desde el inicio. Regresa una ronda más."
   D: "Eso es solo una ronda hacia atrás desde 46. Son tres rondas."
   E: "Eso es $46 \\div 2$. También tienes que restar 1, y hacerlo en las tres rondas."
@@ -28,4 +28,4 @@ Deshaz cada ronda dividiendo entre 2 y restando 1: 46 se vuelve 22, luego 22 se 
 
 **Comprobación:** 4 se vuelve 10, luego 22 y luego 46.
 
-**Respuesta: (B) 4**
+**Respuesta: (A) 4**

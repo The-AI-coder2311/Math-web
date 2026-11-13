@@ -2,13 +2,13 @@
 order: 17
 difficulty: hard
 lesson: 01-arithmetic-sequences
-choices: ["16","15","12","17","33"]
-answer: A
+choices: ["8","12","15","16","17"]
+answer: D
 mistakes:
-  C: "That's too few. List the shared terms, 11, 23, 35, and so on up to 191, and count the steps between them."
-  B: "That's the number of steps from 11 to 191. There are 16 numbers on that list."
-  D: "That's $200 \\div 12$ rounded up. The list starts at 11, not at 12, so count from there."
-  E: "That's about $200 \\div 6$, using only the step of list B. A shared number has to fit both lists, so the step is the LCM, 12."
+  A: "That treats the shared numbers as 24 apart. They are 12 apart: 11, 23, 35, and so on."
+  B: "That's too few. List the shared terms, 11, 23, 35, and so on up to 191, and count the steps between them."
+  C: "That's the number of steps from 11 to 191. There are 16 numbers on that list."
+  E: "That's $200 \\div 12$ rounded up. The list starts at 11, not at 12, so count from there."
 verify: "range(1, 200).filter((n) => n % 4 === 3 && n % 6 === 5).length"
 ---
 
@@ -30,4 +30,4 @@ The shared numbers are 11, 23, 35, ..., going up by 12, which is the LCM of 4 an
 
 **Step 3.** That's 15 steps, which connect 16 numbers.
 
-**Answer: (A) 16**
+**Answer: (D) 16**

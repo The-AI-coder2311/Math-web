@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 from: smart-counting/01-overlaps
-choices: ["6","22","42","34","26"]
-answer: E
+choices: ["6","22","26","34","42"]
+answer: C
 mistakes:
   A: "That's the students on the math team only."
   B: "That's $14 + 8$. Add both teams, and subtract the overlap."
   D: "That counts the 8 students twice."
-  C: "That adds the 8. Subtract it, since those students were counted twice."
+  E: "That adds the 8. Subtract it, since those students were counted twice."
 verify: "new Set([...range(1, 14), ...range(7, 26)]).size"
 ---
 
@@ -26,4 +26,4 @@ Subtract the 8 once.
 
 Add the teams, and subtract the overlap: $14 + 20 - 8 = 26$.
 
-**Answer: (E) 26**
+**Answer: (C) 26**

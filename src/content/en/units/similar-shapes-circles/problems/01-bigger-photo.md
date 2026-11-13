@@ -2,13 +2,13 @@
 order: 1
 difficulty: easy
 lesson: 01-similarity-tools
-choices: ["15","14","12","16","24"]
-answer: A
+choices: ["2.5","12","14","15","16"]
+answer: D
 mistakes:
-  C: "The short side grew by 6, and you added 6 to the long side too. Similar shapes multiply, and they don't add."
-  B: "That's $10 + 4$. The long side comes from multiplying 6 by the scale factor."
-  D: "That's $10 + 6$, adding the two sides together. Multiply the long side, 6, by the scale factor."
-  E: "That's $6 \\times 4$. The scale factor is $10 \\div 4$, not 4."
+  A: "That's the scale factor, $10 \\div 4 = 2.5$. Multiply the long side, 6, by it."
+  B: "The short side grew by 6, and you added 6 to the long side too. Similar shapes multiply, and they don't add."
+  C: "That's $10 + 4$. The long side comes from multiplying 6 by the scale factor."
+  E: "That's $10 + 6$, adding the two sides together. Multiply the long side, 6, by the scale factor."
 verify: "range(1, 50).find((long) => long * 4 === 6 * 10)"
 ---
 
@@ -26,4 +26,4 @@ The scale factor is $10 \div 4 = 2.5$. Every length gets multiplied by it.
 
 The scale factor is $10 \div 4 = 2.5$. So the long side is $6 \times 2.5 = 15$.
 
-**Answer: (A) 15**
+**Answer: (D) 15**

@@ -2,13 +2,13 @@
 order: 20
 difficulty: hard
 lesson: 04-boxes-and-3d
-choices: ["6","54","36","27","125"]
-answer: B
+choices: ["6","9","27","36","54"]
+answer: E
 mistakes:
   A: "That's the answer for a 3 by 3 by 3 cube, or one per face. Here, each face has 9."
-  D: "That's the unpainted middle, a 3 by 3 by 3 block. The question asks about one painted face."
-  C: "That's the cubes with 2 painted faces: 3 on each of 12 edges."
-  E: "That's every small cube."
+  B: "That's the number on one face, $3 \\times 3 = 9$. The cube has 6 faces."
+  C: "That's the unpainted middle, a 3 by 3 by 3 block. The question asks about one painted face."
+  D: "That's the cubes with 2 painted faces: 3 on each of 12 edges."
 verify: "product(range(1, 5), range(1, 5), range(1, 5)).filter((c) => c.filter((x) => x === 1 || x === 5).length === 1).length"
 ---
 
@@ -26,4 +26,4 @@ Each face has a 3 by 3 inner part, which is 9 small cubes.
 
 The cubes with one painted face are in the inner part of each face, not touching an edge. Each face has a 3 by 3 inner part, so that's 9 cubes per face. With 6 faces, the total is $6 \times 9 = 54$.
 
-**Answer: (B) 54**
+**Answer: (E) 54**

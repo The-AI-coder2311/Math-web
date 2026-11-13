@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 04-factors-primes-leftovers
-choices: ["16","27","36","28","78"]
+choices: ["6","16","27","28","36"]
 answer: D
 mistakes:
-  A: "That leaves out the 12. A number is a factor of itself."
-  B: "That leaves out the 1. It's a factor of every number."
-  C: "That's more than all of the factors add up to. Check your list: 1, 2, 3, 4, 6, 12."
-  E: "That adds all of the numbers from 1 to 12. Only factors count."
+  A: "That's how many factors 12 has. The question asks for their sum."
+  B: "That leaves out the 12. A number is a factor of itself."
+  C: "That leaves out the 1. It's a factor of every number."
+  E: "That's more than all of the factors add up to. Check your list: 1, 2, 3, 4, 6, 12."
 verify: "sum(factors(12))"
 ---
 

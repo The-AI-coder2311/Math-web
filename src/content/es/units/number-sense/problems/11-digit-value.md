@@ -2,10 +2,10 @@
 order: 6
 difficulty: easy
 lesson: 01-place-value
-choices: ["700","70","7","4730","7000"]
-answer: A
+choices: ["7","70","700","4730","7000"]
+answer: C
 mistakes:
-  C: "Ese es el valor aparente del dígito. Su posición hace que valga más."
+  A: "Ese es el valor aparente del dígito. Su posición hace que valga más."
   B: "Esa es la posición de las decenas. El 3 está en las decenas, y el 7 está una posición a su izquierda."
   D: "Ese es el número completo. La pregunta es sobre el 7 solo."
   E: "Esa es la posición de los millares, donde está el 4."
@@ -26,4 +26,4 @@ De derecha a izquierda, las posiciones son unidades, decenas, centenas y millare
 
 El 7 está en las centenas, así que vale $7 \times 100 = 700$.
 
-**Respuesta: (A) 700**
+**Respuesta: (C) 700**

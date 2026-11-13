@@ -2,13 +2,13 @@
 order: 13
 difficulty: medium
 lesson: 03-geometric-sequences
-choices: ["511","1023","1022","1024","2047"]
+choices: ["1022","1023","1024","2047","2048"]
 answer: B
 mistakes:
-  A: "That's the sum up to 256. The list goes up to 512."
-  C: "You may have started the sum from 2. The list also includes the 1."
-  D: "That's the next power of 2. The sum is one less than that."
-  E: "That's the sum up to 1024. The list stops at 512."
+  A: "You may have started the sum from 2. The list also includes the 1."
+  C: "That's the next power of 2. The sum is one less than that."
+  D: "That's the sum up to 1024. The list stops at 512."
+  E: "That's $2^{11}$. The sum of the powers of 2 up to 512 is 1 less than the next power of 2, which is 1024."
 verify: "sum(range(0, 9).map((n) => 2 ** n))"
 ---
 

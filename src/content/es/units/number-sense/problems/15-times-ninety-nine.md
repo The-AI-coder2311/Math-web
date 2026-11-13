@@ -2,13 +2,13 @@
 order: 14
 difficulty: medium
 lesson: 02-mental-math
-choices: ["4554","4546","4504","4600","4646"]
-answer: A
+choices: ["4140","4504","4546","4554","4600"]
+answer: D
 mistakes:
-  C: "Revisa la resta: $4600 - 46$ es 4554."
+  A: "Eso es $46 \\times 90 = 4140$, que deja fuera $46 \\times 9$."
   B: "Revisa la resta: $4600 - 46$ es 4554."
-  D: "Eso es $46 \\times 100$. Usaste un 46 de más, así que réstalo."
-  E: "Eso suma 46. Como 99 es menor que 100, la respuesta tiene que ser menor que 4600."
+  C: "Revisa la resta: $4600 - 46$ es 4554."
+  E: "Eso es $46 \\times 100$. Usaste un 46 de más, así que réstalo."
 verify: "46 * 99"
 ---
 
@@ -26,4 +26,4 @@ $46 \times 100 = 4600$. ¿Es de más o de menos? ¿Por cuánto?
 
 $46 \times 100 = 4600$, que es un 46 de más. Así que $4600 - 46 = 4554$.
 
-**Respuesta: (A) 4554**
+**Respuesta: (D) 4554**

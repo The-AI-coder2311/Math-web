@@ -2,13 +2,13 @@
 order: 9
 difficulty: medium
 lesson: 05-right-triangles
-choices: ["15","13","17","18","21"]
+choices: ["15","17","18","21","225"]
 answer: A
 mistakes:
-  B: "Eso viene de un triángulo 5-12-13. Aquí, los catetos son 9 y 12."
-  C: "Eso viene de un triángulo 8-15-17. Aquí, los catetos son 9 y 12."
-  D: "Revísalo: $18 \\times 18 = 324$, que es demasiado grande."
-  E: "Eso es $9 + 12$. La hipotenusa es más corta que los dos catetos juntos."
+  B: "Eso viene de un triángulo 8-15-17. Aquí, los catetos son 9 y 12."
+  C: "Revísalo: $18 \\times 18 = 324$, que es demasiado grande."
+  D: "Eso es $9 + 12$. La hipotenusa es más corta que los dos catetos juntos."
+  E: "Eso es $81 + 144 = 225$, que es la hipotenusa al cuadrado. Saca la raíz cuadrada para terminar."
 verify: "range(1, 50).find((c) => c * c === 9 * 9 + 12 * 12)"
 ---
 

@@ -180,6 +180,7 @@ Put math between dollar signs: `$3 \times 4 = 12$`, or `$$3 \times 4 = 12$$` for
 - The `verify` code gets the same answer as the answer key.
 - The `**Answer: (C) 12**` line in the solution matches the answer key.
 - All of the answer choices are different, and both hints and the solution exist.
+- Answer choices that are numbers go from smallest to largest, like the real AMC. This covers whole numbers, decimals, fractions, multiples of $\pi$, and square roots. Choices that are words, points, ratios, or expressions like $16 - 4\pi$ can go in any order.
 - Every wrong choice has a mistake note, and the problem has a `lesson:` tag.
 - No single letter is the answer to more than 40% of a unit's or contest's problems, so guessing one letter doesn't pay off.
 - Each unit has at least 30 problems (a level review has at least 20), close to 30% easy, 45% medium, and 25% hard, and each lesson has at least 2 tagged problems.

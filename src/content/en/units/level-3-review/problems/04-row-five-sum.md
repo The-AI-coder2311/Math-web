@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 from: advanced-counting/01-pascal-and-binomials
-choices: ["10","16","25","64","32"]
+choices: ["6","10","16","25","32"]
 answer: E
 mistakes:
-  A: "That's one number in the row. Add them all."
-  B: "That's row 4. Rows start from 0."
-  C: "That's $5^2$. The row sum is 2 multiplied by itself 5 times."
-  D: "That's row 6. Rows start from 0."
+  A: "That's how many numbers are in row 5. Add them up: 1, 5, 10, 10, 5, 1."
+  B: "That's one number in the row. Add them all."
+  C: "That's row 4. Rows start from 0."
+  D: "That's $5^2$. The row sum is 2 multiplied by itself 5 times."
 verify: "sum(range(0, 5).map((k) => combos(range(1, 5), k).length))"
 ---
 

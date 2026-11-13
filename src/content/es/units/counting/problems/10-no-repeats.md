@@ -2,13 +2,13 @@
 order: 11
 difficulty: medium
 lesson: 02-when-order-matters
-choices: ["648","576","504","720","900"]
-answer: A
+choices: ["81","504","576","648","720"]
+answer: D
 mistakes:
-  C: "Eso es $9 \\times 8 \\times 7$. El segundo dígito tiene 9 opciones, porque ahí sí se permite el 0."
-  B: "Eso es $9 \\times 8 \\times 8$. Vuelve a contar: 9, luego 9, luego 8."
-  D: "Eso es $10 \\times 9 \\times 8$, que permite que el primer dígito sea 0. Eso no es un número de 3 dígitos."
-  E: "Eso cuenta todos los números de 3 dígitos, incluidos los que repiten dígitos."
+  A: "Eso es $9 \\times 9$, que llena solo los dos primeros dígitos. El tercer dígito todavía tiene 8 opciones."
+  B: "Eso es $9 \\times 8 \\times 7$. El segundo dígito tiene 9 opciones, porque ahí sí se permite el 0."
+  C: "Eso es $9 \\times 8 \\times 8$. Vuelve a contar: 9, luego 9, luego 8."
+  E: "Eso es $10 \\times 9 \\times 8$, que permite que el primer dígito sea 0. Eso no es un número de 3 dígitos."
 verify: "range(100, 999).filter((n) => new Set(digits(n)).size === 3).length"
 ---
 
@@ -36,4 +36,4 @@ $$9 \times 9 \times 8 = 648$$
 
 **Un error común:** contestar $10 \times 9 \times 8 = 720$. Esa cuenta incluye "números" como 012, que en realidad no tienen tres dígitos.
 
-**Respuesta: (A) 648**
+**Respuesta: (D) 648**

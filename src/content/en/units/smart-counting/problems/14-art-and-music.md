@@ -2,11 +2,11 @@
 order: 12
 difficulty: medium
 lesson: 01-overlaps
-choices: ["15","10","5","35","45"]
-answer: C
+choices: ["5","10","15","35","45"]
+answer: A
 mistakes:
   B: "That's how many take both. The question asks for neither."
-  A: "That's $25 - 10$, the students who take only art."
+  C: "That's $25 - 10$, the students who take only art."
   D: "That's how many take at least one. Subtract it from 40."
   E: "That's $25 + 20$, which counts the 10 twice. It's also more than the whole group."
 verify: "(() => { const atLeastOne = new Set([...range(1, 25), ...range(16, 35)]).size; return 40 - atLeastOne; })()"
@@ -26,4 +26,4 @@ At least one: $25 + 20 - 10 = 35$.
 
 At least one: $25 + 20 - 10 = 35$. So $40 - 35 = 5$ take neither.
 
-**Answer: (C) 5**
+**Answer: (A) 5**

@@ -2,12 +2,12 @@
 order: 4
 difficulty: easy
 lesson: 02-when-order-matters
-choices: ["6","16","14","12","24"]
-answer: D
+choices: ["6","12","14","16","24"]
+answer: B
 mistakes:
   A: "Eso es \"combinaciones de 4 en 2\", que trata 35 y 53 como iguales. Son números diferentes, así que el orden importa."
   C: "Eso es $7 \\times 2$. Arma el número dígito por dígito: 4 opciones y luego 3."
-  B: "Eso es $4 \\times 4$, que deja repetir un dígito. El problema no lo permite."
+  D: "Eso es $4 \\times 4$, que deja repetir un dígito. El problema no lo permite."
   E: "Eso es $4 \\times 3 \\times 2$, que forma números de 3 dígitos."
 verify: "product([3, 5, 7, 9], [3, 5, 7, 9]).filter(([a, b]) => a !== b).length"
 ---
@@ -34,4 +34,4 @@ $$4 \times 3 = 12$$
 
 **Una comprobación:** los números que empiezan con 3 son 35, 37 y 39. Son 3 números, y pasa lo mismo con cada uno de los 4 dígitos iniciales.
 
-**Respuesta: (D) 12**
+**Respuesta: (B) 12**

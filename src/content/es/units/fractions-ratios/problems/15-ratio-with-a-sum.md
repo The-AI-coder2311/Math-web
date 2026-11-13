@@ -2,13 +2,13 @@
 order: 15
 difficulty: medium
 lesson: 02-ratios-as-boxes
-choices: ["24","32","40","48","60"]
-answer: C
+choices: ["8","24","32","40","48"]
+answer: D
 mistakes:
-  A: "Ese es el número menor. La pregunta pide el mayor."
-  B: "Eso es la mitad de 64, que sería una razón de 1 a 1."
-  D: "Eso es $\\frac{3}{4}$ de 64. El número mayor son 5 cajas de 8."
-  E: "Eso es 64 menos una parte pequeña. El número mayor es $\\frac{5}{8}$ del total."
+  A: "Ese es el tamaño de una parte, $64 \\div 8 = 8$. El número mayor tiene 5 de esas partes."
+  B: "Ese es el número menor. La pregunta pide el mayor."
+  C: "Eso es la mitad de 64, que sería una razón de 1 a 1."
+  E: "Eso es $\\frac{3}{4}$ de 64. El número mayor son 5 cajas de 8."
 verify: "range(1, 64).find((x) => x * 3 === (64 - x) * 5)"
 ---
 
@@ -26,4 +26,4 @@ Hay 8 cajas, así que cada una tiene 8.
 
 Hay $3 + 5 = 8$ cajas, así que cada una tiene $64 \div 8 = 8$. El número mayor es $5 \times 8 = 40$.
 
-**Respuesta: (C) 40**
+**Respuesta: (D) 40**

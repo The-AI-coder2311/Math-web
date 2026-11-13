@@ -2,10 +2,10 @@
 order: 10
 difficulty: medium
 lesson: 01-multiply-choices
-choices: ["60","48","81","120","243"]
-answer: B
+choices: ["48","60","81","120","243"]
+answer: A
 mistakes:
-  A: "Eso es $5 \\times 4 \\times 3$. Hay 3 colores, y cada franja solo tiene que evitar el color de la franja anterior, así que cada franja siguiente tiene 2 opciones."
+  B: "Eso es $5 \\times 4 \\times 3$. Hay 3 colores, y cada franja solo tiene que evitar el color de la franja anterior, así que cada franja siguiente tiene 2 opciones."
   C: "Eso es $3 \\times 3 \\times 3 \\times 3$. Después de la primera, una franja solo tiene 2 opciones, porque tiene que ser diferente de su vecina."
   D: "Eso es $5!$. Eso acomodaría 5 franjas diferentes. Aquí los colores pueden repetirse."
   E: "Eso es $3^5$, que ignora la regla de las franjas que se tocan."
@@ -36,4 +36,4 @@ $$3 \times 2 \times 2 \times 2 \times 2 = 48$$
 
 **Fíjate:** aquí el número de opciones no sigue bajando. Cada franja solo tiene que evitar un color: el de la franja que está justo antes.
 
-**Respuesta: (B) 48**
+**Respuesta: (A) 48**

@@ -2,13 +2,13 @@
 order: 18
 difficulty: hard
 lesson: 04-one-minus
-choices: ["$\\frac{3}{5}$","$\\frac{1}{3}$","$\\frac{2}{5}$","$\\frac{4}{15}$","$\\frac{2}{3}$"]
-answer: A
+choices: ["$\\frac{1}{15}$","$\\frac{4}{15}$","$\\frac{1}{3}$","$\\frac{2}{5}$","$\\frac{3}{5}$"]
+answer: E
 mistakes:
-  D: "That counts 4 pairs. There are 9 pairs with a girl in them."
-  B: "That's the chance that one particular pick is a girl. There are two picks."
-  C: "That's the chance of all boys. Subtract it from 1."
-  E: "That adds $\\frac{1}{3} + \\frac{1}{3}$, which counts the pair of two girls twice."
+  A: "That's the probability that both students are girls. \"At least one\" also includes one girl and one boy."
+  B: "That counts 4 pairs. There are 9 pairs with a girl in them."
+  C: "That's the chance that one particular pick is a girl. There are two picks."
+  D: "That's the chance of all boys. Subtract it from 1."
 verify: "(() => { const all = combos(['G', 'G', 'B', 'B', 'B', 'B'], 2); return fraction(all.filter((p) => p.includes('G')).length, all.length); })()"
 ---
 
@@ -26,4 +26,4 @@ There are $\binom{6}{2} = 15$ pairs. All-boy pairs number $\binom{4}{2} = 6$.
 
 There are 15 pairs in all, and 6 of them are all boys. So the chance of all boys is $\frac{6}{15} = \frac{2}{5}$. The chance of at least one girl is $1 - \frac{2}{5} = \frac{3}{5}$.
 
-**Answer: (A) $\frac{3}{5}$**
+**Answer: (E) $\frac{3}{5}$**

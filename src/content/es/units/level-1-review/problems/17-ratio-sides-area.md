@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 from: basic-geometry/01-perimeter-and-area
-choices: ["192","112","48","196","768"]
-answer: A
+choices: ["48","112","192","196","768"]
+answer: C
 mistakes:
-  C: "Eso es $3 \\times 4 \\times 4$. Primero encuentra los dos lados: 12 y 16."
+  A: "Eso es $3 \\times 4 \\times 4$. Primero encuentra los dos lados: 12 y 16."
   B: "Eso es $4 \\times 28$. Encuentra los dos lados y multiplícalos."
   D: "Eso es $14 \\times 14$, un cuadrado. Los lados están en una razón de 3 a 4."
   E: "Eso duplica los lados al usar todo el perímetro. Los lados suman 28, no 56."
@@ -26,4 +26,4 @@ Los lados suman 28, en 7 cajas. Así que cada caja tiene 4.
 
 Los lados suman 28. Con 7 cajas, cada una tiene 4. Así que los lados miden 12 y 16, y el área es $12 \times 16 = 192$.
 
-**Respuesta: (A) 192**
+**Respuesta: (C) 192**

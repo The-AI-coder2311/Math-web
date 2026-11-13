@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 lesson: 02-pythagoras-why
-choices: ["12","9","6","18","36"]
-answer: A
+choices: ["3","6","9","12","18"]
+answer: D
 mistakes:
-  C: "That's the short leg. The hypotenuse is longer."
-  B: "That's 1.5 times the short leg. It's exactly twice."
-  D: "That's 3 times the short leg. It's exactly twice."
-  E: "That's 6 squared. The hypotenuse is twice the short leg."
+  A: "That's half of the short leg. The hypotenuse is the longest side, and it's double the short leg."
+  B: "That's the short leg. The hypotenuse is longer."
+  C: "That's 1.5 times the short leg. It's exactly twice."
+  E: "That's 3 times the short leg. It's exactly twice."
 verify: "range(1, 50).find((c) => c * c === 6 * 6 + 3 * 6 * 6)"
 ---
 
@@ -26,4 +26,4 @@ The hypotenuse is twice the short leg.
 
 The hypotenuse is twice the short leg, so it's $2 \times 6 = 12$.
 
-**Answer: (A) 12**
+**Answer: (D) 12**

@@ -2,13 +2,13 @@
 order: 12
 difficulty: medium
 lesson: 01-equal-groups
-choices: ["$\\frac{4}{10}$","$\\frac{1}{2}$","$\\frac{5}{6}$","$\\frac{11}{12}$","$\\frac{3}{24}$"]
-answer: D
+choices: ["$\\frac{3}{24}$","$\\frac{4}{10}$","$\\frac{1}{2}$","$\\frac{5}{6}$","$\\frac{11}{12}$"]
+answer: E
 mistakes:
-  A: "Eso suma los de arriba y los de abajo. Es menos que $\\frac{3}{4}$, aunque le sumaste algo."
-  B: "Eso es menos que el $\\frac{3}{4}$ con el que empezaste. Sumar tiene que hacerlo más grande."
-  C: "Eso es $\\frac{10}{12}$. Revisa tu conversión: $\\frac{3}{4}$ es $\\frac{9}{12}$, y $\\frac{1}{6}$ es $\\frac{2}{12}$."
-  E: "Eso multiplica, y además con un error. Para sumar fracciones, primero haz que los pedazos coincidan."
+  A: "Eso multiplica, y además con un error. Para sumar fracciones, primero haz que los pedazos coincidan."
+  B: "Eso suma los de arriba y los de abajo. Es menos que $\\frac{3}{4}$, aunque le sumaste algo."
+  C: "Eso es menos que el $\\frac{3}{4}$ con el que empezaste. Sumar tiene que hacerlo más grande."
+  D: "Eso es $\\frac{10}{12}$. Revisa tu conversión: $\\frac{3}{4}$ es $\\frac{9}{12}$, y $\\frac{1}{6}$ es $\\frac{2}{12}$."
 verify: "fraction(3 * 3 + 1 * 2, 12)"
 ---
 
@@ -26,4 +26,4 @@ Usa doceavos. $\frac{3}{4} = \frac{9}{12}$ y $\frac{1}{6} = \frac{2}{12}$.
 
 Con doceavos, $\frac{9}{12} + \frac{2}{12} = \frac{11}{12}$.
 
-**Respuesta: (D) $\frac{11}{12}$**
+**Respuesta: (E) $\frac{11}{12}$**

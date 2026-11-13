@@ -2,13 +2,13 @@
 order: 10
 difficulty: medium
 lesson: 01-count-what-you-want
-choices: ["$\\frac{1}{3}$","$\\frac{2}{3}$","$\\frac{1}{2}$","$\\frac{5}{6}$","$\\frac{4}{5}$"]
-answer: B
+choices: ["$\\frac{1}{3}$","$\\frac{1}{2}$","$\\frac{2}{3}$","$\\frac{4}{5}$","$\\frac{5}{6}$"]
+answer: C
 mistakes:
   A: "Eso cuenta solo los múltiplos de 3."
-  C: "Eso cuenta solo los múltiplos de 2."
-  D: "Eso es 25 de 30, que cuenta dos veces los múltiplos de 6. Réstalos una vez."
-  E: "Eso es 24 de 30. Revisa tu cuenta: $15 + 10 - 5 = 20$."
+  B: "Eso cuenta solo los múltiplos de 2."
+  D: "Eso es 24 de 30. Revisa tu cuenta: $15 + 10 - 5 = 20$."
+  E: "Eso es 25 de 30, que cuenta dos veces los múltiplos de 6. Réstalos una vez."
 verify: "fraction(range(1, 30).filter((n) => n % 2 === 0 || n % 3 === 0).length, 30)"
 ---
 
@@ -32,4 +32,4 @@ Hay 15 múltiplos de 2 y 10 múltiplos de 3. Los múltiplos de 6 se contaron dos
 
 **Paso 4.** La probabilidad es $\frac{20}{30}$, que se simplifica a $\frac{2}{3}$.
 
-**Respuesta: (B) $\frac{2}{3}$**
+**Respuesta: (C) $\frac{2}{3}$**

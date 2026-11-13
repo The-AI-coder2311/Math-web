@@ -2,11 +2,11 @@
 order: 12
 difficulty: medium
 from: basic-geometry/03-angle-facts
-choices: ["50","70","60","120","180"]
-answer: C
+choices: ["50","60","70","120","180"]
+answer: B
 mistakes:
   A: "Eso es $85 - 35$. Los tres ángulos suman 180°."
-  B: "Revísalo: $35 + 85 + 70$ da 190."
+  C: "Revísalo: $35 + 85 + 70$ da 190."
   D: "Eso es $35 + 85$. Réstalo de 180."
   E: "Eso es lo que suman los tres."
 verify: "range(1, 179).find((x) => x + 35 + 85 === 180)"
@@ -26,4 +26,4 @@ Suman 180°.
 
 El tercer ángulo mide $180 - 35 - 85 = 60$ grados.
 
-**Respuesta: (C) 60**
+**Respuesta: (B) 60**

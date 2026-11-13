@@ -2,11 +2,11 @@
 order: 8
 difficulty: medium
 lesson: 04-factors-primes-leftovers
-choices: ["4","8","7","9","12"]
-answer: C
+choices: ["4","7","8","9","12"]
+answer: B
 mistakes:
   A: "That's only part of the list. Factors of 36 above 2 are 3, 4, 6, 9, 12, 18, and 36."
-  B: "List the factors of 36: there are 9. Only 1 and 2 are too small."
+  C: "List the factors of 36: there are 9. Only 1 and 2 are too small."
   D: "That counts all of the factors of 36. With 1 or 2 friends, the 2 extra cookies could still be shared."
   E: "That's one possible number of friends, not how many possibilities there are."
 verify: "range(1, 38).filter((friends) => 38 % friends === 2).length"
@@ -36,4 +36,4 @@ $$38 - 2 = 36$$
 
 **A common mistake:** answering 9 by counting every factor of 36.
 
-**Answer: (C) 7**
+**Answer: (B) 7**

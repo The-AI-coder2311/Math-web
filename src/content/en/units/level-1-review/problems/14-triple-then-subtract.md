@@ -2,12 +2,12 @@
 order: 14
 difficulty: medium
 from: logic-patterns/03-working-backwards
-choices: ["5","27","17","9","81"]
-answer: D
+choices: ["9","17","27","61","81"]
+answer: A
 mistakes:
-  A: "That's the number subtracted. Work backwards from 22."
-  C: "That subtracts 5 going back. To undo subtracting, add."
-  B: "That's only one step back. Undo the tripling too."
+  B: "That subtracts 5 going back. To undo subtracting, add."
+  C: "That's only one step back. Undo the tripling too."
+  D: "That's $22 \\times 3 - 5 = 61$, which does Lee's steps to 22. But 22 is the result, so undo the steps instead."
   E: "That multiplies by 3 going back. To undo tripling, divide."
 verify: "range(0, 100).find((n) => 3 * n - 5 === 22)"
 ---
@@ -26,4 +26,4 @@ Add 5 to get 27. Then undo the tripling.
 
 Undo the subtraction: $22 + 5 = 27$. Undo the tripling: $27 \div 3 = 9$.
 
-**Answer: (D) 9**
+**Answer: (A) 9**

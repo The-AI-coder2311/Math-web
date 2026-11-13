@@ -2,10 +2,10 @@
 order: 12
 difficulty: medium
 lesson: 04-logic-tables-pigeonholes
-choices: ["6","5","2","10","11"]
-answer: A
+choices: ["2","5","6","10","11"]
+answer: C
 mistakes:
-  C: "That's the luckiest case. \"To be sure\" means planning for the worst luck."
+  A: "That's the luckiest case. \"To be sure\" means planning for the worst luck."
   B: "You could still have one of each color. You need one more to force a match."
   D: "That's 2 of each color, which is far more than you need."
   E: "That would guarantee 3 of a color. You only need 2."
@@ -26,4 +26,4 @@ You could take one of each color, which is 5 socks, with no match. What happens 
 
 With the worst luck, you take one of each color: 5 socks and no match. The next sock must match one of them, so you need 6.
 
-**Answer: (A) 6**
+**Answer: (C) 6**

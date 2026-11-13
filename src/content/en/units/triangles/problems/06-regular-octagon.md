@@ -2,13 +2,13 @@
 order: 9
 difficulty: medium
 lesson: 01-angle-chasing
-choices: ["108","120","135","140","144"]
-answer: C
+choices: ["45","108","120","135","140"]
+answer: D
 mistakes:
-  A: "That's a regular pentagon."
-  B: "That's a regular hexagon."
-  D: "That's a regular 9-sided shape."
-  E: "That's a regular 10-sided shape."
+  A: "That's the outside angle, $360 \\div 8 = 45$. The inside angle and the outside angle add up to 180."
+  B: "That's a regular pentagon."
+  C: "That's a regular hexagon."
+  E: "That's a regular 9-sided shape."
 verify: "((8 - 2) * 180) / 8"
 ---
 
@@ -28,4 +28,4 @@ The angles add up to $6 \times 180 = 1080$ degrees. Share that among 8.
 
 **Step 2.** Each of the 8 equal angles is $1080 \div 8 = 135$ degrees.
 
-**Answer: (C) 135**
+**Answer: (D) 135**

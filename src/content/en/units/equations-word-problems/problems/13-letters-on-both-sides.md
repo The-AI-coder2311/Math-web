@@ -2,13 +2,13 @@
 order: 11
 difficulty: medium
 lesson: 01-solving-and-translating
-choices: ["3","4","6","14","24"]
-answer: C
+choices: ["2.4","3","4","6","14"]
+answer: D
 mistakes:
-  A: "Put it back in: the left side is 16, and the right side is 28."
-  B: "That's the number in front of $x$ after you subtract. You still need to solve for $x$."
-  D: "That subtracts 5 in place of adding it. To undo \"minus 5,\" add 5."
-  E: "That's $4x$. You still need to divide by 4."
+  A: "That's $24 \\div 10$, which adds $7x$ and $3x$. To move $3x$ to the other side, subtract it, which leaves $4x$."
+  B: "Put it back in: the left side is 16, and the right side is 28."
+  C: "That's the number in front of $x$ after you subtract. You still need to solve for $x$."
+  E: "That subtracts 5 in place of adding it. To undo \"minus 5,\" add 5."
 verify: "range(-50, 50).find((x) => 7 * x - 5 === 3 * x + 19)"
 ---
 
@@ -28,4 +28,4 @@ Subtract $3x$ from both sides: $4x - 5 = 19$. Add 5: $4x = 24$. Divide by 4: $x 
 
 **Check:** Both sides equal 37.
 
-**Answer: (C) 6**
+**Answer: (D) 6**

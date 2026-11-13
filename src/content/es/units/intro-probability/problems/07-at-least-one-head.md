@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 04-one-minus
-choices: ["$\\frac{1}{16}$","$\\frac{1}{4}$","$\\frac{3}{4}$","$\\frac{15}{16}$","$\\frac{7}{8}$"]
-answer: D
+choices: ["$\\frac{1}{16}$","$\\frac{1}{4}$","$\\frac{3}{4}$","$\\frac{7}{8}$","$\\frac{15}{16}$"]
+answer: E
 mistakes:
   A: "Esa es la probabilidad de ninguna cara. Réstala de 1."
   B: "Esa es la probabilidad de exactamente 1 cara. \"Al menos una\" incluye más que eso."
   C: "Esa es la respuesta para 2 monedas. Aquí hay 4."
-  E: "Esa es la respuesta para 3 monedas. Aquí hay 4."
+  D: "Esa es la respuesta para 3 monedas. Aquí hay 4."
 verify: "(() => { const c = [0, 1]; return fraction(product(c, c, c, c).filter((f) => sum(f) >= 1).length, 16); })()"
 ---
 
@@ -32,4 +32,4 @@ $$\frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} \times \frac{1}{2} = \frac{1
 
 **Paso 3.** Así que la probabilidad de al menos una cara es $1 - \frac{1}{16} = \frac{15}{16}$.
 
-**Respuesta: (D) $\frac{15}{16}$**
+**Respuesta: (E) $\frac{15}{16}$**

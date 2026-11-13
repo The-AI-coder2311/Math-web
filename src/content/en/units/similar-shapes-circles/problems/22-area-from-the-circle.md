@@ -2,13 +2,13 @@
 order: 22
 difficulty: medium
 lesson: 05-heron-and-inradius
-choices: ["15","30","34","60","120"]
-answer: D
+choices: ["7.5","15","30","34","60"]
+answer: E
 mistakes:
-  A: "That's half the perimeter, $s$. You still need to multiply by $r$."
-  B: "That's the perimeter. The area is $r$ times half the perimeter."
-  C: "That adds $r$ and the perimeter. The formula multiplies $r$ and $s$."
-  E: "That multiplies $r$ by the whole perimeter. Use half of it."
+  A: "That's $30 \\div 4$. The area is the radius times half of the perimeter."
+  B: "That's half the perimeter, $s$. You still need to multiply by $r$."
+  C: "That's the perimeter. The area is $r$ times half the perimeter."
+  D: "That adds $r$ and the perimeter. The formula multiplies $r$ and $s$."
 verify: "4 * (30 / 2)"
 ---
 
@@ -26,4 +26,4 @@ $s$ is half of the perimeter, so it's 15.
 
 Half the perimeter is $s = 15$, so $A = rs = 4 \times 15 = 60$.
 
-**Answer: (D) 60**
+**Answer: (E) 60**

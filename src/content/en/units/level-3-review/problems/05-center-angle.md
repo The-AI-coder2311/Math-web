@@ -2,11 +2,11 @@
 order: 5
 difficulty: easy
 from: similar-shapes-circles/02-inscribed-angles
-choices: ["25","100","50","130","200"]
-answer: B
+choices: ["25","50","100","130","200"]
+answer: C
 mistakes:
   A: "That halves it. The center angle is the larger one."
-  C: "That's the angle at the edge. The center angle is twice as large."
+  B: "That's the angle at the edge. The center angle is twice as large."
   D: "That's $180 - 50$. These angles don't make a straight line."
   E: "That's 4 times as large. It's only twice."
 verify: "50 * 2"
@@ -26,4 +26,4 @@ The center angle is twice as large.
 
 The center angle is twice the angle at the edge: $2 \times 50 = 100$ degrees.
 
-**Answer: (B) 100**
+**Answer: (C) 100**

@@ -2,13 +2,13 @@
 order: 7
 difficulty: medium
 lesson: 02-age-and-number-stories
-choices: ["6","12","15","24","18"]
+choices: ["6","9","12","15","18"]
 answer: E
 mistakes:
   A: "That's her brother's age. The question asks about Maya."
-  B: "That's her brother's age in 6 years."
-  C: "Try it: Maya would be 15 and her brother 5. In 6 years, they'd be 21 and 11, and 21 isn't twice 11."
-  D: "That's Maya's age in 6 years. The question asks about her age now."
+  B: "That would make her brother 3. In 6 years they'd be 15 and 9, and 15 isn't 2 times 9."
+  C: "That's her brother's age in 6 years."
+  D: "Try it: Maya would be 15 and her brother 5. In 6 years, they'd be 21 and 11, and 21 isn't twice 11."
 verify: "range(1, 40).map((b) => [b, 3 * b]).find(([b, m]) => m + 6 === 2 * (b + 6))[1]"
 ---
 

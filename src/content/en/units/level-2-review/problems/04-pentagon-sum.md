@@ -2,13 +2,13 @@
 order: 4
 difficulty: easy
 from: triangles/01-angle-chasing
-choices: ["360","540","450","720","900"]
-answer: B
+choices: ["180","360","450","540","720"]
+answer: D
 mistakes:
-  A: "That's a four-sided shape, or the sum of the outside angles."
+  A: "That's the sum for one triangle. A pentagon splits into 3 triangles."
+  B: "That's a four-sided shape, or the sum of the outside angles."
   C: "The sum is always a multiple of 180."
-  D: "That's a hexagon."
-  E: "That's $5 \\times 180$. A pentagon splits into $5 - 2$ triangles."
+  E: "That's a hexagon."
 verify: "(5 - 2) * 180"
 ---
 
@@ -26,4 +26,4 @@ A pentagon splits into 3 triangles.
 
 A pentagon splits into $5 - 2 = 3$ triangles, so the sum is $3 \times 180 = 540$ degrees.
 
-**Answer: (B) 540**
+**Answer: (D) 540**

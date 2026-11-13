@@ -2,10 +2,10 @@
 order: 7
 difficulty: medium
 lesson: 02-when-order-matters
-choices: ["42","21","14","49","56"]
-answer: A
+choices: ["14","21","42","49","56"]
+answer: C
 mistakes:
-  C: "That's $7 \\times 2$. Choose the people one job at a time: 7 options, and then 6."
+  A: "That's $7 \\times 2$. Choose the people one job at a time: 7 options, and then 6."
   B: "That's \"7 choose 2,\" which treats the jobs as the same. Ana as president is different from Ben as president, so don't divide."
   D: "That's $7 \\times 7$, which lets one person hold both jobs."
   E: "That's $8 \\times 7$. The club has 7 members."
@@ -34,4 +34,4 @@ $$7 \times 6 = 42$$
 
 **Why order matters:** suppose Ana is president and Ben is vice president. That's different from Ben being president and Ana being vice president, so we count both.
 
-**Answer: (A) 42**
+**Answer: (C) 42**

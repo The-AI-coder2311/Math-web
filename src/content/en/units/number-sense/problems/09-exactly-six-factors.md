@@ -2,13 +2,13 @@
 order: 10
 difficulty: medium
 lesson: 04-factors-primes-leftovers
-choices: ["6","12","10","8","16"]
-answer: B
+choices: ["4","6","8","10","12"]
+answer: E
 mistakes:
-  A: "It has only 4 factors: 1, 2, 3, and 6."
-  D: "It has only 4 factors: 1, 2, 4, and 8."
-  C: "It has only 4 factors: 1, 2, 5, and 10."
-  E: "It has only 5 factors: 1, 2, 4, 8, and 16."
+  A: "4 has only 3 factors: 1, 2, and 4."
+  B: "It has only 4 factors: 1, 2, 3, and 6."
+  C: "It has only 4 factors: 1, 2, 4, and 8."
+  D: "It has only 4 factors: 1, 2, 5, and 10."
 verify: "range(1, 100).find((n) => factors(n).length === 6)"
 ---
 
@@ -35,4 +35,4 @@ Test the choices from the smallest. How many factors does 8 have? How many does 
 
 **A check:** the numbers we skipped don't work either. The numbers 1 through 11 each have 4 or fewer factors, so 12 really is the smallest.
 
-**Answer: (B) 12**
+**Answer: (E) 12**

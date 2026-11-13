@@ -2,11 +2,11 @@
 order: 10
 difficulty: medium
 lesson: 05-right-triangles
-choices: ["18","24","20","26","32"]
-answer: B
+choices: ["18","20","24","26","32"]
+answer: C
 mistakes:
   A: "That's $25 - 7$. Right triangles use squares, not plain subtraction."
-  C: "Check it: $20^2 + 7^2$ is 449, not 625."
+  B: "Check it: $20^2 + 7^2$ is 449, not 625."
   D: "That treats the ladder as a leg. It's the longest side, across from the right angle."
   E: "That's $25 + 7$. The height has to be less than the ladder."
 verify: "range(1, 25).find((h) => h * h + 7 * 7 === 25 * 25)"
@@ -32,4 +32,4 @@ $$7^2 + h^2 = 25^2$$
 
 **Step 3.** Since $24 \times 24 = 576$, the ladder reaches 24 feet up.
 
-**Answer: (B) 24**
+**Answer: (C) 24**

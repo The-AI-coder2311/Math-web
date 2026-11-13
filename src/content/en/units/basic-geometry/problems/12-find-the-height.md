@@ -2,11 +2,11 @@
 order: 12
 difficulty: medium
 lesson: 02-triangle-area
-choices: ["5","2.5","10","18","360"]
+choices: ["5","10","15","18","360"]
 answer: A
 mistakes:
-  B: "That's $30 \\div 12$, which leaves out the one half. A triangle is half of a rectangle."
-  C: "That's twice the height. Half of 12 is 6, and $30 \\div 6 = 5$."
+  B: "That's twice the height. Half of 12 is 6, and $30 \\div 6 = 5$."
+  C: "That's $30 \\div 2$. Halving the area isn't the last step. The area is half of $12$ times the height, so half of 12 times the height must equal 30."
   D: "That's $30 - 12$. Area comes from multiplying, so divide to go backwards."
   E: "That's $30 \\times 12$. Divide to go backwards."
 verify: "range(1, 100).find((h) => (12 * h) / 2 === 30)"

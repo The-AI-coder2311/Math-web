@@ -2,13 +2,13 @@
 order: 6
 difficulty: easy
 lesson: 03-rates-and-scaling
-choices: ["3","4","20","6","5"]
-answer: E
+choices: ["2.5","3","4","5","6"]
+answer: D
 mistakes:
-  A: "Eso solo alcanza para 18 galletas."
-  B: "Eso solo alcanza para 24 galletas."
-  D: "Esas son las galletas que da una taza. La pregunta pide tazas."
-  C: "Eso es $2 + 18$, sumando las galletas extra. Mejor escala multiplicando."
+  A: "Eso es $30 \\div 12 = 2.5$, que te dice cuántas tandas necesitas. Multiplícalo por las 2 tazas de cada tanda."
+  B: "Eso solo alcanza para 18 galletas."
+  C: "Eso solo alcanza para 24 galletas."
+  E: "Esas son las galletas que da una taza. La pregunta pide tazas."
 verify: "(2 / 12) * 30"
 ---
 
@@ -26,4 +26,4 @@ Una taza da 6 galletas. ¿Cuántos grupos de 6 forman 30?
 
 Una taza da $12 \div 2 = 6$ galletas. Así que 30 galletas necesitan $30 \div 6 = 5$ tazas.
 
-**Respuesta: (E) 5**
+**Respuesta: (D) 5**

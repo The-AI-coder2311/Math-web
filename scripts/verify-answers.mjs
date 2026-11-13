@@ -13,6 +13,7 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { parse } from 'yaml';
+import { numericChoicesOutOfOrder } from './choice-order.mjs';
 
 const args = process.argv.slice(2);
 const listGaps = args.includes('--standards');
@@ -128,6 +129,11 @@ function checkVerify(code, expected, where) {
   }
 }
 
+// ---- Shared check: numeric choices go from smallest to largest, like the real AMC ----
+function checkChoiceOrder(choices, where) {
+  if (numericChoicesOutOfOrder(choices || [])) errors.push(where + ': the answer choices are numbers, so list them from smallest to largest');
+}
+
 // ---- The writing standard ----
 const BANNED_WORDS = /\b(obviously|clearly|simply|just)\b/gi;
 // TODO and FIXME only count in capitals, since "todo" is an everyday Spanish word.
@@ -213,6 +219,7 @@ function checkContestProblem(file, contest) {
   if (!question?.trim() || solution === undefined) return errors.push(where + ': needs a question and a "## Solution" section');
   const choices = (data.choices || []).map(normalize);
   if (choices.length !== 5) errors.push(where + ': a contest question needs exactly 5 choices');
+  checkChoiceOrder(data.choices, where);
   if (new Set(choices).size !== choices.length) errors.push(where + ': two answer choices are the same');
   const correct = choices['ABCDE'.indexOf(data.answer)];
   if (correct === undefined) return errors.push(where + ': answer "' + data.answer + '" doesn\'t match any choice');
@@ -254,6 +261,7 @@ function checkProblem(file) {
   if (!hint.trim()) errors.push(where + ': the hint is empty');
 
   const choices = (data.choices || []).map(normalize);
+  checkChoiceOrder(data.choices, where);
   const letters = 'ABCDEF';
   const correct = choices[letters.indexOf(data.answer)];
   if (correct === undefined) {
@@ -322,6 +330,7 @@ function checkQuizFile(file, kind) {
   (data.questions || []).forEach((question, i) => {
     const label = where + ' question ' + (i + 1);
     const choices = (question.choices || []).map(normalize);
+    checkChoiceOrder(question.choices, label);
     if (new Set(choices).size !== choices.length) errors.push(label + ': two answer choices are the same');
     const correct = choices[letters.indexOf(question.answer)];
     if (correct === undefined) return errors.push(label + ': answer "' + question.answer + '" doesn\'t match any choice');

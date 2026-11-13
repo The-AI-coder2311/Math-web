@@ -2,13 +2,13 @@
 order: 1
 difficulty: easy
 lesson: 01-prime-factorization
-choices: ["2","3","4","5","6"]
-answer: B
+choices: ["3","4","5","6","12"]
+answer: A
 mistakes:
-  A: "That misses one. The different primes are 2, 3, and 5."
-  C: "That counts the 3 twice. The question asks for different primes."
-  D: "That counts some composite factors too. Only primes count."
-  E: "That counts factors like 6 and 9, which aren't prime."
+  B: "That counts the 3 twice. The question asks for different primes."
+  C: "That counts some composite factors too. Only primes count."
+  D: "That counts factors like 6 and 9, which aren't prime."
+  E: "That's how many factors 90 has in all. Only 2, 3, and 5 are prime."
 verify: "factors(90).filter(isPrime).length"
 ---
 
@@ -30,4 +30,4 @@ $90 = 2 \times 3 \times 3 \times 5$. Count the different primes.
 
 **Step 3.** The different primes are 2, 3, and 5, which makes 3 primes.
 
-**Answer: (B) 3**
+**Answer: (A) 3**

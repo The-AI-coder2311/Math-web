@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-pascal-and-binomials
-choices: ["128","64","127","49","256"]
-answer: A
+choices: ["14","49","64","127","128"]
+answer: E
 mistakes:
-  D: "That's $7^2$. The row sum is 2 multiplied by itself 7 times, not 7 multiplied by itself."
-  B: "That's $2^6$, the sum of row 6. Rows are counted starting from 0, so row 7 gives $2^7$."
-  C: "That leaves out one subset, such as the empty one. The whole row includes both 1s."
-  E: "That's $2^8$, the sum of row 8."
+  A: "That's $2 \\times 7$. Each row's sum is double the row before it, so row 7 adds up to seven 2s multiplied together."
+  B: "That's $7^2$. The row sum is 2 multiplied by itself 7 times, not 7 multiplied by itself."
+  C: "That's $2^6$, the sum of row 6. Rows are counted starting from 0, so row 7 gives $2^7$."
+  D: "That leaves out one subset, such as the empty one. The whole row includes both 1s."
 verify: "sum(range(0, 7).map((k) => combos(range(1, 7), k).length))"
 ---
 
@@ -26,4 +26,4 @@ Row $n$ adds up to $2^n$.
 
 Row $n$ adds up to $2^n$, since it counts all of the subsets of $n$ things. So row 7 adds up to $2^7 = 128$.
 
-**Answer: (A) 128**
+**Answer: (E) 128**

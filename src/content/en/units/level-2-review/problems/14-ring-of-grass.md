@@ -2,13 +2,13 @@
 order: 14
 difficulty: medium
 from: circles-solids/02-shaded-regions
-choices: ["$4\\pi$","$16\\pi$","$32\\pi$","$64\\pi$","$136\\pi$"]
-answer: D
+choices: ["$4\\pi$","$8\\pi$","$16\\pi$","$32\\pi$","$64\\pi$"]
+answer: E
 mistakes:
   A: "That subtracts the radii. Subtract the areas."
-  B: "That squares the difference of the radii. Subtract the areas."
-  C: "That's half of the right answer. Check: $100\\pi - 36\\pi$."
-  E: "That adds the areas. The ring is the big circle minus the small one."
+  B: "That's the difference between the two circumferences, $20\\pi - 12\\pi$. The question asks for area."
+  C: "That squares the difference of the radii. Subtract the areas."
+  D: "That's half of the right answer. Check: $100\\pi - 36\\pi$."
 verify: "pi(10 * 10 - 6 * 6)"
 ---
 
@@ -26,4 +26,4 @@ The areas are $100\pi$ and $36\pi$.
 
 Subtract the areas: $100\pi - 36\pi = 64\pi$.
 
-**Answer: (D) $64\pi$**
+**Answer: (E) $64\pi$**

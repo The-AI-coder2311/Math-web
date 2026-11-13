@@ -2,10 +2,10 @@
 order: 10
 difficulty: medium
 lesson: 02-perfect-squares
-choices: ["15","20","40","50","100"]
-answer: B
+choices: ["20","30","40","50","100"]
+answer: A
 mistakes:
-  A: "That's $10 + 5$. First rewrite $4^5$ as a power of 2."
+  B: "That's $10 + 4 \\times 5$. Since $4 = 2^2$, the power $4^5$ equals $2^{10}$, which adds 10 to the exponent, not 20."
   C: "That's $10 \\times 4$. Exponents add when you multiply powers of the same base."
   D: "That's $10 \\times 5$. Exponents add when you multiply powers of the same base."
   E: "That multiplies $10 \\times 10$. Multiplying $2^{10} \\times 2^{10}$ adds the exponents."
@@ -28,4 +28,4 @@ $4^5 = (2^2)^5$. When you raise a power to a power, the exponents multiply.
 
 **Step 2.** So we have $2^{10} \times 2^{10}$. When you multiply powers of the same number, you add the exponents: $10 + 10 = 20$.
 
-**Answer: (B) 20**
+**Answer: (A) 20**

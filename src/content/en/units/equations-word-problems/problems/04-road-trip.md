@@ -2,10 +2,10 @@
 order: 4
 difficulty: easy
 lesson: 03-distance-rate-time
-choices: ["105","100","90","110","135"]
-answer: A
+choices: ["90","100","105","110","135"]
+answer: C
 mistakes:
-  C: "That's only the first 2 hours. The car goes on for another 20 minutes."
+  A: "That's only the first 2 hours. The car goes on for another 20 minutes."
   B: "That adds 10 for the 20 minutes. Find what fraction of an hour 20 minutes is."
   D: "That adds 20 for the 20 minutes. Twenty minutes is $\\frac{1}{3}$ of an hour, so that's 15 miles."
   E: "That's 3 hours. Twenty minutes isn't a full hour."
@@ -30,4 +30,4 @@ Twenty minutes is $\frac{1}{3}$ of an hour, so the car goes $45 \div 3$ miles in
 
 **Step 3.** The total is $90 + 15 = 105$ miles.
 
-**Answer: (A) 105**
+**Answer: (C) 105**

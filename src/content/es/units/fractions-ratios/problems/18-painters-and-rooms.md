@@ -2,13 +2,13 @@
 order: 18
 difficulty: hard
 lesson: 03-rates-and-scaling
-choices: ["6","9","27","18","12"]
-answer: E
+choices: ["6","9","12","18","27"]
+answer: C
 mistakes:
   A: "Eso ignora que hay 3 veces más cuartos. Más pintores ayudan, pero no tanto."
   B: "Esa es la cantidad de cuartos. Calcula las horas-pintor para encontrar el tiempo."
   D: "Eso triplica el tiempo por el triple de cuartos, pero olvida a los pintores extra."
-  C: "Eso es $9 \\times 3$. Más pintores deberían reducir el tiempo, así que divide entre ellos."
+  E: "Eso es $9 \\times 3$. Más pintores deberían reducir el tiempo, así que divide entre ellos."
 verify: "((4 * 6) / 3) * 9 / 6"
 ---
 
@@ -30,4 +30,4 @@ Cuatro pintores durante 6 horas son 24 horas-pintor para 3 cuartos. Así que un 
 
 **Paso 3.** Con 6 pintores, eso son $72 \div 6 = 12$ horas.
 
-**Respuesta: (E) 12**
+**Respuesta: (C) 12**

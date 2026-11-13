@@ -2,13 +2,13 @@
 order: 10
 difficulty: medium
 lesson: 04-grid-paths
-choices: ["4","34","31","18","35"]
-answer: B
+choices: ["4","12","18","31","34"]
+answer: E
 mistakes:
   A: "That's the number of girls. A team with at least one girl can have 1, 2, or 3."
-  D: "That counts only some of the teams. Use the opposite: all teams minus all-boy teams."
-  C: "That subtracts 4. There's only 1 all-boy team, since there are only 3 boys."
-  E: "That's every team, including the all-boy one."
+  B: "That counts only the teams with exactly 1 girl. Teams with 2 or 3 girls count too."
+  C: "That counts only some of the teams. Use the opposite: all teams minus all-boy teams."
+  D: "That subtracts 4. There's only 1 all-boy team, since there are only 3 boys."
 verify: "combos(['B1', 'B2', 'B3', 'G1', 'G2', 'G3', 'G4'], 3).filter((team) => team.some((p) => p[0] === 'G')).length"
 ---
 
@@ -32,4 +32,4 @@ $$\frac{7 \times 6 \times 5}{3 \times 2 \times 1} = 35$$
 
 **Step 3.** Subtract: $35 - 1 = 34$.
 
-**Answer: (B) 34**
+**Answer: (E) 34**

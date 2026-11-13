@@ -2,10 +2,10 @@
 order: 19
 difficulty: hard
 lesson: 03-working-backwards
-choices: ["5","4","10","22","23"]
-answer: B
+choices: ["4","5","10","22","23"]
+answer: A
 mistakes:
-  A: "Run it forward: 5 becomes 12, then 26, then 54."
+  B: "Run it forward: 5 becomes 12, then 26, then 54."
   C: "That's after one round from the start. Go back one more round."
   D: "That's only one round back from 46. There are three rounds."
   E: "That's $46 \\div 2$. You also need to subtract 1, and to do it for all three rounds."
@@ -28,4 +28,4 @@ Undo each round by dividing by 2 and subtracting 1: 46 becomes 22, then 22 becom
 
 **Check:** 4 becomes 10, then 22, then 46.
 
-**Answer: (B) 4**
+**Answer: (A) 4**

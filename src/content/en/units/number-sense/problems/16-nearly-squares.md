@@ -2,11 +2,11 @@
 order: 18
 difficulty: hard
 lesson: 02-mental-math
-choices: ["99","199","101","201","299"]
-answer: B
+choices: ["99","101","199","201","299"]
+answer: C
 mistakes:
   A: "That's $9899 - 9800$. Check the first product: $101 \\times 99$ is 9999."
-  C: "That's only one number from the problem. Find both products, and subtract."
+  B: "That's only one number from the problem. Find both products, and subtract."
   D: "Check the first product: $10100 - 101$ is 9999, not 10001."
   E: "Check the second product: $100 \\times 98$ is 9800, not 9700."
 verify: "101 * 99 - 100 * 98"
@@ -30,4 +30,4 @@ $101 \times 99 = 9999$, and $100 \times 98 = 9800$.
 
 **Step 3.** $9999 - 9800 = 199$.
 
-**Answer: (B) 199**
+**Answer: (C) 199**

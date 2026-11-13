@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-perimeter-and-area
-choices: ["28","14","21","7","49"]
-answer: A
+choices: ["7","11","14","21","28"]
+answer: E
 mistakes:
-  D: "Esa es la longitud de un lado. El perímetro rodea toda la figura."
-  B: "Eso son solo 2 lados."
-  C: "Eso son solo 3 lados."
-  E: "Esa es el área. La pregunta pide el perímetro."
+  A: "Esa es la longitud de un lado. El perímetro rodea toda la figura."
+  B: "Eso es $7 + 4$. Un cuadrado tiene 4 lados de longitud 7, así que multiplica en vez de sumar."
+  C: "Eso son solo 2 lados."
+  D: "Eso son solo 3 lados."
 verify: "4 * range(1, 49).find((side) => side * side === 49)"
 ---
 
@@ -28,4 +28,4 @@ Cada lado mide 7 pies. Un cuadrado tiene 4 lados.
 
 **Paso 2.** Un cuadrado tiene 4 lados iguales, así que su perímetro es $4 \times 7 = 28$ pies.
 
-**Respuesta: (A) 28**
+**Respuesta: (E) 28**

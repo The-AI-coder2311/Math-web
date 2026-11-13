@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-similarity-tools
-choices: ["12","15","20","16","24"]
-answer: C
+choices: ["5","12","15","16","20"]
+answer: E
 mistakes:
-  A: "That's the shortest side of the larger triangle, or the first perimeter. The longest side is $5 \\times 4$."
-  B: "You may have used a scale factor of 3. Compare the perimeters: $48 \\div 12 = 4$."
+  A: "That's the longest side of the small triangle. The scale factor is $48 \\div 12 = 4$."
+  B: "That's the shortest side of the larger triangle, or the first perimeter. The longest side is $5 \\times 4$."
+  C: "You may have used a scale factor of 3. Compare the perimeters: $48 \\div 12 = 4$."
   D: "That's the middle side, $4 \\times 4$. The longest side matches the 5."
-  E: "That's half of the perimeter. In a triangle, the longest side has to be less than half of the perimeter."
 verify: "(() => { const k = range(1, 20).find((n) => (3 + 4 + 5) * n === 48); return 5 * k; })()"
 ---
 
@@ -26,4 +26,4 @@ The first perimeter is 12, so the scale factor is $48 \div 12 = 4$.
 
 The first perimeter is 12, so the scale factor is $48 \div 12 = 4$. The longest side is $5 \times 4 = 20$.
 
-**Answer: (C) 20**
+**Answer: (E) 20**

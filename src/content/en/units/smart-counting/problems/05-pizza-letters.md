@@ -2,13 +2,13 @@
 order: 8
 difficulty: medium
 lesson: 03-repeats
-choices: ["60","30","24","90","120"]
-answer: A
+choices: ["10","24","30","60","90"]
+answer: D
 mistakes:
-  C: "That's $4!$. There are 5 letters."
-  B: "That divides by 4. Only one letter repeats, so divide by $2! = 2$."
-  D: "Check your division: $120 \\div 2$."
-  E: "That treats the two Zs as different. Swapping them doesn't make a new word."
+  A: "That's the number of ways to pick the 2 spots for the Zs. The letters P, I, and A still need to be arranged in the other 3 spots."
+  B: "That's $4!$. There are 5 letters."
+  C: "That divides by 4. Only one letter repeats, so divide by $2! = 2$."
+  E: "Check your division: $120 \\div 2$."
 verify: "new Set(perms([...'PIZZA']).map((p) => p.join(''))).size"
 ---
 
@@ -28,4 +28,4 @@ There are $5! = 120$ orders if the letters are all different. Only the two Zs ca
 
 **Step 2.** Swapping the two Zs doesn't change the word, so each arrangement got counted twice. Divide by 2: $120 \div 2 = 60$.
 
-**Answer: (A) 60**
+**Answer: (D) 60**

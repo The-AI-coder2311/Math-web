@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 04-similar-triangles
-choices: ["42","20","12","50","72"]
-answer: A
+choices: ["12","20","42","50","72"]
+answer: C
 mistakes:
-  C: "That multiplies 8 by 2.5 and subtracts. Area scales by the scale factor squared."
+  A: "That multiplies 8 by 2.5 and subtracts. Area scales by the scale factor squared."
   B: "That multiplies 8 by 2.5. Area scales by the scale factor squared."
   D: "That's the whole triangle. Subtract the small triangle."
   E: "That's $8 \\times 9$. Compare 4 with the whole side of 10, not 6."
@@ -32,4 +32,4 @@ The scale factor is 2.5, so the area is multiplied by $2.5 \times 2.5 = 6.25$.
 
 **Step 4.** The region $DBCE$ is what's left over: $50 - 8 = 42$.
 
-**Answer: (A) 42**
+**Answer: (C) 42**

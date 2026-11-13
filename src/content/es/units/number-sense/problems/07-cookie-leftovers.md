@@ -2,11 +2,11 @@
 order: 8
 difficulty: medium
 lesson: 04-factors-primes-leftovers
-choices: ["4","8","7","9","12"]
-answer: C
+choices: ["4","7","8","9","12"]
+answer: B
 mistakes:
   A: "Esa es solo parte de la lista. Los factores de 36 mayores que 2 son 3, 4, 6, 9, 12, 18 y 36."
-  B: "Haz la lista de factores de 36: son 9. Solo 1 y 2 son demasiado pequeños."
+  C: "Haz la lista de factores de 36: son 9. Solo 1 y 2 son demasiado pequeños."
   D: "Eso cuenta todos los factores de 36. Con 1 o 2 amigos, las 2 galletas extra todavía se podrían repartir."
   E: "Ese es un número posible de amigos, no cuántas posibilidades hay."
 verify: "range(1, 38).filter((friends) => 38 % friends === 2).length"
@@ -36,4 +36,4 @@ $$38 - 2 = 36$$
 
 **Un error común:** contestar 9 por contar todos los factores de 36.
 
-**Respuesta: (C) 7**
+**Respuesta: (B) 7**

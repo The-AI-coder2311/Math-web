@@ -2,10 +2,10 @@
 order: 12
 difficulty: medium
 lesson: 04-logic-tables-pigeonholes
-choices: ["6","5","2","10","11"]
-answer: A
+choices: ["2","5","6","10","11"]
+answer: C
 mistakes:
-  C: "Ese es el caso con más suerte. \"Estar seguro\" significa planear para la peor suerte."
+  A: "Ese es el caso con más suerte. \"Estar seguro\" significa planear para la peor suerte."
   B: "Todavía podrías tener uno de cada color. Necesitas uno más para forzar una pareja."
   D: "Eso son 2 de cada color, mucho más de lo que necesitas."
   E: "Eso garantizaría 3 de un color. Solo necesitas 2."
@@ -26,4 +26,4 @@ Podrías sacar uno de cada color, que son 5 calcetines, sin pareja. ¿Qué pasa 
 
 Con la peor suerte, sacas uno de cada color: 5 calcetines y ninguna pareja. El siguiente calcetín tiene que coincidir con alguno, así que necesitas 6.
 
-**Respuesta: (A) 6**
+**Respuesta: (C) 6**

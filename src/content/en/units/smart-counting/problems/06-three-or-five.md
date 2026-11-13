@@ -2,12 +2,12 @@
 order: 9
 difficulty: medium
 lesson: 01-overlaps
-choices: ["59","53","56","47","67"]
-answer: D
+choices: ["47","53","56","59","67"]
+answer: A
 mistakes:
   B: "That's $33 + 20$, which counts the multiples of 15 twice."
   C: "That's $33 + 20 + 3$. Subtract the overlap instead."
-  A: "That adds the 6 multiples of 15. Subtract them, since they were counted twice."
+  D: "That adds the 6 multiples of 15. Subtract them, since they were counted twice."
   E: "That's too many. Add the two groups, and subtract the overlap: $33 + 20 - 6$."
 verify: "range(1, 100).filter((n) => n % 3 === 0 || n % 5 === 0).length"
 ---
@@ -32,4 +32,4 @@ There are 33 multiples of 3 and 20 multiples of 5. Which numbers are in both gro
 
 **Step 4.** The total is $33 + 20 - 6 = 47$.
 
-**Answer: (D) 47**
+**Answer: (A) 47**

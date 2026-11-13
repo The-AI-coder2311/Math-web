@@ -2,10 +2,10 @@
 order: 16
 difficulty: hard
 lesson: 04-split-or-subtract
-choices: ["82","64","18","91","94"]
-answer: A
+choices: ["18","64","82","91","94"]
+answer: C
 mistakes:
-  C: "Esa es el área que se recorta. Réstala del cuadrado."
+  A: "Esa es el área que se recorta. Réstala del cuadrado."
   B: "Eso es $100 - 36$, que trata cada esquina como un cuadrado completo de 3 por 3. Cada triángulo de esquina es la mitad."
   D: "Eso solo recorta 2 esquinas. Son 4."
   E: "Revisa tus esquinas: 4 triángulos de 4.5 dan 18."
@@ -26,4 +26,4 @@ Cada triángulo tiene un área de $\frac{1}{2} \times 3 \times 3 = 4.5$.
 
 El cuadrado tiene un área de 100. Cada triángulo tiene un área de 4.5, y hay 4, que dan un total de 18. Así que $100 - 18 = 82$.
 
-**Respuesta: (A) 82**
+**Respuesta: (C) 82**

@@ -2,10 +2,10 @@
 order: 17
 difficulty: hard
 lesson: 02-ratios-as-boxes
-choices: ["125","75","100","50","150"]
-answer: A
+choices: ["50","75","100","125","150"]
+answer: D
 mistakes:
-  D: "Esas son las cuentas rojas del principio. La pregunta pide todas las cuentas."
+  A: "Esas son las cuentas rojas del principio. La pregunta pide todas las cuentas."
   B: "Esas son las cuentas azules del principio. La pregunta pide todas las cuentas."
   C: "Revísalo: 40 rojas y 60 azules. Al agregar 10 rojas queda 50 a 60, que no es 4 a 5."
   E: "Revísalo: 60 rojas y 90 azules. Al agregar 10 rojas queda 70 a 90, que no es 4 a 5."
@@ -32,4 +32,4 @@ $\frac{2x + 10}{3x} = \frac{4}{5}$. Multiplica en cruz: $5(2x + 10) = 4 \times 3
 
 **Comprobación:** 50 rojas y 75 azules. Luego 60 a 75 se simplifica a 4 a 5.
 
-**Respuesta: (A) 125**
+**Respuesta: (D) 125**

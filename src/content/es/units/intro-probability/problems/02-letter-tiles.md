@@ -2,13 +2,13 @@
 order: 2
 difficulty: easy
 lesson: 01-count-what-you-want
-choices: ["$\\frac{2}{11}$","$\\frac{1}{11}$","$\\frac{1}{8}$","$\\frac{1}{4}$","$\\frac{2}{9}$"]
-answer: A
+choices: ["$\\frac{1}{11}$","$\\frac{1}{8}$","$\\frac{2}{11}$","$\\frac{2}{9}$","$\\frac{1}{4}$"]
+answer: C
 mistakes:
-  B: "Eso cuenta una sola M. La palabra tiene 2."
-  C: "Eso usa 8 como total. Cada ficha es un resultado, y hay 11 fichas."
-  D: "Cuenta las fichas y las M: 2 M de 11 fichas."
-  E: "La palabra tiene 11 letras, no 9. Vuelve a contarlas."
+  A: "Eso cuenta una sola M. La palabra tiene 2."
+  B: "Eso usa 8 como total. Cada ficha es un resultado, y hay 11 fichas."
+  D: "La palabra tiene 11 letras, no 9. Vuelve a contarlas."
+  E: "Cuenta las fichas y las M: 2 M de 11 fichas."
 verify: "fraction([...'MATEMATICAS'].filter((c) => c === 'M').length, 'MATEMATICAS'.length)"
 ---
 
@@ -28,4 +28,4 @@ Hay 11 fichas, y la M aparece dos veces.
 
 **Paso 2.** La letra M aparece 2 veces, así que la probabilidad es $\frac{2}{11}$.
 
-**Respuesta: (A) $\frac{2}{11}$**
+**Respuesta: (C) $\frac{2}{11}$**

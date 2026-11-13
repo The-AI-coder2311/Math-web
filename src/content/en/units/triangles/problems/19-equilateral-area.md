@@ -2,13 +2,13 @@
 order: 19
 difficulty: hard
 lesson: 02-pythagoras-why
-choices: ["$8\\sqrt{3}$","64","32","$32\\sqrt{3}$","$16\\sqrt{3}$"]
-answer: E
+choices: ["$8\\sqrt{3}$","$16\\sqrt{3}$","32","$32\\sqrt{3}$","64"]
+answer: B
 mistakes:
   A: "That uses half of the height. The height is $4\\sqrt{3}$, and half of the base is 4."
   C: "That uses a height of 8, which is a slanted side. Find the real height."
   D: "That forgets the one half in the area formula."
-  B: "That's a square with sides of 8."
+  E: "That's a square with sides of 8."
 verify: "(() => { const h = Math.sqrt(8 * 8 - 4 * 4); const area = (8 * h) / 2; return Math.abs(area - 16 * Math.sqrt(3)) < 1e-9 ? '16\\\\sqrt{3}' : area; })()"
 ---
 
@@ -28,4 +28,4 @@ It cuts the base into 4 and 4. The height follows from $h^2 + 4^2 = 8^2$.
 
 **Step 2.** The area is $\frac{1}{2} \times 8 \times 4\sqrt{3} = 16\sqrt{3}$.
 
-**Answer: (E) $16\sqrt{3}$**
+**Answer: (B) $16\sqrt{3}$**
