@@ -34,11 +34,11 @@ Imagine the tree again. Each flavor has 3 sauce branches, which makes $4 \times 
 
 $$4 \times 3 \times 2 = 24$$
 
-Try one yourself before going on. A cafeteria offers 3 sandwiches, 4 drinks, and 2 fruits, and you take one of each. How many different lunches are possible?
+Try one yourself before going on. A store sells backpacks in 2 sizes, 4 colors, and 3 patterns. You pick one size, one color, and one pattern. How many different backpacks could you choose?
 
 <details class="check"><summary>Show the answer</summary>
 
-There are $3 \times 4 \times 2 = 24$ lunches. It's the same answer as the sundaes, because the same three numbers get multiplied. The order you multiply them in doesn't matter.
+There are $2 \times 4 \times 3 = 24$ backpacks. It's the same answer as the sundaes, because the same three numbers get multiplied. The order you multiply them in doesn't matter.
 
 </details>
 

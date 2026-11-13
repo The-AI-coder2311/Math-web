@@ -34,11 +34,11 @@ Imagina el árbol otra vez. Cada sabor tiene 3 ramas de salsa, lo que da $4 \tim
 
 $$4 \times 3 \times 2 = 24$$
 
-Intenta uno antes de seguir. Una cafetería ofrece 3 sándwiches, 4 bebidas y 2 frutas, y tomas uno de cada uno. ¿Cuántos almuerzos diferentes son posibles?
+Intenta uno antes de seguir. Una tienda vende mochilas en 2 tamaños, 4 colores y 3 diseños. Eliges un tamaño, un color y un diseño. ¿Cuántas mochilas diferentes podrías elegir?
 
 <details class="check"><summary>Ver la respuesta</summary>
 
-Hay $3 \times 4 \times 2 = 24$ almuerzos. Es la misma respuesta que la de las copas, porque se multiplican los mismos tres números. El orden en que los multipliques no importa.
+Hay $2 \times 4 \times 3 = 24$ mochilas. Es la misma respuesta que la de las copas, porque se multiplican los mismos tres números. El orden en que los multipliques no importa.
 
 </details>
 
