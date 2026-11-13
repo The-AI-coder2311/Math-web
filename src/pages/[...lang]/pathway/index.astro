@@ -2,6 +2,7 @@
 import Base from '../../../layouts/Base.astro';
 import ProgressBar from '../../../components/ProgressBar.astro';
 import ProgressCode from '../../../components/ProgressCode.astro';
+import Resume from '../../../components/Resume.astro';
 import { getContestsForLevel, getLevels, getProblems } from '../../../lib/content';
 import { defaultLocale, href, hrefIn, isTranslated, localePaths, t } from '../../../i18n/config';
 
@@ -40,10 +41,20 @@ const levels = await Promise.all(
 <Base title={text.title} description={text.description} lang={lang} current="learn">
   <h1>{text.title}</h1>
   <p>{text.intro}</p>
+  <Resume lang={lang} />
   <p class="card callout"><strong>{text.notSure}</strong> <a href={href(lang, 'pathway/start/')}>{text.placementLink}</a></p>
-  {levels.map((level) => (
+  {levels.map((level) => !level.units.some((unit) => unit.available || unit.inEnglish) ? (
     <section class="level" id={`level-${level.number}`}>
       <h2>{level.title}</h2>
+      <p>{level.blurb}</p>
+      <p class="muted">{text.planned} {level.units.map((unit) => unit.title).join(', ')}.</p>
+    </section>
+  ) : (
+    <details class="level" id={`level-${level.number}`} open={level.number === 1} data-level={level.number} data-status={text.levelStatus('{solved}', '{total}')}>
+      <summary>
+        <h2>{level.title}</h2>
+        <span class="muted needs-js" data-level-status></span>
+      </summary>
       <p>{level.blurb}</p>
       <ol class="unit-list" aria-label={text.listLabel(level.title)}>
         {level.units.map((unit) => (
@@ -89,12 +100,51 @@ const levels = await Promise.all(
           </p>
         </div>
       )}
-    </section>
+    </details>
   ))}
   <ProgressCode lang={lang} />
 </Base>
 <script>
-  import { unitsFinished } from '../../../scripts/progress';
+  import { getSolved, unitsFinished } from '../../../scripts/progress';
+  import { nextStep } from '../../../scripts/resume';
+
+  const levels = [...document.querySelectorAll<HTMLDetailsElement>('details[data-level]')];
+
+  // Each level's heading shows how much of it is solved, so a closed level still says something.
+  const showLevelStatus = () =>
+    levels.forEach((level) => {
+      let solved = 0;
+      let total = 0;
+      level.querySelectorAll<HTMLElement>('[data-progress-unit]').forEach((bar) => {
+        const known = (bar.dataset.problems as string).split(',');
+        total += known.length;
+        solved += getSolved(bar.dataset.progressUnit as string).filter((problem) => known.includes(problem)).length;
+      });
+      const status = level.querySelector('[data-level-status]') as HTMLElement;
+      status.textContent = (level.dataset.status as string).replace('{solved}', String(solved)).replace('{total}', String(total));
+    });
+
+  // Opens the level named in the address (as in /pathway/#level-3), or else the level
+  // the student is working on. A new visitor keeps Level 1 open.
+  const openLevel = () => {
+    const fromAddress = window.location.hash.match(/^#level-(\d+)$/)?.[1];
+    const box = document.querySelector<HTMLElement>('[data-resume]');
+    const step = box ? nextStep(box) : undefined;
+    const wanted = fromAddress ?? (step ? String(step.unit.level) : undefined);
+    if (!wanted || !levels.some((level) => level.dataset.level === wanted)) return;
+    levels.forEach((level) => {
+      level.open = level.dataset.level === wanted;
+    });
+    if (fromAddress) document.getElementById(`level-${fromAddress}`)?.scrollIntoView();
+  };
+
+  showLevelStatus();
+  openLevel();
+  window.addEventListener('hashchange', openLevel);
+  document.addEventListener('progress-loaded', () => {
+    showLevelStatus();
+    openLevel();
+  });
 
   const showCertificates = () =>
     document.querySelectorAll<HTMLElement>('[data-level-certificate]').forEach((line) => {

@@ -1,7 +1,7 @@
 // All button labels and short interface text. Longer writing lives in src/content/en/.
 export const en = {
   skipLink: 'Skip to main content',
-  nav: { learn: 'Start learning', contests: 'Practice contests', formulas: 'Formulas', teachers: 'For teachers', about: 'About us', label: 'Main' },
+  nav: { learn: 'Start learning', contests: 'Practice contests', formulas: 'Formulas', teachers: 'For teachers', about: 'About us', label: 'Main', menu: 'Menu' },
   theme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
   language: {
     name: 'English',
@@ -58,6 +58,14 @@ export const en = {
     strategy: 'Contest strategy: how to take a math contest',
     cheatSheet: 'Printable formula and strategy sheet',
     certificate: 'You finished every unit in this level! Print your certificate.',
+    planned: 'Planned units:',
+    levelStatus: (solved: number | string, total: number | string) => `${solved} of ${total} problems solved`,
+  },
+  resume: {
+    title: 'Welcome back!',
+    lesson: (unit: string, lesson: string) => `Continue ${unit} with the lesson "${lesson}"`,
+    practice: (unit: string, solved: number | string, total: number | string) => `Keep practicing ${unit} (${solved} of ${total} solved)`,
+    nextUnit: (unit: string) => `Start the next unit: ${unit}`,
   },
   progressCode: {
     title: 'Move your progress to another device',

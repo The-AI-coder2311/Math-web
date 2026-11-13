@@ -48,3 +48,19 @@ markScrollers();
 window.addEventListener('resize', markScrollers);
 // Opening a hint or solution can reveal more wide content. `toggle` doesn't bubble.
 document.addEventListener('toggle', markScrollers, true);
+
+// On small screens, the Menu button opens and closes the list of links in the header.
+const menuButton = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+const siteNav = document.getElementById('site-nav');
+if (menuButton && siteNav) {
+  const setOpen = (open: boolean) => {
+    siteNav.classList.toggle('is-open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+  };
+  menuButton.addEventListener('click', () => setOpen(menuButton.getAttribute('aria-expanded') !== 'true'));
+  document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape' || menuButton.getAttribute('aria-expanded') !== 'true') return;
+    setOpen(false);
+    menuButton.focus();
+  });
+}

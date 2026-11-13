@@ -3,7 +3,7 @@ import type { en } from './en';
 // Spanish interface text. Keep the same shape as en.ts. Longer writing lives in src/content/es/.
 export const es: typeof en = {
   skipLink: 'Saltar al contenido principal',
-  nav: { learn: 'Empezar a aprender', contests: 'Concursos de práctica', formulas: 'Fórmulas', teachers: 'Para maestros', about: 'Quiénes somos', label: 'Principal' },
+  nav: { learn: 'Empezar a aprender', contests: 'Concursos de práctica', formulas: 'Fórmulas', teachers: 'Para maestros', about: 'Quiénes somos', label: 'Principal', menu: 'Menú' },
   theme: { toDark: 'Cambiar a modo oscuro', toLight: 'Cambiar a modo claro' },
   language: {
     name: 'Español',
@@ -60,6 +60,14 @@ export const es: typeof en = {
     strategy: 'Estrategia para concursos (en inglés)',
     cheatSheet: 'Hoja imprimible de fórmulas y estrategias',
     certificate: '¡Terminaste todas las unidades de este nivel! Imprime tu certificado.',
+    planned: 'Unidades planeadas:',
+    levelStatus: (solved: number | string, total: number | string) => `${solved} de ${total} problemas resueltos`,
+  },
+  resume: {
+    title: '¡Qué bueno verte de nuevo!',
+    lesson: (unit: string, lesson: string) => `Continúa ${unit} con la lección "${lesson}"`,
+    practice: (unit: string, solved: number | string, total: number | string) => `Sigue practicando ${unit} (${solved} de ${total} resueltos)`,
+    nextUnit: (unit: string) => `Empieza la siguiente unidad: ${unit}`,
   },
   progressCode: {
     title: 'Lleva tu progreso a otro dispositivo',

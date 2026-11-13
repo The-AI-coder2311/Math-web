@@ -1,0 +1,49 @@
+---
+// "Continue where you left off": a link to the next unread lesson or the next
+// unsolved problem in the unit the student used last. It stays hidden for a
+// brand-new visitor. src/scripts/resume.ts fills it in from saved progress.
+import { getLessons, getLevels, getProblems } from '../lib/content';
+import { defaultLocale, hrefIn, t, type Locale } from '../i18n/config';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const text = t(lang).resume;
+// A unit that isn't translated yet continues in English, as on the pathway page.
+const english = lang === defaultLocale ? [] : (await getLevels(defaultLocale)).flatMap((level) => level.units);
+const units = (
+  await Promise.all(
+    (await getLevels(lang)).flatMap((level, index) =>
+      level.units.map(async (unit) => {
+        const inEnglish = !unit.available && english.some((other) => other.slug === unit.slug && other.available);
+        if (!unit.available && !inEnglish) return undefined;
+        const source = unit.available ? lang : defaultLocale;
+        return {
+          slug: unit.slug,
+          title: unit.title,
+          level: index + 1,
+          base: hrefIn(source, `pathway/${unit.slug}/`),
+          total: (await getProblems(source, unit.slug)).length,
+          lessons: (await getLessons(source, unit.slug)).map((lesson) => [lesson.slug, lesson.title]),
+        };
+      }),
+    ),
+  )
+).filter(Boolean);
+---
+<p
+  class="card callout resume needs-js"
+  hidden
+  data-resume
+  data-units={JSON.stringify(units)}
+  data-lesson={text.lesson('{unit}', '{lesson}')}
+  data-practice={text.practice('{unit}', '{solved}', '{total}')}
+  data-next-unit={text.nextUnit('{unit}')}
+>
+  <strong>{text.title}</strong> <a href="#" data-resume-link></a>
+</p>
+<script>
+  import '../scripts/resume';
+</script>

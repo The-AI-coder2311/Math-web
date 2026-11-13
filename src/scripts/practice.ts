@@ -164,4 +164,10 @@ document.querySelectorAll<HTMLElement>('[data-practice]').forEach((page) => {
   const storageNote = page.querySelector<HTMLElement>('[data-storage-note]');
   if (storageNote) storageNote.hidden = canSave();
   restore();
+
+  // The "continue where you left off" link ends in #next: go to the first unsolved problem.
+  if (filter && window.location.hash === '#next') {
+    const target = cards.find((card) => !isSolved(card));
+    if (target) goTo(target);
+  }
 });

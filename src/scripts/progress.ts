@@ -53,10 +53,45 @@ export function canSave() {
   return storageWorks;
 }
 
+// Remembers the unit the student used last, for the "continue where you left off"
+// button. It's a separate key, so the saved-progress keys above never change shape.
+const LAST_KEY = 'count-me-in-last-v1';
+export type LastActivity = { unit: string; kind: 'lesson' | 'practice' };
+
+function touch(unit: string, kind: LastActivity['kind']) {
+  try {
+    window.localStorage.setItem(LAST_KEY, JSON.stringify({ unit, kind }));
+  } catch {
+    // Blocked storage: the button falls back to the furthest unit with progress.
+  }
+}
+
+/** The unit the student used last on this device, if it was recorded. */
+export function getLast(): LastActivity | undefined {
+  try {
+    const last = JSON.parse(window.localStorage.getItem(LAST_KEY) ?? 'null');
+    return typeof last?.unit === 'string' && (last.kind === 'lesson' || last.kind === 'practice') ? last : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+/** Every unit with any saved progress: a solved problem or a lesson that was read. */
+export const unitsWithProgress = () =>
+  [...new Set([...Object.keys(load(PROBLEMS_KEY)), ...Object.keys(load(LESSONS_KEY))])].filter(
+    (unit) => getList(PROBLEMS_KEY, unit).length + getList(LESSONS_KEY, unit).length > 0,
+  );
+
 export const getSolved = (unit: string) => getList(PROBLEMS_KEY, unit);
-export const markSolved = (unit: string, problem: string) => addToList(PROBLEMS_KEY, unit, problem);
+export const markSolved = (unit: string, problem: string) => {
+  addToList(PROBLEMS_KEY, unit, problem);
+  touch(unit, 'practice');
+};
 export const getRead = (unit: string) => getList(LESSONS_KEY, unit);
-export const markRead = (unit: string, lesson: string) => addToList(LESSONS_KEY, unit, lesson);
+export const markRead = (unit: string, lesson: string) => {
+  addToList(LESSONS_KEY, unit, lesson);
+  touch(unit, 'lesson');
+};
 
 type ContestScore = { score: number; max: number };
 

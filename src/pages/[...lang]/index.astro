@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import ProblemOfTheWeek from '../../components/ProblemOfTheWeek.astro';
+import Resume from '../../components/Resume.astro';
 import { href, localePaths, t } from '../../i18n/config';
 
 export const getStaticPaths = () => localePaths();
@@ -12,6 +13,7 @@ const text = t(lang);
   <section class="hero">
     <h1 class="mission">{text.home.mission}</h1>
     <p class="muted">{text.home.reassure}</p>
+    <Resume lang={lang} />
     <div class="btn-row">
       <a class="btn btn-primary" href={href(lang, 'pathway/')}>{text.nav.learn}</a>
       <a class="btn" href={href(lang, 'teachers/')}>{text.nav.teachers}</a>

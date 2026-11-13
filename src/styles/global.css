@@ -268,10 +268,83 @@ main.wrap {
   cursor: pointer;
 }
 
-@media (min-width: 40rem) {
+.lang-short {
+  display: none;
+}
+
+/* The Menu button only shows on small screens, where it opens and closes the links. */
+.menu-toggle {
+  display: none;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 2.75rem;
+  padding: 0 0.75rem;
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.menu-toggle[aria-expanded='true'] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* On a phone, the header is one row: logo, Menu, language, and theme. Without
+   JavaScript there is no Menu button, and a <noscript> rule keeps the links showing. */
+@media (max-width: 40rem) {
+  .site-header-inner {
+    flex-wrap: wrap;
+    gap: 0.25rem 0.5rem;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
   .site-header nav {
-    order: 0;
-    width: auto;
+    display: none;
+  }
+
+  .site-header nav.is-open {
+    display: block;
+    padding-top: 0.25rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .site-header nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .site-header nav a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+  }
+
+  .language-switch a {
+    padding: 0 0.4rem;
+  }
+
+  /* The short language code and a smaller logo keep everything on one row. */
+  .lang-long {
+    display: none;
+  }
+
+  .lang-short {
+    display: inline;
+  }
+
+  .logo {
+    height: 30px;
+  }
+
+  .menu-toggle {
+    padding: 0 0.6rem;
   }
 }
 
@@ -1482,4 +1555,44 @@ textarea {
 .next-unsolved {
   margin: 0.75rem 0 0;
   font-weight: 600;
+}
+
+/* Pathway page: each level opens and closes */
+details.level > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 0.75rem;
+  min-height: 2.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  list-style: none;
+}
+
+details.level > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.level > summary h2 {
+  margin: 0;
+}
+
+details.level > summary h2::before {
+  content: '\25B8';
+  display: inline-block;
+  width: 1.25em;
+  color: var(--accent);
+}
+
+details.level[open] > summary h2::before {
+  content: '\25BE';
+}
+
+details.level > summary:hover h2 {
+  text-decoration: underline;
+}
+
+.resume {
+  margin: 1rem 0;
 }
