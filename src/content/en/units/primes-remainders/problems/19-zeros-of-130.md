@@ -1,7 +1,7 @@
 ---
 order: 19
 difficulty: hard
-lesson: 02-counting-divisors
+lesson: 05-factorial-zeros
 choices: ["13","26","30","31","32"]
 answer: E
 mistakes:

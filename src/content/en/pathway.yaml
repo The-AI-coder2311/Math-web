@@ -54,7 +54,7 @@ levels:
         blurb: Circles, shaded regions, boxes, and picturing shapes in 3D.
       - slug: data-chance
         title: Averages, Data & Chance
-        blurb: Mean and median shortcuts, reading tables, and probability with several steps.
+        blurb: Mean and median shortcuts, reading tables, probability with several steps, and using clues.
       - slug: logic-puzzles
         title: Logic Puzzles
         blurb: If-then reasoning, truth-tellers and liars, and clues about who goes where.

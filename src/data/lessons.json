@@ -132,7 +132,7 @@
         "title": "Primes & Remainders",
         "review": false,
         "lessons": 5,
-        "problems": 30
+        "problems": 33
       },
       {
         "level": 2,
@@ -173,8 +173,8 @@
         "slug": "data-chance",
         "title": "Averages, Data & Chance",
         "review": false,
-        "lessons": 4,
-        "problems": 30
+        "lessons": 5,
+        "problems": 34
       },
       {
         "level": 2,
@@ -936,8 +936,8 @@
         "unit": "primes-remainders",
         "topic": "Primes & Remainders",
         "slug": "02-counting-divisors",
-        "title": "Counting Divisors and Factorial Zeros",
-        "summary": "Count a number's factors in seconds, without listing them, and find how many zeros a huge factorial ends with.",
+        "title": "Counting Divisors Without Listing Them",
+        "summary": "Count a number's factors in seconds without listing them, pick out the odd, even, or square ones, and add all of the factors up with one multiplication.",
         "minutes": 12,
         "path": "pathway/primes-remainders/02-counting-divisors/"
       },
@@ -1196,6 +1196,22 @@
         "summary": "Find what happens on average in a game of chance, and use casework to count your way through harder probability.",
         "minutes": 11,
         "path": "pathway/data-chance/04-expected-value/"
+      },
+      {
+        "level": 2,
+        "levelTitle": "Level 2: Contest Ready",
+        "difficulty": "Intermediate",
+        "competitions": [
+          "AMC 8",
+          "MATHCOUNTS"
+        ],
+        "unit": "data-chance",
+        "topic": "Averages, Data & Chance",
+        "slug": "05-told-something",
+        "title": "When You're Told Something",
+        "summary": "Learn conditional probability. When a problem gives you a clue, cross out the outcomes the clue rules out, and count from what's left.",
+        "minutes": 11,
+        "path": "pathway/data-chance/05-told-something/"
       },
       {
         "level": 2,
