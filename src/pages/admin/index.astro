@@ -9,7 +9,12 @@ import { competitionSettings, competitionsOn } from '../../competitions.config';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <Base title="Admin" description="Sign in to manage live competitions and edit site content." lang="en" noindex>
-  <div data-admin data-presets={JSON.stringify(competitionSettings.presets)} data-defaults={JSON.stringify(competitionSettings.defaults)}>
+  <div
+    data-admin
+    data-presets={JSON.stringify(competitionSettings.presets)}
+    data-defaults={JSON.stringify(competitionSettings.defaults)}
+    data-fair-play={JSON.stringify(competitionSettings.fairPlay)}
+  >
     <h1>Admin</h1>
     <noscript><p class="card">The admin dashboard needs JavaScript.</p></noscript>
 
@@ -142,6 +147,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
           <p class="admin-hint" data-tz></p>
           <label class="admin-check"><input type="checkbox" name="published" /> <span><strong>Published.</strong> Students can see it on the Competitions page. Leave this off while you write the questions.</span></label>
           <label class="admin-check"><input type="checkbox" name="live_leaderboard" /> <span><strong>Live leaderboard.</strong> Show scores while the competition is still running. When this is off, scores appear only after it closes, which is safer, since a live score hints at which answers are right.</span></label>
+          <label class="admin-check"><input type="checkbox" name="require_fullscreen" /> <span><strong>Require full screen.</strong> Questions show only while the student's browser is in full screen, and every exit is counted. iPhones can't do full screen, so those students see the questions normally and get flagged for it. It can't stop a second device, so use it together with supervision.</span></label>
           <p class="btn-row">
             <button class="btn btn-primary" type="submit">Save competition</button>
             <a class="btn" data-open-page hidden>Open its page</a>
@@ -171,10 +177,15 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             </p>
           </div>
           <p class="admin-hint">Hide an entry to take it off the leaderboard, for a rude name or a disqualification. Deleting it lets that student join again.</p>
+          <p class="admin-hint">
+            <strong>Flags are hints, not proof.</strong> The student's browser reports when they leave the page or full screen,
+            and a notification can cause that too. A phone held up to the screen leaves no trace at all. Talk to the student
+            before you hide an entry. Change when flags appear in <code>src/competitions.config.ts</code>.
+          </p>
           <div class="table-scroll" tabindex="0" role="region" aria-label="Entries">
             <table class="data-table">
               <thead>
-                <tr><th scope="col">Name</th><th scope="col">Joined</th><th scope="col">Handed in</th><th scope="col">Answered</th><th scope="col">Hidden</th><th scope="col">Actions</th></tr>
+                <tr><th scope="col">Name</th><th scope="col">Joined</th><th scope="col">Handed in</th><th scope="col">Answered</th><th scope="col">Left page</th><th scope="col">Full-screen exits</th><th scope="col">Flags</th><th scope="col">Hidden</th><th scope="col">Actions</th></tr>
               </thead>
               <tbody data-entry-rows></tbody>
             </table>

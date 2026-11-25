@@ -118,6 +118,8 @@ create table if not exists public.competitions (
   published boolean not null default false,
   -- Show the leaderboard while the competition runs, not only after it ends.
   live_leaderboard boolean not null default false,
+  -- Show the questions only while the browser is in full screen.
+  require_fullscreen boolean not null default false,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now(),
   constraint competitions_window check (ends_at > starts_at)
@@ -152,8 +154,25 @@ create table if not exists public.competition_entries (
   submitted_at timestamptz,
   -- Admins can hide an entry from the leaderboard, for a rude name or a disqualification.
   hidden boolean not null default false,
+  -- The student ticked the honor pledge when joining.
+  pledged_at timestamptz,
+  -- Reported by the student's browser, for admins to review. A browser can be made to report
+  -- nothing, so these are hints, never proof. They can only go up.
+  tab_leaves integer not null default 0 check (tab_leaves >= 0),
+  seconds_away integer not null default 0 check (seconds_away >= 0),
+  fullscreen_exits integer not null default 0 check (fullscreen_exits >= 0),
+  -- The device couldn't go full screen (iPhones can't), in a competition that asks for it.
+  no_fullscreen boolean not null default false,
   constraint competition_entries_one_each unique (competition_id, account_id)
 );
+
+-- For databases made before these columns existed.
+alter table public.competitions add column if not exists require_fullscreen boolean not null default false;
+alter table public.competition_entries add column if not exists pledged_at timestamptz;
+alter table public.competition_entries add column if not exists tab_leaves integer not null default 0;
+alter table public.competition_entries add column if not exists seconds_away integer not null default 0;
+alter table public.competition_entries add column if not exists fullscreen_exits integer not null default 0;
+alter table public.competition_entries add column if not exists no_fullscreen boolean not null default false;
 create index if not exists competition_entries_competition on public.competition_entries (competition_id);
 
 create or replace function public.touch_updated_at()
@@ -292,7 +311,8 @@ create policy "Admins delete entries" on public.competition_entries
 
 -- Joins a running competition, or returns the entry the student already has.
 drop function if exists public.join_competition(uuid, text);
-create or replace function public.join_competition(p_competition uuid)
+drop function if exists public.join_competition(uuid);
+create or replace function public.join_competition(p_competition uuid, p_pledge boolean)
 returns public.competition_entries
 language plpgsql
 security definer
@@ -321,8 +341,11 @@ begin
   if now() >= c.ends_at then
     raise exception 'This competition has ended.' using errcode = 'P0001';
   end if;
-  insert into public.competition_entries (competition_id, account_id, display_name)
-  values (c.id, acct.id, acct.username)
+  if p_pledge is not true then
+    raise exception 'Tick the honor pledge to join.' using errcode = '22023';
+  end if;
+  insert into public.competition_entries (competition_id, account_id, display_name, pledged_at)
+  values (c.id, acct.id, acct.username, now())
   returning * into e;
   return e;
 end;
@@ -371,6 +394,38 @@ begin
     update public.competition_entries set submitted_at = least(now(), deadline) where id = e.id returning * into e;
   end if;
   return e;
+end;
+$$;
+
+
+-- The student's browser reports how often they left the page or full screen. Totals can only
+-- go up, and only while the student's time is running (plus 30 seconds).
+create or replace function public.report_focus(
+  p_entry uuid, p_tab_leaves integer, p_seconds_away integer, p_fullscreen_exits integer, p_no_fullscreen boolean
+)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  e public.competition_entries;
+  c public.competitions;
+begin
+  select * into e from public.competition_entries where id = p_entry for update;
+  if not found or e.account_id is distinct from public.current_account() then
+    raise exception 'That entry was not found.' using errcode = 'P0002';
+  end if;
+  select * into c from public.competitions where id = e.competition_id;
+  if now() > least(e.started_at + make_interval(mins => c.duration_minutes), c.ends_at) + interval '30 seconds' then
+    return;
+  end if;
+  update public.competition_entries set
+    tab_leaves = greatest(tab_leaves, least(coalesce(p_tab_leaves, 0), 100000)),
+    seconds_away = greatest(seconds_away, least(coalesce(p_seconds_away, 0), 100000)),
+    fullscreen_exits = greatest(fullscreen_exits, least(coalesce(p_fullscreen_exits, 0), 100000)),
+    no_fullscreen = no_fullscreen or coalesce(p_no_fullscreen, false)
+  where id = e.id;
 end;
 $$;
 
@@ -628,7 +683,8 @@ $$;
 
 revoke execute on function
   public.is_admin(), public.current_account(), public.competition_ended(uuid), public.has_joined(uuid),
-  public.problem_competition(uuid), public.join_competition(uuid), public.save_answers(uuid, jsonb, boolean),
+  public.problem_competition(uuid), public.join_competition(uuid, boolean), public.save_answers(uuid, jsonb, boolean),
+  public.report_focus(uuid, integer, integer, integer, boolean),
   public.leaderboard(uuid), public.am_i_admin(), public.touch_updated_at(),
   public.student_sign_up(text, text), public.student_sign_in(text, text), public.student_sign_out(),
   public.student_whoami(), public.admin_find_students(text), public.admin_reset_student_password(text, text),
@@ -639,7 +695,8 @@ grant execute on function public.is_admin(), public.current_account(), public.co
   public.has_joined(uuid), public.problem_competition(uuid)
   to anon, authenticated;
 grant execute on function public.leaderboard(uuid) to anon, authenticated;
-grant execute on function public.join_competition(uuid), public.save_answers(uuid, jsonb, boolean),
+grant execute on function public.join_competition(uuid, boolean), public.save_answers(uuid, jsonb, boolean),
+  public.report_focus(uuid, integer, integer, integer, boolean),
   public.am_i_admin(), public.student_sign_up(text, text), public.student_sign_in(text, text),
   public.student_sign_out(), public.student_whoami(), public.admin_find_students(text),
   public.admin_reset_student_password(text, text), public.admin_delete_student(text)

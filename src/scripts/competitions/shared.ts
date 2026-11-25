@@ -19,6 +19,7 @@ export type Competition = {
   points_wrong: number;
   published: boolean;
   live_leaderboard: boolean;
+  require_fullscreen: boolean;
 };
 
 export type Problem = { id: string; competition_id: string; position: number; body: string; choices: string[] };
@@ -32,6 +33,11 @@ export type Entry = {
   started_at: string;
   submitted_at: string | null;
   hidden: boolean;
+  pledged_at: string | null;
+  tab_leaves: number;
+  seconds_away: number;
+  fullscreen_exits: number;
+  no_fullscreen: boolean;
 };
 export type LeaderRow = {
   place: number;

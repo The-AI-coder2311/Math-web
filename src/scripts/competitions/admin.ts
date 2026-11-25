@@ -37,6 +37,13 @@ if (root && client) {
     pointsWrong: number;
     liveLeaderboard: boolean;
   };
+  const fairPlay = JSON.parse(root.dataset.fairPlay!) as {
+    flagTabLeaves: number;
+    flagSecondsAway: number;
+    flagFastAccuracy: number;
+    flagFastTimeShare: number;
+    flagFastMinQuestions: number;
+  };
   const form = $<HTMLFormElement>('[data-comp-form]');
   const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
 
@@ -201,6 +208,7 @@ if (root && client) {
     field('points_wrong').value = String(c?.points_wrong ?? defaults.pointsWrong);
     field('published').checked = c?.published ?? false;
     field('live_leaderboard').checked = c?.live_leaderboard ?? defaults.liveLeaderboard;
+    field('require_fullscreen').checked = c?.require_fullscreen ?? false;
     $('[data-form-title]').textContent = c ? `Edit: ${c.title}` : 'New competition';
     for (const sel of ['[data-delete]', '[data-open-page]', '[data-open-board]', '[data-questions-view]', '[data-entries-view]']) $(sel).hidden = !c;
     if (c) {
@@ -209,7 +217,11 @@ if (root && client) {
     }
     $('[data-list-view]').hidden = true;
     $('[data-edit-view]').hidden = false;
-    if (c) await Promise.all([loadQuestions(), loadEntries()]);
+    // Questions first: the entry flags need the question count.
+    if (c) {
+      await loadQuestions();
+      await loadEntries();
+    }
     field('title').focus();
   }
 
@@ -235,6 +247,7 @@ if (root && client) {
       points_wrong: Number(field('points_wrong').value),
       published: field('published').checked,
       live_leaderboard: field('live_leaderboard').checked,
+      require_fullscreen: field('require_fullscreen').checked,
     };
     if (row.published && current && questions.some((q) => !q.id)) {
       if (!window.confirm('Some questions below aren’t saved yet. Publish anyway?')) return;
@@ -470,6 +483,28 @@ if (root && client) {
   // ---- Entries ----
 
   let entries: Entry[] = [];
+  let scores = new Map<string, LeaderRow>();
+
+  const minutesSeconds = (seconds: number) => `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, '0')}`;
+
+  /** Reasons to take a closer look at an entry. None of them is proof. */
+  function flagsFor(e: Entry) {
+    const flags: string[] = [];
+    if (e.tab_leaves >= fairPlay.flagTabLeaves) flags.push(`Left the page ${e.tab_leaves} times`);
+    if (e.seconds_away >= fairPlay.flagSecondsAway) flags.push(`Away ${minutesSeconds(e.seconds_away)} in total`);
+    if (e.fullscreen_exits > 0) flags.push(`Left full screen ${e.fullscreen_exits} time${e.fullscreen_exits === 1 ? '' : 's'}`);
+    if (e.no_fullscreen) flags.push("Device couldn't use full screen");
+    const row = scores.get(e.display_name);
+    const total = questions.filter((q) => q.id).length;
+    if (row && current && total >= fairPlay.flagFastMinQuestions) {
+      const accuracy = row.correct / total;
+      const share = row.seconds / (current.duration_minutes * 60);
+      if (accuracy >= fairPlay.flagFastAccuracy && share <= fairPlay.flagFastTimeShare) {
+        flags.push(`${row.correct} of ${total} right in ${minutesSeconds(row.seconds)}`);
+      }
+    }
+    return flags;
+  }
 
   async function loadEntries() {
     const { data, error } = await client!
@@ -479,20 +514,27 @@ if (root && client) {
       .order('started_at');
     if (error) throw error;
     entries = (data ?? []) as Entry[];
+    const { data: rows, error: boardError } = await client!.rpc('leaderboard', { p_competition: current!.id });
+    if (boardError) throw boardError;
+    scores = new Map(((rows ?? []) as LeaderRow[]).map((r) => [r.display_name, r]));
     $('[data-entry-rows]').innerHTML = entries.length
       ? entries
-          .map(
-            (e) => `<tr>
-              <td>${escapeHtml(e.display_name)}</td>
+          .map((e) => {
+            const flags = flagsFor(e);
+            return `<tr>
+              <td>${escapeHtml(e.display_name)}${e.pledged_at ? '' : '<span class="admin-flag">No pledge</span>'}</td>
               <td>${formatWhen(e.started_at)}</td>
               <td>${e.submitted_at ? formatWhen(e.submitted_at) : 'Not yet'}</td>
               <td>${Object.keys(e.answers).length}</td>
+              <td>${e.tab_leaves}${e.seconds_away ? ` (${minutesSeconds(e.seconds_away)})` : ''}</td>
+              <td>${current!.require_fullscreen ? (e.no_fullscreen ? "Couldn't" : e.fullscreen_exits) : '–'}</td>
+              <td>${flags.length ? flags.map((f) => `<span class="admin-flag">${escapeHtml(f)}</span>`).join('') : 'None'}</td>
               <td><input type="checkbox" data-hide="${e.id}" ${e.hidden ? 'checked' : ''} aria-label="Hide ${escapeHtml(e.display_name)} from the leaderboard" /></td>
               <td><button class="btn btn-small btn-danger" type="button" data-remove="${e.id}">Delete<span class="sr-only">: ${escapeHtml(e.display_name)}</span></button></td>
-            </tr>`,
-          )
+            </tr>`;
+          })
           .join('')
-      : '<tr><td colspan="6">Nobody has joined yet.</td></tr>';
+      : '<tr><td colspan="9">Nobody has joined yet.</td></tr>';
   }
 
   $('[data-refresh-entries]').addEventListener('click', () => loadEntries().then(() => flash('Entries refreshed.')).catch(fail));
@@ -529,9 +571,14 @@ if (root && client) {
       if (/^[=+\-@\t\r]/.test(text)) text = `'${text}`;
       return `"${text.replace(/"/g, '""')}"`;
     };
+    await loadEntries();
+    const byName = new Map(entries.map((e) => [e.display_name, e]));
     const lines = [
-      ['Place', 'Name', 'Score', 'Correct', 'Wrong', 'Blank', 'Seconds'],
-      ...((data ?? []) as LeaderRow[]).map((r) => [r.place, r.display_name, r.score, r.correct, r.wrong, r.blank, r.seconds]),
+      ['Place', 'Name', 'Score', 'Correct', 'Wrong', 'Blank', 'Seconds', 'Left page', 'Seconds away', 'Full-screen exits', 'Flags'],
+      ...((data ?? []) as LeaderRow[]).map((r) => {
+        const e = byName.get(r.display_name);
+        return [r.place, r.display_name, r.score, r.correct, r.wrong, r.blank, r.seconds, e?.tab_leaves ?? '', e?.seconds_away ?? '', e?.fullscreen_exits ?? '', e ? flagsFor(e).join('; ') : ''];
+      }),
     ].map((row) => row.map(cell).join(','));
     const link = document.createElement('a');
     link.href = URL.createObjectURL(new Blob([`${lines.join('\r\n')}\r\n`], { type: 'text/csv' }));

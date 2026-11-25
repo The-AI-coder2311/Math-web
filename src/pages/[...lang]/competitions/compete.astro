@@ -57,7 +57,22 @@ const { lang } = Astro.props;
       <StudentAccount id="join" />
       <div data-join-ready hidden>
         <p>Your clock starts as soon as you join, and you can only join once.</p>
-        <button class="btn btn-primary" type="button" data-join-button>Join and start my clock</button>
+        <p data-fullscreen-note hidden>
+          <strong>This competition runs in full screen.</strong> The questions show only while the page fills your
+          screen, and leaving full screen is recorded.
+        </p>
+        <label class="admin-check comp-pledge">
+          <input type="checkbox" data-pledge />
+          <span>
+            <strong>My honor pledge:</strong> I'll work on my own. I won't use AI, calculators, other websites, or
+            help from anyone else, and I won't share the questions.
+          </span>
+        </label>
+        <p class="muted">
+          During the competition, copying, pasting, and right-clicking are turned off, and the page notes when you
+          switch to another tab or app. The organizers can see that.
+        </p>
+        <button class="btn btn-primary" type="button" data-join-button disabled>Join and start my clock</button>
       </div>
       <p class="muted">
         Unlike practice, a competition is saved on our competition server: your username, your password (scrambled, so
@@ -73,13 +88,30 @@ const { lang } = Astro.props;
     </div>
     <p class="sr-only" role="status" data-timer-status></p>
 
+    <p class="comp-guard-note" role="status" data-guard-note hidden></p>
+
     <form data-paper hidden>
-      <p class="muted" data-paper-intro></p>
-      <div data-questions></div>
-      <p class="card" data-no-questions hidden>
-        This competition has no questions. You can still hand it in to try out the leaderboard.
+      <section class="card" data-fs-gate hidden>
+        <h2>Full screen needed</h2>
+        <p>
+          This competition shows its questions only in full screen. Your clock is still running, so go back
+          whenever you're ready.
+        </p>
+        <button class="btn btn-primary" type="button" data-fs-enter>Go full screen and show the questions</button>
+      </section>
+      <p class="card" data-fs-unsupported hidden>
+        This device can't switch to full screen, so the questions are shown normally. The organizers will see that
+        your device couldn't use full screen.
       </p>
-      <button class="btn btn-primary" type="submit" data-hand-in>Hand in my answers</button>
+      <div class="comp-locked" data-questions-wrap>
+        <p class="muted" data-paper-intro></p>
+        <div data-questions></div>
+        <p class="card" data-no-questions hidden>
+          This competition has no questions. You can still hand it in to try out the leaderboard.
+        </p>
+        <p class="comp-status" role="status" data-hand-in-confirm></p>
+        <button class="btn btn-primary" type="submit" data-hand-in>Hand in my answers</button>
+      </div>
     </form>
 
     <section class="card finished" data-handed-in tabindex="-1" hidden>

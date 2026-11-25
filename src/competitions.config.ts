@@ -37,6 +37,20 @@ export const competitionSettings = {
   } as Record<string, { pointsCorrect: number; pointsBlank: number; pointsWrong: number; minutes: number }>,
   // How often an open leaderboard page checks for new scores.
   leaderboardRefreshSeconds: 30,
+  // When the admin dashboard flags an entry for a closer look. A flag is a hint, never proof:
+  // a notification can pull a student out of the page, and a phone on the desk leaves no trace.
+  // Nothing happens to a flagged entry unless an admin hides or deletes it.
+  fairPlay: {
+    // Left the competition page (another tab, another app) at least this many times.
+    flagTabLeaves: 3,
+    // Or was away for at least this many seconds in total.
+    flagSecondsAway: 60,
+    // "Fast and nearly perfect": at least this share right, in at most this share of the
+    // allowed time, in a competition with at least this many questions.
+    flagFastAccuracy: 0.9,
+    flagFastTimeShare: 0.3,
+    flagFastMinQuestions: 5,
+  },
 };
 
 // Where the content editor (Sveltia CMS at /admin/content/) saves its changes. Editors sign

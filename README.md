@@ -276,6 +276,18 @@ The editor's list of units and contests comes from the content folders, so new o
 5. During it, the **Entries** list shows who has joined (press **Refresh**). Hide an entry to take it off the leaderboard for a rude username or a disqualification.
 6. Afterwards, **Download results (CSV)** saves the leaderboard as a spreadsheet.
 
+### Fair play: what the site can and can't stop
+
+A web page can't stop a student from asking an AI on a phone held up to the screen. For a competition that matters, have students take it together in a room, with phones away. The site adds what a web page can:
+
+- **Honor pledge.** Students tick a pledge (no AI, other websites, or outside help) before they can join. The time they ticked it is saved.
+- **No copying.** While the questions are up, copying, cutting, pasting, right-clicking, dragging, selecting question text, and printing are turned off. A screenshot or photo still works, so this only slows down the laziest copying.
+- **Leaving the page is recorded.** The page counts how often a student switches to another tab or app and how long they're away, and tells them it noticed.
+- **Full screen, per competition.** Tick **Require full screen** on a competition to show its questions only while the browser is in full screen. Every exit hides the questions and is counted. iPhones can't do full screen, so students on one see the questions normally, and their entry is flagged.
+- **Flags on the dashboard.** In a competition's **Entries** list, each entry shows how often the student left the page and full screen, plus flags for anything worth a closer look: leaving the page often, being away a long time, leaving full screen, a device without full screen, a missing pledge, or nearly every answer right in very little time. Set the thresholds under `fairPlay` in `src/competitions.config.ts`. The CSV download includes them too.
+
+Flags are hints, never proof. A notification can pull a student out of full screen, and a determined student can stop their browser from reporting. Nothing happens to a flagged entry unless an admin hides or deletes it, so talk to the student first.
+
 ### Student accounts
 
 - A username is 3 to 20 letters, numbers, or underscores, and it's what the leaderboard shows. Usernames are stored in lowercase, so `Neo` and `neo` are the same account.

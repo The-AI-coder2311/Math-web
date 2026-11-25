@@ -130,6 +130,7 @@ if (page && client) {
     show('[data-about]', '[data-join]');
     if (!accountMounted) {
       accountMounted = true;
+      $('[data-fullscreen-note]').hidden = !competition.require_fullscreen;
       await mountAccount($('[data-account]'), client!, async (name) => {
         $('[data-join-ready]').hidden = !name;
         if (!name) {
@@ -151,12 +152,18 @@ if (page && client) {
     }, 5000);
   }
 
+  const pledge = $<HTMLInputElement>('[data-pledge]');
+  pledge.addEventListener('change', () => ($<HTMLButtonElement>('[data-join-button]').disabled = !pledge.checked));
+
   $('[data-join-button]').addEventListener('click', async () => {
     const button = $<HTMLButtonElement>('[data-join-button]');
+    if (!pledge.checked) return;
     button.disabled = true;
     say(status, 'Joining…');
     try {
-      const { data, error } = await client!.rpc('join_competition', { p_competition: competition.id });
+      // Full screen has to start from a click, so ask for it now if this competition needs it.
+      if (competition.require_fullscreen && fullscreenWorks()) await document.documentElement.requestFullscreen().catch(() => undefined);
+      const { data, error } = await client!.rpc('join_competition', { p_competition: competition.id, p_pledge: true });
       if (error) throw error;
       entry = data as Entry;
       say(status, '');
@@ -164,9 +171,133 @@ if (page && client) {
     } catch (error) {
       say(status, errorText(error), 'error');
     } finally {
-      button.disabled = false;
+      button.disabled = !pledge.checked;
     }
   });
+
+  // ---- Fair play ----
+  // None of this can stop a phone held up to the screen. It makes copying harder and tells
+  // the organizers when a student leaves the page, which is the most a web page can do.
+
+  const focus = { tabLeaves: 0, secondsAway: 0, fullscreenExits: 0, noFullscreen: false };
+  let guarding = false;
+  let awaySince: number | null = null;
+  let reportTimer: number | undefined;
+  const guardNote = $('[data-guard-note]');
+  let noteTimer: number | undefined;
+
+  const fullscreenWorks = () => Boolean(document.fullscreenEnabled && document.documentElement.requestFullscreen);
+
+  function note(text: string) {
+    say(guardNote, text);
+    window.clearTimeout(noteTimer);
+    noteTimer = window.setTimeout(() => say(guardNote, ''), 6000);
+  }
+
+  function reportFocus() {
+    if (!entry) return;
+    // A Supabase request only goes out once something waits on it, hence the .then().
+    client!
+      .rpc('report_focus', {
+        p_entry: entry.id,
+        p_tab_leaves: focus.tabLeaves,
+        p_seconds_away: Math.round(focus.secondsAway),
+        p_fullscreen_exits: focus.fullscreenExits,
+        p_no_fullscreen: focus.noFullscreen,
+      })
+      .then(
+        () => undefined,
+        () => undefined,
+      );
+  }
+  const queueReport = () => {
+    window.clearTimeout(reportTimer);
+    reportTimer = window.setTimeout(reportFocus, 800);
+  };
+
+  const leave = () => {
+    if (!guarding || awaySince !== null) return;
+    awaySince = Date.now();
+    focus.tabLeaves++;
+    queueReport();
+  };
+  const back = () => {
+    if (awaySince === null) return;
+    focus.secondsAway += (Date.now() - awaySince) / 1000;
+    awaySince = null;
+    note('You left the competition page. The organizers can see how often that happens.');
+    queueReport();
+  };
+  document.addEventListener('visibilitychange', () => (document.hidden ? leave() : back()));
+  window.addEventListener('blur', leave);
+  window.addEventListener('focus', back);
+
+  // No copying, pasting, right-clicking, or dragging while the questions are up.
+  for (const type of ['copy', 'cut', 'paste', 'contextmenu', 'dragstart', 'selectstart']) {
+    document.addEventListener(
+      type,
+      (event) => {
+        if (!guarding) return;
+        event.preventDefault();
+        if (type !== 'selectstart') note('Copying, pasting, and right-clicking are turned off during this competition.');
+      },
+      true,
+    );
+  }
+
+  function applyFullscreenGate() {
+    const wrap = $('[data-questions-wrap]');
+    if (!competition.require_fullscreen || !guarding) {
+      wrap.hidden = false;
+      $('[data-fs-gate]').hidden = true;
+      $('[data-fs-unsupported]').hidden = true;
+      return;
+    }
+    if (!fullscreenWorks()) {
+      focus.noFullscreen = true;
+      queueReport();
+      $('[data-fs-unsupported]').hidden = false;
+      $('[data-fs-gate]').hidden = true;
+      wrap.hidden = false;
+      return;
+    }
+    const full = Boolean(document.fullscreenElement);
+    wrap.hidden = !full;
+    $('[data-fs-gate]').hidden = full;
+  }
+
+  document.addEventListener('fullscreenchange', () => {
+    if (guarding && competition.require_fullscreen && !document.fullscreenElement) {
+      focus.fullscreenExits++;
+      queueReport();
+    }
+    applyFullscreenGate();
+  });
+
+  $('[data-fs-enter]').addEventListener('click', () => {
+    document.documentElement.requestFullscreen().catch(() => note("Your browser didn't allow full screen. Try the button again."));
+  });
+
+  function startGuard() {
+    if (!entry) return;
+    // Pick up where this entry left off, so a reload doesn't reset the counts.
+    focus.tabLeaves = entry.tab_leaves ?? 0;
+    focus.secondsAway = entry.seconds_away ?? 0;
+    focus.fullscreenExits = entry.fullscreen_exits ?? 0;
+    focus.noFullscreen = entry.no_fullscreen ?? false;
+    guarding = true;
+    applyFullscreenGate();
+  }
+
+  function stopGuard() {
+    if (!guarding) return;
+    if (awaySince !== null) back();
+    guarding = false;
+    window.clearTimeout(reportTimer);
+    reportFocus();
+    say(guardNote, '');
+    if (document.fullscreenElement) void document.exitFullscreen().catch(() => undefined);
+  }
 
   // ---- Answering ----
 
@@ -255,6 +386,7 @@ if (page && client) {
     renderPaper();
     show('[data-paper]', '[data-clock-bar]');
     saveState.textContent = '';
+    startGuard();
     startClock();
   }
 
@@ -284,15 +416,29 @@ if (page && client) {
   let handingIn = false;
   async function handIn(automatic: boolean) {
     if (!entry || handingIn) return;
-    if (!automatic) {
+    const button = $<HTMLButtonElement>('[data-hand-in]');
+    if (!automatic && button.dataset.confirming !== 'yes') {
+      // Ask on the page itself: a pop-up would knock the student out of full screen.
       const blank = problems.length - Object.keys(collectAnswers()).length;
-      const note = blank > 0 ? ` You have ${blank} blank question${blank === 1 ? '' : 's'}.` : '';
-      if (!window.confirm(`Hand in your answers now? You can't change them after this.${note}`)) return;
+      const extra = blank > 0 ? ` You have ${blank} blank question${blank === 1 ? '' : 's'}.` : '';
+      button.dataset.confirming = 'yes';
+      button.textContent = 'Yes, hand them in';
+      say($('[data-hand-in-confirm]'), `Hand in your answers now? You can't change them after this.${extra} Press the button again to confirm.`);
+      window.setTimeout(() => {
+        if (button.dataset.confirming === 'yes' && !handingIn) {
+          button.dataset.confirming = '';
+          button.textContent = 'Hand in my answers';
+          say($('[data-hand-in-confirm]'), '');
+        }
+      }, 8000);
+      return;
     }
+    button.dataset.confirming = '';
+    button.textContent = 'Hand in my answers';
+    say($('[data-hand-in-confirm]'), '');
     handingIn = true;
     window.clearTimeout(saveTimer);
     await saving;
-    const button = $<HTMLButtonElement>('[data-hand-in]');
     button.disabled = true;
     say(status, 'Handing in…');
     try {
@@ -301,6 +447,7 @@ if (page && client) {
       if (error) throw error;
       entry = data as Entry;
       window.clearInterval(ticker);
+      stopGuard();
       say(status, '');
       await route();
     } catch (error) {
@@ -320,6 +467,7 @@ if (page && client) {
 
   function showHandedIn() {
     window.clearInterval(ticker);
+    stopGuard();
     show('[data-about]', '[data-handed-in]');
     const answered = Object.keys(entry?.answers ?? {}).length;
     $('[data-handed-in-text]').textContent =
@@ -336,6 +484,7 @@ if (page && client) {
 
   async function showResults() {
     window.clearInterval(ticker);
+    stopGuard();
     await loadProblems();
     let keyRows: AnswerKey[] = [];
     if (problems.length) {
