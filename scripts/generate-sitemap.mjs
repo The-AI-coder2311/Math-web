@@ -97,7 +97,9 @@ const pages = walk(DIST)
     const page = address.startsWith(`${lang}/`) ? address.slice(lang.length + 1) : address;
     const canonical = attribute(html.match(/<link[^>]*rel="canonical"[^>]*>/)?.[0] ?? '', 'href');
     const description = attribute(html.match(/<meta[^>]*name="description"[^>]*>/)?.[0] ?? '', 'content');
+    const noindex = /<meta[^>]*name="robots"[^>]*content="noindex"/.test(html);
     return {
+      noindex,
       where: `/${address}`,
       page,
       lang,
@@ -107,6 +109,8 @@ const pages = walk(DIST)
       headings: (html.match(/<h1[\s>]/g) ?? []).length,
     };
   })
+  // Pages marked noindex, like the admin pages, aren't for search engines, so they're left out.
+  .filter((page) => !page.noindex)
   .sort((a, b) => a.where.localeCompare(b.where));
 
 function checkUnique(field) {
@@ -147,5 +151,5 @@ writeFileSync(
 );
 
 const home = pages.find(({ page }) => page === '')?.canonical;
-writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${new URL('sitemap.xml', home).href}\n`);
+writeFileSync(join(DIST, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: ${new URL('admin/', home).pathname}\n\nSitemap: ${new URL('sitemap.xml', home).href}\n`);
 console.log(`Page check: ${pages.length} pages passed. Wrote sitemap.xml and robots.txt for ${home}`);

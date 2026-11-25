@@ -1,0 +1,164 @@
+---
+import '../../../styles/competitions.css';
+import Base from '../../../layouts/Base.astro';
+import { href, localePaths } from '../../../i18n/config';
+import { competitionSettings, competitionsOn } from '../../../competitions.config';
+
+export const getStaticPaths = () => localePaths('competitions/');
+
+const { lang } = Astro.props;
+---
+<Base
+  title="Competition Leaderboard"
+  description="See who placed where in each live math competition: score first, then the fastest time breaks a tie."
+  lang={lang}
+  current="competitions"
+>
+  <div data-board data-refresh={competitionSettings.leaderboardRefreshSeconds}>
+    <p class="eyebrow"><a href={href(lang, 'competitions/')}>All competitions</a></p>
+    <h1 data-title>Leaderboard</h1>
+    <noscript><p class="card">The leaderboard needs JavaScript. Turn it on to see it.</p></noscript>
+    {!competitionsOn && (
+      <section class="card">
+        <h2>Coming soon</h2>
+        <p>Live competitions aren't open yet, so there are no leaderboards to show.</p>
+      </section>
+    )}
+    <p class="comp-status needs-js" role="status" data-status>{competitionsOn ? 'Loading…' : ''}</p>
+
+    <section data-pick hidden>
+      <p>Pick a competition to see its leaderboard.</p>
+      <ul class="set-list" data-pick-list></ul>
+    </section>
+
+    <section data-table-wrap hidden>
+      <p data-board-note></p>
+      <div class="table-scroll" tabindex="0" role="region" aria-labelledby="board-caption">
+        <table class="data-table comp-board">
+          <caption id="board-caption" class="sr-only">Leaderboard, best score first</caption>
+          <thead>
+            <tr>
+              <th scope="col">Place</th>
+              <th scope="col">Name</th>
+              <th scope="col">Score</th>
+              <th scope="col">Correct</th>
+              <th scope="col">Wrong</th>
+              <th scope="col">Blank</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody data-rows></tbody>
+        </table>
+      </div>
+      <p class="btn-row"><a class="btn" data-back-to-comp>Back to the competition</a></p>
+    </section>
+  </div>
+</Base>
+<script>
+  import {
+    competitionParam,
+    errorText,
+    escapeHtml,
+    formatClock,
+    formatPoints,
+    formatWhen,
+    getClient,
+    phaseOf,
+    say,
+    sitePath,
+    type Competition,
+    type LeaderRow,
+  } from '../../../scripts/competitions/shared';
+
+  const page = document.querySelector<HTMLElement>('[data-board]');
+  const client = getClient('player');
+
+  async function pick() {
+    const list = page!.querySelector<HTMLElement>('[data-pick-list]')!;
+    const { data, error } = await client!
+      .from('competitions')
+      .select('slug, title, starts_at, ends_at, live_leaderboard')
+      .order('ends_at', { ascending: false });
+    if (error) throw error;
+    const now = Date.now();
+    const shown = ((data ?? []) as Competition[]).filter(
+      (c) => phaseOf(c, now) === 'ended' || (phaseOf(c, now) === 'live' && c.live_leaderboard),
+    );
+    list.innerHTML = shown
+      .map(
+        (c) => `<li class="card"><h2><a href="${sitePath(`competitions/leaderboard/?c=${encodeURIComponent(c.slug)}`)}">${escapeHtml(c.title)}</a></h2>
+        <p class="muted">${phaseOf(c, now) === 'live' ? 'Happening now' : `Ended ${formatWhen(c.ends_at)}`}</p></li>`,
+      )
+      .join('');
+    say(page!.querySelector('[data-status]'), shown.length ? '' : 'No leaderboards yet. They appear here once a competition ends.');
+    page!.querySelector<HTMLElement>('[data-pick]')!.hidden = !shown.length;
+  }
+
+  async function board(slug: string) {
+    const status = page!.querySelector<HTMLElement>('[data-status]');
+    const { data, error } = await client!.from('competitions').select('*').eq('slug', slug).maybeSingle();
+    if (error) throw error;
+    if (!data) {
+      say(status, "We couldn't find that competition.", 'error');
+      return pick();
+    }
+    const c = data as Competition;
+    page!.querySelector('[data-title]')!.textContent = `${c.title}: Leaderboard`;
+    document.title = document.title.replace(/^[^|]+/, `${c.title} Leaderboard `);
+    page!.querySelector<HTMLAnchorElement>('[data-back-to-comp]')!.href = sitePath(`competitions/compete/?c=${encodeURIComponent(c.slug)}`);
+
+    const draw = async () => {
+      const phase = phaseOf(c);
+      const note = page!.querySelector<HTMLElement>('[data-board-note]')!;
+      if (phase === 'upcoming' || (phase === 'live' && !c.live_leaderboard)) {
+        say(status, phase === 'upcoming'
+          ? `This competition starts ${formatWhen(c.starts_at)}. The leaderboard appears after it ends.`
+          : `The leaderboard appears when the competition ends, ${formatWhen(c.ends_at)}.`);
+        page!.querySelector<HTMLElement>('[data-table-wrap]')!.hidden = true;
+        return;
+      }
+      const { data: rows, error: boardError } = await client!.rpc('leaderboard', { p_competition: c.id });
+      if (boardError) throw boardError;
+      const list = (rows ?? []) as LeaderRow[];
+      say(status, '');
+      note.textContent =
+        (phase === 'live' ? 'Live: this updates by itself while the competition runs, and shows only students who have finished. ' : `Final results. The competition ended ${formatWhen(c.ends_at)}. `) +
+        'Ties go to the faster time.';
+      page!.querySelector('[data-rows]')!.innerHTML = list.length
+        ? list
+            .map(
+              (row) => `<tr class="${row.is_me ? 'is-me' : ''}">
+              <td>${row.place}</td>
+              <td>${escapeHtml(row.display_name)}${row.is_me ? ' <strong>(you)</strong>' : ''}</td>
+              <td>${formatPoints(row.score)}</td>
+              <td>${row.correct}</td>
+              <td>${row.wrong}</td>
+              <td>${row.blank}</td>
+              <td>${formatClock(row.seconds)}</td>
+            </tr>`,
+            )
+            .join('')
+        : '<tr><td colspan="7">Nobody has finished yet.</td></tr>';
+      page!.querySelector<HTMLElement>('[data-table-wrap]')!.hidden = false;
+      return phase;
+    };
+
+    const phase = await draw();
+    if (phase === 'live') {
+      const every = Number(page!.dataset.refresh) * 1000;
+      const timer = window.setInterval(async () => {
+        if (document.hidden) return;
+        try {
+          if ((await draw()) !== 'live') window.clearInterval(timer);
+        } catch {
+          // Try again next time.
+        }
+      }, every);
+    }
+  }
+
+  if (page && client) {
+    const slug = competitionParam();
+    (slug ? board(slug) : pick()).catch((error) => say(page.querySelector('[data-status]'), errorText(error), 'error'));
+  }
+</script>

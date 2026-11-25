@@ -1,0 +1,169 @@
+---
+import 'katex/dist/katex.min.css';
+import '../../styles/competitions.css';
+import Base from '../../layouts/Base.astro';
+import { competitionSettings, competitionsOn } from '../../competitions.config';
+
+// The admin dashboard. It's a public page, but it does nothing until an admin signs in, and
+// the database checks every change against the admin list, so hiding it isn't what keeps it safe.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="Admin" description="Sign in to manage live competitions and edit site content." lang="en" noindex>
+  <div data-admin data-presets={JSON.stringify(competitionSettings.presets)} data-defaults={JSON.stringify(competitionSettings.defaults)}>
+    <h1>Admin</h1>
+    <noscript><p class="card">The admin dashboard needs JavaScript.</p></noscript>
+
+    {!competitionsOn && (
+      <section class="card">
+        <h2>Competitions aren't connected yet</h2>
+        <p>
+          This site was built without its database settings, so there's nothing to sign in to. Follow
+          "Live competitions" in the README: make a free Supabase project, run <code>supabase/schema.sql</code>,
+          and add <code>SUPABASE_URL</code> and <code>SUPABASE_ANON_KEY</code> as GitHub Actions secrets.
+        </p>
+        <p>You can still <a href={`${base}/admin/content/`}>edit the site's lessons and pages</a> with your GitHub account.</p>
+      </section>
+    )}
+
+    <p class="comp-status admin-msg" role="status" data-msg hidden></p>
+
+    <form class="card" data-signin hidden>
+      <h2>Sign in</h2>
+      <p class="muted">Admin accounts are made in Supabase, never on this site. Ask the site owner if you need one.</p>
+      <label class="field-label" for="admin-email">Email</label>
+      <input class="text-input" id="admin-email" type="email" autocomplete="username" required data-email />
+      <label class="field-label" for="admin-password">Password</label>
+      <input class="text-input" id="admin-password" type="password" autocomplete="current-password" required data-password />
+      <button class="btn btn-primary" type="submit">Sign in</button>
+    </form>
+
+    <div data-dash hidden>
+      <div class="admin-toolbar card">
+        <p>Signed in as <strong data-who></strong></p>
+        <p class="btn-row">
+          <a class="btn btn-small" href={`${base}/admin/content/`}>Edit site content</a>
+          <a class="btn btn-small" href={`${base}/competitions/`}>Competitions page</a>
+          <button class="btn btn-small" type="button" data-signout>Sign out</button>
+        </p>
+      </div>
+
+      <section data-list-view>
+        <div class="admin-toolbar">
+          <h2>Competitions</h2>
+          <button class="btn btn-primary" type="button" data-new>New competition</button>
+        </div>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Competitions">
+          <table class="data-table">
+            <thead>
+              <tr><th scope="col">Title</th><th scope="col">Status</th><th scope="col">Opens</th><th scope="col">Closes</th><th scope="col">Questions</th><th scope="col">Entries</th><th scope="col">Actions</th></tr>
+            </thead>
+            <tbody data-comp-rows></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section data-edit-view hidden>
+        <p><button class="btn btn-small" type="button" data-back>&larr; All competitions</button></p>
+        <form class="card" data-comp-form>
+          <h2 data-form-title>New competition</h2>
+          <div class="admin-grid">
+            <div class="admin-field">
+              <label class="field-label" for="f-title">Title</label>
+              <input class="text-input" id="f-title" name="title" required maxlength="120" />
+            </div>
+            <div class="admin-field">
+              <label class="field-label" for="f-slug">Web address name</label>
+              <input class="text-input" id="f-slug" name="slug" required maxlength="60" pattern="[a-z0-9]+(-[a-z0-9]+)*" aria-describedby="f-slug-hint" />
+              <p class="admin-hint" id="f-slug-hint">Lowercase letters, numbers, and dashes, like <code>fall-2027</code>. Don't change it once students have the link.</p>
+            </div>
+          </div>
+          <div class="admin-field">
+            <label class="field-label" for="f-summary">Summary</label>
+            <input class="text-input" id="f-summary" name="summary" maxlength="500" />
+          </div>
+          <div class="admin-field">
+            <label class="field-label" for="f-rules">Rules and notes (optional)</label>
+            <textarea id="f-rules" name="rules" maxlength="4000" rows="3"></textarea>
+            <p class="admin-hint">Shown on the competition page. Math in dollar signs works, like <code>$x^2$</code>.</p>
+          </div>
+          <div class="admin-grid">
+            <div class="admin-field">
+              <label class="field-label" for="f-style">Style</label>
+              <select id="f-style" name="style" aria-describedby="f-style-hint">
+                {Object.keys(competitionSettings.presets).map((style) => <option>{style}</option>)}
+              </select>
+              <p class="admin-hint" id="f-style-hint">Picking a style fills in its usual scoring and time.</p>
+            </div>
+            <div class="admin-field">
+              <label class="field-label" for="f-starts">Opens</label>
+              <input class="text-input" id="f-starts" name="starts_at" type="datetime-local" required />
+            </div>
+            <div class="admin-field">
+              <label class="field-label" for="f-ends">Closes</label>
+              <input class="text-input" id="f-ends" name="ends_at" type="datetime-local" required />
+            </div>
+            <div class="admin-field">
+              <label class="field-label" for="f-minutes">Minutes per student</label>
+              <input class="text-input" id="f-minutes" name="duration_minutes" type="number" min="1" max="1440" required />
+            </div>
+            <div class="admin-field">
+              <label class="field-label" for="f-correct">Points for correct</label>
+              <input class="text-input" id="f-correct" name="points_correct" type="number" step="0.5" required />
+            </div>
+            <div class="admin-field">
+              <label class="field-label" for="f-blank">Points for blank</label>
+              <input class="text-input" id="f-blank" name="points_blank" type="number" step="0.5" required />
+            </div>
+            <div class="admin-field">
+              <label class="field-label" for="f-wrong">Points for wrong</label>
+              <input class="text-input" id="f-wrong" name="points_wrong" type="number" step="0.5" required />
+            </div>
+          </div>
+          <p class="admin-hint" data-tz></p>
+          <label class="admin-check"><input type="checkbox" name="published" /> <span><strong>Published.</strong> Students can see it on the Competitions page. Leave this off while you write the questions.</span></label>
+          <label class="admin-check"><input type="checkbox" name="live_leaderboard" /> <span><strong>Live leaderboard.</strong> Show scores while the competition is still running. When this is off, scores appear only after it closes, which is safer, since a live score hints at which answers are right.</span></label>
+          <p class="btn-row">
+            <button class="btn btn-primary" type="submit">Save competition</button>
+            <a class="btn" data-open-page hidden>Open its page</a>
+            <a class="btn" data-open-board hidden>Leaderboard</a>
+            <button class="btn btn-danger" type="button" data-delete hidden>Delete</button>
+          </p>
+        </form>
+
+        <section data-questions-view hidden>
+          <div class="admin-toolbar">
+            <h2>Questions</h2>
+            <button class="btn" type="button" data-add-question>Add a question</button>
+          </div>
+          <p class="admin-hint">
+            Students see the questions only after they join, and the answers only after the competition closes.
+            Write math between dollar signs, like <code>$\frac12$</code>.
+          </p>
+          <div data-question-list></div>
+        </section>
+
+        <section data-entries-view hidden>
+          <div class="admin-toolbar">
+            <h2>Entries</h2>
+            <p class="btn-row">
+              <button class="btn btn-small" type="button" data-refresh-entries>Refresh</button>
+              <button class="btn btn-small" type="button" data-export>Download results (CSV)</button>
+            </p>
+          </div>
+          <p class="admin-hint">Hide an entry to take it off the leaderboard, for a rude name or a disqualification. Deleting it lets that student join again.</p>
+          <div class="table-scroll" tabindex="0" role="region" aria-label="Entries">
+            <table class="data-table">
+              <thead>
+                <tr><th scope="col">Name</th><th scope="col">Joined</th><th scope="col">Handed in</th><th scope="col">Answered</th><th scope="col">Hidden</th><th scope="col">Actions</th></tr>
+              </thead>
+              <tbody data-entry-rows></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </div>
+  </div>
+</Base>
+<script>
+  import '../../scripts/competitions/admin';
+</script>

@@ -1,0 +1,109 @@
+---
+import 'katex/dist/katex.min.css';
+import '../../../styles/competitions.css';
+import Base from '../../../layouts/Base.astro';
+import { href, localePaths } from '../../../i18n/config';
+import { competitionsOn } from '../../../competitions.config';
+
+export const getStaticPaths = () => localePaths('competitions/');
+
+const { lang } = Astro.props;
+---
+<Base
+  title="Live Competitions"
+  description="Join a live, timed math competition with other students, then see where you placed on the leaderboard. Pick a display name. No email needed."
+  lang={lang}
+  current="competitions"
+>
+  <h1>Live Competitions</h1>
+  <p>
+    These are timed competitions that everyone takes during the same window. Pick a display name, answer the
+    questions before your time runs out, and see the leaderboard. You don't need an email or a password.
+  </p>
+  <p class="muted">
+    Want to practice on your own first? Try the <a href={href(lang, 'contests/')}>practice contests</a>.
+  </p>
+  <noscript><p class="card">Live competitions need JavaScript. Turn it on to see them.</p></noscript>
+
+  {competitionsOn ? (
+    <div class="needs-js" data-comp-list>
+      <p class="comp-status" role="status" data-list-status>Loading competitions&hellip;</p>
+      <section data-group="live" hidden>
+        <h2>Happening now</h2>
+        <ul class="set-list" data-items></ul>
+      </section>
+      <section data-group="upcoming" hidden>
+        <h2>Coming up</h2>
+        <ul class="set-list" data-items></ul>
+      </section>
+      <section data-group="ended" hidden>
+        <h2>Finished</h2>
+        <ul class="set-list" data-items></ul>
+      </section>
+    </div>
+  ) : (
+    <section class="card">
+      <h2>Coming soon</h2>
+      <p>Live competitions aren't open yet. Check back soon, and keep practicing in the meantime.</p>
+    </section>
+  )}
+
+  <p class="muted comp-links">
+    <a href={href(lang, 'competitions/compete/')}>Competition page</a>{' · '}<a href={href(lang, 'competitions/leaderboard/')}>Leaderboards</a>
+  </p>
+</Base>
+<script>
+  import { escapeHtml, formatUntil, formatWhen, getClient, phaseOf, say, sitePath, errorText, type Competition } from '../../../scripts/competitions/shared';
+
+  const root = document.querySelector<HTMLElement>('[data-comp-list]');
+  const client = getClient('player');
+
+  async function load() {
+    if (!root || !client) return;
+    const status = root.querySelector<HTMLElement>('[data-list-status]');
+    const { data, error } = await client
+      .from('competitions')
+      .select('id, slug, title, summary, style, starts_at, ends_at, duration_minutes, live_leaderboard')
+      .order('starts_at', { ascending: true });
+    if (error) {
+      say(status, `Could not load competitions. ${errorText(error)}`, 'error');
+      return;
+    }
+    const list = (data ?? []) as Competition[];
+    if (!list.length) {
+      say(status, 'No competitions are scheduled right now. Check back soon.');
+      return;
+    }
+    say(status, '');
+    const now = Date.now();
+    for (const phase of ['live', 'upcoming', 'ended'] as const) {
+      const group = root.querySelector<HTMLElement>(`[data-group="${phase}"]`)!;
+      const items = list.filter((c) => phaseOf(c, now) === phase);
+      if (phase === 'ended') items.reverse();
+      group.hidden = items.length === 0;
+      group.querySelector('[data-items]')!.innerHTML = items
+        .map((c) => {
+          const timing =
+            phase === 'live'
+              ? `Open until ${formatWhen(c.ends_at)} &middot; ${c.duration_minutes} minutes once you start`
+              : phase === 'upcoming'
+                ? `Starts ${formatWhen(c.starts_at)} (${formatUntil(Date.parse(c.starts_at) - now)}) &middot; ${c.duration_minutes} minutes`
+                : `Ended ${formatWhen(c.ends_at)}`;
+          const slug = encodeURIComponent(c.slug);
+          const board = phase === 'ended' || (phase === 'live' && c.live_leaderboard);
+          return `<li class="card">
+            <h3>${escapeHtml(c.title)}</h3>
+            ${c.summary ? `<p>${escapeHtml(c.summary)}</p>` : ''}
+            <p class="muted">${escapeHtml(c.style)} style &middot; ${timing}</p>
+            <p class="btn-row">
+              <a class="btn btn-primary" href="${sitePath(`competitions/compete/?c=${slug}`)}">${phase === 'live' ? 'Enter' : phase === 'upcoming' ? 'Details' : 'Review'}<span class="sr-only">: ${escapeHtml(c.title)}</span></a>
+              ${board ? `<a class="btn" href="${sitePath(`competitions/leaderboard/?c=${slug}`)}">Leaderboard<span class="sr-only">: ${escapeHtml(c.title)}</span></a>` : ''}
+            </p>
+          </li>`;
+        })
+        .join('');
+    }
+  }
+
+  load().catch((error) => say(root?.querySelector('[data-list-status]') ?? null, errorText(error), 'error'));
+</script>

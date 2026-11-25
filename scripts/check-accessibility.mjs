@@ -27,6 +27,8 @@ const walk = (dir) =>
 const paths = walk(DIST)
   .filter((file) => file.endsWith('.html'))
   .map((file) => `/${file.slice(DIST.length + 1).replace(/\\/g, '/').replace(/index\.html$/, '')}`)
+  // The content editor's screen is drawn by Sveltia CMS, not by this site, so it isn't ours to fix.
+  .filter((path) => !path.startsWith('/admin/content/'))
   .filter((path) => !filters.length || filters.some((filter) => path.includes(filter)));
 
 const server = createServer((request, response) => {

@@ -2,7 +2,7 @@
 
 A free, beginner-friendly website that helps students from underserved schools get into math competitions (AMC 8 and MATHCOUNTS level), and helps teachers with no competition background start a math team.
 
-It's a static [Astro](https://astro.build) site. Lessons and problems are plain text files, so you can add content without touching code. There's no login, tracking, or ads, and practice progress is saved only in the student's own browser.
+It's a static [Astro](https://astro.build) site. Lessons and problems are plain text files, so you can add content without touching code. There's no login, tracking, or ads, and practice progress is saved only in the student's own browser. The optional [live competitions](#live-competitions-and-the-admin-account) are the one exception: they save a display name and answers on a free Supabase database so they can be graded.
 
 ## Before you launch
 
@@ -14,6 +14,7 @@ It's a static [Astro](https://astro.build) site. Lessons and problems are plain 
 - [ ] Read `src/content/en/pages/about.md` and make it true for your team. Add names if you'd like.
 - [ ] Have a second person solve every problem. The answer check catches wrong answers, but not confusing wording.
 - [ ] Open every outside link on the teacher pages once a year, because the official sites can change.
+- [ ] To run live competitions, follow [Live competitions and the admin account](#live-competitions-and-the-admin-account). Until then the Competitions page says "coming soon".
 
 ## Run it locally
 
@@ -44,6 +45,7 @@ Then open <http://localhost:4321>. The page updates as you save files.
 ```
 src/
   site.config.ts          Site name, contact email, contest scoring, and the analytics switch
+  competitions.config.ts  Live competition settings: scoring presets, leaderboard refresh, content editor repo
   i18n/config.ts          The languages, and which sections aren't translated yet
   i18n/en.ts, es.ts       Button labels and short interface text, one file per language
   content/en/
@@ -69,6 +71,9 @@ scripts/build-lesson-data.mjs     Writes src/data/lessons.json
 scripts/generate-sitemap.mjs      Writes sitemap.xml and robots.txt, and checks every page
 scripts/check-accessibility.mjs   The accessibility checker
 public/images/            Pictures and diagrams
+supabase/schema.sql       The competition database and its access rules (run it in Supabase)
+supabase/demo-competition.sql   A demo competition with no questions
+.env.example              The two settings live competitions need, for running them on your computer
 ```
 
 ## How the teacher pages stay up to date
@@ -216,6 +221,63 @@ Here's an example: "How many three-digit numbers have only odd digits?"
 ```yaml
 verify: "range(100, 999).filter((n) => digits(n).every((d) => d % 2 === 1)).length"
 ```
+
+## Live competitions and the admin account
+
+The **Competitions** page (`/competitions/`) runs timed competitions that everyone takes in the same window, with a leaderboard. An admin creates them at **`/admin/`**. Admins can also edit the site's lessons, problems, and pages at **`/admin/content/`**.
+
+GitHub Pages can only serve files, so competitions use a free [Supabase](https://supabase.com) project as their database. Nothing about it is stored in this repository except the database rules in `supabase/schema.sql`.
+
+### Where the passwords and keys live (never in this repository)
+
+| What | Where it lives | Is it secret? |
+|---|---|---|
+| The admin's email and password | Supabase only (Authentication > Users). The site never stores it. | **Yes.** Never write it in a file. |
+| Who counts as an admin | The `admins` table in Supabase. The site can't read or change it. | Yes |
+| Supabase **service_role** key | Supabase only. You never need it for this site. | **Yes.** Never put it in GitHub, `.env`, or the code. |
+| Supabase project URL and **anon** key | GitHub Actions secrets `SUPABASE_URL` and `SUPABASE_ANON_KEY`, or your own `.env` | No. The anon key is designed to be public, and it ends up in visitors' browsers. It can only do what `schema.sql` allows. |
+| The content editor's GitHub token | Each editor's own browser | Yes. Each editor makes their own. |
+
+`.gitignore` blocks `.env` files, so a local `.env` can't be committed by accident.
+
+### Set it up (about 15 minutes, once)
+
+1. **Make a Supabase project.** Sign up at supabase.com and create a free project. Save the database password it gives you in a password manager. This site never needs it.
+2. **Make the database.** In the project, open **SQL Editor**, paste all of `supabase/schema.sql`, and press **Run**. Then do the same with `supabase/demo-competition.sql` to add the demo competition. It has no questions and runs for a year.
+3. **Let students join without an email.** Under **Authentication > Sign In / Providers**, turn on **Allow anonymous sign-ins**. Leave **Email** on, because the admin signs in with it. Turning on CAPTCHA protection there is a good idea too, because it slows down fake entries.
+4. **Make the admin account.** Under **Authentication > Users**, press **Add user > Create new user**. Enter the admin's email and a long, unique password, and tick **Auto Confirm User**. Then, in the **SQL Editor**, run this with the same email:
+
+   ```sql
+   insert into public.admins (user_id, note)
+   select id, 'site owner' from auth.users where email = 'admin@example.org';
+   ```
+
+   That account can now sign in at `/admin/`. Any other account, including one someone signs up for on their own, gets no admin powers. To remove an admin, run `delete from public.admins where user_id = (select id from auth.users where email = '...');`.
+5. **Connect the site.** In Supabase, open **Project Settings > API** (or **Data API**) and copy the **Project URL** and the **anon public** key. In GitHub, open the repository's **Settings > Secrets and variables > Actions > New repository secret** and add them as `SUPABASE_URL` and `SUPABASE_ANON_KEY`. Then run the **Deploy to GitHub Pages** workflow again from the **Actions** tab, or push any change.
+6. **Check it.** Open `/competitions/`, enter the demo with a nickname, hand it in, and open its leaderboard. Then sign in at `/admin/`.
+
+To try competitions on your own computer, copy `.env.example` to `.env`, fill in the same two values, and run `npm run dev`.
+
+### Editing site content at /admin/content/
+
+The content editor ([Sveltia CMS](https://sveltiacms.app)) edits the lesson, problem, page, and problem set files in this repository. Each save is a commit to `main`, and the deploy workflow runs `npm run verify` first, so a wrong answer key stops the deploy instead of going live.
+
+To sign in, press **Sign In with Token** and paste a GitHub [fine-grained personal access token](https://github.com/settings/personal-access-tokens/new) that has access to **only this repository**, with **Contents: Read and write**. GitHub decides who can save, so only people with write access to the repository can edit. Keep the token private. It's stored only in that browser, and you can revoke it on GitHub at any time.
+
+The editor's list of units and contests comes from the content folders, so new ones show up by themselves. It covers the English content. Edit Spanish files on GitHub.
+
+### Run a competition
+
+1. At `/admin/`, press **New competition**. Pick a style to fill in its usual scoring and time, then set when it opens and closes. **Minutes per student** starts counting when each student joins, and it never runs past the closing time.
+2. Save it, then add the questions. Each needs its text, 2 to 6 choices, the correct letter, and an optional solution. Write math between dollar signs, as in lessons. Use **Preview** to check it. Have a second person solve every question, because no answer checker runs on competition questions.
+3. Tick **Published** when it's ready. Students can see it on the Competitions page, but the questions stay hidden until the competition opens and they join.
+4. Leave **Live leaderboard** off for a real competition. A live score hints at which answers are right, and students with a second browser could use that. With it off, the leaderboard and answer key appear by themselves when the competition closes.
+5. During it, the **Entries** list shows who has joined (press **Refresh**). Hide an entry to take it off the leaderboard for a rude name or a disqualification.
+6. Afterwards, **Download results (CSV)** saves the leaderboard as a spreadsheet.
+
+**What the database enforces**, whatever anyone does in their browser: only admins can create or change competitions; questions are hidden until a student joins a running competition; the answer key is hidden until it closes; each browser gets one entry per competition; answers arriving after a student's time runs out (plus 30 seconds for a slow connection) are thrown away; and grading happens in the database. The rules were tested on PostgreSQL 16 against all of these cases.
+
+**Limits to know about.** Students join without an account, so their entry belongs to that browser. If they clear its data or switch devices during the competition, they can't get back in, and an admin has to delete their entry so they can rejoin, which restarts their clock. Someone could also enter twice from two browsers. That's fine for practice events, but for a competition with real prizes, have students take it together in a room.
 
 ## Deploy for free
 

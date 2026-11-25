@@ -3,7 +3,7 @@ import type { en } from './en';
 // Spanish interface text. Keep the same shape as en.ts. Longer writing lives in src/content/es/.
 export const es: typeof en = {
   skipLink: 'Saltar al contenido principal',
-  nav: { learn: 'Empezar a aprender', contests: 'Concursos de práctica', formulas: 'Fórmulas', teachers: 'Para maestros', about: 'Quiénes somos', label: 'Principal', menu: 'Menú' },
+  nav: { learn: 'Empezar a aprender', contests: 'Concursos de práctica', competitions: 'Competencias', formulas: 'Fórmulas', teachers: 'Para maestros', about: 'Quiénes somos', label: 'Principal', menu: 'Menú' },
   theme: { toDark: 'Cambiar a modo oscuro', toLight: 'Cambiar a modo claro' },
   language: {
     name: 'Español',
@@ -435,6 +435,9 @@ export const es: typeof en = {
     practice: 'Práctica',
     unitPractice: 'Práctica por unidad',
     contests: 'Concursos de práctica (en inglés)',
+    competitions: 'Competencias en vivo (en inglés)',
+    competitionPage: 'Participar en una competencia (en inglés)',
+    leaderboards: 'Clasificaciones (en inglés)',
     teachers: 'Para maestros',
     teachersHome: 'Inicio para maestros',
     plans: 'Planes de enseñanza de seis semanas',

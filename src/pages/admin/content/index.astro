@@ -1,0 +1,23 @@
+---
+// The content editor (Sveltia CMS). It edits the lesson, problem, and page files in this
+// repository on GitHub. Editors sign in with their own GitHub personal access token, so only
+// people with write access to the repository can save anything, and no secret lives in the code.
+// Every save is a commit to the main branch, and the deploy workflow runs `npm run verify`
+// first, so a broken answer key stops the deploy instead of going live.
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Content Editor | Count Me In</title>
+    <meta name="description" content="Edit the site's lessons, problems, and pages." />
+    <link href={`${base}/admin/content/config.yml`} type="application/yaml" rel="cms-config-url" />
+  </head>
+  <body>
+    <noscript>The content editor needs JavaScript.</noscript>
+    <script is:inline src="https://unpkg.com/@sveltia/cms@0.261.0/dist/sveltia-cms.js"></script>
+  </body>
+</html>

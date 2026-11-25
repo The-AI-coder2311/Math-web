@@ -1,0 +1,113 @@
+---
+import 'katex/dist/katex.min.css';
+import '../../../styles/competitions.css';
+import Base from '../../../layouts/Base.astro';
+import { href, localePaths } from '../../../i18n/config';
+import { competitionSettings, competitionsOn } from '../../../competitions.config';
+
+export const getStaticPaths = () => localePaths('competitions/');
+
+const { lang } = Astro.props;
+---
+<Base
+  title="Take a Competition"
+  description="Join a live math competition, answer each question before your clock runs out, and hand in your answers for the leaderboard."
+  lang={lang}
+  current="competitions"
+>
+  <div class="comp-page" data-compete data-list-href={href(lang, 'competitions/')}>
+    <p class="eyebrow"><a href={href(lang, 'competitions/')}>All competitions</a><span data-eyebrow-extra></span></p>
+    <h1 data-title>Competition</h1>
+    <noscript><p class="card">Competitions need JavaScript. Turn it on to take part.</p></noscript>
+
+    {!competitionsOn && (
+      <section class="card">
+        <h2>Coming soon</h2>
+        <p>Live competitions aren't open yet. <a href={href(lang, 'contests/')}>Try a practice contest</a> in the meantime.</p>
+      </section>
+    )}
+
+    <p class="comp-status needs-js" role="status" data-status>{competitionsOn ? 'Loading…' : ''}</p>
+
+    <section class="card" data-missing hidden>
+      <h2>Pick a competition</h2>
+      <p>This link doesn't point to a competition we can find. It may have been removed, or the link may be incomplete.</p>
+      <a class="btn btn-primary" href={href(lang, 'competitions/')}>See all competitions</a>
+    </section>
+
+    <section class="card" data-about hidden>
+      <p data-summary></p>
+      <ul class="comp-facts">
+        <li data-fact-window></li>
+        <li data-fact-time></li>
+        <li data-fact-scoring></li>
+      </ul>
+      <div class="prose" data-rules></div>
+    </section>
+
+    <section class="card" data-upcoming hidden>
+      <h2>Not started yet</h2>
+      <p>This competition opens <strong data-opens></strong>. Keep this page open, and the Join button appears when it starts.</p>
+    </section>
+
+    <form class="card" data-join hidden>
+      <h2>Join</h2>
+      <p>
+        Pick a display name for the leaderboard. Use a nickname or your first name only, never your full name.
+        Your clock starts as soon as you join, and you can only join once.
+      </p>
+      <label class="field-label" for="comp-name">Display name</label>
+      <input
+        class="text-input"
+        id="comp-name"
+        name="name"
+        autocomplete="nickname"
+        required
+        minlength="1"
+        maxlength={competitionSettings.nameMaxLength}
+        data-name
+      />
+      <p class="muted">
+        Unlike practice, a competition is saved on our competition server: your display name, your answers, and
+        when you started and finished, so we can grade it and build the leaderboard. We never ask for an email
+        or any other personal information.
+      </p>
+      <button class="btn btn-primary" type="submit" data-join-button>Join and start my clock</button>
+    </form>
+
+    <div class="sticky-progress contest-clock" data-clock-bar hidden>
+      <span>Time left: <strong role="timer" data-clock></strong></span>
+      <span class="muted" data-save-state aria-live="polite"></span>
+    </div>
+    <p class="sr-only" role="status" data-timer-status></p>
+
+    <form data-paper hidden>
+      <p class="muted" data-paper-intro></p>
+      <div data-questions></div>
+      <p class="card" data-no-questions hidden>
+        This competition has no questions. You can still hand it in to try out the leaderboard.
+      </p>
+      <button class="btn btn-primary" type="submit" data-hand-in>Hand in my answers</button>
+    </form>
+
+    <section class="card finished" data-handed-in tabindex="-1" hidden>
+      <h2>Handed in</h2>
+      <p data-handed-in-text></p>
+      <p class="btn-row"><a class="btn" data-board-link hidden>See the leaderboard</a></p>
+    </section>
+
+    <section data-results tabindex="-1" hidden>
+      <div class="card finished">
+        <h2>Results</h2>
+        <p class="contest-score" data-result-score></p>
+        <p data-result-counts></p>
+        <p class="btn-row"><a class="btn btn-primary" data-results-board>See the leaderboard</a></p>
+      </div>
+      <h2>Questions and answers</h2>
+      <div data-review></div>
+    </section>
+  </div>
+</Base>
+<script>
+  import '../../../scripts/competitions/compete';
+</script>

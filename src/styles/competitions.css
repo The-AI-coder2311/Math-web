@@ -1,0 +1,200 @@
+/* Live competitions, the leaderboard, and the admin dashboard. */
+
+.comp-status:empty,
+.comp-status[hidden] {
+  display: none;
+}
+
+.comp-status[data-tone='error'],
+.admin-msg[data-tone='error'] {
+  padding: 0.65rem 0.85rem;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  background: var(--accent-soft);
+}
+
+.comp-status[data-tone='good'],
+.admin-msg[data-tone='good'] {
+  color: var(--good);
+  font-weight: 600;
+}
+
+.comp-facts {
+  padding-left: 1.25rem;
+}
+
+.comp-facts li {
+  margin-bottom: 0.35rem;
+}
+
+.comp-links {
+  margin-top: 2rem;
+}
+
+.comp-choices {
+  list-style: none;
+  padding: 0;
+}
+
+.comp-choices li {
+  margin: 0.3rem 0;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+}
+
+.comp-choices li.is-right {
+  border-color: var(--good);
+  font-weight: 600;
+}
+
+.comp-choices li.is-right::after {
+  content: ' \2713 answer';
+  color: var(--good);
+}
+
+.comp-choices li.is-wrong {
+  border-color: var(--accent);
+  text-decoration: line-through;
+}
+
+.comp-good {
+  color: var(--good);
+}
+
+.comp-bad {
+  color: var(--accent);
+}
+
+.comp-board tr.is-me td {
+  background: var(--accent-soft);
+}
+
+.comp-board td:nth-child(n + 3) {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Admin ---- */
+
+.admin-grid {
+  display: grid;
+  gap: 0.5rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+
+.admin-grid .text-input,
+.admin-grid select {
+  width: 100%;
+  max-width: none;
+}
+
+.admin-field {
+  margin-bottom: 0.5rem;
+}
+
+.admin-field .field-label {
+  margin-bottom: 0.2rem;
+}
+
+.admin-field textarea {
+  max-width: none;
+  word-break: normal;
+  min-height: 6rem;
+}
+
+.admin-check {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin: 0.4rem 0;
+}
+
+.admin-check input {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.admin-hint {
+  margin: 0.15rem 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.admin-question {
+  margin: 1rem 0;
+}
+
+.admin-question legend {
+  font-weight: 700;
+}
+
+.admin-choices {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.admin-choice {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.admin-choice .text-input {
+  max-width: none;
+  margin: 0;
+}
+
+.admin-preview {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+}
+
+.admin-tag {
+  display: inline-block;
+  padding: 0.05rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.admin-tag.is-live {
+  border-color: var(--good);
+  color: var(--good);
+  font-weight: 600;
+}
+
+.admin-tag.is-draft {
+  border-style: dashed;
+}
+
+.btn-danger {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-small {
+  min-height: 2.25rem;
+  padding: 0.25rem 0.7rem;
+  font-size: 0.92rem;
+}
+
+.admin-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Buttons and rows set their own display, which would otherwise beat the hidden attribute. */
+[data-comp-list] [hidden],
+[data-compete] [hidden],
+[data-board] [hidden],
+[data-admin] [hidden] {
+  display: none !important;
+}

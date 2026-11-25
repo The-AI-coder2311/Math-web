@@ -16,7 +16,7 @@ const strings: Record<Locale, typeof en> = { en, es };
  */
 export const untranslated: Record<Locale, string[]> = {
   en: [],
-  es: ['contests/', 'formulas/', 'glossary/', 'teachers/plans/', 'teachers/problem-sets/'],
+  es: ['admin/', 'competitions/', 'contests/', 'formulas/', 'glossary/', 'teachers/plans/', 'teachers/problem-sets/'],
 };
 
 /** UI text for a language. */

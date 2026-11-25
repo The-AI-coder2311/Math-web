@@ -1,7 +1,7 @@
 // All button labels and short interface text. Longer writing lives in src/content/en/.
 export const en = {
   skipLink: 'Skip to main content',
-  nav: { learn: 'Start learning', contests: 'Practice contests', formulas: 'Formulas', teachers: 'For teachers', about: 'About us', label: 'Main', menu: 'Menu' },
+  nav: { learn: 'Start learning', contests: 'Practice contests', competitions: 'Competitions', formulas: 'Formulas', teachers: 'For teachers', about: 'About us', label: 'Main', menu: 'Menu' },
   theme: { toDark: 'Switch to dark mode', toLight: 'Switch to light mode' },
   language: {
     name: 'English',
@@ -439,6 +439,9 @@ export const en = {
     practice: 'Practice',
     unitPractice: 'Unit practice',
     contests: 'Practice contests',
+    competitions: 'Live competitions',
+    competitionPage: 'Take a competition',
+    leaderboards: 'Competition leaderboards',
     teachers: 'For Teachers',
     teachersHome: 'For Teachers home',
     plans: 'Six-week teaching plans',
