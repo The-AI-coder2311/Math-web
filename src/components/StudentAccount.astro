@@ -1,0 +1,56 @@
+---
+// Sign in to, or create, a student account for live competitions: a username and a
+// password, no email. The script in src/scripts/competitions/account.ts runs it.
+interface Props {
+  /** A prefix so two boxes on one page get different ids. */
+  id: string;
+}
+const { id } = Astro.props;
+---
+<div class="student-account" data-account>
+  <div data-account-signed-in hidden>
+    <p>Signed in as <strong data-account-name></strong>.</p>
+    <p><button class="btn btn-small" type="button" data-account-sign-out>Sign out</button></p>
+  </div>
+
+  <form data-account-form hidden>
+    <div class="account-tabs" role="radiogroup" aria-label="Sign in or make an account">
+      <label><input type="radio" name={`${id}-mode`} value="sign-in" checked data-account-mode /> I have an account</label>
+      <label><input type="radio" name={`${id}-mode`} value="sign-up" data-account-mode /> Make an account</label>
+    </div>
+    <label class="field-label" for={`${id}-username`}>Username</label>
+    <input
+      class="text-input"
+      id={`${id}-username`}
+      autocomplete="username"
+      autocapitalize="none"
+      spellcheck="false"
+      required
+      minlength="3"
+      maxlength="20"
+      pattern="[A-Za-z0-9_]{3,20}"
+      aria-describedby={`${id}-username-hint`}
+      data-account-username
+    />
+    <p class="admin-hint" id={`${id}-username-hint`} data-account-username-hint>
+      3 to 20 letters, numbers, or underscores. It shows on the leaderboard, so use a nickname, never your full name.
+    </p>
+    <label class="field-label" for={`${id}-password`}>Password</label>
+    <input
+      class="text-input"
+      id={`${id}-password`}
+      type="password"
+      autocomplete="current-password"
+      required
+      minlength="8"
+      maxlength="72"
+      aria-describedby={`${id}-password-hint`}
+      data-account-password
+    />
+    <p class="admin-hint" id={`${id}-password-hint`} data-account-password-hint>
+      Forgot it? Ask your teacher or the person running the competition to reset it.
+    </p>
+    <p class="comp-status admin-msg" role="alert" data-account-msg hidden></p>
+    <button class="btn btn-primary" type="submit" data-account-submit>Sign in</button>
+  </form>
+</div>

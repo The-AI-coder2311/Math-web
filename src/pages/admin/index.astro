@@ -60,6 +60,26 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <tbody data-comp-rows></tbody>
           </table>
         </div>
+
+        <h2>Student accounts</h2>
+        <p class="admin-hint">
+          Students make their own accounts with a username and password, no email. If one forgets their password,
+          find them here and set a new one, then tell them what it is. Passwords are stored scrambled, so nobody can
+          see the old one.
+        </p>
+        <form class="admin-toolbar" data-student-search>
+          <label class="sr-only" for="student-query">Search usernames</label>
+          <input class="text-input" id="student-query" placeholder="Search usernames" data-student-query />
+          <button class="btn btn-small" type="submit">Search</button>
+        </form>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Student accounts" data-student-results hidden>
+          <table class="data-table">
+            <thead>
+              <tr><th scope="col">Username</th><th scope="col">Made</th><th scope="col">Entries</th><th scope="col">Actions</th></tr>
+            </thead>
+            <tbody data-student-rows></tbody>
+          </table>
+        </div>
       </section>
 
       <section data-edit-view hidden>

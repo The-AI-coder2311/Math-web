@@ -1,8 +1,8 @@
+import { mountAccount, whoAmI } from './account';
 import {
   LETTERS,
   competitionParam,
   deadlineOf,
-  ensureStudentSession,
   errorText,
   escapeHtml,
   formatClock,
@@ -80,18 +80,20 @@ if (page && client) {
     }
     competition = data as Competition;
     renderAbout();
-    const { data: session } = await client!.auth.getSession();
-    if (session.session) {
-      const { data: mine, error: entryError } = await client!
-        .from('competition_entries')
-        .select('*')
-        .eq('competition_id', competition.id)
-        .maybeSingle();
-      if (entryError) throw entryError;
-      entry = (mine as Entry) ?? null;
-    }
+    if (await whoAmI(client!)) await loadEntry();
     say(status, '');
     await route();
+  }
+
+  // The signed-in student's entry, if they've joined (maybe on another device).
+  async function loadEntry() {
+    const { data: mine, error } = await client!
+      .from('competition_entries')
+      .select('*')
+      .eq('competition_id', competition.id)
+      .maybeSingle();
+    if (error) throw error;
+    entry = (mine as Entry) ?? null;
   }
 
   async function route() {
@@ -123,24 +125,38 @@ if (page && client) {
     waiter = window.setInterval(update, 1000);
   }
 
-  function showJoin() {
+  let accountMounted = false;
+  async function showJoin() {
     show('[data-about]', '[data-join]');
+    if (!accountMounted) {
+      accountMounted = true;
+      await mountAccount($('[data-account]'), client!, async (name) => {
+        $('[data-join-ready]').hidden = !name;
+        if (!name) {
+          entry = null;
+          return;
+        }
+        // Signed in: they may have joined already on another device.
+        try {
+          await loadEntry();
+          if (entry) await route();
+        } catch (error) {
+          say(status, errorText(error), 'error');
+        }
+      });
+    }
     // Close the form when the competition closes, in case the page stays open.
     waiter = window.setInterval(() => {
       if (phaseOf(competition) !== 'live') void route();
     }, 5000);
   }
 
-  $('[data-join]').addEventListener('submit', async (event) => {
-    event.preventDefault();
+  $('[data-join-button]').addEventListener('click', async () => {
     const button = $<HTMLButtonElement>('[data-join-button]');
-    const name = $<HTMLInputElement>('[data-name]').value.trim();
-    if (!name) return;
     button.disabled = true;
     say(status, 'Joining…');
     try {
-      await ensureStudentSession(client!);
-      const { data, error } = await client!.rpc('join_competition', { p_competition: competition.id, p_name: name });
+      const { data, error } = await client!.rpc('join_competition', { p_competition: competition.id });
       if (error) throw error;
       entry = data as Entry;
       say(status, '');

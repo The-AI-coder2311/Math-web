@@ -1,0 +1,58 @@
+---
+import '../../../styles/competitions.css';
+import Base from '../../../layouts/Base.astro';
+import StudentAccount from '../../../components/StudentAccount.astro';
+import { href, localePaths } from '../../../i18n/config';
+import { competitionsOn } from '../../../competitions.config';
+
+export const getStaticPaths = () => localePaths('competitions/');
+
+const { lang } = Astro.props;
+---
+<Base
+  title="Your Competition Account"
+  description="Make a student account for live competitions with just a username and password, sign in on another device, or sign out."
+  lang={lang}
+  current="competitions"
+>
+  <p class="eyebrow"><a href={href(lang, 'competitions/')}>All competitions</a></p>
+  <h1>Your Competition Account</h1>
+  <p>
+    You need an account to take part in live competitions. It's only a username and a password, with no email.
+    Sign in with the same username on any computer or phone to get back to a competition you started.
+  </p>
+  <noscript><p class="card">Accounts need JavaScript. Turn it on to sign in.</p></noscript>
+  {competitionsOn ? (
+    <section class="card needs-js" data-account-page>
+      <StudentAccount id="acct" />
+    </section>
+  ) : (
+    <section class="card">
+      <h2>Coming soon</h2>
+      <p>Live competitions aren't open yet, so there are no accounts to make.</p>
+    </section>
+  )}
+  <section>
+    <h2>Good to know</h2>
+    <ul>
+      <li>Your username shows on leaderboards. Use a nickname, never your full name.</li>
+      <li>There's no email, so there's no "forgot password" link. If you forget it, ask your teacher or the person running the competition to reset it.</li>
+      <li>On a shared computer, press <strong>Sign out</strong> when you're done.</li>
+      <li>We save your username, your password (scrambled, so nobody can read it), and your competition answers. Practice progress on the rest of the site still stays on your own device.</li>
+    </ul>
+  </section>
+</Base>
+<script>
+  import { mountAccount } from '../../../scripts/competitions/account';
+  import { errorText, getClient } from '../../../scripts/competitions/shared';
+
+  const box = document.querySelector<HTMLElement>('[data-account-page] [data-account]');
+  const client = getClient('player');
+  if (box && client) {
+    mountAccount(box, client, () => undefined).catch((error) => {
+      const msg = box.querySelector<HTMLElement>('[data-account-msg]')!;
+      msg.textContent = errorText(error);
+      msg.hidden = false;
+    });
+  }
+</script>

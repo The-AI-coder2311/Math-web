@@ -12,8 +12,8 @@ export const es: typeof en = {
     otherOnlyLabel: 'Esta página solo está en inglés por ahora.',
   },
   footer: {
-    free: 'Gratis. Sin cuentas, sin anuncios y sin rastreo.',
-    freeCounted: 'Gratis. Sin cuentas, sin anuncios y sin cookies.',
+    free: 'Gratis. No necesitas cuenta para aprender, sin anuncios y sin rastreo.',
+    freeCounted: 'Gratis. No necesitas cuenta para aprender, sin anuncios y sin cookies.',
     disclaimer:
       'No estamos afiliados con la MAA, MATHCOUNTS ni Art of Problem Solving, ni nos respaldan. Todos los problemas de práctica de este sitio son originales.',
     navLabel: 'Pie de página',
@@ -438,6 +438,7 @@ export const es: typeof en = {
     competitions: 'Competencias en vivo (en inglés)',
     competitionPage: 'Participar en una competencia (en inglés)',
     leaderboards: 'Clasificaciones (en inglés)',
+    competitionAccount: 'Tu cuenta de competencias (en inglés)',
     teachers: 'Para maestros',
     teachersHome: 'Inicio para maestros',
     plans: 'Planes de enseñanza de seis semanas',

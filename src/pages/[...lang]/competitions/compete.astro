@@ -3,7 +3,8 @@ import 'katex/dist/katex.min.css';
 import '../../../styles/competitions.css';
 import Base from '../../../layouts/Base.astro';
 import { href, localePaths } from '../../../i18n/config';
-import { competitionSettings, competitionsOn } from '../../../competitions.config';
+import { competitionsOn } from '../../../competitions.config';
+import StudentAccount from '../../../components/StudentAccount.astro';
 
 export const getStaticPaths = () => localePaths('competitions/');
 
@@ -50,30 +51,21 @@ const { lang } = Astro.props;
       <p>This competition opens <strong data-opens></strong>. Keep this page open, and the Join button appears when it starts.</p>
     </section>
 
-    <form class="card" data-join hidden>
+    <section class="card" data-join hidden>
       <h2>Join</h2>
-      <p>
-        Pick a display name for the leaderboard. Use a nickname or your first name only, never your full name.
-        Your clock starts as soon as you join, and you can only join once.
-      </p>
-      <label class="field-label" for="comp-name">Display name</label>
-      <input
-        class="text-input"
-        id="comp-name"
-        name="name"
-        autocomplete="nickname"
-        required
-        minlength="1"
-        maxlength={competitionSettings.nameMaxLength}
-        data-name
-      />
+      <p>To take part, sign in to your student account, or make one. You only need a username and a password, no email.</p>
+      <StudentAccount id="join" />
+      <div data-join-ready hidden>
+        <p>Your clock starts as soon as you join, and you can only join once.</p>
+        <button class="btn btn-primary" type="button" data-join-button>Join and start my clock</button>
+      </div>
       <p class="muted">
-        Unlike practice, a competition is saved on our competition server: your display name, your answers, and
-        when you started and finished, so we can grade it and build the leaderboard. We never ask for an email
-        or any other personal information.
+        Unlike practice, a competition is saved on our competition server: your username, your password (scrambled, so
+        nobody can read it), your answers, and when you started and finished, so we can grade it and build the
+        leaderboard. We never ask for an email or any other personal information.
       </p>
-      <button class="btn btn-primary" type="submit" data-join-button>Join and start my clock</button>
-    </form>
+      <p><a href={href(lang, 'competitions/account/')}>Manage your account</a></p>
+    </section>
 
     <div class="sticky-progress contest-clock" data-clock-bar hidden>
       <span>Time left: <strong role="timer" data-clock></strong></span>

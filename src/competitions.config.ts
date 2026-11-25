@@ -37,8 +37,6 @@ export const competitionSettings = {
   } as Record<string, { pointsCorrect: number; pointsBlank: number; pointsWrong: number; minutes: number }>,
   // How often an open leaderboard page checks for new scores.
   leaderboardRefreshSeconds: 30,
-  // The longest display name a student can pick. The database allows up to 40.
-  nameMaxLength: 40,
 };
 
 // Where the content editor (Sveltia CMS at /admin/content/) saves its changes. Editors sign

@@ -8,11 +8,14 @@
 --   every table below has row level security, and the rules are written here.
 -- * Only users listed in public.admins can create or change competitions. Nobody can
 --   add themselves to that table from the site. You add an admin with the SQL editor
---   (see README) or scripts/create-admin.mjs.
+--   (see README).
 -- * Questions stay hidden until a student joins a running competition, and the answer key
 --   stays hidden from everyone but admins until the competition ends. Grading happens
 --   here in the database, never in the browser.
--- * Students sign in anonymously (no email, no password) and pick a display name.
+-- * Students make an account with a username and password (no email). Each browser gets an
+--   anonymous Supabase session, and signing in links that session to the account, so a
+--   student can sign in on any device. Passwords are stored as bcrypt hashes that nobody,
+--   admins included, can read. Repeated wrong passwords are slowed down.
 
 -- ---------------------------------------------------------------------------
 -- Admins
@@ -36,6 +39,60 @@ security definer
 set search_path = ''
 as $$
   select exists (select 1 from public.admins where user_id = (select auth.uid()));
+$$;
+
+
+-- ---------------------------------------------------------------------------
+-- Student accounts: a username and password, no email
+-- ---------------------------------------------------------------------------
+
+-- Supabase keeps pgcrypto in the "extensions" schema. It provides bcrypt.
+create schema if not exists extensions;
+create extension if not exists pgcrypto with schema extensions;
+
+create table if not exists public.student_accounts (
+  id uuid primary key default gen_random_uuid(),
+  -- Stored in lowercase. Shown on the leaderboard.
+  username text not null unique check (username ~ '^[a-z0-9_]{3,20}$'),
+  password_hash text not null,
+  created_at timestamptz not null default now()
+);
+
+-- Which signed-in browser sessions belong to which account. A student signed in on two
+-- devices has two rows here.
+create table if not exists public.student_sessions (
+  user_id uuid primary key references auth.users (id) on delete cascade,
+  account_id uuid not null references public.student_accounts (id) on delete cascade,
+  signed_in_at timestamptz not null default now()
+);
+create index if not exists student_sessions_account on public.student_sessions (account_id);
+
+-- Wrong passwords, to slow down guessing.
+create table if not exists public.student_sign_in_failures (
+  id bigint generated always as identity primary key,
+  user_id uuid,
+  account_id uuid references public.student_accounts (id) on delete cascade,
+  at timestamptz not null default now()
+);
+create index if not exists student_sign_in_failures_user on public.student_sign_in_failures (user_id, at);
+create index if not exists student_sign_in_failures_account on public.student_sign_in_failures (account_id, at);
+
+alter table public.student_accounts enable row level security;
+alter table public.student_sessions enable row level security;
+alter table public.student_sign_in_failures enable row level security;
+-- No policies: the site reaches these only through the functions below, and never sees a hash.
+revoke all on public.student_accounts, public.student_sessions, public.student_sign_in_failures
+  from anon, authenticated;
+
+-- The student account the current browser session is signed in to, or null.
+create or replace function public.current_account()
+returns uuid
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select account_id from public.student_sessions where user_id = (select auth.uid());
 $$;
 
 -- ---------------------------------------------------------------------------
@@ -86,7 +143,8 @@ create table if not exists public.competition_answers (
 create table if not exists public.competition_entries (
   id uuid primary key default gen_random_uuid(),
   competition_id uuid not null references public.competitions (id) on delete cascade,
-  user_id uuid not null references auth.users (id) on delete cascade,
+  account_id uuid not null references public.student_accounts (id) on delete cascade,
+  -- The username when the student joined, kept so the leaderboard doesn't change later.
   display_name text not null check (char_length(display_name) between 1 and 40),
   -- Problem id -> chosen letter. Only written through save_answers(), which checks the clock.
   answers jsonb not null default '{}'::jsonb check (jsonb_typeof(answers) = 'object'),
@@ -94,7 +152,7 @@ create table if not exists public.competition_entries (
   submitted_at timestamptz,
   -- Admins can hide an entry from the leaderboard, for a rude name or a disqualification.
   hidden boolean not null default false,
-  constraint competition_entries_one_each unique (competition_id, user_id)
+  constraint competition_entries_one_each unique (competition_id, account_id)
 );
 create index if not exists competition_entries_competition on public.competition_entries (competition_id);
 
@@ -131,7 +189,7 @@ as $$
   );
 $$;
 
--- True when the signed-in user has joined this competition.
+-- True when the signed-in student has joined this competition.
 create or replace function public.has_joined(p_competition uuid)
 returns boolean
 language sql
@@ -141,7 +199,7 @@ set search_path = ''
 as $$
   select exists (
     select 1 from public.competition_entries
-    where competition_id = p_competition and user_id = (select auth.uid())
+    where competition_id = p_competition and account_id = public.current_account()
   );
 $$;
 
@@ -220,7 +278,7 @@ create policy "Admins delete answers" on public.competition_answers
 
 drop policy if exists "Students see their own entry" on public.competition_entries;
 create policy "Students see their own entry" on public.competition_entries
-  for select to authenticated using (user_id = (select auth.uid()) or (select public.is_admin()));
+  for select to authenticated using (account_id = (select public.current_account()) or (select public.is_admin()));
 drop policy if exists "Admins change entries" on public.competition_entries;
 create policy "Admins change entries" on public.competition_entries
   for update to authenticated using ((select public.is_admin())) with check ((select public.is_admin()));
@@ -233,7 +291,8 @@ create policy "Admins delete entries" on public.competition_entries
 -- ---------------------------------------------------------------------------
 
 -- Joins a running competition, or returns the entry the student already has.
-create or replace function public.join_competition(p_competition uuid, p_name text)
+drop function if exists public.join_competition(uuid, text);
+create or replace function public.join_competition(p_competition uuid)
 returns public.competition_entries
 language plpgsql
 security definer
@@ -242,17 +301,17 @@ as $$
 declare
   c public.competitions;
   e public.competition_entries;
-  uid uuid := auth.uid();
-  clean text;
+  acct public.student_accounts;
 begin
-  if uid is null then
-    raise exception 'Sign in first.' using errcode = '28000';
+  select a.* into acct from public.student_accounts a where a.id = public.current_account();
+  if not found then
+    raise exception 'Sign in to your student account first.' using errcode = '28000';
   end if;
   select * into c from public.competitions where id = p_competition and published;
   if not found then
     raise exception 'That competition was not found.' using errcode = 'P0002';
   end if;
-  select * into e from public.competition_entries where competition_id = c.id and user_id = uid;
+  select * into e from public.competition_entries where competition_id = c.id and account_id = acct.id;
   if found then
     return e;
   end if;
@@ -262,12 +321,8 @@ begin
   if now() >= c.ends_at then
     raise exception 'This competition has ended.' using errcode = 'P0001';
   end if;
-  clean := btrim(regexp_replace(regexp_replace(coalesce(p_name, ''), '[[:cntrl:]]', '', 'g'), '\s+', ' ', 'g'));
-  if char_length(clean) not between 1 and 40 then
-    raise exception 'Pick a display name from 1 to 40 characters.' using errcode = '22023';
-  end if;
-  insert into public.competition_entries (competition_id, user_id, display_name)
-  values (c.id, uid, clean)
+  insert into public.competition_entries (competition_id, account_id, display_name)
+  values (c.id, acct.id, acct.username)
   returning * into e;
   return e;
 end;
@@ -288,7 +343,7 @@ declare
   clean jsonb;
 begin
   select * into e from public.competition_entries where id = p_entry for update;
-  if not found or e.user_id is distinct from auth.uid() then
+  if not found or e.account_id is distinct from public.current_account() then
     raise exception 'That entry was not found.' using errcode = 'P0002';
   end if;
   if e.submitted_at is not null then
@@ -355,7 +410,7 @@ begin
   with graded as (
     select
       e.display_name,
-      e.user_id,
+      e.account_id,
       count(a.answer) filter (where e.answers ->> p.id::text = a.answer)::integer as n_correct,
       count(p.id) filter (where e.answers ? p.id::text)::integer as n_answered,
       greatest(0, extract(epoch from (
@@ -386,10 +441,176 @@ begin
     s.n_answered - s.n_correct,
     total - s.n_answered,
     s.n_seconds,
-    coalesce(s.user_id = auth.uid(), false)
+    coalesce(s.account_id = public.current_account(), false)
   from scored s
   order by 1, s.display_name
   limit 500;
+end;
+$$;
+
+
+-- ---------------------------------------------------------------------------
+-- Student sign-up and sign-in
+-- ---------------------------------------------------------------------------
+
+-- Makes a student account and signs this browser session in to it.
+create or replace function public.student_sign_up(p_username text, p_password text)
+returns text
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  uid uuid := auth.uid();
+  name text := lower(btrim(coalesce(p_username, '')));
+  acct uuid;
+begin
+  if uid is null then
+    raise exception 'Sign in first.' using errcode = '28000';
+  end if;
+  if name !~ '^[a-z0-9_]{3,20}$' then
+    raise exception 'Pick a username of 3 to 20 letters, numbers, or underscores.' using errcode = '22023';
+  end if;
+  if char_length(coalesce(p_password, '')) not between 8 and 72 then
+    raise exception 'Pick a password of 8 to 72 characters.' using errcode = '22023';
+  end if;
+  begin
+    insert into public.student_accounts (username, password_hash)
+    values (name, extensions.crypt(p_password, extensions.gen_salt('bf', 10)))
+    returning id into acct;
+  exception when unique_violation then
+    raise exception 'That username is taken. Try another one.' using errcode = '23505';
+  end;
+  insert into public.student_sessions (user_id, account_id) values (uid, acct)
+  on conflict (user_id) do update set account_id = excluded.account_id, signed_in_at = now();
+  return name;
+end;
+$$;
+
+-- Signs this browser session in to a student account. It returns 'ok', 'wrong', or 'slow down'
+-- instead of raising an error, so that wrong tries are still counted.
+create or replace function public.student_sign_in(p_username text, p_password text)
+returns text
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  uid uuid := auth.uid();
+  name text := lower(btrim(coalesce(p_username, '')));
+  acct public.student_accounts;
+begin
+  if uid is null then
+    raise exception 'Sign in first.' using errcode = '28000';
+  end if;
+  select * into acct from public.student_accounts where username = name;
+  -- 5 wrong tries per browser session every 15 minutes, and 30 per account every hour.
+  if (select count(*) from public.student_sign_in_failures
+        where user_id = uid and at > now() - interval '15 minutes') >= 5
+     or (acct.id is not null and (select count(*) from public.student_sign_in_failures
+        where account_id = acct.id and at > now() - interval '1 hour') >= 30) then
+    return 'slow down';
+  end if;
+  -- Check a password even when the username doesn't exist, so the answer takes as long either way.
+  if acct.id is null
+     or acct.password_hash <> extensions.crypt(coalesce(p_password, ''), acct.password_hash) then
+    if acct.id is null then
+      perform extensions.crypt(coalesce(p_password, ''), '$2a$10$abcdefghijklmnopqrstuu');
+    end if;
+    insert into public.student_sign_in_failures (user_id, account_id) values (uid, acct.id);
+    return 'wrong';
+  end if;
+  insert into public.student_sessions (user_id, account_id) values (uid, acct.id)
+  on conflict (user_id) do update set account_id = excluded.account_id, signed_in_at = now();
+  return 'ok';
+end;
+$$;
+
+-- Signs this browser session out of its student account.
+create or replace function public.student_sign_out()
+returns void
+language sql
+security definer
+set search_path = ''
+as $$
+  delete from public.student_sessions where user_id = (select auth.uid());
+$$;
+
+-- The username this browser session is signed in as, or null.
+create or replace function public.student_whoami()
+returns text
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select username from public.student_accounts where id = public.current_account();
+$$;
+
+-- Admins: find student accounts by part of a username.
+create or replace function public.admin_find_students(p_query text)
+returns table (username text, created_at timestamptz, entries bigint)
+language plpgsql
+stable
+security definer
+set search_path = ''
+as $$
+begin
+  if not public.is_admin() then
+    raise exception 'Admins only.' using errcode = '42501';
+  end if;
+  return query
+  select a.username, a.created_at, (select count(*) from public.competition_entries e where e.account_id = a.id)
+  from public.student_accounts a
+  where a.username like '%' || replace(replace(replace(lower(btrim(coalesce(p_query, ''))), '\', '\\'), '%', '\%'), '_', '\_') || '%'
+  order by a.username
+  limit 50;
+end;
+$$;
+
+-- Admins: set a new password for a student who forgot theirs. It signs out their other devices.
+create or replace function public.admin_reset_student_password(p_username text, p_password text)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  acct uuid;
+begin
+  if not public.is_admin() then
+    raise exception 'Admins only.' using errcode = '42501';
+  end if;
+  if char_length(coalesce(p_password, '')) not between 8 and 72 then
+    raise exception 'Pick a password of 8 to 72 characters.' using errcode = '22023';
+  end if;
+  update public.student_accounts
+     set password_hash = extensions.crypt(p_password, extensions.gen_salt('bf', 10))
+   where username = lower(btrim(p_username))
+  returning id into acct;
+  if acct is null then
+    raise exception 'No student has that username.' using errcode = 'P0002';
+  end if;
+  delete from public.student_sessions where account_id = acct;
+  delete from public.student_sign_in_failures where account_id = acct;
+end;
+$$;
+
+-- Admins: delete a student account and all its entries.
+create or replace function public.admin_delete_student(p_username text)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if not public.is_admin() then
+    raise exception 'Admins only.' using errcode = '42501';
+  end if;
+  delete from public.student_accounts where username = lower(btrim(p_username));
+  if not found then
+    raise exception 'No student has that username.' using errcode = 'P0002';
+  end if;
 end;
 $$;
 
@@ -406,15 +627,20 @@ as $$
 $$;
 
 revoke execute on function
-  public.is_admin(), public.competition_ended(uuid), public.has_joined(uuid), public.problem_competition(uuid),
-  public.join_competition(uuid, text), public.save_answers(uuid, jsonb, boolean), public.leaderboard(uuid),
-  public.am_i_admin(), public.touch_updated_at()
+  public.is_admin(), public.current_account(), public.competition_ended(uuid), public.has_joined(uuid),
+  public.problem_competition(uuid), public.join_competition(uuid), public.save_answers(uuid, jsonb, boolean),
+  public.leaderboard(uuid), public.am_i_admin(), public.touch_updated_at(),
+  public.student_sign_up(text, text), public.student_sign_in(text, text), public.student_sign_out(),
+  public.student_whoami(), public.admin_find_students(text), public.admin_reset_student_password(text, text),
+  public.admin_delete_student(text)
   from public;
 -- The access rules run these as the signed-in user, so those roles need them.
-grant execute on function public.is_admin(), public.competition_ended(uuid), public.has_joined(uuid),
-  public.problem_competition(uuid)
+grant execute on function public.is_admin(), public.current_account(), public.competition_ended(uuid),
+  public.has_joined(uuid), public.problem_competition(uuid)
   to anon, authenticated;
 grant execute on function public.leaderboard(uuid) to anon, authenticated;
-grant execute on function public.join_competition(uuid, text), public.save_answers(uuid, jsonb, boolean),
-  public.am_i_admin()
+grant execute on function public.join_competition(uuid), public.save_answers(uuid, jsonb, boolean),
+  public.am_i_admin(), public.student_sign_up(text, text), public.student_sign_in(text, text),
+  public.student_sign_out(), public.student_whoami(), public.admin_find_students(text),
+  public.admin_reset_student_password(text, text), public.admin_delete_student(text)
   to authenticated;

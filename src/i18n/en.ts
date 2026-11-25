@@ -10,8 +10,8 @@ export const en = {
     otherOnlyLabel: 'This page is only in English for now.',
   },
   footer: {
-    free: 'Free to use. No login, no ads, no tracking.',
-    freeCounted: 'Free to use. No login, no ads, no cookies.',
+    free: 'Free to use. No login needed to learn, no ads, no tracking.',
+    freeCounted: 'Free to use. No login needed to learn, no ads, no cookies.',
     disclaimer:
       'Not affiliated with or endorsed by the MAA, MATHCOUNTS, or Art of Problem Solving. All practice problems here are original.',
     navLabel: 'Footer',
@@ -442,6 +442,7 @@ export const en = {
     competitions: 'Live competitions',
     competitionPage: 'Take a competition',
     leaderboards: 'Competition leaderboards',
+    competitionAccount: 'Your competition account',
     teachers: 'For Teachers',
     teachersHome: 'For Teachers home',
     plans: 'Six-week teaching plans',

@@ -11,14 +11,15 @@ const { lang } = Astro.props;
 ---
 <Base
   title="Live Competitions"
-  description="Join a live, timed math competition with other students, then see where you placed on the leaderboard. Pick a display name. No email needed."
+  description="Join a live, timed math competition with other students, then see where you placed on the leaderboard. Sign in with a username, no email needed."
   lang={lang}
   current="competitions"
 >
   <h1>Live Competitions</h1>
   <p>
-    These are timed competitions that everyone takes during the same window. Pick a display name, answer the
-    questions before your time runs out, and see the leaderboard. You don't need an email or a password.
+    These are timed competitions that everyone takes during the same window. Sign in with a student account,
+    answer the questions before your time runs out, and see the leaderboard. An account is only a username and a
+    password, with no email. <a href={href(lang, 'competitions/account/')}>Make one or sign in</a>.
   </p>
   <p class="muted">
     Want to practice on your own first? Try the <a href={href(lang, 'contests/')}>practice contests</a>.

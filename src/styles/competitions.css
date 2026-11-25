@@ -198,3 +198,23 @@
 [data-admin] [hidden] {
   display: none !important;
 }
+
+.account-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.account-tabs label {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+  min-height: 2.75rem;
+  font-weight: 600;
+}
+
+.account-tabs input {
+  width: 1.2rem;
+  height: 1.2rem;
+}

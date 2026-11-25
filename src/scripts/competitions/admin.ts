@@ -540,5 +540,58 @@ if (root && client) {
     URL.revokeObjectURL(link.href);
   });
 
+  // ---- Student accounts ----
+
+  async function findStudents() {
+    const query = $<HTMLInputElement>('[data-student-query]').value;
+    const { data, error } = await client!.rpc('admin_find_students', { p_query: query });
+    if (error) throw error;
+    const rows = (data ?? []) as { username: string; created_at: string; entries: number }[];
+    $('[data-student-results]').hidden = false;
+    $('[data-student-rows]').innerHTML = rows.length
+      ? rows
+          .map(
+            (r) => `<tr>
+              <td><strong>${escapeHtml(r.username)}</strong></td>
+              <td>${formatWhen(r.created_at)}</td>
+              <td>${r.entries}</td>
+              <td class="btn-row">
+                <button class="btn btn-small" type="button" data-reset="${escapeHtml(r.username)}">Reset password<span class="sr-only">: ${escapeHtml(r.username)}</span></button>
+                <button class="btn btn-small btn-danger" type="button" data-remove-student="${escapeHtml(r.username)}">Delete<span class="sr-only">: ${escapeHtml(r.username)}</span></button>
+              </td>
+            </tr>`,
+          )
+          .join('')
+      : '<tr><td colspan="4">No usernames match. Showing at most 50.</td></tr>';
+  }
+
+  $('[data-student-search]').addEventListener('submit', (event) => {
+    event.preventDefault();
+    findStudents().catch(fail);
+  });
+
+  $('[data-student-rows]').addEventListener('click', async (event) => {
+    const target = event.target as HTMLElement;
+    const reset = target.closest<HTMLElement>('[data-reset]')?.dataset.reset;
+    const remove = target.closest<HTMLElement>('[data-remove-student]')?.dataset.removeStudent;
+    try {
+      if (reset) {
+        const password = window.prompt(`New password for ${reset} (at least 8 characters). Tell them what it is. This signs them out everywhere.`);
+        if (!password) return;
+        const { error } = await client!.rpc('admin_reset_student_password', { p_username: reset, p_password: password });
+        if (error) throw error;
+        flash(`Password reset for ${reset}.`);
+      } else if (remove) {
+        if (window.prompt(`This deletes ${remove}'s account and every competition entry they have. Type the username to confirm.`)?.trim().toLowerCase() !== remove) return;
+        const { error } = await client!.rpc('admin_delete_student', { p_username: remove });
+        if (error) throw error;
+        flash(`Deleted ${remove}.`);
+        await findStudents();
+      }
+    } catch (error) {
+      fail(error);
+    }
+  });
+
   checkSession().catch(fail);
 }
