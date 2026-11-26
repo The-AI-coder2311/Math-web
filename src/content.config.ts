@@ -14,9 +14,9 @@ const pathway = defineCollection({
       z.object({
         title: z.string(),
         blurb: z.string(),
-        contest: z.enum(['AMC 8', 'AMC 10', 'AMC 12']),
+        contest: z.enum(['AMC 8', 'AMC 10', 'AMC 12', 'AIME']),
         difficulty: z.string(),
-        competitions: z.array(z.enum(['MATHCOUNTS', 'AMC 8', 'AMC 10', 'AMC 12'])),
+        competitions: z.array(z.enum(['MATHCOUNTS', 'AMC 8', 'AMC 10', 'AMC 12', 'AIME'])),
         units: z.array(
           z.object({
             slug: z.string(),

@@ -94,7 +94,7 @@ levels:
         blurb: Problems from all of Level 3, shuffled together. Real contests don't tell you the topic, so you have to work it out.
         review: true
   - title: "Level 4: Toward the AMC 12"
-    blurb: High school math used in contest style. These units are planned for later.
+    blurb: High school math used in contest style. Finish Level 3 first. These topics show up in the last third of the AMC 10 and throughout the AMC 12.
     contest: AMC 12
     difficulty: Expert
     competitions: [AMC 12]
@@ -114,3 +114,44 @@ levels:
       - slug: complex-numbers
         title: Complex Numbers
         blurb: A new kind of number that solves equations and describes rotations.
+      - slug: conic-sections
+        title: Conic Sections & Polar Coordinates
+        blurb: Parabolas, ellipses, hyperbolas, and a new way to describe curves.
+      - slug: functional-equations
+        title: Functional Equations
+        blurb: Find unknown functions by plugging in clever values and spotting patterns.
+      - slug: level-4-review
+        title: Level 4 Mixed Review
+        blurb: Problems from all of Level 4, shuffled together. Real contests don't tell you the topic, so you have to work it out.
+        review: true
+  - title: "Level 5: AIME Preparation"
+    blurb: For students aiming at the AIME. These problems are harder and answers are integers from 000 to 999. Expect to spend days, not minutes, on some of these ideas.
+    contest: AIME
+    difficulty: Competition
+    competitions: [AIME]
+    units:
+      - slug: aime-algebra
+        title: AIME Algebra
+        blurb: Symmetric sums, clever substitutions, floor and ceiling functions, and the deeper algebra tricks that AIME problems demand.
+      - slug: aime-number-theory
+        title: AIME Number Theory
+        blurb: The Chinese Remainder Theorem, multiplicative order, Lifting the Exponent, and Diophantine equations.
+      - slug: aime-combinatorics
+        title: AIME Combinatorics
+        blurb: Inclusion-exclusion, generating functions, bijections, and advanced recursions.
+      - slug: aime-geometry
+        title: AIME Geometry
+        blurb: Mass points, power of a point, radical axes, and coordinate bashing techniques.
+      - slug: inequalities-optimization
+        title: Inequalities & Optimization
+        blurb: AM-GM-HM, Cauchy-Schwarz, Schur's inequality, and finding extreme values in contest problems.
+      - slug: advanced-trig-complex
+        title: Advanced Trig & Complex Numbers
+        blurb: Product-to-sum formulas, Chebyshev polynomials, roots of unity filters, and complex number techniques for AIME.
+      - slug: aime-strategy
+        title: AIME Problem-Solving Strategies
+        blurb: Estimation, bounding, invariants, monovariants, and the meta-skills that separate solvers from guessers.
+      - slug: level-5-review
+        title: Level 5 Mixed Review
+        blurb: AIME-level problems from every topic, shuffled. Build the judgment to pick the right tool under time pressure.
+        review: true

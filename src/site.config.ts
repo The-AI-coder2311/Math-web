@@ -29,5 +29,6 @@ export const links = {
     'AMC 8': 'https://artofproblemsolving.com/wiki/index.php/AMC_8_Problems_and_Solutions',
     'AMC 10': 'https://artofproblemsolving.com/wiki/index.php/AMC_10_Problems_and_Solutions',
     'AMC 12': 'https://artofproblemsolving.com/wiki/index.php/AMC_12_Problems_and_Solutions',
+    AIME: 'https://artofproblemsolving.com/wiki/index.php/AIME_Problems_and_Solutions',
   },
 };

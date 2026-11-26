@@ -92,7 +92,7 @@ levels:
         blurb: Problemas de todo el Nivel 3, mezclados.
         review: true
   - title: "Nivel 4: Hacia el AMC 12"
-    blurb: Matemáticas de preparatoria al estilo de concurso. Estas unidades están planeadas para más adelante.
+    blurb: Matemáticas de preparatoria al estilo de concurso. Termina primero el Nivel 3. Estos temas aparecen al final del AMC 10 y en todo el AMC 12.
     contest: AMC 12
     difficulty: Experto
     competitions: [AMC 12]
@@ -112,3 +112,44 @@ levels:
       - slug: complex-numbers
         title: Números complejos
         blurb: Un nuevo tipo de número que resuelve ecuaciones y describe rotaciones.
+      - slug: conic-sections
+        title: Secciones cónicas y coordenadas polares
+        blurb: Parábolas, elipses, hipérbolas y una nueva forma de describir curvas.
+      - slug: functional-equations
+        title: Ecuaciones funcionales
+        blurb: Encuentra funciones desconocidas sustituyendo valores ingeniosos y buscando patrones.
+      - slug: level-4-review
+        title: Repaso mixto del Nivel 4
+        blurb: Problemas de todo el Nivel 4, mezclados.
+        review: true
+  - title: "Nivel 5: Preparación para el AIME"
+    blurb: Para quienes apuntan al AIME. Los problemas son más difíciles y las respuestas son enteros del 000 al 999.
+    contest: AIME
+    difficulty: Competición
+    competitions: [AIME]
+    units:
+      - slug: aime-algebra
+        title: Álgebra para el AIME
+        blurb: Sumas simétricas, sustituciones ingeniosas, parte entera y los trucos de álgebra que exige el AIME.
+      - slug: aime-number-theory
+        title: Teoría de números para el AIME
+        blurb: El teorema chino del residuo, el orden multiplicativo, el lema LTE y las ecuaciones diofánticas.
+      - slug: aime-combinatorics
+        title: Combinatoria para el AIME
+        blurb: Inclusión-exclusión, funciones generadoras, biyecciones y recursiones avanzadas.
+      - slug: aime-geometry
+        title: Geometría para el AIME
+        blurb: Puntos de masa, potencia de un punto, ejes radicales y técnicas con coordenadas.
+      - slug: inequalities-optimization
+        title: Desigualdades y optimización
+        blurb: MA-MG-MH, Cauchy-Schwarz, Schur y cómo encontrar valores extremos.
+      - slug: advanced-trig-complex
+        title: Trigonometría y números complejos avanzados
+        blurb: Fórmulas de producto a suma, polinomios de Chebyshev y el filtro de raíces de la unidad.
+      - slug: aime-strategy
+        title: Estrategias para el AIME
+        blurb: Estimación, cotas, invariantes y las habilidades que separan a quien resuelve de quien adivina.
+      - slug: level-5-review
+        title: Repaso mixto del Nivel 5
+        blurb: Problemas del nivel AIME de todos los temas, mezclados.
+        review: true
