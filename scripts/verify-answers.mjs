@@ -414,6 +414,85 @@ function checkFormulas(file) {
   }
 }
 
+// ---- The Machine Learning path (src/content/<lang>/ml/) ----
+// Each topic has a lesson.md and a questions.yaml with two sets, `concepts` and `math`.
+// Math questions need verify code. Concept questions are checked by a person.
+const ML_MIN_QUESTIONS = 6;
+
+function checkMlLesson(file) {
+  const where = relative('.', file);
+  const source = readFileSync(file, 'utf8').replace(/\r\n/g, '\n');
+  const data = source.match(/^---\n([\s\S]*?)\n---\n/);
+  if (!data) return errors.push(where + ': missing the --- settings block at the top');
+  const settings = parse(data[1]);
+  for (const field of ['title', 'summary', 'minutes']) {
+    if (!settings[field]) errors.push(where + ': missing ' + field);
+  }
+  checkArithmetic(source, where);
+  errors.push(...checkAllWriting(source, where));
+  const words = readableText(source).split(/\s+/).filter(Boolean).length;
+  if (words < 500 || words > 1500) errors.push(where + ': has ' + words + ' words, and an ML lesson should have 500 to 1,500');
+  if (!/\*\*The big idea/.test(source)) errors.push(where + ': needs a "**The big idea" statement');
+  if (!/<details class="check">/.test(source)) errors.push(where + ': needs a check-yourself question');
+  for (const box of ['traps', 'summary']) {
+    if (!source.includes('<section data-box="' + box + '">')) errors.push(where + ': needs a <section data-box="' + box + '">');
+  }
+}
+
+function checkMlQuestions(file) {
+  const where = relative('.', file);
+  const source = readFileSync(file, 'utf8');
+  const data = parse(source);
+  errors.push(...checkAllWriting(source, where));
+  if (!existsSync(file.replace(/questions\.ya?ml$/, 'lesson.md'))) errors.push(where + ': the topic needs a lesson.md next to it');
+  const slugs = new Set();
+  const letters = 'ABCDEF';
+  for (const set of ['concepts', 'math']) {
+    const questions = data[set] || [];
+    if (questions.length < ML_MIN_QUESTIONS) errors.push(where + ': the ' + set + ' set has ' + questions.length + ' questions, and needs at least ' + ML_MIN_QUESTIONS);
+    for (const level of ['easy', 'medium', 'hard']) {
+      if (!questions.some((question) => question.difficulty === level)) errors.push(where + ': the ' + set + ' set needs at least one ' + level + ' question');
+    }
+    checkAnswerSpread(where + ' ' + set, questions);
+    questions.forEach((question, i) => {
+      const label = where + ' ' + set + ' question ' + (i + 1);
+      if (!question.slug) errors.push(label + ': needs a slug');
+      else if (slugs.has(question.slug)) errors.push(label + ': slug "' + question.slug + '" is used twice');
+      slugs.add(question.slug);
+      for (const field of ['question', 'hint', 'solution']) {
+        if (!String(question[field] ?? '').trim()) errors.push(label + ': needs a ' + field);
+      }
+      const choices = (question.choices || []).map(normalize);
+      checkChoiceOrder(question.choices, label);
+      if (new Set(choices).size !== choices.length) errors.push(label + ': two answer choices are the same');
+      const correct = choices[letters.indexOf(question.answer)];
+      if (correct === undefined) return errors.push(label + ': answer "' + question.answer + '" doesn\'t match any choice');
+      if (set === 'math' && !question.verify) errors.push(label + ': a math question needs verify code');
+      if (question.verify) checkVerify(question.verify, correct, label);
+      for (const field of ['question', 'hint', 'hint2', 'solution']) {
+        if (question[field]) checkArithmetic(question[field], label);
+      }
+      const stated = String(question.solution || '').match(/\*\*Answer: \(([A-F])\) ([^*]+)\*\*/);
+      if (!stated || stated[1] !== question.answer || normalize(stated[2]) !== correct) {
+        errors.push(label + ': the solution must end with the answer line for (' + question.answer + ') ' + correct);
+      }
+      for (const text of [question.hint, question.hint2 ?? '']) {
+        if (String(text).includes('(' + question.answer + ') ' + correct)) errors.push(label + ': a hint gives away the answer');
+      }
+      const notes = question.mistakes || {};
+      const wrongLetters = letters.slice(0, choices.length).split('').filter((letter) => letter !== question.answer);
+      if (notes[question.answer]) errors.push(label + ': has a mistake note for the correct answer');
+      for (const letter of Object.keys(notes)) {
+        if (!wrongLetters.includes(letter)) errors.push(label + ': has a mistake note for ' + letter + ', which isn\'t a choice');
+        else checkArithmetic(notes[letter], label);
+      }
+      for (const letter of wrongLetters) {
+        if (!String(notes[letter] ?? '').trim()) errors.push(label + ': needs a mistakes note for choice ' + letter);
+      }
+    });
+  }
+}
+
 const walk = (dir) =>
   readdirSync(dir).flatMap((name) => {
     const path = join(dir, name);
@@ -435,7 +514,14 @@ for (const file of walk(root)) {
   const path = file.replace(/\\/g, '/');
   const inUnit = path.match(/^(.*\/units\/[^/]+)\/(lessons|problems)\/[^/]+\.md$/);
   const inContest = path.match(/\/contests\/([^/]+)\/problems\/[^/]+\.md$/);
-  if (inContest) {
+  if (/\/ml\/[^/]+\/lesson\.md$/.test(path)) {
+    checkMlLesson(file);
+  } else if (/\/ml\/[^/]+\/questions\.ya?ml$/.test(path)) {
+    checkMlQuestions(file);
+  } else if (/\/ml\/path\.ya?ml$/.test(path)) {
+    const source = readFileSync(file, 'utf8');
+    errors.push(...checkAllWriting(source, relative('.', file)));
+  } else if (inContest) {
     checkContestProblem(file, inContest[1]);
   } else if (inUnit && inUnit[2] === 'lessons') {
     const unit = unitOf(inUnit[1]);

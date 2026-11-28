@@ -1,0 +1,208 @@
+concepts:
+  - slug: c1-filter
+    difficulty: easy
+    question: |
+      What does a convolution filter do?
+    choices: ['Removes noise from the labels', 'Connects every pixel to every neuron', 'Slides a small grid of weights across the input, taking a dot product at each position', 'Chooses the learning rate for each pixel']
+    answer: C
+    mistakes:
+      A: 'Filters work on the input image, not on the labels.'
+      B: 'That describes a fully connected layer, which is what convolution avoids.'
+      D: 'The learning rate belongs to the optimizer, not to a filter.'
+    hint: |
+      Think of a small window moving across the image.
+    solution: |
+      A filter is a small grid of weights, such as $3 \times 3$. It slides across the image, and at each position it takes the dot product with the patch under it. The results form a feature map showing where the pattern appears.
+
+      **Answer: (C) Slides a small grid of weights across the input, taking a dot product at each position**
+  - slug: c2-max-pooling
+    difficulty: easy
+    question: |
+      What does $2 \times 2$ max pooling with stride 2 do to a feature map?
+    choices: ['Keeps the largest value in each $2 \times 2$ patch, halving the width and height', 'Doubles the width and height', 'Adds two new channels', 'Averages the whole map into one number']
+    answer: A
+    mistakes:
+      B: 'Pooling shrinks a map. Upsampling grows one.'
+      C: 'Pooling works on each channel separately and keeps the same number of channels.'
+      D: 'That is global average pooling, a different operation.'
+    hint: |
+      "Max" means largest. Each patch becomes one value.
+    solution: |
+      Each non-overlapping $2 \times 2$ patch is replaced by its largest value, so a $16 \times 16$ map becomes $8 \times 8$. The network keeps the strongest response in each area and becomes less sensitive to small shifts.
+
+      **Answer: (A) Keeps the largest value in each $2 \times 2$ patch, halving the width and height**
+  - slug: c3-weight-sharing
+    difficulty: medium
+    question: |
+      Why does a convolution layer have far fewer parameters than a fully connected layer on the same image?
+    choices: ['It ignores the color channels', 'It reuses the same small filter weights at every position in the image', 'It only looks at the center of the image', 'It has no biases']
+    answer: B
+    mistakes:
+      A: 'Filters cover every input channel.'
+      C: 'The filter slides over the whole image.'
+      D: 'Conv layers usually have one bias per filter, but that is not where the savings come from.'
+    hint: |
+      How many different sets of weights does a filter use as it moves across the image?
+    solution: |
+      A filter's weights are shared across every position, so the number of parameters depends on the filter size and the number of channels, not on the image size. A fully connected layer needs a separate weight for every pixel and neuron pair.
+
+      **Answer: (B) It reuses the same small filter weights at every position in the image**
+  - slug: c4-equivariance
+    difficulty: medium
+    question: |
+      A photo is shifted 10 pixels to the right. What happens to a convolution layer's feature map?
+    choices: ['It stays exactly the same', 'It becomes blank', 'It is flipped upside down', 'It shifts 10 pixels to the right too, apart from the edges']
+    answer: D
+    mistakes:
+      A: 'The pattern is now in a new place, so the response moves.'
+      B: 'The same patterns are still there, so the filter still finds them.'
+      C: 'A shift moves things. It does not flip them.'
+    hint: |
+      The same filter slides over every position. Where will it now find the pattern?
+    solution: |
+      Because the same filter is applied everywhere, a shifted input gives a shifted feature map. This is called equivariance. Later pooling and classification layers turn it into invariance, where the final answer does not change.
+
+      **Answer: (D) It shifts 10 pixels to the right too, apart from the edges**
+  - slug: c5-segmentation
+    difficulty: hard
+    question: |
+      A self-driving car model labels every pixel of a camera image as road, car, person, or sky, without telling one car apart from another. What task is this?
+    choices: ['Image classification', 'Semantic segmentation', 'Object detection', 'Instance segmentation']
+    answer: B
+    mistakes:
+      A: 'Classification gives one label for the whole image.'
+      C: 'Detection draws boxes around objects rather than labeling pixels.'
+      D: 'Instance segmentation would also separate car 1 from car 2.'
+    hint: |
+      Every pixel gets a label, but individual objects are not told apart.
+    solution: |
+      Labeling every pixel with a class is semantic segmentation. If the model also separated each individual car, it would be instance segmentation. Detection only draws boxes.
+
+      **Answer: (B) Semantic segmentation**
+  - slug: c6-two-small-kernels
+    difficulty: hard
+    question: |
+      Why do many CNNs stack two $3 \times 3$ convolution layers instead of using one $5 \times 5$ layer?
+    choices: ['Two $3 \times 3$ layers see the same $5 \times 5$ area with fewer weights and an extra activation in between', 'A $5 \times 5$ kernel cannot be trained', 'Two layers always run faster than one', 'A $3 \times 3$ kernel sees a larger area than a $5 \times 5$ one']
+    answer: A
+    mistakes:
+      B: 'Larger kernels train fine. They cost more weights.'
+      C: 'Two layers can take longer. The benefit is weights and expressiveness.'
+      D: 'One $3 \times 3$ layer sees less. Two stacked layers reach $5 \times 5$.'
+    hint: |
+      Compare $3 \times 3 + 3 \times 3$ weights with $5 \times 5$ weights, per channel pair.
+    solution: |
+      Two stacked $3 \times 3$ layers have a $5 \times 5$ receptive field, the same as one $5 \times 5$ layer. They use $9 + 9 = 18$ weights per channel pair instead of 25, and the activation between them lets the pair represent more complex patterns.
+
+      **Answer: (A) Two $3 \times 3$ layers see the same $5 \times 5$ area with fewer weights and an extra activation in between**
+math:
+  - slug: m1-1d-conv
+    difficulty: easy
+    question: |
+      The kernel $(1, 0, -1)$ slides along the input $(1, 2, 3, 4)$. What is the first output value?
+    choices: [-2, 0, 2, 4]
+    answer: A
+    verify: '1 * 1 + 2 * 0 + 3 * -1'
+    mistakes:
+      B: 'Only the middle product is 0. Add all three.'
+      C: 'Check the sign: $3 \times (-1) = -3$.'
+      D: 'You may have added the kernel''s last weight as $+1$. It is $-1$.'
+    hint: |
+      Line the kernel up with the first three inputs, multiply, and add.
+    solution: |
+      $$1 \times 1 + 2 \times 0 + 3 \times (-1) = -2$$
+
+      **Answer: (A) -2**
+  - slug: m2-output-size
+    difficulty: easy
+    question: |
+      A $5 \times 5$ kernel with stride 1 and no padding is applied to a $32 \times 32$ image. What is the output width?
+    choices: [26, 27, 28, 32]
+    answer: C
+    verify: 'Math.floor((32 + 0 - 5) / 1) + 1'
+    mistakes:
+      A: 'That subtracts 6. Use $n - k + 1$.'
+      B: 'That is $32 - 5$. Add 1.'
+      D: 'Without padding, the kernel cannot be centered on the edge pixels, so the output shrinks.'
+    hint: |
+      Use $\frac{n + 2p - k}{s} + 1$.
+    solution: |
+      $$\frac{32 + 0 - 5}{1} + 1 = 28$$
+
+      **Answer: (C) 28**
+  - slug: m3-stride-padding
+    difficulty: medium
+    question: |
+      A $3 \times 3$ kernel with stride 2 and padding 1 is applied to a $64 \times 64$ input. What is the output width? Round down where needed.
+    choices: [31, 32, 33, 62]
+    answer: B
+    verify: 'Math.floor((64 + 2 * 1 - 3) / 2) + 1'
+    mistakes:
+      A: 'Add 1 after rounding down: $31 + 1 = 32$.'
+      C: 'Round $\frac{63}{2}$ down to 31, not up.'
+      D: 'That ignores the stride. Stride 2 roughly halves the size.'
+    hint: |
+      $\frac{64 + 2 - 3}{2} = 31.5$. Round down, then add 1.
+    solution: |
+      $$\left\lfloor \frac{64 + 2 - 3}{2} \right\rfloor + 1 = 31 + 1 = 32$$
+
+      Stride 2 halves the size, as expected.
+
+      **Answer: (B) 32**
+  - slug: m4-conv-params
+    difficulty: medium
+    question: |
+      A convolution layer has 16 filters of size $3 \times 3$ on an input with 3 channels. Each filter has one bias. How many parameters does the layer have?
+    choices: [144, 432, 448, 2304]
+    answer: C
+    verify: '(3 * 3 * 3 + 1) * 16'
+    mistakes:
+      A: 'That uses a $3 \times 3$ filter with only 1 channel. Each filter covers all 3 input channels.'
+      B: 'That counts the weights but forgets the 16 biases.'
+      D: 'That treats the input as having 16 channels. It has 3, so each filter has $3 \times 3 \times 3 = 27$ weights.'
+    hint: |
+      Each filter has $3 \times 3 \times 3$ weights and 1 bias.
+    solution: |
+      Each filter has $27 + 1 = 28$ parameters, and there are 16 filters:
+
+      $$28 \times 16 = 448$$
+
+      **Answer: (C) 448**
+  - slug: m5-iou
+    difficulty: hard
+    question: |
+      A predicted box covers $x$ from 0 to 4 and $y$ from 0 to 4. The true box covers $x$ from 2 to 6 and $y$ from 2 to 6. What is their IoU, the overlap area divided by the combined area?
+    choices: ['$\frac{1}{8}$', '$\frac{1}{7}$', '$\frac{1}{4}$', '$\frac{1}{2}$']
+    answer: B
+    verify: 'fraction(2 * 2, 16 + 16 - 2 * 2)'
+    mistakes:
+      A: 'That divides by $16 + 16$. The overlap is counted twice there, so subtract it once.'
+      C: 'That divides the overlap by one box''s area. Use the combined area.'
+      D: 'Recheck the overlap. It is a $2 \times 2$ square.'
+    hint: |
+      The overlap runs from 2 to 4 in both directions. What is its area?
+    hint2: |
+      Combined area = area A + area B − overlap.
+    solution: |
+      The overlap is a $2 \times 2$ square, area 4. Each box has area 16, so the combined area is $16 + 16 - 4 = 28$:
+
+      $$\frac{4}{28} = \frac{1}{7}$$
+
+      **Answer: (B) $\frac{1}{7}$**
+  - slug: m6-receptive-field
+    difficulty: hard
+    question: |
+      Three $3 \times 3$ convolution layers with stride 1 are stacked. How wide is the receptive field of one neuron in the third layer, measured in input pixels?
+    choices: [3, 5, 6, 7]
+    answer: D
+    verify: '1 + 3 * (3 - 1)'
+    mistakes:
+      A: 'That is one layer. Each extra layer widens the view.'
+      B: 'That is two layers. Add one more.'
+      C: 'Each $3 \times 3$ layer adds $3 - 1 = 2$ pixels: $3 + 2 + 2 = 7$.'
+    hint: |
+      Each $3 \times 3$ layer with stride 1 adds 2 pixels to the receptive field.
+    solution: |
+      One layer sees 3 pixels across. Each extra layer adds $3 - 1 = 2$, so three layers see $3 + 2 + 2 = 7$ pixels across.
+
+      **Answer: (D) 7**

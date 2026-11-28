@@ -1,0 +1,204 @@
+concepts:
+  - slug: c1-generative-vs-discriminative
+    difficulty: easy
+    question: |
+      Which of these is a generative model?
+    choices: ['A model that labels photos as cat or dog', 'A model that predicts house prices', 'A model that creates new, realistic photos of faces', 'A model that flags spam emails']
+    answer: C
+    mistakes:
+      A: 'Labeling is discriminative: it tells classes apart.'
+      B: 'Predicting a price from features is regression, a discriminative task.'
+      D: 'Flagging spam is classification, a discriminative task.'
+    hint: |
+      Generative models produce new data. Discriminative models answer questions about data.
+    solution: |
+      A model that creates new faces has learned what faces look like well enough to sample new ones. That is generative. The other three predict a label or a number for an input, which is discriminative.
+
+      **Answer: (C) A model that creates new, realistic photos of faces**
+  - slug: c2-gan-roles
+    difficulty: easy
+    question: |
+      In a GAN, what is the discriminator's job?
+    choices: ['To tell real examples apart from the generator''s fakes', 'To turn noise into new examples', 'To compress the data into a small code', 'To add noise to images step by step']
+    answer: A
+    mistakes:
+      B: 'That is the generator''s job.'
+      C: 'That describes the encoder of an autoencoder.'
+      D: 'That is the forward process of a diffusion model.'
+    hint: |
+      "Discriminate" means to tell things apart.
+    solution: |
+      The discriminator is shown real data and the generator's fakes, and learns to tell which is which. The generator learns by trying to fool it.
+
+      **Answer: (A) To tell real examples apart from the generator's fakes**
+  - slug: c3-mode-collapse
+    difficulty: medium
+    question: |
+      A GAN trained on photos of many breeds of dog starts producing only nearly identical golden retrievers. What is this failure called?
+    choices: ['Overfitting', 'Vanishing gradients', 'Data leakage', 'Mode collapse']
+    answer: D
+    mistakes:
+      A: 'Overfitting is about failing on new data. Here, the variety of the output is lost.'
+      B: 'Vanishing gradients stop learning. This generator is producing convincing images.'
+      C: 'Leakage is about test data sneaking into training.'
+    hint: |
+      The real data has many "modes," or kinds of example. How many is the generator making?
+    solution: |
+      The generator found one kind of output that fools the discriminator and stopped making anything else. Losing the variety of the real data this way is mode collapse, a classic GAN failure.
+
+      **Answer: (D) Mode collapse**
+  - slug: c4-diffusion
+    difficulty: medium
+    question: |
+      How does a diffusion model generate a new image?
+    choices: ['It copies the closest training image', 'It starts from pure noise and repeatedly removes a little noise using a trained network', 'It writes the image one pixel at a time from left to right', 'It pits two networks against each other']
+    answer: B
+    mistakes:
+      A: 'Diffusion models make new images. They do not look up training images.'
+      C: 'That describes an autoregressive model.'
+      D: 'That describes a GAN.'
+    hint: |
+      The model was trained to undo something. What does generation start from?
+    solution: |
+      During training, images are gradually turned into noise, and a network learns to reverse one step at a time. To generate, the model starts from pure random noise and runs those denoising steps until an image appears.
+
+      **Answer: (B) It starts from pure noise and repeatedly removes a little noise using a trained network**
+  - slug: c5-reparameterization
+    difficulty: hard
+    question: |
+      Why does a VAE write its sample as $z = \mu + \sigma \epsilon$ instead of drawing $z$ directly?
+    choices: ['It makes sampling faster', 'It makes $z$ always positive', 'It removes the need for a decoder', 'The randomness moves into $\epsilon$, so gradients can flow back through $\mu$ and $\sigma$ to the encoder']
+    answer: D
+    mistakes:
+      A: 'Speed is not the reason. Both ways take about the same time.'
+      B: '$\epsilon$ can be negative, so $z$ can be too.'
+      C: 'The decoder is still needed to turn $z$ into an output.'
+    hint: |
+      You cannot take a derivative through a random draw. How does this formula get around that?
+    solution: |
+      Drawing $z$ directly is a random step with no derivative. Writing $z = \mu + \sigma \epsilon$ puts all the randomness in $\epsilon$, which does not depend on the network. Then $z$ changes smoothly with $\mu$ and $\sigma$, and backpropagation can train the encoder. This is the reparameterization trick.
+
+      **Answer: (D) The randomness moves into $\epsilon$, so gradients can flow back through $\mu$ and $\sigma$ to the encoder**
+  - slug: c6-flows
+    difficulty: hard
+    question: |
+      What lets a normalizing flow compute the exact probability of a data point?
+    choices: ['Every layer is invertible, so each data point traces back to exactly one noise point', 'It uses a discriminator', 'It ignores the latent space', 'It generates one token at a time']
+    answer: A
+    mistakes:
+      B: 'Discriminators belong to GANs, which cannot compute exact probabilities.'
+      C: 'Flows depend on a simple latent distribution that they transform.'
+      D: 'That describes autoregressive models.'
+    hint: |
+      To find how likely $x$ is, you need to know where in the noise space it came from.
+    solution: |
+      Because each layer can be undone, any data point can be mapped back to the noise point that made it. The probability of that noise point, adjusted for how much each layer stretched or squeezed space, gives the exact probability of the data point.
+
+      **Answer: (A) Every layer is invertible, so each data point traces back to exactly one noise point**
+math:
+  - slug: m1-reparam
+    difficulty: easy
+    question: |
+      A VAE's encoder outputs $\mu = 2$ and $\sigma = 0.5$, and the random draw is $\epsilon = -1$. What is $z = \mu + \sigma \epsilon$?
+    choices: [0.5, 1.5, 2, 2.5]
+    answer: B
+    verify: '2 + 0.5 * -1'
+    mistakes:
+      A: 'That multiplies $\mu$ and $\sigma$ together. Multiply $\sigma$ by $\epsilon$, then add $\mu$.'
+      C: 'That is $\mu$ alone. The noise term moves it.'
+      D: 'Check the sign of $\epsilon$. It is $-1$, so subtract.'
+    hint: |
+      $\sigma \epsilon = 0.5 \times (-1)$.
+    solution: |
+      $$z = 2 + 0.5 \times (-1) = 1.5$$
+
+      **Answer: (B) 1.5**
+  - slug: m2-autoregressive
+    difficulty: easy
+    question: |
+      A language model gives $P(\text{the}) = 0.2$ for the first token and $P(\text{cat} \mid \text{the}) = 0.1$ for the second. What is the probability of the sequence "the cat"?
+    choices: [0.02, 0.1, 0.2, 0.3]
+    answer: A
+    verify: '+(0.2 * 0.1).toFixed(4)'
+    mistakes:
+      B: 'That is only the second token''s probability.'
+      C: 'That is only the first token''s probability.'
+      D: 'That adds the probabilities. A sequence multiplies them.'
+    hint: |
+      Both tokens have to happen, one after the other.
+    solution: |
+      $$0.2 \times 0.1 = 0.02$$
+
+      **Answer: (A) 0.02**
+  - slug: m3-flow-density
+    difficulty: medium
+    question: |
+      A one-layer flow sets $x = 3z$. The density of $z$ at $z = 1$ is 0.3. What is the density of $x$ at $x = 3$?
+    choices: [0.1, 0.3, 0.9, 1]
+    answer: A
+    verify: '+(0.3 / 3).toFixed(4)'
+    mistakes:
+      B: 'Stretching space by 3 spreads the probability thinner, so the density changes.'
+      C: 'Stretching spreads probability out, so divide by 3 instead of multiplying.'
+      D: 'A density is not automatically 1. Divide 0.3 by the stretch factor.'
+    hint: |
+      The same probability is spread over 3 times as much space.
+    solution: |
+      Stretching by a factor of 3 spreads the same probability over 3 times the width, so the density is divided by 3:
+
+      $$0.3 \div 3 = 0.1$$
+
+      **Answer: (A) 0.1**
+  - slug: m4-forward-diffusion
+    difficulty: medium
+    question: |
+      In a diffusion model, $x_t = \sqrt{\bar\alpha_t} \, x_0 + \sqrt{1 - \bar\alpha_t} \, \epsilon$. With $\bar\alpha_t = 0.64$, $x_0 = 5$, and $\epsilon = 2$, what is $x_t$?
+    choices: [4, 4.4, 5.2, 7]
+    answer: C
+    verify: '+(Math.sqrt(0.64) * 5 + Math.sqrt(1 - 0.64) * 2).toFixed(4)'
+    mistakes:
+      A: 'That is only the signal part. Add the noise part, $0.6 \times 2$.'
+      B: 'You may have used $\bar\alpha_t$ itself, $0.64 \times 5 + \ldots$. Take square roots first.'
+      D: 'That adds $x_0$ and $\epsilon$ without the scaling factors.'
+    hint: |
+      $\sqrt{0.64} = 0.8$ and $\sqrt{0.36} = 0.6$.
+    solution: |
+      $$0.8 \times 5 + 0.6 \times 2 = 4 + 1.2 = 5.2$$
+
+      **Answer: (C) 5.2**
+  - slug: m5-gan-balance
+    difficulty: hard
+    question: |
+      At a GAN's ideal balance, the discriminator outputs 0.5 for every input. Its loss on one real and one fake example, with base-2 logs, is $-\log_2 D(\text{real}) - \log_2 (1 - D(\text{fake}))$. What is it?
+    choices: [0, 1, 2, 4]
+    answer: C
+    verify: '-Math.log2(0.5) - Math.log2(1 - 0.5)'
+    mistakes:
+      A: 'A loss of 0 would mean a perfect discriminator. At balance, it can only guess.'
+      B: 'That is one of the two terms. Add both.'
+      D: 'Each term is $-\log_2 0.5 = 1$, not 2.'
+    hint: |
+      $\log_2 0.5 = -1$.
+    solution: |
+      Both terms are $-\log_2 0.5 = 1$, so the loss is $1 + 1 = 2$. The discriminator is no better than a coin flip, which is exactly what the generator wants.
+
+      **Answer: (C) 2**
+  - slug: m6-signal-left
+    difficulty: hard
+    question: |
+      Each forward diffusion step multiplies $\bar\alpha$ by 0.9, starting from $\bar\alpha_0 = 1$. What is $\bar\alpha$ after 3 steps?
+    choices: [0.271, 0.729, 0.81, 0.9]
+    answer: B
+    verify: '+(0.9 ** 3).toFixed(4)'
+    mistakes:
+      A: 'That is $1 - 0.729$, the share that has become noise.'
+      C: 'That is after 2 steps. Multiply by 0.9 once more.'
+      D: 'That is after 1 step.'
+    hint: |
+      Multiply 0.9 by itself 3 times.
+    solution: |
+      $$0.9 \times 0.9 \times 0.9 = 0.729$$
+
+      After many more steps, $\bar\alpha$ gets close to 0, and the image is nearly pure noise.
+
+      **Answer: (B) 0.729**

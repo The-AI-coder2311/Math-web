@@ -1,0 +1,212 @@
+concepts:
+  - slug: c1-what-backprop-does
+    difficulty: easy
+    question: |
+      What does backpropagation compute?
+    choices: ['The network''s prediction for a new input', 'The gradient of the loss with respect to every weight', 'The best learning rate', 'The number of layers to use']
+    answer: B
+    mistakes:
+      A: 'That is the forward pass. Backpropagation comes after it.'
+      C: 'The learning rate is a hyperparameter you choose. Backpropagation only finds gradients.'
+      D: 'The number of layers is a design choice.'
+    hint: |
+      Gradient descent needs one particular thing for every weight. Backpropagation supplies it.
+    solution: |
+      Backpropagation uses the chain rule, working backward from the loss, to find how the loss changes with each weight. Gradient descent then uses those gradients to update the weights.
+
+      **Answer: (B) The gradient of the loss with respect to every weight**
+  - slug: c2-order
+    difficulty: easy
+    question: |
+      In one training step, in what order do these happen?
+    choices: ['Forward pass, compute loss, backward pass, update weights', 'Backward pass, forward pass, update weights, compute loss', 'Update weights, forward pass, compute loss, backward pass', 'Compute loss, update weights, forward pass, backward pass']
+    answer: A
+    mistakes:
+      B: 'The backward pass needs the loss, which comes from the forward pass.'
+      C: 'You cannot update the weights before you have their gradients.'
+      D: 'The loss is computed from the forward pass''s predictions.'
+    hint: |
+      Each step needs the result of the step before it.
+    solution: |
+      The forward pass makes predictions, which give the loss. The backward pass turns the loss into gradients, and the optimizer uses those gradients to update the weights.
+
+      **Answer: (A) Forward pass, compute loss, backward pass, update weights**
+  - slug: c3-vanishing
+    difficulty: medium
+    question: |
+      A 30-layer network uses sigmoid activations. Its first few layers barely change during training. What is the most likely reason?
+    choices: ['The learning rate is too large', 'The network has too few parameters', 'The test set is too small', 'Vanishing gradients: many small factors multiply to almost zero by the time they reach the early layers']
+    answer: D
+    mistakes:
+      A: 'A large learning rate makes weights jump around, not stay still.'
+      B: 'A 30-layer network has plenty of parameters. The problem is the gradient reaching them.'
+      C: 'The test set does not affect training.'
+    hint: |
+      The sigmoid's slope is never more than 0.25. What happens when you multiply 30 such numbers?
+    solution: |
+      Each sigmoid layer multiplies the backward gradient by at most 0.25, so 30 layers make it unimaginably small by the time it reaches the first layers. Those layers get almost no update. ReLU, careful initialization, and residual connections all help.
+
+      **Answer: (D) Vanishing gradients: many small factors multiply to almost zero by the time they reach the early layers**
+  - slug: c4-zero-init
+    difficulty: medium
+    question: |
+      Why shouldn't every weight in a layer start at the same value?
+    choices: ['It uses too much memory', 'The loss cannot be computed', 'Every neuron in the layer would get the same gradient and stay identical, so the layer acts like one neuron', 'The network would train too fast']
+    answer: C
+    mistakes:
+      A: 'Memory use depends on the number of weights, not their starting values.'
+      B: 'The loss can still be computed. Learning is what breaks.'
+      D: 'The problem is the opposite: the layer cannot learn different features.'
+    hint: |
+      If two neurons start the same and see the same inputs, what are their outputs and gradients?
+    solution: |
+      Identical neurons compute identical outputs and receive identical gradients, so every update keeps them identical. The layer never learns different features. Random starting values break this symmetry.
+
+      **Answer: (C) Every neuron in the layer would get the same gradient and stay identical, so the layer acts like one neuron**
+  - slug: c5-residual
+    difficulty: hard
+    question: |
+      Why do residual connections, $y = x + f(x)$, make very deep networks easier to train?
+    choices: ['The added $x$ gives the gradient a direct path backward, since the derivative includes a $+1$', 'They remove the need for activation functions', 'They make the network shallower', 'They stop the network from overfitting']
+    answer: A
+    mistakes:
+      B: 'The block $f$ still uses activations.'
+      C: 'The network keeps all its layers. The skip adds a shortcut beside them.'
+      D: 'Residual connections help training. They are not mainly a regularizer.'
+    hint: |
+      Take the derivative of $x + f(x)$.
+    solution: |
+      The derivative of $x + f(x)$ is $1 + f'(x)$. Even when $f'(x)$ is tiny, the gradient keeps a factor near 1 at each block instead of shrinking. That lets signals reach the early layers of networks with a hundred or more layers.
+
+      **Answer: (A) The added $x$ gives the gradient a direct path backward, since the derivative includes a $+1$**
+  - slug: c6-batch-vs-layer-norm
+    difficulty: hard
+    question: |
+      What is the difference between batch normalization and layer normalization?
+    choices: ['Batch norm is used only at test time', 'Layer norm removes layers from the network', 'There is no difference', 'Batch norm normalizes each feature across the examples in a batch, while layer norm normalizes across the features of each single example']
+    answer: D
+    mistakes:
+      A: 'Batch norm is used during training, with saved averages used at test time.'
+      B: 'Layer norm rescales values. It does not remove anything.'
+      C: 'They normalize along different directions, which matters for small batches and for sequences.'
+    hint: |
+      Picture a table with one row per example and one column per feature. Which way does each one average?
+    solution: |
+      Batch norm averages down each column, over the examples in the batch. Layer norm averages across each row, over the features of one example. Layer norm does not depend on the batch, which is why transformers use it.
+
+      **Answer: (D) Batch norm normalizes each feature across the examples in a batch, while layer norm normalizes across the features of each single example**
+math:
+  - slug: m1-chain-on-graph
+    difficulty: easy
+    question: |
+      A model computes $y = 3w$ and then the loss $L = y^2$. What is $\frac{dL}{dw}$ when $w = 2$?
+    choices: [6, 12, 18, 36]
+    answer: D
+    verify: 'Math.round(((3 * 2.0001) ** 2 - (3 * 1.9999) ** 2) / 0.0002)'
+    mistakes:
+      A: 'That is $y$ itself, not a derivative.'
+      B: 'That is $\frac{dL}{dy} = 2y$. Multiply by $\frac{dy}{dw} = 3$.'
+      C: 'That is $3 \times 6$. The derivative of $y^2$ is $2y$, which is 12.'
+    hint: |
+      Forward: $y = 6$. Backward: find $\frac{dL}{dy}$ and $\frac{dy}{dw}$, then multiply.
+    solution: |
+      Forward: $y = 3 \times 2 = 6$. Backward: $\frac{dL}{dy} = 2y = 12$, and $\frac{dy}{dw} = 3$. By the chain rule,
+
+      $$\frac{dL}{dw} = 12 \times 3 = 36$$
+
+      **Answer: (D) 36**
+  - slug: m2-vanish
+    difficulty: easy
+    question: |
+      Going backward through 10 layers, each layer multiplies the gradient by 0.5. What fraction of the original gradient reaches the first layer?
+    choices: ['$\frac{1}{1024}$', '$\frac{1}{20}$', '$\frac{1}{2}$', '$5$']
+    answer: A
+    verify: 'fraction(1, 2 ** 10)'
+    mistakes:
+      B: 'That is $\frac{1}{2 \times 10}$. The factors multiply, so it is $\frac{1}{2^{10}}$.'
+      C: 'That is one layer. All 10 factors multiply together.'
+      D: 'That adds the factors, $10 \times 0.5$. Backpropagation multiplies them.'
+    hint: |
+      Multiply 0.5 by itself 10 times.
+    solution: |
+      $$0.5^{10} = \frac{1}{2^{10}} = \frac{1}{1024}$$
+
+      Less than a thousandth of the gradient survives. That is a vanishing gradient.
+
+      **Answer: (A) $\frac{1}{1024}$**
+  - slug: m3-sigmoid-bound
+    difficulty: medium
+    question: |
+      The sigmoid's slope is at most $\frac{1}{4}$. Going backward through 4 sigmoid layers, at most what fraction of the gradient can survive from the activations alone?
+    choices: ['$\frac{1}{1024}$', '$\frac{1}{256}$', '$\frac{1}{16}$', '$\frac{1}{4}$']
+    answer: B
+    verify: 'fraction(1, 4 ** 4)'
+    mistakes:
+      A: 'That is 5 layers. Count 4 factors.'
+      C: 'That is 2 layers. Count 4 factors.'
+      D: 'That is one layer. All 4 factors multiply.'
+    hint: |
+      Multiply $\frac{1}{4}$ by itself 4 times.
+    solution: |
+      $$\left(\frac{1}{4}\right)^4 = \frac{1}{256}$$
+
+      **Answer: (B) $\frac{1}{256}$**
+  - slug: m4-he-init
+    difficulty: medium
+    question: |
+      He initialization draws each weight with variance $\frac{2}{n}$, where $n$ is the number of inputs to the neuron. For a neuron with 50 inputs, what is the standard deviation of its starting weights?
+    choices: [0.02, 0.04, 0.2, 2]
+    answer: C
+    verify: '+Math.sqrt(2 / 50).toFixed(4)'
+    mistakes:
+      A: 'That is $\frac{1}{50}$. Use $\frac{2}{50}$, then take the square root.'
+      B: 'That is the variance. Standard deviation is its square root.'
+      D: 'The variance is $\frac{2}{50}$, not $2$. Divide by the number of inputs.'
+    hint: |
+      Find the variance, then take its square root.
+    solution: |
+      The variance is $\frac{2}{50} = 0.04$, and the standard deviation is $\sqrt{0.04} = 0.2$.
+
+      **Answer: (C) 0.2**
+  - slug: m5-neuron-gradient
+    difficulty: hard
+    question: |
+      A neuron computes $y = wx + b$ with $w = 2$, $b = 1$, and input $x = 3$. The loss is $L = (y - 5)^2$. What is $\frac{dL}{dw}$?
+    choices: [3, 4, 12, 24]
+    answer: C
+    verify: 'Math.round((((2.0001 * 3 + 1) - 5) ** 2 - ((1.9999 * 3 + 1) - 5) ** 2) / 0.0002)'
+    mistakes:
+      A: 'That is $\frac{dy}{dw} = x$ alone. Multiply by $\frac{dL}{dy}$.'
+      B: 'That is $\frac{dL}{dy}$, which is also $\frac{dL}{db}$. For $w$, multiply by $x = 3$.'
+      D: 'The derivative of $(y - 5)^2$ is $2(y - 5) = 4$, not 8.'
+    hint: |
+      Forward: $y = 7$. Then find $\frac{dL}{dy} = 2(y - 5)$.
+    hint2: |
+      $\frac{dy}{dw} = x = 3$. Multiply.
+    solution: |
+      Forward: $y = 2 \times 3 + 1 = 7$. Backward: $\frac{dL}{dy} = 2(7 - 5) = 4$, and $\frac{dy}{dw} = x = 3$. So
+
+      $$\frac{dL}{dw} = 4 \times 3 = 12$$
+
+      **Answer: (C) 12**
+  - slug: m6-residual-gradient
+    difficulty: hard
+    question: |
+      Three residual blocks each compute $y = x + f(x)$, and in each one $f'(x) = 0.1$. Going backward through all three, by what factor is the gradient multiplied?
+    choices: [0.001, 0.3, 1.1, 1.331]
+    answer: D
+    verify: '+((1 + 0.1) ** 3).toFixed(4)'
+    mistakes:
+      A: 'That is what happens without the skip connections, $0.1^3$.'
+      B: 'The factors multiply, and each one is $1 + 0.1$, not $0.1$.'
+      C: 'That is one block. Multiply three of them.'
+    hint: |
+      Each block's derivative is $1 + f'(x)$.
+    solution: |
+      Each block multiplies the gradient by $1 + 0.1 = 1.1$, so three blocks give
+
+      $$1.1^3 = 1.331$$
+
+      Without the skips, it would be $0.1^3 = 0.001$. The residual connections keep the gradient alive.
+
+      **Answer: (D) 1.331**

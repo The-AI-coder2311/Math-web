@@ -1,0 +1,82 @@
+# The Machine Learning path at /ml/, in learning order. A topic becomes clickable as soon as
+# src/content/en/ml/<slug>/lesson.md exists. Each topic also needs questions.yaml, with a
+# `concepts` set and a `math` set. The levels follow the "Machine Learning Terms & Concepts"
+# glossary, and `reading` points to chapters of Understanding Deep Learning (udlbook.com).
+levels:
+  - title: "Level 1: Math Foundations"
+    blurb: The three kinds of math that machine learning uses all the time. No machine learning yet, only the tools.
+    units:
+      - slug: vectors-matrices
+        title: Vectors, Matrices & Dot Products
+        blurb: Lists and grids of numbers, and the one multiplication that sits inside every neuron.
+        reading: Understanding Deep Learning, Appendix B.3 (vectors, matrices, and tensors).
+      - slug: derivatives-gradients
+        title: Derivatives, Gradients & the Chain Rule
+        blurb: How fast a function changes, which way is downhill, and how to handle functions inside functions.
+        reading: Understanding Deep Learning, Appendix B and section 7.2 (computing derivatives).
+      - slug: probability-for-ml
+        title: Probability, Bayes & Logarithms
+        blurb: Averages, spread, conditional probability, Bayes' rule, and why logs turn products into sums.
+        reading: Understanding Deep Learning, Appendix C (probability).
+  - title: "Level 2: Core Machine Learning"
+    blurb: The vocabulary of the field, the classic algorithms, and how a model is trained and judged.
+    units:
+      - slug: what-is-ml
+        title: How Machines Learn from Data
+        blurb: Models, parameters, features and labels, and the main kinds of learning.
+        reading: Understanding Deep Learning, chapters 1 and 2 (introduction and supervised learning).
+      - slug: data-preparation
+        title: Preparing Data
+        blurb: Scaling, encoding, splitting, and the data leaks that make a model look better than it is.
+      - slug: classical-algorithms
+        title: Classical Algorithms
+        blurb: Nearest neighbors, decision trees, k-means, Naive Bayes, and PCA.
+      - slug: loss-functions
+        title: Loss Functions
+        blurb: One number for how wrong a model is, from squared error to cross-entropy.
+        reading: Understanding Deep Learning, chapter 5 (loss functions).
+      - slug: gradient-descent
+        title: Training with Gradient Descent
+        blurb: Learning rates, batches, epochs, momentum, and Adam.
+        reading: Understanding Deep Learning, chapter 6 (fitting models).
+      - slug: generalization
+        title: Overfitting & Regularization
+        blurb: Why a model that aces its training data can fail on new data, and how to stop it.
+        reading: Understanding Deep Learning, chapters 8 and 9 (measuring performance and regularization).
+      - slug: evaluation-metrics
+        title: Measuring Performance
+        blurb: Confusion matrices, precision, recall, F1, and why accuracy can fool you.
+  - title: "Level 3: Deep Learning"
+    blurb: Neural networks, how they learn, and the architectures behind image and language models.
+    units:
+      - slug: neural-networks
+        title: Neural Networks
+        blurb: Neurons, layers, activation functions, and counting parameters.
+        reading: Understanding Deep Learning, chapters 3 and 4 (shallow and deep neural networks).
+      - slug: backpropagation
+        title: Backpropagation & Training Deep Networks
+        blurb: The chain rule on a whole network, vanishing gradients, initialization, and residual connections.
+        reading: Understanding Deep Learning, chapters 7 and 11 (gradients and initialization, residual networks).
+      - slug: convolutional-networks
+        title: Convolutional Networks
+        blurb: Filters that slide over images, output sizes, pooling, and why weight sharing saves parameters.
+        reading: Understanding Deep Learning, chapter 10 (convolutional networks).
+      - slug: transformers
+        title: Attention & Transformers
+        blurb: Tokens, embeddings, queries, keys and values, and the layers inside modern language models.
+        reading: Understanding Deep Learning, chapter 12 (transformers).
+  - title: "Level 4: Advanced Topics"
+    blurb: Models that create new data, agents that learn from rewards, and large language models in the real world.
+    units:
+      - slug: generative-models
+        title: Generative Models
+        blurb: GANs, variational autoencoders, normalizing flows, and diffusion models.
+        reading: Understanding Deep Learning, chapters 14 to 18 (unsupervised learning through diffusion models).
+      - slug: reinforcement-learning
+        title: Reinforcement Learning
+        blurb: States, actions, rewards, discounted returns, and Q-learning.
+        reading: Understanding Deep Learning, chapter 19 (reinforcement learning).
+      - slug: llms-in-practice
+        title: Large Language Models in Practice
+        blurb: Pretraining, fine-tuning, LoRA, sampling, quantization, and deploying models responsibly.
+        reading: Understanding Deep Learning, chapters 12 and 21 (transformers, and deep learning and ethics).

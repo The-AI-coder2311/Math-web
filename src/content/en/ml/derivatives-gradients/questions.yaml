@@ -1,0 +1,220 @@
+concepts:
+  - slug: c1-what-derivative-means
+    difficulty: easy
+    question: |
+      A function has derivative 5 at the point $x = 2$. What does that tell you?
+    choices: ['Near $x = 2$, the output rises about 5 times as fast as the input', 'The output at $x = 2$ is 5', 'The function crosses zero 5 times', 'The input must be increased by 5']
+    answer: A
+    mistakes:
+      B: 'The derivative is a slope, not the value of the function.'
+      C: 'A derivative describes one point, not how many times the graph crosses zero.'
+      D: 'The derivative measures change. It does not tell you how far to move.'
+    hint: |
+      A derivative is a slope. What does a slope of 5 mean on a graph?
+    solution: |
+      A derivative of 5 is a slope of 5. If you nudge the input up a little from 2, the output goes up about 5 times that nudge. It says nothing about the value of the output itself.
+
+      **Answer: (A) Near $x = 2$, the output rises about 5 times as fast as the input**
+  - slug: c2-gradient-direction
+    difficulty: easy
+    question: |
+      You want to make a model's error smaller. Which way should you move the weights?
+    choices: ['In the same direction as the gradient', 'At a right angle to the gradient', 'In the opposite direction to the gradient', 'Wherever the weights are largest']
+    answer: C
+    mistakes:
+      A: 'The gradient points toward higher error, so following it makes things worse.'
+      B: 'Moving at a right angle keeps the error about the same for a small step.'
+      D: 'The size of a weight does not tell you which way the error goes down.'
+    hint: |
+      The gradient points in the direction of steepest increase.
+    solution: |
+      The gradient points uphill, toward higher error. The steepest way down is the opposite direction, so training subtracts the gradient. That is the whole idea of gradient descent.
+
+      **Answer: (C) In the opposite direction to the gradient**
+  - slug: c3-partial-derivative
+    difficulty: medium
+    question: |
+      What does a partial derivative with respect to one weight measure?
+    choices: ['The average of all the weights', 'How the output changes when that one weight changes and the rest stay fixed', 'The sum of all the derivatives in the model', 'How many times the weight was updated']
+    answer: B
+    mistakes:
+      A: 'Derivatives measure change, not averages.'
+      C: 'Adding all the derivatives mixes every weight together. A partial derivative isolates one.'
+      D: 'That is a count of training steps, not a derivative.'
+    hint: |
+      The word "partial" means you only look at part of the inputs.
+    solution: |
+      A partial derivative asks: if I nudge this one weight and freeze every other one, how fast does the output change? The gradient is the list of these partial derivatives, one per weight.
+
+      **Answer: (B) How the output changes when that one weight changes and the rest stay fixed**
+  - slug: c4-zero-gradient
+    difficulty: medium
+    question: |
+      During training, the gradient of the error becomes exactly zero. What can you say for sure?
+    choices: ['The model has found the lowest possible error', 'The learning rate is too large', 'The model has overfit', 'The weights are at a flat point, which could be a minimum, a maximum, or a saddle point']
+    answer: D
+    mistakes:
+      A: 'A flat point might be a local minimum or a saddle point, not the global minimum.'
+      B: 'A large learning rate causes jumps, but it does not make the gradient zero.'
+      C: 'A zero gradient on the training error says nothing about new data.'
+    hint: |
+      Picture a landscape. Name all the places where the ground is perfectly flat.
+    solution: |
+      A zero gradient means the error surface is flat at that point. Valleys (minimums), hilltops (maximums), and saddle points, which go up one way and down another, are all flat. So you only know you are at a flat point, not that it is the best one.
+
+      **Answer: (D) The weights are at a flat point, which could be a minimum, a maximum, or a saddle point**
+  - slug: c5-chain-rule-networks
+    difficulty: hard
+    question: |
+      Why is the chain rule the key to training deep neural networks?
+    choices: ['A network is functions inside functions, and the chain rule finds derivatives through all of them', 'It lets networks skip computing derivatives', 'It guarantees the error reaches zero', 'It decides how many layers a network needs']
+    answer: A
+    mistakes:
+      B: 'Training still needs derivatives. The chain rule is how they are computed.'
+      C: 'No rule guarantees zero error. The chain rule only computes slopes.'
+      D: 'The number of layers is a design choice, not something the chain rule sets.'
+    hint: |
+      Each layer takes the previous layer's output as its input. What does that make the whole network?
+    solution: |
+      Each layer feeds the next, so the whole network is one long composition of functions, ending in the error. The chain rule multiplies the derivatives of each piece together, so it can find how the error depends on a weight deep inside the network. Backpropagation is this idea done efficiently.
+
+      **Answer: (A) A network is functions inside functions, and the chain rule finds derivatives through all of them**
+  - slug: c6-sign-of-partial
+    difficulty: hard
+    question: |
+      The partial derivative of the error with respect to weight $w_3$ is $+8$, a large positive number. What should one step of gradient descent do to $w_3$?
+    choices: ['Increase it a lot', 'Decrease it', 'Leave it alone', 'Set it to zero']
+    answer: B
+    mistakes:
+      A: 'A positive derivative means increasing $w_3$ makes the error larger.'
+      C: 'A large derivative means $w_3$ has a strong effect on the error, so it gets a big update.'
+      D: 'Gradient descent moves weights by small steps, not straight to zero.'
+    hint: |
+      A positive derivative means the error goes up when the weight goes up.
+    solution: |
+      The update is $w_3 \leftarrow w_3 - \eta \times 8$, where $\eta$ is the learning rate. Since $8$ is positive, $w_3$ goes down. A larger derivative means a bigger move.
+
+      **Answer: (B) Decrease it**
+math:
+  - slug: m1-slope-of-square
+    difficulty: easy
+    question: |
+      What is the derivative of $f(x) = x^2$ at $x = 3$?
+    choices: [3, 6, 9, 18]
+    answer: B
+    verify: 'Math.round((3.0001 ** 2 - 2.9999 ** 2) / 0.0002)'
+    mistakes:
+      A: 'That is the input. The derivative of $x^2$ is $2x$.'
+      C: 'That is the value $f(3)$, not the slope there.'
+      D: 'The power rule gives $2x$, not $2x^2$.'
+    hint: |
+      Use the power rule: the derivative of $x^n$ is $n x^{n-1}$.
+    solution: |
+      The derivative of $x^2$ is $2x$. At $x = 3$, that is $2 \times 3 = 6$.
+
+      **Answer: (B) 6**
+  - slug: m2-cubic-slope
+    difficulty: easy
+    question: |
+      What is the derivative of $f(x) = 4x^3$ at $x = 2$?
+    choices: [24, 32, 48, 96]
+    answer: C
+    verify: 'Math.round((4 * 2.0001 ** 3 - 4 * 1.9999 ** 3) / 0.0002)'
+    mistakes:
+      A: 'The derivative is $12x^2$. At $x = 2$, square the 2 before multiplying.'
+      B: 'That is the value $f(2)$, not the slope.'
+      D: 'The power drops by one: $x^3$ becomes $3x^2$, not $3x^3$.'
+    hint: |
+      Bring the power down and lower it by one, then multiply by the 4.
+    solution: |
+      The derivative of $4x^3$ is $4 \times 3x^2 = 12x^2$. At $x = 2$:
+
+      $$12 \times 2^2 = 48$$
+
+      **Answer: (C) 48**
+  - slug: m3-partial-x
+    difficulty: medium
+    question: |
+      Let $f(x, y) = x^2 y + 3y$. What is the partial derivative of $f$ with respect to $x$ at the point $(2, 5)$?
+    choices: [4, 7, 10, 20]
+    answer: D
+    verify: 'Math.round(((2.0001 ** 2 * 5 + 15) - (1.9999 ** 2 * 5 + 15)) / 0.0002)'
+    mistakes:
+      A: 'You dropped the $y$. Treat $y$ as a fixed number, so the derivative of $x^2 y$ is $2xy$.'
+      B: 'That is the partial derivative with respect to $y$, which is $x^2 + 3$.'
+      C: 'The power rule gives $2x$, so the derivative is $2xy$, not $xy$.'
+    hint: |
+      Treat $y$ as a constant number. What is the derivative of $x^2$ times a constant? And of $3y$?
+    hint2: |
+      $3y$ has no $x$ in it, so its partial derivative with respect to $x$ is 0.
+    solution: |
+      Holding $y$ fixed, $x^2 y$ has partial derivative $2xy$, and $3y$ has partial derivative 0. At $(2, 5)$:
+
+      $$2 \times 2 \times 5 = 20$$
+
+      **Answer: (D) 20**
+  - slug: m4-chain-rule
+    difficulty: medium
+    question: |
+      What is the derivative of $f(x) = (3x + 1)^2$ at $x = 1$?
+    choices: [6, 8, 12, 24]
+    answer: D
+    verify: 'Math.round(((3 * 1.0001 + 1) ** 2 - (3 * 0.9999 + 1) ** 2) / 0.0002)'
+    mistakes:
+      A: 'You multiplied the 2 and the 3, but left out the inner value $3x + 1 = 4$.'
+      B: 'That is $2(3x + 1)$. The chain rule also multiplies by the inner derivative, 3.'
+      C: 'That is $3(3x + 1)$. The outer derivative brings down a 2 as well.'
+    hint: |
+      The inner function is $u = 3x + 1$ and the outer is $u^2$.
+    hint2: |
+      Outer derivative: $2u$. Inner derivative: 3. Multiply them, then put in $x = 1$.
+    solution: |
+      By the chain rule, $f'(x) = 2(3x + 1) \times 3$. At $x = 1$, the inner value is 4:
+
+      $$2 \times 4 \times 3 = 24$$
+
+      **Answer: (D) 24**
+  - slug: m5-gradient-step
+    difficulty: hard
+    question: |
+      Let $f(x, y) = x^2 + 3y^2$. You start at $(1, 2)$ and take one gradient descent step with learning rate 0.1. Where do you land?
+    choices: ['(-1, -10)', '(0.8, 0.8)', '(0.9, 1.4)', '(1.2, 3.2)']
+    answer: B
+    verify: "(() => { const g = [2 * 1, 6 * 2]; const p = [1 - 0.1 * g[0], 2 - 0.1 * g[1]].map((v) => +v.toFixed(3)); return '(' + p.join(', ') + ')'; })()"
+    mistakes:
+      A: 'You subtracted the whole gradient. Multiply it by the learning rate 0.1 first.'
+      C: 'Check the gradient. The partial derivatives are $2x$ and $6y$, so at $(1, 2)$ the gradient is $(2, 12)$.'
+      D: 'You added the gradient, which steps uphill. Gradient descent subtracts it.'
+    hint: |
+      First find the gradient $(2x, 6y)$ at $(1, 2)$.
+    hint2: |
+      The new point is the old point minus 0.1 times the gradient.
+    solution: |
+      The gradient is $(2x, 6y)$, which is $(2, 12)$ at $(1, 2)$. One step moves against it:
+
+      $$x: 1 - 0.1 \times 2 = 0.8$$
+
+      $$y: 2 - 0.1 \times 12 = 0.8$$
+
+      **Answer: (B) (0.8, 0.8)**
+  - slug: m6-sigmoid-chain
+    difficulty: hard
+    question: |
+      The sigmoid function $\sigma(z) = \frac{1}{1 + e^{-z}}$ has derivative $\sigma(z)(1 - \sigma(z))$. Let $f(x) = \sigma(2x)$. What is $f'(0)$?
+    choices: [0.125, 0.25, 0.5, 1]
+    answer: C
+    verify: "(() => { const s = (z) => 1 / (1 + Math.exp(-z)); return +((s(0.0002) - s(-0.0002)) / 0.0002).toFixed(3); })()"
+    mistakes:
+      A: 'The inner derivative is 2, so multiply by 2 instead of dividing.'
+      B: 'That is the sigmoid slope at 0. The chain rule also multiplies by the inner derivative, 2.'
+      D: 'At $z = 0$, $\sigma(0) = 0.5$, so the slope is $0.5 \times 0.5$, not 0.5.'
+    hint: |
+      The inner function is $2x$, which is 0 when $x = 0$. What is $\sigma(0)$?
+    hint2: |
+      $\sigma(0) = 0.5$, so the sigmoid's slope there is $0.5 \times 0.5$. Then multiply by the inner derivative.
+    solution: |
+      At $x = 0$, the inner value is $2 \times 0 = 0$, and $\sigma(0) = 0.5$. The outer slope is $0.5 \times (1 - 0.5) = 0.25$. The inner derivative is 2. By the chain rule:
+
+      $$0.25 \times 2 = 0.5$$
+
+      **Answer: (C) 0.5**

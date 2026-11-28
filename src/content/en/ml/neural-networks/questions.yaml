@@ -1,0 +1,212 @@
+concepts:
+  - slug: c1-neuron
+    difficulty: easy
+    question: |
+      What does a single neuron compute?
+    choices: ['A weighted sum of its inputs plus a bias, passed through an activation function', 'The average of its inputs', 'The largest of its inputs', 'A random number']
+    answer: A
+    mistakes:
+      B: 'A neuron weights each input differently, which is what the learned weights are for.'
+      C: 'That describes max pooling, used in image networks.'
+      D: 'A neuron is a fixed calculation once its weights are set.'
+    hint: |
+      A neuron is a tiny version of a linear model, with one extra step.
+    solution: |
+      A neuron multiplies each input by a weight, adds them up, adds a bias, then applies an activation function such as ReLU. The weights and bias are what training adjusts.
+
+      **Answer: (A) A weighted sum of its inputs plus a bias, passed through an activation function**
+  - slug: c2-relu
+    difficulty: easy
+    question: |
+      What does the ReLU activation do?
+    choices: ['Squashes values into the range 0 to 1', 'Turns scores into probabilities that add to 1', 'Turns negative values into 0 and leaves positive values unchanged', 'Squares every value']
+    answer: C
+    mistakes:
+      A: 'That is the sigmoid.'
+      B: 'That is softmax.'
+      D: 'ReLU never squares. Positive values pass through as they are.'
+    hint: |
+      ReLU is $\max(0, z)$.
+    solution: |
+      ReLU, short for rectified linear unit, outputs $\max(0, z)$. So $-3$ becomes 0 and $2.5$ stays $2.5$. It is cheap to compute and is the default for hidden layers.
+
+      **Answer: (C) Turns negative values into 0 and leaves positive values unchanged**
+  - slug: c3-why-activation
+    difficulty: medium
+    question: |
+      What happens if you build a 10-layer network with no activation functions at all?
+    choices: ['It learns faster than one with activations', 'It cannot be trained', 'It becomes a convolutional network', 'It is the same as a single linear layer, so it can only learn straight-line relationships']
+    answer: D
+    mistakes:
+      A: 'Speed is not the issue. The network loses almost all of its power.'
+      B: 'It can be trained, but it can only ever learn a linear function.'
+      C: 'Convolution is about weight sharing over space, which is a different idea.'
+    hint: |
+      Multiply out $2(3x + 1) + 4$. What kind of function is it?
+    solution: |
+      A linear function of a linear function is still linear, so 10 linear layers in a row collapse into one linear layer. The activation functions in between are what let a network bend and represent curves.
+
+      **Answer: (D) It is the same as a single linear layer, so it can only learn straight-line relationships**
+  - slug: c4-multilabel
+    difficulty: medium
+    question: |
+      A chest X-ray model must report every finding present, and one X-ray can show several findings at once. What should the output layer use?
+    choices: ['One softmax across all the findings', 'A separate sigmoid for each finding', 'ReLU on each output', 'No activation, with the raw scores as probabilities']
+    answer: B
+    mistakes:
+      A: 'Softmax makes the probabilities add to 1, so the findings compete, as if only one could be present.'
+      C: 'ReLU outputs can be any size above 0, so they are not probabilities.'
+      D: 'Raw scores can be negative or larger than 1, so they are not probabilities.'
+    hint: |
+      Should the findings compete with each other, or be judged one at a time?
+    solution: |
+      This is a multi-label problem: each finding is its own yes-or-no question. A separate sigmoid for each finding gives an independent probability between 0 and 1. Softmax is for multi-class problems, where exactly one answer is right.
+
+      **Answer: (B) A separate sigmoid for each finding**
+  - slug: c5-universal-approximation
+    difficulty: hard
+    question: |
+      What does the universal approximation theorem guarantee?
+    choices: ['A wide enough network with one hidden layer can approximate any continuous function as closely as you like', 'Every network trains to zero error', 'Deep networks always generalize well', 'A network with 100 units can learn any function']
+    answer: A
+    mistakes:
+      B: 'The theorem says good weights exist, not that training will find them.'
+      C: 'The theorem says nothing about generalizing to new data.'
+      D: 'The theorem gives no fixed number. Some functions need enormous numbers of units.'
+    hint: |
+      The theorem is about what a network can represent, not about training.
+    solution: |
+      The theorem says that with enough hidden units, a one-hidden-layer network can get arbitrarily close to any continuous function. It does not say how many units you need, whether training will find the weights, or how well the result will do on new data.
+
+      **Answer: (A) A wide enough network with one hidden layer can approximate any continuous function as closely as you like**
+  - slug: c6-why-deep
+    difficulty: hard
+    question: |
+      If one wide hidden layer can approximate any function, why use deep networks?
+    choices: ['Deep networks need no training data', 'Shallow networks cannot use ReLU', 'For the same number of parameters, deep networks can create far more linear pieces, because each layer reuses the work of the last', 'Deep networks always have fewer parameters']
+    answer: C
+    mistakes:
+      A: 'Every network needs training data.'
+      B: 'Shallow networks use ReLU all the time.'
+      D: 'Deep networks can have any number of parameters. The point is what they do with them.'
+    hint: |
+      Think about folding a piece of paper several times and then cutting it once.
+    solution: |
+      Each layer can fold the output of the layer before, so a pattern made once gets reused many times. The number of linear pieces can grow very fast with depth, much faster than with width for the same number of parameters. Deep networks also tend to be easier to train well in practice.
+
+      **Answer: (C) For the same number of parameters, deep networks can create far more linear pieces, because each layer reuses the work of the last**
+math:
+  - slug: m1-relu-neuron
+    difficulty: easy
+    question: |
+      A ReLU neuron has weights $(2, -1)$ and bias $-1$. Its inputs are $(1, 3)$. What does it output?
+    choices: [-2, 0, 2, 4]
+    answer: B
+    verify: 'Math.max(0, 2 * 1 + -1 * 3 - 1)'
+    mistakes:
+      A: 'That is the weighted sum. ReLU then turns negatives into 0.'
+      C: 'Check the sign of the second term: $-1 \times 3 = -3$.'
+      D: 'Include the bias, $-1$, and the second input.'
+    hint: |
+      Find the weighted sum plus bias first, then apply $\max(0, z)$.
+    solution: |
+      $$z = 2 \times 1 + (-1) \times 3 + (-1) = -2$$
+
+      ReLU gives $\max(0, -2) = 0$.
+
+      **Answer: (B) 0**
+  - slug: m2-mlp-params
+    difficulty: easy
+    question: |
+      A network goes from 4 inputs to 8 hidden neurons to 3 outputs, with fully connected layers and biases. How many parameters does it have?
+    choices: [35, 56, 67, 96]
+    answer: C
+    verify: '(4 * 8 + 8) + (8 * 3 + 3)'
+    mistakes:
+      A: 'That adds the layer sizes. Each layer has inputs × neurons weights.'
+      B: 'That counts the weights but not the 11 biases.'
+      D: 'That multiplies all three sizes. Count each layer separately and add.'
+    hint: |
+      Each layer has inputs × neurons weights, plus one bias per neuron.
+    solution: |
+      First layer: $4 \times 8 + 8 = 40$. Second layer: $8 \times 3 + 3 = 27$. Total:
+
+      $$40 + 27 = 67$$
+
+      **Answer: (C) 67**
+  - slug: m3-forward-pass
+    difficulty: medium
+    question: |
+      A network has $h_1 = \max(0, x - 1)$, $h_2 = \max(0, -x + 1)$, and output $y = 3h_1 + 2h_2 + 1$. What is $y$ when $x = 2$?
+    choices: [2, 4, 6, 7]
+    answer: B
+    verify: '(() => { const x = 2; const h1 = Math.max(0, x - 1), h2 = Math.max(0, -x + 1); return 3 * h1 + 2 * h2 + 1; })()'
+    mistakes:
+      A: 'That lets $h_2$ be $-1$. ReLU turns negative values into 0.'
+      C: 'That makes $h_2$ equal to 1. ReLU turns $-1$ into 0, not into 1.'
+      D: 'That uses $x = 2$ in place of $h_1$. Work out $h_1 = \max(0, x - 1)$ first.'
+    hint: |
+      Work out $h_1$ and $h_2$ first. Remember ReLU turns negatives into 0.
+    solution: |
+      $h_1 = \max(0, 1) = 1$ and $h_2 = \max(0, -1) = 0$. So
+
+      $$y = 3 \times 1 + 2 \times 0 + 1 = 4$$
+
+      **Answer: (B) 4**
+  - slug: m4-linear-regions
+    difficulty: medium
+    question: |
+      A shallow network has 1 input, 5 ReLU hidden units, and 1 output. At most how many straight pieces can its output graph have?
+    choices: [6, 10, 25, 32]
+    answer: A
+    verify: '5 + 1'
+    mistakes:
+      B: 'Each unit adds one corner, not two.'
+      C: 'That is $5^2$. Each hidden unit adds one corner to a single line.'
+      D: 'That is $2^5$. That kind of growth needs depth, not one layer.'
+    hint: |
+      Each ReLU unit adds one corner, or "hinge." How many pieces do 5 corners split a line into?
+    solution: |
+      Each hidden unit can add one corner to the graph. Five corners split a line into at most $5 + 1 = 6$ pieces.
+
+      **Answer: (A) 6**
+  - slug: m5-deep-params
+    difficulty: hard
+    question: |
+      A network has 10 inputs, three hidden layers of 20 neurons each, and 1 output. Every layer is fully connected with biases. How many parameters does it have?
+    choices: [621, 1060, 1081, 1240]
+    answer: C
+    verify: '(10 * 20 + 20) + 2 * (20 * 20 + 20) + (20 * 1 + 1)'
+    mistakes:
+      A: 'You may have counted only two hidden layers. There are three, which means two 20-to-20 connections.'
+      B: 'That counts the weights but not the 61 biases.'
+      D: 'Recount: the first layer connects 10 inputs, not 20.'
+    hint: |
+      There are four weight layers: 10 to 20, 20 to 20, 20 to 20, and 20 to 1.
+    hint2: |
+      Each layer has inputs × neurons weights, plus one bias per neuron.
+    solution: |
+      10 to 20: $200 + 20 = 220$. Each 20 to 20: $400 + 20 = 420$, and there are two. 20 to 1: $20 + 1 = 21$.
+
+      $$220 + 420 + 420 + 21 = 1081$$
+
+      **Answer: (C) 1081**
+  - slug: m6-collapse
+    difficulty: hard
+    question: |
+      Layer 1 computes $h = 3x + 1$, and layer 2 computes $y = 2h + 4$. Neither layer has an activation. Which single line gives the same $y$?
+    choices: ['$y = 5x + 5$', '$y = 6x + 1$', '$y = 6x + 5$', '$y = 6x + 6$']
+    answer: D
+    verify: "(() => { const f = (x) => 2 * (3 * x + 1) + 4; const b = f(0); return '$y = ' + (f(1) - b) + 'x + ' + b + '$'; })()"
+    mistakes:
+      A: 'Layers are chained, so put the first into the second. Do not add their numbers.'
+      B: 'The second layer doubles the first layer''s bias and then adds 4.'
+      C: 'The bias 1 is doubled too: $2 \times 1 + 4$.'
+    hint: |
+      Substitute $h = 3x + 1$ into $y = 2h + 4$ and multiply out.
+    solution: |
+      $$y = 2(3x + 1) + 4 = 6x + 2 + 4 = 6x + 6$$
+
+      Two linear layers made one line. That is why networks need activation functions.
+
+      **Answer: (D) $y = 6x + 6$**

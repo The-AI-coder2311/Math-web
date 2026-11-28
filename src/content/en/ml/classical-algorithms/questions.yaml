@@ -1,0 +1,206 @@
+concepts:
+  - slug: c1-knn-predicts
+    difficulty: easy
+    question: |
+      How does a K-nearest neighbors classifier with $K = 5$ label a new point?
+    choices: ['It draws the widest gap between the classes', 'It asks a series of yes-or-no questions', 'It moves 5 centers to the mean of their points', 'It finds the 5 closest training examples and takes a vote']
+    answer: D
+    mistakes:
+      A: 'That describes a support vector machine.'
+      B: 'That describes a decision tree.'
+      C: 'That describes k-means clustering, which groups unlabeled data.'
+    hint: |
+      The name says it: neighbors.
+    solution: |
+      KNN measures the distance from the new point to every training example, keeps the 5 closest, and predicts the most common label among them.
+
+      **Answer: (D) It finds the 5 closest training examples and takes a vote**
+  - slug: c2-kmeans-type
+    difficulty: easy
+    question: |
+      Which statement about k-means is true?
+    choices: ['It groups unlabeled data, and you choose the number of clusters', 'It needs a label for every example', 'It always finds the true number of groups by itself', 'It is a kind of decision tree']
+    answer: A
+    mistakes:
+      B: 'K-means is unsupervised. It never sees labels.'
+      C: 'You set $K$ before it runs. Choosing a good $K$ is up to you.'
+      D: 'K-means works with centers and distances, not yes-or-no splits.'
+    hint: |
+      What does the K in k-means stand for, and who chooses it?
+    solution: |
+      K-means is unsupervised clustering. You pick $K$, the number of clusters, and it repeatedly assigns points to the nearest center and moves each center to the mean of its points.
+
+      **Answer: (A) It groups unlabeled data, and you choose the number of clusters**
+  - slug: c3-forest-vs-boosting
+    difficulty: medium
+    question: |
+      What is the main difference between a random forest and gradient boosting?
+    choices: ['A random forest uses one tree, and boosting uses many', 'A forest trains trees separately and lets them vote, while boosting trains trees in a row, each fixing earlier mistakes', 'Boosting works only on images', 'A random forest needs no data']
+    answer: B
+    mistakes:
+      A: 'Both methods use many trees.'
+      C: 'Boosting is most popular on table-shaped data, not images.'
+      D: 'Every model needs training data.'
+    hint: |
+      Both are ensembles of trees. Think about whether the trees know about each other.
+    solution: |
+      In a random forest, each tree is trained on its own random sample, independently, and they vote. In gradient boosting, each new tree is trained to correct the errors the earlier trees still make, so the trees are built one after another.
+
+      **Answer: (B) A forest trains trees separately and lets them vote, while boosting trains trees in a row, each fixing earlier mistakes**
+  - slug: c4-svm-margin
+    difficulty: medium
+    question: |
+      What does a support vector machine try to maximize?
+    choices: ['The number of trees', 'The number of clusters', 'The margin, the gap between the boundary and the nearest points of each class', 'The accuracy on the test set during training']
+    answer: C
+    mistakes:
+      A: 'Trees belong to decision trees and forests.'
+      B: 'Clusters belong to unsupervised methods like k-means.'
+      D: 'The test set should never be used during training.'
+    hint: |
+      Picture two groups of dots and many lines that separate them. Which line is "safest"?
+    solution: |
+      Many boundaries might separate two classes. An SVM picks the one with the widest gap to the closest points on each side. Those closest points are the support vectors.
+
+      **Answer: (C) The margin, the gap between the boundary and the nearest points of each class**
+  - slug: c5-naive-assumption
+    difficulty: hard
+    question: |
+      What is "naive" about Naive Bayes?
+    choices: ['It assumes the features are independent of each other once you know the class', 'It ignores the training data', 'It can only handle two features', 'It never uses probabilities']
+    answer: A
+    mistakes:
+      B: 'Naive Bayes counts probabilities from the training data.'
+      C: 'It can handle thousands of features, such as every word in a vocabulary.'
+      D: 'Probabilities are the heart of the method, through Bayes'' rule.'
+    hint: |
+      To combine the evidence from many words, Naive Bayes multiplies their probabilities. When is multiplying probabilities allowed?
+    solution: |
+      Naive Bayes multiplies the probability of each feature given the class, which is only exact if the features are independent given the class. Words in an email are not really independent ("free" and "prize" go together), but the shortcut often works well anyway.
+
+      **Answer: (A) It assumes the features are independent of each other once you know the class**
+  - slug: c6-unscaled-knn
+    difficulty: hard
+    question: |
+      A KNN model uses yearly income (in dollars, around 50,000) and age (in years, around 40) without scaling. What happens?
+    choices: ['Age dominates the distance', 'Income dominates the distance, so age barely affects who counts as a neighbor', 'Both features count equally', 'The model refuses to train']
+    answer: B
+    mistakes:
+      A: 'A gap of 10 years is tiny next to a gap of 10,000 dollars.'
+      C: 'Distances add up squared differences, and income differences are thousands of times bigger.'
+      D: 'The model runs. It gives poor answers.'
+    hint: |
+      Compare two people who differ by 10 years and 1,000 dollars. Which difference is bigger as a number?
+    solution: |
+      Distance adds the squared differences in each feature. Income differences are in the thousands, while age differences are in the tens, so income decides almost everything. Scaling both features to a similar range fixes it.
+
+      **Answer: (B) Income dominates the distance, so age barely affects who counts as a neighbor**
+math:
+  - slug: m1-distance
+    difficulty: easy
+    question: |
+      What is the Euclidean distance between the points $(1, 2)$ and $(4, 6)$?
+    choices: [4, 5, 7, 25]
+    answer: B
+    verify: 'Math.hypot(4 - 1, 6 - 2)'
+    mistakes:
+      A: 'That is only the change in $y$. Use both coordinates.'
+      C: 'That adds the changes, $3 + 4$. Square them, add, then take the square root.'
+      D: 'That is the squared distance. Take the square root.'
+    hint: |
+      Distance is $\sqrt{(\Delta x)^2 + (\Delta y)^2}$.
+    solution: |
+      The changes are 3 and 4:
+
+      $$\sqrt{3^2 + 4^2} = \sqrt{25} = 5$$
+
+      **Answer: (B) 5**
+  - slug: m2-centroid
+    difficulty: easy
+    question: |
+      In k-means, a cluster holds the points $(1, 2)$, $(3, 4)$, and $(5, 9)$. Where does its center move?
+    choices: ['(3, 5)', '(9, 15)', '(3, 4)', '(5, 9)']
+    answer: A
+    verify: "'(' + [(1 + 3 + 5) / 3, (2 + 4 + 9) / 3].join(', ') + ')'"
+    mistakes:
+      B: 'Those are the sums. Divide each by 3 to get the mean.'
+      C: 'That is the middle point. The center is the mean of all three.'
+      D: 'That is the last point. The center is the mean of all three.'
+    hint: |
+      Average the $x$-coordinates, then average the $y$-coordinates.
+    solution: |
+      $x = \frac{1 + 3 + 5}{3} = 3$, and $y = \frac{2 + 4 + 9}{3} = 5$. The new center is $(3, 5)$.
+
+      **Answer: (A) (3, 5)**
+  - slug: m3-gini
+    difficulty: medium
+    question: |
+      A tree node holds 6 cats and 2 dogs. What is its Gini impurity, $1 - \sum p_i^2$?
+    choices: [0.25, 0.375, 0.5, 0.625]
+    answer: B
+    verify: '1 - ((6 / 8) ** 2 + (2 / 8) ** 2)'
+    mistakes:
+      A: 'That is the share of dogs. Square each share, add them, and subtract from 1.'
+      C: 'That is the impurity of a half-and-half node. This node is 75% cats.'
+      D: 'That is $\sum p_i^2$. Subtract it from 1.'
+    hint: |
+      The shares are $\frac{6}{8} = 0.75$ and $\frac{2}{8} = 0.25$.
+    solution: |
+      $$1 - (0.75^2 + 0.25^2) = 1 - (0.5625 + 0.0625) = 0.375$$
+
+      **Answer: (B) 0.375**
+  - slug: m4-entropy
+    difficulty: medium
+    question: |
+      A node holds equal numbers of 4 different classes. What is its entropy, $-\sum p_i \log_2 p_i$, in bits?
+    choices: [0.25, 1, 2, 4]
+    answer: C
+    verify: '-4 * (0.25 * Math.log2(0.25))'
+    mistakes:
+      A: 'That is each class''s share. Use the formula with logs.'
+      B: 'That is the entropy of 2 equal classes. With 4, it is higher.'
+      D: 'That is the number of classes. Entropy is $\log_2$ of it for equal classes.'
+    hint: |
+      Each class has share $\frac{1}{4}$, and $\log_2 \frac{1}{4} = -2$.
+    solution: |
+      Each of the 4 terms is $\frac{1}{4} \times (-2)$, which is $-0.5$. Adding four of them gives $-2$, and the minus sign in front makes it 2 bits. For equally common classes, entropy is $\log_2$ of the number of classes.
+
+      **Answer: (C) 2**
+  - slug: m5-naive-bayes
+    difficulty: hard
+    question: |
+      40% of emails are spam. The word "win" appears in 50% of spam emails and 10% of other emails. An email contains "win." What is the probability it's spam?
+    choices: ['$\frac{2}{5}$', '$\frac{1}{2}$', '$\frac{10}{13}$', '$\frac{5}{6}$']
+    answer: C
+    verify: 'fraction(40 * 5, 40 * 5 + 60 * 1)'
+    mistakes:
+      A: 'That is the chance of spam before you read the email.'
+      B: 'That is the chance a spam email contains "win." The question asks it the other way around.'
+      D: 'That compares 0.5 with 0.1 but forgets that only 40% of emails are spam.'
+    hint: |
+      Picture 100 emails. How many are spam with "win," and how many are not spam with "win"?
+    hint2: |
+      Spam with "win": $40 \times 0.5 = 20$. Not spam with "win": $60 \times 0.1 = 6$.
+    solution: |
+      Out of 100 emails, 40 are spam and 20 of those contain "win." Of the 60 others, 6 contain "win." So 26 emails contain "win," and 20 of them are spam:
+
+      $$\frac{20}{26} = \frac{10}{13}$$
+
+      **Answer: (C) $\frac{10}{13}$**
+  - slug: m6-pca-variance
+    difficulty: hard
+    question: |
+      PCA on a dataset with 3 features finds directions with variances 6, 3, and 1. What percent of the total variance do the top 2 directions keep?
+    choices: [10, 30, 60, 90]
+    answer: D
+    verify: '(6 + 3) / (6 + 3 + 1) * 100'
+    mistakes:
+      A: 'That is the share of the direction you drop.'
+      B: 'That is the second direction on its own.'
+      C: 'That is the first direction on its own. Add the second one too.'
+    hint: |
+      Add all three variances to get the total.
+    solution: |
+      The total is $6 + 3 + 1 = 10$. The top two keep $6 + 3 = 9$ of it, which is $\frac{9}{10}$, or 90%. Dropping the third feature loses only 10% of the variation.
+
+      **Answer: (D) 90**

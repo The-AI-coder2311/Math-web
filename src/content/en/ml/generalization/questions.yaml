@@ -1,0 +1,210 @@
+concepts:
+  - slug: c1-overfitting
+    difficulty: easy
+    question: |
+      A model scores 99% on its training data and 70% on its validation data. What is the most likely problem?
+    choices: ['Underfitting', 'The learning rate is too small', 'Overfitting', 'The validation set is too easy']
+    answer: C
+    mistakes:
+      A: 'An underfit model does badly on the training data too.'
+      B: 'A tiny learning rate would leave the training score low.'
+      D: 'An easy validation set would raise its score, not lower it.'
+    hint: |
+      Compare the two scores. What does a big gap between them mean?
+    solution: |
+      Near-perfect training performance with much worse validation performance means the model memorized details of its training data that do not carry over to new data. That is overfitting.
+
+      **Answer: (C) Overfitting**
+  - slug: c2-underfitting
+    difficulty: easy
+    question: |
+      A straight-line model does badly on both its training data and its validation data, which follow a curved pattern. What should you try first?
+    choices: ['A more flexible model, such as adding curved terms', 'Stronger regularization', 'More dropout', 'Stopping training earlier']
+    answer: A
+    mistakes:
+      B: 'Regularization makes a model simpler, and this one is already too simple.'
+      C: 'Dropout fights overfitting. This model is underfitting.'
+      D: 'Stopping earlier would leave the model even less trained.'
+    hint: |
+      Bad scores everywhere means the model cannot even fit what it has seen.
+    solution: |
+      Doing badly on the training data itself is underfitting: a straight line cannot follow a curve. The fix is more flexibility, such as polynomial features or a neural network. The other three choices all make the model simpler or less trained.
+
+      **Answer: (A) A more flexible model, such as adding curved terms**
+  - slug: c3-l1-vs-l2
+    difficulty: medium
+    question: |
+      Which regularization tends to set some weights to exactly zero, removing those features from the model?
+    choices: ['L2 regularization (ridge)', 'L1 regularization (lasso)', 'Data augmentation', 'Early stopping']
+    answer: B
+    mistakes:
+      A: 'L2 shrinks weights toward zero but rarely makes them exactly zero.'
+      C: 'Augmentation changes the training data, not the weights directly.'
+      D: 'Early stopping limits training time. It does not zero out weights.'
+    hint: |
+      One penalty uses $|w|$ and the other uses $w^2$. For a tiny weight like 0.01, which penalty still pushes hard?
+    solution: |
+      L1 adds $\lambda |w|$, whose push toward zero stays the same size even for tiny weights, so it drives many of them all the way to zero. L2 adds $\lambda w^2$, whose push fades as $w$ shrinks, so weights get small but rarely exactly zero.
+
+      **Answer: (B) L1 regularization (lasso)**
+  - slug: c4-early-stopping
+    difficulty: medium
+    question: |
+      How does early stopping decide when to stop training?
+    choices: ['When the training loss reaches zero', 'After exactly 10 epochs', 'When the test accuracy is highest', 'When the validation loss stops improving']
+    answer: D
+    mistakes:
+      A: 'Waiting for zero training loss invites overfitting.'
+      B: 'Early stopping watches the data instead of using a fixed count.'
+      C: 'Using the test set to decide anything makes its final score dishonest.'
+    hint: |
+      Overfitting shows up when one particular curve turns upward.
+    solution: |
+      Early stopping tracks the validation loss after each epoch. When it stops improving for a while, training stops and the best checkpoint is kept. That catches the moment the model starts memorizing.
+
+      **Answer: (D) When the validation loss stops improving**
+  - slug: c5-dropout
+    difficulty: hard
+    question: |
+      How does dropout help a network generalize?
+    choices: ['Randomly turning off neurons during training stops the network from relying on any single one', 'It permanently deletes half the neurons', 'It removes the hardest training examples', 'It turns off neurons at test time to save time']
+    answer: A
+    mistakes:
+      B: 'The dropped neurons change every step, and all of them come back at test time.'
+      C: 'Dropout acts on neurons, not on examples.'
+      D: 'At test time, every neuron is on.'
+    hint: |
+      If any neuron might vanish on a given step, what can the others not count on?
+    solution: |
+      Each training step drops a random set of neurons, so the network cannot depend on one special neuron or a fragile combination of them. It has to spread what it learns across many neurons, which works more like a team of smaller networks and generalizes better. At test time, all neurons are used.
+
+      **Answer: (A) Randomly turning off neurons during training stops the network from relying on any single one**
+  - slug: c6-variance
+    difficulty: hard
+    question: |
+      A very flexible model is trained three times, each on a different random sample of the same data. The three trained models make very different predictions. What does this show?
+    choices: ['High bias', 'Too much noise in the labels', 'Too little flexibility', 'High variance']
+    answer: D
+    mistakes:
+      A: 'High bias means the model is consistently wrong in the same way, because it is too simple.'
+      B: 'Label noise affects every model. The flexible model reacting to it so strongly is the real issue.'
+      C: 'The model is very flexible, which is the source of the problem.'
+    hint: |
+      Which kind of error comes from being too sensitive to the particular training sample?
+    solution: |
+      When a model changes a lot depending on which sample it saw, its error comes from variance. Flexible models tend to have high variance. Regularization, more data, or averaging several models all reduce it.
+
+      **Answer: (D) High variance**
+math:
+  - slug: m1-l2-penalty
+    difficulty: easy
+    question: |
+      A model's weights are $(1, -2, 3)$, and $\lambda = 0.1$. What is the L2 penalty, $\lambda \sum w^2$?
+    choices: [0.6, 1.4, 2, 14]
+    answer: B
+    verify: '+(0.1 * sum([1, -2, 3].map((w) => w * w))).toFixed(4)'
+    mistakes:
+      A: 'That is the L1 penalty, which uses the sizes of the weights instead of their squares.'
+      C: 'That adds the weights with their signs. Square each weight first.'
+      D: 'That is the sum of squares. Multiply it by $\lambda = 0.1$.'
+    hint: |
+      Square each weight, add them, then multiply by $\lambda$.
+    solution: |
+      $$0.1 \times (1 + 4 + 9) = 1.4$$
+
+      **Answer: (B) 1.4**
+  - slug: m2-l1-penalty
+    difficulty: easy
+    question: |
+      A model's weights are $(2, -1, 0, 3)$, and $\lambda = 0.5$. What is the L1 penalty, $\lambda \sum |w|$?
+    choices: [0, 2, 3, 7]
+    answer: C
+    verify: '0.5 * sum([2, -1, 0, 3].map(Math.abs))'
+    mistakes:
+      A: 'The penalty is zero only when every weight is zero.'
+      B: 'That keeps the minus sign on $-1$. The absolute value makes it 1.'
+      D: 'That is the L2 penalty, which squares the weights.'
+    hint: |
+      Take the size of each weight, ignoring signs, then add and multiply by $\lambda$.
+    solution: |
+      $$0.5 \times (2 + 1 + 0 + 3) = 3$$
+
+      **Answer: (C) 3**
+  - slug: m3-grid-search-cost
+    difficulty: medium
+    question: |
+      A grid search tries 3 learning rates and 4 batch sizes, and scores each combination with 5-fold cross-validation. How many times is a model trained?
+    choices: [12, 15, 20, 60]
+    answer: D
+    verify: 'product(range(1, 3), range(1, 4), range(1, 5)).length'
+    mistakes:
+      A: 'That counts the combinations. Each one is trained once per fold.'
+      B: 'That multiplies only the learning rates and folds.'
+      C: 'That multiplies only the batch sizes and folds.'
+    hint: |
+      Count the combinations first, then multiply by the number of folds.
+    solution: |
+      There are $3 \times 4 = 12$ combinations, and each is trained 5 times:
+
+      $$12 \times 5 = 60$$
+
+      **Answer: (D) 60**
+  - slug: m4-dropout-count
+    difficulty: medium
+    question: |
+      A layer has 200 neurons, and dropout switches off each one with probability 0.2 during a training step. On average, how many neurons are switched off?
+    choices: [40, 100, 160, 200]
+    answer: A
+    verify: '200 * 0.2'
+    mistakes:
+      B: 'That would be a dropout rate of 0.5.'
+      C: 'That is how many stay on.'
+      D: 'Dropout never switches off the whole layer on average.'
+    hint: |
+      Each of the 200 neurons is dropped with probability 0.2.
+    solution: |
+      $$200 \times 0.2 = 40$$
+
+      The other 160 stay on.
+
+      **Answer: (A) 40**
+  - slug: m5-weight-decay-step
+    difficulty: hard
+    question: |
+      The loss includes the penalty $\lambda w^2$ with $\lambda = 0.5$, so the penalty adds $2\lambda w$ to the gradient. The rest of the gradient is 0. With $w = 2$ and learning rate $0.1$, what is $w$ after one step?
+    choices: [1.6, 1.8, 1.9, 2]
+    answer: B
+    verify: '+(2 - 0.1 * (0 + 2 * 0.5 * 2)).toFixed(4)'
+    mistakes:
+      A: 'That takes twice the step. The penalty gradient is $2 \times 0.5 \times 2 = 2$.'
+      C: 'That uses $\lambda w$. The derivative of $\lambda w^2$ is $2\lambda w$.'
+      D: 'Even with no other gradient, the penalty shrinks the weight.'
+    hint: |
+      The whole gradient is $0 + 2 \times 0.5 \times 2$.
+    solution: |
+      The gradient is $2 \times 0.5 \times 2 = 2$, so
+
+      $$2 - 0.1 \times 2 = 1.8$$
+
+      Each step shrinks the weight a little even without any data pushing on it. That is why L2 regularization is also called weight decay.
+
+      **Answer: (B) 1.8**
+  - slug: m6-cv-average
+    difficulty: hard
+    question: |
+      5-fold cross-validation gives the scores 0.8, 0.85, 0.9, 0.75, and 0.8. What is the cross-validated score?
+    choices: [0.75, 0.8, 0.82, 0.9]
+    answer: C
+    verify: '+(sum([0.8, 0.85, 0.9, 0.75, 0.8]) / 5).toFixed(4)'
+    mistakes:
+      A: 'That is the worst fold. Average all five.'
+      B: 'That is the most common score. Average all five.'
+      D: 'That is the best fold. Reporting only the best fold makes the model look better than it is.'
+    hint: |
+      Add the five scores and divide by 5.
+    solution: |
+      The scores add up to $0.8 + 0.85 + 0.9 + 0.75 + 0.8 = 4.1$, and
+
+      $$4.1 \div 5 = 0.82$$
+
+      **Answer: (C) 0.82**

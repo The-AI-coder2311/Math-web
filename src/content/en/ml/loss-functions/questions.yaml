@@ -1,0 +1,206 @@
+concepts:
+  - slug: c1-what-loss-is
+    difficulty: easy
+    question: |
+      What does training do with the loss function?
+    choices: ['Makes it as large as possible', 'Makes it as small as possible', 'Ignores it until the test set', 'Uses it to pick the number of layers']
+    answer: B
+    mistakes:
+      A: 'The loss measures how wrong the model is, so bigger is worse.'
+      C: 'The loss is computed on the training data at every step.'
+      D: 'The number of layers is a design choice. The loss guides the weights.'
+    hint: |
+      The loss is a number for how wrong the predictions are.
+    solution: |
+      A loss measures how wrong the model is. Training adjusts the parameters to make it smaller, ideally as small as possible.
+
+      **Answer: (B) Makes it as small as possible**
+  - slug: c2-which-loss
+    difficulty: easy
+    question: |
+      A model sorts photos into 10 kinds of animals. Which loss is the standard choice?
+    choices: ['Mean squared error', 'Mean absolute error', 'Accuracy', 'Cross-entropy']
+    answer: D
+    mistakes:
+      A: 'Squared error is the standard for predicting numbers, not categories.'
+      B: 'Absolute error is for predicting numbers, not categories.'
+      C: 'Accuracy is a good report card but a poor training loss, since it has no useful slope.'
+    hint: |
+      The model outputs a probability for each of the 10 classes.
+    solution: |
+      For classification, the model outputs probabilities through softmax, and cross-entropy scores the probability given to the correct class. It is the standard classification loss.
+
+      **Answer: (D) Cross-entropy**
+  - slug: c3-outliers
+    difficulty: medium
+    question: |
+      A house-price dataset contains a few mansions with enormous prices. Why might mean squared error struggle?
+    choices: ['Squaring makes the big errors on the mansions dominate the loss', 'MSE cannot handle prices', 'MSE ignores large errors', 'MSE only works for classification']
+    answer: A
+    mistakes:
+      B: 'MSE is the classic loss for numbers like prices.'
+      C: 'It is the opposite. Squaring makes large errors count much more.'
+      D: 'MSE is a regression loss.'
+    hint: |
+      An error of 100 squared is 10,000. An error of 10 squared is 100.
+    solution: |
+      Squaring makes a large error count far more than several small ones, so a few mansions can dominate the loss and pull the model toward them. Mean absolute error, or a mix of the two, is less sensitive to such outliers.
+
+      **Answer: (A) Squaring makes the big errors on the mansions dominate the loss**
+  - slug: c4-confident-wrong
+    difficulty: medium
+    question: |
+      The correct class is "dog." Which prediction gets the highest cross-entropy loss?
+    choices: ['Dog with probability 0.9', 'Dog with probability 0.6', 'Dog with probability 0.01', 'Dog with probability 0.5']
+    answer: C
+    mistakes:
+      A: 'That is a confident and correct prediction, so its loss is small.'
+      B: 'That leans the right way, so its loss is moderate.'
+      D: 'That is unsure, but far less wrong than a probability of 0.01.'
+    hint: |
+      The loss is $-\log p$ for the correct class. What happens to it as $p$ gets close to 0?
+    solution: |
+      Cross-entropy is $-\log p$, which grows larger and larger as $p$ approaches 0. Saying "dog" has only a 1% chance when it is a dog is a confident mistake, the most expensive kind.
+
+      **Answer: (C) Dog with probability 0.01**
+  - slug: c5-maximum-likelihood
+    difficulty: hard
+    question: |
+      What does the maximum likelihood recipe for building a loss function do?
+    choices: ['Picks parameters that make the training data as probable as possible, and uses the negative log of that probability as the loss', 'Picks the loss with the largest values', 'Chooses the model with the most parameters', 'Uses the test set to choose the loss']
+    answer: A
+    mistakes:
+      B: 'A loss is built from a probability model, not chosen for being large.'
+      C: 'The recipe says nothing about the number of parameters.'
+      D: 'The test set is only for the final score.'
+    hint: |
+      "Likelihood" means how probable the observed data is under the model.
+    solution: |
+      The model's output describes a probability distribution. Maximum likelihood chooses the parameters under which the observed training data is most probable. Minimizing the negative log of that probability is the same thing, and it produces squared error or cross-entropy depending on the distribution.
+
+      **Answer: (A) Picks parameters that make the training data as probable as possible, and uses the negative log of that probability as the loss**
+  - slug: c6-accuracy-as-loss
+    difficulty: hard
+    question: |
+      Why don't we train classifiers by directly maximizing accuracy?
+    choices: ['Accuracy is too hard to compute', 'Accuracy is always 100% on training data', 'Accuracy can only be measured by a person', 'Small changes to the weights usually do not change accuracy at all, so it has no useful gradient']
+    answer: D
+    mistakes:
+      A: 'Accuracy is easy to compute. Counting correct answers is quick.'
+      B: 'Models are often far from 100% on training data.'
+      C: 'Accuracy is computed automatically from labels.'
+    hint: |
+      Gradient descent needs a slope. What does accuracy do when you nudge one weight a tiny bit?
+    solution: |
+      Accuracy jumps only when a prediction flips between wrong and right. For most tiny weight changes it stays the same, so its slope is zero almost everywhere. Cross-entropy changes smoothly with every small improvement, giving gradient descent a direction to follow.
+
+      **Answer: (D) Small changes to the weights usually do not change accuracy at all, so it has no useful gradient**
+math:
+  - slug: m1-mse
+    difficulty: easy
+    question: |
+      A model predicts 2, 4, 6, and 8. The true values are 3, 4, 4, and 8. What is the mean squared error?
+    choices: [0.25, 0.75, 1.25, 5]
+    answer: C
+    verify: 'sum([2, 4, 6, 8].map((p, i) => (p - [3, 4, 4, 8][i]) ** 2)) / 4'
+    mistakes:
+      A: 'That averages the errors themselves. Square each error first.'
+      B: 'That is the mean absolute error. Square the errors instead.'
+      D: 'That is the sum of the squared errors. Divide by 4.'
+    hint: |
+      Find the four errors, square them, and average.
+    solution: |
+      The errors are $-1$, $0$, $2$, and $0$. Their squares are 1, 0, 4, and 0:
+
+      $$\frac{1 + 0 + 4 + 0}{4} = 1.25$$
+
+      **Answer: (C) 1.25**
+  - slug: m2-mae-outlier
+    difficulty: easy
+    question: |
+      A model's errors are 1, 1, 1, and 9. What is the mean absolute error?
+    choices: [3, 4, 12, 21]
+    answer: A
+    verify: 'sum([1, 1, 1, 9].map(Math.abs)) / 4'
+    mistakes:
+      B: 'Check the total: $1 + 1 + 1 + 9 = 12$, and there are 4 errors.'
+      C: 'That is the total. Divide by the number of errors.'
+      D: 'That is the mean squared error. MAE does not square.'
+    hint: |
+      Add the sizes of the errors and divide by how many there are.
+    solution: |
+      $$\frac{1 + 1 + 1 + 9}{4} = 3$$
+
+      For comparison, the mean squared error is $\frac{1 + 1 + 1 + 81}{4} = 21$. The one big error dominates MSE much more.
+
+      **Answer: (A) 3**
+  - slug: m3-binary-ce
+    difficulty: medium
+    question: |
+      The correct class gets probability 0.25. Using base-2 logs, what is the cross-entropy loss, $-\log_2 p$?
+    choices: [0.25, 0.75, 1, 2]
+    answer: D
+    verify: '-Math.log2(0.25)'
+    mistakes:
+      A: 'That is the probability itself. Take $-\log_2$ of it.'
+      B: 'That is $1 - p$. Cross-entropy uses the log.'
+      C: 'That is the loss for $p = 0.5$.'
+    hint: |
+      What power of 2 equals 0.25?
+    solution: |
+      $0.25 = 2^{-2}$, so $\log_2 0.25 = -2$, and the loss is $2$.
+
+      **Answer: (D) 2**
+  - slug: m4-softmax
+    difficulty: medium
+    question: |
+      A classifier outputs logits whose exponentials are $e^{z_1} = 1$, $e^{z_2} = 3$, and $e^{z_3} = 4$. What probability does softmax give class 2?
+    choices: ['$\frac{1}{8}$', '$\frac{1}{3}$', '$\frac{3}{8}$', '$\frac{1}{2}$']
+    answer: C
+    verify: '(() => { const e = [0, Math.log(3), Math.log(4)].map(Math.exp); return fraction(Math.round(e[1] * 1000), Math.round(sum(e) * 1000)); })()'
+    mistakes:
+      A: 'That is the probability of class 1.'
+      B: 'That treats all three classes as equally likely. Softmax weights them by their exponentials.'
+      D: 'That is the probability of class 3.'
+    hint: |
+      Softmax divides each exponential by the sum of all of them.
+    solution: |
+      The sum is $1 + 3 + 4 = 8$, so class 2 gets $\frac{3}{8}$. The three probabilities, $\frac{1}{8}$, $\frac{3}{8}$, and $\frac{4}{8}$, add up to 1.
+
+      **Answer: (C) $\frac{3}{8}$**
+  - slug: m5-average-ce
+    difficulty: hard
+    question: |
+      On three examples, a model gives the correct class the probabilities 0.5, 0.25, and 1. What is the average cross-entropy loss, using base-2 logs?
+    choices: [0, 1, 1.5, 3]
+    answer: B
+    verify: '(-Math.log2(0.5) - Math.log2(0.25) - Math.log2(1)) / 3'
+    mistakes:
+      A: 'Only the third example is perfect. The other two add loss.'
+      C: 'That averages only the first two losses. The perfect example counts too, with a loss of 0.'
+      D: 'That is the total loss. Divide by 3 for the average.'
+    hint: |
+      Find $-\log_2 p$ for each example. What is $\log_2 1$?
+    solution: |
+      The losses are $-\log_2 0.5 = 1$, $-\log_2 0.25 = 2$, and $-\log_2 1 = 0$. Their average is
+
+      $$\frac{1 + 2 + 0}{3} = 1$$
+
+      **Answer: (B) 1**
+  - slug: m6-confident-mistake
+    difficulty: hard
+    question: |
+      Model A gives the correct class probability $\frac{1}{2}$. Model B gives it $\frac{1}{1024}$. Using base-2 logs, how many times larger is B's cross-entropy loss than A's?
+    choices: [1, 10, 100, 512]
+    answer: B
+    verify: '-Math.log2(1 / 1024) / -Math.log2(1 / 2)'
+    mistakes:
+      A: 'B is much more wrong, so its loss is larger.'
+      C: 'B''s loss is 10 bits. Do not square it.'
+      D: 'That compares the probabilities. Cross-entropy compares their logs.'
+    hint: |
+      $1024 = 2^{10}$.
+    solution: |
+      A's loss is $-\log_2 \frac{1}{2} = 1$. B's loss is $-\log_2 \frac{1}{1024} = 10$, since $2^{10} = 1024$. So B's loss is 10 times larger. Logs grow slowly, so the loss is large but not as extreme as the 512-to-1 ratio between the probabilities.
+
+      **Answer: (B) 10**

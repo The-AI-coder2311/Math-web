@@ -1,0 +1,210 @@
+concepts:
+  - slug: c1-feature-or-label
+    difficulty: easy
+    question: |
+      A model predicts how many minutes a pizza delivery will take, using the distance, the time of day, and the weather. What is the label?
+    choices: ['The delivery time in minutes', 'The distance', 'The weather', 'The time of day']
+    answer: A
+    mistakes:
+      B: 'The distance is an input the model uses, so it is a feature.'
+      C: 'The weather is an input the model uses, so it is a feature.'
+      D: 'The time of day is an input the model uses, so it is a feature.'
+    hint: |
+      The label is the answer the model is trying to predict.
+    solution: |
+      The distance, time of day, and weather go into the model, so they are features. The delivery time is what comes out and what the training data records as the correct answer, so it is the label.
+
+      **Answer: (A) The delivery time in minutes**
+  - slug: c2-regression-or-classification
+    difficulty: easy
+    question: |
+      Which task is regression?
+    choices: ['Deciding if a photo shows a cat or a dog', 'Sorting emails into spam and not spam', "Predicting tomorrow's high temperature", 'Recognizing which digit, 0 to 9, is handwritten']
+    answer: C
+    mistakes:
+      A: 'Cat or dog is a category, so this is classification.'
+      B: 'Spam or not spam is a category, so this is binary classification.'
+      D: 'The digits are 10 categories here, so this is multi-class classification.'
+    hint: |
+      Regression predicts a number on a scale. Classification picks a category.
+    solution: |
+      A temperature can be any number on a scale, so predicting it is regression. The other three pick one category from a fixed list, which is classification.
+
+      **Answer: (C) Predicting tomorrow's high temperature**
+  - slug: c3-unsupervised
+    difficulty: medium
+    question: |
+      A store has purchase records with no labels, and wants to find groups of customers who shop alike. What kind of learning is this?
+    choices: ['Supervised learning', 'Unsupervised learning', 'Reinforcement learning', 'Regression']
+    answer: B
+    mistakes:
+      A: 'Supervised learning needs a correct answer for each example, and there are no labels here.'
+      C: 'Reinforcement learning needs an agent that acts and gets rewards.'
+      D: 'Regression is a kind of supervised learning, with a number as the label.'
+    hint: |
+      Are there correct answers in the data?
+    solution: |
+      There are no labels, and the goal is to find structure in the data on its own. That is unsupervised learning. This particular task, finding groups, is called clustering.
+
+      **Answer: (B) Unsupervised learning**
+  - slug: c4-hyperparameter
+    difficulty: medium
+    question: |
+      Which of these is a hyperparameter rather than a parameter?
+    choices: ['A weight connecting two neurons', 'The bias of a neuron', 'The slope in a trained linear model', 'The learning rate']
+    answer: D
+    mistakes:
+      A: 'Weights are learned during training, so they are parameters.'
+      B: 'Biases are learned during training, so they are parameters.'
+      C: 'Training finds the slope, so it is a parameter.'
+    hint: |
+      Parameters are learned. Hyperparameters are chosen by a person before training starts.
+    solution: |
+      Weights, biases, and slopes are all adjusted by training. The learning rate controls how training itself behaves, and you set it before training begins, so it is a hyperparameter.
+
+      **Answer: (D) The learning rate**
+  - slug: c5-self-supervised
+    difficulty: hard
+    question: |
+      A language model is pretrained by hiding the next word of millions of sentences and predicting it. No person labeled anything. What kind of learning is this?
+    choices: ['Reinforcement learning', 'Self-supervised learning', 'Unsupervised clustering', 'Supervised learning with human labels']
+    answer: B
+    mistakes:
+      A: 'There is no agent acting in a world and getting rewards.'
+      C: 'There is a correct answer for each example, the hidden word, so this is not clustering.'
+      D: 'The labels were not written by people. They come from the text itself.'
+    hint: |
+      Each example does have a correct answer. Where did that answer come from?
+    solution: |
+      Each example has a right answer, the hidden word, but it comes from the data itself rather than from people. That is self-supervised learning, and it is how large language models get their huge amounts of training data for free.
+
+      **Answer: (B) Self-supervised learning**
+  - slug: c6-baseline
+    difficulty: hard
+    question: |
+      A disease affects 5% of patients. A new model diagnoses patients with 95% accuracy. Why is that not impressive on its own?
+    choices: ['A model that always says "healthy" also scores 95%', '95% is too low for any medical use', 'Accuracy can only be measured on training data', 'The model must have overfit']
+    answer: A
+    mistakes:
+      B: 'Some medical tools are useful at 95%. The problem is what the number is compared to.'
+      C: 'Accuracy should be measured on held-out data, and that is allowed.'
+      D: 'Nothing here shows overfitting. The issue is the comparison.'
+    hint: |
+      What would a model that ignores the patient entirely score?
+    solution: |
+      Since 95% of patients are healthy, always answering "healthy" is right 95% of the time while finding no sick patients at all. That trivial baseline ties the new model, so its accuracy tells you nothing yet.
+
+      **Answer: (A) A model that always says "healthy" also scores 95%**
+math:
+  - slug: m1-line-prediction
+    difficulty: easy
+    question: |
+      A trained model is $y = 3x + 2$. What does it predict for $x = 4$?
+    choices: [9, 12, 14, 20]
+    answer: C
+    verify: '3 * 4 + 2'
+    mistakes:
+      A: 'You may have added 3 and 4. Multiply the slope by the input.'
+      B: 'That is $3 \times 4$. Add the bias, 2.'
+      D: 'You may have added before multiplying. Multiply $3 \times 4$ first, then add 2.'
+    hint: |
+      Put 4 in for $x$.
+    solution: |
+      $$3 \times 4 + 2 = 14$$
+
+      **Answer: (C) 14**
+  - slug: m2-count-parameters
+    difficulty: easy
+    question: |
+      A linear model predicts a price from 5 features. It has one weight per feature and one bias. How many parameters does it have?
+    choices: [4, 6, 10, 25]
+    answer: B
+    verify: '5 + 1'
+    mistakes:
+      A: 'There is a weight for every one of the 5 features, plus a bias.'
+      C: 'Each feature has one weight, not two.'
+      D: 'The weights are added up one per feature, not multiplied.'
+    hint: |
+      Count the weights, then add the bias.
+    solution: |
+      There are 5 weights, one per feature, and 1 bias: $5 + 1 = 6$.
+
+      **Answer: (B) 6**
+  - slug: m3-fit-intercept
+    difficulty: medium
+    question: |
+      A line $y = wx + b$ passes through $(1, 5)$ and $(3, 9)$. What is the bias $b$?
+    choices: [-1, 1, 2, 3]
+    answer: D
+    verify: '(() => { const w = (9 - 5) / (3 - 1); return 5 - w * 1; })()'
+    mistakes:
+      A: 'You may have used $x = 3$ with $y = 5$. Use both coordinates from the same point.'
+      B: 'Check the slope. It is $\frac{9 - 5}{3 - 1}$.'
+      C: 'That is the slope $w$. The question asks for $b$.'
+    hint: |
+      Find the slope first: the change in $y$ over the change in $x$.
+    hint2: |
+      The slope is 2. Put the point $(1, 5)$ into $y = 2x + b$.
+    solution: |
+      The slope is $w = \frac{9 - 5}{3 - 1} = 2$. Using the point $(1, 5)$: $5 = 2 \times 1 + b$, so $b = 3$. Check with the other point: $2 \times 3 + 3 = 9$.
+
+      **Answer: (D) 3**
+  - slug: m4-baseline-accuracy
+    difficulty: medium
+    question: |
+      A dataset has 80 photos of cats and 20 photos of dogs. A baseline always answers "cat." What percent accuracy does it get?
+    choices: [20, 50, 78, 80]
+    answer: D
+    verify: '80 / (80 + 20) * 100'
+    mistakes:
+      A: 'That is the share of dogs, the photos the baseline gets wrong.'
+      B: 'A coin flip would get about 50%. Always answering "cat" uses the fact that cats are common.'
+      C: 'Count the cats the baseline gets right: all 80 of them.'
+    hint: |
+      Which photos does "always cat" get right?
+    solution: |
+      It gets every cat photo right and every dog photo wrong: $\frac{80}{100}$, which is 80%. Any real model on this data has to beat 80% to be worth anything.
+
+      **Answer: (D) 80**
+  - slug: m5-total-squared-error
+    difficulty: hard
+    question: |
+      A model predicts $y = 2x$. The data points are $(1, 3)$, $(2, 3)$, and $(3, 7)$. What is the sum of the squared errors?
+    choices: [0, 1, 3, 9]
+    answer: C
+    verify: 'sum([[1, 3], [2, 3], [3, 7]].map(([x, y]) => (2 * x - y) ** 2))'
+    mistakes:
+      A: 'Zero error would mean the line passes through every point, and it misses all three.'
+      B: 'That is the average squared error. The question asks for the sum.'
+      D: 'That adds the three error sizes and then squares the total. Square each error first, then add.'
+    hint: |
+      The predictions are $2$, $4$, and $6$. Subtract each true value.
+    hint2: |
+      The errors are $-1$, $1$, and $-1$. Square each one, then add.
+    solution: |
+      The predictions are 2, 4, and 6, and the true values are 3, 3, and 7. The errors are $-1$, $1$, and $-1$. Their squares are each 1:
+
+      $$1 + 1 + 1 = 3$$
+
+      **Answer: (C) 3**
+  - slug: m6-best-slope
+    difficulty: hard
+    question: |
+      A model through the origin, $y = wx$, is fit to the points $(1, 2)$ and $(2, 5)$ by making the sum of squared errors as small as possible. For this kind of model, the best slope is $w = \frac{\sum xy}{\sum x^2}$. What is it?
+    choices: [2, 2.4, 2.5, 3]
+    answer: B
+    verify: '(1 * 2 + 2 * 5) / (1 * 1 + 2 * 2)'
+    mistakes:
+      A: 'That fits the first point exactly but ignores the second one.'
+      C: 'That fits the second point exactly but ignores the first one.'
+      D: 'Check $\sum x^2$. It is $1^2 + 2^2 = 5$.'
+    hint: |
+      $\sum xy$ means multiply $x$ by $y$ for each point, then add. Do the same with $x^2$.
+    solution: |
+      $\sum xy = 1 \times 2 + 2 \times 5 = 12$, and $\sum x^2 = 1 + 4 = 5$. So
+
+      $$w = \frac{12}{5} = 2.4$$
+
+      The best line lands between the slope 2 that fits the first point and the slope 2.5 that fits the second, which is a nice check.
+
+      **Answer: (B) 2.4**

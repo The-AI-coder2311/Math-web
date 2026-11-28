@@ -1,0 +1,212 @@
+concepts:
+  - slug: c1-std-from-variance
+    difficulty: easy
+    question: |
+      The standard deviation of a dataset is the square root of what?
+    choices: ['The mean', 'The largest value', 'The number of data points', 'The variance']
+    answer: D
+    mistakes:
+      A: 'The mean is the center. Standard deviation measures spread around it.'
+      B: 'The largest value tells you nothing about how spread out the rest are.'
+      C: 'The count is used to take an average, but it is not what gets square-rooted.'
+    hint: |
+      Which measure of spread is in squared units?
+    solution: |
+      The variance is the average squared distance from the mean, so it is in squared units. Taking its square root gives the standard deviation, which is back in the data's own units.
+
+      **Answer: (D) The variance**
+  - slug: c2-reading-conditional
+    difficulty: easy
+    question: |
+      A spam filter reports $P(\text{spam} \mid \text{contains "prize"}) = 0.9$. What does that mean?
+    choices: ['Of emails containing "prize," 90% are spam', '90% of spam emails contain "prize"', '90% of all emails are spam', 'The word "prize" appears in 90% of all emails']
+    answer: A
+    mistakes:
+      B: 'That is the flipped version, $P(\text{contains "prize"} \mid \text{spam})$.'
+      C: 'That would be $P(\text{spam})$, with no condition at all.'
+      D: 'That would be $P(\text{contains "prize"})$, with no condition.'
+    hint: |
+      Read the bar as "given that." The part after the bar is what you already know.
+    solution: |
+      The part after the bar is what you know: the email contains "prize." Among those emails, 90% are spam. The flipped statement, about how many spam emails contain "prize," could be a very different number.
+
+      **Answer: (A) Of emails containing "prize," 90% are spam**
+  - slug: c3-why-logs
+    difficulty: medium
+    question: |
+      Why do machine learning losses add up log-probabilities instead of multiplying probabilities?
+    choices: ['Logs make every probability positive', 'Multiplying many small numbers rounds to zero on a computer, and logs turn the product into a manageable sum', 'Logs make the model more accurate on new data', 'Multiplying probabilities is not allowed']
+    answer: B
+    mistakes:
+      A: 'Logs of probabilities below 1 are negative. That is why losses add a minus sign.'
+      C: 'Taking logs changes the arithmetic, not how well the model generalizes.'
+      D: 'Multiplying independent probabilities is correct. It is only impractical at scale.'
+    hint: |
+      What happens when you multiply 0.9 by itself a thousand times?
+    solution: |
+      The chance of a whole dataset is a product of many probabilities, and it quickly becomes too small for a computer to store. Since $\log(a \times b) = \log a + \log b$, adding logs gives the same information as a manageable sum. It also makes derivatives easier.
+
+      **Answer: (B) Multiplying many small numbers rounds to zero on a computer, and logs turn the product into a manageable sum**
+  - slug: c4-bell-curve
+    difficulty: medium
+    question: |
+      Heights in a group follow a normal distribution with mean 160 cm and standard deviation 10 cm. About what share of people are between 150 cm and 170 cm?
+    choices: ['About 10%', 'About 50%', 'About 68%', 'About 95%']
+    answer: C
+    mistakes:
+      A: 'The standard deviation is 10 cm, but that is not a percentage.'
+      B: 'Half the people are below the mean, but this range reaches both sides.'
+      D: 'About 95% fall within two standard deviations, from 140 cm to 180 cm.'
+    hint: |
+      150 cm and 170 cm are each one standard deviation from the mean.
+    solution: |
+      The range is one standard deviation on each side of the mean. For a bell curve, about 68% of values land within one standard deviation, and about 95% within two.
+
+      **Answer: (C) About 68%**
+  - slug: c5-base-rate
+    difficulty: hard
+    question: |
+      A model screens for a very rare disease and is right 99% of the time on both sick and healthy people. A patient tests positive. Why might the chance they're sick still be low?
+    choices: ['Because the disease is so rare that false alarms from the many healthy people can outnumber the true positives', 'Because 99% is not very accurate', 'Because the model was trained on the wrong patients', 'It cannot be low. A 99% accurate test means a 99% chance of being sick']
+    answer: A
+    mistakes:
+      B: 'The test is very good. The surprise comes from how rare the disease is.'
+      C: 'Nothing in the question says the training data was wrong.'
+      D: 'This mixes up $P(\text{positive} \mid \text{sick})$ with $P(\text{sick} \mid \text{positive})$.'
+    hint: |
+      Picture a million people with a 1-in-100,000 disease. How many are sick, and how many healthy people would the test flag by mistake?
+    solution: |
+      If 10 people in a million are sick, the test catches about 10 of them. But 1% of the roughly 1,000,000 healthy people is about 10,000 false alarms. So a positive is far more likely to be a false alarm. This is called ignoring the base rate.
+
+      **Answer: (A) Because the disease is so rare that false alarms from the many healthy people can outnumber the true positives**
+  - slug: c6-bayes-purpose
+    difficulty: hard
+    question: |
+      What does Bayes' rule let you do?
+    choices: ['Average two probabilities together', 'Prove that two events are independent', 'Find the mean of a distribution', 'Turn $P(B \mid A)$ into $P(A \mid B)$ using the overall chances of $A$ and $B$']
+    answer: D
+    mistakes:
+      A: 'Bayes multiplies and divides. It does not average.'
+      B: 'Bayes works whether or not events are independent.'
+      C: 'The mean is a different idea. Bayes is about conditional probabilities.'
+    hint: |
+      Look at the formula: which conditional probability is on the left, and which is on the right?
+    solution: |
+      Bayes' rule says $P(A \mid B) = \frac{P(B \mid A) \, P(A)}{P(B)}$. It flips a conditional probability you know, like how often sick people test positive, into the one you want, like how likely a positive patient is sick.
+
+      **Answer: (D) Turn $P(B \mid A)$ into $P(A \mid B)$ using the overall chances of $A$ and $B$**
+math:
+  - slug: m1-mean
+    difficulty: easy
+    question: |
+      A model's errors on four examples are 3, 5, 6, and 10. What is the mean error?
+    choices: [5, 6, 8, 24]
+    answer: B
+    verify: 'sum([3, 5, 6, 10]) / 4'
+    mistakes:
+      A: 'That is one of the values. Add all four and divide by 4.'
+      C: 'You may have divided by 3. There are 4 values.'
+      D: 'That is the total. Divide by the number of values.'
+    hint: |
+      Add the values, then divide by how many there are.
+    solution: |
+      $$\frac{3 + 5 + 6 + 10}{4} = \frac{24}{4} = 6$$
+
+      **Answer: (B) 6**
+  - slug: m2-log-product
+    difficulty: easy
+    question: |
+      $\log_{10} a = 2$ and $\log_{10} b = 3$. What is $\log_{10} (a \times b)$?
+    choices: [-1, 1, 5, 6]
+    answer: C
+    verify: 'Math.round(Math.log10(100 * 1000))'
+    mistakes:
+      A: 'Logs of a product add. They do not subtract.'
+      B: 'Logs of a product add. Subtraction is for a quotient.'
+      D: 'Logs turn multiplication into addition, so add the logs instead of multiplying them.'
+    hint: |
+      $\log(a \times b) = \log a + \log b$.
+    solution: |
+      Logs turn products into sums: $2 + 3 = 5$. You can check it: $a = 100$, $b = 1000$, and $100 \times 1000 = 100000$, which is $10^5$.
+
+      **Answer: (C) 5**
+  - slug: m3-variance
+    difficulty: medium
+    question: |
+      What is the variance of the values 1, 3, 5, 7? Use the average of the squared distances from the mean.
+    choices: [0, 2, 4, 5]
+    answer: D
+    verify: '(() => { const xs = [1, 3, 5, 7]; const m = sum(xs) / 4; return sum(xs.map((x) => (x - m) ** 2)) / 4; })()'
+    mistakes:
+      A: 'The distances from the mean add to 0 every time. Square them before averaging.'
+      B: 'That is the average distance without squaring. Variance squares each distance.'
+      C: 'That is the mean. The variance measures spread around it.'
+    hint: |
+      Find the mean first, then each value's distance from it.
+    hint2: |
+      The distances are $-3, -1, 1, 3$. Square them and take the average.
+    solution: |
+      The mean is $16 \div 4 = 4$. The distances are $-3, -1, 1, 3$, and their squares are 9, 1, 1, 9. The variance is their average:
+
+      $$\frac{9 + 1 + 1 + 9}{4} = 5$$
+
+      **Answer: (D) 5**
+  - slug: m4-conditional-table
+    difficulty: medium
+    question: |
+      Out of 100 emails, 30 are spam. The word "free" appears in 24 of the spam emails and in 14 of the other emails. An email contains "free." What is the probability that it's spam?
+    choices: ['$\frac{6}{25}$', '$\frac{3}{10}$', '$\frac{12}{19}$', '$\frac{4}{5}$']
+    answer: C
+    verify: 'fraction(24, 24 + 14)'
+    mistakes:
+      A: 'That is $\frac{24}{100}$, the chance an email is spam and contains "free." You know it contains "free."'
+      B: 'That is the chance of spam before you know anything about the email.'
+      D: 'That is $\frac{24}{30}$, the chance a spam email contains "free." The question asks it the other way around.'
+    hint: |
+      You know the email contains "free." How many emails contain "free" in total?
+    hint2: |
+      $24 + 14 = 38$ emails contain "free." How many of those are spam?
+    solution: |
+      Only the emails with "free" matter: $24 + 14 = 38$ of them. Of those, 24 are spam:
+
+      $$\frac{24}{38} = \frac{12}{19}$$
+
+      **Answer: (C) $\frac{12}{19}$**
+  - slug: m5-rare-condition
+    difficulty: hard
+    question: |
+      A condition affects 1 in 100 people. A screening model flags 90% of people who have it, and it also flags 10% of people who don't. A person is flagged. What is the probability that they have the condition?
+    choices: ['$\frac{1}{100}$', '$\frac{1}{12}$', '$\frac{9}{10}$', '$\frac{99}{100}$']
+    answer: B
+    verify: 'fraction(9, 9 + 99)'
+    mistakes:
+      A: 'That is the chance before the test. Being flagged should raise it.'
+      C: 'That is the chance of being flagged if you have the condition, which is the flipped question.'
+      D: 'That is the chance a person does not have the condition, before the test.'
+    hint: |
+      Imagine 1,000 people. How many have the condition, and how many of them get flagged?
+    hint2: |
+      Of the 990 people without it, 10% get flagged too. Count all the flagged people.
+    solution: |
+      Out of 1,000 people, 10 have the condition and 9 of them are flagged. Of the 990 without it, $990 \times 0.1 = 99$ are flagged. So $9 + 99 = 108$ people are flagged, and 9 of them have the condition:
+
+      $$\frac{9}{108} = \frac{1}{12}$$
+
+      **Answer: (B) $\frac{1}{12}$**
+  - slug: m6-log-likelihood
+    difficulty: hard
+    question: |
+      A model gives the correct answers to three questions the probabilities 0.5, 0.25, and 0.125. What is the sum of the base-2 logarithms of these three probabilities?
+    choices: [-6, -3, -2, 6]
+    answer: A
+    verify: 'Math.log2(0.5) + Math.log2(0.25) + Math.log2(0.125)'
+    mistakes:
+      B: 'That is only $\log_2 0.125$. Add the logs of all three.'
+      C: 'That is the average of the logs. The question asks for the sum.'
+      D: 'Probabilities below 1 have negative logs.'
+    hint: |
+      $0.5 = 2^{-1}$. Write the other two as powers of 2 as well.
+    solution: |
+      $0.5 = 2^{-1}$, $0.25 = 2^{-2}$, and $0.125 = 2^{-3}$, so the logs are $-1$, $-2$, and $-3$. Their sum is $-6$. That matches the log of the product: $0.5 \times 0.25 \times 0.125 = \frac{1}{64} = 2^{-6}$.
+
+      **Answer: (A) -6**
