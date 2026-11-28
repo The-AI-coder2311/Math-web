@@ -1,0 +1,214 @@
+concepts:
+  - slug: c1-lr-too-big
+    difficulty: easy
+    question: |
+      During training, the loss jumps up and down wildly and then grows huge. What is the most likely cause?
+    choices: ['The learning rate is too large', 'The learning rate is too small', 'There are too many epochs', 'The test set is too small']
+    answer: A
+    mistakes:
+      B: 'A tiny learning rate makes the loss fall slowly, not explode.'
+      C: 'Extra epochs can cause overfitting, but not an exploding training loss.'
+      D: 'The test set is not used during training, so it cannot make the training loss explode.'
+    hint: |
+      Picture stepping across a valley with steps far wider than the valley itself.
+    solution: |
+      With too large a learning rate, each step overshoots the bottom and lands higher on the other side. The loss bounces and can grow without limit, which is called diverging. Lowering the learning rate usually fixes it.
+
+      **Answer: (A) The learning rate is too large**
+  - slug: c2-epoch
+    difficulty: easy
+    question: |
+      What is one epoch?
+    choices: ['One weight update', 'One mini-batch', 'One full pass through the training data', 'One hour of training']
+    answer: C
+    mistakes:
+      A: 'One update is an iteration, or step.'
+      B: 'A mini-batch is a small group of examples. An epoch uses all of them.'
+      D: 'Epochs count passes through data, not time.'
+    hint: |
+      How many times has the model seen each training example after one epoch?
+    solution: |
+      An epoch is one full pass through the training set, so each example has been used once. With mini-batches, an epoch is made of many iterations.
+
+      **Answer: (C) One full pass through the training data**
+  - slug: c3-why-minibatch
+    difficulty: medium
+    question: |
+      Why do most models train with mini-batches instead of the whole dataset for every step?
+    choices: ['Mini-batches give exact gradients', 'Mini-batches use more memory', 'Mini-batches remove the need for a learning rate', 'Each mini-batch step is far cheaper, and its noisy gradient is still good enough to make progress']
+    answer: D
+    mistakes:
+      A: 'A mini-batch gradient is an estimate, so it is noisy, not exact.'
+      B: 'Mini-batches use less memory per step than the whole dataset.'
+      C: 'Every step still multiplies the gradient by a learning rate.'
+    hint: |
+      Compare the cost of one step with 64 examples to one step with 10 million.
+    solution: |
+      A mini-batch gradient only estimates the full gradient, but it costs a tiny fraction as much. Taking many cheap, slightly noisy steps beats taking a few perfect, expensive ones, and the noise can even help the model escape poor spots.
+
+      **Answer: (D) Each mini-batch step is far cheaper, and its noisy gradient is still good enough to make progress**
+  - slug: c4-momentum
+    difficulty: medium
+    question: |
+      What does momentum add to gradient descent?
+    choices: ['It picks a new random learning rate each step', 'A running memory of recent gradients, so steps keep moving in a consistent direction', 'It stops training early', 'It adds extra layers to the model']
+    answer: B
+    mistakes:
+      A: 'Momentum keeps the learning rate. It changes the direction used.'
+      C: 'That is early stopping, a different idea.'
+      D: 'Momentum changes the optimizer, not the model.'
+    hint: |
+      Think of a ball rolling downhill. What carries it through small dips?
+    solution: |
+      Momentum keeps a velocity that mixes the new gradient with the recent ones. On a steady slope, the steps build up speed. On a bumpy surface, the bumps partly cancel, so the path is smoother.
+
+      **Answer: (B) A running memory of recent gradients, so steps keep moving in a consistent direction**
+  - slug: c5-adam
+    difficulty: hard
+    question: |
+      What sets Adam apart from plain stochastic gradient descent?
+    choices: ['Adam never uses gradients', 'Adam only works on one weight at a time', 'Adam gives each weight its own step size, based on running averages of its gradient and squared gradient', 'Adam always reaches the lowest possible loss']
+    answer: C
+    mistakes:
+      A: 'Adam is built entirely from gradients.'
+      B: 'Adam updates every weight at each step, each with its own scale.'
+      D: 'No optimizer can promise the lowest possible loss.'
+    hint: |
+      Adam is short for "adaptive moment estimation." What adapts?
+    solution: |
+      Adam tracks two running averages for each weight: one of its gradient, like momentum, and one of its squared gradient, which measures how large and noisy it is. Dividing by the second gives each weight its own step size, which makes Adam work well across many problems without much tuning.
+
+      **Answer: (C) Adam gives each weight its own step size, based on running averages of its gradient and squared gradient**
+  - slug: c6-slow-loss
+    difficulty: hard
+    question: |
+      After 50 epochs, the training loss is still going down steadily but very slowly, with no bouncing. What is the most sensible first change?
+    choices: ['Lower the learning rate', 'Switch to the test set for training', 'Remove the bias from every neuron', 'Raise the learning rate somewhat']
+    answer: D
+    mistakes:
+      A: 'Smaller steps would make slow progress even slower.'
+      B: 'Training on the test set ruins your honest final score.'
+      C: 'Removing biases makes the model weaker and does not speed up training.'
+    hint: |
+      Steady progress with no bouncing means the steps are safe. Are they too timid?
+    solution: |
+      Smooth, slow progress is the sign of a learning rate that is too small: each step is safe but tiny. Raising it, carefully, should speed things up. If the loss starts bouncing, you went too far.
+
+      **Answer: (D) Raise the learning rate somewhat**
+math:
+  - slug: m1-one-update
+    difficulty: easy
+    question: |
+      A weight is $w = 5$, its gradient is $4$, and the learning rate is $0.5$. What is $w$ after one gradient descent step?
+    choices: [1, 3, 4.5, 7]
+    answer: B
+    verify: '5 - 0.5 * 4'
+    mistakes:
+      A: 'That subtracts the whole gradient. Multiply it by the learning rate first.'
+      C: 'That subtracts the learning rate alone. Multiply it by the gradient.'
+      D: 'That adds the step, which moves uphill. Subtract it.'
+    hint: |
+      New weight = old weight − learning rate × gradient.
+    solution: |
+      $$5 - 0.5 \times 4 = 3$$
+
+      **Answer: (B) 3**
+  - slug: m2-iterations-per-epoch
+    difficulty: easy
+    question: |
+      A training set has 10,000 examples, and the batch size is 50. How many iterations make up one epoch?
+    choices: [50, 100, 200, 500]
+    answer: C
+    verify: '10000 / 50'
+    mistakes:
+      A: 'That is the batch size. Divide the examples by it.'
+      B: 'That would need batches of 100. Check the batch size.'
+      D: 'That would need batches of 20. Check the batch size.'
+    hint: |
+      Each iteration uses one batch. How many batches cover all the examples?
+    solution: |
+      $$10000 \div 50 = 200$$
+
+      **Answer: (C) 200**
+  - slug: m3-two-steps
+    difficulty: medium
+    question: |
+      The loss is $L(w) = (w - 3)^2$, with derivative $2(w - 3)$. Starting at $w = 0$ with learning rate $0.25$, what is $w$ after two steps?
+    choices: [1.5, 2.25, 3, 4.5]
+    answer: B
+    verify: '(() => { let w = 0; for (let i = 0; i < 2; i++) w -= 0.25 * 2 * (w - 3); return w; })()'
+    mistakes:
+      A: 'That is after one step. Take a second step from 1.5.'
+      C: 'That is the minimum. Each step only closes half the remaining gap.'
+      D: 'The second step is smaller than the first, because the slope gets flatter.'
+    hint: |
+      Step 1: the gradient at 0 is $-6$. Find the new $w$, then do it again.
+    hint2: |
+      After step 1, $w = 1.5$. The gradient there is $2(1.5 - 3) = -3$.
+    solution: |
+      Step 1: $w = 0 - 0.25 \times (-6) = 1.5$.
+
+      Step 2: the gradient is $2(1.5 - 3) = -3$, so $w = 1.5 - 0.25 \times (-3) = 2.25$.
+
+      **Answer: (B) 2.25**
+  - slug: m4-diverging
+    difficulty: medium
+    question: |
+      The loss is $L(w) = w^2$, with derivative $2w$. Starting at $w = 1$ with learning rate $1.5$, what is $w$ after three steps?
+    choices: [-8, -2, 0, 8]
+    answer: A
+    verify: '(() => { let w = 1; for (let i = 0; i < 3; i++) w -= 1.5 * 2 * w; return w; })()'
+    mistakes:
+      B: 'That is after one step. Keep going.'
+      C: 'Zero is the minimum, but this learning rate overshoots it more each time.'
+      D: 'Check the sign. Each step multiplies $w$ by $-2$.'
+    hint: |
+      One step turns $w$ into $w - 1.5 \times 2w$. Simplify that.
+    hint2: |
+      Each step multiplies $w$ by $-2$.
+    solution: |
+      Each update gives $w - 3w = -2w$. So $w$ goes $1, -2, 4, -8$. The weight swings farther from the minimum at 0 each time: the learning rate is too large, and training diverges.
+
+      **Answer: (A) -8**
+  - slug: m5-momentum
+    difficulty: hard
+    question: |
+      Momentum updates $v \leftarrow 0.9v + g$ and then $w \leftarrow w - 0.1v$. Start with $w = 1$ and $v = 0$. The gradient is $g = 1$ on both of the first two steps. What is $w$ after two steps?
+    choices: [0.71, 0.8, 0.81, 0.9]
+    answer: A
+    verify: '(() => { let w = 1, v = 0; for (let i = 0; i < 2; i++) { v = 0.9 * v + 1; w -= 0.1 * v; } return +w.toFixed(4); })()'
+    mistakes:
+      B: 'That is plain gradient descent. With momentum, the second step is bigger.'
+      C: 'Check the second velocity: $0.9 \times 1 + 1 = 1.9$.'
+      D: 'That is after one step. Take the second.'
+    hint: |
+      Step 1: $v = 1$, so $w$ drops by $0.1$.
+    hint2: |
+      Step 2: $v = 0.9 \times 1 + 1 = 1.9$, so $w$ drops by $0.19$.
+    solution: |
+      Step 1: $v = 0.9 \times 0 + 1 = 1$, and $w = 1 - 0.1 = 0.9$.
+
+      Step 2: $v = 0.9 \times 1 + 1 = 1.9$, and $w = 0.9 - 0.19 = 0.71$.
+
+      Plain gradient descent would be at 0.8. Momentum went farther, because the gradient kept pointing the same way.
+
+      **Answer: (A) 0.71**
+  - slug: m6-step-decay
+    difficulty: hard
+    question: |
+      A schedule starts the learning rate at $0.08$ and halves it after every 10 epochs. What is the learning rate during epoch 35?
+    choices: [0.0025, 0.005, 0.01, 0.02]
+    answer: C
+    verify: '0.08 / 2 ** Math.floor(35 / 10)'
+    mistakes:
+      A: 'That halves it 5 times. By epoch 35, it has been halved after epochs 10, 20, and 30.'
+      B: 'That halves it 4 times. The next halving is after epoch 40.'
+      D: 'That halves it only twice. Count the halvings after epochs 10, 20, and 30.'
+    hint: |
+      How many times has the rate been halved before epoch 35?
+    solution: |
+      The rate halves after epochs 10, 20, and 30, so three times:
+
+      $$0.08 \div 2 \div 2 \div 2 = 0.01$$
+
+      **Answer: (C) 0.01**

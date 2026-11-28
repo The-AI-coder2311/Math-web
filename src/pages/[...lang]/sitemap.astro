@@ -1,7 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getAnswerKeys, getContests, getLessonData, getLevels, getProblemSets } from '../../lib/content';
-import { href, localePaths, t } from '../../i18n/config';
+import { getMlUnits, mlSets } from '../../lib/ml';
+import { mlText } from '../../i18n/ml';
+import { href, isTranslated, localePaths, t } from '../../i18n/config';
 
 export const getStaticPaths = () => localePaths();
 
@@ -17,6 +19,8 @@ const keys = await getAnswerKeys(lang);
 const finishedLevels = (await getLevels(lang))
   .map((level, index) => ({ ...level, number: index + 1 }))
   .filter((level) => level.units.every((unit) => unit.available));
+// The ML path is English only for now, so other languages leave it off their Sitemap page.
+const mlUnits = isTranslated(lang, 'ml/') ? await getMlUnits(lang) : [];
 const topicsFor = (competition: string) =>
   units
     .filter((unit) => unit.lessons > 0 && unit.competitions.includes(competition))
@@ -57,6 +61,21 @@ const topicsFor = (competition: string) =>
         </section>
       ))}
     </section>
+
+    {mlUnits.length > 0 && (
+      <section>
+        <h2>{mlText.sitemapHeading}</h2>
+        <p><a href={href(lang, 'ml/')}>{mlText.title}</a></p>
+        <ul>
+          {mlUnits.map((unit) => (
+            <li>
+              <a href={href(lang, `ml/${unit.slug}/`)}>{unit.title}</a>
+              {mlSets.map((set) => <> &middot; <a href={href(lang, `ml/${unit.slug}/${set}/`)}>{mlText.setName[set]}</a></>)}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
 
     <section>
       <h2>{text.practice}</h2>

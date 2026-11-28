@@ -1,0 +1,79 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../../layouts/Base.astro';
+import Problem from '../../../../components/Problem.astro';
+import ProgressBar from '../../../../components/ProgressBar.astro';
+import { getMlQuestions, getMlUnits, mlProgressKey, mlSets } from '../../../../lib/ml';
+import { practiceData } from '../../../../lib/practice-data';
+import { mlText as text } from '../../../../i18n/ml';
+import { href, isTranslated, langParam, locales, t } from '../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales
+      .filter((lang) => isTranslated(lang, 'ml/'))
+      .map(async (lang) => {
+        const units = await getMlUnits(lang);
+        return units.flatMap((unit, index) =>
+          mlSets.map((set) => ({
+            params: { lang: langParam(lang), unit: unit.slug, set },
+            props: { lang, unit, set, next: units[index + 1] },
+          })),
+        );
+      }),
+  );
+  return paths.flat();
+}
+
+const { lang, unit, set, next } = Astro.props;
+const practice = t(lang).practice;
+const questions = await getMlQuestions(lang, unit.slug, set);
+const key = mlProgressKey(unit.slug, set);
+const setName = text.setName[set];
+const other = mlSets.find((name) => name !== set)!;
+const title = text.setTitle(setName, unit.title);
+---
+<Base title={title} description={text.setDescription(set, unit.title)} lang={lang} current="ml">
+  <div {...practiceData(lang, key)}>
+    <p class="eyebrow"><a href={href(lang, `ml/#level-${unit.level}`)}>{text.eyebrow(unit.levelTitle)}</a></p>
+    <h1>{title}</h1>
+    <p>{text.setBlurb[set]} {text.intoTheSet}</p>
+    <noscript><p class="card">{practice.noScript}</p></noscript>
+    <p class="card" data-storage-note hidden>{practice.storageBlocked}</p>
+    <p class="no-print"><a class="tap-link" href={href(lang, `ml/${unit.slug}/`)}>{text.backToTopic(unit.title)}</a></p>
+
+    <div class="sticky-progress needs-js">
+      <ProgressBar lang={lang} unit={key} unitTitle={`${unit.title}, ${setName}`} problems={questions.map((question) => question.slug)} />
+    </div>
+
+    <nav class="question-nav problem-nav no-print" aria-label={practice.navLabel}>
+      <p class="muted">{practice.navHelp}</p>
+      <ol>
+        {questions.map((question, i) => (
+          <li><a href={`#p-${question.slug}`} data-nav-problem={question.slug} aria-label={practice.navItem(i + 1, practice.navUnsolved)}>{i + 1}</a></li>
+        ))}
+      </ol>
+      <label class="flag-choice needs-js">
+        <input type="checkbox" data-unsolved-only />
+        {practice.unsolvedOnly}
+      </label>
+      <p class="muted needs-js" role="status" data-filter-status></p>
+    </nav>
+
+    {questions.map((question, i) => <Problem lang={lang} number={i + 1} problem={question} />)}
+
+    <section class="card finished" data-finished hidden>
+      <h2>{text.finishedTitle}</h2>
+      <p>{text.finishedText}</p>
+      <div class="btn-row">
+        <a class="btn" href={href(lang, `ml/${unit.slug}/${other}/`)}>{text.otherSet(text.setName[other])}</a>
+        {next && <a class="btn btn-primary" href={href(lang, `ml/${next.slug}/`)}>{text.nextTopic(next.title)}</a>}
+      </div>
+    </section>
+
+    <button class="btn needs-js" type="button" data-reset>{practice.reset}</button>
+  </div>
+</Base>
+<script>
+  import '../../../../scripts/practice';
+</script>

@@ -1,0 +1,212 @@
+concepts:
+  - slug: c1-hallucination
+    difficulty: easy
+    question: |
+      A chatbot confidently cites a research paper that does not exist. What is this called?
+    choices: ['Overfitting', 'Hallucination', 'Quantization', 'Tokenization']
+    answer: B
+    mistakes:
+      A: 'Overfitting is about failing on new data after memorizing training data. This is a specific LLM failure with its own name.'
+      C: 'Quantization stores weights with fewer bits.'
+      D: 'Tokenization splits text into tokens.'
+    hint: |
+      The model produced something that sounds right but is made up.
+    solution: |
+      When a language model states false information confidently, such as an invented citation, it is called hallucination. Retrieval, careful prompting, and checking sources all help.
+
+      **Answer: (B) Hallucination**
+  - slug: c2-rag
+    difficulty: easy
+    question: |
+      What does retrieval-augmented generation (RAG) do?
+    choices: ['Finds relevant documents and puts them in the prompt, so the model can answer from them', 'Retrains the whole model every day', 'Makes the model smaller', 'Removes the need for a prompt']
+    answer: A
+    mistakes:
+      B: 'RAG changes the prompt, not the weights.'
+      C: 'Shrinking a model is quantization or distillation.'
+      D: 'RAG adds to the prompt. It still needs one.'
+    hint: |
+      "Retrieval" means fetching. What gets fetched, and where does it go?
+    solution: |
+      RAG searches a collection of documents, often with a vector database, for passages related to the question, and adds them to the prompt. The model can then answer from trusted, up-to-date text instead of only from memory.
+
+      **Answer: (A) Finds relevant documents and puts them in the prompt, so the model can answer from them**
+  - slug: c3-few-shot
+    difficulty: medium
+    question: |
+      You put three examples of English-to-French translations in a prompt, and the model translates a fourth sentence correctly. What happened to the model's weights?
+    choices: ['They were fine-tuned on the three examples', 'They were quantized', 'They were reset', 'Nothing. In-context learning uses the prompt without changing any weights']
+    answer: D
+    mistakes:
+      A: 'Fine-tuning would need a training run. A prompt alone does not update weights.'
+      B: 'Quantization is a separate step that changes how weights are stored.'
+      C: 'Nothing resets the weights during a conversation.'
+    hint: |
+      Did any training happen between the prompt and the answer?
+    solution: |
+      This is few-shot, or in-context, learning. The model picks up the pattern from the examples in its input, and its weights stay exactly as they were. Start a new conversation without the examples, and the effect is gone.
+
+      **Answer: (D) Nothing. In-context learning uses the prompt without changing any weights**
+  - slug: c4-temperature
+    difficulty: medium
+    question: |
+      You want a model to give consistent, predictable answers to factual questions. How should you set the temperature?
+    choices: ['As high as possible', 'Exactly 1, always', 'Low', 'Temperature has no effect on answers']
+    answer: C
+    mistakes:
+      A: 'High temperature flattens the probabilities, so answers get more random.'
+      B: 'A temperature of 1 is the default, but lowering it makes answers more consistent.'
+      D: 'Temperature reshapes the probabilities the model samples from.'
+    hint: |
+      Dividing logits by a small number makes the differences between them bigger.
+    solution: |
+      A low temperature sharpens the probabilities so the likeliest token wins almost every time, giving consistent answers. A higher temperature is useful for creative tasks where variety helps.
+
+      **Answer: (C) Low**
+  - slug: c5-rlhf
+    difficulty: hard
+    question: |
+      How does RLHF differ from supervised fine-tuning?
+    choices: ['RLHF learns from people''s comparisons of answers through a reward model, while SFT copies example responses', 'RLHF uses no human input at all', 'SFT uses reinforcement learning, and RLHF does not', 'They are two names for the same thing']
+    answer: A
+    mistakes:
+      B: 'The "HF" stands for human feedback.'
+      C: 'It is the other way around. RLHF uses reinforcement learning.'
+      D: 'They use different data and different training methods.'
+    hint: |
+      What does each method need from people: example answers, or judgments between answers?
+    solution: |
+      SFT trains the model to reproduce example responses written for prompts. RLHF has people compare pairs of responses, trains a reward model on those preferences, and then uses reinforcement learning to push the model toward responses that score well. DPO uses the same comparisons without a separate reward model.
+
+      **Answer: (A) RLHF learns from people's comparisons of answers through a reward model, while SFT copies example responses**
+  - slug: c6-drift
+    difficulty: hard
+    question: |
+      A model that flags fraudulent purchases worked well at launch, but its accuracy fell over the following year as shopping habits changed. What is this called, and what helps?
+    choices: ['Hallucination, fixed with a lower temperature', 'Model drift, caught by monitoring performance and retraining on recent data', 'Mode collapse, fixed with a better discriminator', 'Underfitting, fixed with a smaller model']
+    answer: B
+    mistakes:
+      A: 'Hallucination is a language model inventing facts. This is a change in the data.'
+      C: 'Mode collapse is a GAN failure.'
+      D: 'The model worked well at first, so it was not underfitting. The world changed.'
+    hint: |
+      The model did not change. What did?
+    solution: |
+      The incoming data drifted away from the data the model trained on, so its performance decayed. This is model drift. Monitoring the model's inputs and accuracy catches it, and retraining on recent data fixes it.
+
+      **Answer: (B) Model drift, caught by monitoring performance and retraining on recent data**
+math:
+  - slug: m1-memory
+    difficulty: easy
+    question: |
+      A model has 7 billion weights stored at 16 bits (2 bytes) each. About how many gigabytes does it need? Use 1 GB = 1 billion bytes.
+    choices: [3.5, 7, 14, 28]
+    answer: C
+    verify: '7 * 2'
+    mistakes:
+      A: 'That is 4-bit storage, half a byte per weight.'
+      B: 'That is 8-bit storage, 1 byte per weight.'
+      D: 'That is 32-bit storage, 4 bytes per weight.'
+    hint: |
+      Multiply the number of weights by the bytes per weight.
+    solution: |
+      $$7 \text{ billion} \times 2 \text{ bytes} = 14 \text{ billion bytes}$$
+
+      That is about 14 GB.
+
+      **Answer: (C) 14**
+  - slug: m2-throughput
+    difficulty: easy
+    question: |
+      A server handles requests in batches of 8, and each batch takes 100 milliseconds. How many requests can it handle per second?
+    choices: [8, 10, 12.5, 80]
+    answer: D
+    verify: '8 * (1000 / 100)'
+    mistakes:
+      A: 'That is the batch size. Count how many batches fit in a second.'
+      B: 'That is batches per second. Each batch holds 8 requests.'
+      C: 'That divides 100 by 8. Find batches per second, then multiply by 8.'
+    hint: |
+      How many 100-millisecond batches fit in one second?
+    solution: |
+      One second holds $1000 \div 100 = 10$ batches, and each has 8 requests:
+
+      $$10 \times 8 = 80$$
+
+      **Answer: (D) 80**
+  - slug: m3-lora
+    difficulty: medium
+    question: |
+      LoRA adapts a $1000 \times 1000$ weight matrix with two thin matrices of sizes $1000 \times 8$ and $8 \times 1000$. How many trainable numbers is that?
+    choices: [8000, 16000, 64000, 1000000]
+    answer: B
+    verify: '1000 * 8 + 8 * 1000'
+    mistakes:
+      A: 'That counts only one of the two thin matrices.'
+      C: 'Check the sizes: each thin matrix has $1000 \times 8 = 8000$ numbers.'
+      D: 'That is the full matrix, which LoRA keeps frozen.'
+    hint: |
+      Count the numbers in each thin matrix, then add.
+    solution: |
+      $$1000 \times 8 + 8 \times 1000 = 16000$$
+
+      That is 1.6% of the million numbers in the full matrix.
+
+      **Answer: (B) 16000**
+  - slug: m4-temperature
+    difficulty: medium
+    question: |
+      Two tokens have weights $e^{z_1} = 4$ and $e^{z_2} = 1$. Dividing the logits by temperature $T = 2$ turns each weight into its square root. What is the first token's probability at $T = 2$?
+    choices: ['$\frac{1}{2}$', '$\frac{2}{3}$', '$\frac{4}{5}$', '$\frac{16}{17}$']
+    answer: B
+    verify: 'fraction(Math.sqrt(4), Math.sqrt(4) + Math.sqrt(1))'
+    mistakes:
+      A: 'That would mean both tokens are equally likely. The first still has a larger weight.'
+      C: 'That is the probability at $T = 1$. Take the square roots first.'
+      D: 'That squares the weights, which is what $T = \frac{1}{2}$ does.'
+    hint: |
+      The weights become $\sqrt{4} = 2$ and $\sqrt{1} = 1$.
+    solution: |
+      The new weights are 2 and 1, so the first token's probability is
+
+      $$\frac{2}{2 + 1} = \frac{2}{3}$$
+
+      It dropped from $\frac{4}{5}$, so the higher temperature made the choice more random.
+
+      **Answer: (B) $\frac{2}{3}$**
+  - slug: m5-top-p
+    difficulty: hard
+    question: |
+      The next-token probabilities are 0.5, 0.3, 0.1, 0.06, and 0.04. Top-p sampling with $p = 0.85$ keeps the smallest set of most likely tokens whose probabilities add up to at least 0.85. How many tokens does it keep?
+    choices: [1, 2, 3, 4]
+    answer: C
+    verify: '(() => { const ps = [0.5, 0.3, 0.1, 0.06, 0.04]; let total = 0, n = 0; while (total < 0.85) total += ps[n++]; return n; })()'
+    mistakes:
+      A: 'One token gives 0.5, short of 0.85.'
+      B: 'Two tokens give 0.8, still short of 0.85.'
+      D: 'Three tokens already reach 0.9. Top-p keeps the smallest set that reaches 0.85.'
+    hint: |
+      Add the probabilities from the largest down until the total reaches 0.85.
+    solution: |
+      $0.5$, then $0.5 + 0.3 = 0.8$, then $0.8 + 0.1 = 0.9$. The total first reaches 0.85 with 3 tokens.
+
+      **Answer: (C) 3**
+  - slug: m6-tokens-per-param
+    difficulty: hard
+    question: |
+      A rule of thumb from scaling research says to train on about 20 tokens per parameter. How many billion tokens is that for a 7-billion-parameter model?
+    choices: [0.35, 7, 27, 140]
+    answer: D
+    verify: '7 * 20'
+    mistakes:
+      A: 'That divides 7 by 20. Multiply instead.'
+      B: 'That is the number of parameters. Each one gets 20 tokens.'
+      C: 'That adds 7 and 20. Multiply instead.'
+    hint: |
+      20 tokens for each of the 7 billion parameters.
+    solution: |
+      $$7 \times 20 = 140$$
+
+      That is about 140 billion tokens. Many recent models train on far more than this, because a smaller, longer-trained model is cheaper to run afterward.
+
+      **Answer: (D) 140**

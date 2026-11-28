@@ -1,0 +1,208 @@
+concepts:
+  - slug: c1-false-positive
+    difficulty: easy
+    question: |
+      A fraud detector flags a normal purchase as fraud. What kind of prediction is this?
+    choices: ['True positive', 'False positive', 'False negative', 'True negative']
+    answer: B
+    mistakes:
+      A: 'A true positive would be real fraud that was flagged.'
+      C: 'A false negative would be real fraud that was missed.'
+      D: 'A true negative would be a normal purchase left alone.'
+    hint: |
+      "Positive" is what the model said. "False" means it was wrong.
+    solution: |
+      The model said "fraud," which is a positive prediction, and it was wrong. That is a false positive, a false alarm.
+
+      **Answer: (B) False positive**
+  - slug: c2-recall-meaning
+    difficulty: easy
+    question: |
+      What does recall measure?
+    choices: ['Of everything flagged, how much was real', 'The share of all predictions that are right', 'Of all real negatives, how many were cleared', 'Of all real positives, how many the model caught']
+    answer: D
+    mistakes:
+      A: 'That is precision.'
+      B: 'That is accuracy.'
+      C: 'That is specificity.'
+    hint: |
+      Recall's denominator is $TP + FN$, every case that is actually positive.
+    solution: |
+      Recall is $\frac{TP}{TP + FN}$: out of all the real positives, the share the model found. It is also called sensitivity.
+
+      **Answer: (D) Of all real positives, how many the model caught**
+  - slug: c3-screening-metric
+    difficulty: medium
+    question: |
+      A model screens X-rays for an early sign of a serious disease. Flagged patients get a cheap follow-up test. Which metric should matter most?
+    choices: ['Recall, because missing a sick patient is far worse than a false alarm', 'Precision, because false alarms are the worst mistake', 'Accuracy, because it combines everything', 'Specificity, because most patients are healthy']
+    answer: A
+    mistakes:
+      B: 'A false alarm here only costs a cheap follow-up test.'
+      C: 'Most patients are healthy, so accuracy can be high while many sick patients are missed.'
+      D: 'Specificity measures clearing healthy patients, which is the less costly side here.'
+    hint: |
+      Compare the cost of a miss with the cost of a false alarm.
+    solution: |
+      A missed case could mean an untreated disease, while a false alarm means one more cheap test. When misses are the costly mistake, recall, the share of real cases caught, matters most.
+
+      **Answer: (A) Recall, because missing a sick patient is far worse than a false alarm**
+  - slug: c4-threshold
+    difficulty: medium
+    question: |
+      A classifier's decision threshold is raised from 0.5 to 0.9. What usually happens?
+    choices: ['Precision and recall both go up', 'Precision goes down and recall goes up', 'Precision goes up and recall goes down', 'Nothing changes']
+    answer: C
+    mistakes:
+      A: 'Moving the threshold trades one for the other. It rarely improves both.'
+      B: 'That happens when the threshold is lowered.'
+      D: 'The threshold decides which predictions count as positive, so the counts change.'
+    hint: |
+      With a 0.9 threshold, the model flags only cases it is very sure about.
+    solution: |
+      A higher threshold means fewer cases get flagged. The ones flagged are more often real, so precision rises. But more real cases fall below the bar and are missed, so recall falls.
+
+      **Answer: (C) Precision goes up and recall goes down**
+  - slug: c5-auc-half
+    difficulty: hard
+    question: |
+      A model has an ROC AUC of 0.5. What does that mean?
+    choices: ['Its scores rank positives above negatives no better than random guessing', 'It is right half the time at any threshold', 'It is perfect on half of the classes', 'Its precision is 0.5']
+    answer: A
+    mistakes:
+      B: 'AUC measures ranking across all thresholds, not accuracy at one.'
+      C: 'AUC is for a yes-or-no problem and is not split by class.'
+      D: 'AUC and precision are different measures.'
+    hint: |
+      AUC is the chance that a random positive gets a higher score than a random negative.
+    solution: |
+      AUC is the probability that a randomly chosen positive is scored above a randomly chosen negative. A value of 0.5 is a coin flip: the scores carry no information about which is which.
+
+      **Answer: (A) Its scores rank positives above negatives no better than random guessing**
+  - slug: c6-calibration
+    difficulty: hard
+    question: |
+      Of all the cases where a weather model said "70% chance of rain," it rained on about 40%. What property is the model missing?
+    choices: ['High recall', 'A good F1 score', 'Enough training data', 'Calibration']
+    answer: D
+    mistakes:
+      A: 'Recall is about catching rainy days, not whether the percentages are honest.'
+      B: 'F1 combines precision and recall at one threshold. It does not check the probabilities.'
+      C: 'More data might help, but the property being described is calibration.'
+    hint: |
+      The question is whether "70%" means what it says.
+    solution: |
+      A calibrated model's probabilities match reality: when it says 70%, the event happens about 70% of the time. This model is overconfident, since its 70% only comes true 40% of the time. It is poorly calibrated.
+
+      **Answer: (D) Calibration**
+math:
+  - slug: m1-accuracy
+    difficulty: easy
+    question: |
+      A classifier has $TP = 40$, $FP = 10$, $FN = 5$, and $TN = 45$. What is its accuracy?
+    choices: [0.45, 0.8, 0.85, 0.9]
+    answer: C
+    verify: '(40 + 45) / (40 + 10 + 5 + 45)'
+    mistakes:
+      A: 'That counts only the true negatives. Add the true positives too.'
+      B: 'That is the precision. Accuracy counts every correct prediction.'
+      D: 'Recount the correct predictions: $40 + 45 = 85$.'
+    hint: |
+      Accuracy is the correct predictions divided by all predictions.
+    solution: |
+      $$\frac{40 + 45}{100} = 0.85$$
+
+      **Answer: (C) 0.85**
+  - slug: m2-precision
+    difficulty: easy
+    question: |
+      A classifier has $TP = 40$, $FP = 10$, $FN = 5$, and $TN = 45$. What is its precision?
+    choices: ['$\frac{4}{5}$', '$\frac{9}{11}$', '$\frac{17}{20}$', '$\frac{8}{9}$']
+    answer: A
+    verify: 'fraction(40, 40 + 10)'
+    mistakes:
+      B: 'That is the specificity, $\frac{45}{55}$.'
+      C: 'That is the accuracy.'
+      D: 'That is the recall, which divides by $TP + FN$.'
+    hint: |
+      Precision divides the true positives by everything predicted positive.
+    solution: |
+      $$\frac{TP}{TP + FP} = \frac{40}{50} = \frac{4}{5}$$
+
+      **Answer: (A) $\frac{4}{5}$**
+  - slug: m3-recall
+    difficulty: medium
+    question: |
+      A classifier has $TP = 40$, $FP = 10$, $FN = 5$, and $TN = 45$. What is its recall?
+    choices: ['$\frac{4}{5}$', '$\frac{9}{11}$', '$\frac{17}{20}$', '$\frac{8}{9}$']
+    answer: D
+    verify: 'fraction(40, 40 + 5)'
+    mistakes:
+      A: 'That is the precision, which divides by $TP + FP$.'
+      B: 'That is the specificity, $\frac{45}{55}$.'
+      C: 'That is the accuracy.'
+    hint: |
+      Recall divides the true positives by everything that is actually positive.
+    solution: |
+      $$\frac{TP}{TP + FN} = \frac{40}{45} = \frac{8}{9}$$
+
+      **Answer: (D) $\frac{8}{9}$**
+  - slug: m4-f1
+    difficulty: medium
+    question: |
+      A model has precision 0.5 and recall 1. What is its F1 score, $\frac{2PR}{P + R}$?
+    choices: ['$\frac{1}{2}$', '$\frac{2}{3}$', '$\frac{3}{4}$', '$1$']
+    answer: B
+    verify: 'fraction(2 * 1 * 1, 1 + 2)'
+    mistakes:
+      A: 'That is the precision alone. F1 combines both.'
+      C: 'That is the ordinary average. F1 uses the harmonic mean, which leans toward the smaller value.'
+      D: 'That is the recall alone. F1 combines both.'
+    hint: |
+      $2 \times 0.5 \times 1 = 1$ on top. What is on the bottom?
+    solution: |
+      $$\frac{2 \times 0.5 \times 1}{0.5 + 1} = \frac{1}{1.5} = \frac{2}{3}$$
+
+      The ordinary average would be 0.75. F1 is lower because it is pulled toward the weaker of the two scores.
+
+      **Answer: (B) $\frac{2}{3}$**
+  - slug: m5-auc-pairs
+    difficulty: hard
+    question: |
+      A model scores two positive examples 0.9 and 0.6, and three negative examples 0.7, 0.3, and 0.2. AUC is the share of positive-negative pairs where the positive gets the higher score. What is the AUC?
+    choices: ['$\frac{1}{2}$', '$\frac{2}{3}$', '$\frac{5}{6}$', '$1$']
+    answer: C
+    verify: 'fraction(product([0.9, 0.6], [0.7, 0.3, 0.2]).filter(([p, n]) => p > n).length, 6)'
+    mistakes:
+      A: 'That would mean the ranking is random. Most pairs here are in the right order.'
+      B: 'Recount the pairs for 0.6: it beats 0.3 and 0.2, but not 0.7.'
+      D: 'The positive 0.6 is scored below the negative 0.7, so one pair is out of order.'
+    hint: |
+      There are $2 \times 3 = 6$ pairs. Check each one.
+    hint2: |
+      0.9 beats all three negatives. How many does 0.6 beat?
+    solution: |
+      There are 6 pairs. The positive 0.9 beats all 3 negatives, and the positive 0.6 beats 0.3 and 0.2 but not 0.7. That is 5 correct pairs out of 6.
+
+      **Answer: (C) $\frac{5}{6}$**
+  - slug: m6-macro-recall
+    difficulty: hard
+    question: |
+      A test set has 90 examples of a common class and 10 of a rare class. The model gets 81 of the common ones and 2 of the rare ones right. What is the macro-averaged recall?
+    choices: [0.2, 0.55, 0.83, 0.9]
+    answer: B
+    verify: '+((81 / 90 + 2 / 10) / 2).toFixed(4)'
+    mistakes:
+      A: 'That is the rare class alone.'
+      C: 'That is the micro average, which pools all 100 predictions.'
+      D: 'That is the common class alone.'
+    hint: |
+      Macro averaging finds each class's recall, then averages them equally.
+    solution: |
+      The common class has recall $\frac{81}{90} = 0.9$, and the rare class has $\frac{2}{10} = 0.2$. The macro average is
+
+      $$\frac{0.9 + 0.2}{2} = 0.55$$
+
+      The micro average, $\frac{83}{100} = 0.83$, hides how badly the rare class is doing.
+
+      **Answer: (B) 0.55**

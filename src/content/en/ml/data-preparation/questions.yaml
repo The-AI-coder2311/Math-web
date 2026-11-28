@@ -1,0 +1,204 @@
+concepts:
+  - slug: c1-test-set-purpose
+    difficulty: easy
+    question: |
+      What is the test set for?
+    choices: ['Training the model', 'Choosing the learning rate', 'An honest final score on data the model has never seen', 'Filling in missing values']
+    answer: C
+    mistakes:
+      A: 'That is the training set. If the model learns from the test set, the test is no longer fair.'
+      B: 'Choosing settings is the job of the validation set.'
+      D: 'Imputation is part of cleaning the data, not a split.'
+    hint: |
+      There are three sets: one to learn from, one to choose settings with, and one more.
+    solution: |
+      The training set teaches the model and the validation set helps choose its settings. The test set stays untouched until the very end, so its score shows how the model will do on new data.
+
+      **Answer: (C) An honest final score on data the model has never seen**
+  - slug: c2-one-hot
+    difficulty: easy
+    question: |
+      A "day of the week" feature has 7 values. With one-hot encoding, how is it stored?
+    choices: ['As one column holding 0 to 6', 'As 7 columns, with a 1 in the column for that day and 0s elsewhere', 'As 2 columns: weekday or weekend', 'It is removed, because models cannot use categories']
+    answer: B
+    mistakes:
+      A: 'That is label encoding, which makes Sunday look "bigger" than Monday.'
+      C: 'That throws away which day it was.'
+      D: 'Models use categories all the time once they are encoded as numbers.'
+    hint: |
+      "One-hot" means exactly one entry is "hot," or 1.
+    solution: |
+      One-hot encoding gives each category its own column. Tuesday might be $(0, 1, 0, 0, 0, 0, 0)$. No day looks bigger than another, so the model does not learn a fake order.
+
+      **Answer: (B) As 7 columns, with a 1 in the column for that day and 0s elsewhere**
+  - slug: c3-label-encoding-problem
+    difficulty: medium
+    question: |
+      A team encodes cities as Boston = 1, Chicago = 2, Denver = 3 and feeds this to a linear model. What is the problem?
+    choices: ['The model may treat Denver as "three times" Boston, an order that does not exist', 'The numbers are too small to train on', 'Linear models cannot read whole numbers', 'There is no problem with this encoding']
+    answer: A
+    mistakes:
+      B: 'The size of the numbers is fine. The problem is the order they invent.'
+      C: 'Linear models handle whole numbers without trouble.'
+      D: 'A linear model multiplies the feature by a weight, so it treats 3 as bigger than 1.'
+    hint: |
+      A linear model multiplies each feature by a weight. What does that do with 1, 2, and 3?
+    solution: |
+      A linear model multiplies the city number by a weight, so it assumes the effect grows steadily from Boston to Chicago to Denver. Cities have no such order. One-hot encoding avoids inventing it.
+
+      **Answer: (A) The model may treat Denver as "three times" Boston, an order that does not exist**
+  - slug: c4-stratified
+    difficulty: medium
+    question: |
+      Only 2% of a dataset's examples are positive. Why use a stratified split?
+    choices: ['To make the dataset bigger', 'To remove the rare class', 'To shuffle the data more randomly', 'So each split has about 2% positives, instead of some splits getting almost none']
+    answer: D
+    mistakes:
+      A: 'Splitting never adds examples.'
+      B: 'The rare class is often the one that matters most, such as fraud or disease.'
+      C: 'A stratified split is less random on purpose. It controls each class share.'
+    hint: |
+      With only 2% positives, what could a purely random split do to a small test set?
+    solution: |
+      A random split could put very few positives in the test set, which makes its score unreliable. A stratified split keeps each class's share, about 2% positives, the same in every part.
+
+      **Answer: (D) So each split has about 2% positives, instead of some splits getting almost none**
+  - slug: c5-patient-leak
+    difficulty: hard
+    question: |
+      A team shuffles 5,000 skin photos from 500 patients and splits them 80/20 by photo. The test score is excellent, but the model fails at another clinic. What is the most likely reason?
+    choices: ['The test set was too large', 'Photos of the same patients were in both training and test, so the model learned to recognize patients', 'The model was too small', 'The photos should have been in black and white']
+    answer: B
+    mistakes:
+      A: 'A test set of 1,000 photos is a reasonable size.'
+      C: 'A model that is too small does badly on the test set too, not only at the new clinic.'
+      D: 'Color has nothing to do with the gap between the test score and real use.'
+    hint: |
+      Each patient has about 10 photos. Where did they end up after a photo-by-photo shuffle?
+    solution: |
+      With about 10 photos per patient, a photo-level shuffle puts the same patients on both sides. The model can score well by recognizing each patient's skin, which does not work on new patients. Splitting by patient fixes it. This is data leakage.
+
+      **Answer: (B) Photos of the same patients were in both training and test, so the model learned to recognize patients**
+  - slug: c6-scale-after-split
+    difficulty: hard
+    question: |
+      Where should the mean and standard deviation for standardizing features come from?
+    choices: ['The whole dataset, before splitting', 'The test set', 'The training set only, then reused on the validation and test sets', 'Each set separately, using its own mean and standard deviation']
+    answer: C
+    mistakes:
+      A: 'Including the test data leaks information about it into training.'
+      B: 'The test set should stay unseen until the final score.'
+      D: 'Then the same raw value would get different scaled values in different sets, and the model would see mismatched inputs.'
+    hint: |
+      At prediction time in the real world, you only know your training data.
+    solution: |
+      Compute the statistics from the training set, then apply the same numbers everywhere. That copies real use, where new data arrives after training and gets scaled the same way. Using the whole dataset leaks test information.
+
+      **Answer: (C) The training set only, then reused on the validation and test sets**
+math:
+  - slug: m1-min-max
+    difficulty: easy
+    question: |
+      Ages in a dataset run from 20 to 60. What is the age 30 after min-max normalization?
+    choices: [0.25, 0.3, 0.5, 0.75]
+    answer: A
+    verify: '(30 - 20) / (60 - 20)'
+    mistakes:
+      B: 'That is $\frac{30}{100}$. Subtract the minimum, then divide by the range.'
+      C: 'That is $\frac{30}{60}$. Subtract the minimum first.'
+      D: 'That is how far 30 is from the maximum. Measure from the minimum.'
+    hint: |
+      $x' = \frac{x - \min}{\max - \min}$.
+    solution: |
+      $$\frac{30 - 20}{60 - 20} = \frac{10}{40} = 0.25$$
+
+      **Answer: (A) 0.25**
+  - slug: m2-z-score
+    difficulty: easy
+    question: |
+      Test scores have mean 70 and standard deviation 10. What is the z-score of a score of 85?
+    choices: [0.15, 1.5, 8.5, 15]
+    answer: B
+    verify: '(85 - 70) / 10'
+    mistakes:
+      A: 'You divided by 100 instead of by the standard deviation, 10.'
+      C: 'That is $85 \div 10$. Subtract the mean first.'
+      D: 'That is the distance from the mean in points. Divide by the standard deviation.'
+    hint: |
+      How many standard deviations above the mean is 85?
+    solution: |
+      $$z = \frac{85 - 70}{10} = 1.5$$
+
+      **Answer: (B) 1.5**
+  - slug: m3-one-hot-columns
+    difficulty: medium
+    question: |
+      A table has 3 number features, a "color" feature with 4 values, and a "size" feature with 3 values. After one-hot encoding the two category features, how many columns are there?
+    choices: [5, 7, 10, 15]
+    answer: C
+    verify: '3 + 4 + 3'
+    mistakes:
+      A: 'That keeps each category as one column. One-hot encoding gives one column per value.'
+      B: 'That counts the one-hot columns but drops the 3 number features.'
+      D: 'The color and size columns are added side by side, not multiplied.'
+    hint: |
+      The number features stay as they are. Each category feature becomes one column per value.
+    solution: |
+      The 3 number features stay. Color becomes 4 columns and size becomes 3:
+
+      $$3 + 4 + 3 = 10$$
+
+      **Answer: (C) 10**
+  - slug: m4-split-sizes
+    difficulty: medium
+    question: |
+      A dataset of 2,000 examples is split 70% training, 15% validation, and 15% test. How many examples are in the validation set?
+    choices: [150, 300, 600, 1400]
+    answer: B
+    verify: '2000 * 15 / 100'
+    mistakes:
+      A: 'That is 15% of 1,000. The dataset has 2,000 examples.'
+      C: 'That is validation and test together, 30%.'
+      D: 'That is the training set, 70%.'
+    hint: |
+      Find 15% of 2,000.
+    solution: |
+      $$2000 \times \frac{15}{100} = 300$$
+
+      **Answer: (B) 300**
+  - slug: m5-oversample
+    difficulty: hard
+    question: |
+      A training set has 950 normal transactions and 50 fraud cases. You oversample by copying each fraud case the same whole number of times until the two classes are equal. How many copies of each fraud case does the new set hold, counting the original?
+    choices: [5, 10, 19, 20]
+    answer: C
+    verify: '950 / 50'
+    mistakes:
+      A: 'That is $\frac{50}{10}$. Compare the class sizes, 950 and 50.'
+      B: 'That gives 500 fraud cases, still about half of 950.'
+      D: 'That gives 1,000 fraud cases, more than the 950 normal ones.'
+    hint: |
+      How many fraud cases do you need in total?
+    hint2: |
+      You need 950 fraud cases from 50 originals.
+    solution: |
+      The classes are equal when there are 950 fraud cases. Each of the 50 originals must appear $950 \div 50 = 19$ times.
+
+      **Answer: (C) 19**
+  - slug: m6-standardize-back
+    difficulty: hard
+    question: |
+      Heights were standardized using the training set's mean of 165 cm and standard deviation of 8 cm. A new person has $z = -1.25$. How tall are they, in cm?
+    choices: [155, 160, 163.75, 175]
+    answer: A
+    verify: '165 + -1.25 * 8'
+    mistakes:
+      B: 'You may have used $-0.625$. Multiply $-1.25$ by the full standard deviation, 8.'
+      C: 'You subtracted $1.25$ cm. A z-score counts standard deviations, not centimeters.'
+      D: 'A negative z-score is below the mean, so subtract.'
+    hint: |
+      Undo the z-score: $x = \text{mean} + z \times \text{standard deviation}$.
+    solution: |
+      $$165 + (-1.25) \times 8 = 165 - 10 = 155$$
+
+      **Answer: (A) 155**

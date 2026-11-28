@@ -9,7 +9,7 @@ interface Props {
   title: string;
   description: string;
   lang: Locale;
-  current?: 'learn' | 'contests' | 'competitions' | 'formulas' | 'teachers' | 'about';
+  current?: 'learn' | 'ml' | 'contests' | 'competitions' | 'formulas' | 'teachers' | 'about';
   /** For a page that shouldn't be in search results or the sitemap, such as the 404 page. */
   noindex?: boolean;
 }
@@ -29,6 +29,7 @@ const alternates = locales
   .map((other) => ({ lang: other, exists: pageExists(other, pagePath), url: hrefIn(other, pageExists(other, pagePath) ? pagePath : '') }));
 const navItems = [
   { key: 'learn', label: text.nav.learn, url: href(lang, 'pathway/') },
+  { key: 'ml', label: text.nav.ml, url: href(lang, 'ml/') },
   { key: 'contests', label: text.nav.contests, url: href(lang, 'contests/') },
   { key: 'competitions', label: text.nav.competitions, url: href(lang, 'competitions/') },
   { key: 'formulas', label: text.nav.formulas, url: href(lang, 'formulas/') },

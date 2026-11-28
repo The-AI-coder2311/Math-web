@@ -213,7 +213,59 @@ const glossary = defineCollection({
   }),
 });
 
+// ---- The Machine Learning path at /ml/ ----
+// src/content/<lang>/ml/path.yaml lists the levels and topics in order.
+const mlPath = defineCollection({
+  loader: glob({ pattern: '*/ml/path.yaml', base }),
+  schema: z.object({
+    levels: z.array(
+      z.object({
+        title: z.string(),
+        blurb: z.string(),
+        units: z.array(
+          z.object({
+            slug: z.string(),
+            title: z.string(),
+            blurb: z.string(),
+            // Where to read more, such as "Understanding Deep Learning, chapters 5 and 6".
+            reading: z.string().optional(),
+          }),
+        ),
+      }),
+    ),
+  }),
+});
+
+// Each topic's lesson: src/content/<lang>/ml/<topic>/lesson.md
+const mlLessons = defineCollection({
+  loader: glob({ pattern: '*/ml/*/lesson.md', base }),
+  schema: z.object({ title: z.string(), summary: z.string(), minutes: z.number() }),
+});
+
+const mlQuestion = z.object({
+  slug: z.string(),
+  difficulty: z.enum(['easy', 'medium', 'hard']),
+  question: z.string(),
+  choices: z.array(text).min(2).max(6),
+  answer: z.enum(['A', 'B', 'C', 'D', 'E', 'F']),
+  // Required for math questions. It works out the answer on its own, like a unit problem's verify.
+  verify: z.string().optional(),
+  hint: z.string(),
+  hint2: z.string().optional(),
+  solution: z.string(),
+  mistakes: z.record(z.string(), z.string()).optional(),
+});
+
+// Each topic's two question sets: src/content/<lang>/ml/<topic>/questions.yaml
+const mlQuestions = defineCollection({
+  loader: glob({ pattern: '*/ml/*/questions.yaml', base }),
+  schema: z.object({ concepts: z.array(mlQuestion), math: z.array(mlQuestion) }),
+});
+
 export const collections = {
+  mlPath,
+  mlLessons,
+  mlQuestions,
   pathway,
   lessons,
   problems,

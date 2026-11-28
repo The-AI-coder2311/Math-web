@@ -58,6 +58,8 @@ function sourcesFor(page, lang) {
     return [`${content}/units/${parts[1]}/${parts[2] === 'practice' ? 'problems' : `lessons/${parts[2]}.md`}`];
   }
   if (parts[0] === 'pathway' && parts.length === 2) return [`${content}/units/${parts[1]}/lessons`, `${content}/pathway.yaml`];
+  if (parts[0] === 'ml' && parts.length === 2) return [`${content}/ml/${parts[1]}/lesson.md`, `${content}/ml/path.yaml`];
+  if (parts[0] === 'ml' && parts.length === 3) return [`${content}/ml/${parts[1]}/questions.yaml`];
   if (parts[0] === 'contests' && parts.length === 2) return [`${content}/contests/${parts[1]}`];
   if (parts[1] === 'problem-sets' && parts.length === 3) return [`${content}/problem-sets/${parts[2]}.yaml`];
   if (parts[1] === 'answer-keys' && parts.length === 3) {
@@ -65,6 +67,7 @@ function sourcesFor(page, lang) {
   }
   const named = {
     '': [`${templates}/index.astro`],
+    ml: [`${templates}/ml/index.astro`, `${content}/ml`],
     pathway: [`${templates}/pathway/index.astro`, `${content}/pathway.yaml`],
     contests: [`${templates}/contests/index.astro`, `${content}/contests`],
     about: [`${content}/pages/about.md`, 'src/site.config.ts'],

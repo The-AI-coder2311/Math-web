@@ -1,0 +1,50 @@
+---
+import 'katex/dist/katex.min.css';
+import Base from '../../../../layouts/Base.astro';
+import ProgressBar from '../../../../components/ProgressBar.astro';
+import { getMlUnits, mlProgressKey, mlSets } from '../../../../lib/ml';
+import { mlText as text } from '../../../../i18n/ml';
+import { href, isTranslated, langParam, locales, t } from '../../../../i18n/config';
+
+export async function getStaticPaths() {
+  const paths = await Promise.all(
+    locales
+      .filter((lang) => isTranslated(lang, 'ml/'))
+      .map(async (lang) =>
+        (await getMlUnits(lang)).map((unit) => ({ params: { lang: langParam(lang), unit: unit.slug }, props: { lang, unit } })),
+      ),
+  );
+  return paths.flat();
+}
+
+const { lang, unit } = Astro.props;
+const lesson = unit.lesson!;
+---
+<Base title={`${lesson.title}: ${unit.title}`} description={lesson.summary} lang={lang} current="ml">
+  <p class="eyebrow">
+    <a href={href(lang, `ml/#level-${unit.level}`)}>{text.eyebrow(unit.levelTitle)}</a>{' '}&middot; {t(lang).lesson.readTime(lesson.minutes)}
+  </p>
+  <h1>{lesson.title}</h1>
+  <div class="prose" set:html={lesson.html} />
+  {unit.reading && <p class="muted">{text.reading} {unit.reading}</p>}
+
+  <section>
+    <h2>{text.practiceTitle}</h2>
+    <ul class="card-grid">
+      {mlSets.map((set) => (
+        <li class="card">
+          <h3>{text.toSet(text.setName[set])}</h3>
+          <p>{text.setBlurb[set]}</p>
+          <ProgressBar lang={lang} unit={mlProgressKey(unit.slug, set)} unitTitle={`${unit.title}, ${text.setName[set]}`} problems={unit.slugs[set]} />
+          <a class="btn btn-primary" href={href(lang, `ml/${unit.slug}/${set}/`)}>
+            {text.toSet(text.setName[set])}<span class="sr-only">: {unit.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <nav class="btn-row no-print" aria-label={text.title}>
+    <a class="btn" href={href(lang, 'ml/')}>{text.backToPath}</a>
+  </nav>
+</Base>

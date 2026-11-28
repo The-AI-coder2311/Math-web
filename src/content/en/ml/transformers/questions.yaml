@@ -1,0 +1,202 @@
+concepts:
+  - slug: c1-tokenization
+    difficulty: easy
+    question: |
+      What is tokenization?
+    choices: ['Encrypting text so nobody can read it', 'Splitting text into pieces, often parts of words, that the model processes', 'Translating text into another language', 'Counting how many sentences a document has']
+    answer: B
+    mistakes:
+      A: 'Tokens in machine learning have nothing to do with security.'
+      C: 'Translation is a task a model can do, after tokenizing.'
+      D: 'Counting sentences is not what a tokenizer does.'
+    hint: |
+      A model can't read letters directly. What is the first step in turning text into numbers?
+    solution: |
+      A tokenizer splits text into tokens, often whole words or pieces of words, such as "un," "believ," and "able." Each token gets an ID, and then an embedding vector.
+
+      **Answer: (B) Splitting text into pieces, often parts of words, that the model processes**
+  - slug: c2-embedding
+    difficulty: easy
+    question: |
+      In a trained model, the embeddings for "cat" and "kitten" are close together, and "cat" and "bicycle" are far apart. What does this show?
+    choices: ['The words have similar spellings', 'The embeddings were set by hand', 'Embeddings only store word length', 'Embeddings place tokens with similar meanings near each other']
+    answer: D
+    mistakes:
+      A: '"Cat" and "kitten" are not spelled alike. Closeness comes from meaning.'
+      B: 'Embeddings are learned during training.'
+      C: 'Embeddings hold far more than length. They capture meaning learned from how words are used.'
+    hint: |
+      What do "cat" and "kitten" have in common that "bicycle" does not?
+    solution: |
+      Embeddings are learned vectors. Words used in similar contexts end up with similar vectors, so related meanings land close together. That is what lets models generalize between related words.
+
+      **Answer: (D) Embeddings place tokens with similar meanings near each other**
+  - slug: c3-qkv
+    difficulty: medium
+    question: |
+      In attention, what are the keys used for?
+    choices: ['They are compared with a query to decide how much attention each token gets', 'They are the values that get averaged into the output', 'They store each token''s position', 'They pick the next token to generate']
+    answer: A
+    mistakes:
+      B: 'That is the job of the values.'
+      C: 'Position comes from positional encoding.'
+      D: 'The final output layer predicts the next token, not the keys.'
+    hint: |
+      The query asks, "what am I looking for?" What answers it?
+    solution: |
+      Each query is compared with every key using a dot product. Those scores, after softmax, decide how much each token's value contributes. Keys decide the weights, and values are what gets mixed.
+
+      **Answer: (A) They are compared with a query to decide how much attention each token gets**
+  - slug: c4-positional
+    difficulty: medium
+    question: |
+      Why do transformers need positional encoding?
+    choices: ['To make the model smaller', 'To replace the embeddings', 'Attention by itself ignores the order of tokens, so position must be added', 'To speed up the softmax']
+    answer: C
+    mistakes:
+      A: 'Positional encoding adds information. It does not shrink anything.'
+      B: 'It is added to the embeddings, not used instead of them.'
+      D: 'It has nothing to do with the cost of the softmax.'
+    hint: |
+      Would "dog bites man" and "man bites dog" look different to attention without it?
+    solution: |
+      Attention compares every token with every other one, with no idea which came first. Shuffle the tokens and each one gets the same result, only in a different place. Positional encoding adds each token's position so word order can matter.
+
+      **Answer: (C) Attention by itself ignores the order of tokens, so position must be added**
+  - slug: c5-causal-mask
+    difficulty: hard
+    question: |
+      Why does a GPT-style decoder use a causal mask?
+    choices: ['So each token can only attend to earlier tokens, which lets the model generate text one token at a time', 'To hide offensive words', 'To make the model attend to every token in both directions', 'To skip the softmax']
+    answer: A
+    mistakes:
+      B: 'Masking is about position, not content.'
+      C: 'That describes an encoder like BERT, which has no causal mask.'
+      D: 'Masked attention still uses softmax. It sets the future positions'' scores so their weights are 0.'
+    hint: |
+      When generating, does the model know the words that come next?
+    solution: |
+      When generating, future tokens do not exist yet. The causal mask blocks each token from looking ahead during training too, so the model learns to predict the next token from earlier ones only. That matches how it generates text, one token at a time.
+
+      **Answer: (A) So each token can only attend to earlier tokens, which lets the model generate text one token at a time**
+  - slug: c6-why-scale
+    difficulty: hard
+    question: |
+      Why are attention scores divided by $\sqrt{d}$ before the softmax?
+    choices: ['To make every score negative', 'To remove the need for keys', 'To change the order of the tokens', 'Dot products grow with the vector length, and large scores make the softmax so sharp that gradients become tiny']
+    answer: D
+    mistakes:
+      A: 'Dividing by a positive number keeps each sign the same.'
+      B: 'Keys are still needed to compute the scores.'
+      C: 'Scaling changes no positions.'
+    hint: |
+      What happens to softmax when one score is far larger than the rest?
+    solution: |
+      A dot product adds $d$ terms, so it tends to grow as $d$ grows. Large scores make the softmax put nearly all the weight on one token, and in that flat, saturated region the gradients are tiny. Dividing by $\sqrt{d}$ keeps scores in a healthy range.
+
+      **Answer: (D) Dot products grow with the vector length, and large scores make the softmax so sharp that gradients become tiny**
+math:
+  - slug: m1-attention-score
+    difficulty: easy
+    question: |
+      A query is $q = (1, 2)$ and a key is $k = (3, 1)$. What is their attention score $q \cdot k$, before scaling?
+    choices: [3, 4, 5, 7]
+    answer: C
+    verify: '1 * 3 + 2 * 1'
+    mistakes:
+      A: 'That is only the first product. Add the second, $2 \times 1$.'
+      B: 'That adds the first entries. Multiply matching entries, then add.'
+      D: 'That adds all four numbers. Multiply matching entries first.'
+    hint: |
+      It is a dot product.
+    solution: |
+      $$1 \times 3 + 2 \times 1 = 5$$
+
+      **Answer: (C) 5**
+  - slug: m2-vit-patches
+    difficulty: easy
+    question: |
+      A Vision Transformer cuts a $224 \times 224$ image into $16 \times 16$ patches, and each patch becomes one token. How many tokens is that?
+    choices: [14, 196, 256, 3136]
+    answer: B
+    verify: '(224 / 16) * (224 / 16)'
+    mistakes:
+      A: 'That is the number of patches along one side. The image is square, so multiply.'
+      C: 'That is the number of pixels in one patch, $16 \times 16$.'
+      D: 'That divides $224 \times 224$ by 16. Divide each side by 16 first.'
+    hint: |
+      How many patches fit across one side?
+    solution: |
+      Each side fits $224 \div 16 = 14$ patches, so there are $14 \times 14 = 196$ tokens.
+
+      **Answer: (B) 196**
+  - slug: m3-weighted-values
+    difficulty: medium
+    question: |
+      After softmax, a token gives attention weights $\frac{1}{4}$ and $\frac{3}{4}$ to two tokens whose values are 4 and 8. What is the attention output?
+    choices: [4, 6, 7, 8]
+    answer: C
+    verify: '(1 / 4) * 4 + (3 / 4) * 8'
+    mistakes:
+      A: 'That is the first value only. Mix both, using the weights.'
+      B: 'That is the plain average. The weights favor the second token.'
+      D: 'That is the second value only. The first still gets a quarter of the weight.'
+    hint: |
+      Multiply each value by its weight, then add.
+    solution: |
+      $$\frac{1}{4} \times 4 + \frac{3}{4} \times 8 = 1 + 6 = 7$$
+
+      **Answer: (C) 7**
+  - slug: m4-scaled-score
+    difficulty: medium
+    question: |
+      A query and key have length $d = 16$, and their dot product is 12. What is the scaled score $\frac{q \cdot k}{\sqrt{d}}$?
+    choices: [0.75, 3, 12, 48]
+    answer: B
+    verify: '12 / Math.sqrt(16)'
+    mistakes:
+      A: 'That divides by $d$. Divide by $\sqrt{d} = 4$.'
+      C: 'That skips the scaling.'
+      D: 'That multiplies by 4. Scaling divides.'
+    hint: |
+      $\sqrt{16} = 4$.
+    solution: |
+      $$\frac{12}{\sqrt{16}} = \frac{12}{4} = 3$$
+
+      **Answer: (B) 3**
+  - slug: m5-perplexity
+    difficulty: hard
+    question: |
+      A language model gives two true next tokens the probabilities $\frac{1}{2}$ and $\frac{1}{8}$. Perplexity is the geometric mean of $\frac{1}{p}$: $\sqrt{2 \times 8}$ here. What is it?
+    choices: [4, 5, 8, 16]
+    answer: A
+    verify: 'Math.sqrt((1 / (1 / 2)) * (1 / (1 / 8)))'
+    mistakes:
+      B: 'That is the ordinary average of 2 and 8. Perplexity uses the geometric mean.'
+      C: 'That uses only the second token.'
+      D: 'That is the product. Take its square root for two tokens.'
+    hint: |
+      $2 \times 8 = 16$.
+    solution: |
+      $$\sqrt{2 \times 8} = \sqrt{16} = 4$$
+
+      The model is about as unsure as choosing among 4 equally likely tokens.
+
+      **Answer: (A) 4**
+  - slug: m6-quadratic-cost
+    difficulty: hard
+    question: |
+      A model's context grows from 1,000 tokens to 4,000 tokens. Self-attention computes a score for every pair of tokens. By what factor does the number of scores grow?
+    choices: [2, 4, 8, 16]
+    answer: D
+    verify: '(4000 * 4000) / (1000 * 1000)'
+    mistakes:
+      A: 'The number of scores grows faster than the length, not slower.'
+      B: 'That is how much the length grew. The pairs grow with its square.'
+      C: 'That is $4 \times 2$. Square the growth in length: $4^2$.'
+    hint: |
+      $n$ tokens make $n^2$ scores.
+    solution: |
+      The scores go from $1000^2$ to $4000^2$, a factor of $4^2 = 16$. That is why long contexts are expensive.
+
+      **Answer: (D) 16**

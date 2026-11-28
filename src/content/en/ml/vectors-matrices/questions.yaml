@@ -1,0 +1,218 @@
+concepts:
+  - slug: c1-batch-shape
+    difficulty: easy
+    question: |
+      A batch of color photos is stored as a tensor with shape (32, 3, 224, 224). What does the 32 most likely count?
+    choices: ['Pixels in each row', 'Photos in the batch', 'Color channels in each photo', 'Layers in the network']
+    answer: B
+    mistakes:
+      A: 'Each row has 224 pixels. That is one of the last two numbers.'
+      C: 'Color photos have 3 channels (red, green, blue). That is the 3.'
+      D: 'A data tensor describes the data, not the network that reads it.'
+    hint: |
+      Match each number to something you know about color photos. Which numbers are the width and height, and how many colors does a color photo have?
+    solution: |
+      The two 224s are the height and width in pixels, and the 3 is the red, green, and blue channels. The first number in a batch tensor is almost always the number of examples, so this batch holds 32 photos.
+
+      **Answer: (B) Photos in the batch**
+  - slug: c2-dot-product-result
+    difficulty: easy
+    question: |
+      You take the dot product of two vectors that each have 5 entries. What kind of thing do you get?
+    choices: ['A vector with 5 entries', 'A 5 by 5 matrix', 'A single number', 'A vector with 10 entries']
+    answer: C
+    mistakes:
+      A: 'Multiplying matching entries gives 5 products, but the dot product then adds them together.'
+      B: 'A 5 by 5 grid comes from a different product, called the outer product.'
+      D: 'Nothing gets joined end to end in a dot product.'
+    hint: |
+      A dot product has two steps. The first is multiplying matching entries. What is the second?
+    solution: |
+      Multiply the entries that line up, which gives 5 products, then add those products. Adding a list gives one number, so the dot product is a scalar.
+
+      **Answer: (C) A single number**
+  - slug: c3-shapes-that-fit
+    difficulty: medium
+    question: |
+      Which matrix multiplication is allowed? Shapes are written as (rows, columns).
+    choices: ['(2, 3) times (2, 3)', '(4, 1) times (4, 1)', '(3, 5) times (3, 5)', '(2, 3) times (3, 4)']
+    answer: D
+    mistakes:
+      A: 'The inner numbers are 3 and 2. They have to match, and they do not.'
+      B: 'The inner numbers are 1 and 4, so the rows and columns do not line up.'
+      C: 'The inner numbers are 5 and 3. Only square matrices can be multiplied by themselves.'
+    hint: |
+      Write the two shapes side by side and look at the two numbers in the middle.
+    hint2: |
+      An (m, n) matrix can multiply an (n, p) matrix. The n has to be the same on both sides.
+    solution: |
+      In (2, 3) times (3, 4), the inner numbers are both 3, so each row of the first matrix lines up with each column of the second. The answer has the outer numbers as its shape: (2, 4). In every other choice, the inner numbers differ.
+
+      **Answer: (D) (2, 3) times (3, 4)**
+  - slug: c4-why-gpus
+    difficulty: medium
+    question: |
+      Why did graphics cards (GPUs) make training large neural networks practical?
+    choices: ['A layer is a matrix multiplication, which is many dot products a GPU can do at the same time', 'GPUs store more training data than a hard drive', 'GPUs remove the need for a loss function', 'GPUs make every model use fewer parameters']
+    answer: A
+    mistakes:
+      B: 'Storage is a hard drive or memory job. GPUs are fast at arithmetic, not at holding data.'
+      C: 'Every trained model still needs a loss to measure its mistakes, whatever hardware runs it.'
+      D: 'The number of parameters is set by the model design, not the hardware.'
+    hint: |
+      Think about what one layer of a network computes, and whether those calculations depend on each other.
+    solution: |
+      One layer multiplies a weight matrix by the inputs. That is one dot product per neuron, and the dot products do not depend on each other, so they can all run at once. GPUs were built to do thousands of these multiplications in parallel for video games, which turned out to be exactly what neural networks need.
+
+      **Answer: (A) A layer is a matrix multiplication, which is many dot products a GPU can do at the same time**
+  - slug: c5-negative-dot
+    difficulty: hard
+    question: |
+      A language model stores each word as a vector. The dot product of the vectors for two words is a large negative number. What does that suggest about the vectors?
+    choices: ['They point in nearly the same direction', 'They are at right angles', 'One of them is all zeros', 'They point in roughly opposite directions']
+    answer: D
+    mistakes:
+      A: 'Vectors pointing the same way give a large positive dot product.'
+      B: 'Vectors at right angles give a dot product of 0.'
+      C: 'A vector of all zeros gives a dot product of exactly 0 with anything.'
+    hint: |
+      Try it with small vectors in two dimensions: $(1, 0)$ with $(1, 0)$, then $(0, 1)$, then $(-1, 0)$.
+    solution: |
+      The sign of a dot product tells you about direction. Same direction gives a positive value, right angles give 0, and opposite directions give a negative value. For example, $(1, 0) \cdot (-1, 0) = -1$. A large negative dot product means the vectors point roughly opposite ways.
+
+      **Answer: (D) They point in roughly opposite directions**
+  - slug: c6-eigenvector
+    difficulty: hard
+    question: |
+      What makes a vector an eigenvector of a matrix?
+    choices: ['Multiplying it by the matrix only stretches or shrinks it, without turning it', 'It has length exactly 1', 'It is one of the rows of the matrix', 'Its dot product with every row is 0']
+    answer: A
+    mistakes:
+      B: 'Eigenvectors are often scaled to length 1 for convenience, but that is not what makes them special.'
+      C: 'A row of the matrix is usually turned when the matrix multiplies it.'
+      D: 'That describes a vector the matrix sends to all zeros, which is a very special case.'
+    hint: |
+      The German word "eigen" means "own." What would it mean for a direction to belong to a matrix?
+    solution: |
+      Most vectors change direction when a matrix multiplies them. An eigenvector keeps its direction and only gets scaled by some number, called its eigenvalue. Principal component analysis uses these special directions to find where data spreads out most.
+
+      **Answer: (A) Multiplying it by the matrix only stretches or shrinks it, without turning it**
+math:
+  - slug: m1-dot-product
+    difficulty: easy
+    question: |
+      What is the dot product $(3, 2, -1) \cdot (2, 5, 4)$?
+    choices: [8, 12, 16, 20]
+    answer: B
+    verify: 'sum([3, 2, -1].map((x, i) => x * [2, 5, 4][i]))'
+    mistakes:
+      A: 'Check the middle term. It is $2 \times 5 = 10$.'
+      C: 'You may have added the last product. It is $(-1) \times 4 = -4$, so subtract 4.'
+      D: 'You may have added the last product. It is $(-1) \times 4 = -4$, so subtract 4.'
+    hint: |
+      Multiply the first entries, the second entries, and the third entries, then add the three results.
+    solution: |
+      Multiply matching entries and add:
+
+      $$3 \times 2 + 2 \times 5 + (-1) \times 4 = 6 + 10 - 4 = 12$$
+
+      **Answer: (B) 12**
+  - slug: m2-result-size
+    difficulty: easy
+    question: |
+      A matrix with shape (4, 3) multiplies a matrix with shape (3, 7). How many entries does the answer have?
+    choices: [12, 21, 28, 84]
+    answer: C
+    verify: '4 * 7'
+    mistakes:
+      A: 'That is the number of entries in the first matrix, $4 \times 3$.'
+      B: 'That is the number of entries in the second matrix, $3 \times 7$.'
+      D: 'That multiplies all three numbers. The inner 3 disappears in the answer.'
+    hint: |
+      The inner numbers match and disappear. The outer numbers give the answer's shape.
+    solution: |
+      (4, 3) times (3, 7) gives a matrix of shape (4, 7). It has $4 \times 7 = 28$ entries.
+
+      **Answer: (C) 28**
+  - slug: m3-matrix-times-vector
+    difficulty: medium
+    question: |
+      Multiply the matrix by the vector:
+
+      $$\begin{pmatrix} 2 & 1 \\ 0 & 3 \end{pmatrix} \begin{pmatrix} 4 \\ -1 \end{pmatrix}$$
+    choices: ['(7, -3)', '(8, -3)', '(7, 3)', '(2, -1)']
+    answer: A
+    verify: "'(' + [[2, 1], [0, 3]].map((row) => sum(row.map((x, i) => x * [4, -1][i]))).join(', ') + ')'"
+    mistakes:
+      B: 'The first row is $(2, 1)$, so the first entry is $2 \times 4 + 1 \times (-1)$. Include the second term.'
+      C: 'The second entry is $0 \times 4 + 3 \times (-1)$. Keep the minus sign.'
+      D: 'Each entry of the answer is a dot product of a row with the whole vector.'
+    hint: |
+      Each entry of the answer is the dot product of one row of the matrix with the vector.
+    solution: |
+      First row: $2 \times 4 + 1 \times (-1) = 7$.
+
+      Second row: $0 \times 4 + 3 \times (-1) = -3$.
+
+      So the answer is $(7, -3)$.
+
+      **Answer: (A) (7, -3)**
+  - slug: m4-layer-weights
+    difficulty: medium
+    question: |
+      A layer takes 128 inputs and has 64 neurons. Each neuron has one weight per input and one bias. How many numbers does the layer learn in total?
+    choices: [64, 192, 8192, 8256]
+    answer: D
+    verify: '128 * 64 + 64'
+    mistakes:
+      A: 'That counts only the biases. Each neuron also has 128 weights.'
+      B: 'That adds 128 and 64. Each of the 64 neurons has its own 128 weights, so multiply.'
+      C: 'That counts the weights but forgets the 64 biases.'
+    hint: |
+      The weight matrix has one row per neuron and one column per input.
+    hint2: |
+      Count the weights, then add one bias for each neuron.
+    solution: |
+      The weight matrix has shape (64, 128), so it has $64 \times 128 = 8192$ weights. Each of the 64 neurons adds a bias:
+
+      $$8192 + 64 = 8256$$
+
+      **Answer: (D) 8256**
+  - slug: m5-tensor-size
+    difficulty: hard
+    question: |
+      A batch holds 16 color images. Each image is 32 pixels tall and 32 pixels wide, with 3 color channels. How many numbers are in the batch tensor?
+    choices: [3072, 12288, 16384, 49152]
+    answer: D
+    verify: '16 * 3 * 32 * 32'
+    mistakes:
+      A: 'That is the size of one image, $3 \times 32 \times 32$. There are 16 images.'
+      B: 'You may have used 1 channel for 12 images. Recount: 16 images and 3 channels.'
+      C: 'That counts 16 images with 1 channel each. Color images have 3 channels.'
+    hint: |
+      Write the shape as (images, channels, height, width), then multiply.
+    solution: |
+      The shape is (16, 3, 32, 32). Multiply all four sizes:
+
+      $$16 \times 3 \times 32 \times 32 = 49152$$
+
+      **Answer: (D) 49152**
+  - slug: m6-eigenvalue
+    difficulty: hard
+    question: |
+      The vector $(1, 1)$ is an eigenvector of this matrix. What is its eigenvalue?
+
+      $$\begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$$
+    choices: [1, 2, 3, 4]
+    answer: C
+    verify: '[[2, 1], [1, 2]].map((row) => row[0] * 1 + row[1] * 1)[0] / 1'
+    mistakes:
+      A: 'An eigenvalue of 1 would leave $(1, 1)$ unchanged. Multiply it out and see.'
+      B: 'That is the number on the diagonal. Multiply the whole matrix by the vector instead.'
+      D: 'Each entry of the answer is $2 + 1$, not $2 + 2$.'
+    hint: |
+      Multiply the matrix by $(1, 1)$. The answer is a stretched copy of $(1, 1)$. By how much was it stretched?
+    solution: |
+      Multiply: the first entry is $2 \times 1 + 1 \times 1 = 3$, and the second is $1 \times 1 + 2 \times 1 = 3$. So the matrix sends $(1, 1)$ to $(3, 3)$, which is $(1, 1)$ stretched by 3. The eigenvalue is 3.
+
+      **Answer: (C) 3**

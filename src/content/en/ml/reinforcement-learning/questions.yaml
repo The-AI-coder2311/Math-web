@@ -1,0 +1,210 @@
+concepts:
+  - slug: c1-policy
+    difficulty: easy
+    question: |
+      In reinforcement learning, what is a policy?
+    choices: ['The agent''s rule for choosing an action in each state', 'The reward for reaching the goal', 'The list of all possible states', 'The discount factor']
+    answer: A
+    mistakes:
+      B: 'Rewards are the feedback. The policy is how the agent decides what to do.'
+      C: 'The states describe the situations. The policy maps them to actions.'
+      D: 'The discount factor sets how much future rewards count.'
+    hint: |
+      The agent is trying to learn a good one of these.
+    solution: |
+      A policy tells the agent which action to take in each state, either for certain or with some probability. Reinforcement learning searches for a policy that earns a large total reward.
+
+      **Answer: (A) The agent's rule for choosing an action in each state**
+  - slug: c2-explore-exploit
+    difficulty: easy
+    question: |
+      A robot always picks the action that has worked best so far, and never tries anything new. What risk does this create?
+    choices: ['It will explore too much', 'Its rewards will become negative', 'It will forget its policy', 'It may never discover an action that is even better']
+    answer: D
+    mistakes:
+      A: 'It is doing the opposite: never exploring.'
+      B: 'Its rewards may stay positive, but they might not be the best possible.'
+      C: 'Exploiting uses the policy. It does not erase it.'
+    hint: |
+      How can it learn the value of an action it never tries?
+    solution: |
+      Pure exploitation only ever tests actions that already look good, so a better action that looked bad early on is never found. Exploration, such as epsilon-greedy, sometimes tries other actions to keep learning.
+
+      **Answer: (D) It may never discover an action that is even better**
+  - slug: c3-gamma-zero
+    difficulty: medium
+    question: |
+      An agent uses discount factor $\gamma = 0$. How will it behave?
+    choices: ['It values all future rewards equally', 'It only cares about the reward from its very next action', 'It never takes any action', 'It explores randomly forever']
+    answer: B
+    mistakes:
+      A: 'That would be $\gamma = 1$.'
+      C: 'The discount factor changes what the agent values, not whether it acts.'
+      D: 'Exploration is controlled separately, for example by $\epsilon$.'
+    hint: |
+      With $\gamma = 0$, what happens to $\gamma r_2$ and every later term?
+    solution: |
+      The return is $r_1 + 0 \times r_2 + 0 \times r_3 + \cdots = r_1$. The agent only values the immediate reward, even if that leads to disaster a step later.
+
+      **Answer: (B) It only cares about the reward from its very next action**
+  - slug: c4-q-value
+    difficulty: medium
+    question: |
+      What does $Q(s, a)$ measure?
+    choices: ['The reward for one step only', 'How often action $a$ has been tried', 'The expected return from taking action $a$ in state $s$ and then following the policy', 'The probability of reaching state $s$']
+    answer: C
+    mistakes:
+      A: 'Q-values include all the discounted future rewards, not one step.'
+      B: 'That is a count. Q-values estimate returns.'
+      D: 'That is a probability of a state, not the value of an action.'
+    hint: |
+      Q-values let an agent compare its actions in a state.
+    solution: |
+      $Q(s, a)$ is the expected discounted return if the agent takes action $a$ in state $s$ and acts according to its policy afterwards. Picking the action with the highest $Q$ in each state gives a good policy.
+
+      **Answer: (C) The expected return from taking action $a$ in state $s$ and then following the policy**
+  - slug: c5-dqn
+    difficulty: hard
+    question: |
+      Why does a deep Q-network use a neural network instead of a table of Q-values?
+    choices: ['There are far too many states, like every possible screen of pixels, for a table, so a network estimates Q and generalizes between similar states', 'Tables cannot store numbers', 'Neural networks remove the need for rewards', 'A table would explore too much']
+    answer: A
+    mistakes:
+      B: 'Tables store numbers fine. The problem is how many entries they would need.'
+      C: 'A DQN still learns from rewards.'
+      D: 'Exploration is set by the strategy, such as epsilon-greedy, not by the table.'
+    hint: |
+      How many different screens can a video game show?
+    solution: |
+      A table needs one entry for each state and action pair, and a game screen has an astronomical number of states. A neural network takes the state as input and outputs Q-values. It can also generalize, giving sensible values for screens it has never seen.
+
+      **Answer: (A) There are far too many states, like every possible screen of pixels, for a table, so a network estimates Q and generalizes between similar states**
+  - slug: c6-policy-gradient
+    difficulty: hard
+    question: |
+      How do policy gradient methods, such as PPO, improve an agent?
+    choices: ['They build a table of Q-values', 'They copy actions from a labeled dataset', 'They set the discount factor to 0', 'They adjust the policy''s probabilities directly, making actions that led to high returns more likely']
+    answer: D
+    mistakes:
+      A: 'That is Q-learning, a value-based method.'
+      B: 'Copying labeled actions is supervised learning, sometimes called imitation learning.'
+      C: 'The discount factor is a setting, not the learning method.'
+    hint: |
+      The name says it: a gradient on the policy itself.
+    solution: |
+      Policy gradient methods treat the policy as a network that outputs action probabilities, then follow the gradient of the expected return. Actions followed by high returns become more likely. PPO limits how far each update can move the policy, which keeps training stable.
+
+      **Answer: (D) They adjust the policy's probabilities directly, making actions that led to high returns more likely**
+math:
+  - slug: m1-return
+    difficulty: easy
+    question: |
+      An agent gets rewards 1, 1, and 1 on three steps. With $\gamma = 0.5$, what is the discounted return?
+    choices: [1.5, 1.75, 2, 3]
+    answer: B
+    verify: '1 + 0.5 * 1 + 0.5 ** 2 * 1'
+    mistakes:
+      A: 'That counts two steps. Add the third, $0.25 \times 1$.'
+      C: 'That treats the third reward as $0.5$. It is multiplied by $\gamma^2 = 0.25$.'
+      D: 'That is the return without discounting.'
+    hint: |
+      $G = r_1 + \gamma r_2 + \gamma^2 r_3$.
+    solution: |
+      $$1 + 0.5 \times 1 + 0.25 \times 1 = 1.75$$
+
+      **Answer: (B) 1.75**
+  - slug: m2-delayed-reward
+    difficulty: easy
+    question: |
+      An agent gets rewards 0, 0, 0, and then 10. With $\gamma = 0.9$, what is the discounted return?
+    choices: [7.29, 8.1, 9, 10]
+    answer: A
+    verify: '+(0.9 ** 3 * 10).toFixed(4)'
+    mistakes:
+      B: 'That would be a reward on the third step. This one is on the fourth, so use $\gamma^3$.'
+      C: 'That would be a reward on the second step. Count the steps again.'
+      D: 'That ignores the discount.'
+    hint: |
+      The reward of 10 is the fourth reward, so it is multiplied by $\gamma^3$.
+    solution: |
+      $$0.9^3 \times 10 = 0.729 \times 10 = 7.29$$
+
+      **Answer: (A) 7.29**
+  - slug: m3-q-update
+    difficulty: medium
+    question: |
+      Q-learning has $Q(s, a) = 2$. The agent gets $r = 1$, and the best Q-value in the next state is 5. With $\gamma = 0.9$ and $\alpha = 0.5$, what is the new $Q(s, a)$?
+    choices: [2.75, 3.75, 4.5, 5.5]
+    answer: B
+    verify: '2 + 0.5 * (1 + 0.9 * 5 - 2)'
+    mistakes:
+      A: 'Check the target: $1 + 0.9 \times 5 = 5.5$.'
+      C: 'That is $0.9 \times 5$. Add the reward to get the target.'
+      D: 'That is the target. With $\alpha = 0.5$, the estimate moves only halfway there.'
+    hint: |
+      First find the target $r + \gamma \max Q = 1 + 0.9 \times 5$.
+    hint2: |
+      The target is 5.5. Move the old value halfway toward it.
+    solution: |
+      The target is $1 + 0.9 \times 5 = 5.5$. The surprise is $5.5 - 2 = 3.5$, so
+
+      $$Q = 2 + 0.5 \times 3.5 = 3.75$$
+
+      **Answer: (B) 3.75**
+  - slug: m4-epsilon-greedy
+    difficulty: medium
+    question: |
+      An agent uses epsilon-greedy with $\epsilon = 0.1$ and has 4 actions. A random action may also pick the best action. What is the probability it picks the best-known action?
+    choices: [0.025, 0.9, 0.925, 1]
+    answer: C
+    verify: '+(0.9 + 0.1 / 4).toFixed(4)'
+    mistakes:
+      A: 'That is only the chance of picking it at random.'
+      B: 'That misses the times a random pick lands on the best action anyway.'
+      D: 'With $\epsilon = 0.1$, it sometimes picks other actions.'
+    hint: |
+      It is chosen on purpose 90% of the time. How often does a random pick land on it?
+    solution: |
+      It is chosen on purpose with probability 0.9. The other 0.1 of the time, a random action is chosen, and that lands on the best one $\frac{1}{4}$ of the time:
+
+      $$0.9 + 0.1 \times \frac{1}{4} = 0.925$$
+
+      **Answer: (C) 0.925**
+  - slug: m5-infinite-return
+    difficulty: hard
+    question: |
+      An agent gets a reward of 1 on every step, forever. With $\gamma = 0.9$, the return is $1 + 0.9 + 0.9^2 + \cdots = \frac{1}{1 - \gamma}$. What is it?
+    choices: [0.9, 1.9, 9, 10]
+    answer: D
+    verify: '+(1 / (1 - 0.9)).toFixed(4)'
+    mistakes:
+      A: 'That is $\gamma$ itself.'
+      B: 'That is the first two steps only.'
+      C: 'That starts counting from the second step. Include the first reward of 1.'
+    hint: |
+      $1 - 0.9 = 0.1$.
+    solution: |
+      $$\frac{1}{1 - 0.9} = \frac{1}{0.1} = 10$$
+
+      Even though the rewards go on forever, discounting keeps the return finite.
+
+      **Answer: (D) 10**
+  - slug: m6-expected-return
+    difficulty: hard
+    question: |
+      In a one-step game, a policy goes left with probability 0.3, which gives reward 10, and right with probability 0.7, which gives reward 2. What is the expected reward of this policy?
+    choices: [1.4, 3, 4.4, 6]
+    answer: C
+    verify: '+(0.3 * 10 + 0.7 * 2).toFixed(4)'
+    mistakes:
+      A: 'That is only the right side''s part, $0.7 \times 2$.'
+      B: 'That is only the left side''s part, $0.3 \times 10$.'
+      D: 'That averages 10 and 2 equally. The policy goes right more often.'
+    hint: |
+      Multiply each reward by its probability, then add.
+    solution: |
+      $$0.3 \times 10 + 0.7 \times 2 = 3 + 1.4 = 4.4$$
+
+      A policy gradient method would push the probability of "left" up, since it pays more.
+
+      **Answer: (C) 4.4**

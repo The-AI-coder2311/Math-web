@@ -1,0 +1,83 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ProgressBar from '../../../components/ProgressBar.astro';
+import { getMlLevels, mlProgressKey, mlSets } from '../../../lib/ml';
+import { mlText as text } from '../../../i18n/ml';
+import { href, localePaths } from '../../../i18n/config';
+
+export const getStaticPaths = () => localePaths('ml/');
+
+const { lang } = Astro.props;
+const levels = await getMlLevels(lang);
+---
+<Base title={text.title} description={text.description} lang={lang} current="ml">
+  <h1>{text.title}</h1>
+  <p>{text.intro}</p>
+  <ul>
+    {text.setsIntro.map((set) => <li><strong>{set.name}:</strong> {set.text}</li>)}
+  </ul>
+  <p class="card callout">{text.prereq}</p>
+  {levels.map((level) => (
+    <details class="level" id={`level-${level.number}`} open={level.number === 1} data-level={level.number} data-status={text.levelStatus('{solved}', '{total}')}>
+      <summary>
+        <h2>{level.title}</h2>
+        <span class="muted needs-js" data-level-status></span>
+      </summary>
+      <p>{level.blurb}</p>
+      <ol class="unit-list" aria-label={text.listLabel(level.title)}>
+        {level.units.map((unit) => (
+          <li class={unit.available ? '' : 'is-soon'}>
+            <div class="card">
+              <h3>{unit.title}</h3>
+              <p>{unit.blurb}</p>
+              {unit.available ? (
+                <>
+                  {mlSets.map((set) => (
+                    <ProgressBar lang={lang} unit={mlProgressKey(unit.slug, set)} unitTitle={`${unit.title}, ${text.setName[set]}`} problems={unit.slugs[set]} />
+                  ))}
+                  <a class="btn btn-primary" href={href(lang, `ml/${unit.slug}/`)}>
+                    {text.start}<span class="sr-only">: {unit.title}</span>
+                  </a>
+                </>
+              ) : (
+                <span class="pill">{text.comingSoon}</span>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+    </details>
+  ))}
+  <p class="muted">{text.sources}</p>
+</Base>
+<script>
+  import { getSolved } from '../../../scripts/progress';
+
+  const levels = [...document.querySelectorAll<HTMLDetailsElement>('details[data-level]')];
+  const showLevelStatus = () =>
+    levels.forEach((level) => {
+      let solved = 0;
+      let total = 0;
+      level.querySelectorAll<HTMLElement>('[data-progress-unit]').forEach((bar) => {
+        const known = (bar.dataset.problems as string).split(',');
+        total += known.length;
+        solved += getSolved(bar.dataset.progressUnit as string).filter((problem) => known.includes(problem)).length;
+      });
+      const status = level.querySelector('[data-level-status]') as HTMLElement;
+      status.textContent = (level.dataset.status as string).replace('{solved}', String(solved)).replace('{total}', String(total));
+    });
+
+  // Opens the level named in the address, as in /ml/#level-3.
+  const openLevel = () => {
+    const wanted = window.location.hash.match(/^#level-(\d+)$/)?.[1];
+    if (!wanted || !levels.some((level) => level.dataset.level === wanted)) return;
+    levels.forEach((level) => {
+      level.open = level.dataset.level === wanted;
+    });
+    document.getElementById(`level-${wanted}`)?.scrollIntoView();
+  };
+
+  showLevelStatus();
+  openLevel();
+  window.addEventListener('hashchange', openLevel);
+</script>

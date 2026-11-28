@@ -54,6 +54,7 @@ src/
     formulas.yaml         The Formulas page, with its practice examples
     glossary.yaml         The Glossary page, and which lesson links to each word
     placement.yaml        The placement quiz at /pathway/start/
+    ml/                   The Machine Learning path: path.yaml, plus a lesson and questions per topic
     strategy.yaml         Practice questions for the contest strategy lesson
     units/counting/
       lessons/*.md        The unit's lessons, in order (3 to 5 of them)
@@ -97,6 +98,7 @@ On GitHub Pages, a site at `https://YOUR-USERNAME.github.io/YOUR-REPO/` can't co
 | Page | Address | Where its content lives |
 |---|---|---|
 | Placement quiz | `/pathway/start/` | `placement.yaml` |
+| Machine Learning path | `/ml/` | `ml/path.yaml` and `ml/<topic>/` (see [below](#the-machine-learning-path)) |
 | Practice contests | `/contests/` | `contests/<name>/` |
 | Contest strategy lesson | `/contests/strategy/` | `pages/contest-strategy.md` and `strategy.yaml` |
 | Printable answer sheet, one per practice contest | `/contests/practice-contest-a/answer-sheet/` | Built from the contest. It has one row of bubbles for each question |
@@ -221,6 +223,26 @@ Here's an example: "How many three-digit numbers have only odd digits?"
 ```yaml
 verify: "range(100, 999).filter((n) => digits(n).every((d) => d % 2 === 1)).length"
 ```
+
+## The Machine Learning path
+
+The **Machine Learning** page (`/ml/`) is a second path, separate from the math contest pathway. It has 17 topics in 4 levels: math foundations, core machine learning, deep learning, and advanced topics. Each topic has one lesson and two sets of practice questions, **Concept** (what the ideas mean and when to use them) and **Math** (the calculations, worked by hand). The topic order follows the *Machine Learning Terms & Concepts* glossary and the chapters of *Understanding Deep Learning* by Simon J. D. Prince ([udlbook.com](https://udlbook.com)). That book's license doesn't allow derivatives, so every lesson and question is original. Use it as a guide to **what to cover**, never as text to copy.
+
+```
+src/content/en/ml/
+  path.yaml                 The levels and topics, in order, with a "read more" pointer for each
+  <topic>/lesson.md         The topic's lesson (500 to 1,500 words)
+  <topic>/questions.yaml    Two lists: `concepts` and `math`
+src/pages/[...lang]/ml/     The path page, each topic page, and /ml/<topic>/concepts/ and /ml/<topic>/math/
+src/lib/ml.ts               Loads the path, lessons, and questions
+src/i18n/ml.ts              The path's interface text (English only for now)
+```
+
+Each question in `questions.yaml` has a `slug`, `difficulty`, `question`, `choices`, `answer`, `hint`, an optional `hint2`, a `solution` ending in the `**Answer: (C) 12**` line, and a `mistakes` note for every wrong choice. Math questions also need `verify` code, the same as unit problems. Don't rename a `slug` after launch, because progress is saved under it, in the same `count-me-in-progress-v1` key as the math units (as `ml-<topic>-concepts` and `ml-<topic>-math`), so progress codes carry it too.
+
+`npm run verify` checks the ML files as well: each set needs at least 6 questions with at least one easy, one medium, and one hard question, no letter can be the answer more than 40% of the time, math answers must match their `verify` code, and each lesson needs a big idea, a check-yourself question, a Common traps box, and a Remember this box.
+
+To add a topic, add it to `path.yaml`, then create its folder with `lesson.md` and `questions.yaml`. It says "Coming soon" until the lesson exists. The ML path is English only, so `ml/` is listed in `untranslated` in `src/i18n/config.ts`.
 
 ## Live competitions and the admin account
 
@@ -363,6 +385,7 @@ Spanish pages live at `/es/`, and the language switcher in the header links each
 
 - Levels 2 and 3 (the Spanish pathway page links to the English units and marks them "solo en inglés")
 - Practice contests and the contest strategy lesson
+- The Machine Learning path
 - The Formulas page and the Glossary
 - The six-week teaching plans and the weekly problem sets
 - The words inside the SVG diagrams in `public/images/` (each diagram's description is translated)
