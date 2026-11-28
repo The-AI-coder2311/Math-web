@@ -60,6 +60,58 @@ $z = 1 + 2 \times 0.5 = 2$.
 
 </details>
 
+<section data-box="deeper">
+
+## Going deeper
+
+### What a VAE balances
+
+A VAE's training objective, the ELBO, has two parts pulling in different directions:
+
+- **Reconstruction:** the decoder should rebuild each input well from its code. On its own, this would push the encoder to give every input its own far-flung, precise code, which is useless for sampling.
+- **A penalty, called the KL divergence,** for codes that stray from a standard normal distribution. It pulls all the codes toward the same smooth cloud around 0.
+
+Together, they produce a latent space where nearby codes decode to similar outputs and random draws from the cloud decode to sensible new data. Push too hard on the penalty and outputs turn blurry. Push too little and sampling gives nonsense. VAE images are often a bit blurry, which is one reason diffusion models overtook them for images.
+
+### How a diffusion model is trained
+
+Training a diffusion model is surprisingly simple. Repeat:
+
+1. Pick a real training image $x_0$.
+2. Pick a random step $t$, and draw random noise $\epsilon$.
+3. Make the noisy image $x_t = \sqrt{\bar\alpha_t} \, x_0 + \sqrt{1 - \bar\alpha_t} \, \epsilon$.
+4. Ask the network to predict $\epsilon$ from $x_t$ and $t$, and score it with squared error.
+
+That's the whole loss. The noise schedule sets $\bar\alpha_t$. If each step keeps a fraction $\alpha$ of the signal, then $\bar\alpha_t$ is the product of all the $\alpha$s so far. With $\alpha$ values of 0.9 and then 0.8, $\bar\alpha_2 = 0.9 \times 0.8 = 0.72$. Generating takes many steps, often dozens to hundreds, which is why diffusion models are slower to sample from than GANs.
+
+### Conditional generation
+
+"Draw a red bicycle" needs a model that takes a condition. A **conditional** generative model gets the condition, such as a class label or a text embedding, as an extra input at every step. Text-to-image systems feed the prompt's embedding into the denoising network, often through attention. A trick called **guidance** pushes samples further toward the condition, trading variety for a closer match to the prompt.
+
+### Judging generative models
+
+There's no single right answer to compare against, so judging is hard. Three questions matter:
+
+- **Quality:** do the samples look real?
+- **Diversity:** do they cover the full variety of the data, or did the model collapse to a few kinds?
+- **Likelihood:** how probable does the model find real test data? Flows and autoregressive models can compute this exactly. VAEs and diffusion models can bound it. GANs can't compute it at all.
+
+A popular image score, the **FID**, compares statistics of real and generated images as seen by a trained image network. Lower is better.
+
+### Responsible use
+
+The same models that create art can create convincing fake photos, audio, and video of real people. Watermarks that mark generated content, tools that detect it, and careful choices about what a system will make are all active areas of work.
+
+A diffusion schedule keeps fractions 0.9, 0.9, and 0.5 of the signal in its first three steps. What is $\bar\alpha_3$?
+
+<details class="check"><summary>Show the answer</summary>
+
+$0.9 \times 0.9 \times 0.5 = 0.405$.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -69,6 +121,14 @@ $z = 1 + 2 \times 0.5 = 2$.
 **Thinking a GAN's discriminator should win.** At the ideal balance, it can only guess, outputting 0.5.
 
 **Forgetting what diffusion learns.** It doesn't memorize images. It learns to remove noise.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Generative models are trained with the probability ideas from [Probability, Bayes & Logarithms](/ml/probability-for-ml/) and [Loss Functions](/ml/loss-functions/). Autoregressive transformers are the subject of [Attention & Transformers](/ml/transformers/) and [Large Language Models in Practice](/ml/llms-in-practice/).
 
 </section>
 

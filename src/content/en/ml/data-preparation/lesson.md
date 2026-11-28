@@ -66,6 +66,57 @@ $\frac{40 - 10}{50 - 10} = \frac{30}{40} = 0.75$.
 
 If 1 in 100 transactions is fraud, a model can reach 99% accuracy by never flagging anything. Fixes include **oversampling** the rare class (repeating its examples), **undersampling** the common one, giving rare-class mistakes more weight, and judging the model with better metrics than accuracy, which you'll meet in the Measuring Performance topic.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### Filling in missing values
+
+Real datasets have holes: a blank age, a sensor that failed for an hour. Dropping every row with a hole can throw away most of the data, so we often **impute**, or fill in, a value. The two simple choices behave very differently when there are outliers.
+
+Five people report incomes (in thousands) of 30, 35, 40, 45, and 250.
+
+- The **mean** is $(30 + 35 + 40 + 45 + 250) \div 5 = 80$.
+- The **median**, the middle value once sorted, is 40.
+
+One very high income drags the mean far above what's typical, while the median barely notices. For skewed features like income or house price, the median is usually the safer fill. It also helps to add a yes-or-no feature saying "this value was missing," because the fact that something is missing can carry information of its own. A blank "previous loan" field, for example, may mean the person never had one.
+
+### Feature engineering
+
+**Feature engineering** creates better inputs from raw data, using what you know about the problem:
+
+- From a timestamp, extract the hour, the day of the week, or whether it's a holiday. A raw timestamp means little to a model, but "Saturday evening" means a lot for predicting restaurant orders.
+- From a house's total price and size, compute the price per square meter.
+- From a long, skewed number like income, take its logarithm, which squeezes the huge values closer together.
+
+Deep networks learn many features by themselves from raw pixels or text. For tables of data, hand-made features still make a big difference.
+
+### Splitting by time
+
+When data has a time order, like stock prices, sales, or patient visits, a random split lets the model peek at the future. A model trained on Wednesday's data and tested on Tuesday's can secretly use what happened later. The honest approach is to train on the past and test on a later period, exactly as the model will be used in real life.
+
+### Augmentation, in more detail
+
+Data augmentation creates new training examples that keep the same label. For photos: flips, small rotations, crops, and color changes. For audio: background noise or speed changes. The trick is choosing changes that don't alter the meaning. Flipping a cat photo left to right still shows a cat. Flipping a handwritten 6 upside down makes it look like a 9. Augmentation is applied only to the training set. The validation and test sets stay as they are.
+
+### A checklist before training
+
+1. Look at the raw data, and plot each feature.
+2. Remove duplicates, and decide how to handle missing values.
+3. Split the data, by group or by time when needed.
+4. Fit scaling and imputation on the training set only.
+5. Check how common each class is, in each split.
+
+What is the median of 2, 3, 100, 4, and 5?
+
+<details class="check"><summary>Show the answer</summary>
+
+Sorted, the values are 2, 3, 4, 5, 100, and the middle one is 4. The mean would be 22.8, pulled up by the 100.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -77,6 +128,14 @@ If 1 in 100 transactions is fraud, a model can reach 99% accuracy by never flagg
 **Splitting rows when people repeat.** When one person or object appears many times, split by person, or the test set isn't new.
 
 **Peeking at the test set.** Every time you tune using the test score, it becomes a little less honest.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Scaling matters for the distance-based methods in [Classical Algorithms](/ml/classical-algorithms/). Honest splits are what make [Overfitting & Regularization](/ml/generalization/) and [Measuring Performance](/ml/evaluation-metrics/) trustworthy.
 
 </section>
 

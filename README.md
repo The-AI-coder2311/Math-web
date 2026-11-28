@@ -231,7 +231,7 @@ The **Machine Learning** page (`/ml/`) is a second path, separate from the math 
 ```
 src/content/en/ml/
   path.yaml                 The levels and topics, in order, with a "read more" pointer for each
-  <topic>/lesson.md         The topic's lesson (500 to 1,500 words)
+  <topic>/lesson.md         The topic's lesson (1,000 to 2,000 words)
   <topic>/questions.yaml    Two lists: `concepts` and `math`
 src/pages/[...lang]/ml/     The path page, each topic page, and /ml/<topic>/concepts/ and /ml/<topic>/math/
 src/lib/ml.ts               Loads the path, lessons, and questions
@@ -240,7 +240,7 @@ src/i18n/ml.ts              The path's interface text (English only for now)
 
 Each question in `questions.yaml` has a `slug`, `difficulty`, `question`, `choices`, `answer`, `hint`, an optional `hint2`, a `solution` ending in the `**Answer: (C) 12**` line, and a `mistakes` note for every wrong choice. Math questions also need `verify` code, the same as unit problems. Don't rename a `slug` after launch, because progress is saved under it, in the same `count-me-in-progress-v1` key as the math units (as `ml-<topic>-concepts` and `ml-<topic>-math`), so progress codes carry it too.
 
-`npm run verify` checks the ML files as well: each set needs at least 6 questions with at least one easy, one medium, and one hard question, no letter can be the answer more than 40% of the time, math answers must match their `verify` code, and each lesson needs a big idea, a check-yourself question, a Common traps box, and a Remember this box.
+`npm run verify` checks the ML files as well: each set needs at least 6 questions with at least one easy, one medium, and one hard question, no letter can be the answer more than 40% of the time, math answers must match their `verify` code, and each lesson needs a big idea, at least 2 check-yourself questions, and Going deeper, Common traps, Connections, and Remember this boxes.
 
 To add a topic, add it to `path.yaml`, then create its folder with `lesson.md` and `questions.yaml`. It says "Coming soon" until the lesson exists. The ML path is English only, so `ml/` is listed in `untranslated` in `src/i18n/config.ts`.
 

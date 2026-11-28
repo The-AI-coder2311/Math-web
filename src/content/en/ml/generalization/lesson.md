@@ -63,6 +63,51 @@ When data is scarce, **k-fold cross-validation** makes better use of it. Split t
 
 To search for good settings, **grid search** tries every combination from a list, and **random search** tries random combinations, which often finds good ones faster. Every combination is trained once per fold, so cross-validated searches get expensive quickly.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### Watching overfitting happen
+
+Fit polynomials of different degrees to 10 noisy points that follow a gentle curve. Typical results look like this:
+
+| Degree | Training error | Validation error | Verdict |
+|---|---|---|---|
+| 1 (a line) | 4.1 | 4.3 | Underfits: misses the curve |
+| 3 | 1.0 | 1.2 | Good fit |
+| 9 | 0.0 | 9.7 | Overfits: passes through every point |
+
+A degree-9 polynomial has 10 coefficients, enough to pass through all 10 points exactly, noise included. Its training error is zero, but between the points it swings wildly, so it predicts new points badly. The pattern is the same for neural networks, with millions of parameters in place of 10 coefficients.
+
+### Early stopping, worked out
+
+A model's validation loss after each epoch is: 0.90, 0.62, 0.48, 0.41, 0.39, 0.40, 0.43, 0.47. The training loss keeps falling the whole time. The validation loss is lowest after epoch 5, at 0.39, then starts rising. Early stopping keeps the checkpoint from epoch 5. In practice, you wait a few epochs past the best one before stopping, an amount called the **patience**, because validation loss is noisy and may dip again.
+
+### Double descent
+
+The classic picture says test error falls, then rises as models grow more flexible. *Understanding Deep Learning* describes a surprise. Keep growing the model past the point where it can fit every training example exactly, and the test error often starts falling again. This is **double descent**. One explanation: among the many ways a huge model can fit the training data, training tends to find smooth ones, which is a kind of built-in, or **implicit**, regularization. This is part of why giant networks can generalize well despite having far more parameters than training examples.
+
+### Other ways to generalize better
+
+- **More data** is the most reliable fix for overfitting, when you can get it.
+- **Ensembles**: averaging several models trained differently cancels out some of each one's variance.
+- **Label smoothing**: training toward 0.9 instead of 1 for the correct class discourages overconfidence.
+- **Transfer learning**: starting from a model already trained on a large, related dataset gives a much better starting point than random weights.
+
+### Searching for hyperparameters
+
+Grid search tries every combination of a few values. **Random search** samples combinations at random, and it usually finds good settings faster, because only a few hyperparameters tend to matter, and random sampling tries more distinct values of each. **Bayesian optimization**, used by tools like Optuna, goes further and picks each next try based on how earlier tries went.
+
+A model's validation loss after each epoch is 0.8, 0.6, 0.55, 0.57, 0.6. Which epoch's checkpoint should early stopping keep?
+
+<details class="check"><summary>Show the answer</summary>
+
+Epoch 3, with the lowest validation loss, 0.55. After that, the validation loss rises, a sign that overfitting has begun.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -72,6 +117,14 @@ To search for good settings, **grid search** tries every combination from a list
 **Tuning on the test set.** Choose settings with validation data. The test set is for the final score only.
 
 **Regularizing an underfit model.** Penalties make a model simpler. If it's already too simple, they make things worse.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+The loss curves come from [Training with Gradient Descent](/ml/gradient-descent/). Dropout and normalization reappear in [Backpropagation & Training Deep Networks](/ml/backpropagation/), and honest scores need [Measuring Performance](/ml/evaluation-metrics/).
 
 </section>
 

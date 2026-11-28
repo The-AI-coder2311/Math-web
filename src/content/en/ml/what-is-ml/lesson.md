@@ -56,6 +56,57 @@ Before celebrating a model, ask what a trivial model would score. If 90% of emai
 
 **Training** is slow and happens once, or once in a while. It needs labeled data and lots of computing. **Inference** is fast and happens every time someone uses the model. When you ask a voice assistant a question, it runs inference. The parameters stay fixed while it answers.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### The supervised learning recipe
+
+*Understanding Deep Learning* describes every supervised learning project with the same four steps:
+
+1. **Choose a model family**: a formula with adjustable parameters, such as the line $y = wx + b$ or a neural network.
+2. **Choose a loss function** that measures how badly a given set of parameters fits the training data.
+3. **Train**: search for the parameters that make the loss smallest.
+4. **Test**: measure performance on data the model has never seen.
+
+Every topic in Level 2 zooms in on one of these steps.
+
+### Fitting a line to three points
+
+Real data never lands exactly on a line, so training picks the line with the smallest total squared error. For a line, there's a formula. With $\bar{x}$ and $\bar{y}$ the averages of the inputs and targets,
+
+$$w = \frac{\sum (x - \bar{x})(y - \bar{y})}{\sum (x - \bar{x})^2} \qquad b = \bar{y} - w\bar{x}$$
+
+**Worked example.** Fit the points $(0, 1)$, $(1, 2)$, and $(2, 6)$. The averages are $\bar{x} = 1$ and $\bar{y} = 3$.
+
+- The top of the fraction is $(-1)(-2) + (0)(-1) + (1)(3) = 5$.
+- The bottom is $1 + 0 + 1 = 2$.
+- So $w = 2.5$, and $b = 3 - 2.5 \times 1 = 0.5$.
+
+The best line is $y = 2.5x + 0.5$. Its predictions are 0.5, 3, and 5.5, so it misses every point a little, but no other line has a smaller total squared error. Neural networks have no such formula, which is why they're trained step by step with gradient descent instead.
+
+### Inductive bias: what a model assumes
+
+Every model family makes assumptions before it sees any data. A line assumes the pattern is straight. A convolutional network assumes nearby pixels matter together. These built-in assumptions are the model's **inductive bias**. A good inductive bias lets a model learn from less data. A bad one caps how well it can ever do, however much data it gets.
+
+### Models are functions, not magic
+
+A trained model is a fixed function. Give it the same input twice and it gives the same output. It has no understanding beyond the patterns in its training data, and it can only be as good as that data. If a hiring model is trained on past decisions that were unfair, it learns to repeat them. Thinking about where the data came from is part of building a model, not an afterthought.
+
+### Classification as numbers
+
+A classifier also outputs numbers. For "cat or dog," it might output 0.83, meaning an 83% chance of "cat." Turning that into an answer takes a **decision threshold**, often 0.5. Treating classification as predicting probabilities lets us use the same training machinery for every kind of problem.
+
+Find the best-fit line for $(0, 0)$, $(1, 1)$, and $(2, 5)$.
+
+<details class="check"><summary>Show the answer</summary>
+
+The averages are $\bar{x} = 1$ and $\bar{y} = 2$. The top is $(-1)(-2) + 0 + (1)(3) = 5$, and the bottom is 2, so $w = 2.5$ and $b = 2 - 2.5 = -0.5$. The line is $y = 2.5x - 0.5$.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -65,6 +116,14 @@ Before celebrating a model, ask what a trivial model would score. If 90% of emai
 **Calling every prediction "classification."** Predicting a number, even a whole number like a count, is usually regression.
 
 **Skipping the baseline.** High accuracy means little until you know what always guessing the most common answer would score.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+This topic uses the math from [Vectors, Matrices & Dot Products](/ml/vectors-matrices/). The recipe's steps return in [Loss Functions](/ml/loss-functions/), [Training with Gradient Descent](/ml/gradient-descent/), and [Measuring Performance](/ml/evaluation-metrics/).
 
 </section>
 

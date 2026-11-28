@@ -52,6 +52,56 @@ A **residual connection**, or skip connection, adds a block's input to its outpu
 
 **Batch normalization** rescales each neuron's outputs across a batch to mean 0 and standard deviation 1, then applies a learned scale and shift. It keeps the numbers flowing through the network in a steady range. **Layer normalization** does the same across the features of each single example instead of across the batch. It's standard in transformers.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### A full backward pass through two layers
+
+Take a tiny network with one input, one hidden ReLU unit, and one output:
+
+$$h = \text{ReLU}(w_1 x) \qquad y = w_2 h \qquad L = (y - t)^2$$
+
+Use $x = 1$, $w_1 = 2$, $w_2 = 3$, and target $t = 4$.
+
+**Forward pass.** $h = \text{ReLU}(2) = 2$, then $y = 3 \times 2 = 6$, and the loss is $(6 - 4)^2 = 4$. Store $h$ and $y$, because the backward pass needs them.
+
+**Backward pass**, from the end:
+
+1. $\frac{\partial L}{\partial y} = 2(y - t) = 4$.
+2. For the last weight: $\frac{\partial L}{\partial w_2} = \frac{\partial L}{\partial y} \times h = 4 \times 2 = 8$.
+3. Pass the gradient back to the hidden unit: $\frac{\partial L}{\partial h} = \frac{\partial L}{\partial y} \times w_2 = 4 \times 3 = 12$.
+4. Through the ReLU: its input was positive, so its slope is 1, and the gradient stays 12.
+5. For the first weight: $\frac{\partial L}{\partial w_1} = 12 \times x = 12$.
+
+Each step multiplies the incoming gradient by one local derivative. Step 3 is the key move: the gradient sent backward uses the **weight**, while the gradient for a weight uses the **activation** that fed it. Gradient descent then lowers both weights, which lowers the prediction toward 4.
+
+### Dead ReLUs
+
+Now change $w_1$ to $-2$. The ReLU's input is $-2$, so $h = 0$ and its slope is 0. In step 4, the gradient is multiplied by 0, so $w_1$ gets no gradient at all. If a ReLU unit's input is negative for every training example, it never updates again. It's a **dead ReLU**. Leaky ReLU, which keeps a small slope like 0.01 for negative inputs, avoids this.
+
+### Why the backward pass is cheap
+
+A naive approach would nudge each weight separately and rerun the network, which takes one extra forward pass for every weight. That's billions of passes for a large model. Backpropagation reuses each layer's incoming gradient for all of that layer's weights at once, so the whole backward pass costs about as much as one or two forward passes. The price is memory: every activation from the forward pass must be stored until the backward pass uses it. That's why training needs far more memory than running a trained model.
+
+### Exploding gradients and clipping
+
+When gradients explode, one huge step can wreck a model that was training well. **Gradient clipping** sets a maximum size for the gradient vector: if it's longer than the limit, it's scaled down to the limit, keeping its direction. Recurrent networks and transformers commonly use clipping as a safety net.
+
+### Initialization, by the numbers
+
+Each neuron adds up $n$ weighted inputs. If every weight has variance $\sigma^2$, the sum's variance grows with $n\sigma^2$. Choosing $\sigma^2 = \frac{1}{n}$ keeps it steady from layer to layer. ReLU zeroes about half of its inputs, which halves the variance, so He initialization doubles it back with $\frac{2}{n}$.
+
+In the two-layer example, what is $\frac{\partial L}{\partial w_1}$ if the input is $x = 2$ instead, with the same weights and target?
+
+<details class="check"><summary>Show the answer</summary>
+
+Forward: $h = 4$ and $y = 12$, so $\frac{\partial L}{\partial y} = 2(12 - 4) = 16$. Then $\frac{\partial L}{\partial h} = 16 \times 3 = 48$, the ReLU passes it through, and $\frac{\partial L}{\partial w_1} = 48 \times 2 = 96$.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -61,6 +111,14 @@ A **residual connection**, or skip connection, adds a block's input to its outpu
 **Starting all weights equal.** The neurons stay copies of each other. Start from small random values.
 
 **Blaming the data for a stuck network.** If the early layers' gradients are near zero, check the activations, initialization, and depth first.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+This is the chain rule from [Derivatives, Gradients & the Chain Rule](/ml/derivatives-gradients/), applied to [Neural Networks](/ml/neural-networks/). Its gradients feed [Training with Gradient Descent](/ml/gradient-descent/), and residual connections are central to [Attention & Transformers](/ml/transformers/).
 
 </section>
 

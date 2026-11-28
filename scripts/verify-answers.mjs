@@ -431,12 +431,13 @@ function checkMlLesson(file) {
   checkArithmetic(source, where);
   errors.push(...checkAllWriting(source, where));
   const words = readableText(source).split(/\s+/).filter(Boolean).length;
-  if (words < 500 || words > 1500) errors.push(where + ': has ' + words + ' words, and an ML lesson should have 500 to 1,500');
+  if (words < 1000 || words > 2000) errors.push(where + ': has ' + words + ' words, and an ML lesson should have 1,000 to 2,000');
   if (!/\*\*The big idea/.test(source)) errors.push(where + ': needs a "**The big idea" statement');
   if (!/<details class="check">/.test(source)) errors.push(where + ': needs a check-yourself question');
-  for (const box of ['traps', 'summary']) {
+  for (const box of ['deeper', 'traps', 'connections', 'summary']) {
     if (!source.includes('<section data-box="' + box + '">')) errors.push(where + ': needs a <section data-box="' + box + '">');
   }
+  if ((source.match(/<details class="check">/g) || []).length < 2) errors.push(where + ': needs at least 2 check-yourself questions');
 }
 
 function checkMlQuestions(file) {

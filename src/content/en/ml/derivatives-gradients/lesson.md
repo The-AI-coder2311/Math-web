@@ -64,6 +64,49 @@ Gradient descent turns this into a recipe: compute the gradient of the error, th
 
 A point where the gradient is zero is flat. It could be a minimum, a maximum, or a **saddle point**, which goes up in one direction and down in another, like the middle of a horse's saddle.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### The gradient of a real loss
+
+Let's find the gradient that trains the simplest model of all, the line $y = wx + b$, on one example. The loss is the squared error:
+
+$$L = (wx + b - t)^2$$
+
+where $t$ is the target. Call the error $e = wx + b - t$. By the chain rule, the outer derivative is $2e$, and the inner derivatives are $x$ for $w$ and 1 for $b$. So
+
+$$\frac{\partial L}{\partial w} = 2ex \qquad \frac{\partial L}{\partial b} = 2e$$
+
+**Worked example.** Take $x = 2$, $t = 7$, and start from $w = 1$, $b = 0$. The prediction is 2, so the error is $e = 2 - 7 = -5$. The gradients are $\frac{\partial L}{\partial w} = 2 \times (-5) \times 2 = -20$ and $\frac{\partial L}{\partial b} = 2 \times (-5) = -10$. Both are negative, so gradient descent raises both $w$ and $b$, which raises the prediction toward 7. Notice that $w$'s gradient is twice as big as $b$'s, because the input $x = 2$ magnifies how much $w$ matters.
+
+### Two more rules
+
+- **Product rule:** the derivative of $f(x) g(x)$ is $f'(x) g(x) + f(x) g'(x)$.
+- **The sigmoid's derivative:** for $\sigma(z) = \frac{1}{1 + e^{-z}}$, the derivative is $\sigma(z)(1 - \sigma(z))$. At $z = 0$, $\sigma = 0.5$, so the slope is $0.25$, its largest value. Far from 0, the slope is nearly 0, which is why sigmoids can make learning stall.
+
+### Checking a derivative with numbers
+
+You can always check a derivative by nudging the input a tiny bit:
+
+$$f'(x) \approx \frac{f(x + h) - f(x - h)}{2h}$$
+
+For $f(x) = x^3$ at $x = 2$, with $h = 0.01$: $\frac{8.120601 - 7.880599}{0.02} \approx 12.0001$, which matches the exact answer $3 \times 2^2 = 12$. Engineers use this "gradient check" to test that hand-written derivative code is correct. It's too slow for training, since it needs two extra evaluations for every single weight, but it's a great safety net.
+
+### Curvature and the second derivative
+
+The second derivative measures how fast the slope itself changes. A positive second derivative means the function curves upward, like a bowl, so a flat point there is a minimum. The loss surfaces of neural networks have many directions at once. Some curve up, some curve down, and many are almost flat, which is why saddle points are common in high dimensions.
+
+With $x = 1$, $t = 3$, $w = 2$, and $b = 0$, what are $\frac{\partial L}{\partial w}$ and $\frac{\partial L}{\partial b}$ for the squared-error loss above?
+
+<details class="check"><summary>Show the answer</summary>
+
+The prediction is 2, so $e = -1$. Then $\frac{\partial L}{\partial w} = 2 \times (-1) \times 1 = -2$ and $\frac{\partial L}{\partial b} = 2 \times (-1) = -2$.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -73,6 +116,14 @@ A point where the gradient is zero is flat. It could be a minimum, a maximum, or
 **Forgetting the inner derivative.** In the chain rule, the derivative of $(2x + 1)^3$ is not $3(2x + 1)^2$. You still have to multiply by 2.
 
 **Treating flat as finished.** A zero gradient means a flat spot. It might not be the lowest point.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Gradients drive [Training with Gradient Descent](/ml/gradient-descent/), and the chain rule becomes [Backpropagation](/ml/backpropagation/). The gradients come from [Loss Functions](/ml/loss-functions/).
 
 </section>
 

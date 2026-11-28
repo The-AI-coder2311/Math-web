@@ -68,6 +68,54 @@ There's a neat way to read AUC: it's the chance that a randomly chosen positive 
 
 With several classes, **macro averaging** computes a metric for each class and averages them equally, so rare classes count as much as common ones. **Micro averaging** pools every prediction first, so common classes dominate. For regression, **R-squared** measures the share of the target's variance a model explains. **Calibration** asks whether the probabilities mean what they say: of all the cases where the model says 70%, about 70% should turn out positive.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### Moving the threshold, worked out
+
+A model scores six patients. Three are actually sick (P) and three are healthy (N):
+
+| Score | 0.95 | 0.85 | 0.70 | 0.60 | 0.40 | 0.20 |
+|---|---|---|---|---|---|---|
+| Truth | P | P | N | P | N | N |
+
+**Threshold 0.8.** The model flags the two patients scoring above it, and both are sick. Precision is $\frac{2}{2} = 1$, and recall is $\frac{2}{3}$, since one sick patient was missed.
+
+**Threshold 0.5.** It flags four patients, and three are sick. Precision is $\frac{3}{4}$, and recall is $\frac{3}{3} = 1$.
+
+Lowering the threshold caught the last sick patient, at the cost of one false alarm. Each threshold gives one point on the ROC curve and one point on the precision-recall curve. Sweeping the threshold from high to low traces out the whole curve.
+
+### Why rare positives call for precision-recall curves
+
+Picture fraud detection with 10 frauds among 10,000 transactions. A model that flags 100 transactions, including all 10 frauds, has a false positive rate of only $\frac{90}{9990}$, under 1%, so its ROC curve looks excellent. But its precision is $\frac{10}{100} = 0.1$: nine out of ten alarms are false. The ROC curve hides this, because the huge number of true negatives makes any number of false alarms look small. Precision ignores true negatives, so the precision-recall curve reveals the problem.
+
+### R-squared for regression
+
+For regression, **R-squared** compares a model's squared errors with those of the simplest baseline, always predicting the mean:
+
+$$R^2 = 1 - \frac{\text{sum of squared errors of the model}}{\text{sum of squared errors of the mean}}$$
+
+**Worked example.** The targets are 2, 4, and 6, with mean 4. Always predicting 4 gives squared errors $4 + 0 + 4 = 8$. A model predicts 3, 4, and 5, with squared errors $1 + 0 + 1 = 2$. So $R^2 = 1 - \frac{2}{8} = 0.75$: the model explains 75% of the variation. An $R^2$ of 0 means no better than the mean, and a negative $R^2$ means worse.
+
+### How sure are you about a score?
+
+A test score is measured on a sample, so it has uncertainty. If a model gets 90 of 100 test examples right, its true accuracy could plausibly be anywhere from the mid-80s to the mid-90s. **Bootstrapping** estimates that uncertainty: resample the test set with replacement many times, recompute the score each time, and see how much it varies. The middle 95% of those scores gives a **confidence interval**. When two models differ by 1% on a small test set, the difference may be noise.
+
+### Fairness checks
+
+A single overall score can hide a model that works well for one group of people and badly for another. Computing the metrics separately for each group, such as by age, region, or skin tone for medical images, is a basic part of checking whether a model is fair.
+
+In the six-patient table above, what are the precision and recall at threshold 0.65?
+
+<details class="check"><summary>Show the answer</summary>
+
+Three patients score above 0.65 (0.95, 0.85, and 0.70), and two of them are sick. Precision is $\frac{2}{3}$, and recall is $\frac{2}{3}$, because the sick patient at 0.60 is missed.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -77,6 +125,14 @@ With several classes, **macro averaging** computes a metric for each class and a
 **Swapping precision and recall.** Precision divides by everything predicted positive. Recall divides by everything actually positive.
 
 **Reporting one threshold as the whole story.** Precision and recall change with the threshold. AUC and curves show the full picture.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Imbalanced data comes up first in [Preparing Data](/ml/data-preparation/). Calibration and probabilities build on [Probability, Bayes & Logarithms](/ml/probability-for-ml/), and IoU for object detection appears in [Convolutional Networks](/ml/convolutional-networks/).
 
 </section>
 

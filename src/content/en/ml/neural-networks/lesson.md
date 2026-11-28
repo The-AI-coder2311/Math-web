@@ -62,6 +62,58 @@ $$(4 \times 8 + 8) + (8 \times 3 + 3) = 67$$
 
 parameters.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### Building a shape out of ReLUs
+
+Here's how a shallow network builds a curve. Combine three ReLU units:
+
+$$f(x) = \text{ReLU}(x) - 2 \, \text{ReLU}(x - 1) + \text{ReLU}(x - 2)$$
+
+- For $x \le 0$, every unit is 0, so $f(x) = 0$.
+- Between 0 and 1, only the first unit is on, so $f(x) = x$, rising to 1.
+- Between 1 and 2, the second unit switches on and subtracts $2(x - 1)$, so the graph slopes down to 0.
+- For $x \ge 2$, the third unit switches on and cancels the slope, so $f(x) = 0$ again.
+
+The result is a triangle, a little "bump" between 0 and 2. Add many bumps of different heights and positions, and you can trace out almost any curve. That's the idea behind the universal approximation theorem, made visible.
+
+### A layer in matrix form
+
+A fully connected layer applies every neuron at once:
+
+$$h = a(Wx + b)$$
+
+where $W$ holds one row of weights per neuron, $b$ is the vector of biases, and the activation $a$ acts on each entry separately. A deep network chains these: $h_1 = a(W_1 x + b_1)$, then $h_2 = a(W_2 h_1 + b_2)$, and so on, with a final layer that produces the output. This compact notation is how *Understanding Deep Learning* writes every network in the book.
+
+### Why depth folds space
+
+With one input, a shallow network with $D$ ReLU units makes at most $D + 1$ linear pieces. Deep networks can do much better. Think of each layer as folding the input line over on itself. The next layer's pieces get repeated in every fold. Two layers that each fold the line in half produce 4 copies of whatever the third layer builds, and $k$ such layers produce $2^k$. A deep network can make a huge number of linear pieces from relatively few parameters. Not every function needs that, but natural data like images and speech seems to have this kind of repeated, layered structure.
+
+### Hidden layers learn features
+
+In a trained image network, early layers respond to edges and colors, middle layers to textures and parts like eyes or wheels, and late layers to whole objects. Nobody programs these features. They emerge because they help reduce the loss. That's the key difference from classical methods, where people design the features by hand.
+
+### Choosing the output layer
+
+| Task | Output layer | Loss |
+|---|---|---|
+| Regression | no activation | squared error |
+| Yes or no | 1 sigmoid unit | binary cross-entropy |
+| One of many classes | softmax over classes | cross-entropy |
+| Several labels at once | 1 sigmoid per label | binary cross-entropy per label |
+
+What is $f(1.5)$ for the triangle function above?
+
+<details class="check"><summary>Show the answer</summary>
+
+$\text{ReLU}(1.5) - 2 \, \text{ReLU}(0.5) + \text{ReLU}(-0.5) = 1.5 - 1 + 0 = 0.5$, halfway down the right side of the triangle.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -71,6 +123,14 @@ parameters.
 **Using softmax for multi-label problems.** If an X-ray can show several findings at once, give each finding its own sigmoid. Softmax forces the probabilities to compete.
 
 **Thinking universal approximation means easy learning.** It promises that good weights exist, not that training will find them.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Each layer is a matrix multiplication from [Vectors, Matrices & Dot Products](/ml/vectors-matrices/). Training these networks needs [Backpropagation](/ml/backpropagation/), and specialized versions appear in [Convolutional Networks](/ml/convolutional-networks/) and [Attention & Transformers](/ml/transformers/).
 
 </section>
 

@@ -62,6 +62,56 @@ A neuron's **receptive field** is the patch of the original image it can "see." 
 - **Semantic segmentation:** label every pixel with a class, such as road, car, or sky. The **U-Net** is a classic design for it.
 - **Instance segmentation:** like semantic segmentation, but it also separates individual objects, such as car 1 and car 2.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### A 2D convolution by hand
+
+Slide the $2 \times 2$ kernel with rows $(1, 0)$ and $(0, -1)$ over this $3 \times 3$ image:
+
+$$\begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}$$
+
+At the top-left position, the kernel covers 1, 2, 4, and 5, so the output is $1 \times 1 + 0 \times 2 + 0 \times 4 + (-1) \times 5 = -4$. Every position gives the same answer here, because this kernel subtracts the pixel down and to the right, and in this image that pixel is always 4 more. The output is a $2 \times 2$ map of $-4$s, which matches the size formula: $3 - 2 + 1 = 2$. On a real photo, the output would be near 0 in smooth areas and large along diagonal edges.
+
+### How many weights does weight sharing save?
+
+Map a $32 \times 32$ color image to 16 feature maps of the same size.
+
+- **Fully connected:** every one of the $32 \times 32 \times 3 = 3072$ inputs connects to every one of the $32 \times 32 \times 16 = 16384$ outputs. That's $3072 \times 16384 = 50331648$ weights, over 50 million.
+- **Convolution** with $3 \times 3$ filters: $16 \times (3 \times 3 \times 3 + 1) = 448$ parameters.
+
+That's more than 100,000 times fewer. The convolution also builds in a sensible assumption, that the same pattern means the same thing wherever it appears, which helps it learn from less data.
+
+### Going down and coming back up
+
+Classification networks shrink the image step by step, with pooling or stride 2, while adding channels. A $224 \times 224$ image might end as a $7 \times 7$ grid with 512 channels, which is then averaged into one vector and classified.
+
+Segmentation needs an answer for every pixel, so it has to come back up. **Upsampling** layers, such as **transposed convolutions**, enlarge the feature maps again. A **U-Net** shrinks the image on the way down, grows it on the way up, and adds **skip connections** that pass fine detail straight across from each shrinking stage to the matching growing stage. Without those skips, the output would be blurry, because the small middle maps have lost the exact positions of edges.
+
+### Famous architectures
+
+- **LeNet** (1990s) read handwritten digits with a few convolution layers.
+- **AlexNet** (2012) won a major image contest by a wide margin using GPUs and ReLU, and set off the deep learning boom.
+- **VGG** showed that stacks of small $3 \times 3$ filters work well.
+- **ResNet** added residual connections, making networks with over 100 layers trainable.
+
+### Seeing what a CNN looks at
+
+**Grad-CAM** and **saliency maps** highlight the parts of an image that most influenced a prediction. They help catch models that cheat. One famous example is a model that "detected" a disease by spotting a hospital's marker printed on its X-rays, instead of looking at the lungs.
+
+Apply $2 \times 2$ max pooling with stride 2 to this $4 \times 4$ map. What is the result?
+
+$$\begin{pmatrix} 1 & 3 & 0 & 2 \\ 4 & 2 & 1 & 1 \\ 0 & 1 & 5 & 6 \\ 2 & 2 & 7 & 0 \end{pmatrix}$$
+
+<details class="check"><summary>Show the answer</summary>
+
+Take the largest value in each $2 \times 2$ block: top-left 4, top-right 2, bottom-left 2, bottom-right 7. The result is the $2 \times 2$ map with rows $(4, 2)$ and $(2, 7)$.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -71,6 +121,14 @@ A neuron's **receptive field** is the patch of the original image it can "see." 
 **Forgetting to round down.** When the stride doesn't divide evenly, the leftover pixels at the edge are dropped.
 
 **Confusing detection with segmentation.** Detection draws boxes. Segmentation labels pixels.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Each filter position is a dot product from [Vectors, Matrices & Dot Products](/ml/vectors-matrices/). ResNets rely on the residual connections from [Backpropagation & Training Deep Networks](/ml/backpropagation/), and Vision Transformers in [Attention & Transformers](/ml/transformers/) offer another way to read images.
 
 </section>
 

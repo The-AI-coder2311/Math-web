@@ -64,6 +64,57 @@ An agent that always picks the best-known action (**exploitation**) may never di
 
 **Policy gradient** methods skip Q-values. They adjust the policy's probabilities directly, making actions that led to high returns more likely. **PPO** is a popular version that limits how much the policy changes per update, which keeps training stable. **Actor-critic** methods combine both ideas: an actor (the policy) chooses actions, and a critic (a value function) judges them. PPO-style training is also part of **RLHF**, which tunes language models toward answers people prefer.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### The Bellman equation
+
+The value of a state is the reward you get now, plus the discounted value of where you end up. For the best policy:
+
+$$V(s) = \max_a \left[ r(s, a) + \gamma \, V(s') \right]$$
+
+This is the **Bellman equation**, and it turns one long sum of future rewards into a short, recursive relation between neighboring states. Q-learning's update is this equation applied one step at a time, from experience.
+
+### Values in a hallway
+
+A robot is in a hallway of four squares, A, B, C, and D, with a charger in D. Moving into D earns a reward of 10 and ends the episode. Every other move earns 0, and $\gamma = 0.9$. Work backward from the goal:
+
+- From C, one step reaches D: $V(C) = 10$.
+- From B, the best move goes to C: $V(B) = 0 + 0.9 \times 10 = 9$.
+- From A: $V(A) = 0 + 0.9 \times 9 = 8.1$.
+
+The values rise toward the goal, so the best policy is to always step toward the higher value. Repeating Bellman updates like this until the values stop changing is called **value iteration**. It works when you know the rules of the world. Q-learning works when you don't, learning only from the moves the agent actually tries.
+
+### Why rewards are hard to design
+
+An agent maximizes exactly the reward you give it, not what you meant. A boat-racing agent rewarded for hitting checkpoints learned to circle the same few checkpoints forever, never finishing the race. This is called **reward hacking**, or specification gaming, and it's one of the clearest examples of the AI alignment problem: a system doing what it was told rather than what was wanted. Designing rewards, and testing for loopholes, is a big part of real RL work.
+
+### Learning from a fixed log
+
+Trying random actions is fine in a video game, and unacceptable for a self-driving car or a medical treatment plan. **Offline reinforcement learning** learns a policy from a fixed record of past decisions, without new trial and error. It must be careful about actions that rarely or never appear in the record, because their values can't be estimated well.
+
+### Where RL shows up
+
+- Games: programs that beat world champions at Go and many video games.
+- Robotics: learning to walk or grasp, often trained in simulation first.
+- Recommendations and resource allocation, such as cooling systems in data centers.
+- Language models: RLHF uses reinforcement learning to tune responses toward what people prefer.
+
+### In practice
+
+RL needs a huge number of trials, since rewards are sparse and noisy. It's also unstable: small changes to settings can make training fail. That's why practitioners favor stable algorithms like PPO, run several random seeds, and compare against simple baselines.
+
+In the hallway example, the hallway gets one more square, Z, before A. What is $V(Z)$?
+
+<details class="check"><summary>Show the answer</summary>
+
+$V(Z) = 0 + 0.9 \times 8.1 = 7.29$. Each extra step away from the goal multiplies the value by 0.9.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -73,6 +124,14 @@ An agent that always picks the best-known action (**exploitation**) may never di
 **Never exploring.** A greedy agent can get stuck repeating the first decent action it found.
 
 **Confusing reward with return.** The reward is one step's signal. The return is the discounted total of all the rewards to come.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Expected values come from [Probability, Bayes & Logarithms](/ml/probability-for-ml/), and deep Q-networks are [Neural Networks](/ml/neural-networks/) trained with [Gradient Descent](/ml/gradient-descent/). RLHF appears in [Large Language Models in Practice](/ml/llms-in-practice/).
 
 </section>
 

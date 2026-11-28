@@ -58,6 +58,51 @@ Why these formulas, and not others? *Understanding Deep Learning* shows a recipe
 
 Accuracy only changes when a prediction flips from wrong to right. Nudge a weight a tiny bit and accuracy usually doesn't move at all, so it has no useful slope to follow. Cross-entropy changes smoothly with every tiny improvement, which gives gradient descent something to work with. We **report** accuracy, but we **train** on loss.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### What each loss is really asking for
+
+Imagine the simplest possible model: it ignores the input and predicts one number $c$ for everything. Which $c$ does each loss choose? Take the targets 1, 2, and 9.
+
+- **Squared error** picks the **mean**. Here that's $(1 + 2 + 9) \div 3 = 4$. Moving away from 4 in either direction makes the total squared error bigger.
+- **Absolute error** picks the **median**, which is 2. The 9 pulls on it no more than any other point would.
+
+This is the deeper reason MSE is sensitive to outliers and MAE isn't. MSE chases the average, and the average follows extreme values. When the data has rare, wild values that you don't want to dominate, a loss that behaves like MAE for large errors is often a good compromise. The **Huber loss** acts like squared error for small errors and like absolute error for large ones.
+
+### The gradient of softmax with cross-entropy
+
+Combining softmax with cross-entropy gives one of the neatest results in machine learning. For each class, the gradient of the loss with respect to that class's logit is
+
+$$\frac{\partial L}{\partial z_i} = p_i - y_i$$
+
+where $p_i$ is the predicted probability and $y_i$ is 1 for the correct class and 0 for the rest.
+
+**Worked example.** A model predicts $p = (0.7, 0.2, 0.1)$, and the correct class is the first. The gradient is $(0.7 - 1, 0.2 - 0, 0.1 - 0) = (-0.3, 0.2, 0.1)$. Gradient descent subtracts it, so the correct class's logit goes up and the others go down, each in proportion to how wrong it was. When the prediction is perfect, the gradient is all zeros and nothing changes.
+
+### Losses for several outputs
+
+Many models predict more than one thing at once. A self-driving car's network might predict where objects are (a regression) and what they are (a classification). The total loss is usually a weighted sum of the separate losses, and the weights become hyperparameters to tune. For **multi-label** problems, where an X-ray can show several findings, each label gets its own sigmoid and its own **binary cross-entropy**, and the losses are added up.
+
+### Cost and objective
+
+You'll also see the words **cost function** and **objective**. They usually mean the total quantity being minimized, which is often the average loss plus a penalty that keeps weights small. That penalty is called regularization, and it's the main subject of the Overfitting & Regularization topic.
+
+### In practice
+
+Libraries combine softmax and cross-entropy into one function that works from the logits directly. That avoids taking the log of a number that has rounded to 0. If you apply softmax yourself and then pass the probabilities to a function that expects logits, the model trains badly without any error message, so check which one a function expects.
+
+A model predicts $p = (0.5, 0.5)$, and the correct class is the second. What is the gradient with respect to the logits?
+
+<details class="check"><summary>Show the answer</summary>
+
+$(0.5 - 0, 0.5 - 1) = (0.5, -0.5)$. Subtracting it raises the second logit and lowers the first.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -67,6 +112,14 @@ Accuracy only changes when a prediction flips from wrong to right. Nudge a weigh
 **Reading the loss as a percentage.** A cross-entropy of 0.7 doesn't mean 70% of anything. Compare losses with each other.
 
 **Forgetting the minus sign.** Logs of probabilities are negative. The minus sign makes the loss positive.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Losses are built from [Probability, Bayes & Logarithms](/ml/probability-for-ml/), minimized in [Training with Gradient Descent](/ml/gradient-descent/), and extended with penalties in [Overfitting & Regularization](/ml/generalization/).
 
 </section>
 

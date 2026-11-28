@@ -64,6 +64,55 @@ Every token scores against every other token, so a sequence of $n$ tokens needs 
 
 A **language model** predicts the probability of the next token. Its **perplexity** measures how "surprised" it is by real text: if it gives each true next token probability $\frac{1}{8}$ on average (in the geometric-mean sense), its perplexity is 8. It's as unsure as picking from 8 equally likely options. Lower is better.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### Attention with real softmax numbers
+
+The worked example above supposed its weights. Here's one where the softmax comes out exactly. A query is compared with three tokens, and after scaling, the scores $s$ have exponentials $e^{s} = 1$, $2$, and $5$. Softmax divides each by their sum, 8, so the weights are $\frac{1}{8}$, $\frac{2}{8}$, and $\frac{5}{8}$. If the three values are 8, 4, and 0, the output is
+
+$$\frac{1}{8} \times 8 + \frac{2}{8} \times 4 + \frac{5}{8} \times 0 = 2$$
+
+The third token got the most attention, but its value was 0, so it pulled the output down. Attention decides **how much** to listen. The values decide **what** is heard.
+
+In practice, values are vectors, not single numbers, and the output is a weighted average of those vectors. All the queries are handled at once with matrices: $QK^T$ gives an $n \times n$ grid of scores, softmax runs along each row, and multiplying by $V$ gives every token's output together.
+
+### Counting the parameters
+
+A transformer with embedding size $d = 512$ has four $512 \times 512$ matrices in each attention layer: one each for queries, keys, and values, plus one that mixes the heads' outputs. That's $4 \times 262144 = 1048576$ weights, about a million. With 8 heads, each head works with vectors of size $512 \div 8 = 64$, so multi-head attention costs no more than a single big head. The fully connected block after attention usually widens to 4 times the size and back, adding about $2 \times 512 \times 2048 = 2097152$ more weights. So each layer has about 3 million weights, and models stack dozens of layers.
+
+### The causal mask, drawn out
+
+For a 4-token sequence, the decoder's mask allows these pairs, where a ✓ means the row's token may attend to the column's:
+
+| | token 1 | token 2 | token 3 | token 4 |
+|---|---|---|---|---|
+| **token 1** | ✓ | | | |
+| **token 2** | ✓ | ✓ | | |
+| **token 3** | ✓ | ✓ | ✓ | |
+| **token 4** | ✓ | ✓ | ✓ | ✓ |
+
+That's $1 + 2 + 3 + 4 = 10$ allowed pairs. The blocked scores are set to $-\infty$ before softmax, so their weights come out as exactly 0. One sentence then gives a training example at every position at once: predict token 2 from token 1, token 3 from tokens 1 and 2, and so on.
+
+### Transformers beyond text
+
+The **Vision Transformer** turns image patches into tokens. Speech models turn short slices of audio into tokens. Models for proteins treat amino acids as tokens. Because attention makes so few assumptions about its input, the same architecture works for all of these, given enough data. Modern **multimodal** models feed text and image tokens into one transformer.
+
+### Long sequences
+
+Because cost grows with $n^2$, researchers have developed cheaper variants that attend only to nearby tokens or to a summary of distant ones. Engineering tricks also help: when generating text, models store the keys and values of earlier tokens, called a **KV cache**, so each new token only needs its own query compared with them.
+
+How many query-key pairs does a causal mask allow for a 5-token sequence?
+
+<details class="check"><summary>Show the answer</summary>
+
+$1 + 2 + 3 + 4 + 5 = 15$. Without the mask, all $5 \times 5 = 25$ pairs would be allowed.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -73,6 +122,14 @@ A **language model** predicts the probability of the next token. Its **perplexit
 **Thinking attention knows word order.** It doesn't, which is why positional encodings exist.
 
 **Mixing up keys and values.** Keys decide how much attention each token gets. Values are what actually gets mixed into the output.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Attention scores are dot products from [Vectors, Matrices & Dot Products](/ml/vectors-matrices/), turned into weights by the softmax from [Loss Functions](/ml/loss-functions/). Residual connections and layer norm come from [Backpropagation & Training Deep Networks](/ml/backpropagation/), and decoders become [Large Language Models in Practice](/ml/llms-in-practice/).
 
 </section>
 

@@ -60,6 +60,44 @@ $1 \times 3 + (-1) \times 4 + 2 \times 1 = 1$. Watch the minus sign on the middl
 
 Most vectors change direction when a matrix multiplies them. A few special ones only get stretched. These are **eigenvectors**, and the stretch factor is the **eigenvalue**. For the matrix with rows $(2, 0)$ and $(0, 3)$, the vector $(1, 0)$ becomes $(2, 0)$. It's stretched by 2 and doesn't turn. Principal component analysis, which you'll meet later, uses eigenvectors to find the directions where data spreads out most.
 
+<section data-box="deeper">
+
+## Going deeper
+
+### Multiplying two matrices
+
+A matrix times a matrix is a grid of dot products: the entry in row $i$ and column $j$ is the dot product of row $i$ of the first matrix with column $j$ of the second.
+
+$$\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix} \begin{pmatrix} 5 & 0 \\ 1 & 2 \end{pmatrix} = \begin{pmatrix} 1 \times 5 + 2 \times 1 & 1 \times 0 + 2 \times 2 \\ 3 \times 5 + 4 \times 1 & 3 \times 0 + 4 \times 2 \end{pmatrix} = \begin{pmatrix} 7 & 4 \\ 19 & 8 \end{pmatrix}$$
+
+Why does this matter? Real models don't process one example at a time. They stack a **batch** of examples into a matrix $X$, with one row per example. If a layer's weights sit in a matrix $W$ with one column per neuron, then $XW$ computes every neuron's output for every example in one multiplication. A batch of 64 examples with 100 features times a $(100, 32)$ weight matrix gives a $(64, 32)$ result: 32 outputs for each of the 64 examples.
+
+### Length and cosine similarity
+
+The **length**, or norm, of a vector comes from the Pythagorean theorem: $(3, 4)$ has length $\sqrt{9 + 16} = 5$. Dividing the dot product by both lengths gives the **cosine similarity**, which ignores size and keeps only direction:
+
+$$\cos \theta = \frac{a \cdot b}{|a| \, |b|}$$
+
+For $a = (3, 4)$ and $b = (4, 3)$, the dot product is $12 + 12 = 24$ and both lengths are 5, so the cosine similarity is $\frac{24}{25} = 0.96$. They point in almost the same direction. Cosine similarity runs from $-1$ (opposite) through 0 (at right angles) to 1 (identical direction). Search engines and recommendation systems use it to find the items whose embeddings are most similar to a query.
+
+### The transpose in practice
+
+The transpose $A^T$ flips rows and columns. It shows up whenever shapes need to line up. To compare every query with every key in a transformer, you multiply a $(n, d)$ matrix of queries by the transpose of a $(n, d)$ matrix of keys. The result has shape $(n, n)$: one score for every pair. A useful rule is $(AB)^T = B^T A^T$, with the order reversed.
+
+### In practice
+
+In code, you rarely write loops for any of this. Libraries like NumPy and PyTorch use **vectorization**: one line such as `X @ W` runs the whole multiplication in fast, optimized code. **Broadcasting** lets you add a bias vector to every row of a matrix without copying it. Most bugs come from shapes that don't match what you expected, so printing `.shape` is the first debugging step.
+
+What is the cosine similarity of $(1, 0)$ and $(0, 5)$?
+
+<details class="check"><summary>Show the answer</summary>
+
+The dot product is $1 \times 0 + 0 \times 5 = 0$, so the cosine similarity is 0. The vectors are at right angles, however long they are.
+
+</details>
+
+</section>
+
 <section data-box="traps">
 
 ## Common traps
@@ -69,6 +107,14 @@ Most vectors change direction when a matrix multiplies them. A few special ones 
 **Mixing up the shape rule.** The inner sizes must match, and the outer sizes give the answer's shape. (2, 3) times (3, 5) gives (2, 5), not (3, 3).
 
 **Forgetting the adding.** A dot product is a single number, not a list. Multiply the matching entries, then add all of them.
+
+</section>
+
+<section data-box="connections">
+
+## Connections
+
+Dot products are the core of every neuron in [Neural Networks](/ml/neural-networks/) and of the attention scores in [Attention & Transformers](/ml/transformers/). Eigenvectors return in PCA, in [Classical Algorithms](/ml/classical-algorithms/).
 
 </section>
 
